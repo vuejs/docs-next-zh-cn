@@ -1,12 +1,12 @@
 # 介绍
 
-## Vue.js是什么
+## Vue.js 是什么
 
-Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**渐进式框架**。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与 [现代化的工具链](../guide/single-file-component.html) 以及各种 [支持类库](https://github.com/vuejs/awesome-vue#components--libraries) 结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**渐进式框架**。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与[现代化的工具链](../guide/single-file-component.html)以及各种[支持类库](https://github.com/vuejs/awesome-vue#components--libraries)结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
 
 如果你想在深入学习 Vue 之前对它有更多了解，我们<a id="modal-player" href="#">制作了一个视频</a>，带你了解其核心概念和一个示例工程。
 
-如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看 [对比其它框架](TODO:comparison.html) 。
+如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看[对比其它框架](TODO:comparison.html)。
 
 ## 起步
 
@@ -16,13 +16,13 @@ Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**
   </ActionLink>
 </p>
 
-::: tip
+：:：tip
 官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的
-:::
+：:：
 
-尝试 Vue.js 最简单的方法是使用  [Hello World 例子](https://codepen.io/team/Vue/pen/KKpRVpx)，你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。
+尝试 Vue.js 最简单的方法是使用 [Hello World 例子](https://codepen.io/team/Vue/pen/KKpRVpx)，你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。
 
-[安装教程](/guide/installation.html) 给出了更多安装 Vue 的方式。请注意我们**不推荐**新手直接使用 `vue-cli`，尤其是在你还不熟悉基于 Node.js 的构建工具时。
+[安装教程](/guide/installation.html)给出了更多安装 Vue 的方式。请注意我们**不推荐**新手直接使用 `vue-cli`，尤其是在你还不熟悉基于 Node.js 的构建工具时。
 
 ## 声明式渲染
 
@@ -46,7 +46,7 @@ const Counter = {
 Vue.createApp(Counter).mount('#counter')
 ```
 
-我们已经成功创建了第一个 Vue 应用！看起来这跟渲染一个字符串模板非常类似，但是 Vue 在背后做了大量工作。现在数据和 DOM 已经被建立了关联，所有东西都是**响应式的**。我们要怎么确认呢？请看下面的示例，其中 `counter` property 每秒递增，你将看到渲染的DOM是如何变化的：
+我们已经成功创建了第一个 Vue 应用！看起来这跟渲染一个字符串模板非常类似，但是 Vue 在背后做了大量工作。现在数据和 DOM 已经被建立了关联，所有东西都是**响应式的**。我们要怎么确认呢？请看下面的示例，其中 `counter` property 每秒递增，你将看到渲染的 DOM 是如何变化的：
 
 ```js{8-10}
 const CounterApp = {
@@ -65,7 +65,7 @@ const CounterApp = {
 
 <FirstExample />
 
-除了文本插值，我们还可以像这样绑定元素attribute：
+除了文本插值，我们还可以像这样绑定元素 attribute：
 
 ```html
 <div id="bind-attribute">
@@ -94,7 +94,7 @@ Vue.createApp(AttributeBinding).mount('#bind-attribute')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-这里我们遇到了一点新东西。你看到的 `v-bind` attribute 被称为`指令`。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“将这个元素节点的 `title` attribute 和 当前活动实例的 `message` property 保持一致”。
+这里我们遇到了一点新东西。你看到的 `v-bind` attribute 被称为 `指令`。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“将这个元素节点的 `title` attribute 和当前活动实例的 `message` property 保持一致”。
 
 ## 处理用户输入
 
@@ -186,9 +186,9 @@ const ConditionalRendering = {
 Vue.createApp(ConditionalRendering).mount('#conditional-rendering')
 ```
 
-这个例子演示了我们不仅可以把数据绑定到 DOM 文本或 attribute，还可以绑定到 DOM **结构**。此外，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/移除元素时自动应用 [过渡效果](TODO)。
+这个例子演示了我们不仅可以把数据绑定到 DOM 文本或 attribute，还可以绑定到 DOM **结构**。此外，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/移除元素时自动应用[过渡效果](TODO)。
 
-你可以在下面的沙盒中将 `seen` 从 `true` 更改为 `false` ，以检查效果：
+你可以在下面的沙盒中将 `seen` 从 `true` 更改为 `false`，以检查效果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="oNXdbpB" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Conditional rendering">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/oNXdbpB">
@@ -238,7 +238,7 @@ Vue.createApp(ListRendering).mount('#list-rendering')
 
 ![Component Tree](/images/components.png)
 
-在Vue中，组件本质上是一个具有预定义选项的实例。在Vue中注册组件很简单：我们创建一个组件对象，就像对 `App` 对象所做的那样，并在父级的 `components` 选项中定义它：
+在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：我们创建一个组件对象，就像对 `App` 对象所做的那样，并在父级的 `components` 选项中定义它：
 
 ```js
 // 创建Vue 应用
@@ -324,7 +324,7 @@ app.mount('#todo-list-app')
 
 尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 `<todo-item>` 组件，提供更为复杂的模板和逻辑，而不会影响到父应用。
 
-在一个大型应用中，有必要将整个应用程序划分为多个组件，以使开发更易管理。在 [后续教程](component-basics.md) 中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
+在一个大型应用中，有必要将整个应用程序划分为多个组件，以使开发更易管理。在[后续教程](component-basics.md)中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
 
 ```html
 <div id="app">
@@ -338,7 +338,7 @@ app.mount('#todo-list-app')
 
 ### 与自定义元素的关系
 
-你可能已经注意到 Vue 组件非常类似于自定义元素——它是 [Web 组件规范](https://www.w3.org/wiki/WebComponents/) 的一部分，这是因为 Vue 的组件语法部分参考了该规范。例如 Vue 组件实现了 [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/propositions/Slots-Proposal.md) 与 `is` attribute。但是，还是有几个关键差别：
+你可能已经注意到 Vue 组件非常类似于自定义元素——它是 [Web 组件规范](https://www.w3.org/wiki/WebComponents/)的一部分，这是因为 Vue 的组件语法部分参考了该规范。例如 Vue 组件实现了 [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/propositions/Slots-Proposal.md) 与 `is` attribute。但是，还是有几个关键差别：
 
 1. Web Components 规范已经完成并通过，但未被所有浏览器原生实现。目前 Safari 10.1+、Chrome 54+ 和 Firefox 63+ 原生支持 Web Components。相比之下，Vue 组件不需要任何 polyfill，并且在所有支持的浏览器 (IE11 及更高版本) 之下表现一致。必要时，Vue 组件也可以包装于原生自定义元素之内。
 

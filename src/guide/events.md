@@ -4,9 +4,9 @@
 
 ## 监听事件
 
-我们可以使用 `v-on` 指令（通常缩写为 `@` 符号）来监听DOM事件，并在触发事件时执行一些JavaScript。用法为 `v-on:click=”methodName` 或使用快捷方式 `@click="methodName"`
+我们可以使用 `v-on` 指令 (通常缩写为 `@` 符号) 来监听 DOM 事件，并在触发事件时执行一些 JavaScript。用法为 `v-on:click=”methodName` 或使用快捷方式 `@click="methodName"`
 
-例如:
+例如：
 
 ```html
 <div id="basic-event">
@@ -25,7 +25,7 @@ Vue.createApp({
 }).mount('#basic-event')
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="xxGadPZ" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Event handling: basic">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/xxGadPZ">
@@ -38,7 +38,7 @@ Vue.createApp({
 
 然而许多事件处理逻辑会更为复杂，所以直接把 JavaScript 代码写在 `v-on` 指令中是不可行的。因此 `v-on` 还可以接收一个需要调用的方法名称。
 
-例如:
+例如：
 
 ```html
 <div id="event-with-method">
@@ -67,7 +67,7 @@ Vue.createApp({
 }).mount('#event-with-method')
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="jOPvmaX" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Event handling: with a method">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/jOPvmaX">
@@ -97,7 +97,7 @@ Vue.createApp({
 }).mount('#inline-handler')
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="WNvgjda" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Event handling: with an inline handler">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/WNvgjda">
@@ -185,15 +185,15 @@ methods: {
 <div @click.self="doThat">...</div>
 ```
 
-::: tip
+：:：tip
 使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 `v-on:click.prevent.self` 会阻止所有的点击，而 `v-on:click.self.prevent` 只会阻止对元素自身的点击。
-:::
+：:：
 
 ```html
 <!-- 点击事件将只会触发一次 -->
 <a @click.once="doThis"></a>
 ```
-不像其它只能对原生的 DOM 事件起作用的修饰符，.once 修饰符还能被用到自定义的[组件事件](component-custom-events.html)上。如果你还没有阅读关于组件的文档，现在大可不必担心。
+不像其它只能对原生的 DOM 事件起作用的修饰符，。once 修饰符还能被用到自定义的[组件事件](component-custom-events.html)上。如果你还没有阅读关于组件的文档，现在大可不必担心。
 
 Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)提供了 `.passive` 修饰符。
 
@@ -206,13 +206,13 @@ Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozil
 
 这个 `.passive` 修饰符尤其能够提升移动端的性能。
 
-::: tip
-不要把 `.passive` 和 `.prevent` 一起使用，因为 `.prevent` 将会被忽略，同时浏览器可能会向你展示一个警告。请记住，`.passive` 会告诉浏览器你 *不想* 阻止事件的默认行为。
-:::
+：:：tip
+不要把 `.passive` 和 `.prevent` 一起使用，因为 `.prevent` 将会被忽略，同时浏览器可能会向你展示一个警告。请记住，`.passive` 会告诉浏览器你*不想*阻止事件的默认行为。
+：:：
 
 ## 按键修饰符
 
-在监听键盘事件时，我们经常需要检查详细的按键。Vue 允许为 `v-on`或者 `@` 在监听键盘事件时添加按键修饰符：
+在监听键盘事件时，我们经常需要检查详细的按键。Vue 允许为 `v-on` 或者 `@` 在监听键盘事件时添加按键修饰符：
 
 ```html
 <!-- 只有在 `key` 是 `Enter` 时调用 `vm.submit()` -->
@@ -225,15 +225,15 @@ Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozil
 <input @keyup.page-down="onPageDown" />
 ```
 
-在上述示例中，处理函数只会在` $event.key` 等于 `'PageDown'` 时被调用。
+在上述示例中，处理函数只会在 ` $event.key` 等于 `'PageDown'` 时被调用。
 
 ### 按键别名
 
-Vue为最常用的键提供了别名：
+Vue 为最常用的键提供了别名：
 
 - `.enter`
 - `.tab`
-- `.delete`  (捕获“删除”和“退格”键)
+- `.delete` (捕获“删除”和“退格”键)
 - `.esc`
 - `.space`
 - `.up`
@@ -250,11 +250,11 @@ Vue为最常用的键提供了别名：
 - `.shift`
 - `.meta`
 
-::: tip 提示
+：:：tip 提示
 注意：在 Mac 系统键盘上，meta 对应 command 键 (⌘)。在 Windows 系统键盘 meta 对应 Windows 徽标键 (⊞)。在 Sun 操作系统键盘上，meta 对应实心宝石键 (◆)。在其他特定键盘上，尤其在 MIT 和 Lisp 机器的键盘、以及其后继产品，比如 Knight 键盘、space-cadet 键盘，meta 被标记为“META”。在 Symbolics 键盘上，meta 被标记为“META”或者“Meta”。
-:::
+：:：
 
-例如:
+例如：
 
 ```html
 <!-- Alt + Enter -->
@@ -264,9 +264,9 @@ Vue为最常用的键提供了别名：
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
-::: tip
+：:：tip
 请注意修饰键与常规按键不同，在和 `keyup` 事件一起用时，事件触发时修饰键必须处于按下状态。换句话说，只有在按住 `ctrl` 的情况下释放其它按键，才能触发 `keyup.ctrl`。而单单释放 `ctrl` 也不会触发事件。
-:::
+：:：
 
 ### `.exact` 修饰符
 

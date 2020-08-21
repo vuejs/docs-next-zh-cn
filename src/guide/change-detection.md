@@ -1,12 +1,12 @@
-# Vue 2中的更改检测警告
+# Vue 2 中的更改检测警告
 
-> 该页面仅适用于Vue 2.x及更低版本，并假定你已经阅读了 [响应式部分](reactivity.md)。 请先阅读该部分。
+> 该页面仅适用于 Vue 2.x 及更低版本，并假定你已经阅读了[响应式部分](reactivity.md)。请先阅读该部分。
 
-由于JavaScript的限制，有些Vue **无法检测**的更改类型。 但是，有一些方法可以规避它们以维持响应式。
+由于 JavaScript 的限制，有些 Vue **无法检测**的更改类型。但是，有一些方法可以规避它们以维持响应式。
 
 ### 对于对象
 
-Vue无法检测到property的添加或删除。 由于Vue在实例初始化期间执行 getter/setter 转换过程，因此必须在data对象中存在一个property，以便Vue对其进行转换并使其具有响应式。 例如：
+Vue 无法检测到 property 的添加或删除。由于 Vue 在实例初始化期间执行 getter/setter 转换过程，因此必须在 data 对象中存在一个 property，以便 Vue 对其进行转换并使其具有响应式。例如：
 
 ```js
 var vm = new Vue({
@@ -20,7 +20,7 @@ vm.b = 2
 // `vm.b` 不是响应式的
 ```
 
-对于已经创建的实例，Vue 不允许动态添加根级别的响应式 property。但是，可以使用 Vue.set(object, propertyName, value) 方法向嵌套对象添加响应式 property。例如，对于：
+对于已经创建的实例，Vue 不允许动态添加根级别的响应式 property。但是，可以使用 Vue.set(object，propertyName，value) 方法向嵌套对象添加响应式 property。例如，对于：
 
 ```js
 Vue.set(vm.someObject, 'b', 2)
@@ -43,10 +43,10 @@ this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
 
 Vue 不能检测以下数组的变动：
 
-1. 当你利用索引直接设置一个数组项时，例如： `vm.items[indexOfItem] = newValue`
-2. 当你修改数组的长度时，例如： `vm.items.length = newLength`
+1. 当你利用索引直接设置一个数组项时，例如：`vm.items[indexOfItem] = newValue`
+2. 当你修改数组的长度时，例如：`vm.items.length = newLength`
 
-例如:
+例如：
 
 ```js
 var vm = new Vue({
@@ -101,13 +101,13 @@ vm.message = 'Hello!'
 
 如果你未在 data 选项中声明 `message`，Vue 将警告你渲染函数正在试图访问不存在的 property。
 
-这样的限制在背后是有其技术原因的，它消除了在依赖项跟踪系统中的一类边界情况，也使 组件实例能更好地配合类型检查系统工作。但与此同时在代码可维护性方面也有一点重要的考虑：`data` 对象就像组件的状态结构 (schema)。提前声明所有的响应式 property，可以让组件代码在未来修改或给其他开发人员阅读时更易于理解。
+这样的限制在背后是有其技术原因的，它消除了在依赖项跟踪系统中的一类边界情况，也使组件实例能更好地配合类型检查系统工作。但与此同时在代码可维护性方面也有一点重要的考虑：`data` 对象就像组件的状态结构 (schema)。提前声明所有的响应式 property，可以让组件代码在未来修改或给其他开发人员阅读时更易于理解。
 
 ## 异步更新队列
 
 可能你还没有注意到，Vue 在更新 DOM 时是**异步**执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 `Promise.then`、`MutationObserver` 和 `setImmediate`，如果执行环境不支持，则会采用 `setTimeout(fn, 0)` 代替。
 
-例如，当你设置 `vm.someData = 'new value'`，该组件不会立即重新渲染。当刷新队列时，组件会在下一个事件循环“tick”中更新。多数情况我们不需要关心这个过程，但是如果你想基于更新后的 DOM 状态来做点什么，这就可能会有些棘手。虽然 Vue.js 通常鼓励开发人员使用 “数据驱动” 的方式思考，避免直接接触 DOM，但是有时我们必须要这么做。为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用 `Vue.nextTick(callback)`。这样回调函数将在 DOM 更新完成后被调用。例如：
+例如，当你设置 `vm.someData = 'new value'`，该组件不会立即重新渲染。当刷新队列时，组件会在下一个事件循环“tick”中更新。多数情况我们不需要关心这个过程，但是如果你想基于更新后的 DOM 状态来做点什么，这就可能会有些棘手。虽然 Vue.js 通常鼓励开发人员使用“数据驱动”的方式思考，避免直接接触 DOM，但是有时我们必须要这么做。为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用 `Vue.nextTick(callback)`。这样回调函数将在 DOM 更新完成后被调用。例如：
 
 ```html
 <div id="example">{{ message }}</div>

@@ -22,7 +22,7 @@ Vue.createApp({
 }).mount('#array-rendering')
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="VwLGbwa" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Array">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/VwLGbwa">
@@ -31,7 +31,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-在` v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
+在 ` v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
 
 ```html
 <ul id="array-with-index">
@@ -52,7 +52,7 @@ Vue.createApp({
 }).mount('#array-with-index')
 ```
 
-Result:
+Result：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="wvaEdBP" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Array and index">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/wvaEdBP">
@@ -61,7 +61,7 @@ Result:
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-You can also use `of` as the delimiter instead of `in`, so that it is closer to JavaScript's syntax for iterators:
+You can also use `of` as the delimiter instead of `in`，so that it is closer to JavaScript's syntax for iterators：
 
 ```html
 <div v-for="item of items"></div>
@@ -69,7 +69,7 @@ You can also use `of` as the delimiter instead of `in`, so that it is closer to 
 
 ## 在 `v-for` 里使用对象
 
-You can also use `v-for` to iterate through the properties of an object.
+You can also use `v-for` to iterate through the properties of an object。
 
 ```html
 <ul id="v-for-object" class="demo">
@@ -93,7 +93,7 @@ Vue.createApp({
 }).mount('#v-for-object')
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="NWqLjqy" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Object">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqLjqy">
@@ -134,7 +134,7 @@ Vue.createApp({
 
 :::tip 提示
 在遍历对象时，会按 `Object.keys()` 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下都一致。
-:::
+：:：
 
 ## 维护状态
 
@@ -155,8 +155,8 @@ Vue.createApp({
 因为它是 Vue 识别节点的一个通用机制，`key` 并不仅与 `v-for` 特别关联。后面我们将在指南中看到，它还具有其它用途。
 
 :::tip 提示
-不要使用对象或数组之类的非基本类型值作为 `v-for `的 key。请用字符串或数值类型的值。
-:::
+不要使用对象或数组之类的非基本类型值作为 `v-for ` 的 key。请用字符串或数值类型的值。
+：:：
 
 更多 `key` attribute 的细节用法请移步至 [`key` 的 API 文档](../api/special-attributes.html#key)。
 
@@ -190,7 +190,7 @@ example1.items = example1.items.filter(item => item.message.match(/Foo/))
 
 有时，我们想要显示一个数组经过过滤或排序后的版本，而不实际变更或重置原始数据。在这种情况下，可以创建一个计算属性，来返回过滤或排序后的数组。
 
-例如:
+例如：
 
 ```html
 <li v-for="n in evenNumbers">{{ n }}</li>
@@ -230,7 +230,7 @@ methods: {
 }
 ```
 
-## 在`v-for` 里使用值的范围
+## 在 `v-for` 里使用值的范围
 
 `v-for` 也可以接受整数。在这种情况下，它会把模板重复对应次数。
 
@@ -240,7 +240,7 @@ methods: {
 </div>
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="NWqLjNY" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with a range">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqLjNY">
@@ -249,11 +249,11 @@ methods: {
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## 在`<template>`在使用`v-for`
+## 在 `<template>` 在使用 `v-for`
 
 类似于 `v-if`，你也可以利用带有 `v-for` 的 `<template>` 来循环渲染一段包含多个元素的内容。比如：
 
-Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to render a block of multiple elements. For example:
+Similar to template `v-if`，you can also use a `<template>` tag with `v-for` to render a block of multiple elements。For example：
 
 ```html
 <ul>
@@ -267,10 +267,10 @@ Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to 
 ## `v-for` 与 `v-if` 一同使用
 
 :::tip
-注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅 [风格指南](../style-guide/#avoid-v-if-with-v-for-essential) 。
-:::
+注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#avoid-v-if-with-v-for-essential)。
+：:：
 
-当它们处于同一节点，`v-for` 的优先级比 `v-if` 更高，这意味着 `v-if` 将分别重复运行于每个 `v-for` 循环中。当你只想为 *部分* 项渲染节点时，这种优先级的机制会十分有用，如下：
+当它们处于同一节点，`v-for` 的优先级比 `v-if` 更高，这意味着 `v-if` 将分别重复运行于每个 `v-for` 循环中。当你只想为*部分*项渲染节点时，这种优先级的机制会十分有用，如下：
 
 
 ```html
@@ -281,7 +281,7 @@ Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to 
 
 上面的代码将只渲染未完成的 todo。
 
-而如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt) ) 上。如：
+而如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt)) 上。如：
 
 ```html
 <ul v-if="todos.length">
@@ -292,9 +292,9 @@ Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to 
 <p v-else>No todos left!</p>
 ```
 
-## 在组件上使用`v-for`
+## 在组件上使用 `v-for`
 
-> 这部分内容假定你已经了解 [组件](component-basics.md) 相关知识。你也完全可以先跳过它，以后再回来查看。
+> 这部分内容假定你已经了解[组件](component-basics.md)相关知识。你也完全可以先跳过它，以后再回来查看。
 
 在自定义组件上，你可以像在任何普通元素上一样使用 `v-for`。
 

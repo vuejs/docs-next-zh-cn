@@ -1,10 +1,10 @@
 # Refs
 
-> 本节例子中代码使用的 [单文件组件](../guide/single-file-component.html) 语法
+> 本节例子中代码使用的[单文件组件](../guide/single-file-component.html)语法
 
 ## `ref`
 
-接受一个内部值并返回一个响应式且可变的 ref 对象。 ref 对象具有指向内部值的单个 property `.value`。
+接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象具有指向内部值的单个 property `.value`。
 
 **示例：**
 
@@ -28,7 +28,7 @@ interface Ref<T> {
 function ref<T>(value: T): Ref<T>
 ```
 
-有时我们可能需要为 ref 的内部值指定复杂类型。 我们可以通过在调用 `ref` 来覆盖默认推断时传递一个泛型参数来简洁地做到这一点：
+有时我们可能需要为 ref 的内部值指定复杂类型。我们可以通过在调用 `ref` 来覆盖默认推断时传递一个泛型参数来简洁地做到这一点：
 
 ```ts
 const foo = ref<string | number>('foo') // foo's type: Ref<string | number>
@@ -47,7 +47,7 @@ function useState<State extends string>(initial: State) {
 
 ## `unref`
 
-如果参数为 [`ref`](#ref) ，则返回内部值，否则返回参数本身。 这是 `val = isRef(val) ? val.value : val`。
+如果参数为 [`ref`](#ref)，则返回内部值，否则返回参数本身。这是 `val = isRef(val) ? val.value : val`。
 
 ```js
 function useFoo(x: number | Ref<number>) {
@@ -57,7 +57,7 @@ function useFoo(x: number | Ref<number>) {
 
 ## `toRef`
 
-可以用来为源响应式对象上的 property 性创建一个 [`ref`](#ref) 。 然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。
+可以用来为源响应式对象上的 property 性创建一个 [`ref`](#ref)。然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。
 
 ```js
 const state = reactive({
@@ -112,7 +112,7 @@ stateAsRefs.foo.value++
 console.log(state.foo) // 3
 ```
 
-当从合成函数返回响应式对象时，`toRefs`非常有用，这样消费组件就可以在不丢失响应式的情况下对返回的对象进行 分解/扩散：
+当从合成函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应式的情况下对返回的对象进行分解/扩散：
 
 ```js
 function useFeatureX() {
@@ -142,7 +142,7 @@ export default {
 
 ## `isRef`
 
-Checks if a value is a ref object.
+Checks if a value is a ref object。
 
 ## `customRef`
 
@@ -183,7 +183,7 @@ Checks if a value is a ref object.
   }
   ```
 
-**Typing:**
+**Typing：**
 
 ```ts
 function customRef<T>(factory: CustomRefFactory<T>): Ref<T>
@@ -209,7 +209,7 @@ foo.value = {}
 isReactive(foo.value) // false
 ```
 
-**参考**: [正在将独立的响应式值创建为`refs`](../guide/reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs)
+**参考**：[正在将独立的响应式值创建为 `refs`](../guide/reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs)
 
 ## `triggerRef`
 
@@ -232,4 +232,4 @@ shallow.value.greet = 'Hello, universe'
 triggerRef(shallow)
 ```
 
-**参考** [计算和侦听 - watchEffect](./computed-watch-api.html#watcheffect)
+**参考**[计算和侦听 - watchEffect](./computed-watch-api.html#watcheffect)

@@ -22,11 +22,11 @@ app.component('button-counter', {
 })
 ```
 
-::: info
-在这里演示的是一个简单的示例，但是在典型的Vue应用程序中，我们使用单个文件组件而不是字符串模板。你可以[在本节](single-file-component.html)找到有关它们的更多信息。
-:::
+：:：info
+在这里演示的是一个简单的示例，但是在典型的 Vue 应用程序中，我们使用单个文件组件而不是字符串模板。你可以[在本节](single-file-component.html)找到有关它们的更多信息。
+：:：
 
-组件是可复用的 组件实例，且带有一个名字：在这个例子中是 `<button-counter>`。我们可以在一个通过 new Vue 创建的 Vue 根实例中，把这个组件作为自定义元素来使用：
+组件是可复用的组件实例，且带有一个名字：在这个例子中是 `<button-counter>`。我们可以在一个通过 new Vue 创建的 Vue 根实例中，把这个组件作为自定义元素来使用：
 
 ```html
 <div id="components-demo">
@@ -45,7 +45,7 @@ app.mount('#components-demo')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-因为组件是可复用的 组件实例，所以它们与 new Vue 接收相同的选项，例如 `data` 、`computed` 、`watch` 、`methods` 以及生命周期钩子等。仅有的例外是像 `el` 这样根实例特有的选项。
+因为组件是可复用的组件实例，所以它们与 new Vue 接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。仅有的例外是像 `el` 这样根实例特有的选项。
 
 ## 组件的复用
 
@@ -90,7 +90,7 @@ app.component('my-component-name', {
 
 到目前为止，关于组件注册你需要了解的就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[组件注册](component-registration.md)读完。
 
-##通过 Prop 向子组件传递数据
+## 通过 Prop 向子组件传递数据
 
 早些时候，我们提到了创建一个博文组件的事情。问题是如果你不能向这个组件传递某一篇博文的标题或内容之类的我们想展示的数据的话，它是没有办法使用的。这也正是 prop 的由来。
 
@@ -163,8 +163,6 @@ app.mount('#blog-posts-demo')
 </div>
 ```
 
-Above, you'll see that we can use `v-bind` to dynamically pass props. This is especially useful when you don't know the exact content you're going to render ahead of time.
-
 如上所示，你会发现我们可以使用 `v-bind` 来动态传递 prop。这在你一开始不清楚要渲染的具体内容，是非常有用的。
 
 到目前为止，关于 prop 你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把 [prop](component-props.html) 读完。
@@ -214,6 +212,7 @@ app.component('blog-post', {
 })
 ```
 
+
 问题是这个按钮不会做任何事：
 
 ```html
@@ -230,14 +229,13 @@ app.component('blog-post', {
 
 同时子组件可以通过调用内建的 [**$emit** 方法](../api/instance-methods.html#emit) 并传入事件名称来触发一个事件：
 
-
 ```html
 <button @click="$emit('enlarge-text')">
   Enlarge text
 </button>
 ```
 
-Thanks to the `v-on:enlarge-text="postFontSize += 0.1"` listener, the parent will receive the event and update `postFontSize` value.
+多亏了`v-on:enlarge-text="postFontSize += 0.1"` 监听器，父级将接收事件并更新 `postFontSize` 值。
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="KKpGyrp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: emitting events">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/KKpGyrp">
@@ -246,8 +244,7 @@ Thanks to the `v-on:enlarge-text="postFontSize += 0.1"` listener, the parent wil
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-
-We can list emitted events in the component's `emits` option.
+我们可以在组件的 `emits` 选项中列出已抛出的事件。
 
 ```js
 app.component('blog-post', {
@@ -402,7 +399,7 @@ app.component('alert-box', {
 
 如你所见，我们只要在需要的地方加入插槽就行了——就这么简单！
 
-到目前为止，关于插槽你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[插槽](component-slots.md))读完。
+到目前为止，关于插槽你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[插槽](component-slots.md)读完。
 
 ## 动态组件
 
@@ -427,7 +424,7 @@ app.component('alert-box', {
 - 已注册组件的名字，或
 - 一个组件的选项对象
 
-你可以在 [这里](https://codepen.io/team/Vue/pen/oNXaoKy))查阅并体验完整的代码，或在 [这个版本](https://codepen.io/team/Vue/pen/oNXapXM)了解绑定组件选项对象，而不是已注册组件名的示例。
+你可以在[这里](https://codepen.io/team/Vue/pen/oNXaoKy)查阅并体验完整的代码，或在[这个版本](https://codepen.io/team/Vue/pen/oNXapXM)了解绑定组件选项对象，而不是已注册组件名的示例。
 
 请留意，这个 attribute 可以用于常规 HTML 元素，但这些元素将被视为组件，这意味着所有的 attribute **都会作为 DOM attribute 被绑定**。对于像 `value` 这样的 property，若想让其如预期般工作，你需要使用 [.prop 修饰器](../api/directives.html#v-bind)。
 
@@ -467,6 +464,7 @@ app.component('alert-box', {
 
 另外，HTML属性名不区分大小写，因此浏览器将把所有大写字符解释为小写。这意味着当你在DOM模板中使用时，驼峰 prop 名称和event 处理器参数需要使用它们的kebab-cased（横线字符分隔）等效值：
 
+
 ```js
 //  在JavaScript中的驼峰
 
@@ -487,10 +485,10 @@ app.component('blog-post', {
 需要注意的是**如果我们从以下来源使用模板的话，这条限制是*不存在*的**：
 
 - 字符串模板 (例如：`template: '...'`)
-- [单文件组件 (.vue)](single-file-component.html)
+- [单文件组件](single-file-component.html)
 - `<script type="text/x-template">`
 
 
 到这里，你需要了解的解析 DOM 模板时的注意事项——实际上也是 Vue 的全部*必要*内容，大概就是这些了。恭喜你！接下来还有很多东西要去学习，不过首先，我们推荐你先休息一下，试用一下 Vue，自己随意做些好玩的东西。
 
-如果你感觉已经掌握了这些知识，我们推荐你再回来把完整的 [组件 & 异步组件](component-dynamic-async.html)指南，包括侧边栏中组件深入章节的所有页面读完。
+如果你感觉已经掌握了这些知识，我们推荐你再回来把完整的[组件&异步组件](component-dynamic-async.html)指南，包括侧边栏中组件深入章节的所有页面读完。

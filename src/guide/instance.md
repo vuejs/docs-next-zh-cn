@@ -2,13 +2,13 @@
 
 ## 创建一个实例
 
-每个 Vue 应用 都是通过用 `createApp` 函数创建一个新的**应用实例**开始的：
+每个 Vue 应用都是通过用 `createApp` 函数创建一个新的**应用实例**开始的：
 
 ```js
 Vue.createApp(/* 选项 */)
 ```
 
-创建实例后，我们可以 _挂载_ 它，将容器传递给 `mount` 方法。例如，如果要在 `<div id="app"></div>`上挂载Vue应用，则应传递 `#app`：
+创建实例后，我们可以_挂载_它，将容器传递给 `mount` 方法。例如，如果要在 `<div id="app"></div>` 上挂载 Vue 应用，则应传递 `#app`：
 
 ```js
 Vue.createApp(/* 选项 */).mount('#app')
@@ -16,7 +16,7 @@ Vue.createApp(/* 选项 */).mount('#app')
 
 虽然没有完全遵循 [MVVM 模型](https://en.wikipedia.org/wiki/Model_View_ViewModel)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示实例。
 
-当创建一个实例时，你可以传入一个**选项对象**。这篇教程主要描述的就是如何使用这些选项来创建你想要的行为。作为参考，你也可以在 [API 文档](../api/options-data.html) 中浏览完整的选项列表。
+当创建一个实例时，你可以传入一个**选项对象**。这篇教程主要描述的就是如何使用这些选项来创建你想要的行为。作为参考，你也可以在 [API 文档](../api/options-data.html)中浏览完整的选项列表。
 
 一个 Vue 应用由一个通过 `createApp` 创建的**根实例**，以及可选的嵌套的、可复用的组件树组成。举个例子，一个 `todo` 应用的组件树可以是这样的：
 
@@ -31,7 +31,7 @@ Vue.createApp(/* 选项 */).mount('#app')
       └─ TodoListStatistics
 ```
 
-我们会在稍后的 [组件系统](component-basics.html)章节具体展开。不过现在，你只需要明白所有的 Vue 组件都是实例，并且接受相同的选项对象。
+我们会在稍后的[组件系统](component-basics.html)章节具体展开。不过现在，你只需要明白所有的 Vue 组件都是实例，并且接受相同的选项对象。
 
 ## Data 和 Methods
 
@@ -77,7 +77,7 @@ data() {
 }
 ```
 
-这里唯一的例外是使用 `Object.freeze()`，这会阻止修改现有的 property，也意味着响应系统无法再 *追踪* 变化。
+这里唯一的例外是使用 `Object.freeze()`，这会阻止修改现有的 property，也意味着响应系统无法再*追踪*变化。
 
 ```js
 const obj = {
@@ -101,7 +101,7 @@ const vm = Vue.createApp({
 </div>
 ```
 
-除了data property，实例还暴露了一些有用的实例 property 与方法。它们都有前缀 `$`，以便与用户定义的 property 区分开来。例如：
+除了 data property，实例还暴露了一些有用的实例 property 与方法。它们都有前缀 `$`，以便与用户定义的 property 区分开来。例如：
 
 ```js
 const vm = Vue.createApp({
@@ -114,13 +114,13 @@ const vm = Vue.createApp({
 
 vm.$data.a // => 1
 ```
-以后你可以在 [API 参考](../api/instance-properties.html) 中查阅到完整的实例 property 和方法的列表。
+以后你可以在 [API 参考](../api/instance-properties.html)中查阅到完整的实例 property 和方法的列表。
 
 ## 实例生命周期钩子
 
 每个实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做**生命周期钩子**的函数，这给了用户在不同阶段添加自己的代码的机会。
 
-比如  [created](../api/options-lifecycle-hooks.html#created) 钩子可以用来在一个实例被创建之后执行代码：
+比如 [created](../api/options-lifecycle-hooks.html#created) 钩子可以用来在一个实例被创建之后执行代码：
 
 ```js
 Vue.createApp({
@@ -138,9 +138,9 @@ Vue.createApp({
 
 也有一些其它的钩子，在实例生命周期的不同阶段被调用，如 [mounted](../api/options-lifecycle-hooks.html#mounted)、[updated](../api/options-lifecycle-hooks.html#updated) 和 [unmounted](../api/options-lifecycle-hooks.html#unmounted)。生命周期钩子的 `this` 上下文指向调用它的当前活动实例。
 
-::: tip
+：:：tip
 不要在选项 property 或回调上使用[箭头函数]((https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions))，比如 `created: () => console.log(this.a)` 或 `vm.$watch('a', newValue => this.myMethod())`。因为箭头函数并没有 `this`，`this` 会作为变量一直向上级词法作用域查找，直至找到为止，经常导致 `Uncaught TypeError: Cannot read property of undefined` 或 `Uncaught TypeError: this.myMethod is not a function` 之类的错误。
-:::
+：:：
 
 
 ## 生命周期图示

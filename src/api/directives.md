@@ -2,7 +2,7 @@
 
 ## v-text
 
-- **预期：** `string`
+- **预期：**`string`
 
 - **详细：**
 
@@ -20,17 +20,17 @@
 
 ## v-html
 
-- **预期：** `string`
+- **预期：**`string`
 
 - **详细：**
 
   更新元素的 [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)。**注意：内容按普通 HTML 插入 - 不会作为 Vue 模板进行编译**。如果试图使用 `v-html` 组合模板，可以重新考虑是否通过使用组件来替代。
 
-  ::: warning
+  ：:：warning
   在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 [XSS 攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。只在可信内容上使用 `v-html`，**永不**用在用户提交的内容上。
-  :::
+  ：:：
 
-  在 [单文件组件](../guide/single-file-component.html 里， `scoped` 的样式不会应用在 `v-html` 内部，因为那部分 HTML 没有被 Vue 的模板编译器处理。如果你希望针对 `v-html` 的内容设置带作用域的 CSS，你可以替换为 [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules.html) 或用一个额外的全局 `<style>` 元素手动设置类似 BEM 的作用域策略。
+  在[单文件组件] (../guide/single-file-component.html 里，`scoped` 的样式不会应用在 `v-html` 内部，因为那部分 HTML 没有被 Vue 的模板编译器处理。如果你希望针对 `v-html` 的内容设置带作用域的 CSS，你可以替换为 [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules.html) 或用一个额外的全局 `<style>` 元素手动设置类似 BEM 的作用域策略。
 
 - **示例：**
 
@@ -42,7 +42,7 @@
 
 ## v-show
 
-- **预期：** `any`
+- **预期：**`any`
 
 - **用法：**
 
@@ -54,7 +54,7 @@
 
 ## v-if
 
-- **预期：** `any`
+- **预期：**`any`
 
 - **用法：**
 
@@ -62,7 +62,7 @@
 
   当条件变化时该指令触发过渡效果。
 
-  当和 `v-if` 一起使用时，`v-for` 的优先级比 `v-if` 更高。详见 [列表渲染教程](../guide/list.html#v-for-with-v-if)
+  当和 `v-if` 一起使用时，`v-for` 的优先级比 `v-if` 更高。详见[列表渲染教程](../guide/list.html#v-for-with-v-if)
 
 -  **参考：** [条件渲染 - v-if](../guide/conditional.html#v-if)
 
@@ -70,7 +70,7 @@
 
 - **不需要表达式**
 
-- **限制：** 前一兄弟元素必须有 `v-if` 或 `v-else-if`。
+- **限制：**前一兄弟元素必须有 `v-if` 或 `v-else-if`。
 
 - **用法：**
 
@@ -89,9 +89,9 @@
 
 ## v-else-if
 
-- **预期：** `any`
+- **预期：**`any`
 
-- **限制：** 前一兄弟元素必须有 `v-if` 或 `v-else-if`。
+- **限制：**前一兄弟元素必须有 `v-if` 或 `v-else-if`。
 
 - **用法：**
 
@@ -116,7 +116,7 @@
 
 ## v-for
 
-- **预期：** `Array | Object | number | string | Iterable`
+- **预期：**`Array | Object | number | string | Iterable`
 
 - **用法：**
 
@@ -144,7 +144,7 @@
   </div>
   ```
 
-  `v-for` 也可以在实现了 [可迭代协议](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol) 的值上使用，包括原生的 `Map` 和 `Set`。
+  `v-for` 也可以在实现了[可迭代协议](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol)的值上使用，包括原生的 `Map` 和 `Set`。
 
   `v-for` 的详细用法可以通过以下链接查看教程详细说明。
 
@@ -153,16 +153,16 @@
 
 ## v-on
 
-- **缩写：** `@`
+- **缩写：**`@`
 
-- **预期：** `Function | Inline Statement | Object`
+- **预期：**`Function | Inline Statement | Object`
 
-- **参数：** `event`
+- **参数：**`event`
 
 - **修饰符：**
 
-  - `.stop` - 调用 `event.stopPropagation()`.
-  - `.prevent` - 调用 `event.preventDefault()`.
+  - `.stop` - 调用 `event.stopPropagation()`。
+  - `.prevent` - 调用 `event.preventDefault()`。
   - `.capture` - - 添加事件侦听器时使用 capture 模式。
   - `.self` - 只当事件是从侦听器绑定的元素本身触发时才触发回调。
   - `.{keyAlias}` - 仅当事件是从特定键触发时才触发回调。
@@ -176,7 +176,7 @@
 
   绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。
 
-  用在普通元素上时，只能监听 [原生 DOM 事件](https://developer.mozilla.org/en-US/docs/Web/Events)。用在自定义元素组件上时，也可以监听子组件触发的**自定义事件**。
+  用在普通元素上时，只能监听[原生 DOM 事件](https://developer.mozilla.org/en-US/docs/Web/Events)。用在自定义元素组件上时，也可以监听子组件触发的**自定义事件**。
 
   监听原生 DOM 事件时，方法以事件为唯一的参数。如果使用内联语句，语句可以访问一个 `$event` property：`v-on:click="handle('ok', $event)"`。
 
@@ -237,11 +237,11 @@
 
 ## v-bind
 
-- **缩写：** `:`
+- **缩写：**`:`
 
-- **预期：** `any (with argument) | Object (without argument)`
+- **预期：**`any (with argument) | Object (without argument)`
 
-- **参数：** `attrOrProp (optional)`
+- **参数：**`attrOrProp (optional)`
 
 - **修饰符：**
 
@@ -311,7 +311,7 @@
 
 ## v-model
 
-- **预期：** 随表单控件类型不同而不同。
+- **预期：**随表单控件类型不同而不同。
 
 - **限制于：**
 
@@ -336,16 +336,16 @@
 
 ## v-slot
 
-- **缩写：** `#`
+- **缩写：**`#`
 
-- **预期：** 可放置在函数参数位置的 JavaScript 表达式 (在 [支持的环境](../guide/component-slots.html#destructuring-slot-props) 下可使用解构)。可选，即只需要在为插槽传入 prop 的时候使用。
+- **预期：**可放置在函数参数位置的 JavaScript 表达式 (在[支持的环境](../guide/component-slots.html#destructuring-slot-props)下可使用解构)。可选，即只需要在为插槽传入 prop 的时候使用。
 
-- **参数：** 插槽名 (可选，默认值是 `default`)
+- **参数：**插槽名 (可选，默认值是 `default`)
 
 - **限用于：**
 
   - `<template>`
-  - [组件](../guide/component-slots.html#abbreviated-syntax-for-lone-default-slots) （对于一个单独的带 prop 的默认插槽）
+  - [组件](../guide/component-slots.html#abbreviated-syntax-for-lone-default-slots) (对于一个单独的带 prop 的默认插槽)
 
 - **用法：**
 
@@ -456,13 +456,13 @@
 
 ## v-is
 
-> 注意: 本节仅影响直接在页面的HTML中写入Vue模板的情况。
+> 注意：本节仅影响直接在页面的 HTML 中写入 Vue 模板的情况。
 
-- **预期：** 字符串文本
+- **预期：**字符串文本
 
-- **限制于：** 原生HTML元素
+- **限制于：**原生 HTML 元素
 
-- **用法：** 在DOM内模板使用时，模板受原生HTML解析规则的约束。某些HTML元素，如：`<ul>`、`<ol>`、`<table>`和`<select>`等，对哪些元素可以出现在它们内部有限制，而某些元素（如：`<li>`、`<tr>` 和 `<option>` 只能出现在某些其他元素中。作为解决方法，我们可以对以下元素使用 `v-is`指令：
+- **用法：**在 DOM 内模板使用时，模板受原生 HTML 解析规则的约束。某些 HTML 元素，如：`<ul>`、`<ol>`、`<table>` 和 `<select>` 等，对哪些元素可以出现在它们内部有限制，而某些元素 (如：`<li>`、`<tr>` 和 `<option>` 只能出现在某些其他元素中。作为解决方法，我们可以对以下元素使用 `v-is` 指令：
 
 ```html
 <table>
@@ -471,7 +471,7 @@
 ```
 
 :::warning
-`v-is` 函数类似于动态2.x `:is` 绑定 —— 因此要按组件的注册名称渲染组件，其值应为JavaScript字符串文本：
+`v-is` 函数类似于动态 2.x `:is` 绑定——因此要按组件的注册名称渲染组件，其值应为 JavaScript 字符串文本：
 ```html
 <!-- 不正确，不会渲染任何内容 -->
 <tr v-is="blog-post-row"></tr>
@@ -480,4 +480,4 @@
 <tr v-is="'blog-post-row'"></tr>
 ```
 
-:::
+：:：

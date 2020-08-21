@@ -41,5 +41,5 @@ Vue.createApp(SimpleRouter).mount('#app')
 
 ## 整合第三方路由
 
-如果你有更偏爱的第三方路由，如 [Page.js](https://github.com/visionmedia/page.js) 或者 [Director](https://github.com/flatiron/director)，整合起来也 [一样简单](https://github.com/phanan/vue-3.0-simple-routing-example/compare/master...pagejs) 。这里有一个使用了 Page.js 的 [完整示例](https://github.com/phanan/vue-3.0-simple-routing-example/tree/pagejs)。
+如果你有更偏爱的第三方路由，如 [Page.js](https://github.com/visionmedia/page.js) 或者 [Director](https://github.com/flatiron/director)，整合起来也[一样简单](https://github.com/phanan/vue-3.0-simple-routing-example/compare/master...pagejs)。这里有一个使用了 Page.js 的[完整示例](https://github.com/phanan/vue-3.0-simple-routing-example/tree/pagejs)。
 

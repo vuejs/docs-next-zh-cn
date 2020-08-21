@@ -7,7 +7,7 @@
 - 在过渡钩子期间使用JavaScript直接操作DOM；
 - 集成第三方JavaScript动画库。
 
-在这里，我们只会讲到进入、离开和列表的过渡，你也可以看下一节的 [管理过渡状态](transitions-state.html) 。
+在这里，我们只会讲到进入、离开和列表的过渡，你也可以看下一节的[管理过渡状态](transitions-state.html) 。
 
 
 ## 单元素/组件的过渡
@@ -95,7 +95,6 @@ TODO: 更新图表
 对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 `<transition>`，则 `v-` 是这些class名的默认前缀。如果你使用了 `<transition name="my-transition">`，那么 `v-enter-from`会替换为 `my-transition-enter-from`。
 
 `v-enter-active` 和 `v-leave-active` 可以控制进入/离开过渡的不同的缓和曲线，在下面章节会有个示例说明。
-
 
 ### CSS 过渡
 
@@ -259,7 +258,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ### 同时使用过渡和动画
 
-Vue 为了知道过渡的完成，必须设置相应的事件监听器。它可以是 `transitionend` 或 a`nimationend`，这取决于给元素应用的 CSS 规则。如果你使用其中任何一种，Vue 能自动识别类型并设置监听。
+Vue 为了知道过渡的完成，必须设置相应的事件监听器。它可以是 `transitionend` 或 `animationend`，这取决于给元素应用的 CSS 规则。如果你使用其中任何一种，Vue 能自动识别类型并设置监听。
 
 但是，在一些场景中，你需要给同一个元素同时设置两种过渡动效，比如 animation 很快的被触发并完成了，而 transition 效果还没结束。在这种情况中，你就需要使用 `type` attribute 并设置 `animation` 或 `transition` 来明确声明你需要 Vue 监听的类型。
 
@@ -441,7 +440,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 多个元素的过渡
 
-我们之后讨 [论多个组件的过渡](#transitioning-between-components)，对于原生标签可以使用 `v-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
+我们之后讨[论多个组件的过渡](#transitioning-between-components)，对于原生标签可以使用 `v-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
 
 ```html
 <transition>

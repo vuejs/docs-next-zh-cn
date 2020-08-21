@@ -4,15 +4,15 @@ badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+#{{ $frontmatter.title}} <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
 
-- **BREAKING**: `data` 组件选项声明不再接收纯 JavaScript `object`，而需要 `function` 声明
+- **BREAKING**：`data` 组件选项声明不再接收纯 JavaScript `object`，而需要 `function` 声明
 
 ## 2.x Syntax
 
-在 2.x 中, 开发者可以定义 `data` 选项是 `object` 或者是 `function`
+在 2.x 中，开发者可以定义 `data` 选项是 `object` 或者是 `function`
 
 例如：
 
@@ -42,7 +42,7 @@ badges:
 
 ## 3.x Update
 
-在 3.x, `data` 选项已标准化为只接受返回`object`的`function`。
+在 3.x，`data` 选项已标准化为只接受返回 `object` 的 `function`。
 
 使用上面的示例，代码只有一个可能的实现：
 
@@ -64,5 +64,5 @@ badges:
 
 对于依赖对象声明的用户，我们建议：
 
-- 将共享数据提取到外部对象并将其用作`data`中的property
+- 将共享数据提取到外部对象并将其用作 `data` 中的 property
 - 重写对共享数据的引用以指向新的共享对象

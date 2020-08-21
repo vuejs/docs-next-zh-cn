@@ -13,7 +13,6 @@
 
 当页面加载时，该元素将获得焦点 (注意：`autofocus` 在移动版 Safari 上不工作)。事实上，只要你在打开这个页面后还没点击过任何内容，这个输入框就应当还是处于聚焦状态。此外，你可以单击 `Rerun` 按钮，输入将被聚焦。
 
-
 现在让我们用指令来实现这个功能：
 
 ```js
@@ -51,23 +50,23 @@ directives: {
 
 一个指令定义对象可以提供如下几个钩子函数 (均为可选)：
 
-- `beforeMount`: 当指令第一次绑定到元素并且在挂载父组件之前调用。在这里你可以做一次性的初始化设置。
+- `beforeMount`：当指令第一次绑定到元素并且在挂载父组件之前调用。在这里你可以做一次性的初始化设置。
 
-- `mounted`: 在挂载绑定元素的父组件时调用。
+- `mounted`：在挂载绑定元素的父组件时调用。
 
-- `beforeUpdate`: 在更新包含组件的VNode之前调用。
+- `beforeUpdate`：在更新包含组件的 VNode 之前调用。
 
 :::tip 提示
-我们会在[稍后](我们会在稍后讨论渲染函数时介绍更多 VNodes 的细节。)讨论渲染函数时介绍更多 VNodes 的细节。
-:::
+我们会在[稍后] (我们会在稍后讨论渲染函数时介绍更多 VNodes 的细节。) 讨论渲染函数时介绍更多 VNodes 的细节。
+：:：
 
-- `updated`: 在包含组件的VNode**及其子组件的VNode**更新后调用。
+- `updated`：在包含组件的 VNode **及其子组件的 VNode** 更新后调用。
 
-- `beforeUnmount`: 在卸载绑定元素的父组件之前调用
+- `beforeUnmount`：在卸载绑定元素的父组件之前调用
 
-- `unmounted`: 当指令与元素解除绑定且父组件已卸载时，只调用一次。
+- `unmounted`：当指令与元素解除绑定且父组件已卸载时，只调用一次。
 
-接下来我们来看一下在 [自定义指令API](../api/application-api.html#directive) 钩子函数的参数 (即 `el`、`binding`、`vnode` 和 `prevNnode`)
+接下来我们来看一下在[自定义指令 API](../api/application-api.html#directive) 钩子函数的参数 (即 `el`、`binding`、`vnode` 和 `prevNnode`)
 
 ### 动态指令参数
 
@@ -135,7 +134,7 @@ app.mount('#dynamic-arguments-example')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-我们的定制指令现在已经足够灵活，可以支持一些不同的用例。为了使其更具动态性，我们还可以允许修改绑定值。让我们创建一个附加属性 `pinPadding` ，并将其绑定到 `<input type="range">`。
+我们的定制指令现在已经足够灵活，可以支持一些不同的用例。为了使其更具动态性，我们还可以允许修改绑定值。让我们创建一个附加属性 `pinPadding`，并将其绑定到 `<input type="range">`。
 
 ```vue-html{4}
 <div id="dynamicexample">
@@ -156,7 +155,7 @@ const app = Vue.createApp({
 })
 ```
 
-在，让我们扩展我们的指令逻辑来重新计算固定元件更新的距离。
+让我们扩展我们的指令逻辑来重新计算固定元件更新的距离。
 
 ```js{7-10}
 app.directive('pin', {
@@ -210,9 +209,9 @@ app.directive('demo', (el, binding) => {
 
 ## 在组件中使用
 
-在3.0中，有了片段支持，组件可能有多个根节点。如果在具有多个根节点的组件上使用自定义指令，则会产生问题。
+在 3.0 中，有了片段支持，组件可能有多个根节点。如果在具有多个根节点的组件上使用自定义指令，则会产生问题。
 
-要解释自定义指令如何在3.0中的组件上工作的详细信息，我们首先需要了解自定义指令在3.0中是如何编译的。对于这样的指令：
+要解释自定义指令如何在 3.0 中的组件上工作的详细信息，我们首先需要了解自定义指令在 3.0 中是如何编译的。对于这样的指令：
 
 
 ```vue-html
@@ -229,7 +228,7 @@ return withDirectives(h('div'), [[vDemo, test]])
 
 其中 `vDemo` 是用户编写的指令对象，其中包含 `mounted` 和 `updated` 等钩子。
 
-`withDirectives`返回一个克隆的VNode，其中用户钩子被包装并作为VNode生命周期钩子注入（请参见[渲染函数](ender-function.html)）更多详情）：
+`withDirectives` 返回一个克隆的 VNode，其中用户钩子被包装并作为 VNode 生命周期钩子注入（请参见[渲染函数](ender-function.html)）更多详情）：
 
 ```js
 {
@@ -238,7 +237,7 @@ return withDirectives(h('div'), [[vDemo, test]])
   }
 }
 ```
-**因此，自定义指令作为VNode数据的一部分完全包含在内。当在组件上使用自定义指令时，这些 `onVnodeXXX` 钩子作为无关的prop传递给组件，并以 `this.$attrs` 结束**
+**因此，自定义指令作为 VNode 数据的一部分完全包含在内。当在组件上使用自定义指令时，这些 `onVnodeXXX` 钩子作为无关的 prop 传递给组件，并以 `this.$attrs` 结束**
 
 这也意味着可以像这样在模板中直接挂接到元素的生命周期中，这在涉及到自定义指令时非常方便：
 
@@ -246,4 +245,4 @@ return withDirectives(h('div'), [[vDemo, test]])
 <div @vnodeMounted="myHook" />
 ```
 
-这与[attribute fallthrough behavior](component-attrs.html)。因此，组件上自定义指令的规则将与其他无关attribute相同：由子组件决定在哪里以及是否应用它。当子组件在内部元素上使用 `v-bind="$attrs"` 时，它也将应用对其使用的任何自定义指令。
+这与 [attribute fallthrough behavior](component-attrs.html)。因此，组件上自定义指令的规则将与其他无关 attribute 相同：由子组件决定在哪里以及是否应用它。当子组件在内部元素上使用 `v-bind="$attrs"` 时，它也将应用对其使用的任何自定义指令。

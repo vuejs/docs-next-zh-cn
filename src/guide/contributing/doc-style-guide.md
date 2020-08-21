@@ -4,12 +4,12 @@
 
 ## 警告
 
-VuePress提供了一个自定义容器插件来创建警稿框。有四种类型：
+VuePress 提供了一个自定义容器插件来创建警稿框。有四种类型：
 
-- **Info**: 提供中立的信息
-- **Tip**: 提供积极和鼓励的信息
-- **Warning**: 提供用户应该知道的信息，因为存在低到中等
-- **Danger**: 供对用户具有高风险的负面信息
+- **Info**：提供中立的信息
+- **Tip**：提供积极和鼓励的信息
+- **Warning**：提供用户应该知道的信息，因为存在低到中等
+- **Danger**：供对用户具有高风险的负面信息
 
 **Markdown 范例**
 
@@ -33,25 +33,25 @@ This is something we do not recommend. Use at your own risk.
 
 **渲染 Markdown**
 
-::: info
-You can find more information at this site.
-:::
+：:：info
+You can find more information at this site。
+：:：
 
-::: tip
-This is a great tip to remember!
-:::
+：:：tip
+This is a great tip to remember！
+：:：
 
-::: warning
-This is something to be cautious of.
-:::
+：:：warning
+This is something to be cautious of。
+：:：
 
-::: danger DANGER
-This is something we do not recommend. Use at your own risk.
-:::
+：:：danger DANGER
+This is something we do not recommend。Use at your own risk。
+：:：
 
 ## 代码块
 
-VuePress使用Prism提供语言语法高亮显示，方法是将语言附加到代码块的起始反撇号：
+VuePress 使用 Prism 提供语言语法高亮显示，方法是将语言附加到代码块的起始反撇号：
 
 **Markdown 示例**
 

@@ -2,7 +2,7 @@
 
 ## component
 
-- **Props:**
+- **Props：**
 
   - `is` - `string | ComponentDefinition | ComponentConstructor`
 
@@ -22,15 +22,15 @@
 
 ## transition
 
-- **Props:**
+- **Props：**
 
   - `name` - `string` 用于自动生成 CSS 过渡类名。例如：`name: 'fade'` 将自动拓展为 `.fade-enter`，`.fade-enter-active` 等。
-  - `appear` - `boolean`, 是否在初始渲染时使用过渡。默认为 `false`。
-  - `persisted` - `boolean`. 如果是true，表示这是一个不真实插入/删除元素的转换，而是切换显示/隐藏状态。过渡钩子被注入，但渲染器将跳过。相反，自定义指令可以通过调用注入的钩子（例如 `v-show`）来控制转换。
+  - `appear` - `boolean`，是否在初始渲染时使用过渡。默认为 `false`。
+  - `persisted` - `boolean`。如果是 true，表示这是一个不真实插入/删除元素的转换，而是切换显示/隐藏状态。过渡钩子被注入，但渲染器将跳过。相反，自定义指令可以通过调用注入的钩子 (例如 `v-show`) 来控制转换。
   - `css` - `boolean`。是否使用 CSS 过渡类。默认为 `true`。如果设置为 `false`，将只通过组件事件触发注册的 JavaScript 钩子。
   - `type` - `string`。指定过渡事件类型，侦听过渡何时结束。有效值为 `"transition"` 和 `"animation"`。默认 Vue.js 将自动检测出持续时间长的为过渡事件类型。
   - `mode` - `string` 控制离开/进入过渡的时间序列。有效的模式有 `"out-in"` 和 `"in-out"`；默认同时进行。  
-  - `duration` - `number | {`enter`: number,`leave`: number }`。指定过渡的持续时间。默认情况下，Vue 会等待过渡所在根元素的第一个 `transitionend` 或 `animationend` 事件。
+  - `duration` - `number | {` enter `: number,` leave `: number }`。指定过渡的持续时间。默认情况下，Vue 会等待过渡所在根元素的第一个 `transitionend` 或 `animationend` 事件。
   - `enter-from-class` - `string`
   - `leave-from-class` - `string`
   - `appear-class` - `string`
@@ -41,7 +41,7 @@
   - `leave-active-class` - `string`
   - `appear-active-class` - `string`
 
-- **事件:**
+- **事件：**
 
   - `before-enter`
   - `before-leave`
@@ -52,7 +52,7 @@
   - `after-leave`
   - `after-appear`
   - `enter-cancelled`
-  - `leave-cancelled` (仅`v-show`)
+  - `leave-cancelled` (仅 `v-show`)
   - `appear-cancelled`
 
 - **用法：**
@@ -92,17 +92,17 @@
   app.mount('#transition-demo')
   ```
 
--  **参考：** [进入 & 离开 过渡](/guide/transitions-enterleave.html#transitioning-single-elements-components)
+-  **参考：** [进入 & 离开过渡](/guide/transitions-enterleave.html#transitioning-single-elements-components)
 
 ## transition-group
 
-- **Props:**
+- **Props：**
 
-  - `tag` - `string`, 默认为 `span`.
+  - `tag` - `string`，默认为 `span`。
   - `move-class` - 覆盖移动过渡期间应用的 CSS 类。
   - 除了 `mode`，其他 attribute 和 `<transition>` 相同。
 
-- **事件:**
+- **事件：**
 
   - 事件和 `<transition>` 相同。
 
@@ -110,9 +110,9 @@
 
   `<transition-group>` 元素作为**多个**元素/组件的过渡效果。`<transition-group>` 渲染一个真实的 DOM 元素。默认渲染 `<span>`，可以通过 `tag` attribute 配置哪个元素应该被渲染。
 
-  注意，每个 `<transition-group>` 的子节点必须有 [**独立的 key**](./special-attributes.html#key)，动画才能正常工作
+  注意，每个 `<transition-group>` 的子节点必须有[**独立的 key**](./special-attributes.html#key)，动画才能正常工作
 
-  `<transition-group>` 支持通过 CSS transform 过渡移动。当一个子节点被更新，从屏幕上的位置发生变化，它会被应用一个移动中的 CSS 类 (通过 `name` attribute 或配置 `move-class` attribute 自动生成)。如果 CSS `transform` property 是“可过渡”property，当应用移动类时，将会使用 [FLIP 技术](https://aerotwist.com/blog/flip-your-animations/) 使元素流畅地到达动画终点。
+  `<transition-group>` 支持通过 CSS transform 过渡移动。当一个子节点被更新，从屏幕上的位置发生变化，它会被应用一个移动中的 CSS 类 (通过 `name` attribute 或配置 `move-class` attribute 自动生成)。如果 CSS `transform` property 是“可过渡”property，当应用移动类时，将会使用 [FLIP 技术](https://aerotwist.com/blog/flip-your-animations/)使元素流畅地到达动画终点。
 
   ```html
   <transition-group tag="ul" name="slide">
@@ -126,11 +126,11 @@
 
 ## keep-alive
 
-- **Props:**
+- **Props：**
 
   - `include` - `string | RegExp | Array`。只有名称匹配的组件会被缓存。
   - `exclude` - `string | RegExp | Array`。任何名称匹配的组件都不会被缓存。
-  - `max` - `number | string`。 最多可以缓存多少组件实例。
+  - `max` - `number | string`。最多可以缓存多少组件实例。
 
 - **用法：**
 
@@ -196,17 +196,17 @@
   </keep-alive>
   ```
 
-  ::: warning
+  ：:：warning
   `<keep-alive>` 不会在函数式组件中正常工作，因为它们没有缓存实例。
-  :::
+  ：:：
 
 -  **参考：** [动态组件 - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
 
 ## slot
 
-- **Props:**
+- **Props：**
 
-  - `name` - `string`, 用于具名插槽
+  - `name` - `string`，用于具名插槽
 
 - **用法：**
 
@@ -218,9 +218,9 @@
 
 ## teleport
 
-- **Props:**
+- **Props：**
 
-  - `to` - `string`. 需要prop, 必须是有效的查询选择器或HTMLElement（如果在浏览器环境中使用）。指定将在其中移动 `<teleport>` 内容的目标元素
+  - `to` - `string`。需要 prop，必须是有效的查询选择器或 HTMLElement (如果在浏览器环境中使用)。指定将在其中移动 `<teleport>` 内容的目标元素
 
   ```html
   <!-- 正确 -->
@@ -241,6 +241,6 @@
   </teleport>
   ```
 
-  请注意，这将移动实际的DOM节点，而不是被销毁和重新创建，并且它还将保持任何组件实例的活动状态。所有有状态的HTML元素（即播放的视频）都将保持其状态。
+  请注意，这将移动实际的 DOM 节点，而不是被销毁和重新创建，并且它还将保持任何组件实例的活动状态。所有有状态的 HTML 元素 (即播放的视频) 都将保持其状态。
 
 -  **参考：** [Teleport 组件](../guide/teleport.html#teleport)

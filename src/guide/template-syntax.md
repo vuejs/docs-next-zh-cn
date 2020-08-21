@@ -26,7 +26,7 @@ Mustache 标签将会被替代为对应数据对象上 `msg` property 的值。�
 
 ### 原始 HTML
 
-双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，你需要使用[`v-html` 指令](../api/directives.html#v-html):
+双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，你需要使用[`v-html` 指令](../api/directives.html#v-html)：
 
 ```html
 <p>Using mustaches: {{ rawHtml }}</p>
@@ -42,7 +42,7 @@ Mustache 标签将会被替代为对应数据对象上 `msg` property 的值。�
 
 这个 `span` 的内容将会被替换成为 property 值 `rawHtml`，直接作为 HTML——会忽略解析 property 值中的数据绑定。注意，你不能使用 `v-html` 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。反之，对于用户界面 (UI)，组件更适合作为可重用和可组合的基本单位。
 
-::: tip 提示
+:::tip 
 你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 [XSS 攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。请只对可信内容使用 HTML 插值，**绝不要**对用户提供的内容使用插值。
 :::
 
@@ -60,7 +60,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 <button v-bind:disabled="isButtonDisabled">按钮</button>
 ```
 
-如果 `isButtonDisabled` 的值是 `null` 或 `undefined` ，则 `disabled` attribute 甚至不会被包含在渲染出来的 `<button>` 元素中。
+如果 `isButtonDisabled` 的值是 `null` 或 `undefined`，则 `disabled` attribute 甚至不会被包含在渲染出来的 `<button>` 元素中。
 
 ### 使用 JavaScript 表达式
 
@@ -113,7 +113,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 
 ### 动态参数
 
-也可以在指令参数中使用JavaScript表达式，方法是用方括号括起来：
+也可以在指令参数中使用 JavaScript 表达式，方法是用方括号括起来：
 
 ```html
 <!--
@@ -133,7 +133,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 
 ### 修饰符
 
-修饰符 (modifier) 是以半角句号 . 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用` event.preventDefault()`：
+修饰符 (modifier) 是以半角句号。指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 ` event.preventDefault()`：
 
 ```html
 <form v-on:submit.prevent="onSubmit">...</form>
@@ -174,7 +174,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 它们看起来可能与普通的 HTML 略有不同，但 `:` 与 `@` 对于 attribute 名来说都是合法字符，在所有支持 Vue 的浏览器都能被正确地解析。而且，它们不会出现在最终渲染的标记中。缩写语法是完全可选的，但随着你更深入地了解它们的作用，你会庆幸拥有它们。
 
 
-> 从下一页开始，我们将在示例中使用缩写，因为这是Vue开发者最常用的用法。 
+> 从下一页开始，我们将在示例中使用缩写，因为这是 Vue 开发者最常用的用法。 
 
 ### 注意事项
 
@@ -192,7 +192,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 <a v-bind:['foo' + bar]="value"> ... </a>
 ```
 
-变通的办法是使用没有空格或引号的表达式，或用 [计算属性](computed.html) 替代这种复杂表达式。
+变通的办法是使用没有空格或引号的表达式，或用[计算属性](computed.html)替代这种复杂表达式。
 
 在 DOM 中使用模板时 (直接在一个 HTML 文件里撰写模板)，还需要避免使用大写字符来命名键名，因为浏览器会把 attribute 名全部强制转为小写：
 
@@ -206,4 +206,4 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 
 #### JavaScript 表达式
 
-模板表达式都被放在沙盒中，只能访问 [全局变量的一个白名单](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3) ，如 `Math` 和 `Date` 。你不应该在模板表达式中试图访问用户定义的全局变量。
+模板表达式都被放在沙盒中，只能访问[全局变量的一个白名单](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。

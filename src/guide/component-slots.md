@@ -1,6 +1,6 @@
 # 插槽
 
-> 该页面假设你已经阅读过了 [组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
+> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
 ## 插槽内容
 
@@ -23,7 +23,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </button>
 ```
 
-当组件渲染的时候，<slot></slot> 将会被替换为 "Add Todo"。
+当组件渲染的时候，<slot></slot>将会被替换为“Add Todo”。
 
 ```html
 <!-- 渲染 HTML -->
@@ -32,7 +32,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </button>
 ```
 
-不过，字符串只是开始！插槽还可以包含任何模板代码，包括HTML：
+不过，字符串只是开始！插槽还可以包含任何模板代码，包括 HTML：
 
 ```html
 <todo-button>
@@ -80,7 +80,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </todo-button>
 ```
 
-该插槽可以访问与模板其余部分相同的实例property（即相同的"作用域"）。
+该插槽可以访问与模板其余部分相同的实例 property (即相同的“作用域”)。
 
 <img src="/images/slot.png" width="447" height="auto" style="display: block; margin: 0 auto; max-width: 100%" loading="lazy" alt="Slot explanation diagram">
 
@@ -115,7 +115,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </button>
 ```
 
-现在当我在一个父级组件中使用 `<submit-button`> 并且不提供任何插槽内容时：
+现在当我在一个父级组件中使用 `<submit-button` > 并且不提供任何插槽内容时：
 
 ```html
 <submit-button></submit-button>
@@ -180,7 +180,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </div>
 ```
 
-一个不带 `name` 的 `<slot>` 出口会带有隐含的名字 “default”。
+一个不带 `name` 的 `<slot>` 出口会带有隐含的名字“default”。
 
 在向具名插槽提供内容的时候，我们可以在一个 `<template>` 元素上使用 `v-slot` 指令，并以 `v-slot` 的参数的形式提供其名称：
 
@@ -203,7 +203,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 现在 `<template>` 元素中的所有内容都将会被传入相应的插槽。
 
-渲染的HTML将会是：
+渲染的 HTML 将会是：
 
 ```html
 <div class="container">
@@ -222,7 +222,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 Note that **`v-slot` can only be added to a `<template>`** (with [one exception](#abbreviated-syntax-for-lone-default-slots))
 
-注意，**`v-slot` 只能添加在 `<template>` 上** ( [只有一种例外情况](#独占默认插槽的缩写语法) )
+注意，**`v-slot` 只能添加在 `<template>` 上** ([只有一种例外情况](#独占默认插槽的缩写语法))
 
 
 ## 作用域插槽
@@ -257,9 +257,9 @@ app.component('todo-list', {
 </todo-list>
 ```
 
-但是，这是行不通的，因为只有 `todo list>` 组件可以访问 `item`, 我们将从其父组件提供槽内容。
+但是，这是行不通的，因为只有 `todo list>` 组件可以访问 `item`，我们将从其父组件提供槽内容。
 
-要使 `item` 可用于父级提供的slot内容，我们可以添加一个 `<slot>` 元素并将其绑定为属性：
+要使 `item` 可用于父级提供的 slot 内容，我们可以添加一个 `<slot>` 元素并将其绑定为属性：
 
 ```html
 <ul>
@@ -269,7 +269,7 @@ app.component('todo-list', {
 </ul>
 ```
 
-绑定在 `<slot`> 元素上的 attribute 被称为**插槽 prop**。现在在父级作用域中，我们可以使用带值的 v-slot 来定义我们提供的插槽 prop 的名字：
+绑定在 `<slot` > 元素上的 attribute 被称为**插槽 prop**。现在在父级作用域中，我们可以使用带值的 v-slot 来定义我们提供的插槽 prop 的名字：
 
 ```html
 <todo-list>
@@ -356,7 +356,7 @@ function (slotProps) {
 </todo-list>
 ```
 
-这样可以使模板更简洁，尤其是在该插槽提供了多个 prop 的时候。它同样开启了 prop 重命名等其它可能，例如将 `item` 重命名为 `todo`:
+这样可以使模板更简洁，尤其是在该插槽提供了多个 prop 的时候。它同样开启了 prop 重命名等其它可能，例如将 `item` 重命名为 `todo`：
 
 
 ```html
@@ -377,7 +377,7 @@ function (slotProps) {
 
 ## 动态插槽名
 
-[动态指令参数](template-syntax.md#dynamic-arguments) 也可以用在 `v-slot` 上，来定义动态的插槽名：
+[动态指令参数](template-syntax.md#dynamic-arguments)也可以用在 `v-slot` 上，来定义动态的插槽名：
 
 ```html
 <base-layout>
@@ -389,7 +389,7 @@ function (slotProps) {
 
 ## 具名插槽的缩写
 
-跟` v-on` 和 `v-bind` 一样，`v-slot` 也有缩写，即把参数之前的所有内容 (`v-slot:`) 替换为字符 `#`。例如 `v-slot:header` 可以被重写为 `#header`：
+跟 ` v-on` 和 `v-bind` 一样，`v-slot` 也有缩写，即把参数之前的所有内容 (`v-slot:`) 替换为字符 `#`。例如 `v-slot:header` 可以被重写为 `#header`：
 
 ```html
 <base-layout>

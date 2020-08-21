@@ -2,13 +2,13 @@
 
 ## createApp
 
-返回提供应用程序上下文的应用程序实例。 应用程序实例安装的整个组件树共享相同的上下文。
+返回提供应用程序上下文的应用程序实例。应用程序实例安装的整个组件树共享相同的上下文。
 
 ```js
 const app = Vue.createApp({})
 ```
 
-你可以在 `createApp` 之后链接其他方法，这些方法可以在 [Application API](./application-api.html)中找到。
+你可以在 `createApp` 之后链接其他方法，这些方法可以在 [Application API](./application-api.html) 中找到。
 
 
 ### 参数
@@ -28,7 +28,7 @@ const app = Vue.createApp({
 })
 ```
 
-使用第二个参数，我们可以将根prop传递给应用程序：
+使用第二个参数，我们可以将根 prop 传递给应用程序：
 
 ```js
 const app = Vue.createApp(
@@ -62,7 +62,7 @@ export type CreateAppFunction<HostElement> = (
 
 ## h
 
-返回一个返回的 `虚拟node`，通常缩写为 **VNode** ：一个普通对象，其中包含向Vue描述它应在页面上渲染哪种节点的信息，包括任何子节点的描述。 它用于手动编写的[渲染函数](../guide/render-function.md)：
+返回一个返回的 `虚拟node`，通常缩写为 **VNode**：一个普通对象，其中包含向 Vue 描述它应在页面上渲染哪种节点的信息，包括任何子节点的描述。它用于手动编写的[渲染函数](../guide/render-function.md)：
 
 ```js
 render() {
@@ -72,31 +72,31 @@ render() {
 
 ### 参数
 
-接收三个参数: `tag`, `props` 和 `children`
+接收三个参数：`tag`，`props` 和 `children`
 
 #### tag
 
-- **类型：** `String | Object | Function | null`
+- **类型：**`String | Object | Function | null`
 
 - **详细：**
 
-  一个HTML 标签 名，一个组件，一个异步组件或null，使用null将渲染注释。此参数是必需的。
+  一个 HTML 标签名，一个组件，一个异步组件或 null，使用 null 将渲染注释。此参数是必需的。
 
 #### props
 
-- **类型：** `Object`
+- **类型：**`Object`
 
 - **详细：**
 
-  与我们将在模板中使用的attributes、prop和事件相对应的对象。可选。
+  与我们将在模板中使用的 attributes、prop 和事件相对应的对象。可选。
 
 #### children
 
-- **类型：** `String | Array | Object`
+- **类型：**`String | Array | Object`
 
 - **详细：**
 
-  子虚拟Node，使用 `h()`生成，或者使用字符串来获取 “文本节点” 或带有插槽的对象。可选
+  子虚拟 Node，使用 `h()` 生成，或者使用字符串来获取“文本节点”或带有插槽的对象。可选
 
   ```js
   h('div', {}, [
@@ -110,7 +110,7 @@ render() {
 
 ## defineComponent
 
-实现方面， `defineComponent` 只返回传递给它的对象。但是，就类型而言，返回值有一个用于手动渲染函数的构造函数、TSX和IDE工具支持的合成类型。
+实现方面，`defineComponent` 只返回传递给它的对象。但是，就类型而言，返回值有一个用于手动渲染函数的构造函数、TSX 和 IDE 工具支持的合成类型。
 
 ### 参数
 
@@ -137,7 +137,7 @@ const MyComponent = defineComponent({
 
 ### 参数
 
-对于基本用法，`defineAsyncComponent` 可以接受返回 `Promise` 的工厂函数。从服务器检索组件定义后，应调用Promise的 `resolve`回调。你也可以调用 `reject(reason)`，以表示加载失败。
+对于基本用法，`defineAsyncComponent` 可以接受返回 `Promise` 的工厂函数。从服务器检索组件定义后，应调用 Promise 的 `resolve` 回调。你也可以调用 `reject(reason)`，以表示加载失败。
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -149,7 +149,7 @@ const AsyncComp = defineAsyncComponent(() =>
 app.component('async-component', AsyncComp)
 ```
 
-当使用 [本地注册](../guide/component-registration.html#local-registration), 也可以直接提供一个返回 `Promise` 的函数：
+当使用[本地注册](../guide/component-registration.html#local-registration)，也可以直接提供一个返回 `Promise` 的函数：
 ```js
 import { createApp, defineAsyncComponent } from 'vue'
 
@@ -191,16 +191,16 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-**也可以看看**: [动态和异步组件](../guide/component-dynamic-async.html)
+**也可以看看**：[动态和异步组件](../guide/component-dynamic-async.html)
 
 ## resolveComponent
 
 :::warning
 `resolveComponent` 只能在 `render` 或 `setup` 函数中使用。
-:::
+：:：
 
 
-如果在当前应用程序实例中可用，则允许按名称解析`component`。
+如果在当前应用程序实例中可用，则允许按名称解析 `component`。
 
 当为找到时返回一个 `Component` 或者 `undefined`。
 
@@ -220,11 +220,11 @@ render() {
 
 ### 参数
 
-接受一个参数: `component`
+接受一个参数：`component`
 
 #### component
 
-- **类型：** `String`
+- **类型：**`String`
 
 - **详细：**
   载的组件的名称。
@@ -234,12 +234,12 @@ render() {
 :::warning
 
 `resolveDynamicComponent` 只能在 `render` 或 `setup` 函数中使用。
-:::
+：:：
 
-允许使用 `<component :is="">`所采用的相同机制来解析 `component`。
+允许使用 `<component :is="">` 所采用的相同机制来解析 `component`。
 
 
-返回已解析的 `Component` 或新创建的 `VNode` ，其中组件名作为节点标记。如果找不到 `Component`，将发出警告。
+返回已解析的 `Component` 或新创建的 `VNode`，其中组件名作为节点标记。如果找不到 `Component`，将发出警告。
 
 ```js
 import { resolveDynamicComponent } from 'vue'
@@ -250,23 +250,23 @@ render () {
 
 ### 参数
 
-接受一个参数: `component`
+接受一个参数：`component`
 
 #### component
 
-- **类型：** `String | Object (组件的选项对象)`
+- **类型：**`String | Object (组件的选项对象)`
 
 - **详细：**
 
-  有关详细信息，请参阅 [动态组件](../guide/component-dynamic-async.html) 上的文档。
+  有关详细信息，请参阅[动态组件](../guide/component-dynamic-async.html)上的文档。
 
 ## resolveDirective
 
 :::warning
 `resolveDirective` 只能在 `render` 或 `setup` 函数中使用。
-:::
+：:：
 
-允许按名称解析 `directive` ，如果在当前应用程序实例中可用。
+允许按名称解析 `directive`，如果在当前应用程序实例中可用。
 
 没有找到时，返回一个 `Directive` 或 `undefined`
 
@@ -284,11 +284,11 @@ render () {
 
 ### 参数
 
-接受一个参数: `name`
+接受一个参数：`name`
 
 #### name
 
-- **类型：** `String`
+- **类型：**`String`
 
 - **详细：**
 
@@ -298,9 +298,9 @@ render () {
 
 :::warning
 `withDirectives` 只能在 `render` 或 `setup` 函数中使用。
-:::
+：:：
 
-允许将指令应用于**VNode**，返回带有已应用指令的VNode。
+允许将指令应用于 **VNode**，返回带有已应用指令的 VNode。
 
 ```js
 import { withDirectives, resolveDirective } from 'vue'
@@ -315,25 +315,25 @@ return withDirectives(h('div'), [
 
 ### 参数
 
-接受两个: `vnode` 和 `directives`.
+接受两个：`vnode` 和 `directives`。
 
 #### vnode
 
-- **类型：** `vnode`
+- **类型：**`vnode`
 
 - **详细：** 
 
-  一个虚拟node，通常使用`h()`创建。
+  一个虚拟 node，通常使用 `h()` 创建。
 
 #### directives
 
-- **类型：** `Array`
+- **类型：**`Array`
 
 - **详细：**
 
   一个指令数组。
   
-  每个指令本身都是一个数组，最多可以定义4个索引，如以下示例所示。
+  每个指令本身都是一个数组，最多可以定义 4 个索引，如以下示例所示。
 
   - `[directive]` - 该指令本身，必须的。
 
@@ -345,7 +345,7 @@ return withDirectives(h('div'), [
   )
   ```
 
-  - `[directive, value]` - 上面加上要分配给指令的类型为`any`的值。
+  - `[directive, value]` - 上面加上要分配给指令的类型为 `any` 的值。
 
   ```js
   const MyDirective = resolveDirective('MyDirective')
@@ -355,7 +355,7 @@ return withDirectives(h('div'), [
   )
   ```
 
-  - `[directive, value, arg]` - 上面加上一个 `String` 参数，比如： `click` 在 `v-on:click` 中。
+  - `[directive, value, arg]` - 上面加上一个 `String` 参数，比如：`click` 在 `v-on:click` 中。
 
   ```js
   const MyDirective = resolveDirective('MyDirective')
@@ -377,10 +377,10 @@ return withDirectives(h('div'), [
 
 ## createRenderer
 
-createRenderer函数接受两个泛型参数：
-`HostNode` 和 `HostElement`, 对应于宿主环境中的节点和元素类型。
+createRenderer 函数接受两个泛型参数：
+`HostNode` 和 `HostElement`，对应于宿主环境中的节点和元素类型。
  
-例如，对于runtime-dom，HostNode将是DOM `Node` 接口，HostElement将是DOM `Element`接口。
+例如，对于 runtime-dom，HostNode 将是 DOM `Node` 接口，HostElement 将是 DOM `Element` 接口。
  
 自定义渲染器可以传入特定于平台的类型，如下所示：
 
@@ -394,11 +394,11 @@ const { render, createApp } = createRenderer<Node, Element>({
 
 ### 参数
 
-接受两个: `HostNode` 和 `HostElement`
+接受两个：`HostNode` 和 `HostElement`
 
 #### HostNode
 
-- **类型：** `Node`
+- **类型：**`Node`
 
 - **详细：**
 
@@ -406,7 +406,7 @@ const { render, createApp } = createRenderer<Node, Element>({
 
 #### HostElement
 
-- **类型：** `Element`
+- **类型：**`Element`
 
 - **详细：**
 
@@ -414,7 +414,7 @@ const { render, createApp } = createRenderer<Node, Element>({
 
 ## nextTick
 
-将回调推迟到下一个DOM更新周期之后执行。在更改了一些数据以等待DOM更新后立即使用它。
+将回调推迟到下一个 DOM 更新周期之后执行。在更改了一些数据以等待 DOM 更新后立即使用它。
 
 ```js
 import { createApp, nextTick } from 'vue'
@@ -431,4 +431,4 @@ const app = createApp({
 })
 ```
 
-**也可以看看**: [`$nextTick` instance method](instance-methods.html#nexttick)
+**也可以看看**：[`$nextTick` instance method](instance-methods.html#nexttick)

@@ -15,7 +15,7 @@
 
 ### 列表的进入/离开过渡
 
-现在让我们由一个简单的例子深入，进入和离开的过渡使用之前一样的 CSS class名。
+现在让我们由一个简单的例子深入，进入和离开的过渡使用之前一样的 CSS class 名。
 
 ```html
 <div id="list-demo">
@@ -82,7 +82,7 @@ Vue.createApp(Demo).mount('#list-demo')
 
 `<transition-group>` 组件还有一个特殊之处。不仅可以进入和离开动画，还可以改变定位。要使用这个新功能只需了解新增的 **`v-move` class**，它会在元素的改变定位的过程中应用。像之前的类名一样，可以通过 `name` attribute 来自定义前缀，也可以通过 `move-class` attribute 手动设置。
 
-该class主要用于指定过渡 timing和 easing 曲线，如下所示：
+该 class 主要用于指定过渡 timing 和 easing 曲线，如下所示：
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
@@ -198,14 +198,14 @@ Vue.createApp(Demo).mount('#list-complete-demo')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-::: tip
-需要注意的是使用 FLIP 过渡的元素不能设置为 `display: inline` 。作为替代方案，可以设置为` display: inline-block` 或者放置于 flex 中
+:::tip
+需要注意的是使用 FLIP 过渡的元素不能设置为 `display: inline`。作为替代方案，可以设置为 ` display: inline-block` 或者放置于 flex 中
 :::
 
 FLIP 动画不仅可以实现单列过渡，多维网格也[同样可以过渡](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions)：
 
 
-TODO: 示例
+TODO：示例
 
 ### 列表的交错过渡
 
@@ -295,7 +295,7 @@ Vue.createApp(Demo).mount('#demo')
 
 过渡可以通过 Vue 的组件系统实现复用。要创建一个可复用过渡组件，你需要做的就是将 `<transition>` 或者 `<transition-group>` 作为根组件，然后将任何子组件放置在其中就可以了。
 
-TODO: 使用Vue3重构
+TODO：使用 Vue3 重构
 
 使用 template 的简单例子：
 
@@ -446,6 +446,6 @@ const app = Vue.createApp({
 app.mount('#dynamic-fade-demo')
 ```
 
-TODO: 示例
+TODO：示例
 
 最后，创建动态过渡的最终方案是组件通过接受 props 来动态修改之前的过渡。一句老话，唯一的限制是你的想象力。

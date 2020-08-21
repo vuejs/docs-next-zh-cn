@@ -1,6 +1,6 @@
-# 应用API
+# 应用 API
 
-在Vue 3中，全局改变Vue行为的API现在改为了由新的 `createApp` 方法来创建的应用程序实例。 此外，它们的影响现在仅限于该特定应用程序的实例：
+在 Vue 3 中，全局改变 Vue 行为的 API 现在改为了由新的 `createApp` 方法来创建的应用程序实例。此外，它们的影响现在仅限于该特定应用程序的实例：
 
 ```js
 import { createApp } from 'vue'
@@ -8,7 +8,7 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-调用`createApp`返回一个应用程序实例。 该实例提供了一个应用程序上下文。 应用程序实例挂载的整个组件树共享相同的上下文，该上下文提供了先前在Vue 2.x中“全局”的配置。
+调用 `createApp` 返回一个应用程序实例。该实例提供了一个应用程序上下文。应用程序实例挂载的整个组件树共享相同的上下文，该上下文提供了先前在 Vue 2.x 中“全局”的配置。
 
 另外，由于 `createApp` 方法返回应用程序实例本身，因此可以在其后链接其他方法，这些方法可以在以下部分中找到。
 
@@ -21,7 +21,7 @@ const app = createApp({})
 
 - **用法：**
 
-  注册或检索全局组件。 注册还会使用给定的 `name` 参数自动设置组件的 `name`。
+  注册或检索全局组件。注册还会使用给定的 `name` 参数自动设置组件的 `name`。
 
 - **示例：**
 
@@ -56,7 +56,7 @@ const app = createApp({})
 app.config = {...}
 ```
 
-- **也可以看看:** [应用程序Config](./application-config.html)
+- **也可以看看:** [应用程序 Config](./application-config.html)
 
 ## directive
 
@@ -105,18 +105,18 @@ const myDirective = app.directive('my-directive')
 
 #### el
 
-指令绑定到的元素。 这可用于直接操作DOM。
+指令绑定到的元素。这可用于直接操作 DOM。
 
 #### binding
 
-包含以下property的对象。
+包含以下 property 的对象。
 
-- `instance`: 使用指令的组件实例。
-- `value`: 传递给指令的值。 例如，在 `v-my-directive="1 + 1"` 中，该值为 `2`。
-- `oldValue`: 先前的值，仅在 `beforeUpdate` 和 `updated` 中可用。 值是否已更改都可用。
-- `arg`: 参数传递给指令（如果有）。 例如在 `v-my-directive:foo` 中，arg为 `"foo"`。
-- `modifiers`: 包含修饰符（如果有）的对象。 例如在 `v-my-directive.foo.bar`中，修饰符对象为`{foo: true，bar: true}`。
-- `dir`: 一个对象，在注册指令时作为参数传递。 例如，在指令中。
+- `instance`：使用指令的组件实例。
+- `value`：传递给指令的值。例如，在 `v-my-directive="1 + 1"` 中，该值为 `2`。
+- `oldValue`：先前的值，仅在 `beforeUpdate` 和 `updated` 中可用。值是否已更改都可用。
+- `arg`：参数传递给指令 (如果有)。例如在 `v-my-directive:foo` 中，arg 为 `"foo"`。
+- `modifiers`：包含修饰符 (如果有) 的对象。例如在 `v-my-directive.foo.bar` 中，修饰符对象为 `{foo: true，bar: true}`。
+- `dir`：一个对象，在注册指令时作为参数传递。例如，在指令中。
 
 ```js
 app.directive('focus', {
@@ -138,17 +138,17 @@ app.directive('focus', {
 
 #### vnode
 
-上面作为el参数收到的真是DOM元素的蓝图
+上面作为 el 参数收到的真是 DOM 元素的蓝图
 
 #### prevNode
 
-上一个的虚拟Node，仅在 `beforeUpdate` 和 `updated` 钩子中可用。
+上一个的虚拟 Node，仅在 `beforeUpdate` 和 `updated` 钩子中可用。
 
 :::tip Note
-除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。 如果你需要跨钩子共享信息，建议通过元素的 [数据集]（https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset）进行共享。
-:::
+除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。如果你需要跨钩子共享信息，建议通过元素的[数据集] (https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) 进行共享。
+：:：
 
-- **参考** [自定义指令](../guide/custom-directive.html)
+- **参考**[自定义指令](../guide/custom-directive.html)
 
 ## mixin
 
@@ -158,7 +158,7 @@ app.directive('focus', {
 
 - **用法：**
 
-  在整个应用程序范围内应用mixin，一旦注册，它们就可以在当前的app中任何组件模板内使用它。 插件作者可以使用此方法将自定义行为注入组件。 **不建议在应用程序代码中**。
+  在整个应用程序范围内应用 mixin，一旦注册，它们就可以在当前的 app 中任何组件模板内使用它。插件作者可以使用此方法将自定义行为注入组件。**不建议在应用程序代码中**。
 
 - **参考** [Global Mixin](../guide/mixins.html#global-mixin)
 
@@ -171,7 +171,7 @@ app.directive('focus', {
 
 - **用法：**
 
-  将应用程序实例的根组件挂载在提供的DOM元素上。
+  将应用程序实例的根组件挂载在提供的 DOM 元素上。
 
 - **示例：**
 
@@ -200,7 +200,7 @@ app.mount('#my-app')
 
 - **用法：**
 
-  在提供的DOM元素上卸载应用程序实例的根组件。
+  在提供的 DOM 元素上卸载应用程序实例的根组件。
 
 - **示例：**
 
@@ -229,7 +229,7 @@ setTimeout(() => app.unmount('#my-app'), 5000)
 
 - **用法：**
 
-  安装Vue.js插件。 如果插件是一个对象，它必须暴露一个 `install` 方法。 如果它本身是一个函数，它将被视为安装方法。 将以Vue作为参数调用install方法。
+  安装 Vue.js 插件。如果插件是一个对象，它必须暴露一个 `install` 方法。如果它本身是一个函数，它将被视为安装方法。将以 Vue 作为参数调用 install 方法。
 
   当在同一个插件上多次调用此方法时，该插件将仅安装一次。
 

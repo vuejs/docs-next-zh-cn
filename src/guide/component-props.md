@@ -1,6 +1,6 @@
 # Props
 
-> 该页面假设你已经阅读过了 [组件基础](component-basics.md) 。如果你还对组件不太了解，推荐你先阅读它。
+> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
 ## Prop 类型
 
@@ -24,7 +24,7 @@ props: {
 }
 ```
 
-这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户。你会在这个页面接下来的部分看到 [类型检查和其它 prop 验证](#prop-validation)。
+这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户。你会在这个页面接下来的部分看到[类型检查和其它 prop 验证](#prop-validation)。
 
 ## 传递静态或动态 Prop
 
@@ -34,7 +34,7 @@ props: {
 <blog-post title="My journey with Vue"></blog-post>
 ```
 
-你也知道 prop 可以通过 `v-bind` 或 简写 `:` 动态赋值，例如：
+你也知道 prop 可以通过 `v-bind` 或简写 `:` 动态赋值，例如：
 
 ```html
 <!-- 动态赋予一个变量的值 -->
@@ -130,7 +130,7 @@ post: {
 
 这里有两种常见的试图变更一个 prop 的情形：
 
-1.这个 **prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用**。在这种情况下，最好定义一个本地的 data property 并将这个 prop 用作其初始值：
+1。这个 **prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用**。在这种情况下，最好定义一个本地的 data property 并将这个 prop 用作其初始值：
 
 ```js
 props: ['initialCounter'],
@@ -152,9 +152,9 @@ computed: {
 }
 ```
 
-::: tip 提示
+：:：tip 提示
 注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变变更这个对象或数组本身**将会**影响到父组件的状态。
-:::
+：:：
 
 ## Prop 验证
 
@@ -208,9 +208,9 @@ app.component('my-component', {
 
 当 prop 验证失败的时候，(开发环境构建版本的) Vue 将会产生一个控制台的警告。
 
-::: tip 提示
+：:：tip 提示
 注意那些 prop 会在一个组件实例创建**之前**进行验证，所以实例的 property (如 `data`、`computed` 等) 在 `default` 或 `validator` 函数中是不可用的。
-:::
+：:：
 
 ### 类型检查
 

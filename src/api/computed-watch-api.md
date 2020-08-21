@@ -1,10 +1,10 @@
 # Computed 与 watch
 
-> 本节例子中代码使用的 [单文件组件](../guide/single-file-component.html) 语法
+> 本节例子中代码使用的[单文件组件](../guide/single-file-component.html)语法
 
 ## `computed`
 
-使用getter函数，并为从getter返回的值返回一个不变的响应式 [ref](./refs-api.html#ref)对象。
+使用 getter 函数，并为从 getter 返回的值返回一个不变的响应式 [ref](./refs-api.html#ref) 对象。
 
 ```js
 const count = ref(1)
@@ -15,7 +15,7 @@ console.log(plusOne.value) // 2
 plusOne.value++ // error
 ```
 
-或者，它可以使用具有 `get` 和 `set` 函数的对象来创建可写的ref对象。
+或者，它可以使用具有 `get` 和 `set` 函数的对象来创建可写的 ref 对象。
 
 ```js
 const count = ref(1)
@@ -82,13 +82,13 @@ type InvalidateCbRegistrator = (invalidate: () => void) => void
 type StopHandle = () => void
 ```
 
-**See also**: [`watchEffect` guide](../guide/reactivity-computed-watchers.html#watcheffect)
+**See also**：[`watchEffect` guide](../guide/reactivity-computed-watchers.html#watcheffect)
 
 ## `watch`
 
- `watch` API与选项 API [this.$watch](./instance-methods.html#watch)（以及相应的 [watch](./options-data.html#watch) 选项）完全等效。 `watch` 需要帧听特定的 data 源，并在单独的回调函数中副作用。默认情况下，它也是惰性的 —— 即，回调是 仅在帧听源发生更改时调用。
+ `watch` API 与选项 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要帧听特定的 data 源，并在单独的回调函数中副作用。默认情况下，它也是惰性的——即，回调是仅在帧听源发生更改时调用。
 
-- 与 [watchEffect](#watcheffect) 比较, `watch` 允许我们:
+- 与 [watchEffect](#watcheffect) 比较，`watch` 允许我们：
 
   - 惰性地执行副作用；
   - 更具体地说明应触发侦听器重新运行的状态；
@@ -96,7 +96,7 @@ type StopHandle = () => void
 
 ### 帧听一个单一源
 
-侦听器data源可以是返回值的getter函数，也可以是 [ref](./refs-api.html#ref)：
+侦听器 data 源可以是返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
 
 
 ```js
@@ -128,7 +128,7 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 
 ### 与 `watchEffect` 共享行为
 
-`watch` 与 [`watchEffect`](#watcheffect) 在 [手动停止](stopping-the-watcher) ，[副作用无效](side-effect-invalidation)（将 `onInvalidate` 作为第三个参数传递给回调），[flush timing](#effect-flush-timing) 和 [debugging](#watcher-debugging)。
+`watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](stopping-the-watcher)，[副作用无效](side-effect-invalidation) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](#effect-flush-timing) 和 [debugging](#watcher-debugging)。
 
 **类型声明：**
 
@@ -168,4 +168,4 @@ interface WatchOptions extends WatchEffectOptions {
 }
 ```
 
-**参考**: [`watch` 指南](../guide/reactivity-computed-watchers.html#watch)
+**参考**：[`watch` 指南](../guide/reactivity-computed-watchers.html#watch)

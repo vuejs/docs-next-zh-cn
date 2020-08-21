@@ -10,11 +10,11 @@
     - `{boolean} deep`
     - `{boolean} immediate`
 
-- **返回：** `{Function} unwatch`
+- **返回：**`{Function} unwatch`
 
 - **用法：**
 
-  帧听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、 `prop` 或 `computed` property名作为字符串传递。对于更复杂的表达式，用一个函数取代。
+  帧听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`prop` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
 
 - **示例：**
 
@@ -118,7 +118,7 @@
   unwatch()
   ```
 
-- **选项: deep**
+- **选项：deep**
 
   为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。注意监听数组的变更不需要这么做。
 
@@ -211,7 +211,7 @@
   app.mount('#emit-example-simple')
   ```
 
-  配合额外的参数使用 `$emit` ：
+  配合额外的参数使用 `$emit`：
 
   ```html
   <div id="emit-example-argument">

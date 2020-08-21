@@ -1,6 +1,6 @@
 # 自定义事件
 
-> 该页面假设你已经阅读过了 [组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
+> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
 ## 事件名 
 
@@ -23,7 +23,7 @@ this.$emit('myEvent')
 
 ## 定义自定义事件
 
-可以通过`emits`选项在组件上定义已发出的事件。
+可以通过 `emits` 选项在组件上定义已发出的事件。
 
 ```js
 app.component('custom-form', {
@@ -31,15 +31,15 @@ app.component('custom-form', {
 })
 ```
 
-如果在 `emits` 选项中定义了原生事件（如 `click` ），则它将被组件中的事件覆盖，而不是被视为原生侦听器。
+如果在 `emits` 选项中定义了原生事件 (如 `click`)，则它将被组件中的事件覆盖，而不是被视为原生侦听器。
 
-::: tip 提示
+：:：tip 提示
 建议定义所有发出的事件，以便更好地记录组件应该如何工作。
-:::
+：:：
 
 ### 验证抛出的事件
 
-与prop类型验证类似，如果使用对象语法而不是数组语法定义发出的事件，则可以验证它。
+与 prop 类型验证类似，如果使用对象语法而不是数组语法定义发出的事件，则可以验证它。
 
 要添加验证，将为事件分配一个函数，该函数接收传递给 `$emit` 调用的参数，并返回一个布尔值以指示事件是否有效。
 
@@ -69,13 +69,13 @@ app.component('custom-form', {
 
 ## `v-model` 参数
 
-默认情况下，组件上的 `v-model` 使用 `modelValue` 作为prop和 `update:modelValue` 作为事件。我们可以通过向 `v-model` 传递参数来修改这些名称：
+默认情况下，组件上的 `v-model` 使用 `modelValue` 作为 prop 和 `update:modelValue` 作为事件。我们可以通过向 `v-model` 传递参数来修改这些名称：
 
 ```html
 <my-component v-model:foo="bar"></my-component>
 ```
 
-在本例中，子组件将需要一个 `foo` prop并发出 `update:foo` 要同步的事件：
+在本例中，子组件将需要一个 `foo` prop 并发出 `update:foo` 要同步的事件：
 
 
 ```js
@@ -100,9 +100,9 @@ app.component('my-component', {
 
 ## 多个 `v-model` 绑定
 
-通过利用以特定prop和事件为目标的能力，正如我们之前在 [`v-model` 参数](#v-model-参数)中所学的那样，我们现在可以在单个组件实例上创建多个 v-model 绑定。
+通过利用以特定 prop 和事件为目标的能力，正如我们之前在 [`v-model` 参数](#v-model-参数)中所学的那样，我们现在可以在单个组件实例上创建多个 v-model 绑定。
 
-每个v-model 将同步到不同的prop，而不需要在组件中添加额外的选项：
+每个 v-model 将同步到不同的 prop，而不需要在组件中添加额外的选项：
 
 ```html
 <user-name
@@ -142,16 +142,16 @@ app.component('user-name', {
 
 ## 处理 `v-model` 修饰符
 
-在2.x中，我们对组件 `v-model` 上的 `.trim` 等修饰符提供了硬编码支持。但是，如果组件可以支持自定义修饰符，则会更有用。在3.x中，添加到组件 `v-model` 的修饰符将通过modelModifiers prop提供给组件：
+在 2.x 中，我们对组件 `v-model` 上的 `.trim` 等修饰符提供了硬编码支持。但是，如果组件可以支持自定义修饰符，则会更有用。在 3.x 中，添加到组件 `v-model` 的修饰符将通过 modelModifiers prop 提供给组件：
 
 
-当我们学习表单输入绑定时，我们看到 `v-model` 有 [内置修饰符](/guide/forms.html#modifiers) —— `.trim` 、`.number` 和 `.lazy`。但是，在某些情况下，你可能还需要添加自己的自定义修饰符。
+当我们学习表单输入绑定时，我们看到 `v-model` 有[内置修饰符](/guide/forms.html#modifiers)——`.trim`、`.number` 和 `.lazy`。但是，在某些情况下，你可能还需要添加自己的自定义修饰符。
 
-让我们创建一个示例自定义修饰符 `capitalize` ，它将 `v-model` 绑定提供的字符串的第一个字母大写。
+让我们创建一个示例自定义修饰符 `capitalize`，它将 `v-model` 绑定提供的字符串的第一个字母大写。
 
-添加到组件 `v-model` 的修饰符将通过 `modelModifiers` prop提供给组件。在下面的示例中，我们创建了一个组件，其中包含默认为空对象的 `modelModifiers` prop。
+添加到组件 `v-model` 的修饰符将通过 `modelModifiers` prop 提供给组件。在下面的示例中，我们创建了一个组件，其中包含默认为空对象的 `modelModifiers` prop。
 
-请注意，当组件的 `created` 生命周期钩子触发时， `modelModifiers` prop 包含 `capitalize` ，其值为 `true` —— 因为它被设置在 `v-model` 绑定 `v-model.capitalize="bar"`。
+请注意，当组件的 `created` 生命周期钩子触发时，`modelModifiers` prop 包含 `capitalize`，其值为 `true`——因为它被设置在 `v-model` 绑定 `v-model.capitalize="bar"`。
 
 ```html
 <my-component v-model.capitalize="bar"></my-component>
@@ -176,7 +176,7 @@ app.component('my-component', {
 })
 ```
 
-现在我们已经设置了prop，我们可以检查 `modelModifiers` 对象键并编写一个处理器来更改发出的值。在下面的代码中，每当 `<input/>` 元素触发 `input` 事件时，我们都将字符串大写。
+现在我们已经设置了 prop，我们可以检查 `modelModifiers` 对象键并编写一个处理器来更改发出的值。在下面的代码中，每当 `<input/>` 元素触发 `input` 事件时，我们都将字符串大写。
 
 ```html
 <div id="app">
@@ -219,7 +219,7 @@ app.component('my-component', {
 app.mount('#app')
 ```
 
-对于带参数的 `v-model`绑定 ，生成的 prop 名称将为 `arg + "Modifiers"`：
+对于带参数的 `v-model` 绑定，生成的 prop 名称将为 `arg + "Modifiers"`：
 
 ```html
 <my-component v-model:foo.capitalize="bar"></my-component>

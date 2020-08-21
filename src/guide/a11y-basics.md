@@ -1,17 +1,17 @@
 # 基础
 
-Web可访问性（也称为a11y）是指创建可供任何人使用的网站的做法，无论是残疾人、连接缓慢、过时或损坏的硬件，还是仅仅是处于不利环境中的人。例如，在视频中添加字幕可以帮助聋哑人和重听人的用户以及在嘈杂的环境中听不到手机的用户。同样，确保你的文字对比度不是太低，这对你的低视力用户和那些试图在阳光下使用手机的用户都有帮助。
+Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的做法，无论是残疾人、连接缓慢、过时或损坏的硬件，还是仅仅是处于不利环境中的人。例如，在视频中添加字幕可以帮助聋哑人和重听人的用户以及在嘈杂的环境中听不到手机的用户。同样，确保你的文字对比度不是太低，这对你的低视力用户和那些试图在阳光下使用手机的用户都有帮助。
 
 
 准备好出发了，但不确定在哪里？
 
-看看 由 [World Wide Web Consortium (W3C)](https://www.w3.org/) 提供的 [规划和管理web辅助功能指南](https://www.w3.org/WAI/planning-and-managing/)
+看看由 [World Wide Web Consortium (W3C)](https://www.w3.org/) 提供的[规划和管理 web 辅助功能指南](https://www.w3.org/WAI/planning-and-managing/)
 
 ## 跳过链接
 
 你应该在每个页面的顶部添加一个直接指向主内容区域的链接，这样用户就可以跳过在多个网页上重复的内容。
 
-通常在`App.vue`因为它将是所有页面上的第一个可聚焦元素：
+通常在 `App.vue` 因为它将是所有页面上的第一个可聚焦元素：
 
 ``` html
 <ul class="skip-links">
@@ -72,8 +72,8 @@ export default {
 
 用户可以通过标题导航应用程序。为应用程序的每个部分设置描述性标题可以让用户更容易地预测每个部分的内容。说到标题，有两个推荐的可访问性实践：
 
-- 按排名顺序嵌套标题: `<h1>` - `<h6>`
-- 不要跳过section中的标题
+- 按排名顺序嵌套标题：`<h1>` - `<h6>`
+- 不要跳过 section 中的标题
 - 使用实际的标题标记，而不是样式文本，以提供标题的视觉外观
 
 [阅读更多关于标题](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
@@ -98,7 +98,7 @@ export default {
 
 ### 地标
 
-地标提供对应用程序中的部分的编程访问。依赖辅助技术的用户可以导航到应用程序的每个部分并跳过内容。你可以使用[ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)帮助你实现这个目标。
+地标提供对应用程序中的部分的编程访问。依赖辅助技术的用户可以导航到应用程序的每个部分并跳过内容。你可以使用 [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) 帮助你实现这个目标。
 
 | HTML            | ARIA Role                                                         | Landmark Purpose                                                                       |
 | --------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -111,8 +111,8 @@ export default {
 | form            | role="form"                                                       | Collection of form-associated elements                                                 |
 | section         | role="region"  | Content that is relevant and that users will likely want to navigate to. Label must be provided for this element                          |
 
-:::tip Tip:
-建议使用带有冗余地标 role属性的地标 HTML元素，以便最大限度地与传统[不支持HTML5语义元素的浏览器](https://caniuse.com/#feat=html5semantic)兼容。
-:::
+:::tip Tip：
+建议使用带有冗余地标 role 属性的地标 HTML 元素，以便最大限度地与传统[不支持 HTML5 语义元素的浏览器](https://caniuse.com/#feat=html5semantic)兼容。
+：:：
 
 [阅读更多关于地标](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)

@@ -2,11 +2,11 @@
 
 ## data
 
-- **类型：** `Function`
+- **类型：**`Function`
 
 - **详细：**
 
-  返回 组件实例的data对象的函数。在 `data`中，我们不建议观察具有自身状态行为的对象，如浏览器API对象和原型property。一个好主意是这里只有一个表示组件data的普通对象。
+  返回组件实例的 data 对象的函数。在 `data` 中，我们不建议观察具有自身状态行为的对象，如浏览器 API 对象和原型 property。一个好主意是这里只有一个表示组件 data 的普通对象。
 
   一旦观察过，你就无法在根数据对象上添加响应式 property。因此推荐在创建实例之前，就声明所有的根级响应式 property。
 
@@ -36,11 +36,11 @@
   data: vm => ({ a: vm.myProp })
   ```
 
--  **参考** [深入响应式原理](../guide/reactivity.html)
+-  **参考**[深入响应式原理](../guide/reactivity.html)
 
 ## props
 
-- **类型：** `Array<string> | Object`
+- **类型：**`Array<string> | Object`
 
 - **详细：**
 
@@ -48,13 +48,13 @@
 
   你可以基于对象的语法使用以下选项：
 
-  - `type`: 可以是下列原生构造函数中的一种：`String`、`Number`、`Boolean`、`Array`、`Object`、`Date`、`Function`、`Symbol`、任何自定义构造函数、或上述内容组成的数组。会检查一个 prop 是否是给定的类型，否则抛出警告。Prop 类型的[更多信息在此](../guide/component-props.html#prop-types)。
-  - `default`: `any`
+  - `type`：可以是下列原生构造函数中的一种：`String`、`Number`、`Boolean`、`Array`、`Object`、`Date`、`Function`、`Symbol`、任何自定义构造函数、或上述内容组成的数组。会检查一个 prop 是否是给定的类型，否则抛出警告。Prop 类型的[更多信息在此](../guide/component-props.html#prop-types)。
+  - `default`：`any`
     为该 prop 指定一个默认值。如果该 prop 没有被传入，则换做用这个值。对象或数组的默认值必须从一个工厂函数返回
-  - `required`: `Boolean`
+  - `required`：`Boolean`
     义该 prop 是否是必填项。在非生产环境中，如果这个值为 truthy 且该 prop 没有被传入的，则一个控制台警告将会被抛出。
-  - `validator`: `Function`
-    自定义验证函数会将该 prop 的值作为唯一的参数代入。在非生产环境下，如果该函数返回一个 falsy 的值 (也就是验证失败)，一个控制台警告将会被抛出。你可以在[这里](../guide/component-props.html#prop-validation) 查阅更多 prop 验证的相关信息。
+  - `validator`：`Function`
+    自定义验证函数会将该 prop 的值作为唯一的参数代入。在非生产环境下，如果该函数返回一个 falsy 的值 (也就是验证失败)，一个控制台警告将会被抛出。你可以在[这里](../guide/component-props.html#prop-validation)查阅更多 prop 验证的相关信息。
 
 - **示例：**
 
@@ -88,7 +88,7 @@
 
 ## computed
 
-- **类型：** `{ [key: string]: Function | { get: Function, set: Function } }`
+- **类型：**`{ [key: string]: Function | { get: Function, set: Function } }`
 
 - **详细：**
 
@@ -139,15 +139,15 @@
 
 ## methods
 
-- **类型：** `{ [key: string]: Function }`
+- **类型：**`{ [key: string]: Function }`
 
 - **详细：**
 
   methods 将被混入到组件实例中。可以直接通过 VM 实例访问这些方法，或者在指令表达式中使用。方法中的 `this` 自动绑定为组件实例。
 
   :::tip 注意
-  注意，**不应该使用箭头函数来定义 method 函数** (例如 plus: () => this.a++)。理由是箭头函数绑定了父级作用域的上下文，所以 `this` 将不会按照期望指向组件实例，`this.a` 将是 undefined。
-  :::
+  注意，**不应该使用箭头函数来定义 method 函数** (例如 plus：() => this.a++)。理由是箭头函数绑定了父级作用域的上下文，所以 `this` 将不会按照期望指向组件实例，`this.a` 将是 undefined。
+  ：:：
 
 - **示例：**
 
@@ -173,7 +173,7 @@
 
 ## watch
 
-- **类型：** `{ [key: string]: string | Function | Object | Array}`
+- **类型：**`{ [key: string]: string | Function | Object | Array}`
 
 - **详细：**
 
@@ -243,23 +243,23 @@
   vm.a = 3 // => new: 3, old: 1
   ```
 
-  ::: tip 注意
+  ：:：tip 注意
   注意，*不应该使用箭头函数来定义 watcher 函数* (例如 `searchQuery: newValue => this.updateAutocomplete(newValue)`)。理由是箭头函数绑定了父级作用域的上下文，所以 `this` 将不会按照期望指向组件实例，`this.updateAutocomplete` 将是 undefined。
 
-  :::
+  ：:：
 
 -  **参考** [Watchers](../guide/computed.html#watchers)
 
 ## emits
 
-- **类型：** `Array<string> | Object`
+- **类型：**`Array<string> | Object`
 
 - **详细：**
 
-  emits可以是数组或对象，从组件触发自定义事件，emits可以是简单的数组，或者对象作为替代，允许配置和事件验证。
+  emits 可以是数组或对象，从组件触发自定义事件，emits 可以是简单的数组，或者对象作为替代，允许配置和事件验证。
 
 
-  在对象语法中，每个property的值可以为 `null` 或 验证函数。验证函数将接收传递给 `$emit` 调用的其他参数。如果 `this.$emit('foo',1)` 被调用，`foo`的相应验证函数将接收参数 `1`。验证函数应返回布尔值，以表示事件参数是否有效。
+  在对象语法中，每个 property 的值可以为 `null` 或验证函数。验证函数将接收传递给 `$emit` 调用的其他参数。如果 `this.$emit('foo',1)` 被调用，`foo` 的相应验证函数将接收参数 `1`。验证函数应返回布尔值，以表示事件参数是否有效。
 
 - **用法：**
 
@@ -293,8 +293,8 @@
   })
   ```
   
-  ::: tip 注意
-  `emits` 选项中列出的事件**不会** 从组件的根元素继承，也将从 `$attrs` property中移除。
-  :::
+  ：:：tip 注意
+  `emits` 选项中列出的事件**不会**从组件的根元素继承，也将从 `$attrs` property 中移除。
+  ：:：
 
 -  **参考** [Attribute 继承](../guide/component-attrs.html#attribute继承)

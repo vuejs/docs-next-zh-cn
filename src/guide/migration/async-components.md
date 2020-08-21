@@ -11,7 +11,7 @@ badges:
 
 - 新 `defineAsyncComponent` 助手方法，它显示定义异步组件
 - `component` 选项重命名为 `loader`
-- 加载程序函数本身不接收`resolve`和`reject`参数，必须返回一个Promise
+- 加载程序函数本身不接收 `resolve` 和 `reject` 参数，必须返回一个 Promise
 
 如需更深入的解释，请继续阅读！
 
@@ -38,7 +38,7 @@ const asyncPage = {
 ## 3.x 语法
 
 
-现在，在Vue 3中，由于功能组件被定义为纯函数，因此需要通过将异步组件定义包装在新的`defineAsyncComponent`助手中来显式定义异步组件：
+现在，在 Vue 3 中，由于功能组件被定义为纯函数，因此需要通过将异步组件定义包装在新的 `defineAsyncComponent` 助手中来显式定义异步组件：
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -58,7 +58,7 @@ const asyncPageWithOptions = defineAsyncComponent({
 })
 ```
 
-对2.x所做的另一个更改是，`component` 选项现在被重命名为 `loader`，以便准确地传达不能直接提供组件定义的信息。
+对 2.x 所做的另一个更改是，`component` 选项现在被重命名为 `loader`，以便准确地传达不能直接提供组件定义的信息。
 
 ```js{4}
 import { defineAsyncComponent } from 'vue'
@@ -72,7 +72,7 @@ const asyncPageWithOptions = defineAsyncComponent({
 })
 ```
 
-此外，与2.x不同，loader函数不再接收 `resolve` 和  `reject`  参数，必须始终返回Promise。
+此外，与 2.x 不同，loader 函数不再接收 `resolve` 和 `reject` 参数，必须始终返回 Promise。
 
 ```js
 // 2.x 版本
@@ -91,4 +91,4 @@ const asyncComponent = defineAsyncComponent(
 
 有关异步组件用法的详细信息，请参阅：
 
-- [指南: 动态 & 异步组件](/guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+- [指南：动态 & 异步组件](/guide/component-dynamic-async.html#dynamic-components-with-keep-alive)

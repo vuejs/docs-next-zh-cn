@@ -7,21 +7,21 @@ badges:
 
 ## 概览
 
-此更改不会影响`<template>`用户。
+此更改不会影响 `<template>` 用户。
 
 以下是更改的简要总结：
 
 - `h` 现在全局导入，而不是作为参数传递给渲染函数
 - 渲染函数参数更改为在有状态组件和函数组件之间更加一致
-- vnode现在有一个扁平的prop结构
+- vnode 现在有一个扁平的 prop 结构
 
 更多信息，请继续阅读！
 
-## Render函数参数
+## Render 函数参数
 
 ### 2.x 语法
 
-在2.x中，e `render` 函数将自动接收 `h` 函数（它是 `createElement` 的常规别名）作为参数：
+在 2.x 中，e `render` 函数将自动接收 `h` 函数 (它是 `createElement` 的常规别名) 作为参数：
 
 ```js
 // Vue 2 渲染函数示例
@@ -34,7 +34,7 @@ export default {
 
 ### 3.x 语法
 
-在3.x中，`h` 现在是全局导入的，而不是作为参数自动传递。
+在 3.x 中，`h` 现在是全局导入的，而不是作为参数自动传递。
 
 
 ```js
@@ -48,11 +48,11 @@ export default {
 }
 ```
 
-## render函数签名更改
+## render 函数签名更改
 
 ### 2.x 语法
 
-在2.x中， `render` 函数自动接收诸如 `h` 之类的参数。
+在 2.x 中，`render` 函数自动接收诸如 `h` 之类的参数。
 
 ```js
 // Vue 2 渲染函数示例
@@ -65,7 +65,7 @@ export default {
 
 ### 3.x 语法
 
-在3.x中，由于 `render` 函数不再接收任何参数，它将主要用于 `setup()` 函数内部。这还有一个好处：可以访问作用域中声明的被动状态和函数，以及传递给 `setup()` 的参数。
+在 3.x 中，由于 `render` 函数不再接收任何参数，它将主要用于 `setup()` 函数内部。这还有一个好处：可以访问作用域中声明的被动状态和函数，以及传递给 `setup()` 的参数。
 
 
 ```js
@@ -94,13 +94,13 @@ export default {
 }
 ```
 
-有关 `setup()` 如何工作的详细信息, 见 [Composition API Guide](/guide/composition-api-introduction.html).
+有关 `setup()` 如何工作的详细信息，见 [Composition API Guide](/guide/composition-api-introduction.html)。
 
 ## VNode Props 格式化
 
 ### 2.x 语法
 
-在 2.x 中, `domProps` 包含VNode props中的嵌套列表：
+在 2.x 中，`domProps` 包含 VNode props 中的嵌套列表：
 
 ```js
 // 2.x
@@ -116,7 +116,7 @@ export default {
 
 ### 3.x 语法
 
-在3.x中，整个VNode props结构是扁平的，使用上面的例子，下面是它现在的样子
+在 3.x 中，整个 VNode props 结构是扁平的，使用上面的例子，下面是它现在的样子
 
 ```js
 // 3.x 语法
@@ -134,12 +134,12 @@ export default {
 
 ### 工具库作者
 
-全局导入`h` 意味着任何包含Vue组件的库都将在某处包含`import { h } from 'vue'`，因此，这会带来一些开销，因为它需要库作者在其构建设置中正确配置Vue的外部化：
+全局导入 `h` 意味着任何包含 Vue 组件的库都将在某处包含 `import { h } from 'vue'`，因此，这会带来一些开销，因为它需要库作者在其构建设置中正确配置 Vue 的外部化：
 
-- Vue不应绑定到库中
+- Vue 不应绑定到库中
 - 对于模块构建，导入应该保持独立，由最终用户绑定器处理
-- 对于UMD/browser版本，它应该首先尝试全局Vue.h，然后回退以请求调用
+- 对于 UMD/browser 版本，它应该首先尝试全局 Vue.h，然后回退以请求调用
 
 ## 下一步
 
-见 [Render函数指南](/guide/render-function) 更详细的文档！
+见 [Render 函数指南](/guide/render-function)更详细的文档！

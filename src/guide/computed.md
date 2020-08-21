@@ -30,7 +30,7 @@ Vue.createApp({
 </div>
 ```
 
-此时，模板不再是简单的和声明性的。你必须先看一下它，然后才能意识到它执行的计算取决于`author.books`. 如果要在模板中多次包含此计算，则问题会变得更糟。
+此时，模板不再是简单的和声明性的。你必须先看一下它，然后才能意识到它执行的计算取决于 `author.books`。如果要在模板中多次包含此计算，则问题会变得更糟。
 
 所以，对于任何包含响应式数据的复杂逻辑，你都应该使用**计算属性**。
 
@@ -67,7 +67,7 @@ Vue.createApp({
 }).mount('#computed-basics')
 ```
 
-Result:
+Result：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="NWqzrjr" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Computed basic example">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqzrjr">
@@ -80,7 +80,7 @@ Result:
 
 尝试更改应用程序 `data` 中 `books` 数组的值，你将看到 `publishedBooksMessage` 如何相应地更改。
 
-你可以像普通属性一样将数据绑定到模板中的计算属性。Vue知道 `vm.publishedBookMessage` 依赖于 `vm.author.books` ，因此当`vm.author.books `发生改变时，所有依赖 `vm.publishedBookMessage` 绑定也会更新。而且最妙的是我们已经声明的方式创建了这个依赖关系：计算属性的getter函数没有副作用，这使得更易于测试和理解。
+你可以像普通属性一样将数据绑定到模板中的计算属性。Vue 知道 `vm.publishedBookMessage` 依赖于 `vm.author.books`，因此当 `vm.author.books ` 发生改变时，所有依赖 `vm.publishedBookMessage` 绑定也会更新。而且最妙的是我们已经声明的方式创建了这个依赖关系：计算属性的 getter 函数没有副作用，这使得更易于测试和理解。
 
 
 ### 计算属性缓存 vs 方法
@@ -100,9 +100,9 @@ methods: {
 }
 ```
 
-我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果确实是完全相同的。然而，不同的是**计算属性是基于它们的反应依赖关系缓存的。**。计算属性只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要`author.books`还没有发生改变，多次访问 `publishedBookMessage` 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果确实是完全相同的。然而，不同的是**计算属性是基于它们的反应依赖关系缓存的。**。计算属性只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 `author.books` 还没有发生改变，多次访问 `publishedBookMessage` 计算属性会立即返回之前的计算结果，而不必再次执行函数。
 
-这也同样意味着下面的计算属性将不再更新，因为 Date.now() 不是响应式依赖：
+这也同样意味着下面的计算属性将不再更新，因为 Date.now () 不是响应式依赖：
 
 ```js
 computed: {
@@ -114,9 +114,9 @@ computed: {
 
 相比之下，每当触发重新渲染时，调用方法将总会再次执行函数。
 
-我们为什么需要缓存？假设我们有一个性能开销比较大的计算属性 `list`，它需要遍历一个巨大的数组并做大量的计算。然后我们可能有其他的计算属性依赖于 `list`。如果没有缓存，我们将不可避免的多次执行 `list` 的 getter！如果你不希望有缓存，请用`method`来替代。
+我们为什么需要缓存？假设我们有一个性能开销比较大的计算属性 `list`，它需要遍历一个巨大的数组并做大量的计算。然后我们可能有其他的计算属性依赖于 `list`。如果没有缓存，我们将不可避免的多次执行 `list` 的 getter！如果你不希望有缓存，请用 `method` 来替代。
 
-### 计算属性的Setter
+### 计算属性的 Setter
 
 计算属性默认只有 getter，不过在需要时你也可以提供一个 setter：
 
@@ -145,7 +145,7 @@ computed: {
 
 虽然计算属性在大多数情况下更合适，但有时也需要一个自定义的侦听器。这就是为什么 Vue 通过 `watch` 选项提供了一个更通用的方法，来响应数据的变化。当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。
 
-例如:
+例如：
 
 ```html
 <div id="watch-example">
@@ -194,7 +194,7 @@ computed: {
 </script>
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="GRJGqXp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Watch basic example">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/GRJGqXp">
@@ -205,7 +205,7 @@ computed: {
 
 在这个示例中，使用 `watch` 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。
 
-除了 watch 选项之外，你还可以使用命令式的 [vm.\$watch API](../api/instance-methods.html#watch)。
+除了 watch 选项之外，你还可以使用命令式的 [vm。\$watch API](../api/instance-methods.html#watch)。
 
 ### 计算属性 vs 侦听器
 

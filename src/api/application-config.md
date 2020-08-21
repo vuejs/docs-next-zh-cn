@@ -10,9 +10,9 @@ app.config = {...}
 
 ## devtools
 
-- **类型：** `boolean`
+- **类型：**`boolean`
 
-- **默认:** `true` (在生成打包中是`false`)
+- **默认：**`true` (在生成打包中是 `false`)
 
 - **用法：**
 
@@ -24,9 +24,9 @@ app.config.devtools = true
 
 ## errorHandler
 
-- **类型：** `Function`
+- **类型：**`Function`
 
-- **默认：** `undefined`
+- **默认：**`undefined`
 
 - **用法：**
 
@@ -40,13 +40,13 @@ app.config.errorHandler = (err, vm, info) => {
 
 指定组件的渲染和观察期间未捕获错误的处理函数。这个处理函数被调用时，可获取错误信息和应用实例。
 
-> 错误追踪服务 [Sentry](https://sentry.io/for/vue/) 和 [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/)使用此选项提供官方集成。
+> 错误追踪服务 [Sentry](https://sentry.io/for/vue/) 和 [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/) 使用此选项提供官方集成。
 
 ## warnHandler
 
-- **类型：** `Function`
+- **类型：**`Function`
 
-- **默认：** `undefined`
+- **默认：**`undefined`
 
 - **用法：**
 
@@ -60,9 +60,9 @@ app.config.warnHandler = function(msg, vm, trace) {
 
 ## globalProperties
 
-- **类型：** `[key: string]: any`
+- **类型：**`[key: string]: any`
 
-- **默认：** `undefined`
+- **默认：**`undefined`
 
 - **用法：**
 
@@ -76,9 +76,9 @@ app.component('child-component', {
 })
 ```
 
-添加可以在应用程序内的任何组件实例中访问的全局property。 按键冲突时，组件的属性将具有优先权。
+添加可以在应用程序内的任何组件实例中访问的全局 property。按键冲突时，组件的属性将具有优先权。
 
-这可以代替Vue 2.x `Vue.prototype` 扩展：
+这可以代替 Vue 2.x `Vue.prototype` 扩展：
 
 ```js
 // Before
@@ -91,9 +91,9 @@ app.config.globalProperties.$http = () => {}
 
 ## isCustomElement
 
-- **类型：** `(tag: string) => boolean`
+- **类型：**`(tag: string) => boolean`
 
-- **默认：** `undefined`
+- **默认：**`undefined`
 
 - **用法：**
 
@@ -102,15 +102,15 @@ app.config.globalProperties.$http = () => {}
 app.config.isCustomElement = tag => tag.startsWith('ion-')
 ```
 
-指定识别在Vue外部定义的自定义元素的方法（例如，使用Web组件API）。如果组件符合此条件，则不需要本地或全局注册，并且Vue不会抛出关于 `未知自定义元素` 的警告。
+指定识别在 Vue 外部定义的自定义元素的方法 (例如，使用 Web 组件 API)。如果组件符合此条件，则不需要本地或全局注册，并且 Vue 不会抛出关于 `未知自定义元素` 的警告。
 
-> 注意，所有原生HTML和SVG标记不需要在此函数中匹配 —— Vue解析器自动执行此检查
+> 注意，所有原生 HTML 和 SVG 标记不需要在此函数中匹配——Vue 解析器自动执行此检查
 
 ## optionMergeStrategies
 
-- **类型：** `{ [key: string]: Function }`
+- **类型：**`{ [key: string]: Function }`
 
-- **默认：** `{}`
+- **默认：**`{}`
 
 - **用法：**
 
@@ -140,10 +140,10 @@ app.mixin({
 
 ## performance
 
-- **类型：** `boolean`
+- **类型：**`boolean`
 
-- **默认：** `false`
+- **默认：**`false`
 
-- **Usage**:
+- **Usage**：
 
 设置为 `true` 以在浏览器开发工具的性能/时间线面板中启用对组件初始化、编译、渲染和打补丁的性能追踪。只适用于开发模式和支持 [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API 的浏览器上。

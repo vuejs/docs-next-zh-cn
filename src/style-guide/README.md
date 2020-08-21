@@ -12,15 +12,15 @@ sidebar: auto
 
 ## 规则归类
 
-### 优先级 A: 必要的
+### 优先级 A：必要的
 
 这些规则会帮你规避错误，所以学习并接受它们带来的全部代价吧。这里面可能存在例外，但应该非常少，且只有你同时精通 JavaScript 和 Vue 才可以这样做。
 
-### 优先级 B: 强烈推荐
+### 优先级 B：强烈推荐
 
 这些规则能够在绝大多数工程中改善可读性和开发体验。即使你违反了，代码还是能照常运行，但例外应该尽可能少且有合理的理由。
 
-### 优先级 C: 推荐
+### 优先级 C：推荐
 
 当存在多个同样好的选项，选任意一个都可以确保一致性。在这些规则里，我们描述了每个选项并建议一个默认的选择。也就是说只要保持一致且理由充分，你可以随意在你的代码库中做出不同的选择。请务必给出一个好的理由！通过接受社区的标准，你将会：
 
@@ -28,18 +28,18 @@ sidebar: auto
 2. 不做修改就可以直接复制粘贴社区的代码示例；
 3. 能够经常招聘到和你编码习惯相同的新人，至少跟 Vue 相关的东西是这样的。
 
-### 优先级 D: 谨慎使用
+### 优先级 D：谨慎使用
 
 有些 Vue 特性的存在是为了照顾极端情况或帮助老代码的平稳迁移。当被过度使用时，这些特性会让你的代码难于维护甚至变成 bug 的来源。这些规则是为了给有潜在风险的特性敲个警钟，并说明它们什么时候不应该使用以及为什么。
 
-## 优先级 A 的规则: 必要的 <span class="hide-from-sidebar">(规避错误)</span>
+## 优先级 A 的规则：必要的 <span class="hide-from-sidebar">(规避错误)</span>
 
-### 组件名为多个单词 <sup data-p="a">必要</sup>
+### 组件名为多个单词<sup data-p="a">必要</sup>
 
 
 **组件名应该始终是多个单词的，根组件 `App` 以及 `<transition>`、`<component>` 之类的 Vue 内置组件除外。**
 
-这样做可以避免跟现有的以及未来的 HTML 元素 [相冲突](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
+这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
@@ -75,14 +75,14 @@ export default {
 ```
 </div>
 
-### Prop 生命 <sup data-p="a">必要</sup>
+### Prop 生命<sup data-p="a">必要</sup>
 
 **Prop 定义应尽量详细**
 
 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。
 
 ::: details 详解
-细致的[prop 定义](https://vuejs.org/v2/guide/components.html#Prop-Validation) 有两个好处:
+细致的 [prop 定义](https://vuejs.org/v2/guide/components.html#Prop-Validation)有两个好处：
 
 - 它们写明了组件的 API，所以很容易看懂组件的用法；
 - 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
@@ -126,11 +126,11 @@ props: {
 ```
 </div>
 
-### 为 `v-for` 设置key值<sup data-p="a">必要</sup>
+### 为 `v-for` 设置 key 值<sup data-p="a">必要</sup>
 
-**总是用 `key` 配合 `v-for`.**
+**总是用 `key` 配合 `v-for`**
 
-在组件上总是必须用 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。甚至在元素上维护可预测的行为，比如动画中的 [对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/) ，也是一种好的做法。
+在组件上总是必须用 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。甚至在元素上维护可预测的行为，比如动画中的[对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/) ，也是一种好的做法。
 
 ::: details 详解
 假设你有一个待办事项列表：
@@ -186,7 +186,7 @@ data() {
 ```
 </div>
 
-### 避免 `v-if` 和 `v-for` 用在一起 <sup data-p="a">必要</sup>
+### 避免 `v-if` 和 `v-for` 用在一起<sup data-p="a">必要</sup>
 
 **永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上。**
 
@@ -335,11 +335,11 @@ computed: {
 ```
 </div>
 
-### 为组件样式设置作用域 <sup data-p="a">必要</sup>
+### 为组件样式设置作用域<sup data-p="a">必要</sup>
 
 **对于应用来说，顶级 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
 
-这条规则只和 [单文件组件](../guide/single-file-components.html) 有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html) 。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) ，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
+这条规则只和[单文件组件](../guide/single-file-components.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
 
 **不管怎样，对于组件库，我们应该更倾向于选用基于 class 的策略而不是 `scoped` attribute。**
 
@@ -426,7 +426,7 @@ computed: {
 ```
 </div>
 
-### 私有 property 名 <sup data-p="a">必要</sup>
+### 私有 property 名<sup data-p="a">必要</sup>
 
 **使用模块作用域保持不允许外部访问的函数的私有性。如果无法做到这一点，就始终为插件、混入等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
 
@@ -523,9 +523,9 @@ export default myGreatMixin
 ```
 </div>
 
-## 优先级 B 的规则: 强烈推荐 <span class="hide-from-sidebar">(增强可读性)</span>
+## 优先级 B 的规则：强烈推荐 <span class="hide-from-sidebar">(增强可读性)</span>
 
-### 组件文件 <sup data-p="b">强烈推荐</sup>
+### 组件文件<sup data-p="b">强烈推荐</sup>
 
 **只要有能够拼接文件的构建系统，就把每个组件单独分成文件。**
 
@@ -561,7 +561,7 @@ components/
 ```
 </div>
 
-### 单文件组件文件的大小写 <sup data-p="b">强烈推荐</sup>
+### 单文件组件文件的大小写<sup data-p="b">强烈推荐</sup>
 
 
 **[单文件组件](../guide/single-file-components.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
@@ -596,7 +596,7 @@ components/
 ```
 </div>
 
-### 基础组件名 <sup data-p="b">强烈推荐</sup>
+### 基础组件名<sup data-p="b">强烈推荐</sup>
 
 **应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 `Base`、`App` 或 `V`。**
 
@@ -672,7 +672,7 @@ components/
 ```
 </div>
 
-### 单组件名 <sup data-p="b">强烈推荐</sup>
+### 单组件名<sup data-p="b">强烈推荐</sup>
 
 **只应该拥有单个活跃实例的组件应该以 `The` 前缀命名，以示其唯一性。**
 
@@ -698,7 +698,7 @@ components/
 ```
 </div>
 
-### 紧密耦合的组件名 <sup data-p="b">强烈推荐</sup>
+### 紧密耦合的组件名<sup data-p="b">强烈推荐</sup>
 
 **和父组件紧密耦合的子组件应该以父组件名作为前缀命名。**
 
@@ -768,7 +768,7 @@ components/
 ```
 </div>
 
-### 组件名中的单词顺序 <sup data-p="b">强烈推荐</sup>
+### 组件名中的单词顺序<sup data-p="b">强烈推荐</sup>
 
 **组件名应该以高级别的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。**
 
@@ -785,7 +785,7 @@ components/
 
 如果你愿意，你完全可以在组件名里包含这些连接词，但是单词的顺序很重要。
 
-同样要注意 **在你的应用中所谓的“高级别”是跟语境有关的**。比如对于一个带搜索表单的应用来说，它可能包含这样的组件：
+同样要注意**在你的应用中所谓的“高级别”是跟语境有关的**。比如对于一个带搜索表单的应用来说，它可能包含这样的组件：
 
 ```
 components/
@@ -847,13 +847,13 @@ components/
 ```
 </div>
 
-### 自闭合组件 <sup data-p="b">强烈推荐</sup>
+### 自闭合组件<sup data-p="b">强烈推荐</sup>
 
-**在 [单文件组件](../guide/single-file-components.html)、字符串模板和 [JSX](../guide/render-function.html#JSX) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
+**在[单文件组件](../guide/single-file-components.html)、字符串模板和 [JSX](../guide/render-function.html#JSX) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
 
-自闭合组件表示它们不仅没有内容，而且 **刻意** 没有内容。其不同之处就好像书上的一页白纸对比贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也更简洁。
+自闭合组件表示它们不仅没有内容，而且**刻意**没有内容。其不同之处就好像书上的一页白纸对比贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也更简洁。
 
-不幸的是，HTML 并不支持自闭合的自定义元素——只有 [官方的“空”元素](https://www.w3.org/TR/html/syntax.html#void-elements)。所以上述策略仅适用于进入 DOM 之前 Vue 的模板编译器能够触达的地方，然后再产出符合 DOM 规范的 HTML。
+不幸的是，HTML 并不支持自闭合的自定义元素——只有[官方的“空”元素](https://www.w3.org/TR/html/syntax.html#void-elements)。所以上述策略仅适用于进入 DOM 之前 Vue 的模板编译器能够触达的地方，然后再产出符合 DOM 规范的 HTML。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
@@ -883,9 +883,9 @@ components/
 ```
 </div>
 
-### 模板中的组件名大小写 <sup data-p="b">强烈推荐</sup>
+### 模板中的组件名大小写<sup data-p="b">强烈推荐</sup>
 
-**对于绝大多数项目来说，在 [单文件组件](../guide/single-file-components.html) 和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的。**
+**对于绝大多数项目来说，在[单文件组件](../guide/single-file-components.html)和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的。**
 
 PascalCase 相比 kebab-case 有一些优势：
 
@@ -937,7 +937,7 @@ PascalCase 相比 kebab-case 有一些优势：
 ```
 </div>
 
-### JS/JSX 中的组件名大小写 <sup data-p="b">强烈推荐</sup>
+### JS/JSX 中的组件名大小写<sup data-p="b">强烈推荐</sup>
 
 **JS/[JSX](../guide/render-function.html#JSX) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
 
@@ -1007,7 +1007,7 @@ export default {
 ```
 </div>
 
-### 完整单词的组件名 <sup data-p="b">强烈推荐</sup>
+### 完整单词的组件名<sup data-p="b">强烈推荐</sup>
 
 **组件名应该倾向于完整单词而不是缩写。**
 
@@ -1033,9 +1033,9 @@ components/
 ```
 </div>
 
-### Prop 名大小写 <sup data-p="b">强烈推荐</sup>
+### Prop 名大小写<sup data-p="b">强烈推荐</sup>
 
-**在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和  [JSX](../guide/render-function.html#JSX) 中应该始终使用 kebab-case。**
+**在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#JSX) 中应该始终使用 kebab-case。**
 
 我们单纯的遵循每个语言的约定。在 JavaScript 中更自然的是 camelCase。而在 HTML 中则是 kebab-case。
 
@@ -1067,7 +1067,7 @@ props: {
 ```
 </div>
 
-### 多个 attribute 的元素 <sup data-p="b">强烈推荐</sup>
+### 多个 attribute 的元素<sup data-p="b">强烈推荐</sup>
 
 **多个 attribute 的元素应该分多行撰写，每个 attribute 一行。**
 
@@ -1104,7 +1104,7 @@ props: {
 ```
 </div>
 
-### 模板中简单的表达式 <sup data-p="b">强烈推荐</sup>
+### 模板中简单的表达式<sup data-p="b">强烈推荐</sup>
 
 **组件模板应该只包含简单的表达式，复杂的表达式则应该重构为计算属性或方法。**
 
@@ -1142,7 +1142,7 @@ computed: {
 ```
 </div>
 
-### 简单的计算属性 <sup data-p="b">强烈推荐</sup>
+### 简单的计算属性<sup data-p="b">强烈推荐</sup>
 
 **应该把复杂计算属性分割为尽可能多的更简单的 property。**
 
@@ -1200,7 +1200,7 @@ computed: {
 ```
 </div>
 
-### 带引号的 attribute 值 <sup data-p="b">强烈推荐</sup>
+### 带引号的 attribute 值<sup data-p="b">强烈推荐</sup>
 
 **非空 HTML attribute 值应该始终带引号 (单引号或双引号，选你 JS 里不用的那个)。**
 
@@ -1230,9 +1230,9 @@ computed: {
 ```
 </div>
 
-### 指令缩写 <sup data-p="b">强烈推荐</sup>
+### 指令缩写<sup data-p="b">强烈推荐</sup>
 
-**指令缩写 (用`:` 表示 `v-bind:`, `@` 表示 `v-on:` 和用 `#` 表示 `v-slot`) 应该要么都用要么都不用。**
+**指令缩写 (用 `:` 表示 `v-bind:`，`@` 表示 `v-on:` 和用 `#` 表示 `v-slot`) 应该要么都用要么都不用。**
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
@@ -1315,9 +1315,9 @@ computed: {
 </div>
 
 
-## 优先级 C 的规则: 推荐 <span class="hide-from-sidebar">(将选择和认知成本最小化)</span>
+## 优先级 C 的规则：推荐 <span class="hide-from-sidebar">(将选择和认知成本最小化)</span>
 
-### 组件/实例的选项的顺序 <sup data-p="c">推荐</sup>
+### 组件/实例的选项的顺序<sup data-p="c">推荐</sup>
 
 **组件/实例的选项应该有统一的顺序。**
 
@@ -1340,7 +1340,7 @@ computed: {
     - `props`
     - `emits`
 
-5. **组合 API** (使用组合 API的入口点)
+5. **组合 API** (使用组合 API 的入口点)
     - `setup`
 
 6. **Local State** (本地的响应式 property)
@@ -1370,7 +1370,7 @@ computed: {
 9. **渲染** (组件输出的声明式描述)
     - `template`/`render`
 
-### 元素 attribute 的顺序 <sup data-p="c">推荐</sup>
+### 元素 attribute 的顺序<sup data-p="c">推荐</sup>
 
 **元素 (包括组件) 的 attribute 应该有统一的顺序。**
 
@@ -1412,7 +1412,7 @@ computed: {
     - `v-html`
     - `v-text`
 
-### 组件/实例选项中的空行 <sup data-p="c">推荐</sup>
+### 组件/实例选项中的空行<sup data-p="c">推荐</sup>
 
 **你可能想在多个 property 之间增加一个空行，特别是在这些选项一屏放不下，需要滚动才能都看到的时候。**
 
@@ -1477,7 +1477,7 @@ computed: {
 ```
 </div>
 
-### 单文件组件的顶级元素的顺序 <sup data-p="c">推荐</sup>
+### 单文件组件的顶级元素的顺序<sup data-p="c">推荐</sup>
 
 **[单文件组件] (../guide/single-file-components.html)应该总是让 `<script>`、`<template>` 和 `<style>` 标签的顺序保持一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
 
@@ -1531,7 +1531,7 @@ computed: {
 ```
 </div>
 
-### `scoped` 中的元素选择器 <sup data-p="d">谨慎使用</sup>
+### `scoped` 中的元素选择器<sup data-p="d">谨慎使用</sup>
 
 **元素选择器应该避免在 `scoped` 中出现。**
 
@@ -1541,7 +1541,7 @@ computed: {
 
 为了给样式设置作用域，Vue 会为元素添加一个独一无二的 attribute，例如 `data-v-f3f3eg9`。然后修改选择器，使得在匹配选择器的元素中，只有带这个 attribute 才会真正生效 (比如 `button[data-v-f3f3eg9]`)。
 
-问题在于大量的 [元素和 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (比如 `button[data-v-f3f3eg9]`) 会比 [类和 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000) 慢，所以应该尽可能选用类选择器。
+问题在于大量的[元素和 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (比如 `button[data-v-f3f3eg9]`) 会比[类和 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000)慢，所以应该尽可能选用类选择器。
 
 :::
 
@@ -1577,7 +1577,7 @@ button {
 ```
 </div>
 
-### 隐性的父子组件通信 <sup data-p="d">谨慎使用</sup>
+### 隐性的父子组件通信<sup data-p="d">谨慎使用</sup>
 
 **应该优先通过 prop 和事件进行父子组件之间的通信，而不是 `this.$parent` 或变更 prop。**
 
@@ -1670,13 +1670,13 @@ app.component('TodoItem', {
 ```
 </div>
 
-### 非 Flux 的全局状态管理 <sup data-p="d">谨慎使用</sup>
+### 非 Flux 的全局状态管理<sup data-p="d">谨慎使用</sup>
 
 **应该优先通过 [Vuex](https://github.com/vuejs/vuex) 管理全局状态，而不是通过 `this.$root` 或一个全局事件总线。**
 
-通过 `this.$root` 和/或 [全局事件总线管理](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced) 状态在很多简单的情况下都是很方便的，但是并不适用于绝大多数的应用。
+通过 `this.$root` 和/或[全局事件总线管理](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced)状态在很多简单的情况下都是很方便的，但是并不适用于绝大多数的应用。
 
-Vuex 是 Vue 的 [官方类 flux 实现](https://vuejs.org/v2/guide/state-management.html#Official-Flux-Like-Implementation) ，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](https://vuejs.org/v2/guide/installation.html#Vue-Devtools) 支持)。
+Vuex 是 Vue 的[官方类 flux 实现](https://vuejs.org/v2/guide/state-management.html#Official-Flux-Like-Implementation)，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](https://vuejs.org/v2/guide/installation.html#Vue-Devtools) 支持)。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
