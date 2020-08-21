@@ -58,5 +58,15 @@ module.exports = [
       },
       { text: 'T-Shirt 商店', link: 'https://vue.threadless.com/' }
     ]
+  },
+  {
+    text: '多语言',
+    link: '#',
+    items: [
+      {
+        text: 'English',
+        link: 'https://v3.vuejs.org'
+      }
+    ]
   }
 ]
