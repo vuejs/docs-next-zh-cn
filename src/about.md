@@ -6,8 +6,8 @@ sidebar: auto
 
 # Vue 中文文档贡献 
 
-::: tip
-Vue 3 中文文档差不多有 3/4 —— 2/3 的比例内容来自Vue 2中文文档。在此，感谢所有对此贡献的朋友们 !
+:::tip
+Vue 3 中文文档差不多有 3/4——2/3 的比例内容来自 Vue 2 中文文档。在此，感谢所有对此贡献的朋友们！
 
 本文档首次翻译完成于：2020年8月13日
 :::
@@ -101,7 +101,7 @@ Vue 3 中文文档差不多有 3/4 —— 2/3 的比例内容来自Vue 2中文�
 | 45 |[guide/a11y-standards.md](/src/guide/a11y-standards.md)                                      | 标准 |[@veaba](https://github.com/veaba)|-|
 | 46 |[guide/a11y-resources.md](/src/guide/a11y-resources.md)                                      | 资源 |[@veaba](https://github.com/veaba)|-|
 
-### 从Vue2迁移
+### 从 Vue 2 迁移
 
 | <p style="width:40px">序号</p>  | 对应文档文件名 | 中文标题 | 翻译贡献者 | 校对主要贡献者 |
 |--------|--------------|----------|-----------|---------------|
@@ -166,7 +166,7 @@ Vue 3 中文文档差不多有 3/4 —— 2/3 的比例内容来自Vue 2中文�
 ## Vue 2 中文文档贡献 
 ### Guide 翻译贡献
 
-#### Essentials  基础
+#### Essentials 基础
 
 序号 | 对应文档文件名 | 中文标题 | 翻译贡献者 | 校对主要贡献者
 ----- | ------------- | --- | --- | --- | --- | ---
@@ -182,7 +182,7 @@ Vue 3 中文文档差不多有 3/4 —— 2/3 的比例内容来自Vue 2中文�
 10 |  forms.md  | 表单控件绑定 | [dingyiming](https://github.com/dingyiming) | [yangzj1992](https://github.com/yangzj1992)
 11 |  components.md |  组件 | [ezreally](https://github.com/ezreally) | [cuiyongjian](https://github.com/cuiyongjian)
 
-#### Advanced  进阶
+#### Advanced 进阶
 
 序号 | 对应文档文件名 | 中文标题 | 翻译贡献者 | 校对主要贡献者
 ----- | ------------- | --- | --- | --- | ---
@@ -199,21 +199,21 @@ Vue 3 中文文档差不多有 3/4 —— 2/3 的比例内容来自Vue 2中文�
 22 |  unit-testing.md | 单元测试 | [70data](https://github.com/70data) | [mlyknown](https://github.com/mlyknown)
 23 |  ssr.md |  服务端渲染 | [dingyiming](https://github.com/dingyiming) | [yongbolv](https://github.com/yongbolv)
 
-#### Migration  迁移
+#### Migration 迁移
 
 序号 | 对应文档文件名 | 中文标题 | 翻译贡献者 | 校对主要贡献者
 ----- |  ------------- | --- | --- | --- | ---
 24 |  migration.md | 1.x迁移 | [hurrytospring](https://github.com/hurrytospring) | [yongbolv](https://github.com/yongbolv)
 27 |  migration-vue-router.md | vue-router 0.7.x 迁移 | [forzajuve10](https://github.com/forzajuve10) | [yizhixiaolongxia](https://github.com/yizhixiaolongxia)
 
-#### Meta  更多
+#### Meta 更多
 
 序号 | 对应文档文件名 | 中文标题 |  翻译贡献者 | 校对主要贡献者
 ----- | ------------- | --- | --- | --- | ---
 25 |  comparison.md |   对比其他框架 | [yongbolv](https://github.com/yongbolv) | [yangzj1992](https://github.com/yangzj1992)
 26 |  join.md |  加入 Vue.js 社区 | [daix6](https://github.com/daix6) | [zhouzihanntu](https://github.com/zhouzihanntu)
 
-### API翻译贡献
+### API 翻译贡献
 
 序号 | 对应小节名称 | 中文标题 | 翻译贡献者 | 校对主要贡献者
 ----- |  ------------- | --- | --- | --- | --- | ---
@@ -236,6 +236,6 @@ Vue 3 中文文档差不多有 3/4 —— 2/3 的比例内容来自Vue 2中文�
 
 ### 示例翻译
 
-翻译贡献者 ： [lindazhang102](https://github.com/lindazhang102)
+翻译贡献者：[lindazhang102](https://github.com/lindazhang102)
 
 ### 感谢所有参与翻译的朋友们！
