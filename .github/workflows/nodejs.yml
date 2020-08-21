@@ -1,0 +1,34 @@
+name: Vue-docs CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: 步骤：第一步 -> 设置环境
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: 步骤：第二步 -> 安装依赖
+        run: |
+          npm install
+          npm run build
+        env:
+          CI: true
+
+      - name: 步骤：第三步 -> 部署脚本
+        env:
+          ACCESS_TOKEN_DEPLOY: ${{secrets.ACTIONS_ACCESS_TOKEN_VUE_DOCS_CI }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./src/.vuepress/dist
+          CNAME: cn.v3.vuejs.org
+        run: |
+          chmod +x ./scripts/deploy.sh
+          bash ./scripts/deploy.sh
