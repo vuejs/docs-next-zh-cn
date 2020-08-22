@@ -12,11 +12,11 @@
 
   :::tip 注意
   出于安全考虑，你应该只使用你信任的 Vue 模板。避免使用其他人生成的内容作为你的模板。
-  ：:：
+  :::
 
   :::tip 注意
   如果 Vue 选项中包含渲染函数，该模板将被忽略。
-  ：:：
+  :::
 
 -  **参考**
   - [生命周期图示](../guide/instance.html#lifecycle-diagram)
@@ -61,6 +61,6 @@
 
   :::tip 注意
   `render` 函数的优先级高于从挂载元素 `template` 选项或内置 DOM 提取出的 HTML 模板编译渲染函数。
-  ：:：
+  :::
 
 -  **参考** [Render Functions](../guide/render-function.html)

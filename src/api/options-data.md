@@ -147,7 +147,7 @@
 
   :::tip 注意
   注意，**不应该使用箭头函数来定义 method 函数** (例如 plus：() => this.a++)。理由是箭头函数绑定了父级作用域的上下文，所以 `this` 将不会按照期望指向组件实例，`this.a` 将是 undefined。
-  ：:：
+  :::
 
 - **示例：**
 
@@ -243,10 +243,10 @@
   vm.a = 3 // => new: 3, old: 1
   ```
 
-  ：:：tip 注意
+  :::tip 注意
   注意，*不应该使用箭头函数来定义 watcher 函数* (例如 `searchQuery: newValue => this.updateAutocomplete(newValue)`)。理由是箭头函数绑定了父级作用域的上下文，所以 `this` 将不会按照期望指向组件实例，`this.updateAutocomplete` 将是 undefined。
 
-  ：:：
+  :::
 
 -  **参考** [Watchers](../guide/computed.html#watchers)
 
@@ -293,8 +293,8 @@
   })
   ```
   
-  ：:：tip 注意
+  :::tip 注意
   `emits` 选项中列出的事件**不会**从组件的根元素继承，也将从 `$attrs` property 中移除。
-  ：:：
+  :::
 
 -  **参考** [Attribute 继承](../guide/component-attrs.html#attribute继承)

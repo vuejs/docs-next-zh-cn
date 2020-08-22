@@ -185,9 +185,9 @@ methods: {
 <div @click.self="doThat">...</div>
 ```
 
-：:：tip
+:::tip
 使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 `v-on:click.prevent.self` 会阻止所有的点击，而 `v-on:click.self.prevent` 只会阻止对元素自身的点击。
-：:：
+:::
 
 ```html
 <!-- 点击事件将只会触发一次 -->
@@ -206,9 +206,9 @@ Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozil
 
 这个 `.passive` 修饰符尤其能够提升移动端的性能。
 
-：:：tip
+:::tip
 不要把 `.passive` 和 `.prevent` 一起使用，因为 `.prevent` 将会被忽略，同时浏览器可能会向你展示一个警告。请记住，`.passive` 会告诉浏览器你*不想*阻止事件的默认行为。
-：:：
+:::
 
 ## 按键修饰符
 
@@ -250,9 +250,9 @@ Vue 为最常用的键提供了别名：
 - `.shift`
 - `.meta`
 
-：:：tip 提示
+:::tip 提示
 注意：在 Mac 系统键盘上，meta 对应 command 键 (⌘)。在 Windows 系统键盘 meta 对应 Windows 徽标键 (⊞)。在 Sun 操作系统键盘上，meta 对应实心宝石键 (◆)。在其他特定键盘上，尤其在 MIT 和 Lisp 机器的键盘、以及其后继产品，比如 Knight 键盘、space-cadet 键盘，meta 被标记为“META”。在 Symbolics 键盘上，meta 被标记为“META”或者“Meta”。
-：:：
+:::
 
 例如：
 
@@ -264,9 +264,9 @@ Vue 为最常用的键提供了别名：
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
-：:：tip
+:::tip
 请注意修饰键与常规按键不同，在和 `keyup` 事件一起用时，事件触发时修饰键必须处于按下状态。换句话说，只有在按住 `ctrl` 的情况下释放其它按键，才能触发 `keyup.ctrl`。而单单释放 `ctrl` 也不会触发事件。
-：:：
+:::
 
 ### `.exact` 修饰符
 

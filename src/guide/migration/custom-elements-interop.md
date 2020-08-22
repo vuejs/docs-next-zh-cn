@@ -120,7 +120,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 </table>
 ```
 
-：:：warning
+:::warning
 `v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要按注册名称渲染组件，其值应为 JavaScript 字符串文本：
 
 ```html
@@ -131,7 +131,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 <tr v-is="'blog-post-row'"></tr>
 ```
 
-：:：
+:::
 
 ## 迁移策略
 

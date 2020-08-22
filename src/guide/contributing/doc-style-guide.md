@@ -33,21 +33,21 @@ This is something we do not recommend. Use at your own risk.
 
 **渲染 Markdown**
 
-：:：info
+:::info
 You can find more information at this site。
-：:：
+:::
 
-：:：tip
+:::tip
 This is a great tip to remember！
-：:：
+:::
 
-：:：warning
+:::warning
 This is something to be cautious of。
-：:：
+:::
 
-：:：danger DANGER
+:::danger DANGER
 This is something we do not recommend。Use at your own risk。
-：:：
+:::
 
 ## 代码块
 

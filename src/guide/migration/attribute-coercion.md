@@ -5,9 +5,9 @@ badges:
 
 # attribute 强制行为 <MigrationBadges :badges="$frontmatter.badges" />
 
-：:：info 信息
+:::info 信息
 这是一个低级的内部 API 更改，不会影响大多数开发人员。
-：:：
+:::
 
 ## 概览
 

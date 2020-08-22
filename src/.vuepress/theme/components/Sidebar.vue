@@ -1,61 +1,91 @@
 <template>
   <aside class="sidebar">
-    <NavLinks />
 
-    <slot name="top" />
+    <!-- sidebar ad-->
+    <div class="sidebar-inner">
+      <div class="list">
+        <h4>特别赞助商</h4>
+        <SpecialSponsorBlock v-for="item in specialSponsors" :sponsor="item"></SpecialSponsorBlock>
+      </div>
+    </div>
 
-    <SidebarLinks :depth="0" :items="items" />
-    <slot name="bottom" />
+    <NavLinks/>
+
+    <slot name="top"/>
+
+    <SidebarLinks :depth="0" :items="items"/>
+    <slot name="bottom"/>
   </aside>
 </template>
 
 <script>
 import SidebarLinks from '@theme/components/SidebarLinks.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
+import SpecialSponsorBlock from '@theme/components/sponsors/SpecialSponsorBlock'
+import sponsors from '@theme/data/patreon-sponsors.js'
 
 export default {
   name: 'Sidebar',
 
-  components: { SidebarLinks, NavLinks },
+  components: { SidebarLinks, NavLinks, SpecialSponsorBlock },
 
-  props: ['items']
+  props: ['items'],
+
+  data() {
+    return {
+      specialSponsors: sponsors.special_sponsors_sidebar || []
+    }
+  }
 }
 </script>
 
 <style lang="stylus">
 .sidebar
+  .sidebar-inner
+    padding 35px 0 0 20px;
+
   ul
     padding 0
     margin 0
     list-style-type none
+
   a
     display inline-block
+
   .nav-links
     display none
     border-bottom 1px solid $borderColor
     padding 0.5rem 0 0.75rem 0
+
     a
       font-weight 600
+
     .nav-item, .repo-link
       display block
       line-height 1.25rem
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem
+
   & > .sidebar-links
     padding 1.5rem 0
+
     & > li > a.sidebar-link
       font-size 1.1em
       line-height 1.7
       font-weight bold
+
     & > li:not(:first-child)
       margin-top .75rem
+
 
 @media (max-width: $MQMobile)
   .sidebar
     .nav-links
       display block
+
       .dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after
         top calc(1rem - 2px)
+
     & > .sidebar-links
       padding 1rem 0
 </style>

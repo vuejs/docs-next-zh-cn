@@ -53,10 +53,21 @@ module.exports = [
         link: '/support-vuejs/#one-time-donations'
       },
       {
-        text: '经常捐款',
+        text: '周期性捐款',
         link: '/support-vuejs/#recurring-pledges'
       },
-      { text: 'T-Shirt 商店', link: 'https://vue.threadless.com/' }
+      {
+        text: '贴纸',
+        link: 'https://www.smallsticker.com/%E8%B4%B4%E7%BA%B8/vue.html'
+      },
+      {
+        text: '周边',
+        link: 'https://osholic.com/?utm_source=vue&utm_medium=dropdown'
+      },
+      {
+        text: 'T-Shirt 商店',
+        link: 'https://vue.threadless.com/'
+      }
     ]
   },
   {

@@ -113,6 +113,6 @@ export default {
 
 :::tip Tip：
 建议使用带有冗余地标 role 属性的地标 HTML 元素，以便最大限度地与传统[不支持 HTML5 语义元素的浏览器](https://caniuse.com/#feat=html5semantic)兼容。
-：:：
+:::
 
 [阅读更多关于地标](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)

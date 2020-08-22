@@ -1,18 +1,7 @@
 <template>
   <div class="overlay" v-show="isOpen">
     <div ref="modal" class="modal" :class="{ open: isOpen }">
-      <div class="video-space" style="padding: 56.25% 0 0 0; position: relative;">
-        <iframe
-          src="https://player.vimeo.com/video/247494684?dnt=1"
-          style="height: 100%; left: 0; position: absolute; top: 0; width: 100%; margin: 0"
-          frameborder="0"
-          webkitallowfullscreen
-          mozallowfullscreen
-          allowfullscreen
-          ref="videoIframe"
-        ></iframe>
-      </div>
-
+      <div class="video-space" style="padding: 56.25% 0 0 0; position: relative;"></div>
       <p class="modal-text">
         Video by
         <a
@@ -43,32 +32,33 @@ export default {
   },
 
   data: () => ({
-    isOpen: false
+    isOpen: false,
+    iframeHTML: '<iframe id="videoIframe" style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;" src="//player.youku.com/embed/XMzMwMTYyODMyNA==?autoplay=true&client_id=37ae6144009e277d" frameborder="0" allowfullscreen></iframe>'
   }),
 
   methods: {
-    initVideoModal () {
+    initVideoModal() {
       const modalButton = document.querySelector(this.triggerSelector)
-      const player = new Vimeo.Player(this.$refs.videoIframe)
-
+      const videoSpace = document.querySelector('.video-space')
       modalButton.addEventListener('click', event => {
         event.stopPropagation()
         this.isOpen = true
         document.body.classList.toggle('stop-scroll')
-        player.play()
+        videoSpace.innerHTML = this.iframeHTML
       })
 
       document.body.addEventListener('click', event => {
         if (this.isOpen && event.target !== modalButton && !this.$refs.modal.contains(event.target)) {
-          this.isOpen = false
+          const videoIframe = document.querySelector('#videoIframe')
+          videoSpace && videoSpace.removeChild(videoIframe)
           document.body.classList.remove('stop-scroll')
-          player.pause()
+          this.isOpen = false
         }
       })
     }
   },
 
-  mounted () {
+  mounted() {
     if (typeof window !== 'undefined') {
       this.initVideoModal()
     }

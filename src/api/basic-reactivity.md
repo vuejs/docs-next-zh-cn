@@ -111,7 +111,7 @@ const bar = reactive({ foo })
 console.log(isReactive(bar.foo)) // false
 ```
 
-：:：warning
+:::warning
 
 下方的 `markRaw` 和 shallowXXX API 使你可以有选择地选择退出默认的深度响应式/只读转换，并将原始的，非代理的对象嵌入状态图中。它们可以在各种情况下使用：
 
@@ -137,7 +137,7 @@ console.log(foo.nested === bar.nested) // false
 
 本源危害通常很少见。然而，为了在安全地避免本源危害的同时正确地使用这些 api，需要对响应式系统的工作原理有一个坚实的理解。
 
-：:：
+:::
 
 ## `shallowReactive`
 

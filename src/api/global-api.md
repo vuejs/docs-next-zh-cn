@@ -197,7 +197,7 @@ const AsyncComp = defineAsyncComponent({
 
 :::warning
 `resolveComponent` 只能在 `render` 或 `setup` 函数中使用。
-：:：
+:::
 
 
 如果在当前应用程序实例中可用，则允许按名称解析 `component`。
@@ -234,7 +234,7 @@ render() {
 :::warning
 
 `resolveDynamicComponent` 只能在 `render` 或 `setup` 函数中使用。
-：:：
+:::
 
 允许使用 `<component :is="">` 所采用的相同机制来解析 `component`。
 
@@ -264,7 +264,7 @@ render () {
 
 :::warning
 `resolveDirective` 只能在 `render` 或 `setup` 函数中使用。
-：:：
+:::
 
 允许按名称解析 `directive`，如果在当前应用程序实例中可用。
 
@@ -298,7 +298,7 @@ render () {
 
 :::warning
 `withDirectives` 只能在 `render` 或 `setup` 函数中使用。
-：:：
+:::
 
 允许将指令应用于 **VNode**，返回带有已应用指令的 VNode。
 

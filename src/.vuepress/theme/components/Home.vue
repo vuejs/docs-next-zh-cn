@@ -42,7 +42,7 @@
     <section class="section-sponsors" ref="sponsors">
       <div class="inner">
         <PatreonSponsors :sponsors="sponsors" />
-        <OpenCollectiveSponsors />
+        <OpenCollectiveSponsors :sponsors="sponsors" />
       </div>
     </section>
 

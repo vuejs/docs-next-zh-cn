@@ -24,14 +24,7 @@ module.exports = {
     [
       'script',
       {
-        src: 'https://player.vimeo.com/api/player.js'
-      }
-    ],
-    [
-      'script',
-      {
-        src: 'https://extend.vimeocdn.com/ga/72160148.js',
-        defer: 'defer'
+        src: 'https://player.youku.com/iframeapi'
       }
     ]
   ],
@@ -46,7 +39,7 @@ module.exports = {
     sidebar: {
       collapsable: false,
       '/guide/': sidebar.guide,
-      '/community/': sidebar.guide,
+      '/community/': sidebar.community,
       '/api/': sidebar.api,
       '/examples/': sidebar.examples
     },

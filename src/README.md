@@ -26,7 +26,7 @@ features:
       超快虚拟 DOM<br>
       最省心的优化
 footer: |
-  Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a><br>
+  遵循<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener"> MIT 开源协议</a><br>
   Copyright © 2014-2020 Evan You
 socialIcons:
   - type: GitHub

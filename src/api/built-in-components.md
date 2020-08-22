@@ -196,9 +196,9 @@
   </keep-alive>
   ```
 
-  ：:：warning
+  :::warning
   `<keep-alive>` 不会在函数式组件中正常工作，因为它们没有缓存实例。
-  ：:：
+  :::
 
 -  **参考：** [动态组件 - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
 

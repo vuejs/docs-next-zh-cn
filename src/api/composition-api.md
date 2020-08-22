@@ -27,9 +27,9 @@ interface SetupContext {
 function setup(props: Data, context: SetupContext): Data
 ```
 
-：:：tip
+:::tip
 若要获取传递给 `setup()` 的参数的类型推断，请使用 [defineComponent](global-api.html#definecomponent) 是需要的。
-：:：
+:::
 
 - **示例：**
 
