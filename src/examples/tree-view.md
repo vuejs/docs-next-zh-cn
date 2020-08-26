@@ -1,6 +1,6 @@
-# Tree View
+# 树形视图
 
-> Example of a tree view implementation showcasing recursive usage of components.
+> 本示例是一个简单的树形视图实现，它展现了组件的递归使用。
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="WNwQqbN" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vue 3 Tree View">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/WNwQqbN">
