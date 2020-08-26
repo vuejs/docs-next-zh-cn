@@ -2,7 +2,7 @@
 
 ## 发布版本说明
 
-最新 beta 版本：3.0.0-rc.6
+最新 beta 版本：3.0.0-rc.8
 
 每个版本的详细发行说明可在 [GitHub](https://github.com/vuejs/vue-next/releases) 上找到。
 
