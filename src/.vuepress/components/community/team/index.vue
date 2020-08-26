@@ -7,7 +7,7 @@
         </h2>
 
         <div v-if="errorGettingLocation" class="danger custom-block">
-            <p>Failed to get your location.</p>
+            <p>无法获取你的位置。</p>
         </div>
 
         <p>
@@ -15,7 +15,7 @@
         </p>
 
         <div v-if="userPosition" class="tip custom-block">
-            <p>The core team have been sorted by their distance from you.</p>
+            <p>核心团队成员已经根据他们与你的距离进行了排序。</p>
         </div>
 
         <VuerProfile v-for="profile in members" :key="profile.name" :profile="profile" :use-miles="useMiles" />
@@ -40,7 +40,7 @@
         </h2>
 
         <div v-if="errorGettingLocation" class="danger custom-block">
-            <p>Failed to get your location.</p>
+            <p>无法获取你的位置。</p>
         </div>
 
         <p>
@@ -48,7 +48,7 @@
         </p>
 
         <div v-if="userPosition" class="tip custom-block">
-            <p>The community partners have been sorted by their distance from you.</p>
+            <p>社区合作伙伴已经按照他们与你的距离进行了排序。</p>
         </div>
 
         <VuerProfile v-for="profile in partners" :key="profile.name" :profile="profile" :use-miles="useMiles" />

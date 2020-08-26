@@ -56,7 +56,7 @@ export default {
 
     title () {
       if (this.highlighted) {
-        return `${this.vuerName} can give technical talks in your preferred language.`
+        return `${this.vuerName} 可以用你喜欢的语言进行技术讲座。`
       }
 
       return this.name

@@ -1,4 +1,5 @@
 {
     "deno.enable": false,
-    "cSpell.language": "en,en-GB"
+    "cSpell.language": "en,en-GB",
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": false
 }
