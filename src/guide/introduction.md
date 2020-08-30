@@ -65,7 +65,7 @@ const CounterApp = {
 
 <FirstExample />
 
-除了文本插值，我们还可以像这样绑定元素 attribute：
+除了文本插值，我们还可以像这样绑定元素的 attribute：
 
 ```html
 <div id="bind-attribute">
@@ -94,11 +94,11 @@ Vue.createApp(AttributeBinding).mount('#bind-attribute')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-这里我们遇到了一点新东西。你看到的 `v-bind` attribute 被称为 `指令`。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“将这个元素节点的 `title` attribute 和当前活动实例的 `message` property 保持一致”。
+这里我们遇到了一点新东西。你看到的 `v-bind` attribute 被称为**指令**。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“_将这个元素节点的 `title` attribute 和当前活跃实例的 `message` property 保持一致_”。
 
 ## 处理用户输入
 
-为了让用户和你的应用进行交互，我们可以用 `v-on` 指令添加一个事件监听器，通过它调用在实例中定义的方法：
+为了让用户和应用进行交互，我们可以用 `v-on` 指令添加一个事件监听器，通过它调用在实例中定义的方法：
 
 ```html
 <div id="event-handling">
@@ -134,7 +134,7 @@ Vue.createApp(EventHandling).mount('#event-handling')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-注意在 reverseMessage 方法中，我们更新了应用的状态，但没有触碰 DOM——所有的 DOM 操作都由 Vue 来处理，你编写的代码只需要关注逻辑层面即可。
+注意在这个方法中，我们更新了应用的状态，但没有触碰 DOM——所有的 DOM 操作都由 Vue 来处理，你编写的代码只需要关注逻辑层面即可。
 
 Vue 还提供了 `v-model` 指令，它能轻松实现表单输入和应用状态之间的双向绑定。
 
@@ -186,7 +186,7 @@ const ConditionalRendering = {
 Vue.createApp(ConditionalRendering).mount('#conditional-rendering')
 ```
 
-这个例子演示了我们不仅可以把数据绑定到 DOM 文本或 attribute，还可以绑定到 DOM **结构**。此外，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/移除元素时自动应用[过渡效果](TODO)。
+这个例子演示了我们不仅可以把数据绑定到 DOM 文本或 attribute，还可以绑定到 DOM 的**结构**。此外，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/移除元素时自动应用[过渡效果](TODO)。
 
 你可以在下面的沙盒中将 `seen` 从 `true` 更改为 `false`，以检查效果：
 
@@ -197,7 +197,7 @@ Vue.createApp(ConditionalRendering).mount('#conditional-rendering')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-还有其它很多指令，每个都有特殊的功能。例如，v-for 指令可以绑定数组的数据来渲染一个项目列表：
+还有其它很多指令，每个都有特殊的功能。例如，`v-for` 指令可以绑定数组的数据来渲染一个项目列表：
 
 ```html
 <div id="list-rendering">
@@ -238,10 +238,10 @@ Vue.createApp(ListRendering).mount('#list-rendering')
 
 ![Component Tree](/images/components.png)
 
-在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：我们创建一个组件对象，就像对 `App` 对象所做的那样，并在父级的 `components` 选项中定义它：
+在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `App` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
 
 ```js
-// 创建Vue 应用
+// 创建 Vue 应用
 const app = Vue.createApp(...)
 
 // 定义名为 todo-item 的新组件
@@ -249,7 +249,7 @@ app.component('todo-item', {
   template: `<li>This is a todo</li>`
 })
 
-// 挂载在 Vue
+// 挂载 Vue 应用
 app.mount(...)
 ```
 
@@ -257,12 +257,12 @@ app.mount(...)
 
 ```html
 <ol>
-  <!-- 创建一个todo-item 组件实例 -->
+  <!-- 创建一个 todo-item 组件实例 -->
   <todo-item></todo-item>
 </ol>
 ```
 
-但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能从父作用域将数据传到子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](components.html#通过-Prop-向子组件传递数据)：
+但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](components.html#通过-Prop-向子组件传递数据)：
 
 
 ```js
