@@ -37,7 +37,7 @@
 
         </template>
 
-        <p v-else-if="search">找不到要查询的结果："<span v-text="search" />".</p>
+        <p v-else-if="search">找不到“<span v-text="search" />”的查询结果。</p>
 
         <div ref="infiniteScrollAnchor"></div>
 
