@@ -3,7 +3,11 @@
     <div class="team">
       <h2 id="active-core-team-members">
         核心团队活跃成员
-        <GetPositionButton v-if="!userPosition" @positionRetrieved="setUserPosition" @positionErrored="setUserPositionError" />
+        <GetPositionButton
+          v-if="!userPosition"
+          @positionRetrieved="setUserPosition"
+          @positionErrored="setUserPositionError"
+        />
       </h2>
 
       <div v-if="errorGettingLocation" class="danger custom-block">
@@ -36,7 +40,11 @@
     <div class="team">
       <h2 id="community-partners">
         社区伙伴
-        <GetPositionButton v-if="!userPosition" @positionRetrieved="setUserPosition" @positionErrored="setUserPositionError" />
+        <GetPositionButton
+          v-if="!userPosition"
+          @positionRetrieved="setUserPosition"
+          @positionErrored="setUserPositionError"
+        />
       </h2>
 
       <div v-if="errorGettingLocation" class="danger custom-block">
@@ -57,9 +65,7 @@
 </template>
 
 <script>
-import {
-  getDistanceFromLatLonInKm
-} from './utils'
+import { getDistanceFromLatLonInKm } from './utils'
 import members from './members'
 import emeriti from './emeriti'
 import partners from './partners'
