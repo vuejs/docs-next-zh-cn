@@ -1,27 +1,26 @@
 # 基础
 
-Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的做法，无论是残疾人、连接缓慢、过时或损坏的硬件，还是仅仅是处于不利环境中的人。例如，在视频中添加字幕可以帮助聋哑人和重听人的用户以及在嘈杂的环境中听不到手机的用户。同样，确保你的文字对比度不是太低，这对你的低视力用户和那些试图在阳光下使用手机的用户都有帮助。
+Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的实践方式——如对于存在某种障碍的人、慢速的连接、老旧或损坏的硬件、或处于不利环境中的人。例如，在视频中添加字幕可以帮助失聪、重听或在嘈杂的环境中听不到手机的用户。同样，确保你的文字对比度不是太低，这对你的低视力用户和那些试图在强光下使用手机的用户都有帮助。
 
+你是否已经准备开始却又无从下手？
 
-准备好出发了，但不确定在哪里？
-
-看看由 [World Wide Web Consortium (W3C)](https://www.w3.org/) 提供的[规划和管理 web 辅助功能指南](https://www.w3.org/WAI/planning-and-managing/)
+看看由[万维网联盟 (W3C)](https://www.w3.org/) 提供的[规划和管理 web 可访问性](https://www.w3.org/WAI/planning-and-managing/)
 
 ## 跳过链接
 
 你应该在每个页面的顶部添加一个直接指向主内容区域的链接，这样用户就可以跳过在多个网页上重复的内容。
 
-通常在 `App.vue` 因为它将是所有页面上的第一个可聚焦元素：
+通常这个链接会放在 `App.vue` 的顶部，这样它就会是所有页面上的第一个可聚焦元素：
 
 ``` html
 <ul class="skip-links">
   <li>
-    <a href="#main" ref="skipLink">Skip to main content</a>
+    <a href="#main" ref="skipLink">跳到主内容</a>
   </li>
 </ul>
 ```
 
-若要隐藏链接，除非它是焦点，可以添加以下样式：
+若想在非聚焦状态下隐藏该链接，可以添加以下样式：
 
 ``` css
 .skipLink {
@@ -41,7 +40,7 @@ Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的�
 }
 ```
 
-一旦用户改变路由，将焦点放回跳过链接。这可以通过调用上述 `ref` 来实现：
+一旦用户改变路由，请将焦点放回到这个跳过链接。通过聚焦以下提供的 `ref` 即可实现：
 
 ``` vue
 <script>
@@ -64,19 +63,19 @@ export default {
 
 [Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
-## 组织你的内容
+## 组织内容
 
-可访问性最重要的部分之一是确保设计可以支持可访问的实现。设计不仅要考虑颜色对比、字体选择、文本大小和语言，还要考虑应用程序中内容的结构。
+可访问性最重要的部分之一是确保设计本身是可访问的。设计不仅要考虑颜色对比度、字体选择、文本大小和语言，还要考虑应用程序中内容的结构。
 
 ### 标题
 
-用户可以通过标题导航应用程序。为应用程序的每个部分设置描述性标题可以让用户更容易地预测每个部分的内容。说到标题，有两个推荐的可访问性实践：
+用户可以通过标题导航应用程序。为应用程序的每个部分设置描述性标题可以让用户更容易地预测每个部分的内容。说到标题，有几个推荐的可访问性实践：
 
-- 按排名顺序嵌套标题：`<h1>` - `<h6>`
-- 不要跳过 section 中的标题
-- 使用实际的标题标记，而不是样式文本，以提供标题的视觉外观
+- 按级别顺序嵌套标题：`<h1>` - `<h6>`
+- 不要在一个章节内跳跃标题的级别
+- 使用实际的标题标记，而不是通过对文本设置样式以提供视觉上的标题
 
-[阅读更多关于标题](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
+[更多关于标题的阅读](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ```html
 <main role="main" aria-labelledby="main-title">
@@ -84,35 +83,35 @@ export default {
   <section aria-labelledby="section-title">
     <h2 id="section-title"> Section Title </h2>
     <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <!-- 内容 -->
   </section>
   <section aria-labelledby="section-title">
     <h2 id="section-title"> Section Title </h2>
     <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <!-- 内容 -->
     <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <!-- 内容 -->
   </section>
 </main>
 ```
 
 ### 地标
 
-地标提供对应用程序中的部分的编程访问。依赖辅助技术的用户可以导航到应用程序的每个部分并跳过内容。你可以使用 [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) 帮助你实现这个目标。
+地标 (landmark) 会为应用中的章节提供访问规划。依赖辅助技术的用户可以跳过内容直接导航到应用程序的每个部分。你可以使用 [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) 帮助你实现这个目标。
 
-| HTML            | ARIA Role                                                         | Landmark Purpose                                                                       |
-| --------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| header          | role="banner"                                                     | Prime heading: title of the page                                                       |
-| nav             | role="navigation"                                                 | Collection of links suitable for use when navigating the document or related documents |
-| main            | role="main"                                                       | The main or central content of the document.                                           |
-| footer          | role="contentinfo"                                                | Information about the parent document: footnotes/copyrights/links to privacy statement |
-| aside           | role="complementary"                                              | Supports the main content, yet is separate and meaningful on its own content           |
-| _Not available_ | role="search"                                                     | This section contains the search functionality for the application                     |
-| form            | role="form"                                                       | Collection of form-associated elements                                                 |
-| section         | role="region"  | Content that is relevant and that users will likely want to navigate to. Label must be provided for this element                          |
+| HTML            | ARIA Role            | 地标的目的 |
+| --------------- | -------------------- | --------- |
+| header          | role="banner"        | 主标题：页面的标题 |
+| nav             | role="navigation"    | 适合用作文档或相关文档导航的链接集合 |
+| main            | role="main"          | 文档的主体或中心内容 |
+| footer          | role="contentinfo"   | 关于父级文档的信息：脚注/版权/隐私声明链接 |
+| aside           | role="complementary" | 用来支持主内容，同时其自身的内容是相对独立且有意义的 |
+| _Not available_ | role="search"        | 该章节包含整个应用的搜索功能 |
+| form            | role="form"          | 表单相关元素的集合 |
+| section         | role="region"        | 相关的且用户可能会导航到的内容。必须为该元素提供 label |
 
 :::tip Tip：
-建议使用带有冗余地标 role 属性的地标 HTML 元素，以便最大限度地与传统[不支持 HTML5 语义元素的浏览器](https://caniuse.com/#feat=html5semantic)兼容。
+在使用地标 HTML 元素时，建议加上冗余的地标 role attribute，以最大限度地与传统[不支持 HTML5 语义元素的浏览器](https://caniuse.com/#feat=html5semantic)兼容。
 :::
 
-[阅读更多关于地标](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+[更多关于地标的阅读](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
