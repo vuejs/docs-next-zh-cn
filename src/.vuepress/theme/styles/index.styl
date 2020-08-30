@@ -86,7 +86,9 @@ html.with-beta-banner
     max-width 100%
 
 a
-  font-weight 500
+  // fixed Chinese character render issues
+  // font-weight 500
+  font-weight bold
   color $accentColor
   text-decoration none
 
@@ -115,10 +117,14 @@ ul, ol
   padding-left 1.2em
 
 strong
-  font-weight 500
+  // fixed Chinese character render issues
+  // font-weight 500
+  font-weight bold
 
 h1, h2, h3, h4, h5, h6
-  font-weight 500
+  // fixed Chinese character render issues
+  // font-weight 500
+  font-weight bold
   line-height 1.45
 
   {$contentClass}:not(.custom) > &
