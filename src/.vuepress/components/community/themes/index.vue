@@ -1,6 +1,6 @@
 <template>
   <div class="themes">
-    <theme-provider v-for="provider in providers" :key="provider.name" :provider="provider"/>
+    <theme-provider v-for="provider in providers" :key="provider.name" :provider="provider" />
 
     <p>
       想在这里展示你的主题吗？

@@ -56,7 +56,7 @@ const members = [
       languages: ['zh', 'en'],
       github: 'jinjiang',
       twitter: 'zhaojinjiang',
-      reposOfficial: ['cn.vuejs.org', 'vue-docs-en-cn'],
+      reposOfficial: ['cn.vuejs.org', 'vue-docs-zh-cn'],
       reposPersonal: [
         'vue-a11y-utils',
         'vue-mark-display',

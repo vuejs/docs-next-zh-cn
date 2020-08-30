@@ -1,13 +1,13 @@
 <template>
   <main class="page">
-    <slot name="top"/>
+    <slot name="top" />
 
-    <Content class="theme-default-content"/>
-    <PageEdit/>
+    <Content class="theme-default-content" />
+    <PageEdit />
 
-    <PageNav v-bind="{ sidebarItems }"/>
+    <PageNav v-bind="{ sidebarItems }" />
 
-    <slot name="bottom"/>
+    <slot name="bottom" />
 
     <AdFloatRightBottom/>
   </main>

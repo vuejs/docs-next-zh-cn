@@ -1,7 +1,8 @@
 <template>
   <div class="overlay" v-show="isOpen">
     <div ref="modal" class="modal" :class="{ open: isOpen }">
-      <div class="video-space" style="padding: 56.25% 0 0 0; position: relative;"></div>
+      <div class="video-space" style="padding: 56.25% 0 0 0; position: relative;">
+      </div>
       <p class="modal-text">
         Video by
         <a
@@ -58,7 +59,7 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     if (typeof window !== 'undefined') {
       this.initVideoModal()
     }

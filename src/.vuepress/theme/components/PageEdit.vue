@@ -3,7 +3,7 @@
     <div class="container">
       <p>
         Deployed on
-        <a href="https://github.com/veaba/docs-next/actions">Github Actions </a>.
+        <a href="https://url.netlify.com/HJ8X2mxP8">Netlify</a>.
         <span v-if="editLink" class="edit-link">
           Caught a mistake or want to contribute to the documentation?
           <a

@@ -22,7 +22,7 @@
         <p>核心团队成员已经根据他们与你的距离进行了排序。</p>
       </div>
 
-      <VuerProfile v-for="profile in members" :key="profile.name" :profile="profile" :use-miles="useMiles" />
+      <VuerProfile v-for="profile in members" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
     </div>
 
     <div class="team">
@@ -34,7 +34,7 @@
         我们在此致敬过去曾做出过突出贡献的不再活跃的团队成员。
       </p>
 
-      <VuerProfile v-for="profile in emeriti" :key="profile.name" :profile="profile" :use-miles="useMiles" />
+      <VuerProfile v-for="profile in emeriti" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
     </div>
 
     <div class="team">
@@ -59,7 +59,7 @@
         <p>社区合作伙伴已经按照他们与你的距离进行了排序。</p>
       </div>
 
-      <VuerProfile v-for="profile in partners" :key="profile.name" :profile="profile" :use-miles="useMiles" />
+      <VuerProfile v-for="profile in partners" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
     </div>
   </div>
 </template>
@@ -74,7 +74,7 @@ const imperialLanguageCodes = ['en-US', 'en-MY', 'en-MM', 'en-BU', 'en-LR', 'my'
 
 const cityCoordsFor = {
   'Annecy, France': [45.899247, 6.129384],
-  'Alicante, Spain': [38.346543, -0.483838],
+  'Alicante, Spain' : [38.346543, -0.483838],
   'Amsterdam, Netherlands': [4.895168, 52.370216],
   'Atlanta, GA, USA': [33.749051, -84.387858],
   'Bangalore, India': [12.971599, 77.594563],
@@ -113,7 +113,7 @@ const cityCoordsFor = {
   'Wrocław, Poland': [51.107885, 17.038538],
   'Boston, MA, USA': [42.360081, -71.058884],
   'Kyiv, Ukraine': [50.450100, 30.523399],
-  'Washington, DC, USA': [38.8935755, -77.0846156, 12],
+  'Washington, DC, USA': [38.8935755,-77.0846156,12],
   'Kraków, Poland': [50.064650, 19.936579],
   'Oslo, Norway': [59.911491, 10.757933],
   'Kanagawa, Japan': [35.44778, 139.6425]
@@ -134,27 +134,27 @@ export default {
   }),
 
   computed: {
-    members() {
+    members () {
       return this.sortByDistance(members)
     },
 
-    partners() {
+    partners () {
       return this.sortByDistance(partners)
     }
   },
 
   methods: {
-    setUserPosition(position) {
+    setUserPosition (position) {
       this.userPosition = position
       this.errorGettingLocation = false
     },
 
-    setUserPositionError() {
+    setUserPositionError () {
       this.userPosition = null
       this.errorGettingLocation = true
     },
 
-    sortByDistance(vuers) {
+    sortByDistance (vuers) {
       if (!this.userPosition) {
         return vuers
       }
@@ -190,7 +190,7 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     this.useMiles = imperialLanguageCodes.includes(window.navigator.language)
   }
 }
