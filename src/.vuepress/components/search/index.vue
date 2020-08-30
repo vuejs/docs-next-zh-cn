@@ -15,7 +15,7 @@
 
                 <p>
                     <template v-if="totalResults">
-                        <strong>{{ totalResults }} 结果</strong> 中发现 {{ queryTime }}ms
+                        发现 <strong>{{ totalResults }} 条结果</strong>，用时 {{ queryTime }} 毫秒
                     </template>
                 </p>
 
