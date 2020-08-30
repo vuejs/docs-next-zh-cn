@@ -1,3 +1,3 @@
-# Themes
+# 主题
 
 <community-themes-index/>

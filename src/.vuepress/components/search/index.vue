@@ -1,55 +1,56 @@
 <template>
   <main id="search-page">
-
-    <p v-if="!isAlgoliaConfigured">
-      This search page is not available at the moment, please use the search box in the top navigation bar.
-    </p>
+    <p v-if="!isAlgoliaConfigured">此搜索页面当前不可用，请使用顶部导航栏中的搜索框。</p>
 
     <template v-else>
-
       <form class="search-box" @submit="visitFirstResult">
-
-        <input class="search-query" v-model="search" :placeholder="searchPlaceholder">
+        <input class="search-query" v-model="search" :placeholder="searchPlaceholder" />
 
         <div class="search-footer algolia-autocomplete">
-
           <p>
             <template v-if="totalResults">
-              <strong>{{ totalResults }} results</strong> found in {{ queryTime }}ms
+              发现
+              <strong>{{ totalResults }} 条结果</strong>
+              ，用时 {{ queryTime }} 毫秒
             </template>
           </p>
 
-          <a class="algolia-docsearch-footer--logo" target="_blank" href="https://www.algolia.com/">Search by algolia</a>
-
+          <a
+            class="algolia-docsearch-footer--logo"
+            target="_blank"
+            href="https://www.algolia.com/"
+          >Search by algolia</a>
         </div>
-
       </form>
 
       <template v-if="results.length">
-
         <div v-for="(result, i) in results" :key="i" class="search-result">
           <a class="title" :href="result.url" v-html="result.title" />
           <p v-if="result.summary" class="summary" v-html="result.summary" />
           <div class="breadcrumbs">
-            <span v-for="(breadcrumb, j) in result.breadcrumbs" :key="j" class="breadcrumb" v-html="breadcrumb" />
+            <span
+              v-for="(breadcrumb, j) in result.breadcrumbs"
+              :key="j"
+              class="breadcrumb"
+              v-html="breadcrumb"
+            />
           </div>
         </div>
-
       </template>
 
-      <p v-else-if="search">No results found for query "<span v-text="search" />".</p>
+      <p v-else-if="search">
+        找不到“
+        <span v-text="search" />”的查询结果。
+      </p>
 
       <div ref="infiniteScrollAnchor"></div>
-
     </template>
-
   </main>
 </template>
 
 <script>
 export default {
-
-  data () {
+  data() {
     return {
       algoliaIndex: undefined,
       infiniteScrollObserver: undefined,
@@ -59,91 +60,111 @@ export default {
       totalResults: 0,
       totalPages: 0,
       lastPage: 0,
-      queryTime: 0
+      queryTime: 0,
     }
   },
 
   computed: {
-    algoliaOptions () {
+    algoliaOptions() {
       return (
         this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
       )
     },
 
-    isAlgoliaConfigured () {
-      return this.algoliaOptions && this.algoliaOptions.apiKey && this.algoliaOptions.indexName
-    }
+    isAlgoliaConfigured() {
+      return (
+        this.algoliaOptions &&
+        this.algoliaOptions.apiKey &&
+        this.algoliaOptions.indexName
+      )
+    },
   },
 
   watch: {
-    $lang (newValue) {
+    $lang(newValue) {
       this.initializeAlgoliaIndex(this.algoliaOptions, newValue)
     },
 
-    algoliaOptions (newValue) {
+    algoliaOptions(newValue) {
       this.initializeAlgoliaIndex(newValue, this.$lang)
     },
 
-    search () {
+    search() {
       this.refreshSearchResults()
 
       window.history.pushState(
         {},
         'Vue.js Search',
-        window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(this.search)
+        window.location.origin +
+          window.location.pathname +
+          '?q=' +
+          encodeURIComponent(this.search)
       )
-    }
+    },
   },
 
-  mounted () {
-    this.search = (new URL(location)).searchParams.get('q') || '';
+  mounted() {
+    this.search = new URL(location).searchParams.get('q') || ''
 
-    if (!this.isAlgoliaConfigured)
-      return;
+    if (!this.isAlgoliaConfigured) return
 
-    this.searchPlaceholder = this.$site.themeConfig.searchPlaceholder || 'Search Vue.js'
+    this.searchPlaceholder =
+      this.$site.themeConfig.searchPlaceholder || 'Search Vue.js'
     this.initializeAlgoliaIndex(this.algoliaOptions, this.$lang)
     this.initializeInfiniteScrollObserver()
   },
 
-  destroyed () {
-    if (!this.infiniteScrollObserver)
-      return;
+  destroyed() {
+    if (!this.infiniteScrollObserver) return
 
     this.infiniteScrollObserver.disconnect()
   },
 
   methods: {
-    async initializeAlgoliaIndex (userOptions, lang) {
-      const { default: algoliasearch } = await import(/* webpackChunkName: "search-page" */ 'algoliasearch/dist/algoliasearchLite.min.js')
-      const client = algoliasearch(this.algoliaOptions.appId, this.algoliaOptions.apiKey);
+    async initializeAlgoliaIndex(userOptions, lang) {
+      const { default: algoliasearch } = await import(
+        /* webpackChunkName: "search-page" */ 'algoliasearch/dist/algoliasearchLite.min.js'
+      )
+      const client = algoliasearch(
+        this.algoliaOptions.appId,
+        this.algoliaOptions.apiKey
+      )
 
-      this.algoliaIndex = client.initIndex(this.algoliaOptions.indexName);
+      this.algoliaIndex = client.initIndex(this.algoliaOptions.indexName)
 
       this.refreshSearchResults()
     },
 
     async initializeInfiniteScrollObserver() {
-      await import(/* webpackChunkName: "search-page" */ 'intersection-observer/intersection-observer.js')
+      await import(
+        /* webpackChunkName: "search-page" */ 'intersection-observer/intersection-observer.js'
+      )
 
-      this.infiniteScrollObserver = new IntersectionObserver(([{ isIntersecting }]) => {
-        if (!isIntersecting || this.totalResults === 0 || this.totalPages === this.lastPage + 1)
-          return
+      this.infiniteScrollObserver = new IntersectionObserver(
+        ([{ isIntersecting }]) => {
+          if (
+            !isIntersecting ||
+            this.totalResults === 0 ||
+            this.totalPages === this.lastPage + 1
+          )
+            return
 
-        this.lastPage++
-        this.updateSearchResults()
-      })
+          this.lastPage++
+          this.updateSearchResults()
+        }
+      )
 
       this.infiniteScrollObserver.observe(this.$refs.infiniteScrollAnchor)
     },
 
     async updateSearchResults() {
-      if (!this.search)
-        return
+      if (!this.search) return
 
-      const response = await this.algoliaIndex.search(this.search, { page: this.lastPage })
+      const response = await this.algoliaIndex.search(this.search, {
+        page: this.lastPage,
+      })
 
-      this.results.push(...response.hits.map(hit => this.parseSearchHit(hit)))
+      this.results.push(...response.hits.map((hit) => this.parseSearchHit(hit)))
       this.totalResults = response.nbHits
       this.totalPages = response.nbPages
       this.queryTime = response.processingTimeMS
@@ -162,8 +183,7 @@ export default {
     visitFirstResult(e) {
       e.preventDefault()
 
-      if (this.results.length === 0)
-        return;
+      if (this.results.length === 0) return
 
       window.location = this.results[0].url
     },
@@ -172,7 +192,9 @@ export default {
       const hierarchy = hit._highlightResult.hierarchy
       const titles = []
 
-      let summary, levelName, level = 0
+      let summary,
+        levelName,
+        level = 0
       while ((levelName = 'lvl' + level++) in hierarchy) {
         titles.push(hierarchy[levelName].value)
       }
@@ -187,16 +209,15 @@ export default {
         summary: summary,
         breadcrumbs: titles,
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import "@theme/styles/_settings.scss";
+@import '@theme/styles/_settings.scss';
 
 #search-page {
-
   .search-box {
     width: 100%;
     display: flex;
@@ -216,16 +237,14 @@ export default {
       p {
         margin: 0;
         padding: 0;
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
 
       .algolia-docsearch-footer--logo {
-          width: 115px;
+        width: 115px;
         height: 16px;
       }
-
     }
-
   }
 
   .search-result {
@@ -238,27 +257,24 @@ export default {
     .summary {
       padding: 0;
       margin: 0;
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
 
     .breadcrumb {
-      font-size: .9rem;
+      font-size: 0.9rem;
       color: $light;
 
       & + .breadcrumb::before {
-        content: "\203A\A0";
+        content: '\203A\A0';
         margin-left: 5px;
         color: $light;
       }
-
     }
 
     .algolia-docsearch-suggestion--highlight {
       color: darken($green, 20%);
       font-weight: 600;
     }
-
   }
-
 }
 </style>

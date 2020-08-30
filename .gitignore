@@ -102,3 +102,4 @@ dist/
 tmp/
 temp/
 .idea/
+.vscode/

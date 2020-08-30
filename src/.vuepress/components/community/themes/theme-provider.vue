@@ -2,16 +2,14 @@
   <section>
     <h2 :id="provider.name">{{ provider.name }}</h2>
 
-    <div class="tip custom-block description" v-html="description"/>
+    <div class="tip custom-block description" v-html="description" />
 
     <div class="themes-grid">
-      <ThemeItem v-for="theme in provider.products" :key="theme.url" :theme="theme"/>
+      <ThemeItem v-for="theme in provider.products" :key="theme.url" :theme="theme" />
     </div>
 
     <div class="see-more-container">
-      <RoundedButton :url="provider.seeMoreUrl">
-        See More Themes from {{ provider.name }}
-      </RoundedButton>
+      <RoundedButton :url="provider.seeMoreUrl">查看 {{ provider.name }} 的更多主题</RoundedButton>
     </div>
   </section>
 </template>
@@ -23,25 +21,25 @@ export default {
   props: {
     provider: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
   components: {
     ThemeItem: () => import('./theme-item.vue'),
-    RoundedButton: () => import('@theme/components/ui/RoundedButton.vue')
+    RoundedButton: () => import('@theme/components/ui/RoundedButton.vue'),
   },
 
   computed: {
-    description () {
-      return (new showdown.Converter()).makeHtml(this.provider.description)
-    }
-  }
+    description() {
+      return new showdown.Converter().makeHtml(this.provider.description)
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "@theme/styles/_settings.scss";
+@import '@theme/styles/_settings.scss';
 
 .themes-grid {
   display: flex;

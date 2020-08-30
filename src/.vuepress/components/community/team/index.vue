@@ -2,7 +2,7 @@
   <div>
     <div class="team">
       <h2 id="active-core-team-members">
-        Active Core Team Members
+        核心团队活跃成员
         <GetPositionButton
           v-if="!userPosition"
           @positionRetrieved="setUserPosition"
@@ -11,35 +11,35 @@
       </h2>
 
       <div v-if="errorGettingLocation" class="danger custom-block">
-        <p>Failed to get your location.</p>
+        <p>无法获取你的位置。</p>
       </div>
 
       <p>
-        The development of Vue and its ecosystem is guided by an international team, some of whom have chosen to be featured below.
+        Vue 的研发及其生态建设出自一个国际化的团队，这里会展示其中部分团队成员的信息。
       </p>
 
       <div v-if="userPosition" class="tip custom-block">
-        <p>The core team have been sorted by their distance from you.</p>
+        <p>核心团队成员已经根据他们与你的距离进行了排序。</p>
       </div>
 
-      <VuerProfile v-for="profile in members" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
+      <VuerProfile v-for="profile in members" :key="profile.name" :profile="profile" :use-miles="useMiles" />
     </div>
 
     <div class="team">
       <h2 id="core-team-emeriti">
-        Core Team Emeriti
+        核心团队荣誉成员
       </h2>
 
       <p>
-        Here we honor some no-longer-active core team members who have made valuable contributions in the past.
+        我们在此致敬过去曾做出过突出贡献的不再活跃的团队成员。
       </p>
 
-      <VuerProfile v-for="profile in emeriti" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
+      <VuerProfile v-for="profile in emeriti" :key="profile.name" :profile="profile" :use-miles="useMiles" />
     </div>
 
     <div class="team">
       <h2 id="community-partners">
-        Community Partners
+        社区伙伴
         <GetPositionButton
           v-if="!userPosition"
           @positionRetrieved="setUserPosition"
@@ -48,18 +48,18 @@
       </h2>
 
       <div v-if="errorGettingLocation" class="danger custom-block">
-        <p>Failed to get your location.</p>
+        <p>无法获取你的位置。</p>
       </div>
 
       <p>
-        Some members of the Vue community have so enriched it, that they deserve special mention. We've developed a more intimate relationship with these key partners, often coordinating with them on upcoming features and news.
+        一些 Vue 的社区成员让这里变得更加丰富多彩，有必要在此特别提及。我们与这些主要合作伙伴建立了更加亲密的关系，经常与他们就即将到来的功能和新闻展开协作。
       </p>
 
       <div v-if="userPosition" class="tip custom-block">
-        <p>The community partners have been sorted by their distance from you.</p>
+        <p>社区合作伙伴已经按照他们与你的距离进行了排序。</p>
       </div>
 
-      <VuerProfile v-for="profile in partners" :key="profile.name" :profile="profile" :use-miles="useMiles"/>
+      <VuerProfile v-for="profile in partners" :key="profile.name" :profile="profile" :use-miles="useMiles" />
     </div>
   </div>
 </template>
@@ -74,7 +74,7 @@ const imperialLanguageCodes = ['en-US', 'en-MY', 'en-MM', 'en-BU', 'en-LR', 'my'
 
 const cityCoordsFor = {
   'Annecy, France': [45.899247, 6.129384],
-  'Alicante, Spain' : [38.346543, -0.483838],
+  'Alicante, Spain': [38.346543, -0.483838],
   'Amsterdam, Netherlands': [4.895168, 52.370216],
   'Atlanta, GA, USA': [33.749051, -84.387858],
   'Bangalore, India': [12.971599, 77.594563],
@@ -113,7 +113,7 @@ const cityCoordsFor = {
   'Wrocław, Poland': [51.107885, 17.038538],
   'Boston, MA, USA': [42.360081, -71.058884],
   'Kyiv, Ukraine': [50.450100, 30.523399],
-  'Washington, DC, USA': [38.8935755,-77.0846156,12],
+  'Washington, DC, USA': [38.8935755, -77.0846156, 12],
   'Kraków, Poland': [50.064650, 19.936579],
   'Oslo, Norway': [59.911491, 10.757933],
   'Kanagawa, Japan': [35.44778, 139.6425]
@@ -134,27 +134,27 @@ export default {
   }),
 
   computed: {
-    members () {
+    members() {
       return this.sortByDistance(members)
     },
 
-    partners () {
+    partners() {
       return this.sortByDistance(partners)
     }
   },
 
   methods: {
-    setUserPosition (position) {
+    setUserPosition(position) {
       this.userPosition = position
       this.errorGettingLocation = false
     },
 
-    setUserPositionError () {
+    setUserPositionError() {
       this.userPosition = null
       this.errorGettingLocation = true
     },
 
-    sortByDistance (vuers) {
+    sortByDistance(vuers) {
       if (!this.userPosition) {
         return vuers
       }
@@ -190,7 +190,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     this.useMiles = imperialLanguageCodes.includes(window.navigator.language)
   }
 }
