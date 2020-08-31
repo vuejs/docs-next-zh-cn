@@ -61,7 +61,7 @@ export default {
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-[Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[阅读关于跳跃到主体内容的链接的文档](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
 ## 组织内容
 
@@ -75,7 +75,7 @@ export default {
 - 不要在一个章节内跳跃标题的级别
 - 使用实际的标题标记，而不是通过对文本设置样式以提供视觉上的标题
 
-[更多关于标题的阅读](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
+[关于标题可进一步阅读](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ```html
 <main role="main" aria-labelledby="main-title">
@@ -114,4 +114,4 @@ export default {
 在使用地标 HTML 元素时，建议加上冗余的地标 role attribute，以最大限度地与传统[不支持 HTML5 语义元素的浏览器](https://caniuse.com/#feat=html5semantic)兼容。
 :::
 
-[更多关于地标的阅读](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+[关于地标可进一步阅读](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
