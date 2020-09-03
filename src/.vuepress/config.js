@@ -110,33 +110,33 @@ const sidebar = {
       title: '从 Vue 2 迁移',
       collapsable: true,
       children: [
-        'migration/introduction',
-        'migration/async-components',
-        'migration/attribute-coercion',
-        'migration/custom-directives',
-        'migration/custom-elements-interop',
-        'migration/data-option',
-        'migration/events-api',
-        'migration/filters',
-        'migration/fragments',
-        'migration/functional-components',
-        'migration/global-api',
-        'migration/global-api-treeshaking',
-        'migration/inline-template-attribute',
-        'migration/keycode-modifiers',
-        'migration/render-function-api',
-        'migration/slots-unification',
-        'migration/transition',
-        'migration/v-model'
+        '/guide/migration/introduction',
+        '/guide/migration/async-components',
+        '/guide/migration/attribute-coercion',
+        '/guide/migration/custom-directives',
+        '/guide/migration/custom-elements-interop',
+        '/guide/migration/data-option',
+        '/guide/migration/events-api',
+        '/guide/migration/filters',
+        '/guide/migration/fragments',
+        '/guide/migration/functional-components',
+        '/guide/migration/global-api',
+        '/guide/migration/global-api-treeshaking',
+        '/guide/migration/inline-template-attribute',
+        '/guide/migration/keycode-modifiers',
+        '/guide/migration/render-function-api',
+        '/guide/migration/slots-unification',
+        '/guide/migration/transition',
+        '/guide/migration/v-model'
       ]
     },
     {
       title: '贡献文档',
       collapsable: true,
       children: [
-        'contributing/writing-guide',
-        'contributing/doc-style-guide',
-        'contributing/translations'
+        '/guide/contributing/writing-guide',
+        '/guide/contributing/doc-style-guide',
+        '/guide/contributing/translations'
       ]
     }
   ],
