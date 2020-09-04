@@ -7,13 +7,10 @@ export default {
   ],
   "special_sponsors": [
     {
-      "url": "http://www.dcloud.io/?hmsr=vuejsorg&hmpl=&hmcu=&hmkw=&hmci=",
-      "img": "dcloud.gif",
-      "name": "Autocode"
-    },
-    {
-      "url": "https://coding.imooc.com/?c=vuejs&mc_marking=7cf403c3c89d6fccf944791e71e7a959&mc_channel=vuezwsq",
-      "img": "imooc-sponsor.png"
+      "url": "https://autocode.com",
+      "img": "autocode.svg",
+      "name": "Autocode",
+      "description": "Build app-to-app workflows and connect APIs"
     }
   ],
   "platinum_sponsors": [
@@ -193,25 +190,6 @@ export default {
     {
       "url": "https://cloud.youku.com/index.php?source=vuejs",
       "img": "youku.png"
-    }
-  ],
-  "special_sponsors_sidebar": [
-    {
-      "url": "http://www.dcloud.io/?hmsr=vuejsorg&hmpl=&hmcu=&hmkw=&hmci=",
-      "img": "dcloud.gif",
-      "name": "Autocode"
-    },
-    {
-      "url": "https://coding.imooc.com/?c=vuejs&mc_marking=7cf403c3c89d6fccf944791e71e7a959&mc_channel=vuezwsq",
-      "img": "imooc-sponsor2.png"
-    }
-  ],
-  // 全局广告，使用于页面右下角
-  "global_ad": [
-    {
-      "url": "https://coding.imooc.com/?c=vuejs&mc_marking=2243e4b1af42da32ee6e9f088e646c7c&mc_channel=vuezwsq",
-      "img": "imooc-ad3.png",
-      "name": "Vue.js实战项目开发教程"
     }
   ]
 }

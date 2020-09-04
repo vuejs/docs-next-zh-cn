@@ -17,8 +17,7 @@ export default {
       type: String,
       required: false,
       default: ''
-    },
-    sponsor:null
+    }
   }
 }
 </script>
