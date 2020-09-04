@@ -1,14 +1,5 @@
 <template>
   <aside class="sidebar">
-
-    <!-- sidebar ad-->
-    <div class="sidebar-inner">
-      <div class="list">
-        <h4>特别赞助商</h4>
-        <SpecialSponsorBlock v-for="item in specialSponsors" :sponsor="item"></SpecialSponsorBlock>
-      </div>
-    </div>
-
     <NavLinks />
 
     <slot name="top" />
@@ -21,28 +12,18 @@
 <script>
 import SidebarLinks from '@theme/components/SidebarLinks.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
-import SpecialSponsorBlock from '@theme/components/sponsors/SpecialSponsorBlock'
-import sponsors from '@theme/data/patreon-sponsors.js'
 
 export default {
   name: 'Sidebar',
 
-  components: { SidebarLinks, NavLinks, SpecialSponsorBlock },
+  components: { SidebarLinks, NavLinks },
 
-  props: ['items'],
-
-  data() {
-    return {
-      specialSponsors: sponsors.special_sponsors_sidebar || []
-    }
-  }
+  props: ['items']
 }
 </script>
 
 <style lang="stylus">
 .sidebar
-  .sidebar-inner
-    padding 35px 0 0 20px;
   ul
     padding 0
     margin 0

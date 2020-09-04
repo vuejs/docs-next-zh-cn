@@ -5,22 +5,22 @@ const sidebar = {
     children: ['/cookbook/', '/cookbook/editable-svg-icons']
   }],
   guide: [{
-    title: '基础',
-    collapsable: false,
-    children: [
-      '/guide/installation',
-      '/guide/introduction',
-      '/guide/instance',
-      '/guide/template-syntax',
-      '/guide/computed',
-      '/guide/class-and-style',
-      '/guide/conditional',
-      '/guide/list',
-      '/guide/events',
-      '/guide/forms',
-      '/guide/component-basics'
-    ]
-  },
+      title: '基础',
+      collapsable: false,
+      children: [
+        '/guide/installation',
+        '/guide/introduction',
+        '/guide/instance',
+        '/guide/template-syntax',
+        '/guide/computed',
+        '/guide/class-and-style',
+        '/guide/conditional',
+        '/guide/list',
+        '/guide/events',
+        '/guide/forms',
+        '/guide/component-basics'
+      ]
+    },
     {
       title: '深入组件',
       collapsable: false,
@@ -61,13 +61,13 @@ const sidebar = {
       title: '高级指南',
       collapsable: false,
       children: [{
-        title: '响应式',
-        children: [
-          '/guide/reactivity',
-          '/guide/reactivity-fundamentals',
-          '/guide/reactivity-computed-watchers'
-        ]
-      },
+          title: '响应式',
+          children: [
+            '/guide/reactivity',
+            '/guide/reactivity-fundamentals',
+            '/guide/reactivity-computed-watchers'
+          ]
+        },
         {
           title: '组合 API',
           children: [
@@ -222,26 +222,26 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     nav: [{
-      text: '文档',
-      ariaLabel: '文档菜单',
-      items: [{
-        text: '教程',
-        link: '/guide/introduction'
+        text: '文档',
+        ariaLabel: '文档菜单',
+        items: [{
+            text: '教程',
+            link: '/guide/introduction'
+          },
+          {
+            text: '风格指南',
+            link: '/style-guide/'
+          },
+          {
+            text: 'Cookbook',
+            link: '/cookbook/'
+          },
+          {
+            text: '示例',
+            link: '/examples/markdown'
+          }
+        ]
       },
-        {
-          text: '风格指南',
-          link: '/style-guide/'
-        },
-        {
-          text: 'Cookbook',
-          link: '/cookbook/'
-        },
-        {
-          text: '示例',
-          link: '/examples/markdown'
-        }
-      ]
-    },
       {
         text: 'API Reference',
         link: '/api/application-config'
@@ -249,32 +249,32 @@ module.exports = {
       {
         text: '生态系统',
         items: [{
-          text: '社区',
-          ariaLabel: '社区菜单',
-          items: [{
-            text: '团队',
-            link: '/community/team/'
+            text: '社区',
+            ariaLabel: '社区菜单',
+            items: [{
+                text: '团队',
+                link: '/community/team/'
+              },
+              {
+                text: '合作伙伴',
+                link: '/community/partners'
+              },
+              {
+                text: '加入',
+                link: '/community/join/'
+              },
+              {
+                text: '主题',
+                link: '/community/themes/'
+              }
+            ]
           },
-            {
-              text: '合作伙伴',
-              link: '/community/partners'
-            },
-            {
-              text: '加入',
-              link: '/community/join/'
-            },
-            {
-              text: '主题',
-              link: '/community/themes/'
-            }
-          ]
-        },
           {
             text: '官方项目',
             items: [{
-              text: 'Vue Router',
-              link: 'https://router.vuejs.org/'
-            },
+                text: 'Vue Router',
+                link: 'https://router.vuejs.org/'
+              },
               {
                 text: 'Vuex',
                 link: 'https://vuex.vuejs.org/'
@@ -303,9 +303,9 @@ module.exports = {
         text: '支持 Vue',
         link: '/support-vuejs/',
         items: [{
-          text: '一次性捐款',
-          link: '/support-vuejs/#one-time-donations'
-        },
+            text: '一次性捐款',
+            link: '/support-vuejs/#one-time-donations'
+          },
           {
             text: '周期性捐款',
             link: '/support-vuejs/#recurring-pledges'
@@ -327,8 +327,7 @@ module.exports = {
       {
         text: '多语言',
         link: '#',
-        items: [
-          {
+        items: [{
             text: 'English',
             link: 'https://v3.vuejs.org'
           }

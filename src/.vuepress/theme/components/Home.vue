@@ -26,7 +26,7 @@
       </div>
     </header>
 
-    <SpecialSponsors :sponsors="sponsors.special_sponsors" />
+    <SpecialSponsors :sponsors="sponsors.platinum_sponsors_china" />
 
     <section v-if="data.features && data.features.length" class="section-features">
       <div class="inner">
@@ -42,7 +42,8 @@
     <section class="section-sponsors" ref="sponsors">
       <div class="inner">
         <PatreonSponsors :sponsors="sponsors" />
-        <OpenCollectiveSponsors :sponsors="sponsors" />
+        <OpenCollectiveSponsors />
+        <ChinaVideoSponsors :sponsors="sponsors" />
       </div>
     </section>
 
@@ -72,6 +73,7 @@ import SocialIcon from '@theme/components/ui/SocialIcon.vue'
 import SpecialSponsors from '@theme/components/sponsors/SpecialSponsors.vue'
 import PatreonSponsors from '@theme/components/sponsors/PatreonSponsors.vue'
 import OpenCollectiveSponsors from '@theme/components/sponsors/OpenCollectiveSponsors.vue'
+import ChinaVideoSponsors from '@theme/components/sponsors/ChinaVideoSponsors.vue'
 import Newsletter from '@theme/components/Newsletter.vue'
 
 export default {
@@ -81,6 +83,7 @@ export default {
     SpecialSponsors,
     PatreonSponsors,
     OpenCollectiveSponsors,
+    ChinaVideoSponsors,
     Newsletter
   },
 

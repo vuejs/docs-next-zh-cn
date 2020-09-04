@@ -65,7 +65,7 @@ Recurring pledges come with exclusive perks, e.g. having your name listed in the
 
 ### 中国区视频托管赞助商
 
-<!-- TODO -->
+<support-SponsorGroup group="video_sponsors_china" class="patreon-sponsors sponsor-section" />
 
 If you run a business and are using Vue in a revenue-generating product, it makes business sense to sponsor Vue development: **it ensures the project that your product relies on stays healthy and actively maintained.** It can also help your exposure in the Vue community and makes it easier to attract Vue developers.
 
