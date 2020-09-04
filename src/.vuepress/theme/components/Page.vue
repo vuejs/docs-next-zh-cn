@@ -8,18 +8,15 @@
     <PageNav v-bind="{ sidebarItems }" />
 
     <slot name="bottom" />
-
-    <AdFloatRightBottom/>
   </main>
 </template>
 
 <script>
 import PageEdit from '@theme/components/PageEdit.vue'
 import PageNav from '@theme/components/PageNav.vue'
-import AdFloatRightBottom from '@theme/components/sponsors/AdFloatRightBottom.vue'
 
 export default {
-  components: { PageEdit, PageNav, AdFloatRightBottom },
+  components: { PageEdit, PageNav },
   props: ['sidebarItems']
 }
 </script>
