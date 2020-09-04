@@ -28,19 +28,6 @@
           alt="Vue.JS gold sponsor"
         >
       </a>
-
-      <h4>中国区视频托管赞助商</h4>
-      <a
-        :href="item.url"
-        rel="sponsored noopener"
-        target="_blank"
-        v-for="(item, index) in sponsors.video_sponsors_china"
-      >
-        <img
-          :src="`/images/sponsors/${item.img}`"
-          alt="Vue.JS sponsor"
-        >
-      </a>
     </template>
   </SponsorsLayout>
 </template>
@@ -52,16 +39,7 @@ export default {
   components: {
     SponsorsLayout
   },
-  props: {
-    sponsors: {
-      type: Object,
-      default() {
-        return {
-          video_sponsors_china: []
-        }
-      }
-    }
-  },
+
   data: () => ({
     featuredCount: {
       platium: 3,
