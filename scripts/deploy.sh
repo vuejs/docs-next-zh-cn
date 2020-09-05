@@ -78,4 +78,4 @@ git commit -m "【Deployment success】：${push_time}"
 
 git push origin -f "${PUBLISH_BRANCH}"
 
-print_info "${GITHUB_SHA} 漂亮！部署成功： ${push_time}"
+print_info "${GITHUB_SHA} deploy successful： ${push_time}"
