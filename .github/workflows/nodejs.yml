@@ -12,23 +12,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: 步骤：第一步 -> 设置环境
+      - name: 1. set environment
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: 步骤：第二步 -> 安装依赖
+      - name: 2. install dep
         run: |
+          rm -rf node_modules
           npm install
           npm run build
         env:
           CI: true
 
-      - name: 步骤：第三步 -> 部署脚本
+      - name: 3. script deploy
         env:
-          ACCESS_TOKEN_DEPLOY: ${{secrets.ACTIONS_ACCESS_TOKEN_VUE_DOCS_CI }}
+          ACCESS_TOKEN_DEPLOY: ${{secrets.VUE_DOCS_ZH_CN_TOKEN}}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./src/.vuepress/dist
-          CNAME: cn.v3.vuejs.org
+          CNAME: v3.cn.vuejs.org
         run: |
           chmod +x ./scripts/deploy.sh
           bash ./scripts/deploy.sh
