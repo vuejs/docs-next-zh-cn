@@ -15,8 +15,7 @@ $ npm run serve # 开发服务器地址为 http://localhost:8080
 
 ## 部署
 
-本仓库使用的是 Github Actions 分支进行自动部署
-
+本仓库使用的是 Github Actions 分支进行自动部署。
 
 ## 如何参与贡献
 
@@ -29,11 +28,8 @@ $ npm run serve # 开发服务器地址为 http://localhost:8080
 
 有劳在翻译之前移步 [wiki](https://github.com/vuejs/docs-next-zh-cn/wiki) 了解相关注意事项。
 
-
 ## 贡献
 
-网站在创立之初得到了很多朋友们的帮助，大家一起分工协作完成了整站的翻译工作。[这个页面](/src/about.md)集中记录了大家这段时期的努力和付出，以表谢意！
+目前网站还处于集中翻译和校对的状态，急需大家多多支持！
 
-感谢所有参与翻译的朋友们！
-
-目前网站已处于维护状态，最新的文档/翻译贡献情况可以参阅 GitHub 提供的 [contributors](https://github.com/vuejs/docs-next-zh-cn/graphs/contributors) 页面。
+最新的文档/翻译贡献情况可以参阅 GitHub 提供的 [contributors](https://github.com/vuejs/docs-next-zh-cn/graphs/contributors) 页面。
