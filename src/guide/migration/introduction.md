@@ -51,7 +51,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [`keyCode` 支持像 `v-on` 修饰](/guide/migration/keycode-modifiers.html)
 - [$on，$off and \$once 实例方法](/guide/migration/events-api.html)
 - [Filters](/guide/migration/filters.html)
-- [内链模板 attribute](/guide/migration/inline-template-attribute.html)
+- [内联模板 attribute](/guide/migration/inline-template-attribute.html)
 
 ## FAQ
 
