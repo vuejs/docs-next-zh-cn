@@ -1,19 +1,19 @@
 # 响应式
 
-现在是时候深入一下了！Vue 最独特的特性之一，是其非侵入性的响应式系统。数据模型仅仅是普通的 JavaScript 对象。而当你修改它们时，视图会进行更新。这使得状态管理非常简单直接，不过理解其工作原理同样重要，这样你可以避开一些常见的问题。在这个章节，我们将研究一下 Vue 响应式系统的底层的细节。
+现在是时候深入了！Vue 最独特的特性之一，是其非侵入性的响应式系统。数据模型是被代理的 JavaScript 对象。而当你修改它们时，视图会进行更新。这让状态管理非常简单直观，不过理解其工作原理同样重要，这样你可以避开一些常见的问题。在这个章节，我们将研究一下 Vue 响应式系统的底层的细节。
 
 ## 什么是响应式
 
-这些天在编程中经常出现，但是人们说的意思是什么？响应式是一种编程范例，允许我们以声明的方式适应变化。人们经常展示的典型示例 (因为它是一个很棒的示例) 是 excel 电子表格。
+这个术语在程序设计中经常被提及，但这是什么意思呢？响应式是一种允许我们已声明式的方式去适应变化的一种编程范例。人们通常展示的典型例子，是一份excel电子表格（一个非常好的例子）。
 
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-如果将数字 2 放在第一个单元格中，将数字 3 放在第二个单元格中并要求提供 SUM，则电子表格会将其计算出来给你。没有惊喜，但是，如果你更新第一个数字，SUM 也会自动更新。
+如果将数字 2 放在第一个单元格中，将数字 3 放在第二个单元格中并要求提供 SUM，则电子表格会将其计算出来给你。不要惊奇，同时，如果你更新第一个数字，SUM 也会自动更新。
 
-JavaScript 通常不是这样工作的——如果我们要用 JavaScript 编写类似的东西：
+JavaScript 通常不是这样工作的——如果我们想用 JavaScript 编写类似的内容：
 
 ```js
 var val1 = 2
@@ -29,17 +29,17 @@ val1 = 3
 // 5
 ```
 
-如果我们更新第一个值，则不会调整总和。
+如果我们更新第一个值，sum 不会被修改。
 
-那么我们如何用 JavaScript 做到这一点呢？
+那么我们如何用 JavaScript 实现这一点呢？
 
-- 检测其中一个值是否发生变化
-- 跟踪更改它的函数
-- 触发函数，以便可以更新最终值
+- 检测其中某一个值是否发生变化
+- 用跟踪 (track) 函数修改值
+- 用触发 (trigger) 函数更新为最新的值
 
 ## Vue 如何追踪变化？
 
-当你把一个普通的 JavaScript 对象传入应用或组件实例作为 data 选项，Vue 将遍历其所有属性并将其转换为 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)，使用带有 getter 和 setter 的处理程序。这是仅 ES6 的功能，但是我们提供了 Vue 3 版本，该版本使用较旧的 `Object.defineProperty` 支持 IE 浏览器。两者具有相同的 Surface API，但是 proxy 版本更精简，并提供了改进的性能。
+当把一个普通的 JavaScript 对象作为 data 属性传给应用或组件实例的时候，Vue 会使用带有 getter 和 setter 的proxy处理程序遍历其所有属性并将其转换为 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。这是 ES6 仅有的特性，但是我们在 Vue 3 版本也使用了 `Object.defineProperty` 来支持 IE 浏览器。两者具有相同的 Surface API，但是 proxy 版本更精简，同时提升了性能。
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Proxies and Vue's Reactivity Explained Visually" src="https://codepen.io/sdras/embed/zYYzjBg?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -48,9 +48,9 @@ val1 = 3
   </iframe>
 </div>
 
-这需要稍微地了解下 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的某些知识！因此，让我们深入一点。关于 proxy 的文献很多，但是你真正需要知道的是 **proxy 是一个包含另一个对象或函数并允许你对其进行拦截的对象。**
+该部分需要稍微地了解下 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的某些知识！所以，让我们深入了解一下。关于 proxy 的文献很多，但是你真正需要知道的是 **proxy 是一个包含另一个对象或函数并允许你对其进行拦截的对象。**
 
-我们像这样使用它：`new Proxy(target, handler)`
+我们可以像这样使用它：`new Proxy(target, handler)`
 
 ```js
 const dinner = {
@@ -69,7 +69,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-好的，到目前为止，我们只是包装这个对象并返回它。很酷，但还没那么有用。但请注意，我们也可以截获这个对象，同时将它包装在 proxy 中。这种拦截被称为陷阱。
+好的，到目前为止，我们只是包装这个对象并返回它。很酷，但还不是那么有用。请注意，我们把对象包装在 proxy 里的同时可以对其进行拦截。这种拦截被称为陷阱。
 
 ```js
 const dinner = {
@@ -92,7 +92,7 @@ console.log(proxy.meal)
 
 除了控制台日志，我们可以在这里做任何我们想做的事情。如果我们愿意，我们甚至可以不返回实际值。这就是为什么 proxy 对于创建 API 如此强大。
 
-此外，proxy 还提供了另一个特性。我们不必像这样返回值：`target[prop]`，而是可以进一步使用一个名为 `Reflect` 的特性，它允许我们正确地执行 `this` 绑定，看起来像这样：
+此外，proxy 还给我们提供了另一个特性。我们不必像这样返回值：`target[prop]`，而是可以进一步使用一个名为 `Reflect` 的方法，它允许我们正确地执行 `this` 绑定，就像这样：
 
 ```js{7}
 const dinner = {
@@ -112,7 +112,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-我们之前提到过，为了有一个 API 在某些东西发生变化时更新最终值，我们必须在某些东西发生变化时设置新的值。我们在处理程序中，在一个名为 `track` 的函数中执行此操作，其中传入 `target` 和 `key`。
+我们之前提到过，为了有一个 API 能够在某些内容发生变化时更新最终值，我们必须在内容发生变化时设置新的值。我们在处理器，一个名为 `track` 的函数中执行此操作，该函数可以传入 `target` 和 `key`两个参数。
 
 ```js{7}
 const dinner = {
@@ -133,7 +133,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-最后，我们还设置了一些新的值。为此，我们将通过触发这些更改来设置新 proxy 的更改：
+最后，当某些内容发生改变时我们会设置新的值。为此，我们将通过触发这些更改来设置新 proxy 的内容更新：
 
 ```js
 const dinner = {
@@ -162,14 +162,14 @@ console.log(proxy.meal)
 
 - `<strike>` 当某个值发生变化时进行检测 `</strike>`：我们不再需要这样做，因为 proxy 允许我们拦截它
 - **跟踪更改它的函数**：我们在 proxy 中的 getter 中执行此操作，称为 `effect`
-- **触发函数以便它可以更新最终值**：我们在 proxy 中使用了一个 setter，名为 `Trigger`
+- **触发函数以便它可以更新最终值**：我们在 proxy 中的setter中进行该操作，名为 `Trigger`
 
-proxy 对象对用户是不可见的，但是在后台，它们使 Vue 在访问或修改属性时能够执行依赖项跟踪和更改通知。从 Vue 3 开始，我们的响应式现在可以在 [separate package](https://github.com/vuejs/vue-next/tree/master/packages/reactivity) 中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
+proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在属性值被访问或修改的情况下进行依赖跟踪和变更通知。从 Vue 3 开始，我们的响应式现在可以在 [separate package](https://github.com/vuejs/vue-next/tree/master/packages/reactivity) 中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台输出的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
 
 ### proxy 对象
 
-Vue 在内部跟踪所有已被激活的对象，因此它始终为同一对象返回相同的 proxy。
+Vue 在内部跟踪所有已被设置为响应式的对象，因此它始终会返回同一个对象的proxy版本。
 
 从响应式 proxy 访问嵌套对象时，该对象在返回之前*也*被转换为 proxy：
 
@@ -199,9 +199,9 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们将失败依赖恒等于比较的操作，例如 `.filter()` 或 `.map()`。使用选项 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 proxy。
+在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们在依赖恒等于比较的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 proxy。
 
-但是，当使用合成 API 显式创建响应式对象时，最佳做法是从不保留对原始原始对象的引用，而只使用响应式版本：
+但是，当使用合成 API 显式创建响应式对象时，最佳做法是不要保留对原始原始对象的引用，而只使用响应式版本：
 
 ```js
 const obj = reactive({
@@ -211,7 +211,7 @@ const obj = reactive({
 
 ## 侦听器
 
-每个组件实例都有一个相应的侦听器实例，该实例将在组件渲染期间“触摸”的所有 property 记录为依赖项。稍后，当触发依赖项的 setter 时，它会通知侦听器，从而使得组件重新渲染。
+每个组件实例都有一个相应的侦听器实例，该实例将在组件渲染期间把“触碰”的所有 property 记录为依赖项。之后，当触发依赖项的 setter 时，它会通知侦听器，从而使得组件重新渲染。
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Second Reactivity with Proxies in Vue 3 Explainer" src="https://codepen.io/sdras/embed/GRJZddR?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -220,9 +220,9 @@ const obj = reactive({
   </iframe>
 </div>
 
-将对象作为数据传递给组件实例时，Vue 会将其转换为 proxy。此 proxy 使 Vue 能够在访问或修改属性时执行依赖项跟踪和更改通知。每个 property 都被视为一个依赖项。
+将对象作为数据传递给组件实例时，Vue 会将其转换为 proxy。这个 proxy 使 Vue 能够在属性被访问或修改时执行依赖项跟踪和更改通知。每个 property 都被视为一个依赖项。
 
-在第一次渲染之后，组件将跟踪依赖项列表——即在渲染过程中访问的 property。相反，组件成为这些 property 中每个 property 的订阅者。当 proxy 拦截 set 操作时，该 property 将通知其所有订阅的组件重新渲染
+首次渲染后，组件将跟踪一组依赖列表——即在渲染过程中被访问的 properties。相反，组件就成为了这些 properties 中每个 property 的订阅者。当 proxy 拦截 set 操作时，该 property 将通知其所有订阅的组件重新渲染
 
 [//]: # 'TODO: Insert diagram'
 
