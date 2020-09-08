@@ -4,7 +4,7 @@
 
 ## 什么是响应式
 
-这个术语在程序设计中经常被提及，但这是什么意思呢？响应式是一种允许我们已声明式的方式去适应变化的一种编程范例。人们通常展示的典型例子，是一份excel电子表格（一个非常好的例子）。
+这个术语在程序设计中经常被提及，但这是什么意思呢？响应式是一种允许我们已声明式的方式去适应变化的一种编程范例。人们通常展示的典型例子，是一份 excel 电子表格（一个非常好的例子）。
 
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
@@ -39,7 +39,7 @@ val1 = 3
 
 ## Vue 如何追踪变化？
 
-当把一个普通的 JavaScript 对象作为 data 属性传给应用或组件实例的时候，Vue 会使用带有 getter 和 setter 的proxy处理程序遍历其所有属性并将其转换为 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。这是 ES6 仅有的特性，但是我们在 Vue 3 版本也使用了 `Object.defineProperty` 来支持 IE 浏览器。两者具有相同的 Surface API，但是 proxy 版本更精简，同时提升了性能。
+当把一个普通的 JavaScript 对象作为 data 属性传给应用或组件实例的时候，Vue 会使用带有 getter 和 setter 的 proxy 处理程序遍历其所有属性并将其转换为 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。这是 ES6 仅有的特性，但是我们在 Vue 3 版本也使用了 `Object.defineProperty` 来支持 IE 浏览器。两者具有相同的 Surface API，但是 proxy 版本更精简，同时提升了性能。
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Proxies and Vue's Reactivity Explained Visually" src="https://codepen.io/sdras/embed/zYYzjBg?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -162,16 +162,16 @@ console.log(proxy.meal)
 
 - `<strike>` 当某个值发生变化时进行检测 `</strike>`：我们不再需要这样做，因为 proxy 允许我们拦截它
 - **跟踪更改它的函数**：我们在 proxy 中的 getter 中执行此操作，称为 `effect`
-- **触发函数以便它可以更新最终值**：我们在 proxy 中的setter中进行该操作，名为 `Trigger`
+- **触发函数以便它可以更新最终值**：我们在 proxy 中的 setter 中进行该操作，名为 `Trigger`
 
 proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在属性值被访问或修改的情况下进行依赖跟踪和变更通知。从 Vue 3 开始，我们的响应式现在可以在 [separate package](https://github.com/vuejs/vue-next/tree/master/packages/reactivity) 中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台输出的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
 
 ### proxy 对象
 
-Vue 在内部跟踪所有已被设置为响应式的对象，因此它始终会返回同一个对象的proxy版本。
+Vue 在内部跟踪所有已被设置为响应式的对象，因此它始终会返回同一个对象的 proxy 版本。
 
-从响应式 proxy 访问嵌套对象时，该对象在返回之前*也*被转换为 proxy：
+从响应式 proxy 访问嵌套对象时，该对象在返回之前*也*被转换为 proxy ：
 
 ```js
 const handler = {
@@ -199,7 +199,7 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们在依赖恒等于比较的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 proxy。
+在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们在依赖恒等于比较的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 proxy 。
 
 但是，当使用合成 API 显式创建响应式对象时，最佳做法是不要保留对原始对象的引用，而只使用响应式版本：
 
