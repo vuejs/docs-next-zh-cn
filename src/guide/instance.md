@@ -8,7 +8,7 @@
 Vue.createApp(/* 选项 */)
 ```
 
-创建实例后，我们可以_挂载_它，将容器传递给 `mount` 方法。例如，如果要在 `<div id="app"></div>` 上挂载 Vue 应用，则应传递 `#app`：
+创建实例后，我们可以*挂载*它，将容器传递给 `mount` 方法。例如，如果要在 `<div id="app"></div>` 上挂载 Vue 应用，则应传递 `#app`：
 
 ```js
 Vue.createApp(/* 选项 */).mount('#app')
