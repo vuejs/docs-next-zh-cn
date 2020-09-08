@@ -76,7 +76,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## 内链处理器中的方法
+## 内联处理器中的方法
 
 除了直接绑定到一个方法，也可以在内联 JavaScript 语句中调用方法：
 
