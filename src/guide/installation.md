@@ -103,14 +103,14 @@ $ yarn dev
 全局打包不是 [UMD](https://github.com/umdjs/umd) 构建的，它们被打包成 [IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)，并且仅用于通过 `<script src="...">` 直接使用。
 :::
 
-#### vue (。runtime)。esm-browser (。prod)。js：
+#### `vue(.runtime).esm-browser(.prod).js`：
 
 - 用于通过原生 ES 模块导入使用 (在浏览器中通过 `<script type="module">`；
 - 与全局构建共享相同的运行时编译、依赖内联和硬编码的 prod/dev 行为。
 
 ### 使用构建工具
 
-#### vue (。runtime)。esm-bundler.js：
+#### `vue(.runtime).esm-bundler.js`：
 
 - 使用构建工具像 `webpack`，`rollup` 和 `parcel`。
 - <a id="argue-1"></a>TODO：将 prod/dev 分支留给 `process.env.NODE_ENV guards` (需要更换构建工具)
