@@ -3,7 +3,7 @@
     <template #heading>Open Collective 赞助商</template>
 
     <template #content>
-      <h4>白金</h4>
+      <h4>铂金</h4>
       <a
         :href="`https://opencollective.com/vuejs/tiers/platinum-sponsors/${index}/website`"
         rel="sponsored noopener"
