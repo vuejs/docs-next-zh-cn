@@ -126,8 +126,6 @@ app.component('child-component', {
 
 ## 在同一目标上使用多个传送
 
-A common use case scenario would be a reusable `<Modal>` component of which there might be multiple instances active at the same time。For this kind of scenario，multiple `<teleport>` components can mount their content to the same target element。The order will be a simple append - later mounts will be located after earlier ones within the target element。
-
 一个常见的用例场景是一个可重用的 `<Modal>` 组件，它可能同时有多个实例处于活动状态。对于这种情况，多个 `<teleport>` 组件可以将其内容挂载到同一个目标元素。顺序将是一个简单的追加——稍后挂载将位于目标元素中较早的挂载之后。
 
 ```html
