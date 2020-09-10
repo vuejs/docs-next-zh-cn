@@ -53,7 +53,7 @@ app.component('modal-button', {
 
 Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下呈现 HTML，而不必求助于全局状态或将其拆分为两个组件。
 
-让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue“**teleport** 这个 HTML **to**”该“**body** 标记”。
+让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue 将这个 HTML **传入至该 body** 标记。
 
 ```js
 app.component('modal-button', {
