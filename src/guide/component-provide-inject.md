@@ -93,7 +93,7 @@ app.component('todo-list', {
 实际上，你可以将依赖注入看作是“long range props”，除了：
 
 - 父组件不需要知道哪些子组件使用它提供的 property
-- 子组件不需要知道 inject property 来自哪里
+- 子组件不需要知道 `inject` property 来自哪里
 
 ## 与响应式一起工作
 
@@ -110,4 +110,4 @@ app.component('todo-list', {
 })
 ```
 
-在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被注入。在 [Composition API 部分](composition-api-provide-inject.html#injection-reactivity)中阅读关于 `reactiv` provide/inject 的更多信息。
+在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被注入。在 [Composition API 部分](composition-api-provide-inject.html#injection-reactivity)中阅读关于 `reactive` provide/inject 的更多信息。

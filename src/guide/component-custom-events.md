@@ -142,7 +142,7 @@ app.component('user-name', {
 
 ## 处理 `v-model` 修饰符
 
-在 2.x 中，我们对组件 `v-model` 上的 `.trim` 等修饰符提供了硬编码支持。但是，如果组件可以支持自定义修饰符，则会更有用。在 3.x 中，添加到组件 `v-model` 的修饰符将通过 modelModifiers prop 提供给组件：
+在 2.x 中，我们对组件 `v-model` 上的 `.trim` 等修饰符提供了硬编码支持。但是，如果组件可以支持自定义修饰符，则会更有用。在 3.x 中，添加到组件 `v-model` 的修饰符将通过 `modelModifiers` prop 提供给组件：
 
 
 当我们学习表单输入绑定时，我们看到 `v-model` 有[内置修饰符](/guide/forms.html#modifiers)——`.trim`、`.number` 和 `.lazy`。但是，在某些情况下，你可能还需要添加自己的自定义修饰符。
