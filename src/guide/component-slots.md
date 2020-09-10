@@ -220,8 +220,6 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </div>
 ```
 
-Note that **`v-slot` can only be added to a `<template>`** (with [one exception](#abbreviated-syntax-for-lone-default-slots))
-
 注意，**`v-slot` 只能添加在 `<template>` 上** ([只有一种例外情况](#独占默认插槽的缩写语法))
 
 
@@ -257,7 +255,7 @@ app.component('todo-list', {
 </todo-list>
 ```
 
-但是，这是行不通的，因为只有 `todo list>` 组件可以访问 `item`，我们将从其父组件提供槽内容。
+但是，这是行不通的，因为只有 `<todo-list>` 组件可以访问 `item`，我们将从其父组件提供槽内容。
 
 要使 `item` 可用于父级提供的 slot 内容，我们可以添加一个 `<slot>` 元素并将其绑定为属性：
 
@@ -269,7 +267,7 @@ app.component('todo-list', {
 </ul>
 ```
 
-绑定在 `<slot` > 元素上的 attribute 被称为**插槽 prop**。现在在父级作用域中，我们可以使用带值的 v-slot 来定义我们提供的插槽 prop 的名字：
+绑定在 `<slot` > 元素上的 attribute 被称为**插槽 prop**。现在在父级作用域中，我们可以使用带值的 `v-slot` 来定义我们提供的插槽 prop 的名字：
 
 ```html
 <todo-list>
@@ -346,7 +344,7 @@ function (slotProps) {
 }
 ```
 
-这意味着 v-slot 的值实际上可以是任何能够作为函数定义中的参数的 JavaScript 表达式。你也可以使用 [ES2015](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) 解构来传入具体的插槽 prop，如下：
+这意味着 `v-slot` 的值实际上可以是任何能够作为函数定义中的参数的 JavaScript 表达式。你也可以使用 [ES2015](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) 解构来传入具体的插槽 prop，如下：
 
 
 ```html
