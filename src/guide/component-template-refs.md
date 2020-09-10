@@ -46,4 +46,4 @@ this.$refs.usernameInput.focusInput()
 `$refs` 仅在组件渲染后填充。它只用于直接子操作的转义图案填充——应避免从模板或计算属性中访问 `$refs`。
 :::
 
-**另请参见**：[在 Composition API 中使用 template refs](/guide/composition-api-template-refs.html#template-refs)
+**参考**：[在 Composition API 中使用 template refs](/guide/composition-api-template-refs.html#template-refs)
