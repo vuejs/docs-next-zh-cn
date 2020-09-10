@@ -14,8 +14,8 @@
 
 Vue 提供了 `transition` 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡
 
-- 条件渲染 (使用 v-if)
-- 条件展示 (使用 v-show)
+- 条件渲染 (使用 `v-if`)
+- 条件展示 (使用 `v-show`)
 - 动态组件
 - 组件根节点
 
@@ -64,7 +64,7 @@ Vue.createApp(Demo).mount('#demo')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-当插入或删除包含在 transition 组件中的元素时，Vue 将会做以下处理：
+当插入或删除包含在 `transition` 组件中的元素时，Vue 将会做以下处理：
 
 1. 自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。
 
@@ -90,7 +90,6 @@ Vue.createApp(Demo).mount('#demo')
 6. `v-leave-to`：**2.1.8 版及以上定义**离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave` 被删除)，在过渡/动画完成之后移除。
 
 ![Transition Diagram](/images/transition.png)
-TODO: 更新图表
 
 对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 `<transition>`，则 `v-` 是这些class名的默认前缀。如果你使用了 `<transition name="my-transition">`，那么 `v-enter-from`会替换为 `my-transition-enter-from`。
 
@@ -218,7 +217,7 @@ Vue.createApp(Demo).mount('#demo')
 - `leave-active-class`
 - `leave-to-class` (2.1.8+)
 
-他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如 A[Animate.css](https://daneden.github.io/animate.css/). 结合使用十分有用。
+他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如 [Animate.css](https://daneden.github.io/animate.css/). 结合使用十分有用。
 
 示例:
 
@@ -521,10 +520,10 @@ computed: {
 - `out-in`: 当前元素先进行过渡，完成之后新元素过渡进入。
 
 ::: tip
-很快就会发现 `out in` 是你大多数时候想要的状态 :)
+很快就会发现 `out-in` 是你大多数时候想要的状态 :)
 :::
 
-现在让我们用 `out in` 更新on/off按钮的转换：
+现在让我们用 `out-in` 更新on/off按钮的转换：
 
 ```html
 <transition name="fade" mode="out-in">
@@ -552,7 +551,7 @@ computed: {
 
 ## 多个组件之间过渡
 
-组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包装了一个 [动态组件](components.html#Dynamic-Components）：
+组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包装了一个 [动态组件](component-basics.html#动态组件) ：
 
 TODO: 更新到Vue 3
 
