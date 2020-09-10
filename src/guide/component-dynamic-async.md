@@ -76,7 +76,7 @@ const AsyncComp = defineAsyncComponent(() =>
 app.component('async-component', AsyncComp)
 ```
 
-当[在本地注册组件](component-registration.html#local-registration)时，你也可以使用 `dfineAysncComponent`
+当[在本地注册组件](component-registration.html#local-registration)时，你也可以使用 `defineAsyncComponent`
 
 ```js
 import { createApp, defineAsyncComponent } from 'vue'
@@ -94,8 +94,6 @@ createApp({
 ### 与 Suspense 一起使用
 
 异步组件在默认情况下是可挂起的。这意味着如果它在父链中有一个[`<Suspense>`](TODO)，它将被视为该 `<Suspense>` 的异步依赖。在这种情况下，加载状态将由 `<Suspense>` 控制，组件自身的加载、错误、延迟和超时选项将被忽略。
-
-The async component can opt-out of `Suspense` control and let the component always control its own loading state by specifying `suspensible: false` in its options。
 
 异步组件可以选择退出 `Suspense` 控制，并通过在其选项中指定 `suspensable:false`，让组件始终控制自己的加载状态。
 
