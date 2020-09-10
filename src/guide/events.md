@@ -193,7 +193,7 @@ methods: {
 <!-- 点击事件将只会触发一次 -->
 <a @click.once="doThis"></a>
 ```
-不像其它只能对原生的 DOM 事件起作用的修饰符，。once 修饰符还能被用到自定义的[组件事件](component-custom-events.html)上。如果你还没有阅读关于组件的文档，现在大可不必担心。
+不像其它只能对原生的 DOM 事件起作用的修饰符，`.once` 修饰符还能被用到自定义的[组件事件](component-custom-events.html)上。如果你还没有阅读关于组件的文档，现在大可不必担心。
 
 Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)提供了 `.passive` 修饰符。
 

@@ -141,7 +141,7 @@ Vue.createApp({
 
 ### 选择框 (Select)
 
-Single select：
+单选时：
 
 ```html
 <div id="v-model-select" class="demo">
@@ -173,7 +173,7 @@ Vue.createApp({
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 :::tip Note
-如果 `v-model` 表达式的初始值未能匹配任何选项，`<select>` 元素将被渲染为“未选中”状态。在 iOS 中，这会使用户无法选择第一个选项。因为这样的情况下，iOS 不会触发 change 事件。因此，更推荐像上面这样提供一个值为空的禁用选项。
+如果 `v-model` 表达式的初始值未能匹配任何选项，`<select>` 元素将被渲染为“未选中”状态。在 iOS 中，这会使用户无法选择第一个选项。因为这样的情况下，iOS 不会触发 `change` 事件。因此，更推荐像上面这样提供一个值为空的禁用选项。
 :::
 
 多选时 (绑定到一个数组)：
