@@ -6,7 +6,7 @@
 
 ## Attribute 继承
 
-当组件返回单个根节点时，非 prop attribute 将自动添加到根节点的 attribute 中。例如，在 date-picker 组件的实例中：
+当组件返回单个根节点时，非 prop attribute 将自动添加到根节点的 attribute 中。例如，在 `<date-picker>` 组件的实例中：
 
 ```js
 app.component('date-picker', {
@@ -18,7 +18,7 @@ app.component('date-picker', {
 })
 ```
 
-如果我们需要通过 `data status` property 定义 date-picker 组件的状态，它将应用于根节点 (即 `div.date-picker`)。
+如果我们需要通过 `data status` property 定义 `<date-picker>` 组件的状态，它将应用于根节点 (即 `div.date-picker`)。
 
 ```html
 <!-- 具有非prop attribute的Date-picker组件-->
@@ -44,7 +44,7 @@ app.component('date-picker', {
 })
 ```
 
-当有一个 HTML 元素将 `change` 事件作为 `date picker` 的根元素时，这可能会有帮助。
+当有一个 HTML 元素将 `change` 事件作为 `date-picker` 的根元素时，这可能会有帮助。
 
 ```js
 app.component('date-picker', {
@@ -76,7 +76,7 @@ const app = Vue.createApp({
 })
 ```
 
-## Disabling Attribute Inheritance
+## 禁用 Attribute 继承
 
 如果你**不**希望组件的根元素继承 attribute，你可以在组件的选项中设置 `inheritAttrs: false`。例如：
 
