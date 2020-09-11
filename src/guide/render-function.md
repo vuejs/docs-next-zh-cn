@@ -409,7 +409,7 @@ Vue.h(
 <anchored-heading :level="1"> <span>Hello</span> world! </anchored-heading>
 ```
 
-这就是为什么会有一个 [Babel 插件](https://github.com/vuejs/jsx) ，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
+这就是为什么会有一个 [Babel 插件](https://github.com/vuejs/jsx-next) ，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
 
 ```jsx
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -426,7 +426,7 @@ new Vue({
 })
 ```
 
-有关JSX如何映射到JavaScript的更多信息，请参阅 [使用文档](https://github.com/vuejs/jsx#installation) 。
+有关 JSX 如何映射到 JavaScript 的更多信息，请参阅 [使用文档](https://github.com/vuejs/jsx-next#installation) 。
 
 ## 模板编译
 
