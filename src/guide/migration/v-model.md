@@ -29,7 +29,7 @@ badges:
 
 ## 2.x 语法
 
-在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 属性和 `input` 事件：
+在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 和 `input` 事件：
 
 
 ```html
@@ -57,9 +57,9 @@ export default {
     event: 'change'
   },
   props: {
-    // 这将允许 value 属性用于其他用途
+    // 这将允许 `value` 属性用于其他用途
     value: String,
-    // 使用 title 代替 value 作为 model 的 prop
+    // 使用 `title` 代替 `value` 作为 model 的 prop
     title: {
       type: String,
       default: 'Default title'
@@ -76,7 +76,7 @@ export default {
 
 ### 使用 `v-bind.sync`
 
-在某些情况下，我们可能需要对某一个 prop 进行“双向绑定”(除了已经用 `v-model` 绑定的那个 prop 以外的情况)。为此，我们建议使用 `update:myPropName` 抛出事件。例如，对于在上一个示例中带有 `title` prop 的 `ChildComponent`，我们可以通过下面的方式将分配新 value 的意图传达给父级：
+在某些情况下，我们可能需要对某一个 prop 进行“双向绑定”(除了前面用 `v-model` 绑定 prop 的情况)。为此，我们建议使用 `update:myPropName` 抛出事件。例如，对于在上一个示例中带有 `title` prop 的 `ChildComponent`，我们可以通过下面的方式将分配新 value 的意图传达给父级：
 
 ```js
 this.$emit('update:title', newValue)
@@ -111,7 +111,7 @@ this.$emit('update:title', newValue)
 
 ### `v-model` 参数
 
-若需要更改 `model` 名称，而不是更改组件内的 `model` 选项，那么现在我们可以将一个 _argument_ 传递给 `model`：
+若需要更改 `model` 名称，而不是更改组件内的 `model` 选项，那么现在我们可以将一个 *argument* 传递给 `model`：
 
 ```html
 <ChildComponent v-model:title="pageTitle" />
@@ -185,7 +185,7 @@ this.$emit('update:title', newValue)
 
 ## 下一步
 
-更多新的 `v-model` 语法相关信息，请浏览：
+更多新的 `v-model` 语法相关信息，请参考：
 - [在组件中使用 `v-model`](../component-basics.html#using-v-model-on-components) 
 - [`v-model` 参数](../component-custom-events.html#v-model-arguments)
 - [处理 `v-model` 修饰符](../component-custom-events.html#v-model-arguments)
