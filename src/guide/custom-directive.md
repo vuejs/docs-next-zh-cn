@@ -2,7 +2,7 @@
 
 ## 简介
 
-除了核心功能默认内置的指令 (v-model 和 v-show)，Vue 也允许注册自定义指令。注意，在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。举个聚焦输入框的例子，如下：
+除了核心功能默认内置的指令 (`v-model` 和 `v-show`)，Vue 也允许注册自定义指令。注意，在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。举个聚焦输入框的例子，如下：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="JjdxaJW" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Custom directives: basic example">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/JjdxaJW">
@@ -57,7 +57,7 @@ directives: {
 - `beforeUpdate`：在更新包含组件的 VNode 之前调用。
 
 :::tip 提示
-我们会在[稍后] (我们会在稍后讨论渲染函数时介绍更多 VNodes 的细节。) 讨论渲染函数时介绍更多 VNodes 的细节。
+我们会在[稍后](render-function.html#虚拟-dom-树)讨论渲染函数时介绍更多 VNodes 的细节。
 :::
 
 - `updated`：在包含组件的 VNode **及其子组件的 VNode** 更新后调用。
@@ -237,7 +237,7 @@ return withDirectives(h('div'), [[vDemo, test]])
   }
 }
 ```
-**因此，自定义指令作为 VNode 数据的一部分完全包含在内。当在组件上使用自定义指令时，这些 `onVnodeXXX` 钩子作为无关的 prop 传递给组件，并以 `this.$attrs` 结束**
+**因此，自定义指令作为 VNode 数据的一部分完全包含在内。当在组件上使用自定义指令时，这些 `onVnodeXXX` 钩子作为无关的 prop 传递给组件，并以 `this.$attrs` 结束**。
 
 这也意味着可以像这样在模板中直接挂接到元素的生命周期中，这在涉及到自定义指令时非常方便：
 
