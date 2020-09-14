@@ -223,4 +223,4 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 
 ### 使用 `watchEffect` 共享行为
 
-`watch` 与 [`watchEffect`](#watcheffect) 共享 [阻止侦听器](#阻止侦听器)，[副作用失效](#副作用失效) (改造将 `onInvalidate` 作为第三个参数传递给回调)、[效果冲洗时间](#效果冲洗时间) 和 [侦听器调试](#侦听器调试) 行为。
+`watch` 与 [`watchEffect`](#watcheffect) 共享 [阻止侦听器](#阻止侦听器)，[副作用失效](#副作用失效) (改造将 `onInvalidate` 作为第三个参数传递给回调)、[效果冲刷时间](#效果冲刷时间) 和 [侦听器调试](#侦听器调试) 行为。
