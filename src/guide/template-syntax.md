@@ -21,7 +21,7 @@ Mustache 标签将会被替代为对应数据对象上 `msg` property 的值。�
 通过使用 [v-once 指令](../api/directives.html#v-once)，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。但请留心这会影响到该节点上的其它数据绑定：
 
 ```html
-<span v-once>个将不会改变: {{ msg }}</span>
+<span v-once>这个将不会改变: {{ msg }}</span>
 ```
 
 ### 原始 HTML
