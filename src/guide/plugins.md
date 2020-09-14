@@ -60,8 +60,6 @@ greetings: {
 
 插件还允许我们使用 `inject` 为插件的用户提供功能或 attribute。例如，我们可以允许应用程序访问 `options` 参数以能够使用翻译对象。
 
-Plugins also allow us to use `inject` to provide a function or attribute to the plugin's users。For example，we can allow the application to have access to the `options` parameter to be able to use the translations object。
-
 ```js
 // plugins/i18n.js
 export default {
