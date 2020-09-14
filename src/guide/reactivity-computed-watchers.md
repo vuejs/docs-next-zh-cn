@@ -4,7 +4,7 @@
 
 ## 计算值
 
-有时我们需要依赖于其他状态的状态——在 Vue 中，这是用组件[计算属性](computed.html#computed-properties)处理的，以直接创建计算值，我们可以使用 `computed` 方法：它接受 getter 函数并为 getter 返回的值返回一个不可变的响应式 [ref](reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs) 对象。
+有时我们需要依赖于其他状态的状态——在 Vue 中，这是用组件[计算属性](computed.html#计算属性和侦听器)处理的，以直接创建计算值，我们可以使用 `computed` 方法：它接受 getter 函数并为 getter 返回的值返回一个不可变的响应式 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 对象。
 
 ```js
 const count = ref(1)
@@ -63,10 +63,10 @@ stop()
 
 ### 副作用失效
 
-有时监视效果函数会执行异步副作用，当它失效时 (即在效果完成之前状态改变) 需要清除这些副作用。effect 函数接收一个 `onInvalidate` 函数，该函数可用于注册无效回调。此无效回调在以下情况下调用：
+有时侦听效果函数会执行异步副作用，当它失效时 (即在效果完成之前状态改变) 需要清除这些副作用。effect 函数接收一个 `onInvalidate` 函数，该函数可用于注册无效回调。此无效回调在以下情况下调用：
 
 - 效果将重新运行
-- <a id="argue-3"></a>TODO 侦听器被停止 (即，当组件卸载时，如果在 `setup()` 或生命周期钩子使用了 `watchEffect`)
+- 侦听器被停止 (即，当组件卸载时，如果在 `setup()` 或生命周期钩子使用了 `watchEffect`)
 
 ```js
 watchEffect(onInvalidate => {
@@ -89,9 +89,9 @@ watchEffect(async onInvalidate => {
 })
 ```
 
-异步函数隐式返回一个 Promise，但需要在 Promise 解析之前立即注册清除 p 函数。此外，Vue 依赖于返回的 Promise 来自动处理 Promise 链中的潜在错误。
+异步函数隐式返回一个 Promise，但需要在 Promise 解析之前立即注册清除函数。此外，Vue 依赖于返回的 Promise 来自动处理 Promise 链中的潜在错误。
 
-###<a id="argue-2"></a>TODO 效果冲刷 Timing？
+### 效果冲刷时间
 
 Vue 的响应性系统缓冲无效的效果，并异步刷新它们，以避免在同一个“tick”中发生许多状态转换时不必要的重复调用。在内部，组件的 `update` 功能也是一种监视效果。当把用户效果加入队列时，它总是在所有组件 `update` 效果之后调用：
 
@@ -122,7 +122,7 @@ Vue 的响应性系统缓冲无效的效果，并异步刷新它们，以避免�
 - 计数将在首次运行时同步记录。
 - 当 `count` 发生变化时，将在**组件更新后调用**回调。
 
-Note the first run is executed before the component is mounted。So if you wish to access the DOM (or template refs) in a watched effect，do it in the mounted hook：
+注意，第一次执行是在组件 mounted 之前的。因此，如果你希望在侦听效果下访问 DOM (或者模版 ref )，请在 mounted 钩子中执行：
 
 ```js
 onMounted(() => {
@@ -223,4 +223,4 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 
 ### 使用 `watchEffect` 共享行为
 
-`watch` 与 [`watchEffect`](#watcheffect) 共享 [manual stoppage](#stopping-the-watcher)，[side effect invalidation](#side-effect-invalidation) (改造将 `onInvalidate` 作为第三个参数传递给回调)、[flush timing](#effect-flush-timing 和 [debugging](#watcher-debugging) 行为。
+`watch` 与 [`watchEffect`](#watcheffect) 共享 [阻止侦听器](#阻止侦听器)，[副作用失效](#副作用失效) (改造将 `onInvalidate` 作为第三个参数传递给回调)、[效果冲洗时间](#效果冲洗时间) 和 [侦听器调试](#侦听器调试) 行为。
