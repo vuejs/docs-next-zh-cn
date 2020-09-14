@@ -14,16 +14,16 @@ const app = createApp({})
 
 ## component
 
-- **参数：**
+- **参数**：
 
   - `{string} name`
   - `{Function | Object} [definition]`
 
-- **用法：**
+- **用法**：
 
   注册或检索全局组件。注册还会使用给定的 `name` 参数自动设置组件的 `name`。
 
-- **示例：**
+- **示例**：
 
 ```js
 import { createApp } from 'vue'
@@ -43,11 +43,11 @@ const MyComponent = app.component('my-component', {})
 
 ## config
 
-- **用法：**
+- **用法**：
 
 包含应用程序配置的对象。
 
-- **示例：**
+- **示例**：
 
 ```js
 import { createApp } from 'vue'
@@ -60,16 +60,16 @@ app.config = {...}
 
 ## directive
 
-- **参数：**
+- **参数**：
 
   - `{string} name`
   - `{Function | Object} [definition]`
 
-- **用法：**
+- **用法**：
 
   注册或检索全局指令。
 
-- **示例：**
+- **示例**：
 
 ```js
 import { createApp } from 'vue'
@@ -152,11 +152,11 @@ app.directive('focus', {
 
 ## mixin
 
-- **参数：**
+- **参数**：
 
   - `{Object} mixin`
 
-- **用法：**
+- **用法**：
 
   在整个应用程序范围内应用 mixin，一旦注册，它们就可以在当前的 app 中任何组件模板内使用它。插件作者可以使用此方法将自定义行为注入组件。**不建议在应用程序代码中**。
 
@@ -164,16 +164,16 @@ app.directive('focus', {
 
 ## mount
 
-- **参数：**
+- **参数**：
 
   - `{Element | string} rootContainer`
   - `{boolean} isHydrate`
 
-- **用法：**
+- **用法**：
 
   将应用程序实例的根组件挂载在提供的 DOM 元素上。
 
-- **示例：**
+- **示例**：
 
 ```html
 <body>
@@ -194,15 +194,15 @@ app.mount('#my-app')
 
 ## unmount
 
-- **参数：**
+- **参数**：
 
   - `{Element | string} rootContainer`
 
-- **用法：**
+- **用法**：
 
   在提供的 DOM 元素上卸载应用程序实例的根组件。
 
-- **示例：**
+- **示例**：
 
 ```html
 <body>
@@ -223,11 +223,11 @@ setTimeout(() => app.unmount('#my-app'), 5000)
 
 ## use
 
-- **参数：**
+- **参数**：
 
   - `{Object | Function} plugin`
 
-- **用法：**
+- **用法**：
 
   安装 Vue.js 插件。如果插件是一个对象，它必须暴露一个 `install` 方法。如果它本身是一个函数，它将被视为安装方法。将以 Vue 作为参数调用 install 方法。
 

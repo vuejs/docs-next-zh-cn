@@ -76,25 +76,25 @@ render() {
 
 #### tag
 
-- **类型：**`String | Object | Function | null`
+- **类型**：`String | Object | Function | null`
 
-- **详细：**
+- **详细**：
 
   一个 HTML 标签名，一个组件，一个异步组件或 null，使用 null 将渲染注释。此参数是必需的。
 
 #### props
 
-- **类型：**`Object`
+- **类型**：`Object`
 
-- **详细：**
+- **详细**：
 
   与我们将在模板中使用的 attributes、prop 和事件相对应的对象。可选。
 
 #### children
 
-- **类型：**`String | Array | Object`
+- **类型**：`String | Array | Object`
 
-- **详细：**
+- **详细**：
 
   子虚拟 Node，使用 `h()` 生成，或者使用字符串来获取“文本节点”或带有插槽的对象。可选
 
@@ -224,9 +224,9 @@ render() {
 
 #### component
 
-- **类型：**`String`
+- **类型**：`String`
 
-- **详细：**
+- **详细**：
   载的组件的名称。
 
 ## resolveDynamicComponent
@@ -254,9 +254,9 @@ render () {
 
 #### component
 
-- **类型：**`String | Object (组件的选项对象)`
+- **类型**：`String | Object (组件的选项对象)`
 
-- **详细：**
+- **详细**：
 
   有关详细信息，请参阅[动态组件](../guide/component-dynamic-async.html)上的文档。
 
@@ -288,9 +288,9 @@ render () {
 
 #### name
 
-- **类型：**`String`
+- **类型**：`String`
 
-- **详细：**
+- **详细**：
 
   已加载指令的名称。
 
@@ -319,17 +319,17 @@ return withDirectives(h('div'), [
 
 #### vnode
 
-- **类型：**`vnode`
+- **类型**：`vnode`
 
-- **详细：** 
+- **详细**： 
 
   一个虚拟 node，通常使用 `h()` 创建。
 
 #### directives
 
-- **类型：**`Array`
+- **类型**：`Array`
 
-- **详细：**
+- **详细**：
 
   一个指令数组。
   
@@ -398,17 +398,17 @@ const { render, createApp } = createRenderer<Node, Element>({
 
 #### HostNode
 
-- **类型：**`Node`
+- **类型**：`Node`
 
-- **详细：**
+- **详细**：
 
   宿主环境中的节点。
 
 #### HostElement
 
-- **类型：**`Element`
+- **类型**：`Element`
 
-- **详细：**
+- **详细**：
 
   宿主环境中的元素
 

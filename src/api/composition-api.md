@@ -6,7 +6,7 @@
 
 一个组件选项，在创建组件**之前**执行，一旦 `props` 被解析，并作为组合 API 的入口点
 
-- **入参：**
+- **入参**：
 
   - `{Data} props`
   - `{SetupContext} context`
@@ -31,7 +31,7 @@ function setup(props: Data, context: SetupContext): Data
 若要获取传递给 `setup()` 的参数的类型推断，请使用 [defineComponent](global-api.html#definecomponent) 是需要的。
 :::
 
-- **示例：**
+- **示例**：
 
   使用模板：
 

@@ -6,7 +6,7 @@
 
 接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象具有指向内部值的单个 property `.value`。
 
-**示例：**
+**示例**：
 
 ```js
 const count = ref(0)
@@ -18,7 +18,7 @@ console.log(count.value) // 1
 
 如果将对象分配为 ref 值，则可以通过 [reactive](./basic-reactivity.html#reactive) 方法使该对象具有高度的响应式。
 
-**类型声明：**
+**类型声明**：
 
 ```ts
 interface Ref<T> {
@@ -183,7 +183,7 @@ Checks if a value is a ref object。
   }
   ```
 
-**Typing：**
+**Typing**：
 
 ```ts
 function customRef<T>(factory: CustomRefFactory<T>): Ref<T>
