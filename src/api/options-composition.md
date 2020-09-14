@@ -2,15 +2,15 @@
 
 ## mixins
 
-- **类型：**`Array<Object>`
+- **类型**：`Array<Object>`
 
-- **详细：**
+- **详细**：
 
   `mixins` 选项接收一个混入对象的数组。这些混入对象可以像正常的实例对象一样包含实例选项，这些选项将会被合并到最终的选项中，使用特定的选项合并逻辑。例如，如果 mixin 包含一个 `created` 钩子，而创建组件本身也有一个，那么两个函数都会被调用。
 
   Mixin 钩子按照传入顺序依次调用，并在调用组件自身的钩子之前被调用。
 
-- **示例：**
+- **示例**：
 
   ```js
   const mixin = {
@@ -34,15 +34,15 @@
 
 ## extends
 
-- **类型：**`Object | Function`
+- **类型**：`Object | Function`
 
-- **详细：**
+- **详细**：
 
   允许声明扩展另一个组件 (可以是一个简单的选项对象或构造函数)。这主要是为了便于扩展单文件组件。
 
   这和 `mixins` 类似。
 
-- **示例：**
+- **示例**：
 
   ```js
   const CompA = { ... }
@@ -56,12 +56,12 @@
 
 ## provide / inject
 
-- **类型：**
+- **类型**：
 
-  - **provide：**`Object | () => Object`
-  - **inject：**`Array<string> | { [key: string]: string | Symbol | Object }`
+  - **provide**：`Object | () => Object`
+  - **inject**：`Array<string> | { [key: string]: string | Symbol | Object }`
 
-- **详细：**
+- **详细**：
 
   这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。如果你熟悉 React，这与 React 的 `context` 特性很相似。
 
@@ -78,7 +78,7 @@
 
   > 提示：提示：`provide` 和 `inject` 绑定并不是可响应的。这是刻意为之的。然而，如果你传入了一个可监听的对象，那么其对象的 property 还是可响应的。
 
-- **示例：**
+- **示例**：
 
   ```js
   // 父级组件提供 'foo'
@@ -186,7 +186,7 @@
 
 ## setup
 
-- **类型：**`Function`
+- **类型**：`Function`
 
 `setup` 函数是一个新的组件选项。它作为在组件内部使用组合 API 的入口点。
 

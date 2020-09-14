@@ -2,11 +2,11 @@
 
 ## component
 
-- **Props：**
+- **Props**：
 
   - `is` - `string | ComponentDefinition | ComponentConstructor`
 
-- **用法：**
+- **用法**：
 
   渲染一个“元组件”为动态组件。依 `is` 的值，来决定哪个组件被渲染。
 
@@ -18,11 +18,11 @@
   <component :is="$options.components.child"></component>
   ```
 
--  **参考：** [动态组件](../guide/component-dynamic-async.html)
+-  **参考**： [动态组件](../guide/component-dynamic-async.html)
 
 ## transition
 
-- **Props：**
+- **Props**：
 
   - `name` - `string` 用于自动生成 CSS 过渡类名。例如：`name: 'fade'` 将自动拓展为 `.fade-enter`，`.fade-enter-active` 等。
   - `appear` - `boolean`，是否在初始渲染时使用过渡。默认为 `false`。
@@ -41,7 +41,7 @@
   - `leave-active-class` - `string`
   - `appear-active-class` - `string`
 
-- **事件：**
+- **事件**：
 
   - `before-enter`
   - `before-leave`
@@ -55,7 +55,7 @@
   - `leave-cancelled` (仅 `v-show`)
   - `appear-cancelled`
 
-- **用法：**
+- **用法**：
 
   `<transition>` 元素作为**单个**元素/组件的过渡效果。`<transition>` 只会把过渡效果应用到其包裹的内容上，而不会额外渲染 DOM 元素，也不会出现在可被检查的组件层级中。
 
@@ -92,21 +92,21 @@
   app.mount('#transition-demo')
   ```
 
--  **参考：** [进入 & 离开过渡](/guide/transitions-enterleave.html#transitioning-single-elements-components)
+-  **参考**：[进入 & 离开过渡](/guide/transitions-enterleave.html#transitioning-single-elements-components)
 
 ## transition-group
 
-- **Props：**
+- **Props**：
 
   - `tag` - `string`，默认为 `span`。
   - `move-class` - 覆盖移动过渡期间应用的 CSS 类。
   - 除了 `mode`，其他 attribute 和 `<transition>` 相同。
 
-- **事件：**
+- **事件**：
 
   - 事件和 `<transition>` 相同。
 
-- **用法：**
+- **用法**：
 
   `<transition-group>` 元素作为**多个**元素/组件的过渡效果。`<transition-group>` 渲染一个真实的 DOM 元素。默认渲染 `<span>`，可以通过 `tag` attribute 配置哪个元素应该被渲染。
 
@@ -122,17 +122,17 @@
   </transition-group>
   ```
 
--  **参考：** [列表过渡](/guide/transitions-list.html)
+-  **参考**： [列表过渡](/guide/transitions-list.html)
 
 ## keep-alive
 
-- **Props：**
+- **Props**：
 
   - `include` - `string | RegExp | Array`。只有名称匹配的组件会被缓存。
   - `exclude` - `string | RegExp | Array`。任何名称匹配的组件都不会被缓存。
   - `max` - `number | string`。最多可以缓存多少组件实例。
 
-- **用法：**
+- **用法**：
 
   `<keep-alive>` 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。和 `<transition>` 相似，`<keep-alive>` 是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在组件的父组件链中。
 
@@ -200,25 +200,25 @@
   `<keep-alive>` 不会在函数式组件中正常工作，因为它们没有缓存实例。
   :::
 
--  **参考：** [动态组件 - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+-  **参考**： [动态组件 - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
 
 ## slot
 
-- **Props：**
+- **Props**：
 
   - `name` - `string`，用于具名插槽
 
-- **用法：**
+- **用法**：
 
   `<slot>` 元素作为组件模板之中的内容分发插槽。`<slot>` 元素自身将被替换。
 
   详细用法，请参考下面教程的链接。
 
--  **参考：** [通过插槽分发内容](../guide/component-basics.html#content-distribution-with-slots)
+-  **参考**： [通过插槽分发内容](../guide/component-basics.html#content-distribution-with-slots)
 
 ## teleport
 
-- **Props：**
+- **Props**：
 
   - `to` - `string`。需要 prop，必须是有效的查询选择器或 HTMLElement (如果在浏览器环境中使用)。指定将在其中移动 `<teleport>` 内容的目标元素
 
@@ -243,4 +243,4 @@
 
   请注意，这将移动实际的 DOM 节点，而不是被销毁和重新创建，并且它还将保持任何组件实例的活动状态。所有有状态的 HTML 元素 (即播放的视频) 都将保持其状态。
 
--  **参考：** [Teleport 组件](../guide/teleport.html#teleport)
+-  **参考**： [Teleport 组件](../guide/teleport.html#teleport)

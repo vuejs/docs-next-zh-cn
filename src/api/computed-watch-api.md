@@ -30,7 +30,7 @@ plusOne.value = 1
 console.log(count.value) // 0
 ```
 
-**类型声明：**
+**类型声明**：
 
 ```ts
 // read-only
@@ -56,7 +56,7 @@ setTimeout(() => {
 }, 100)
 ```
 
-**类型声明：**
+**类型声明**：
 
 ```ts
 function watchEffect(
@@ -130,7 +130,7 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 
 `watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](stopping-the-watcher)，[副作用无效](side-effect-invalidation) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](#effect-flush-timing) 和 [debugging](#watcher-debugging)。
 
-**类型声明：**
+**类型声明**：
 
 ```ts
 // 帧听单一源

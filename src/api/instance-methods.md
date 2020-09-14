@@ -2,7 +2,7 @@
 
 ## $watch
 
-- **参数：**
+- **参数**：
 
   - `{string | Function} source`
   - `{Function | Object} callback`
@@ -10,13 +10,13 @@
     - `{boolean} deep`
     - `{boolean} immediate`
 
-- **返回：**`{Function} unwatch`
+- **返回**：`{Function} unwatch`
 
-- **用法：**
+- **用法**：
 
   帧听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`prop` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
 
-- **示例：**
+- **示例**：
 
   ```js
   const app = Vue.createApp({
@@ -174,14 +174,14 @@
 
 ## $emit
 
-- **参数：**
+- **参数**：
 
   - `{string} eventName`
   - `[...args]`
 
   触发当前实例上的事件。附加参数都会传给监听器回调。
 
-- **示例：**
+- **示例**：
 
   只配合一个事件名使用 $emit：
 
@@ -251,21 +251,21 @@
 
 ## $forceUpdate
 
-- **用法：**
+- **用法**：
 
   迫使组件实例重新渲染。注意它仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件。
 
 ## $nextTick
 
-- **参数：**
+- **参数**：
 
   - `{Function} [callback]`
 
-- **用法：**
+- **用法**：
 
   将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新。它跟全局方法 `nextTick` 一样，不同的是回调的 `this` 自动绑定到调用它的实例上。
 
-- **示例：**
+- **示例**：
 
   ```js
   Vue.createApp({

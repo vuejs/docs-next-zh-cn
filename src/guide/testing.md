@@ -40,7 +40,7 @@
 
 Jest 是一个专注于简易性的 JavaScript 测试框架。一个其独特的功能是可以为测试生成快照 (snapshot)，以提供另一种验证应用单元的方法。
 
-**资料：**
+**资料**：
 
 - [Jest 官网](https://jestjs.io/zh-Hans/)
 - [Vue CLI 官方插件 - Jest](https://cli.vuejs.org/core-plugins/unit-jest.html)
@@ -49,7 +49,7 @@ Jest 是一个专注于简易性的 JavaScript 测试框架。一个其独特的
 
 Mocha 是一个专注于灵活性的 JavaScript 测试框架。因为其灵活性，它允许你选择不同的库来满足诸如侦听 (如 Sinon) 和断言 (如 Chai) 等其它常见的功能。另一个 Mocha 独特的功能是它不止可以在 Node.js 里运行测试，还可以在浏览器里运行测试。
 
-**资料：**
+**资料**：
 
 - [Mocha 官网](https://mochajs.org)
 - [Vue CLI 官方插件 - Mocha](https://cli.vuejs.org/core-plugins/unit-mocha.html)
@@ -80,7 +80,7 @@ Vue Testing Library 是一组专注于测试组件而不依赖实现细节的工
 
 它的指导原则是，与软件使用方式相似的测试越多，它们提供的可信度就越高。
 
-**资料：**
+**资料**：
 
 - [Vue Testing Library 官网](https://testing-library.com/docs/vue-testing-library/intro)
 
@@ -88,7 +88,7 @@ Vue Testing Library 是一组专注于测试组件而不依赖实现细节的工
 
 Vue Test Utils 是官方的偏底层的组件测试库，它是为用户提供对 Vue 特定 API 的访问而编写的。如果你对测试 Vue 应用不熟悉，我们建议你使用 Vue Testing Library，它是 Vue Test Utils 的抽象。
 
-**资源：**
+**资源**：
 
 - [Vue Test Utils 官方文档](https://vue-test-utils.vuejs.org)
 - [Vue 测试指南](https://lmiller1990.github.io/vue-testing-handbook/zh-CN/) by Lachlan Miller
@@ -129,7 +129,7 @@ Vue Test Utils 是官方的偏底层的组件测试库，它是为用户提供�
 
 Cypress.io 是一个测试框架，旨在通过使开发者能够可靠地测试他们的应用，同时提供一流的开发者体验，来提高开发者的生产率。
 
-**资料：**
+**资料**：
 
 - [Cypress 官网](https://www.cypress.io)
 - [Vue CLI 官方插件 - Cypress](https://cli.vuejs.org/core-plugins/e2e-cypress.html)
@@ -139,7 +139,7 @@ Cypress.io 是一个测试框架，旨在通过使开发者能够可靠地测试
 
 Nightwatch.js 是一个端到端测试框架，可用于测试 web 应用和网站，以及 Node.js 单元测试和集成测试。
 
-**资料：**
+**资料**：
 
 - [Nightwatch 官网](https://nightwatchjs.org)
 - [Vue CLI 官方插件 - Nightwatch](https://cli.vuejs.org/core-plugins/e2e-nightwatch.html)
@@ -148,7 +148,7 @@ Nightwatch.js 是一个端到端测试框架，可用于测试 web 应用和网�
 
 Puppeteer 是一个 Node.js 库，它提供高阶 API 来控制浏览器，并可以与其他测试运行程序 (例如 Jest) 配对来测试应用。
 
-**资料：**
+**资料**：
 
 - [Puppeteer 官网](https://pptr.dev)
 
@@ -156,6 +156,6 @@ Puppeteer 是一个 Node.js 库，它提供高阶 API 来控制浏览器，并�
 
 TestCafe 是一个基于端到端的 Node.js 框架，旨在提供简单的设置，以便开发者能够专注于创建易于编写和可靠的测试。
 
-**资料：**
+**资料**：
 
 - [TestCafe 官网](https://devexpress.github.io/testcafe/)

@@ -11,8 +11,8 @@ badges:
 
 - 在 3.x 中，功能性组件 2.x 的性能提升可以忽略不计，因此我们建议只使用有状态的组件
 - 功能组件只能使用接收 `props` 和 `context` 的普通函数创建 (即：`slots`，`attrs`，`emit`)。
-- **重大变更：**`functional` attribute 在单文件组件 (SFC) `<template>` 已被移除
-- **重大变更：**`{ functional: true }` 选项在通过函数创建组件已被移除
+- **重大变更**：`functional` attribute 在单文件组件 (SFC) `<template>` 已被移除
+- **重大变更**：`{ functional: true }` 选项在通过函数创建组件已被移除
 
 更多信息，请继续阅读！
 

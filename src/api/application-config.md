@@ -10,11 +10,11 @@ app.config = {...}
 
 ## devtools
 
-- **类型：**`boolean`
+- **类型**：`boolean`
 
-- **默认：**`true` (在生成打包中是 `false`)
+- **默认**：`true` (在生成打包中是 `false`)
 
-- **用法：**
+- **用法**：
 
 ```js
 app.config.devtools = true
@@ -24,11 +24,11 @@ app.config.devtools = true
 
 ## errorHandler
 
-- **类型：**`Function`
+- **类型**：`Function`
 
-- **默认：**`undefined`
+- **默认**：`undefined`
 
-- **用法：**
+- **用法**：
 
 ```js
 app.config.errorHandler = (err, vm, info) => {
@@ -44,11 +44,11 @@ app.config.errorHandler = (err, vm, info) => {
 
 ## warnHandler
 
-- **类型：**`Function`
+- **类型**：`Function`
 
-- **默认：**`undefined`
+- **默认**：`undefined`
 
-- **用法：**
+- **用法**：
 
 ```js
 app.config.warnHandler = function(msg, vm, trace) {
@@ -60,11 +60,11 @@ app.config.warnHandler = function(msg, vm, trace) {
 
 ## globalProperties
 
-- **类型：**`[key: string]: any`
+- **类型**：`[key: string]: any`
 
-- **默认：**`undefined`
+- **默认**：`undefined`
 
-- **用法：**
+- **用法**：
 
 ```js
 app.config.globalProperties.foo = 'bar'
@@ -91,11 +91,11 @@ app.config.globalProperties.$http = () => {}
 
 ## isCustomElement
 
-- **类型：**`(tag: string) => boolean`
+- **类型**：`(tag: string) => boolean`
 
-- **默认：**`undefined`
+- **默认**：`undefined`
 
-- **用法：**
+- **用法**：
 
 ```js
 // 任何以“ion-”开头的元素都将被识别为自定义元素
@@ -108,11 +108,11 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 
 ## optionMergeStrategies
 
-- **类型：**`{ [key: string]: Function }`
+- **类型**：`{ [key: string]: Function }`
 
-- **默认：**`{}`
+- **默认**：`{}`
 
-- **用法：**
+- **用法**：
 
 ```js
 const app = Vue.createApp({
@@ -140,9 +140,9 @@ app.mixin({
 
 ## performance
 
-- **类型：**`boolean`
+- **类型**：`boolean`
 
-- **默认：**`false`
+- **默认**：`false`
 
 - **Usage**：
 

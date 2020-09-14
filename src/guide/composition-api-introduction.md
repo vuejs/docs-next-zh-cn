@@ -279,7 +279,7 @@ watch(counter, (newValue, oldValue) => {
 
 例如，每当 `counter` 被修改时 `counter.value=5`，watch 将触发并执行回调 (第二个参数)，在本例中，它将把 `The new counter value is:5` 记录到我们的控制台中。
 
-**以下是选项 API 等效：**
+**以下是选项 API 等效**：
 
 ```js
 export default {
@@ -298,7 +298,7 @@ export default {
 
 有关 `watch` 的详细信息，请参阅我们的[深入指南] ()。
 
-**现在我们将其应用到我们的示例中：**
+**现在我们将其应用到我们的示例中**：
 
 ```js
 // src/components/UserRepositories.vue `setup` function
@@ -434,7 +434,7 @@ export default function useRepositoryNameSearch(repositories) {
 }
 ```
 
-**现在在单独的文件中有了这两个功能，我们就可以开始在组件中使用它们了。以下是如何做到这一点：**
+**现在在单独的文件中有了这两个功能，我们就可以开始在组件中使用它们了。以下是如何做到这一点**：
 
 ```js
 // src/components/UserRepositories.vue
