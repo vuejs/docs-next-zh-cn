@@ -97,7 +97,7 @@ app.component('todo-list', {
 
 ## 与响应式一起工作
 
-在上面的例子中，如果我们更改了 `todos` 的列表，这个更改将不会反映在注入的 `todoLength` property 中。这是因为默认情况下，`provide/inject` 绑定*不*是被动绑定。我们可以通过将 `ref` property 或 `reactive` 对象传递给 `provide` 来更改此行为。在我们的例子中，如果我们想对祖先组件中的更改做出反应，我们需要为我们提供的 `todoLength` 分配一个组合 API `computed` property：
+在上面的例子中，如果我们更改了 `todos` 的列表，这个更改将不会反映在注入的 `todoLength` property 中。这是因为默认情况下，`provide/inject` 绑定*不*是被动绑定。我们可以通过将 `ref` property 或 `reactive` 对象传递给 `provide` 来更改此行为。在我们的例子中，如果我们想对祖先组件中的更改做出响应，我们需要为我们提供的 `todoLength` 分配一个组合 API `computed` property：
 
 ```js
 app.component('todo-list', {
