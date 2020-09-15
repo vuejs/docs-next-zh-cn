@@ -17,7 +17,7 @@ const state = reactive({
 
 Vue 中响应式状态的基本用例是我们可以在渲染期间使用它。由于依赖关系跟踪，视图在被动状态更改时自动更新。
 
-这就是 Vue 响应式系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部由 `reactive()` 使其成为反应对象。模板被编译成[渲染函数](render-function.html) 利用了这些响应式性质。
+这就是 Vue 响应式系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部由 `reactive()` 使其成为响应式对象。模板被编译成[渲染函数](render-function.html) 利用了这些响应式性质。
 
 
  在[响应式基础 API](../api/basic-reactivity.html) 章节你可以学习更多关于 `reactive` 的内容
@@ -150,7 +150,7 @@ console.log(book.title) // 'Vue 3 Detailed Guide'
 
 ## 防止使用 `readonly` 转换响应式对象
 
-有时我们想跟踪反应对象 (`ref` 或 `reactive`) 的变化，但我们也希望防止从应用程序的某个位置更改它。例如，当我们有一个 [provide](component-provide-inject.html) 响应式对象，我们要防止它在注入的地方发生转换。为此，我们可以为原始对象创建一个只读 Proxy：
+有时我们想跟踪响应式对象 (`ref` 或 `reactive`) 的变化，但我们也希望防止从应用程序的某个位置更改它。例如，当我们有一个 [provide](component-provide-inject.html) 响应式对象，我们要防止它在注入的地方发生转换。为此，我们可以为原始对象创建一个只读 Proxy：
 
 ```js
 import { reactive, readonly } from 'vue'
