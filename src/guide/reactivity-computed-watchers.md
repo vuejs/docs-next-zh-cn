@@ -48,7 +48,7 @@ setTimeout(() => {
 
 ### 停止侦听
 
-当 `watchEffect` 在组件的 [setup()](composition-api-setup.html) 函数或[生命周期钩子](composition-api-lifecycle-hooks.html)被调用时， 侦听器会被链接到该组件的生命周期，并在组件卸载时自动停止。
+当 `watchEffect` 在组件的 [setup()](composition-api-setup.html) 函数或[生命周期钩子](composition-api-lifecycle-hooks.html)被调用时，侦听器会被链接到该组件的生命周期，并在组件卸载时自动停止。
 
 在一些情况下，也可以显式调用返回值以停止侦听：
 
@@ -134,7 +134,7 @@ onMounted(() => {
 })
 ```
 
-如果副作用需要同步或在组件更新之前重新运行，我们可以传递一个拥有 `flush` 属性的对象作为`options`（默认为 `post`）：
+如果副作用需要同步或在组件更新之前重新运行，我们可以传递一个拥有 `flush` 属性的对象作为 `options`（默认为 `post` ）：
 
 ```js
 // 同步交火
@@ -162,7 +162,7 @@ watchEffect(
 
 `onTrack` 和 `onTrigger` 选项可用于调试侦听器的行为。
 
-- 当一个 reactive 对象属性或一个 ref 作为依赖被追踪时，将调用 `onTrack`
+- 当一个 reactive 对象 property 或 ref 作为依赖被追踪时，将调用 `onTrack`
 - 依赖项变更导致副作用被触发时，将调用 `onTrigger`
 
 这两个回调都将接收到一个包含有关所依赖项信息的调试器事件。建议在以下回调中编写 `debugger` 语句来检查依赖关系：
