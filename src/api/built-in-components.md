@@ -122,7 +122,7 @@
   </transition-group>
   ```
 
--  **参考**： [列表过渡](/guide/transitions-list.html)
+-  **参考**：[列表过渡](/guide/transitions-list.html)
 
 ## keep-alive
 
