@@ -58,7 +58,7 @@ const sidebar = {
       ]
     },
     {
-      title: '高级指南',
+      title: '高阶指南',
       collapsable: false,
       children: [{
           title: '响应式',
