@@ -264,7 +264,7 @@ computed: {
   </li>
 </ul>
 ```
-更新为:
+更新为：
 
 ``` html
 <ul v-if="shouldShowUsers">
@@ -716,7 +716,7 @@ components/
    |- index.vue
 ```
 
-or:
+或者：
 
 ```
 components/

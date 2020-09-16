@@ -18,7 +18,7 @@
   <component :is="$options.components.child"></component>
   ```
 
--  **参考**： [动态组件](../guide/component-dynamic-async.html)
+-  **参考**：[动态组件](../guide/component-dynamic-async.html)
 
 ## transition
 
@@ -200,7 +200,7 @@
   `<keep-alive>` 不会在函数式组件中正常工作，因为它们没有缓存实例。
   :::
 
--  **参考**： [动态组件 - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+-  **参考**：[动态组件 - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
 
 ## slot
 
@@ -214,7 +214,7 @@
 
   详细用法，请参考下面教程的链接。
 
--  **参考**： [通过插槽分发内容](../guide/component-basics.html#content-distribution-with-slots)
+-  **参考**：[通过插槽分发内容](../guide/component-basics.html#content-distribution-with-slots)
 
 ## teleport
 
@@ -243,4 +243,4 @@
 
   请注意，这将移动实际的 DOM 节点，而不是被销毁和重新创建，并且它还将保持任何组件实例的活动状态。所有有状态的 HTML 元素 (即播放的视频) 都将保持其状态。
 
--  **参考**： [Teleport 组件](../guide/teleport.html#teleport)
+-  **参考**：[Teleport 组件](../guide/teleport.html#teleport)
