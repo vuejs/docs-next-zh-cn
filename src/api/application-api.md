@@ -145,7 +145,7 @@ app.directive('focus', {
 上一个的虚拟 Node，仅在 `beforeUpdate` 和 `updated` 钩子中可用。
 
 :::tip Note
-除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。如果你需要跨钩子共享信息，建议通过元素的[数据集] (https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) 进行共享。
+除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。如果你需要跨钩子共享信息，建议通过元素的[数据集](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)进行共享。
 :::
 
 - **参考**[自定义指令](../guide/custom-directive.html)
