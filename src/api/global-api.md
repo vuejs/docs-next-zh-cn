@@ -163,7 +163,7 @@ createApp({
 })
 ```
 
-对于高级用法，`defineAsyncComponent` 可以接受对象：
+对于高阶用法，`defineAsyncComponent` 可以接受对象：
 
 `defineAsyncComponent` 方法还可以返回以下格式的对象：
 

@@ -27,7 +27,7 @@
 
 ### Web 可访问性倡议——可访问的富互联网应用程序 (WAI-ARIA)
 
-W3C 的 WAI-ARIA 为如何构建动态内容和高级用户界面控件提供了指导。
+W3C 的 WAI-ARIA 为如何构建动态内容和高阶用户界面控件提供了指导。
 
 - [可访问的富 Internet 应用程序 (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA 创造实践 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)

@@ -23,7 +23,7 @@ badges:
 const asyncPage = () => import('./NextPage.vue')
 ```
 
-或者，对于带有选项的更高级组件语法：
+或者，对于带有选项的更高阶组件语法：
 
 ```js
 const asyncPage = {
