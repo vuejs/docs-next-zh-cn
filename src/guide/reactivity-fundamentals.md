@@ -13,18 +13,18 @@ const state = reactive({
 })
 ```
 
-`reactive` 相当于 Vue 2.x 中 `Vue.observable()` API ，为避免与 RxJS 中的 observables 混淆因此对其重命名。该 API 返回一个响应式的对象状态。响应式转换是“深”的——它会影响嵌套对象传递的所有 property。
+`reactive` 相当于 Vue 2.x 中 `Vue.observable()` API ，为避免与 RxJS 中的 observables 混淆因此对其重命名。该 API 返回一个响应式的对象状态。该响应式转换是“深度转换”——它会影响嵌套对象传递的所有 property。
 
 Vue 中响应式状态的基本用例是我们可以在渲染期间使用它。因为依赖跟踪的关系，当响应式状态改变时视图会自动更新。
 
-这就是 Vue 响应式系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部交由 `reactive()` 使其成为响应式对象。模板会被编译成能够使用这些响应式属性的[渲染 function](render-function.html)。
+这就是 Vue 响应式系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部交由 `reactive()` 使其成为响应式对象。模板会被编译成能够使用这些响应式 property 的[渲染函数](render-function.html)。
 
 
  在[响应式基础 API](../api/basic-reactivity.html) 章节你可以学习更多关于 `响应式` 的内容。
 
 ## 创建独立的响应式值作为 `refs`
 
-想象一下，我们有一个独立的原始值 (例如，一个字符串)，我们想让它变成响应式的。当然，我们可以创建一个拥有相同字符串属性的对象，并将其传递给 `reactive`。Vue 为我们提供了一个可以做相同事情的方法 ——`ref`。
+想象一下，我们有一个独立的原始值 (例如，一个字符串)，我们想让它变成响应式的。当然，我们可以创建一个拥有相同字符串 property 的对象，并将其传递给 `reactive`。Vue 为我们提供了一个可以做相同事情的方法 ——`ref`。
 
 ```js
 import { ref } from 'vue'
@@ -127,7 +127,7 @@ const book = reactive({
 let { author, title } = book
 ```
 
-遗憾的是，使用解构的两个属性值的响应式都会丢失。对于这种情况，我们需要将我们的响应式对象转换为一组 ref。这些 ref 将保留与源对象的响应式关联：
+遗憾的是，使用解构的两个 property 的响应式都会丢失。对于这种情况，我们需要将我们的响应式对象转换为一组 ref。这些 ref 将保留与源对象的响应式关联：
 
 ```js
 import { reactive, toRefs } from 'vue'

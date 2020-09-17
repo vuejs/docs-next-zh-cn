@@ -39,7 +39,7 @@ val1 = 3
 
 ## Vue 如何追踪变化？
 
-当把一个普通的 JavaScript 对象作为 data 属性传给应用或组件实例的时候，Vue 会使用带有 getter 和 setter 的 proxy 处理程序遍历其所有属性并将其转换为 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。这是 ES6 仅有的特性，但是我们在 Vue 3 版本也使用了 `Object.defineProperty` 来支持 IE 浏览器。两者具有相同的 Surface API，但是 proxy 版本更精简，同时提升了性能。
+当把一个普通的 JavaScript 对象作为 data 选项传给应用或组件实例的时候，Vue 会使用带有 getter 和 setter 的 proxy 处理程序遍历其所有 property 并将其转换为 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。这是 ES6 仅有的特性，但是我们在 Vue 3 版本也使用了 `Object.defineProperty` 来支持 IE 浏览器。两者具有相同的 Surface API，但是 Proxy 版本更精简，同时提升了性能。
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Proxies and Vue's Reactivity Explained Visually" src="https://codepen.io/sdras/embed/zYYzjBg?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -50,7 +50,7 @@ val1 = 3
 
 该部分需要稍微地了解下 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的某些知识！所以，让我们深入了解一下。关于 proxy 的文献很多，但是你真正需要知道的是 **proxy 是一个包含另一个对象或函数并允许你对其进行拦截的对象。**
 
-我们可以像这样使用它：`new Proxy(target, handler)`
+我们是这样使用它的：`new Proxy(target, handler)`
 
 ```js
 const dinner = {
@@ -199,7 +199,7 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们在依赖恒等于比较的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 proxy 。
+在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们在依赖严格比对的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 Proxy。
 
 但是，当使用合成 API 显式创建响应式对象时，最佳做法是不要保留对原始对象的引用，而只使用响应式版本：
 
@@ -222,7 +222,7 @@ const obj = reactive({
 
 将对象作为数据传递给组件实例时，Vue 会将其转换为 proxy。这个 proxy 使 Vue 能够在属性被访问或修改时执行依赖项跟踪和更改通知。每个 property 都被视为一个依赖项。
 
-首次渲染后，组件将跟踪一组依赖列表——即在渲染过程中被访问的 properties。相反，组件就成为了这些 properties 中每个 property 的订阅者。当 proxy 拦截 set 操作时，该 property 将通知其所有订阅的组件重新渲染
+首次渲染后，组件将跟踪一组依赖列表——即在渲染过程中被访问的 property。反过来，组件就成为了其每个 property 的订阅者。当 Proxy 拦截到 set 操作时，该 property 将通知其所有订阅的组件重新渲染。
 
 [//]: # 'TODO: Insert diagram'
 
