@@ -39,7 +39,7 @@ val1 = 3
 
 ## Vue 如何追踪变化？
 
-当把一个普通的 JavaScript 对象作为 data 选项传给应用或组件实例的时候，Vue 会使用带有 getter 和 setter 的 proxy 处理程序遍历其所有 property 并将其转换为 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。这是 ES6 仅有的特性，但是我们在 Vue 3 版本也使用了 `Object.defineProperty` 来支持 IE 浏览器。两者具有相同的 Surface API，但是 Proxy 版本更精简，同时提升了性能。
+当把一个普通的 JavaScript 对象作为 `data` 选项传给应用或组件实例的时候，Vue 会使用带有 getter 和 setter 的处理程序遍历其所有 property 并将其转换为 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)。这是 ES6 仅有的特性，但是我们在 Vue 3 版本也使用了 `Object.defineProperty` 来支持 IE 浏览器。两者具有相同的 Surface API，但是 Proxy 版本更精简，同时提升了性能。
 
 <div class="reactivecontent">
   <iframe height="500" style="width: 100%;" scrolling="no" title="Proxies and Vue's Reactivity Explained Visually" src="https://codepen.io/sdras/embed/zYYzjBg?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
@@ -48,7 +48,7 @@ val1 = 3
   </iframe>
 </div>
 
-该部分需要稍微地了解下 [proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的某些知识！所以，让我们深入了解一下。关于 proxy 的文献很多，但是你真正需要知道的是 **proxy 是一个包含另一个对象或函数并允许你对其进行拦截的对象。**
+该部分需要稍微地了解下 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的某些知识！所以，让我们深入了解一下。关于 Proxy 的文献很多，但是你真正需要知道的是 **Proxy 是一个包含另一个对象或函数并允许你对其进行拦截的对象。**
 
 我们是这样使用它的：`new Proxy(target, handler)`
 
@@ -69,7 +69,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-好的，到目前为止，我们只是包装这个对象并返回它。很酷，但还不是那么有用。请注意，我们把对象包装在 proxy 里的同时可以对其进行拦截。这种拦截被称为陷阱。
+好的，到目前为止，我们只是包装这个对象并返回它。很酷，但还不是那么有用。请注意，我们把对象包装在 Proxy 里的同时可以对其进行拦截。这种拦截被称为陷阱。
 
 ```js
 const dinner = {
@@ -90,9 +90,9 @@ console.log(proxy.meal)
 // tacos
 ```
 
-除了控制台日志，我们可以在这里做任何我们想做的事情。如果我们愿意，我们甚至可以不返回实际值。这就是为什么 proxy 对于创建 API 如此强大。
+除了控制台日志，我们可以在这里做任何我们想做的事情。如果我们愿意，我们甚至可以不返回实际值。这就是为什么 Proxy 对于创建 API 如此强大。
 
-此外，proxy 还给我们提供了另一个特性。我们不必像这样返回值：`target[prop]`，而是可以进一步使用一个名为 `Reflect` 的方法，它允许我们正确地执行 `this` 绑定，就像这样：
+此外，Proxy 还给我们提供了另一个特性。我们不必像这样返回值：`target[prop]`，而是可以进一步使用一个名为 `Reflect` 的方法，它允许我们正确地执行 `this` 绑定，就像这样：
 
 ```js{7}
 const dinner = {
@@ -160,18 +160,18 @@ console.log(proxy.meal)
 
 还记得几段前的列表吗？现在我们有了一些关于 Vue 如何处理这些更改的答案：
 
-- `<strike>` 当某个值发生变化时进行检测 `</strike>`：我们不再需要这样做，因为 proxy 允许我们拦截它
-- **跟踪更改它的函数**：我们在 proxy 中的 getter 中执行此操作，称为 `effect`
-- **触发函数以便它可以更新最终值**：我们在 proxy 中的 setter 中进行该操作，名为 `Trigger`
+- `<strike>` 当某个值发生变化时进行检测 `</strike>`：我们不再需要这样做，因为 Proxy 允许我们拦截它
+- **跟踪更改它的函数**：我们在 Proxy 中的 getter 中执行此操作，称为 `effect`
+- **触发函数以便它可以更新最终值**：我们在 Proxy 中的 setter 中进行该操作，名为 `trigger`
 
-proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在属性值被访问或修改的情况下进行依赖跟踪和变更通知。从 Vue 3 开始，我们的响应式现在可以在 [separate package](https://github.com/vuejs/vue-next/tree/master/packages/reactivity) 中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台输出的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
+Proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在 property 的值被访问或修改的情况下进行依赖跟踪和变更通知。从 Vue 3 开始，我们的响应式现在可以在 [separate package](https://github.com/vuejs/vue-next/tree/master/packages/reactivity) 中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台输出的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
 
-### proxy 对象
+### Proxy 对象
 
-Vue 在内部跟踪所有已被设置为响应式的对象，因此它始终会返回同一个对象的 proxy 版本。
+Vue 在内部跟踪所有已被设置为响应式的对象，因此它始终会返回同一个对象的 Proxy 版本。
 
-从响应式 proxy 访问嵌套对象时，该对象在返回之前*也*被转换为 proxy ：
+从响应式 Proxy 访问嵌套对象时，该对象在返回之前*也*被转换为 Proxy：
 
 ```js
 const handler = {
@@ -190,7 +190,7 @@ const handler = {
 
 ### Proxy vs 原始标识
 
-proxy 的使用确实引入了一个需要注意的新警告：在身份比较方面，被代理对象与原始对象不相等 (`===`)。例如：
+Proxy 的使用确实引入了一个需要注意的新警告：在身份比较方面，被代理对象与原始对象不相等 (`===`)。例如：
 
 ```js
 const obj = {}
@@ -220,7 +220,7 @@ const obj = reactive({
   </iframe>
 </div>
 
-将对象作为数据传递给组件实例时，Vue 会将其转换为 proxy。这个 proxy 使 Vue 能够在属性被访问或修改时执行依赖项跟踪和更改通知。每个 property 都被视为一个依赖项。
+将对象作为数据传递给组件实例时，Vue 会将其转换为 Proxy。这个 Proxy 使 Vue 能够在 property 被访问或修改时执行依赖项跟踪和更改通知。每个 property 都被视为一个依赖项。
 
 首次渲染后，组件将跟踪一组依赖列表——即在渲染过程中被访问的 property。反过来，组件就成为了其每个 property 的订阅者。当 Proxy 拦截到 set 操作时，该 property 将通知其所有订阅的组件重新渲染。
 
