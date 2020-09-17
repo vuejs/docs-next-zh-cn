@@ -1,4 +1,4 @@
-# 响应式基础 API
+# 响应性基础 API
 
 > 本节例子中代码使用的[单文件组件](../guide/single-file-component.html)语法
 
@@ -28,7 +28,7 @@ const original = reactive({ count: 0 })
 const copy = readonly(original)
 
 watchEffect(() => {
-  // 适用于响应式追踪
+  // 适用于响应性追踪
   console.log(copy.count)
 })
 
@@ -135,13 +135,13 @@ const bar = reactive({
 console.log(foo.nested === bar.nested) // false
 ```
 
-本源危害通常很少见。然而，为了在安全地避免本源危害的同时正确地使用这些 api，需要对响应式系统的工作原理有一个坚实的理解。
+本源危害通常很少见。然而，为了在安全地避免本源危害的同时正确地使用这些 API，需要对响应性系统的工作原理有一个坚实的理解。
 
 :::
 
 ## `shallowReactive`
 
-创建一个响应式代理，该代理跟踪其自身 property 的响应式，但不执行嵌套对象的深度响应式转换 (暴露原始值)。
+创建一个响应式代理，该代理跟踪其自身 property 的响应性，但不执行嵌套对象的深度响应式转换 (暴露原始值)。
 
 ```js
 const state = shallowReactive({
