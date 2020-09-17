@@ -61,7 +61,7 @@ const sidebar = {
       title: '高阶指南',
       collapsable: false,
       children: [{
-          title: '响应式',
+          title: '响应性',
           children: [
             '/guide/reactivity',
             '/guide/reactivity-fundamentals',
@@ -162,7 +162,7 @@ const sidebar = {
     '/api/special-attributes',
     '/api/built-in-components.md',
     {
-      title: '响应式 API',
+      title: '响应性 API',
       collapsable: false,
       children: [
         '/api/basic-reactivity',
