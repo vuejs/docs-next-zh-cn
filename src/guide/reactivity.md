@@ -1,10 +1,10 @@
-# 深入响应式原理
+# 深入响应性原理
 
-现在是时候深入一下了！Vue 最独特的特性之一，是其非侵入性的响应式系统。数据模型仅仅是普通的 JavaScript 对象。而当你修改它们时，视图会进行更新。这使得状态管理非常简单直接，不过理解其工作原理同样重要，这样你可以避开一些常见的问题。在这个章节，我们将研究一下 Vue 响应式系统的底层的细节。
+现在是时候深入一下了！Vue 最独特的特性之一，是其非侵入性的响应性系统。数据模型仅仅是普通的 JavaScript 对象。而当你修改它们时，视图会进行更新。这使得状态管理非常简单直接，不过理解其工作原理同样重要，这样你可以避开一些常见的问题。在这个章节，我们将研究一下 Vue 响应性系统的底层的细节。
 
-## 什么是响应式
+## 什么是响应性
 
-这些天在编程中经常出现，但是人们说的意思是什么？响应式是一种编程范例，允许我们以声明的方式适应变化。人们经常展示的典型示例 (因为它是一个很棒的示例) 是 excel 电子表格。
+这些天在编程中经常出现，但是人们说的意思是什么？响应性是一种编程范例，允许我们以声明的方式适应变化。人们经常展示的典型示例 (因为它是一个很棒的示例) 是 excel 电子表格。
 
 <video width="550" height="400" controls>
   <source src="/images/reactivity-spreadsheet.mp4" type="video/mp4">
@@ -164,7 +164,7 @@ console.log(proxy.meal)
 - **跟踪更改它的函数**：我们在 Proxy 中的 getter 中执行此操作，称为 `effect`
 - **触发函数以便它可以更新最终值**：我们在 Proxy 中使用了一个 setter，名为 `Trigger`
 
-Proxy 对象对用户是不可见的，但是在后台，它们使 Vue 在访问或修改属性时能够执行依赖项跟踪和更改通知。从 Vue 3 开始，我们的响应式现在可以在 [separate package](https://github.com/vuejs/vue-next/tree/master/packages/reactivity) 中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
+Proxy 对象对用户是不可见的，但是在后台，它们使 Vue 在访问或修改属性时能够执行依赖项跟踪和更改通知。从 Vue 3 开始，我们的响应性现在可以在 [separate package](https://github.com/vuejs/vue-next/tree/master/packages/reactivity) 中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
 
 ### Proxy 对象
