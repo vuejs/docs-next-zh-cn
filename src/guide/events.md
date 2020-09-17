@@ -76,7 +76,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## 内链处理器中的方法
+## 内联处理器中的方法
 
 除了直接绑定到一个方法，也可以在内联 JavaScript 语句中调用方法：
 
@@ -167,7 +167,7 @@ methods: {
 <!-- 阻止单击事件继续传播 -->
 <a @click.stop="doThis"></a>
 
-<!-- 阻止单击事件继续传播 -->
+<!-- 提交事件不再重载页面 -->
 <form @submit.prevent="onSubmit"></form>
 
 <!-- 修饰符可以串联 -->
@@ -193,7 +193,7 @@ methods: {
 <!-- 点击事件将只会触发一次 -->
 <a @click.once="doThis"></a>
 ```
-不像其它只能对原生的 DOM 事件起作用的修饰符，。once 修饰符还能被用到自定义的[组件事件](component-custom-events.html)上。如果你还没有阅读关于组件的文档，现在大可不必担心。
+不像其它只能对原生的 DOM 事件起作用的修饰符，`.once` 修饰符还能被用到自定义的[组件事件](component-custom-events.html)上。如果你还没有阅读关于组件的文档，现在大可不必担心。
 
 Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)提供了 `.passive` 修饰符。
 
@@ -295,8 +295,8 @@ Vue 为最常用的键提供了别名：
 
 你可能注意到这种事件监听的方式违背了关注点分离 (separation of concern) 这个长期以来的优良传统。但不必担心，因为所有的 Vue.js 事件处理方法和表达式都严格绑定在当前视图的 ViewModel 上，它不会导致任何维护上的困难。实际上，使用 `v-on` 或 `@` 有几个好处：
 
-扫一眼 HTML 模板便能轻松定位在 JavaScript 代码里对应的方法。
+1. 扫一眼 HTML 模板便能轻松定位在 JavaScript 代码里对应的方法。
 
-因为你无须在 JavaScript 里手动绑定事件，你的 ViewModel 代码可以是非常纯粹的逻辑，和 DOM 完全解耦，更易于测试。
+2. 因为你无须在 JavaScript 里手动绑定事件，你的 ViewModel 代码可以是非常纯粹的逻辑，和 DOM 完全解耦，更易于测试。
 
-当一个 ViewModel 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何清理它们。
+3. 当一个 ViewModel 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何清理它们。

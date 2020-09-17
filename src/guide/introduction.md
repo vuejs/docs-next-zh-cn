@@ -186,7 +186,7 @@ const ConditionalRendering = {
 Vue.createApp(ConditionalRendering).mount('#conditional-rendering')
 ```
 
-这个例子演示了我们不仅可以把数据绑定到 DOM 文本或 attribute，还可以绑定到 DOM 的**结构**。此外，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/移除元素时自动应用[过渡效果](TODO)。
+这个例子演示了我们不仅可以把数据绑定到 DOM 文本或 attribute，还可以绑定到 DOM 的**结构**。此外，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/移除元素时自动应用[过渡效果](transitions-enterleave.md)。
 
 你可以在下面的沙盒中将 `seen` 从 `true` 更改为 `false`，以检查效果：
 
@@ -350,4 +350,4 @@ app.mount('#todo-list-app')
 
 ## 准备好了吗？
 
-我们刚才简单介绍了 Vue 核心最基本的功能——本教程的其余部分将更加详细地涵盖这些功能以及其它高级功能，所以请务必读完整个教程！
+我们刚才简单介绍了 Vue 核心最基本的功能——本教程的其余部分将更加详细地涵盖这些功能以及其它高阶功能，所以请务必读完整个教程！

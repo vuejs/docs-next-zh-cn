@@ -4,7 +4,7 @@ Vue 提供了一些抽象，可以帮助处理过渡和动画，特别是在对�
 
 - 在 CSS 和 JS 中，使用内置的 `<transition>` 组件来钩住进入和离开 DOM 的组件。
 - 过渡模式，以便你可以在过渡期间协调顺序。
-- 钩子用于多个元素更新到位时，使用 `transition group>` 组件中，在 FLIP 技术下使用钩子以提高性能。
+- 钩子用于多个元素更新到位时，使用 `<transition-group>` 组件中，在 FLIP 技术下使用钩子以提高性能。
 - 使用 `watchers` 过渡应用程序中的不同状态。
 
 我们将在本指南接下来的三个部分中介绍所有这些以及更多内容。然而，除了这些有用的 API 之外，值得一提的是，对于更简单的用例，我们前面介绍的 class 和 style 声明也可以用于应用动画和 transtion。
@@ -128,7 +128,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 性能
 
-你可能注意到上面显示的动画使用了 `transforms` 之类的东西，并应用了诸如 `perspective` 之类的奇怪属性——为什么它们是这样构建的，而不是仅仅使用 `margin` 和 `TOP` 等？
+你可能注意到上面显示的动画使用了 `transforms` 之类的东西，并应用了诸如 `perspective` 之类的奇怪属性——为什么它们是这样构建的，而不是仅仅使用 `margin` 和 `top` 等？
 
 通过对性能的了解，我们可以在网络上创建非常流畅的动画。我们希望尽可能用硬件加速元素，并使用不触发重绘的属性。让我们来回顾一下我们如何做到这一点。
 
@@ -143,7 +143,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ### 硬件加速
 
-诸如 `perspective`、`backface visibility` 和 `transform:translateZ(x)` 等 property 将允许浏览器知道你需要硬件加速。
+诸如 `perspective`、`backface-visibility` 和 `transform:translateZ(x)` 等 property 将允许浏览器知道你需要硬件加速。
 
 如果要对元素进行硬件加速，可以应用以下任何 property (并不是都必需，仅一个)：
 
@@ -163,7 +163,7 @@ transform: translateZ(0);
 
 ## Easing
 
-Easing 是在动画中传达深度的重要方式。动画新手最常犯的一个错误是在入口使用 `ease-in`，在出口使用 `ease out`。你实际上需要的是反过来。
+Easing 是在动画中传达深度的重要方式。动画新手最常犯的一个错误是在入口使用 `ease-in`，在出口使用 `ease-out`。你实际上需要的是反过来。
 
 如果我们将这些状态应用于过渡，它会看起来像这样：
 

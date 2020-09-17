@@ -12,13 +12,13 @@ Vue 推荐在绝大多数情况下使用模板来创建你的 HTML。然而在�
 </h1>
 ```
 
-锚定标题的使用非常频繁，我们应该创建一个组件：
+锚点标题的使用非常频繁，我们应该创建一个组件：
 
 ```vue-html
 <anchored-heading :level="1">Hello world!</anchored-heading>
 ```
 
-当开始写一个只能通过 `level prop` 动态生成标题 (heading) 的组件时，我们很快就可以得出这样的结论：
+当开始写一个只能通过 `level` prop 动态生成标题 (heading) 的组件时，我们很快就可以得出这样的结论：
 ```js
 const app = Vue.createApp({})
 
@@ -77,7 +77,7 @@ app.component('anchored-heading', {
 })
 ```
 
-`render()` 函数的实现要精简得多，但是需要非常熟悉组件的实例 property。在这个例子中，你需要知道，向组件中传递不带 `v-slot` 指令的子节点时，比如 anchored-heading 中的 `Hello world!` ，这些子节点被存储在组件实例中的 `$slots.default` 中。如果你还不了解，**在深入渲染函数之前推荐阅读[实例 property API](../api/instance-properties.html)**。
+`render()` 函数的实现要精简得多，但是需要非常熟悉组件的实例 property。在这个例子中，你需要知道，向组件中传递不带 `v-slot` 指令的子节点时，比如 `anchored-heading` 中的 `Hello world!` ，这些子节点被存储在组件实例中的 `$slots.default` 中。如果你还不了解，**在深入渲染函数之前推荐阅读[实例 property API](../api/instance-properties.html)**。
 
 ## DOM 树
 
@@ -123,7 +123,7 @@ Vue 通过建立一个**虚拟 DOM** 来追踪自己要如何改变真实 DOM。
 return Vue.h('h1', {}, this.blogTitle)
 ```
 
-`h()` 到底会返回什么呢？其实不是一个*实际*的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息。我们把这样的节点描述为“虚拟节点 (virtual node)”，也常简写它为**“VNode”**。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。
+`h()` 到底会返回什么呢？其实不是一个*实际*的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息。我们把这样的节点描述为“虚拟节点 (virtual node)”，也常简写它为**VNode**。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。
 
 
 
@@ -254,7 +254,7 @@ render() {
 <p v-else>No items found.</p>
 ```
 
-这些都可以在渲染函数中用 JavaScript 的 `if`/`else` 和 `map` 来重写：
+这些都可以在渲染函数中用 JavaScript 的 `if`/`else` 和 `map()` 来重写：
 
 ```js
 props: ['items'],
@@ -355,7 +355,7 @@ render() {
 
 ### 插槽
 
-你可以通过 `this.$slots`(../api/#vm-slots) 访问静态插槽的内容，每个插槽都是一个 VNode 数组：
+你可以通过 [`this.$slots`](../api/instance-properties.html#slots) 访问静态插槽的内容，每个插槽都是一个 VNode 数组：
 
 ```js
 render() {
@@ -374,7 +374,7 @@ render() {
 }
 ```
 
-要使用渲染函数将槽传递给子组件，请执行以下操作：
+要使用渲染函数将插槽传递给子组件，请执行以下操作：
 
 ```js
 render() {
@@ -391,7 +391,7 @@ render() {
 
 ## JSX
 
-如果你写了很多 render 函数，可能会觉得下面这样的代码写起来很痛苦：
+如果你写了很多渲染函数，可能会觉得下面这样的代码写起来很痛苦：
 
 ```js
 Vue.h(
@@ -409,7 +409,7 @@ Vue.h(
 <anchored-heading :level="1"> <span>Hello</span> world! </anchored-heading>
 ```
 
-这就是为什么会有一个 [Babel 插件](https://github.com/vuejs/jsx) ，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
+这就是为什么会有一个 [Babel 插件](https://github.com/vuejs/jsx-next) ，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
 
 ```jsx
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -426,7 +426,7 @@ new Vue({
 })
 ```
 
-有关JSX如何映射到JavaScript的更多信息，请参阅 [使用文档](https://github.com/vuejs/jsx#installation) 。
+有关 JSX 如何映射到 JavaScript 的更多信息，请参阅 [使用文档](https://github.com/vuejs/jsx-next#installation) 。
 
 ## 模板编译
 

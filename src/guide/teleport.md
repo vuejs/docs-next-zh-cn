@@ -53,7 +53,7 @@ app.component('modal-button', {
 
 Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下呈现 HTML，而不必求助于全局状态或将其拆分为两个组件。
 
-让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue“**teleport** 这个 HTML **to**”该“**body** 标记”。
+让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue 将这个 HTML **传入至该 body** 标记。
 
 ```js
 app.component('modal-button', {
@@ -125,8 +125,6 @@ app.component('child-component', {
 这也意味着来自父组件的注入按预期工作，并且子组件将嵌套在 Vue Devtools 中的父组件之下，而不是放在实际内容移动到的位置。
 
 ## 在同一目标上使用多个传送
-
-A common use case scenario would be a reusable `<Modal>` component of which there might be multiple instances active at the same time。For this kind of scenario，multiple `<teleport>` components can mount their content to the same target element。The order will be a simple append - later mounts will be located after earlier ones within the target element。
 
 一个常见的用例场景是一个可重用的 `<Modal>` 组件，它可能同时有多个实例处于活动状态。对于这种情况，多个 `<teleport>` 组件可以将其内容挂载到同一个目标元素。顺序将是一个简单的追加——稍后挂载将位于目标元素中较早的挂载之后。
 

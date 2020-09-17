@@ -52,7 +52,7 @@
 
 ### 针对刚接触 JavaScript 模块开发系统的用户
 
-有了 `.vue` 组件，我们就进入了高级 JavaScript 应用领域。如果你没有准备好的话，意味着还需要学会使用一些附加的工具：
+有了 `.vue` 组件，我们就进入了高阶 JavaScript 应用领域。如果你没有准备好的话，意味着还需要学会使用一些附加的工具：
 
 - **Node Package Manager (NPM)**： 阅读 [Getting Started guide](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry) 中关于如何从注册地 (registry) 获取包的章节。
 
@@ -60,7 +60,7 @@
 
 在你花一天时间了解这些资源之后，我们建议你参考 [Vue CLI](https://cli.vuejs.org/)。只要遵循指示，你就能很快地运行一个带有 `.vue` 组件、ES2015、webpack 和热重载 (hot-reloading) 的 Vue 项目！
 
-### 针对高级用户
+### 针对高阶用户
 
 CLI 会为你搞定大多数工具的配置问题，同时也支持细粒度自定义[配置项](https://cli.vuejs.org/config/)。
 

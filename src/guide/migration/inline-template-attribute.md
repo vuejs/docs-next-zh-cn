@@ -3,11 +3,11 @@ badges:
   - breaking
 ---
 
-# 内链模板 Attribute <MigrationBadges :badges="$frontmatter.badges" />
+# 内联模板 Attribute <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
 
-对[内链特性](https://vuejs.org/v2/guide/components-edge-cases.html#Inline-Templates)的支持已被移除。
+对[内联特性](https://vuejs.org/v2/guide/components-edge-cases.html#Inline-Templates)的支持已被移除。
 
 ## 2.x 语法
 

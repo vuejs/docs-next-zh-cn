@@ -52,7 +52,7 @@ Vue.createApp({
 }).mount('#array-with-index')
 ```
 
-Result：
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="wvaEdBP" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Array and index">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/wvaEdBP">
@@ -61,7 +61,7 @@ Result：
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-You can also use `of` as the delimiter instead of `in`，so that it is closer to JavaScript's syntax for iterators：
+你也可以用`of`替代`in`作为分隔符，因为它更接近 JavaScript 迭代器的语法：
 
 ```html
 <div v-for="item of items"></div>
@@ -69,7 +69,7 @@ You can also use `of` as the delimiter instead of `in`，so that it is closer to
 
 ## 在 `v-for` 里使用对象
 
-You can also use `v-for` to iterate through the properties of an object。
+你也可以用`v-for`来遍历一个对象的 property。
 
 ```html
 <ul id="v-for-object" class="demo">
@@ -252,8 +252,6 @@ methods: {
 ## 在 `<template>` 在使用 `v-for`
 
 类似于 `v-if`，你也可以利用带有 `v-for` 的 `<template>` 来循环渲染一段包含多个元素的内容。比如：
-
-Similar to template `v-if`，you can also use a `<template>` tag with `v-for` to render a block of multiple elements。For example：
 
 ```html
 <ul>

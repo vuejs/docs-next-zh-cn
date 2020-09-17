@@ -16,6 +16,7 @@
     "module": "esnext",
     // 这样就可以对 `this` 上的数据属性进行更严格的推断`
     "strict": true,
+    "jsx": "preserve",
     "moduleResolution": "node"
   }
 }

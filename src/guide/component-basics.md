@@ -235,7 +235,7 @@ app.component('blog-post', {
 </button>
 ```
 
-多亏了`v-on:enlarge-text="postFontSize += 0.1"` 监听器，父级将接收事件并更新 `postFontSize` 值。
+多亏了 `v-on:enlarge-text="postFontSize += 0.1"` 监听器，父级将接收事件并更新 `postFontSize` 值。
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="KKpGyrp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: emitting events">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/KKpGyrp">
@@ -339,11 +339,11 @@ app.component('custom-input', {
 <custom-input v-model="searchText"></custom-input>
 ```
 
-在自定义组件中创建 `v-model` 功能的另一种方法是使用 `computed` property 的功能来定义getter和setter。
+在自定义组件中创建 `v-model` 功能的另一种方法是使用 `computed` property 的功能来定义 getter 和 setter。
 
-在下面的示例中，我们使用计算属性重构 `custominput` 组件。
+在下面的示例中，我们使用计算属性重构 `<custom-input>` 组件。
 
-请记住，`get` 方法应返回 `modelValue` property，或用于绑定的任何property，`set` 方法应为该property 触发相应的 `$emit` 。
+请记住，`get` 方法应返回 `modelValue` property，或用于绑定的任何 property，`set` 方法应为该 property 触发相应的 `$emit` 。
 
 ```js
 app.component('custom-input', {
@@ -450,19 +450,19 @@ app.component('alert-box', {
 ```
 
 :::warning
-`v-is` 值应为JavaScript字符串文本：
+`v-is` 值应为 JavaScript 字符串文本：
 
 ```html
-<!-- Incorrect, nothing will be rendered -->
+<!-- 错误的，这样不会渲染任何东西 -->
 <tr v-is="blog-post-row"></tr>
 
-<!-- Correct -->
+<!-- 正确的 -->
 <tr v-is="'blog-post-row'"></tr>
 ```
 
 :::
 
-另外，HTML属性名不区分大小写，因此浏览器将把所有大写字符解释为小写。这意味着当你在DOM模板中使用时，驼峰 prop 名称和event 处理器参数需要使用它们的kebab-cased（横线字符分隔）等效值：
+另外，HTML 属性名不区分大小写，因此浏览器将把所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased（横线字符分隔）等效值：
 
 
 ```js

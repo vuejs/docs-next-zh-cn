@@ -140,7 +140,7 @@
 
 - **详细：**
 
-包含了父作用域中不作为组件 [props](./options-data.html#props) 或[自定义事件](./options-data.html#emits)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定，并且可以通过 `v-bind="$attrs"` 传入内部组件——在创建高级别的组件时非常有用。
+包含了父作用域中不作为组件 [props](./options-data.html#props) 或[自定义事件](./options-data.html#emits)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定，并且可以通过 `v-bind="$attrs"` 传入内部组件——在创建高阶的组件时非常有用。
 
 -  **参考**
   - [非 Prop Attributes](../guide/component-attrs.html)
