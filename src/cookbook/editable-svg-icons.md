@@ -20,7 +20,7 @@
 
 ![文档网站](https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/screendocs.jpg '文档演示')
 
-我们将创建一个使用 `slot` 的基础图标组件(`IconBase.vue`)。
+我们将创建一个使用插槽的基础图标组件 (`IconBase.vue`)。
 
 ```html
 <template>
@@ -40,7 +40,7 @@
 </template>
 ```
 
-你可以原封不动地使用这个基础图标，唯一可能需要更新的东西是 `viewBox`，具体取决于你所使用图标的 `viewBox`。在基础图标里会有 `width`、`height`、`iconColor` 以及 `name` 等 props，这样就可以通过 prop 对其进行动态更新。这个 `name` 将会同时用在 `<title>` 的内容及其用于提供可访问性的 `id` 上。
+你可以原封不动地使用这个基础图标，唯一可能需要更新的东西是 `viewBox`，具体取决于你所使用图标的 `viewBox`。在基础图标里会有 `width`、`height`、`iconColor` 以及 `name` 等 prop，这样就可以通过 prop 对其进行动态更新。这个 `name` 将会同时用在 `<title>` 的内容及其用于提供可访问性的 `id` 上。
 
 我们的脚本如下所示，我们设置了一些默认值，这样在没有特别设置的情况下图标渲染出来是一致的：
 
@@ -67,7 +67,7 @@ export default {
 }
 ```
 
-`currentColor` 会成为 `fill` 的默认值，将使图标继承其周围文字的颜色。我们也可以根据自己所需通过 `prop` 传递一个不同的色值。
+`currentColor` 会成为 `fill` 的默认值，将使图标继承其周围文字的颜色。我们也可以根据自己所需通过 prop 传递一个不同的色值。
 
 我们可以这样使用它，通过 `IconWrite.vue` 将图标的路径包含于其中，作为其唯一的内容：
 
@@ -81,7 +81,7 @@ export default {
 <p>
   <!-- 你可以通过 prop 传递一个更小的 `width` 和 `height` -->
   <icon-base width="12" height="12" icon-name="write"><icon-write /></icon-base>
-  <!-- 或者你可以使用默认值（18）-->
+  <!-- 或者你可以使用默认值 (18) -->
   <icon-base icon-name="write"><icon-write /></icon-base>
   <!-- 或者增大一些 :) -->
   <icon-base width="30" height="30" icon-name="write"><icon-write /></icon-base>
