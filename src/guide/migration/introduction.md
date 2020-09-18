@@ -32,7 +32,7 @@
   # select vue 3 preset
   ```
 
-## 新特性
+## 值得注意的新特性
 
 Vue 3 中需要关注的一些新功能包括：
 
@@ -40,10 +40,11 @@ Vue 3 中需要关注的一些新功能包括：
 - [`createRenderer` API 来自 `@vue/runtime-core`](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
 - [单文件组件 Composition API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
 - [单文件组件状态驱动的 CSS 变量 (`<style vars>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
+- [单文件组件 `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 
 ## 重大改变
 
-::: tip
+::: tip 提示
 我们仍在开发 Vue 3 的专用迁移版本，该版本的行为与 Vue 2 兼容，运行时警告不兼容。如果你计划迁移一个非常重要的 Vue 2 应用程序，我们强烈建议你等待迁移版本完成以获得更流畅的体验。
 :::
 
@@ -71,7 +72,7 @@ Vue 3 中需要关注的一些新功能包括：
 ### 渲染函数
 
 - [渲染函数 API 改变](/guide/migration/render-function-api.html)
-- [`$scopedSlots` property 已删除，需要替换为 `$slots`](/guide/migration/slots-unification.html)
+- [`$scopedSlots` property 已删除，所有插槽都通过 `$slots` 作为函数暴露](/guide/migration/slots-unification.html)
 
 - [自定义指令 API 已更改为与组件生命周期一致](/guide/migration/custom-directives.html)
 - 一些转换 class 被重命名了：
