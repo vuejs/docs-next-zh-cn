@@ -1,20 +1,19 @@
 ---
-title: Transition Class Change
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# 过渡类名的更改 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-The `v-enter` transition class has been renamed to `v-enter-from` and the `v-leave` transition class has been renamed to `v-leave-from`.
+类名 `v-enter` 重命名为 `v-enter-from`，类名 `v-leave` 重命名为 `v-leave-from`。
 
-## 2.x Syntax
+## 2.x 语法
 
-Before v2.1.8, we had two transition classes for each transition direction: initial and active states.
+在 v2.1.8 之前，每个过渡方向有2个过渡类名：初始状态和生效时的状态。
 
-In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/leave transitions. However, for backward compatibility, the `v-enter` name was untouched:
+在 v2.1.8，我们引入了 `v-enter-to` 来解决 enter/leave 过渡的时间间隔。但是为了向后兼容，`v-enter` 并没有做更改：
 
 ```css
 .v-enter,
@@ -28,11 +27,11 @@ In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/le
 }
 ```
 
-This became confusing, as _enter_ and _leave_ were broad and not using the same naming convention as their class hook counterparts.
+这就变得混乱了，因为 *enter* 和 *leave* 是宽泛的，并没有使用与类名钩子相同的命名约定。
 
-## 3.x Update
+## 3.x 更新
 
-In order to be more explicit and legible, we have now renamed these initial state classes:
+为了更加清晰易懂，我们重命名了初始状态的类名。
 
 ```css
 .v-enter-from,
@@ -46,15 +45,15 @@ In order to be more explicit and legible, we have now renamed these initial stat
 }
 ```
 
-It's now much clearer what the difference between these states is.
+现在这些状态之间的区别更加清晰了
 
-The `<transition>` component's related prop names are also changed:
+`<transition>` 组件相关的 prop 也做了更改：
 
-- `leave-class` is renamed to `leave-from-class` (can be written as `leaveFromClass` in render functions or JSX)
-- `enter-class` is renamed to `enter-from-class` (can be written as `enterFromClass` in render functions or JSX)
+- `leave-class` 重命名为 `leave-from-class` (在渲染函数或者 JSX 中可以写成 `leaveFromClass`)
+- `enter-class` 重命名为 `enter-from-class` (在渲染函数或者 JSX 中可以写成 `enterFromClass`)
 
-## Migration Strategy
+## 迁移策略
 
-1. Replace instances of `.v-enter` to `.v-enter-from`
-2. Replace instances of `.v-leave` to `.v-leave-from`
-3. Replace instances of related prop names, as above.
+1. 把 `.v-enter` 改为 `.v-enter-from`
+2. 把 `.v-leave` 改为 `.v-leave-from`
+3. 根据上面的介绍更改相关 prop。
