@@ -136,6 +136,10 @@ Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破
 
 - Firefox：[下载签名扩展](https://github.com/vuejs/vue-devtools/releases/tag/v6.0.0-beta.2) (assets 下的 `.xpi` 文件)
 
+### IDE 支持
+
+推荐使用 [VSCode](https://code.visualstudio.com/) 和我们官方拓展 [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)，它为 Vue 3 提供了全面的 IDE 支持
+
 ### 其他项目
 
 | 项目               | NPM | 仓库 |
