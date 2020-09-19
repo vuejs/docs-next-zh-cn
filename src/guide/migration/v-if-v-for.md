@@ -1,29 +1,29 @@
 ---
-title: v-if vs. v-for Precedence
+title: v-if 与 v-for 的优先级对比
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-- **BREAKING**: If used on the same element, `v-if` will have higher precedence than `v-for`
+- **BREAKING**: 两者作用于同一个元素上时，`v-if` 会拥有比 `v-for` 更高的优先级。
 
-## Introduction
+## 介绍
 
-Two of the most commonly used directives in Vue.js are `v-if` and `v-for`. So it's no surprise that there comes a time when developers want to use both together. While this is not a recommended practice, there may be times when this is necessary, so we wanted to provide guidance for how it works.
+Vue.js 中使用最多的两个指令就是 `v-if` 和 `v-for`，因此开发者们可能会想要同时使用它们。虽然不建议这样做，但有时确实是必须的，于是我们想提供有关其工作方式的指南。
 
-## 2.x Syntax
+## 2.x 语法
 
-In 2.x, when using `v-if` and `v-for` on the same element, `v-for` would take precedence.
+2.x 版本中在一个元素上同时使用 `v-if` 和 `v-for` 时，`v-for` 会优先作用。
 
-## 3.x Syntax
+## 3.x 语法
 
-In 3.x, `v-if` will always have the higher precedence than `v-for`.
+3.x 版本中 `v-if` 总是优先于 `v-for` 生效。
 
-## Migration Strategy
+## 迁移策略
 
-It is recommended to avoid using both on the same element due to the syntax ambiguity.
+由于语法上存在歧义，建议避免在同一元素上同时使用两者。
 
-Rather than managing this at the template level, one method for accomplishing this is to create a computed property that filters out a list for the visible elements.
+比起在模板层面管理相关逻辑，更好的办法是通过创建计算属性筛选出列表，并以此创建可见元素。
