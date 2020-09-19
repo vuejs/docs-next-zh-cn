@@ -3,7 +3,7 @@
 ## 什么是 Composition API？
 
 :::tip 提示
-在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础] ((introduction.md) 和[创建组件](component-basics.md)。
+在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md) 和[创建组件](component-basics.md)。
 :::
 
 通过创建 Vue 组件，我们可以将接口的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用程序在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用程序变得非常大的时候——想想几百个组件。在处理如此大的应用程序时，共享和重用代码变得尤为重要。
@@ -63,7 +63,7 @@ export default {
 
 ## Composition API 基础
 
-既然我们知道了**为什么**，我们就可以开始**如何**。为了开始使用 Composition api，我们首先需要一个可以实际使用它的地方。在 Vue 组件中，我们将此位置称为 `setup`。
+既然我们知道了**为什么**，我们就可以知道**怎么做**。为了开始使用 Composition api，我们首先需要一个可以实际使用它的地方。在 Vue 组件中，我们将此位置称为 `setup`。
 
 ### `setup` 组件选项
 
@@ -73,7 +73,7 @@ export default {
 由于在执行 `setup` 时尚未创建组件实例，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
 :::
 
-`setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[稍后](composition-api-setup.html#arguments)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
+`setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[稍后](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
 
 让我们添加 `setup` 到我们的组件中：
 
@@ -178,7 +178,7 @@ setup (props) {
 }
 ```
 
-完成！现在，每当我们调用 `getUserRepositories`、`repositories` 时都将发生变化，视图将更新以反映更改。我们的组件现在应该如下所示：
+完成！现在，每当我们调用 `getUserRepositories` 时，`repositories` 都将发生变化，视图将更新以反映更改。我们的组件现在应该如下所示：
 
 ```js
 // src/components/UserRepositories.vue
@@ -277,9 +277,9 @@ watch(counter, (newValue, oldValue) => {
 })
 ```
 
-例如，每当 `counter` 被修改时 `counter.value=5`，watch 将触发并执行回调 (第二个参数)，在本例中，它将把 `The new counter value is:5` 记录到我们的控制台中。
+例如，每当 `counter` 被修改时 `counter.value=5`，watch 将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到我们的控制台中。
 
-**以下是选项 API 等效：**
+**以下是等效的选项 API ：**
 
 ```js
 export default {
@@ -296,7 +296,7 @@ export default {
 }
 ```
 
-有关 `watch` 的详细信息，请参阅我们的[深入指南] ()。
+有关 `watch` 的详细信息，请参阅我们的[深入指南](composition-api-introduction.html)。
 
 **现在我们将其应用到我们的示例中：**
 
@@ -330,7 +330,7 @@ setup (props) {
 
 你可能已经注意到在我们的 `setup` 的顶部使用了 `toRefs`。这是为了确保我们的侦听器能够对 `user` prop 所做的更改做出反应。
 
-有了这些变化，我们就把第一个逻辑关注点移到了一个地方。我们现在可以对第二个关注点执行相同的操作—基于 `searchQuery` 进行过滤，这次是使用计算属性。
+有了这些变化，我们就把第一个逻辑关注点移到了一个地方。我们现在可以对第二个关注点执行相同的操作——基于 `searchQuery` 进行过滤，这次是使用计算属性。
 
 ### 独立的 `computed` 属性
 
@@ -347,7 +347,7 @@ console.log(counter.value) // 1
 console.log(twiceTheCounter.value) // 2
 ```
 
-在这里，`computed` 函数返回一个作为 `computed` 的第一个参数传递的 getter 类回调的输出的一个*只读*的“响应式引用”。为了访问新创建的计算变量的 **value**，我们需要像使用 `ref` 一样使用 `.value` property。
+在这里，`computed` 函数返回一个作为 `computed` 的第一个参数传递的 getter 类回调的输出的一个*只读*的**响应式引用**。为了访问新创建的计算变量的 **value**，我们需要像使用 `ref` 一样使用 `.value` property。
 
 让我们将搜索功能移到 `setup` 中：
 
@@ -388,7 +388,7 @@ setup (props) {
 }
 ```
 
-对于其他的**逻辑关注点**我们也可以这样做，但是你可能已经在问这个问题了——*这不就是把代码移到“setup”选项并使它变得非常大吗？*嗯，那是真的。这就是为什么在继续其他任务之前，我们将首先将上述代码提取到一个独立的**组合函数**。让我们从创建 `useUserRepositories` 开始：
+对于其他的**逻辑关注点**我们也可以这样做，但是你可能已经在问这个问题了——*这不就是把代码移到 `setup` 选项并使它变得非常大吗*？嗯，那是真的。这就是为什么在继续其他任务之前，我们将首先将上述代码提取到一个独立的**组合函数**。让我们从创建 `useUserRepositories` 开始：
 
 ```js
 // src/composables/useUserRepositories.js
