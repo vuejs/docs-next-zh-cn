@@ -126,7 +126,7 @@ export default {
 </script>
 ```
 
-注意，从 `setup` 返回的 [refs](../api/refs-api.html#ref) 在模板中访问时是 [automatically unwrapped](../api/refs-api.html#access-in-templates)，因此不应在模板中使用 `.value`。
+注意，从 `setup` 返回的 [refs](../api/refs-api.html#ref) 在模板中访问时是 [Ref 展开](/guide/reactivity-fundamentals.html#ref-展开)，因此不应在模板中使用 `.value`。
 
 
 ## 使用渲染函数
