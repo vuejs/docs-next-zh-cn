@@ -6,7 +6,7 @@
 
 ### 对于对象
 
-Vue 无法检测到 property 的添加或删除。由于 Vue 在实例初始化期间执行 getter/setter 转换过程，因此必须在 data 对象中存在一个 property，以便 Vue 对其进行转换并使其具有响应式。例如：
+Vue 无法检测到 property 的添加或删除。由于 Vue 在实例初始化期间执行 getter/setter 转换过程，因此必须在 `data` 对象中存在一个 property，以便 Vue 对其进行转换并使其具有响应式。例如：
 
 ```js
 var vm = new Vue({
@@ -20,7 +20,7 @@ vm.b = 2
 // `vm.b` 不是响应式的
 ```
 
-对于已经创建的实例，Vue 不允许动态添加根级别的响应式 property。但是，可以使用 Vue.set(object，propertyName，value) 方法向嵌套对象添加响应式 property。例如，对于：
+对于已经创建的实例，Vue 不允许动态添加根级别的响应式 property。但是，可以使用 `Vue.set(object，propertyName，value)` 方法向嵌套对象添加响应式 property：
 
 ```js
 Vue.set(vm.someObject, 'b', 2)
@@ -54,11 +54,11 @@ var vm = new Vue({
     items: ['a', 'b', 'c']
   }
 })
-vm.items[1] = 'x' // 不是响应性的
-vm.items.length = 2 // 不是响应性的
+vm.items[1] = 'x' // 不是响应式的
+vm.items.length = 2 // 不是响应式的
 ```
 
-为了解决第一种问题，以下两种方式都可以实现和 `vm.items[indexOfItem] = newValue` 相同的效果，同时也将在响应式系统内触发状态更新：
+为了解决第一种问题，以下两种方式都可以实现和 `vm.items[indexOfItem] = newValue` 相同的效果，同时也将在响应性系统内触发状态更新：
 
 
 ```js
