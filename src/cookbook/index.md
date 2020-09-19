@@ -1,77 +1,75 @@
-# Introduction
+# 介绍
 
-## The Cookbook vs the Guide
+## Cookbook vs 指南
 
-How is the cookbook different from the guide? Why is this necessary?
+这份 cookbook 和指南的不同之处在哪里？存在的意义是什么？
 
-- **Greater Focus**: In the guide, we're essentially telling a story. Each section builds on and assumes knowledge from each previous section. In the cookbook, each recipe can and should stand on its own. This means recipes can focus on one specific aspect of Vue, rather than having to give a general overview.
+- **更专注**：在指南里，我们实际上是在讲一个故事。每个章节都以之前章节的知识进行构建和假设。而在 cookbook 里，每个案例都有各自的代表性。也就是说每个案例都专注于 Vue 的某个特定方面，而不是一个概览。
 
-- **Greater Depth**: To avoid making the guide too long, we try to include only the simplest possible examples to help you understand each feature. Then we move on. In the cookbook, we can include more complex examples, combining features in interesting ways. Each recipe can also be as long and detailed as it needs to be, in order to fully explore its niche.
+- **更有深度**：为了避免指南写得太长，我们试着只包含了尽可能简单的示例来帮助你理解每个功能，然后就直奔下一个话题了。在 cookbook 里，我们以更生动的形式包含了更复杂的示例并结合多个特性。每个案例都可以尽可能的翔实，以彻底探索这个领域。 
 
-- **Teaching JavaScript**: In the guide, we assume at least intermediate familiarity with ES5 JavaScript. For example, we won't explain how `Array.prototype.filter` works in a computed property that filters a list. In the cookbook however, essential JavaScript features (including ES6/2015+) can be explored and explained in the context of how they help us build better Vue applications.
+- **传授 JavaScript**：在指南里，我们假设你至少具有 ES5 JavaScript 的中级水平。例如，我们不会解释 `Array.prototype.filter` 在计算属性中是如何过滤一个列表的。然而在 cookbook 里，我们将对一些必要的 JavaScript 特性 (包括 ES6/2015+) 进行探索和解释，以帮助我们构建更好的 Vue 应用。
 
-- **Exploring the Ecosystem**: For advanced features, we assume some ecosystem knowledge. For example, if you want to use single-file components in Webpack, we don't explain how to configure the non-Vue parts of the Webpack config. In the cookbook, we have the space to explore these ecosystem libraries in more depth - at least to the extent that is universally useful for Vue developers.
+- **探索生态系统**：对于高级特性，我们会假设你已经对生态体系有一定了解。例如，如果你想在 webpack 中使用单文件组件，我们不会解释如何在 webpack 中配置 Vue 以外的部分。在 cookbook 里，我们有空间去深度探索这些生态系统中的库——至少能到对 Vue 开发者普遍使用的程度。
 
 ::: tip
-With all these differences, please note that the cookbook is still _not_ a step-by-step manual. For most of its content, you are expected to have a basic understanding of concepts like HTML, CSS, JavaScript, npm/yarn, etc.
+除了这些不同，请注意这份 cookbook 仍*不是*入门教程。其大部分内容都假设你已经理解 HTML、CSS、JavaScript、npm/yarn 等基本概念。
 :::
 
-## Cookbook Contributions
+## 参与 Cookbook 贡献
 
-### What we're looking for
+### 我们的目标
 
-The Cookbook gives developers examples to work off of that both cover common or interesting use cases, and also progressively explain more complex detail. Our goal is to move beyond a simple introductory example, and demonstrate concepts that are more widely applicable, as well as some caveats to the approach.
+Cookbook 为开发者提供了一些示例，涵盖常见的或有趣的用例，并逐步解释更复杂的细节。我们的目标是超越一个简单的示例介绍，展现更广泛适用的概念及其注意事项。
 
-If you're interested in contributing, please initiate collaboration by filing an issue under the tag **cookbook idea** with your concept so that we can help guide you to a successful pull request. After your idea has been approved, please follow the template below as much as possible. Some sections are required, and some are optional. Following the numerical order is strongly suggested, but not required.
+如果你有兴趣参与贡献，请将您的想法填入 issue 并加上 **cookbook idea** 的标签作为起步，这样我们就可以帮助并引导您完成一个 pull request。在你的想法被认同之后，请尽可能遵循以下模板。有些小节是必须的，有些是可选的。我们强烈建议您遵循其顺序，但这也不是必须的。通常情况下案例应该：
 
-Recipes should generally:
+- 解决一个具体的普遍性问题
+- 从尽可能简单的示例开始
+- 一次只介绍一个复杂的点
+- 链接到其它文档，而不是在这里重新解释概念
+- 把问题描述清楚，而不是假设大家对这个问题很熟悉
+- 解释过程，而不是只告诉你最终结果
+- 解释策略的利弊，包括它不适用于什么场景
+- 会提及相关的替代方案，但会放到一个单独的案例中细讲
 
-- Solve a specific, common problem
-- Start with the simplest possible example
-- Introduce complexities one at a time
-- Link to other docs, rather than re-explaining concepts
-- Describe the problem, rather than assuming familiarity
-- Explain the process, rather than just the end result
-- Explain the pros and cons of your strategy, including when it is and isn't appropriate
-- Mention alternative solutions, if relevant, but leave in-depth explorations to a separate recipe
+我们需要您遵照下面的模板。当然我们也理解有的时候为了使内容更清晰或顺畅你是有必要做一些调整的。另外不论怎样，所有的案例都应该从某些点上讨论选择使用这个模式的细微差别，且我们倾向于它们以替代方案章节的形式出现。
 
-We request that you follow the template below. We understand, however, that there are times when you may necessarily need to deviate for clarity or flow. Either way, all recipes should at some point discuss the nuance of the choice made using this pattern, preferably in the form of the alternative patterns section.
+### 基本的示例 <Badge text="必要的" type="error" />
 
-### Base Example <Badge text="required" type="error" />
+1. 用一两句话来说明问题。
+2. 用一两句话解释最简单的可能的解决方案。
+3. 显示一小段代码示例。
+4. 用一句话解释它完成了什么。
 
-1.  Articulate the problem in a sentence or two.
-2.  Explain the simplest possible solution in a sentence or two.
-3.  Show a small code sample.
-4.  Explain what this accomplishes in a sentence.
+### 关于其价值的细节 <Badge text="必要的" type="error" />
 
-### Details about the Value <Badge text="required" type="error" />
+1. 解决人们在看例子时可能遇到的常见问题。(最好以块引用格式呈现)
+2. 显示常见错误的例子，以及如何避免它们。
+3. 用非常简单的代码示例展示好模式和坏模式。
+4. 讨论这个模式令人信服的理由。参考链接不是必需的，但鼓励大家提供。
 
-1.  Address common questions that one might have while looking at the example. (Blockquotes are great for this)
-2.  Show examples of common missteps and how they can be avoided.
-3.  Show very simple code samples of good and bad patterns.
-4.  Discuss why this may be a compelling pattern. Links for reference are not required but encouraged.
+### 真实案例 <Badge text="必须的" type="error" />
 
-### Real-World Example <Badge text="required" type="error" />
+通过以下方式演示能够为常见或有趣的用例提供支持的代码：
 
-Demonstrate the code that would power a common or interesting use case, either by:
+1. 通过几个简单的设置例子，或者
+2. 嵌入一个 CodePen / JSFiddle 的例子
 
-1.  Walking through a few terse examples of setup, or
-2.  Embedding a codepen/jsfiddle example
+如果你选择稍后再提供，那么你仍应该表述它是什么和做什么。
 
-If you choose to do the latter, you should still talk through what it is and does.
+### 额外的上下文 <Badge text="可选的" />
 
-### Additional Context <Badge text="optional" />
+为这个模式写点东西，描述在这个模式下，它会应用到什么地方，为什么它能正常工作；以及在此基础上运行一些代码、提供一些延伸阅读材料，都是非常有帮助的。
 
-It's extremely helpful to write a bit about this pattern, where else it would apply, why it works well, and run through a bit of code as you do so or give people further reading materials here.
+### 何时避免这个模式 <Badge text="可选的" />
 
-### When To Avoid This Pattern <Badge text="optional" />
+本节不是必需的，但强烈建议。你没有必要写一些特别简单易懂的事项，比如根据状态的改变开关 class，但是对于 mixin 这样的更高阶的模式来说是非常重要的。大多数高阶的问题的答案都是“要看情况！”，该部分就包含了这一点。在此，我们要诚实地看待模式何时有用，何时应该避免，什么时候更有意义。
 
-This section is not required, but heavily recommended. It won't make sense to write it for something very simple such as toggling classes based on state change, but for more advanced patterns like mixins it's vital. The answer to most questions about development is ["It depends!"](https://codepen.io/rachsmith/pen/YweZbG), this section embraces that. Here, we'll take an honest look at when the pattern is useful and when it should be avoided, or when something else makes more sense.
+### 替代方案 <Badge text="对之前的“避免”章节是必须的" type="warning" />
 
-### Alternative Patterns <Badge text="required with avoidance section" type="warning" />
+如果你已经在上一节提供了避免使用的条件，那么这一节是必须的。探索其它方法非常重要，这样人们在遇到某些反模式的情形时不至于无所适从。这样做是因为考虑到 web 是一个不同人有着不同代码结构解决不同问题的大舞台。这个应用是大是小？它们要把 Vue 集成到一个现成的项目中还是从零起步构建新项目？它们的用户只是想达成一个目标还是多个？有很多异步数据吗？所有的这些担忧都会影响实现替代品。一篇好的 cookbook 会为开发者提供这些相关信息。
 
-This section is required when you've provided the section above about avoidance. It's important to explore other methods so that people told that something is an antipattern in certain situations are not left wondering. In doing so, consider that the web is a big tent and that many people have different codebase structures and are solving different goals. Is the app large or small? Are they integrating Vue into an existing project, or are they building from scratch? Are their users only trying to achieve one goal or many? Is there a lot of asynchronous data? All of these concerns will impact alternative implementations. A good cookbook recipe gives developers this context.
+## 致谢
 
-## Thank you
-
-It takes time to contribute to documentation, and if you spend the time to submit a PR to this section of our docs, you do so with our gratitude.
+文档贡献是需要很多时间的，如果您花时间提交这部分的文档，我们将感激不尽。
