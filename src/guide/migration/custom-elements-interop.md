@@ -3,7 +3,7 @@ badges:
   - breaking
 ---
 
-# 自定义元素交互变更 <MigrationBadges :badges="$frontmatter.badges" />
+# 自定义元素交互 <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
 

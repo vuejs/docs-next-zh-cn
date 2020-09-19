@@ -72,9 +72,9 @@ render() {
 
 ### 参数
 
-接收三个参数：`tag`，`props` 和 `children`
+接收三个参数：`type`，`props` 和 `children`
 
-#### tag
+#### type
 
 - **类型**：`String | Object | Function | null`
 

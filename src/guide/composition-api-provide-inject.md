@@ -6,7 +6,7 @@
 
 ## 设想场景
 
-Let's assume that we want to rewrite the following code，which contains a `MyMap` component that provides a `MyMarker` component with the user's location，using the Composition API。
+假设我们要重写以下代码，其中包含一个 `MyMap` 组件，该组件使用 Composition API 为 `MyMarker` 组件提供用户的位置。
 
 ```vue
 <!-- src/components/MyMap.vue -->
@@ -50,7 +50,7 @@ export default {
 1. property 的 name (`<String>` 类型)
 2. property 的 value
 
-使用 `MyMap` 组件，我们提供的值可以重构如下：
+使用 `MyMap` 组件，我们提供的值可以按如下方式重构：
 
 ```vue{7,14-20}
 <!-- src/components/MyMap.vue -->
@@ -107,11 +107,11 @@ export default {
 </script>
 ```
 
-## 响应式
+## 响应性
 
-### 添加响应式
+### 添加响应性
 
-为了增加提供值和注入值之间的响应式，我们可以使用 [ref](reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs) 或 [reactive](reactivity-fundamentals.html#declaring-reactive-state) 提供值时。
+为了增加提供值和注入值之间的响应性，我们可以使用 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 或 [reactive](reactivity-fundamentals.html#声明响应式状态) 提供值时。
 
 使用 `MyMap` 组件，我们的代码可以更新如下：
 
@@ -246,7 +246,7 @@ export default {
 </script>
 ```
 
-最后，如果要确保通过 `provide` 传递的数据不会被注入的组件更改，我们建议对提供者 property 使用` readonly。
+最后，如果要确保通过 `provide` 传递的数据不会被注入的组件更改，我们建议对提供者 property 使用 `readonly`。
 
 ```vue{7,25-26}
 <!-- src/components/MyMap.vue -->

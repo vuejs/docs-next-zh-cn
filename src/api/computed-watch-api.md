@@ -65,7 +65,7 @@ function watchEffect(
 ): StopHandle
 
 interface WatchEffectOptions {
-  flush?: 'pre' | 'post' | 'sync'
+  flush?: 'pre' | 'post' | 'sync'  // default: 'pre'
   onTrack?: (event: DebuggerEvent) => void
   onTrigger?: (event: DebuggerEvent) => void
 }
@@ -86,21 +86,21 @@ type StopHandle = () => void
 
 ## `watch`
 
- `watch` API 与选项 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要帧听特定的 data 源，并在单独的回调函数中副作用。默认情况下，它也是惰性的——即，回调是仅在帧听源发生更改时调用。
+ `watch` API 与选项 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的 data 源，并在单独的回调函数中副作用。默认情况下，它也是惰性的——即，回调是仅在侦听源发生更改时调用。
 
 - 与 [watchEffect](#watcheffect) 比较，`watch` 允许我们：
 
   - 惰性地执行副作用；
   - 更具体地说明应触发侦听器重新运行的状态；
-  - 访问帧听状态的先前值和当前值。
+  - 访问侦听状态的先前值和当前值。
 
-### 帧听一个单一源
+### 侦听一个单一源
 
 侦听器 data 源可以是返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
 
 
 ```js
-// 帧听一个getter
+// 侦听一个getter
 const state = reactive({ count: 0 })
 watch(
   () => state.count,
@@ -109,16 +109,16 @@ watch(
   }
 )
 
-// 直接帧听一个ref
+// 直接侦听一个ref
 const count = ref(0)
 watch(count, (count, prevCount) => {
   /* ... */
 })
 ```
 
-### 帧听多个源
+### 侦听多个源
 
-侦听器还可以使用数组同时帧听多个源：
+侦听器还可以使用数组同时侦听多个源：
 
 ```js
 watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
@@ -133,7 +133,7 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 **类型声明**：
 
 ```ts
-// 帧听单一源
+// 侦听单一源
 function watch<T>(
   source: WatcherSource<T>,
   callback: (
@@ -144,7 +144,7 @@ function watch<T>(
   options?: WatchOptions
 ): StopHandle
 
-// 帧听多个源
+// 侦听多个源
 function watch<T extends WatcherSource<unknown>[]>(
   sources: T
   callback: (

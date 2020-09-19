@@ -61,7 +61,7 @@ const sidebar = {
       title: '高阶指南',
       collapsable: false,
       children: [{
-          title: '响应式',
+          title: '响应性',
           children: [
             '/guide/reactivity',
             '/guide/reactivity-fundamentals',
@@ -111,6 +111,7 @@ const sidebar = {
       collapsable: true,
       children: [
         'migration/introduction',
+        'migration/array-refs',
         'migration/async-components',
         'migration/attribute-coercion',
         'migration/custom-directives',
@@ -123,11 +124,15 @@ const sidebar = {
         'migration/global-api',
         'migration/global-api-treeshaking',
         'migration/inline-template-attribute',
+        'migration/key-attribute',
         'migration/keycode-modifiers',
+        'migration/props-default-this',
         'migration/render-function-api',
         'migration/slots-unification',
         'migration/transition',
-        'migration/v-model'
+        'migration/v-model',
+        'migration/v-if-v-for',
+        'migration/v-bind'
       ]
     },
     {
@@ -162,7 +167,7 @@ const sidebar = {
     '/api/special-attributes',
     '/api/built-in-components.md',
     {
-      title: '响应式 API',
+      title: '响应性 API',
       collapsable: false,
       children: [
         '/api/basic-reactivity',
@@ -229,6 +234,10 @@ module.exports = {
             link: '/guide/introduction'
           },
           {
+            text: 'v3 迁移指南',
+            link: '/guide/migration/introduction'
+          },
+          {
             text: '风格指南',
             link: '/style-guide/'
           },
@@ -273,7 +282,7 @@ module.exports = {
             text: '官方项目',
             items: [{
                 text: 'Vue Router',
-                link: 'https://router.vuejs.org/'
+                link: 'https://next.router.vuejs.org/'
               },
               {
                 text: 'Vuex',
@@ -285,7 +294,7 @@ module.exports = {
               },
               {
                 text: 'Vue Test Utils',
-                link: 'https://vue-test-utils.vuejs.org/'
+                link: 'https://vuejs.github.io/vue-test-utils-next-docs/guide/introduction.html'
               },
               {
                 text: 'Devtools',

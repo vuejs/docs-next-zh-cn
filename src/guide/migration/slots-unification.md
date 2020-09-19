@@ -18,7 +18,7 @@ badges:
 
 ## 2.x 语法
 
-当使用 render 函数时，即 `h`，2.x 用于在内容节点上定义 `slot` data property。
+当使用渲染函数时，即 `h`，2.x 用于在内容节点上定义 `slot` data property。
 
 ```js
 // 2.x 语法

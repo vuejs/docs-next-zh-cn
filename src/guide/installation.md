@@ -2,15 +2,13 @@
 
 ## 发布版本说明
 
-最新 beta 版本：![beta](https://img.shields.io/npm/v/vue/next.svg)
+最新版本：![npm](https://img.shields.io/npm/v/vue/next.svg)
 
-每个版本的详细发行说明可在 [GitHub](https://github.com/vuejs/vue-next/releases) 上找到。
+每个版本的详细发行说明可在 [GitHub](https://github.com/vuejs/vue-next/blob/master/CHANGELOG.md) 上找到。
 
 ## Vue Devtools
 
-> 当前是 Beta 阶段
-
-> Vue Devtools 需要 Vue 3 版本不得低于 `vue@^3.0.0-rc.1`
+> 当前是 Beta 版 —— Vuex 和 Router 的集成仍然是 WIP 
 
 在使用 Vue 时，我们推荐在你的浏览器上安装 [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools)，它允许你在一个更友好的界面中审查和调试 Vue 应用。
 

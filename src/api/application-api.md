@@ -35,7 +35,7 @@ app.component('my-component', {
   /* ... */
 })
 
-// 检索注册的组件（始终返回构造函数）
+// 检索注册的组件(始终返回构造函数)
 const MyComponent = app.component('my-component', {})
 ```
 

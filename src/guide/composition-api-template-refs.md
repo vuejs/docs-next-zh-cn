@@ -35,7 +35,7 @@
 
 作为模板使用的 ref 的行为与任何其他 ref 一样：它们是响应式的，可以传递到 (或从) 复合函数中返回。
 
-### Usage with JSX
+### JSX的用法
 
 ```js
 export default {
@@ -55,7 +55,7 @@ export default {
 
 ### 内部使用 `v-for`
 
-Composition API 模板引用在 `-for` 内部使用时没有特殊处理。相反，请使用函数引用执行自定义处理：
+Composition API 模板引用在 `v-for` 内部使用时没有特殊处理。相反，请使用函数引用执行自定义处理：
 
 ```html
 <template>

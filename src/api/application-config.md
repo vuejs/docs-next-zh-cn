@@ -1,6 +1,6 @@
 # 应用配置
 
-`config` 是一个对象，包含 Vue 的全局配置。可以在启动应用之前修改下列 property：
+`config` 是一个包含了 Vue 应用全局配置的对象。你可以在应用挂载前修改其以下 property：
 
 ```js
 const app = Vue.createApp({})
@@ -12,7 +12,7 @@ app.config = {...}
 
 - **类型**：`boolean`
 
-- **默认**：`true` (在生成打包中是 `false`)
+- **默认**：`true` (在生产版本中是 `false`)
 
 - **用法**：
 
@@ -34,11 +34,10 @@ app.config.devtools = true
 app.config.errorHandler = (err, vm, info) => {
   // 处理错误
   // `info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子
-  // 发现错误
 }
 ```
 
-指定组件的渲染和观察期间未捕获错误的处理函数。这个处理函数被调用时，可获取错误信息和应用实例。
+指定一个处理函数，来处理组件渲染方法执行期间以及侦听器抛出的未捕获错误。这个处理函数被调用时，可获取错误信息和应用实例。
 
 > 错误追踪服务 [Sentry](https://sentry.io/for/vue/) 和 [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/) 使用此选项提供官方集成。
 
@@ -56,7 +55,7 @@ app.config.warnHandler = function(msg, vm, trace) {
 }
 ```
 
-为 Vue 的运行时警告赋予一个自定义处理函数。注意这只会在开发者环境下生效，在生产环境下它会被忽略。
+为 Vue 的运行时警告指定一个自定义处理函数。注意这只会在开发环境下生效，在生产环境下它会被忽略。
 
 ## globalProperties
 
@@ -76,15 +75,15 @@ app.component('child-component', {
 })
 ```
 
-添加可以在应用程序内的任何组件实例中访问的全局 property。按键冲突时，组件的属性将具有优先权。
+添加可以在应用程序内的任何组件实例中访问的全局 property。属性名冲突时，组件的 property 将具有优先权。
 
 这可以代替 Vue 2.x `Vue.prototype` 扩展：
 
 ```js
-// Before
+// 之前(Vue 2.x)
 Vue.prototype.$http = () => {}
 
-// After
+// 之后(Vue 3.x)
 const app = Vue.createApp({})
 app.config.globalProperties.$http = () => {}
 ```
@@ -102,9 +101,9 @@ app.config.globalProperties.$http = () => {}
 app.config.isCustomElement = tag => tag.startsWith('ion-')
 ```
 
-指定识别在 Vue 外部定义的自定义元素的方法 (例如，使用 Web 组件 API)。如果组件符合此条件，则不需要本地或全局注册，并且 Vue 不会抛出关于 `未知自定义元素` 的警告。
+指定一个方法，用来识别在 Vue 之外定义的自定义元素（例如，使用 Web Components API）。如果组件符合此条件，则不需要本地或全局注册，并且 Vue 不会抛出关于 `Unknown custom element` 的警告。
 
-> 注意，所有原生 HTML 和 SVG 标记不需要在此函数中匹配——Vue 解析器自动执行此检查
+> 注意，所有原生 HTML 和 SVG 标记不需要在此函数中匹配——Vue 解析器自动执行此检查。
 
 ## optionMergeStrategies
 
@@ -132,11 +131,11 @@ app.mixin({
 // 'Hello, Vue
 ```
 
-自定义合并策略的选项。
+为自定义选项定义合并策略。
 
-合并策略选项分别接收在父实例和子实例上定义的该选项的值作为第一个和第二个参数，引用实例上下文被作为第三个参数传入。
+合并策略选项分别接收在父实例和子实例上定义的该选项的值作为第一个和第二个参数，引用上下文实例被作为第三个参数传入。
 
-- **也可以看看** [Custom Option Merging Strategies](../guide/mixins.html#custom-option-merge-strategies)
+- **参考**：[自定义选项合并策略](../guide/mixins.html#自定义选项合并策略)
 
 ## performance
 
@@ -144,6 +143,6 @@ app.mixin({
 
 - **默认**：`false`
 
-- **Usage**：
+- **用法**：
 
-设置为 `true` 以在浏览器开发工具的性能/时间线面板中启用对组件初始化、编译、渲染和打补丁的性能追踪。只适用于开发模式和支持 [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API 的浏览器上。
+设置为 `true` 以在浏览器开发工具的 performance/timeline 面板中启用对组件初始化、编译、渲染和更新的性能追踪。只适用于开发模式和支持 [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API 的浏览器。
