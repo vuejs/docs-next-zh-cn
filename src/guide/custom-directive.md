@@ -125,7 +125,7 @@ app.directive('pin', {
 app.mount('#dynamic-arguments-example')
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="YzXgGmv" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Custom directives: dynamic arguments">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/YzXgGmv">
@@ -171,7 +171,7 @@ app.directive('pin', {
 })
 ```
 
-结果:
+结果：
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="rNOaZpj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Custom directives: dynamic arguments + dynamic binding">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/rNOaZpj">
@@ -228,7 +228,7 @@ return withDirectives(h('div'), [[vDemo, test]])
 
 其中 `vDemo` 是用户编写的指令对象，其中包含 `mounted` 和 `updated` 等钩子。
 
-`withDirectives` 返回一个克隆的 VNode，其中用户钩子被包装并作为 VNode 生命周期钩子注入（请参见[渲染函数](ender-function.html)）更多详情）：
+`withDirectives` 返回一个克隆的 VNode，其中用户钩子被包装并作为 VNode 生命周期钩子注入 (请参见[渲染函数](ender-function.html)更多详情)：
 
 ```js
 {

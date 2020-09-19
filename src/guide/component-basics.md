@@ -221,13 +221,13 @@ app.component('blog-post', {
 </button>
 ```
 
-当点击这个按钮时，我们需要告诉父级组件放大所有博文的文本。幸好 组件实例提供了一个自定义事件的系统来解决这个问题。父级组件可以像处理 native DOM 事件一样通过 `v-on` 或 `@` 监听子组件实例的任意事件：
+当点击这个按钮时，我们需要告诉父级组件放大所有博文的文本。幸好组件实例提供了一个自定义事件的系统来解决这个问题。父级组件可以像处理 native DOM 事件一样通过 `v-on` 或 `@` 监听子组件实例的任意事件：
 
 ```html
 <blog-post ... @enlarge-text="postFontSize += 0.1"></blog-post>
 ```
 
-同时子组件可以通过调用内建的 [**$emit** 方法](../api/instance-methods.html#emit) 并传入事件名称来触发一个事件：
+同时子组件可以通过调用内建的 [**$emit** 方法](../api/instance-methods.html#emit)并传入事件名称来触发一个事件：
 
 ```html
 <button @click="$emit('enlarge-text')">
@@ -311,7 +311,7 @@ methods: {
 ```
 
 ::: warning
-请注意，我们在这里使用的是 `model value`，因为我们使用的是DOM模板中的kebab-case。你可以在 [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 部分找到关于kebab cased和camelCased属性的详细说明
+请注意，我们在这里使用的是 `model value`，因为我们使用的是 DOM 模板中的 kebab-case。你可以在 [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 部分找到关于 kebab cased 和 camelCased 属性的详细说明
 :::
 
 为了让它正常工作，这个组件内的 `<input>` 必须：
@@ -343,7 +343,7 @@ app.component('custom-input', {
 
 在下面的示例中，我们使用计算属性重构 `<custom-input>` 组件。
 
-请记住，`get` 方法应返回 `modelValue` property，或用于绑定的任何 property，`set` 方法应为该 property 触发相应的 `$emit` 。
+请记住，`get` 方法应返回 `modelValue` property，或用于绑定的任何 property，`set` 方法应为该 property 触发相应的 `$emit`。
 
 ```js
 app.component('custom-input', {
@@ -363,7 +363,7 @@ app.component('custom-input', {
 })
 ```
 
-现在你只需要了解自定义组件事件，但一旦你读完本页并对其内容还觉得不错，我们建议你稍后再阅读有关 [自定义事件](component-custom-events.md)
+现在你只需要了解自定义组件事件，但一旦你读完本页并对其内容还觉得不错，我们建议你稍后再阅读有关[自定义事件](component-custom-events.md)
 
 ## 通过插槽分发内容
 
@@ -428,7 +428,7 @@ app.component('alert-box', {
 
 请留意，这个 attribute 可以用于常规 HTML 元素，但这些元素将被视为组件，这意味着所有的 attribute **都会作为 DOM attribute 被绑定**。对于像 `value` 这样的 property，若想让其如预期般工作，你需要使用 [.prop 修饰器](../api/directives.html#v-bind)。
 
-到目前为止，关于动态组件你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把 [动态 & 异步组件](./components-dynamic-async.html)读完。
+到目前为止，关于动态组件你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[动态 & 异步组件](./components-dynamic-async.html)读完。
 
 ## 解析 DOM 模板时的注意事项
 
@@ -462,7 +462,7 @@ app.component('alert-box', {
 
 :::
 
-另外，HTML 属性名不区分大小写，因此浏览器将把所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased（横线字符分隔）等效值：
+另外，HTML 属性名不区分大小写，因此浏览器将把所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
 
 
 ```js
