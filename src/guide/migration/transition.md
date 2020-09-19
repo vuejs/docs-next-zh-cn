@@ -1,20 +1,20 @@
 ---
-title: Transition Class Change
+title: 过渡的 class 名更改
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-The `v-enter` transition class has been renamed to `v-enter-from` and the `v-leave` transition class has been renamed to `v-leave-from`.
+过渡类名 `v-enter` 修改为 `v-enter-from`、过渡类名 `v-leave` 修改为 `v-leave-from`。
 
-## 2.x Syntax
+## 2.x 语法
 
-Before v2.1.8, we had two transition classes for each transition direction: initial and active states.
+在v2.1.8版本之前, 为过渡指令提供了两个过渡类名对应初始和激活状态。
 
-In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/leave transitions. However, for backward compatibility, the `v-enter` name was untouched:
+在 v2.1.8 版本中, 引入 `v-enter-to` 来定义 enter 或 leave 变换之间的过渡动画插帧, 为了向下兼容, 并没有变动 `v-enter` 类名：
 
 ```css
 .v-enter,
@@ -28,11 +28,11 @@ In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/le
 }
 ```
 
-This became confusing, as _enter_ and _leave_ were broad and not using the same naming convention as their class hook counterparts.
+这样做会带来很多困惑, 类似 *enter* 和 *leave* 含义过于宽泛并且没有遵循类名钩子的命名约定。
 
-## 3.x Update
+## 3.x 语法
 
-In order to be more explicit and legible, we have now renamed these initial state classes:
+为了更加明确易读，我们现在将这些初始状态重命名为：
 
 ```css
 .v-enter-from,
@@ -46,15 +46,15 @@ In order to be more explicit and legible, we have now renamed these initial stat
 }
 ```
 
-It's now much clearer what the difference between these states is.
+现在，这些状态之间的区别就清晰多了。
 
-The `<transition>` component's related prop names are also changed:
+`<transition>` 组件相关属性名也发生了变化：
 
-- `leave-class` is renamed to `leave-from-class` (can be written as `leaveFromClass` in render functions or JSX)
-- `enter-class` is renamed to `enter-from-class` (can be written as `enterFromClass` in render functions or JSX)
+- `leave-class` 已经被重命名为 `leave-from-class` (在渲染函数或 JSX 中可以写为：`leaveFromClass`)
+- `enter-class` 已经被重命名为 `enter-from-class` (在渲染函数或 JSX 中可以写为：`enterFromClass`)
 
-## Migration Strategy
+## 迁移策略
 
-1. Replace instances of `.v-enter` to `.v-enter-from`
-2. Replace instances of `.v-leave` to `.v-leave-from`
-3. Replace instances of related prop names, as above.
+1. 将 `.v-enter` 字符串实例替换为 `.v-enter-from`
+2. 将 `.v-leave` 字符串实例替换为 `.v-leave-from`
+3. 过渡组件相关属性名也需要进行字符串实例替换，规则如上所述。
