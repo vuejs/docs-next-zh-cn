@@ -32,10 +32,10 @@ export default {
 ```
 
 :::warning
-但是，因为 `props` 是响应式的，你不能**使用 ES6 解构**，因为它会消除 prop 的响应性。
+但是，因为 `props` 是响应式的，你**不能使用 ES6 解构**，因为它会消除 prop 的响应性。
 :::
 
-如果需要销毁 prop，可以通过使用 `setup` 函数中的 [toRefs](reactivity-fundamentals.html#destructuring-reactive-state) 来安全地完成此操作。
+如果需要销毁 prop，可以通过使用 `setup` 函数中的 [toRefs](reactivity-fundamentals.html#响应式状态解构) 来安全地完成此操作。
 
 ```js
 // MyBook.vue
@@ -92,7 +92,7 @@ export default {
 - `slots`
 - `emit`
 
-换句话说，你**将无法**访问以下组件选项：
+换句话说，你**将无法访问**以下组件选项：
 
 - `data`
 - `computed`
@@ -100,7 +100,7 @@ export default {
 
 ## 使用模板
 
-如果 `setup` 返回一个对象，则可以在组件的模板中访问该对象的 property：
+如果 `setup` 返回一个对象，则可以在组件的模板中访问该对象的 property，以及传递给 `setup` 的 `props` property：
 
 ```vue-html
 <!-- MyBook.vue -->
