@@ -113,7 +113,7 @@ const appB = Vue.createApp({
 ![State Management](/images/state.png)
 
 :::tip
-重要的是，注意你不应该在 action 中替换原始的状态对象 - 组件和 store 需要引用同一个共享对象，变更才能够被观察到。
+重要的是，注意你不应该在 action 中替换原始的状态对象 —— 组件和 store 需要引用同一个共享对象，变更才能够被观察到。
 :::
 
 接着我们继续延伸约定，组件不允许直接变更属于 store 实例的 state，而应执行 action 来分发 (dispatch) 事件通知 store 去改变，我们最终达成了 [Flux](https://facebook.github.io/flux/) 架构。这样约定的好处是，我们能够记录所有 store 中发生的 state 变更，同时实现能做到记录变更、保存状态快照、历史回滚/时光旅行的先进的调试工具。
