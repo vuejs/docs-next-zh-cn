@@ -143,7 +143,7 @@ const Component = defineComponent({
 
 ### 注释 Props
 
-Vue 对定义了 `type` 的 props 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 强制转换构造函数：
+Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 强制转换构造函数：
 
 ```ts
 import { defineComponent, PropType } from 'vue'
