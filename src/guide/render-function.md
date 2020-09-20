@@ -123,38 +123,37 @@ Vue 通过建立一个**虚拟 DOM** 来追踪自己要如何改变真实 DOM。
 return Vue.h('h1', {}, this.blogTitle)
 ```
 
-`h()` 到底会返回什么呢？其实不是一个*实际*的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息。我们把这样的节点描述为“虚拟节点 (virtual node)”，也常简写它为**VNode**。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。
+`h()` 到底会返回什么呢？其实不是一个*实际*的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息。我们把这样的节点描述为“虚拟节点 (virtual node)”，也常简写它为 **VNode**。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。
 
 
 
-## `h()`  参数
+## `h()` 参数
 
-`h()` 函数是一个用于创建vnode的实用程序。也许可以更准确地将其命名为 `createVNode()`，但由于频繁使用和简洁，它被称为`h()` 。它接受三个参数：
+`h()` 函数是一个用于创建 vnode 的实用程序。也许可以更准确地将其命名为 `createVNode()`，但由于频繁使用和简洁，它被称为 `h()` 。它接受三个参数：
 
 ```js
 // @returns {VNode}
 h(
   // {String | Object | Function | null} tag
-  // An HTML tag name, a component, an async component or null.
-  // 一个 HTML 标签名、组件、一个异步组件，或者null
-  // 使用null将会渲染一个注释
+  // 一个 HTML 标签名、一个组件、一个异步组件，或者 null。
+  // 使用 null 将会渲染一个注释。
   //
-  // Required.
+  // 必需的。
   'div',
 
   // {Object} props
-  // 与attributy、prop和事件相对应的对象
+  // 与 attribute、prop 和事件相对应的对象。
   // 我们会在模板中使用。
   //
-  // 可选的.
+  // 可选的。
   {},
 
   // {String | Array | Object} children
   // 子 VNodes, 使用 `h()` 构建,
-  // 或使用字符串获取 "文本Vnode" 或者
-  // 有slot的对象
+  // 或使用字符串获取 "文本 Vnode" 或者
+  // 有 slot 的对象。
   //
-  // 可选的.
+  // 可选的。
   [
     'Some text comes first.',
     h('h1', 'A headline'),
