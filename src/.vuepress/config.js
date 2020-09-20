@@ -343,7 +343,7 @@ module.exports = {
         ]
       }
     ],
-    repo: 'vuejs/docs-next',
+    repo: 'vuejs/docs-next-zh-cn',
     editLinks: false,
     editLinkText: 'Edit this on GitHub!',
     lastUpdated: 'Last updated',
