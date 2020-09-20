@@ -9,7 +9,7 @@ badges:
 
 - **NEW**：对于 `v-if`/`v-else`/`v-else-if` 的各分支项 `key` 将不再是必须的，因为现在 Vue 会自动生成唯一的 `key`。
   - **BREAKING**：如果你手动提供 `key`，那么每个分支必须使用唯一的 `key`。你不能通过故意使用相同的 `key` 来强制重用分支。
-- **BREAKING**：`<template v-for>` 的 `key` 应该设置在 `<template>` 标签上 (而不是设置在它的 child)。
+- **BREAKING**：`<template v-for>` 的 `key` 应该设置在 `<template>` 标签上 (而不是设置在它的子结点上)。
 
 ## 背景
 
@@ -36,7 +36,7 @@ Vue 2.x 建议在 `v-if`/`v-else`/`v-else-if` 的分支中使用 `key`。
 <div v-else>No</div>
 ```
 
-重大改变体现在如果你手动提供了 `key`，那么每个分支都必须使用一个唯一的 `key`。因此大多数情况下都不需要设置这些 `key`。
+非兼容变更体现在如果你手动提供了 `key`，那么每个分支都必须使用一个唯一的 `key`。因此大多数情况下都不需要设置这些 `key`。
 
 ```html
 <!-- Vue 2.x -->
@@ -52,9 +52,9 @@ Vue 2.x 建议在 `v-if`/`v-else`/`v-else-if` 的分支中使用 `key`。
 <div v-else key="b">No</div>
 ```
 
-## 对于 `<template v-for>`
+## 结合 `<template v-for>`
 
-在 Vue 2.x 中 `<template>` 标签不能拥有 `key`。相反你可以为其每个 child 分别设置 `key`。
+在 Vue 2.x 中 `<template>` 标签不能拥有 `key`。不过你可以为其每个子结点分别设置 `key`。
 
 ```html
 <!-- Vue 2.x -->
@@ -74,7 +74,7 @@ Vue 2.x 建议在 `v-if`/`v-else`/`v-else-if` 的分支中使用 `key`。
 </template>
 ```
 
-类似地，当使用 `<template v-for>` 时存在使用 `v-if` 的 child，`key` 应改为设置在 `<template>` 标签上。
+类似地，当使用 `<template v-for>` 时存在使用 `v-if` 的子结点，`key` 应改为设置在 `<template>` 标签上。
 
 ```html
 <!-- Vue 2.x -->
