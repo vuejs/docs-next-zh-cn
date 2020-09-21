@@ -27,7 +27,7 @@ Vue.directive('focus', {
 虽然这种方法很方便，但它会导致一些问题。从技术上讲，Vue 2 没有“app”的概念，我们定义的应用程序只是通过 `new Vue()` 创建的根 Vue 实例。从同一个 Vue 构造函数**创建的每个根实例共享相同的全局配置**，因此：
 
 
-- 全局配置使得在测试期间很容易意外地污染其他测试用例。用户需要仔细存储原始全局配置，并在每次测试后恢复 (例如重置 `Vue.config.errorHandler`)。有些 API 像 `Vue.使用` 以及 `Vue.mixin` 甚至连恢复效果的方法都没有，这使得涉及插件的测试特别棘手。实际上，vue test utils 必须实现一个特殊的 API `createLocalVue` 来处理此问题：
+- 全局配置使得在测试期间很容易意外地污染其他测试用例。用户需要仔细存储原始全局配置，并在每次测试后恢复 (例如重置 `Vue.config.errorHandler`)。有些 API 像 `Vue.use` 以及 `Vue.mixin` 甚至连恢复效果的方法都没有，这使得涉及插件的测试特别棘手。实际上，vue test utils 必须实现一个特殊的 API `createLocalVue` 来处理此问题：
 
 ```js
 import { createLocalVue, mount } from '@vue/test-utils'
