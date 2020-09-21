@@ -61,7 +61,7 @@ export default {
     // Attribute (非响应式对象)
     console.log(context.attrs)
 
-    // 插槽 (响应式对象)
+    // 插槽 (非响应式对象)
     console.log(context.slots)
 
     // 触发事件 (方法)
