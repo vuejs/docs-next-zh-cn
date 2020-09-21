@@ -9,9 +9,9 @@ badges:
 
 以下是对变化的高层次概述：
 
-- 新 `defineAsyncComponent` 助手方法，它显示定义异步组件
+- 新的 `defineAsyncComponent` 帮助方法，用于显式地定义异步组件
 - `component` 选项重命名为 `loader`
-- 加载程序函数本身不接收 `resolve` 和 `reject` 参数，必须返回一个 Promise
+- Loader 函数本身不再接收 `resolve` 和 `reject` 参数，且必须返回一个 Promise
 
 如需更深入的解释，请继续阅读！
 
@@ -23,7 +23,7 @@ badges:
 const asyncPage = () => import('./NextPage.vue')
 ```
 
-或者，对于带有选项的更高阶组件语法：
+或者，对于带有选项的更高级的组件语法：
 
 ```js
 const asyncPage = {
@@ -38,7 +38,7 @@ const asyncPage = {
 ## 3.x 语法
 
 
-现在，在 Vue 3 中，由于功能组件被定义为纯函数，因此需要通过将异步组件定义包装在新的 `defineAsyncComponent` 助手中来显式定义异步组件：
+现在，在 Vue 3 中，由于功能组件被定义为纯函数，因此异步组件的定义需要通过将其包装在新的 `defineAsyncComponent` 帮助方法中来显式地定义：
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -72,7 +72,7 @@ const asyncPageWithOptions = defineAsyncComponent({
 })
 ```
 
-此外，与 2.x 不同，loader 函数不再接收 `resolve` 和 `reject` 参数，必须始终返回 Promise。
+此外，与 2.x 不同，loader 函数不再接收 `resolve` 和 `reject` 参数，且必须始终返回 Promise。
 
 ```js
 // 2.x 版本
