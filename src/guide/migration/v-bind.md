@@ -1,22 +1,22 @@
 ---
-title: v-bind Merge Behavior
+title: v-bind 合并行为
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-- **BREAKING**: Order of bindings for v-bind will affect the rendering result.
+- **不兼容**：v-bind 的绑定顺序会影响渲染结果。
 
-## Introduction
+## 介绍
 
-When dynamically binding attributes on an element, a common scenario involves using both the `v-bind="object"` syntax as well as individual properties in the same element. However, this raises questions as far as the priority of merging.
+在元素上动态绑定 attribute 时，常见的场景是使用 `v-bind="object"` 语法以及同一元素中单独的 property。然而，这就提出了关于合并的优先级的问题。
 
-## 2.x Syntax
+## 2.x 语法
 
-In 2.x, if an element has both `v-bind="object"` and an identical individual property defined, the individual property would always overwrite bindings in the `object`. 
+在 2.x，如果一个元素同时定义了 `v-bind="object"` 和一个相同的单独的 property，那么这个单独的 property 总是会覆盖 `object` 中的绑定。
 
 ```html
 <!-- template -->
@@ -25,9 +25,9 @@ In 2.x, if an element has both `v-bind="object"` and an identical individual pro
 <div id="red"></div>
 ```
 
-## 3.x Syntax
+## 3.x 语法
 
-In 3x, if an element has both `v-bind="object"` and an identical individual property defined, the order of how the bindings are declared determines how they are merged. In other words, rather than assuming developers want the individual property to always override what is defined in the `object`, developers now have more control over the desired merging behavior.
+在 3.x，如果一个元素同时定义了 `v-bind="object"` 和一个相同的单独的 property，那么声明绑定的顺序决定了它们如何合并。换句话说，假设开发者希望单独的 property 总是覆盖 `object` 中定义的内容，那么现在开发者对自己所希望的合并行为有了更好的控制。
 
 ```html
 <!-- template -->
@@ -41,6 +41,6 @@ In 3x, if an element has both `v-bind="object"` and an identical individual prop
 <div id="red"></div>
 ```
 
-## Migration Strategy
+## 迁移策略
 
-If you are relying on this override functionality for `v-bind`, we currently recommend ensuring that your `v-bind` attribute is defined before individual properties.
+如果你依赖 `v-bind` 的覆盖功能，目前的建议是确保在单独的 property 之前定义 `v-bind` attribute。
