@@ -227,7 +227,7 @@ render() {
 - **类型：**`String`
 
 - **详细：**
-  载的组件的名称。
+  加载的组件的名称。
 
 ## resolveDynamicComponent
 
