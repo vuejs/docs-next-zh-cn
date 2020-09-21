@@ -6,7 +6,7 @@ Vue.js 使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM
 
 如果你熟悉虚拟 DOM 并且偏爱 JavaScript 的原始力量，你也可以不用模板，[直接写渲染 (render) 函数](render-function.html)，使用可选的 JSX 语法。
 
-## 差值
+## 插值
 
 ### 文本
 
@@ -129,7 +129,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 <a v-on:[eventName]="doSomething"> ... </a>
 ```
 
-在这个示例中，当 `eventName` 的值为 `"focus"` 时，`v-on:[eventName]` 将等价于 `v-on:foces`
+在这个示例中，当 `eventName` 的值为 `"focus"` 时，`v-on:[eventName]` 将等价于 `v-on:focus`
 
 ### 修饰符
 
