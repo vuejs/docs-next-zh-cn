@@ -1,16 +1,16 @@
 ---
-title: Prop 默认函数 this 的访问
+title: 在 prop 的默认函数中访问 this
 badges:
   - breaking
 ---
 
-# Props Default Function `this` Access <MigrationBadges :badges="$frontmatter.badges" />
+# 在 prop 的默认函数中访问 `this` <MigrationBadges :badges="$frontmatter.badges" />
 
-Prop 默认值工厂函数不再能访问 `this`。
+生成 prop 默认值的工厂函数不再能访问 `this`。
 
-替换：
+替代方案：
 
-- 组件接收到的原始 prop 作为参数传递给默认函数；
+- 把组件接收到的原始 prop 作为参数传递给默认函数；
 
 - [注入](../composition-api-provide-inject.md) API 可以在默认函数中使用。
 
@@ -22,7 +22,7 @@ export default {
     theme: {
       default (props) {
         // `props` 是传递给组件的原始值。
-        // 在任何类型之前/默认强制转换
+        // 在任何类型/默认强制转换之前
         // 也可以使用 `inject` 来访问注入的 property
         return inject('theme', 'default-theme')
       }
