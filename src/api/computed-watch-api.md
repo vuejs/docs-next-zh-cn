@@ -128,7 +128,7 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 
 ### 与 `watchEffect` 共享行为
 
-`watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](stopping-the-watcher)，[副作用无效](side-effect-invalidation) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](#effect-flush-timing) 和 [debugging](#watcher-debugging)。
+`watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](../guide/reactivity-computed-watchers.html#停止侦听)，[副作用无效](../guide/reactivity-computed-watchers.html#清除副作用) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](../guide/reactivity-computed-watchers.html#副作用刷新时机) 和 [debugging](../guide/reactivity-computed-watchers.html#侦听器调试) 有共享行为。
 
 **类型声明：**
 
