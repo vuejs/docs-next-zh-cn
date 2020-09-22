@@ -249,7 +249,7 @@ methods: {
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-## 在 `<template>` 在使用 `v-for`
+## 在 `<template>` 中使用 `v-for`
 
 类似于 `v-if`，你也可以利用带有 `v-for` 的 `<template>` 来循环渲染一段包含多个元素的内容。比如：
 
