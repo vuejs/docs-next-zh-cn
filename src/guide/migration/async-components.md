@@ -3,7 +3,7 @@ badges:
   - new
 ---
 
-# 异步组件<MigrationBadges :badges="$frontmatter.badges" />
+# 异步组件 <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
 
@@ -17,13 +17,13 @@ badges:
 
 ## 介绍
 
-以前，异步组件是通过将组件定义为返回 promise 的函数来创建的，例如：
+以前，异步组件是通过将组件定义为返回 Promise 的函数来创建的，例如：
 
 ```js
 const asyncPage = () => import('./NextPage.vue')
 ```
 
-或者，对于带有选项的更高级的组件语法：
+或者，对于带有选项的更高阶的组件语法：
 
 ```js
 const asyncPage = {
@@ -91,4 +91,4 @@ const asyncComponent = defineAsyncComponent(
 
 有关异步组件用法的详细信息，请参阅：
 
-- [指南：动态 & 异步组件](/guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+- [指南：动态 & 异步组件](/guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
