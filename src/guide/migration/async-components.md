@@ -9,7 +9,7 @@ badges:
 
 以下是对变化的高层次概述：
 
-- 新的 `defineAsyncComponent` 帮助方法，用于显式地定义异步组件
+- 新的 `defineAsyncComponent` 助手方法，用于显式地定义异步组件
 - `component` 选项重命名为 `loader`
 - Loader 函数本身不再接收 `resolve` 和 `reject` 参数，且必须返回一个 Promise
 
