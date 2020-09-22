@@ -78,7 +78,7 @@ const dinner = {
 
 const handler = {
   get(target, prop) {
-    console.log(‘intercepted!’)
+    console.log('intercepted!')
     return target[prop]
   }
 }
