@@ -162,15 +162,13 @@ app.mount('#app')
 
 ```js
 // 在入口
-app.provide({
-  guide: 'Vue 3 Guide'
-})
+app.provide('guide', 'Vue 3 Guide')
 
 // 在子组件
 export default {
   inject: {
     book: {
-      from: guide
+      from: 'guide'
     }
   },
   template: `<div>{{ book }}</div>`
