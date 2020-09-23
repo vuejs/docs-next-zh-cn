@@ -2,13 +2,13 @@
 
 ## createApp
 
-返回一个提供应用上下文的应用实例。应用实例挂载的整个组件树共享同一个的上下文。
+返回一个提供应用上下文的应用实例。应用实例挂载的整个组件树共享同一个上下文。
 
 ```js
 const app = Vue.createApp({})
 ```
 
-你可以在 `createApp` 之后链接其他方法，这些方法可以在 [应用 API](./application-api.html) 中找到
+你可以在 `createApp` 之后链式调用其它方法，这些方法可以在[应用 API](./application-api.html) 中找到。
 
 
 ### 参数
@@ -62,7 +62,7 @@ export type CreateAppFunction<HostElement> = (
 
 ## h
 
-返回一个”虚拟节点“，通常缩写为 **VNode**：一个普通对象，其中包含向 Vue 描述它应在页面上渲染哪种节点的信息，包括任何子节点的描述。它的目的是用于手动编写 [渲染函数](../guide/render-function.md)：
+返回一个”虚拟节点“，通常缩写为 **VNode**：一个普通对象，其中包含向 Vue 描述它应在页面上渲染哪种节点的信息，包括所有子节点的描述。它的目的是用于手动编写的[渲染函数](../guide/render-function.md)：
 
 ```js
 render() {
@@ -80,7 +80,7 @@ render() {
 
 - **详细：**
 
-  一个 HTML 标签名，一个组件或一个异步组件，使用返回 null 的函数，将渲染一个注释。此参数是必需的
+  HTML 标签名、组件或异步组件。使用返回 null 的函数将渲染一个注释。此参数是必需的。
 
 #### props
 
@@ -88,7 +88,7 @@ render() {
 
 - **详细：**
 
-  一个对象，与我们将在模板中使用的 attribute、prop 和事件相对应。可选
+  一个对象，与我们将在模板中使用的 attribute、prop 和事件相对应。可选。
 
 #### children
 
@@ -96,7 +96,7 @@ render() {
 
 - **详细：**
 
-  子代 VNode，使用 `h()` 生成，或者使用字符串来获取“文本 VNode”或带有插槽的对象。可选
+  子代 VNode，使用 `h()` 生成，或者使用字符串来获取“文本 VNode”，或带有插槽的对象。可选。
 
   ```js
   h('div', {}, [
@@ -110,7 +110,7 @@ render() {
 
 ## defineComponent
 
-从实现上看，`defineComponent` 只返回传递给它的对象。但是，就类型而言，返回的值有一个合成类型的构造函数，用于手动渲染函数，TSX 和 IDE 工具支持。
+从实现上看，`defineComponent` 只返回传递给它的对象。但是，就类型而言，返回的值有一个合成类型的构造函数，用于手动渲染函数、TSX 和 IDE 工具支持。
 
 ### 参数
 
@@ -137,7 +137,7 @@ const MyComponent = defineComponent({
 
 ### 参数
 
-对于基本用法，`defineAsyncComponent` 可以接受一个返回 `Promise` 的工厂函数。Promise 的 `resolve` 回调应该在你从服务器上检索到你的组件定义时被调用。你也可以调用 `reject(reason)` 来表示加载失败。
+对于基本用法，`defineAsyncComponent` 可以接受一个返回 `Promise` 的工厂函数。Promise 的 `resolve` 回调应该在服务端返回组件定义后被调用。你也可以调用 `reject(reason)` 来表示加载失败。
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -343,14 +343,14 @@ return withDirectives(h('div'), [
   const nodeWithDirectives = withDirectives(h('div'), [[MyDirective]])
   ```
 
-  - `[directive, value]` - 上述内容，加上分配给指令的类型为 `any` 的值
+  - `[directive, value]` - 上述内容，再加上分配给指令的类型为 `any` 的值。
 
   ```js
   const MyDirective = resolveDirective('MyDirective')
   const nodeWithDirectives = withDirectives(h('div'), [[MyDirective, 100]])
   ```
 
-  - `[directive, value, arg]` - 以上，再加上一个 `String` 参数，比如：在 `v-on:click` 中的 `click`
+  - `[directive, value, arg]` - 上述内容，再加上一个 `string` 参数，比如：在 `v-on:click` 中的 `click`。
 
   ```js
   const MyDirective = resolveDirective('MyDirective')
@@ -359,7 +359,7 @@ return withDirectives(h('div'), [
   ])
   ```
 
-  - `[directive, value, arg, modifiers]` - 上述内容，加上定义任何修饰符的 `key: value` 键值对 `Object`
+  - `[directive, value, arg, modifiers]` - 上述内容，再加上定义任何修饰符的 `key: value` 键值对 `Object`。
 
   ```js
   const MyDirective = resolveDirective('MyDirective')
@@ -387,7 +387,7 @@ const { render, createApp } = createRenderer<Node, Element>({
 
 ### 参数
 
-接受两个参数：`HostNode` 和 `HostElement`
+接受两个参数：`HostNode` 和 `HostElement`。
 
 #### HostNode
 
