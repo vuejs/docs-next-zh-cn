@@ -20,7 +20,7 @@
 
       onMounted(() => {
         // DOM元素将在初始渲染后分配给ref
-        console.log(root.value) // <div>这是跟元素</div>
+        console.log(root.value) // <div>这是根元素</div>
       })
 
       return {
