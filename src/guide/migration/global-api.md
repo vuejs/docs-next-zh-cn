@@ -74,7 +74,7 @@ const app = createApp({})
 | Vue.component              | app.component                                                                                |
 | Vue.directive              | app.directive                                                                                |
 | Vue.mixin                  | app.mixin                                                                                    |
-| Vue.use                    | app.use ([见下方w](#a-note-for-plugin-authors))                                              |
+| Vue.use                    | app.use ([见下方](#a-note-for-plugin-authors))                                               |
 
 所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见[全局] API Treeshaking](。/global-api-treeshaking.html)。
 
