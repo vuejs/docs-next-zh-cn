@@ -31,7 +31,7 @@ import { ref } from 'vue'
 const count = ref(0)
 ```
 
-`ref` 会返回一个可变的响应式对象，该对象作为它的内部值——一个**响应式的引用*，这就是名称的来源。此对象只包含一个名为 `value` 的 property` ：
+`ref` 会返回一个可变的响应式对象，该对象作为它的内部值——一个**响应式的引用**，这就是名称的来源。此对象只包含一个名为 `value` 的 property ：
 
 ```js
 import { ref } from 'vue'
@@ -96,7 +96,6 @@ console.log(count.value) // 1
 
 Ref 展开仅发生在被响应式 `Object` 嵌套的时候。当从 `Array` 或原生集合类型如 [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)访问 ref 时，不会进行展开：
 
-
 ```js
 const books = reactive([ref('Vue 3 Guide')])
 // 这里需要 .value
@@ -106,7 +105,6 @@ const map = reactive(new Map([['count', ref(0)]]))
 // 这里需要 .value
 console.log(map.get('count').value)
 ```
-
 
 ## 响应式状态解构
 
@@ -145,7 +143,7 @@ title.value = 'Vue 3 Detailed Guide' // 我们需要使用 .value 作为标题�
 console.log(book.title) // 'Vue 3 Detailed Guide'
 ```
 
-你可以在 [Refs API](../api/refs-api.html#ref) 部分中了解更多有关 `refs' 的信息
+你可以在 [Refs API](../api/refs-api.html#ref) 部分中了解更多有关 `refs` 的信息
 
 ## 使用 `readonly` 防止更改响应式对象
 

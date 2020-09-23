@@ -8,20 +8,6 @@ const app = Vue.createApp({})
 app.config = {...}
 ```
 
-## devtools
-
-- **类型**：`boolean`
-
-- **默认**：`true` (在生产版本中是 `false`)
-
-- **用法**：
-
-```js
-app.config.devtools = true
-```
-
-配置是否允许 [vue devtools](https://github.com/vuejs/vue-devtools) 检查代码。开发版本默认为 `true`，生产版本默认为 `false`。生产版本设为 `true` 可以启用检查。
-
 ## errorHandler
 
 - **类型**：`Function`
