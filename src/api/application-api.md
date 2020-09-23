@@ -10,7 +10,7 @@ const app = createApp({})
 
 调用 `createApp` 返回一个应用实例。该实例提供了一个应用上下文。应用实例挂载的整个组件树共享相同的上下文，该上下文提供了之前在 Vue 2.x 中“全局”的配置。
 
-另外，由于 `createApp` 方法返回应用实例本身，因此可以在其后链式调用其他方法，这些方法可以在以下部分中找到。
+另外，由于 `createApp` 方法返回应用实例本身，因此可以在其后链式调用其它方法，这些方法可以在以下部分中找到。
 
 ## component
 
@@ -21,8 +21,8 @@ const app = createApp({})
 
 - **返回：**
 
-  - 如果传入 definition 参数，返回应用实例。
-  - 如果不传入 definition 参数，返回组件定义。
+  - 如果传入 `definition` 参数，返回应用实例。
+  - 如果不传入 `definition` 参数，返回组件定义。
 
 - **用法：**
 
@@ -72,8 +72,8 @@ app.config = {...}
 
 - **返回：**
 
-  - 如果传入 definition 参数，返回应用实例。
-  - 如果不传入 definition 参数，返回指令定义。
+  - 如果传入 `definition` 参数，返回应用实例。
+  - 如果不传入 `definition` 参数，返回指令定义。
 
 - **用法：**
 
@@ -148,14 +148,14 @@ app.directive('focus', {
 
 #### vnode
 
-上面作为 el 参数收到的真实 DOM 元素对应的 VNode。
+上面作为 el 参数收到的真实 DOM 元素的蓝图。
 
 #### prevNode
 
-上一个的 VNode，仅在 `beforeUpdate` 和 `updated` 钩子中可用。
+上一个虚拟结点，仅在 `beforeUpdate` 和 `updated` 钩子中可用。
 
 :::tip Note
-除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。如果你需要跨钩子共享信息，建议通过元素的[自定义数据属性](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) 进行共享。
+除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。如果你需要跨钩子共享信息，建议通过元素的[自定义数据属性集](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)进行共享。
 :::
 
 - **参考：**[自定义指令](../guide/custom-directive.html)
@@ -227,7 +227,7 @@ app.mount('#my-app')
 
   从 `provide`/`inject` 的角度来看，可以将应用程序视为根级别的祖先，而根组件是其唯一的子级。
 
-  该方法不应该与 [provide 组件选项](options-composition.html#provide-inject) 或组合 API 中的 [provide 方法](composition-api.html#provide-inject)混淆。虽然都是相同的 `provide`/`inject` 机制的一部分，但它们是用来配置组件的值而不是应用的值。
+  该方法不应该与 [provide 组件选项](options-composition.html#provide-inject)或组合式 API 中的 [provide 方法](composition-api.html#provide-inject)混淆。虽然它们也是相同的 `provide`/`inject` 机制的一部分，但是是用来配置组件提供的值而不是应用提供的值。
 
   通过应用提供值在写插件时尤其有用，因为插件一般不能使用组件提供值。这是使用 [globalProperties](application-config.html#globalProperties) 的替代选择。
 
@@ -301,7 +301,7 @@ setTimeout(() => app.unmount('#my-app'), 5000)
 
   安装 Vue.js 插件。如果插件是一个对象，它必须暴露一个 `install` 方法。如果它本身是一个函数，它将被视为安装方法。
 
-  安装方法将以应用实例作为第一个参数被调用。传给 `use` 的其他 `options` 参数将作为后续参数传入安装方法。
+  该安装方法将以应用实例作为第一个参数被调用。传给 `use` 的其他 `options` 参数将作为后续参数传入该安装方法。
 
   当在同一个插件上多次调用此方法时，该插件将仅安装一次。
 
