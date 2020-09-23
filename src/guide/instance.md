@@ -38,7 +38,7 @@ Vue.createApp(/* 选项 */).mount('#app')
 当一个实例被创建时，它将 `data` 对象中的所有的 property 加入到 [Vue 的**响应式系统**中](reactivity.html)。当这些 property 的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。
 
 ```js
-// 我们 data 对象
+// 我们的 data 对象
 const data = { a: 1 }
 
 // 该对象被加入到一个根实例中

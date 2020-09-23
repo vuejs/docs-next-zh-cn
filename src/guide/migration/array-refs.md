@@ -1,20 +1,20 @@
 ---
-title: v-for Array Refs
+title: v-for 中的 Ref 数组
 badges:
 - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-In Vue 2, using the `ref` attribute inside `v-for` will populate the corresponding `$refs` property with an array of refs. This behavior becomes ambiguous and inefficient when there are nested `v-for`s present.
+在 Vue 2 中，在 `v-for` 里使用的 `ref` attribute 会用 ref 数组填充相应的 `$refs` property。当存在嵌套的 `v-for` 时，这种行为会变得不明确且效率低下。
 
-In Vue 3, such usage will no longer automatically create an array in `$refs`. To retrieve multiple refs from a single binding, bind `ref` to a function which provides more flexibility (this is a new feature):
+在 Vue 3 中，这样的用法将不再在 `$ref` 中自动创建数组。要从单个绑定获取多个 ref，请将 `ref` 绑定到一个更灵活的函数上 (这是一个新特性)：
 
 ```html
 <div v-for="item in list" :ref="setItemRef"></div>
 ```
 
-With Options API:
+结合选项式 API:
 
 ```js
 export default {
@@ -37,7 +37,7 @@ export default {
 }
 ```
 
-With Composition API:
+结合组合式 API:
 
 ```js
 import { ref, onBeforeUpdate, onUpdated } from 'vue'
@@ -62,8 +62,8 @@ export default {
 }
 ```
 
-Note that:
+注意：
 
-- `itemRefs` doesn't have to be an array: it can also be an object where the refs are set by their iteration keys.
+- `itemRefs` 不必是数组：它也可以是一个对象，其 ref 会通过迭代的 key 被设置。
 
-- This also allows `itemRefs` to be made reactive and watched, if needed.
+- 如果需要，`itemRef` 也可以是响应式的且可以被监听。

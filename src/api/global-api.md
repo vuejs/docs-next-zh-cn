@@ -202,7 +202,7 @@ const AsyncComp = defineAsyncComponent({
 
 如果在当前应用实例中可用，则允许按名称解析 `component`。
 
-返回一个 `Component` ，如果没有找到，则返回 `undefined`。
+返回一个 `Component`。如果没有找到，则返回 `undefined`。
 
 ```js
 const app = Vue.createApp({})
@@ -269,7 +269,7 @@ render () {
 
 如果在当前应用实例中可用，则允许通过其名称解析一个 `directive`。
 
-返回一个 `Directive`，如果没有找到，则返回 `undefined`。
+返回一个 `Directive`。如果没有找到，则返回 `undefined`。
 
 ```js
 const app = Vue.createApp({})
