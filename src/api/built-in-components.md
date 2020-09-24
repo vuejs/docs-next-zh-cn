@@ -20,7 +20,7 @@
   <!-- 可以通过字符串引用组件 -->
   <component :is="condition ? 'FooComponent' : 'BarComponent'"></component>
 
-  <!-- 可以用来渲染原生HTML元素 -->
+  <!-- 可以用来渲染原生 HTML 元素 -->
   <component :is="href ? 'a' : 'span'"></component>
   ```
 
