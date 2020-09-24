@@ -24,7 +24,7 @@
   <component :is="href ? 'a' : 'span'"></component>
   ```
 
--  **参考：** [动态组件](../guide/component-dynamic-async.html)
+-  **参考：**[动态组件](../guide/component-dynamic-async.html)
 
 ## transition
 
