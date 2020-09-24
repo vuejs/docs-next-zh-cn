@@ -1,0 +1,35 @@
+language: node_js
+# nodejs版本
+node_js: 
+    - '10'
+
+# Travis-CI Caching
+cache:
+  directories:
+    - node_modules
+
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+before_script:
+
+# 无其他依赖项所以执行npm run build 构建就行了
+script:
+  - npm run build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep_history: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  local_dir: dist
+  target_branch: gh-pages
+  on:
+    branch: master
+
+#指定分支，只有指定的分支提交时才会运行脚本
+branches:
+  only:
+    - master
