@@ -4,11 +4,11 @@
 
 - **Props：**
 
-  - `is` - `string | ComponentDefinition | ComponentConstructor`
+  - `is` - `string | Component`
 
 - **用法：**
 
-  渲染一个“元组件”为动态组件。依 `is` 的值，来决定哪个组件被渲染。
+  渲染一个“元组件”为动态组件。依 `is` 的值，来决定哪个组件被渲染。`is`的值是一个字符串，它既可以是HTML标签名称也可以是组件名称。
 
   ```html
   <!--  动态组件由 vm 实例的 `componentId` property 控制 -->
@@ -16,6 +16,12 @@
 
   <!-- 也能够渲染注册过的组件或 prop 传入的组件-->
   <component :is="$options.components.child"></component>
+
+  <!-- 可以通过字符串引用组件 -->
+  <component :is="condition ? 'FooComponent' : 'BarComponent'"></component>
+
+  <!-- 可以用来渲染原生HTML元素 -->
+  <component :is="href ? 'a' : 'span'"></component>
   ```
 
 -  **参考：** [动态组件](../guide/component-dynamic-async.html)
