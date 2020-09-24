@@ -197,6 +197,7 @@ const sidebar = {
 module.exports = {
   title: 'Vue.js',
   base:'/docs-next-zh-cn',
+  dest: 'dist',
   description: 'Vue.js - The Progressive JavaScript Framework',
   head: [
     [
