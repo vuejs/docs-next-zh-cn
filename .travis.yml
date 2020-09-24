@@ -13,8 +13,6 @@ cache:
 install:
   - npm install
 
-before_script:
-
 # 无其他依赖项所以执行npm run build 构建就行了
 script:
   - npm run build
@@ -23,7 +21,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   keep_history: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
   local_dir: src/.vuepress/dist
   target_branch: gh-pages
   on:
