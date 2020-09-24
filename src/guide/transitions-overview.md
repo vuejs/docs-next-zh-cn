@@ -128,7 +128,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 性能
 
-你可能注意到上面显示的动画使用了 `transforms` 之类的东西，并应用了诸如 `perspective` 之类的奇怪的 property ——为什么它们是这样实现的，而不是仅仅使用 `margin` 和 `top` 等？
+你可能注意到上面显示的动画使用了 `transforms` 之类的东西，并应用了诸如 `perspective` 之类的奇怪的 property——为什么它们是这样实现的，而不是仅仅使用 `margin` 和 `top` 等？
 
 我们可以通过对性能的了解，在 web 上创建极其流畅的动画。我们希望尽可能对元素动画进行硬件加速，并使用不触发重绘的属性。我们来介绍一下如何实现这个目标。
 
@@ -188,7 +188,7 @@ Easing 是在动画中表达深度的一个重要方式。动画新手最常犯�
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认为哪个球是硬的, 哪个球是软的？
+Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认为哪个球是硬的，哪个球是软的？
 
 <p class="codepen" data-height="500" data-theme-id="39028" data-default-tab="result" data-user="sdras" data-slug-hash="zxJWBJ" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Bouncing Ball Demo">
   <span>See the Pen <a href="https://codepen.io/sdras/pen/zxJWBJ">
@@ -205,7 +205,7 @@ Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认�
 
 以弹跳为例。在 CSS 中，我们必须声明向上和向下的每个关键帧。在 JavaScript 中，我们可以通过在 [greensock API(GSAP)](https://greensock.com/) 中声明 `bounce` 来描述 ease 中所有这些移动 (其他 JS 库有其他类型的 easing 默认值)。
 
-这里是 CSS 中用来实现 bounce 的代码（来自 animate.css 的例子）：
+这里是 CSS 中用来实现 bounce 的代码 (来自 animate.css 的例子)：
 
 ```css
 @keyframes bounceInDown {
