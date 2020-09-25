@@ -45,14 +45,14 @@ export default {
 
 ## 使用 Provide
 
-在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入provide方法。这使我们能够调用provide时来定义每个属性。
+在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入provide方法。这使我们能够调用provide时来定义每个property。
 
 
 
  `provide` 函数允许你通过两个参数定义属性：
 
-1. 属性的名称 (`<String>` 类型)
-2. 属性的值
+1. property 的 name (`<String>` 类型)
+2. property 的 value
 
 使用 `MyMap` 组件，我们提供的值可以按如下方式重构：
 
@@ -87,7 +87,7 @@ export default {
 
 `inject` 函数有两个参数：
 
-1. 要注入的属性的名称
+1. 要注入的 property 的名称
 2. 一个默认的值 (**可选**)
 
 使用 `MyMarker` 组件，可以使用以下代码对其进行重构：
@@ -148,14 +148,14 @@ export default {
 ```
 
 
-现在，如果这两个属性中有任何更改，`MyMarker` 组件也将自动更新！
+现在，如果这两个property中有任何更改，`MyMarker` 组件也将自动更新！
 
-### 修改响应式属性
+### 修改响应式property
 
 
-当使用响应式提供/注入值时，**建议尽可能，在*提供者*内保持响应式属性的任何更改**。
+当使用响应式提供/注入值时，**建议尽可能，在*提供者*内保持响应式property的任何更改**。
 
-例如，在需要更改用户位置'location'的情况下，我们最好在 `MyMap` 组件中执行此操作。
+例如，在需要更改用户位置的情况下，我们最好在 `MyMap` 组件中执行此操作。
 
 ```vue{28-32}
 <!-- src/components/MyMap.vue -->
@@ -195,7 +195,6 @@ export default {
 ```
 
 然而，有时我们需要在注入数据的组件内部更新注入的数据 。在这种情况下，我们建议提供一个方法来负责改变响应式属性。
-
 <!-- src/components/MyMap.vue -->
 <template>
   <MyMarker />
@@ -249,7 +248,7 @@ export default {
 </script>
 ```
 
-最后，如果要确保通过 `provide` 传递的数据不会被注入的组件更改，我们建议对提供的属性使用 `readonly`。
+最后，如果要确保通过 `provide` 传递的数据不会被注入的组件更改，我们建议对提供者的property 使用 `readonly`。
 
 ```vue{7,25-26}
 <!-- src/components/MyMap.vue -->
