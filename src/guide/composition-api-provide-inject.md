@@ -2,7 +2,6 @@
 
 > 本指南假定你已经阅读了 [Provide / Inject](component-provide-inject.html)、[Composition API Introduction](composition-api-introduction.html) 和[响应式基础](reactivity-fundamentals.html)。如果你不熟悉组合 API，请先阅读这篇文章。
 
-
 我们也可以在 Composition API 中使用[provide/inject](component-provide-inject.html) 。两者都只能在当前活动实例的 [`setup()`](composition-api-setup.html) 期间调用。
 
 ## 设想场景
