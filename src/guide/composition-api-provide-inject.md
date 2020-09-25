@@ -3,7 +3,7 @@
 > 本指南假定你已经阅读了 [Provide / Inject](component-provide-inject.html)、[Composition API Introduction](composition-api-introduction.html) 和[响应式基础](reactivity-fundamentals.html)。如果你不熟悉组合 API，请先阅读这篇文章。
 
 
-我们也可以在Composition API中使用[provide/inject](component-provide-inject.html) 。
+我们也可以在 Composition API 中使用[provide/inject](component-provide-inject.html) 。
 两者都只能在当前活动实例的 [`setup()`](composition-api-setup.html) 期间调用。
 
 ## 设想场景
@@ -45,7 +45,7 @@ export default {
 
 ## 使用 Provide
 
-在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入provide方法。这使我们能够调用provide时来定义每个property。
+在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入provide方法。这使我们能够调用 provide 时来定义每个 property。
 
 
 
@@ -148,12 +148,12 @@ export default {
 ```
 
 
-现在，如果这两个property中有任何更改，`MyMarker` 组件也将自动更新！
+现在，如果这两个 property 中有任何更改，`MyMarker` 组件也将自动更新！
 
-### 修改响应式property
+### 修改响应式 property
 
 
-当使用响应式提供/注入值时，**建议尽可能，在*提供者*内保持响应式property的任何更改**。
+当使用响应式提供/注入值时，**建议尽可能，在*提供者*内保持响应式 property 的任何更改**。
 
 例如，在需要更改用户位置的情况下，我们最好在 `MyMap` 组件中执行此操作。
 
@@ -194,7 +194,7 @@ export default {
 </script>
 ```
 
-然而，有时我们需要在注入数据的组件内部更新注入的数据 。在这种情况下，我们建议提供一个方法来负责改变响应式属性。
+然而，有时我们需要在注入数据的组件内部更新注入的数据 。在这种情况下，我们建议提供一个方法来负责改变响应式 property。
 
 ``` vue{21-23,27}
 <!-- src/components/MyMap.vue -->
@@ -250,7 +250,7 @@ export default {
 </script>
 ```
 
-最后，如果要确保通过 `provide` 传递的数据不会被注入的组件更改，我们建议对提供者的property 使用 `readonly`。
+最后，如果要确保通过 `provide` 传递的数据不会被注入的组件更改，我们建议对提供者的 property 使用 `readonly`。
 
 ```vue{7,25-26}
 <!-- src/components/MyMap.vue -->
