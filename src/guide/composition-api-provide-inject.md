@@ -49,7 +49,7 @@ export default {
 
 
 
- `provide` 函数允许你通过两个参数定义属性：
+ `provide` 函数允许你通过两个参数定义 property：
 
 1. property 的 name (`<String>` 类型)
 2. property 的 value
@@ -195,6 +195,8 @@ export default {
 ```
 
 然而，有时我们需要在注入数据的组件内部更新注入的数据 。在这种情况下，我们建议提供一个方法来负责改变响应式属性。
+
+``` vue{21-23,27}
 <!-- src/components/MyMap.vue -->
 <template>
   <MyMarker />
