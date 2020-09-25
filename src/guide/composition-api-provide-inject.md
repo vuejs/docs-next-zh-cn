@@ -14,7 +14,7 @@
 <!-- src/components/MyMap.vue -->
 <template>
   <MyMarker />
-</template> `
+</template>
 
 <script>
 import MyMarker from './MyMarker.vue'
@@ -45,14 +45,14 @@ export default {
 
 ## 使用 Provide
 
-在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入provide方法。这使我们能够调用provide时来定义每个属性property。
+在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入provide方法。这使我们能够调用provide时来定义每个属性。
 
 
 
- `provide` 函数允许你通过两个参数定义 property：
+ `provide` 函数允许你通过两个参数定义属性：
 
-1. property 的 name (`<String>` 类型)
-2. property 的 value
+1. 属性的名称 (`<String>` 类型)
+2. 属性的值
 
 使用 `MyMap` 组件，我们提供的值可以按如下方式重构：
 
