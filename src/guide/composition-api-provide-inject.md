@@ -44,7 +44,7 @@ export default {
 
 ## 使用 Provide
 
-在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入 provide 方法。这使我们能够调用 provide 时来定义每个 property。
+在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入 `provide` 方法。这使我们能够调用 `provide` 时来定义每个 property。
 
 
 
