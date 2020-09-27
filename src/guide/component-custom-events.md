@@ -23,6 +23,8 @@ this.$emit('myEvent')
 
 ## 定义自定义事件
 
+<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Learn how to define which events a component can emit with Vue School">在 Vue School 上观看关于定义自定义事件的免费视频。</VideoLesson>
+
 可以通过 `emits` 选项在组件上定义已发出的事件。
 
 ```js
