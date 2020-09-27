@@ -124,7 +124,7 @@ Vue.createApp(Demo).mount('#demo')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-在这个例子中，我们是通过使用插值来创建动画，将触发条件附加到鼠标的移动上。同时将 CSS 过渡属性应用在元素上，让元素知道在更新时要使用什么过渡效果。
+在这个例子中，我们是通过使用插值来创建动画，将触发条件添加到鼠标的移动过程上。同时将 CSS 过渡属性应用在元素上，让元素知道在更新时要使用什么过渡效果。
 
 ## 性能
 
