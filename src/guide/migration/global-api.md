@@ -16,7 +16,7 @@ Vue.component('button-counter', {
 })
 ```
 
-类似地，以下是全局指令的声明方式：
+类似地，使用全局指令的声明方式如下：
 
 ```js
 Vue.directive('focus', {
@@ -24,10 +24,10 @@ Vue.directive('focus', {
 })
 ```
 
-虽然这种方法很方便，但它会导致一些问题。从技术上讲，Vue 2 没有“app”的概念，我们定义的应用程序只是通过 `new Vue()` 创建的根 Vue 实例。从同一个 Vue 构造函数**创建的每个根实例共享相同的全局配置**，因此：
+虽然这种声明方式很方便，但它也会导致一些问题。从技术上讲，Vue 2 没有“app”的概念，我们定义的应用只是通过 `new Vue()` 创建的根 Vue 实例。从同一个 Vue 构造函数**创建的每个根实例共享相同的全局配置**，因此：
 
 
-- 全局配置使得在测试期间很容易意外地污染其他测试用例。用户需要仔细存储原始全局配置，并在每次测试后恢复 (例如重置 `Vue.config.errorHandler`)。有些 API 像 `Vue.use` 以及 `Vue.mixin` 甚至连恢复效果的方法都没有，这使得涉及插件的测试特别棘手。实际上，vue test utils 必须实现一个特殊的 API `createLocalVue` 来处理此问题：
+- 在测试期间，全局配置很容易意外地污染其他测试用例。用户需要仔细存储原始全局配置，并在每次测试后恢复 (例如重置 `Vue.config.errorHandler`)。有些 API 像 `Vue.use` 以及 `Vue.mixin` 甚至连恢复效果的方法都没有，这使得涉及插件的测试特别棘手。实际上，vue-test-utils 必须实现一个特殊的 API `createLocalVue` 来处理此问题：
 
 ```js
 import { createLocalVue, mount } from '@vue/test-utils'
@@ -64,7 +64,7 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-应用程序实例暴露当前全局 API 的子集，经验法则是，任何全局改变 Vue 行为的 API 现在都会移动到应用实例上，以下是当前全局 API 及其相应实例 API 的表：
+应用实例暴露当前全局 API 的子集，经验法则是，任何全局改变 Vue 行为的 API 现在都会移动到应用实例上，以下是当前全局 API 及其相应实例 API 的表：
 
 | 2.x 全局 API             | 3.x 实例 API (`app`)                                                                          |
 | -------------------------- | ------------------------------------------------------------------------------------------- |
@@ -105,9 +105,9 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 - 这将是 Vue CLI 配置中新的顶层选项。
 :::
 
-### 插件作者须知
+### 插件使用者须知
 
-插件作者通常使用 `Vue.use`。例如，官方的 `vue-router` 插件是如何在浏览器环境中自行安装的：
+插件使用者通常使用 `Vue.use`。例如，官方的 `vue-router` 插件是如何在浏览器环境中自行安装的：
 
 ```js
 var inBrowser = typeof window !== 'undefined'
@@ -117,7 +117,7 @@ if (inBrowser && window.Vue) {
 }
 ```
 
-由于 `use` 全局 API 在 Vue 3 中不再可用，此方法将停止工作并停止调用 `Vue.use()` 现在将触发警告，于是，最终用户现在必须在应用程序实例上显式指定使用插件：
+由于 `use` 全局 API 在 Vue 3 中不再使用，此方法将停止工作并停止调用 `Vue.use()` 现在将触发警告，于是，开发者必须在应用程序实例上显式指定使用此插件：
 
 ```js
 const app = createApp(MyApp)
@@ -158,7 +158,7 @@ app.mount('#app')
 
 ## 提供/注入 (Provide / Inject)
 
-与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用程序实例还可以提供可由应用程序内的任何组件注入的依赖项：
+与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用实例还可以提供可由应用内的任何组件注入的依赖项：
 
 ```js
 // 在入口
@@ -175,9 +175,9 @@ export default {
 }
 ```
 
-## 在应用程序之间共享配置
+## 在应用之间共享配置
 
-在应用程序之间共享配置 (如组件或指令) 的一种方法是创建工厂功能，如下所示：
+在应用之间共享配置 (如组件或指令) 的一种方法是创建工厂功能，如下所示：
 
 ```js
 import { createApp } from 'vue'
