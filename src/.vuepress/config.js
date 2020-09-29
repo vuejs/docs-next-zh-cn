@@ -359,8 +359,8 @@ module.exports = {
     },
     smoothScroll: false,
     algolia: {
-      // indexName: 'vuejs-v3',
-      // apiKey: 'bc6e8acb44ed4179c30d0a45d6140d3f'
+      indexName: 'vuejs_cn3',
+      apiKey: '773de665ca11d74cede4e35ecff46931'
     }
   },
   plugins: [
