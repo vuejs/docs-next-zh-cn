@@ -32,10 +32,10 @@ Vue.directive('focus', {
 ```js
 import { createLocalVue, mount } from '@vue/test-utils'
 
-// 建扩展的 `Vue` 构造函数
+// 创建扩展的 `Vue` 构造函数
 const localVue = createLocalVue()
 
-// 在 “local” Vue构造函数上 “全局” 安装插件
+// 在 “localVue” 构造函数上 “全局” 安装插件
 localVue.use(MyPlugin)
 
 // 通过 `localVue` 来挂载选项
