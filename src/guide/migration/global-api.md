@@ -107,7 +107,7 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 
 ### 插件使用者须知
 
-插件使用者通常使用 `Vue.use`。例如，官方的 `vue-router` 插件是如何在浏览器环境中自行安装的：
+插件开发者通常使用 `Vue.use`。例如，官方的 `vue-router` 插件是如何在浏览器环境中自行安装的：
 
 ```js
 var inBrowser = typeof window !== 'undefined'
