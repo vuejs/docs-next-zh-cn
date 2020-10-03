@@ -11,14 +11,15 @@
           target="_blank"
           rel="sponsored noopener"
           title="Vue.js Courses on Vue Mastery"
-        >Vue Mastery</a>.
-        Watch Vue Mastery’s free
+          >Vue Mastery</a
+        >. Watch Vue Mastery’s free
         <a
-          href="https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance/"
+          href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3"
           target="_blank"
           rel="sponsored noopener"
           title="Vue.js Courses on Vue Mastery"
-        >Intro to Vue course</a>.
+          >Intro to Vue course</a
+        >.
       </p>
     </div>
   </div>
@@ -60,7 +61,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     if (typeof window !== 'undefined') {
       this.initVideoModal()
     }
@@ -69,7 +70,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@theme/styles/_settings.scss";
+@import '@theme/styles/_settings.scss';
 
 .modal {
   box-sizing: border-box;

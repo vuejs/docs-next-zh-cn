@@ -1,10 +1,13 @@
 const sidebar = {
-  cookbook: [{
-    title: 'Cookbook',
-    collapsable: false,
-    children: ['/cookbook/', '/cookbook/editable-svg-icons']
-  }],
-  guide: [{
+  cookbook: [
+    {
+      title: 'Cookbook',
+      collapsable: false,
+      children: ['/cookbook/', '/cookbook/editable-svg-icons']
+    }
+  ],
+  guide: [
+    {
       title: '基础',
       collapsable: false,
       children: [
@@ -60,7 +63,8 @@ const sidebar = {
     {
       title: '高阶指南',
       collapsable: false,
-      children: [{
+      children: [
+        {
           title: '响应性',
           children: [
             '/guide/reactivity',
@@ -88,7 +92,8 @@ const sidebar = {
       children: [
         '/guide/single-file-component',
         '/guide/testing',
-        '/guide/typescript-support'
+        '/guide/typescript-support',
+        '/guide/mobile'
       ]
     },
     {
@@ -177,21 +182,23 @@ const sidebar = {
     },
     '/api/composition-api'
   ],
-  examples: [{
-    title: '示例',
-    collapsable: false,
-    children: [
-      '/examples/markdown',
-      '/examples/commits',
-      '/examples/grid-component',
-      '/examples/tree-view',
-      '/examples/svg',
-      '/examples/modal',
-      '/examples/elastic-header',
-      '/examples/select2',
-      '/examples/todomvc'
-    ]
-  }]
+  examples: [
+    {
+      title: '示例',
+      collapsable: false,
+      children: [
+        '/examples/markdown',
+        '/examples/commits',
+        '/examples/grid-component',
+        '/examples/tree-view',
+        '/examples/svg',
+        '/examples/modal',
+        '/examples/elastic-header',
+        '/examples/select2',
+        '/examples/todomvc'
+      ]
+    }
+  ]
 }
 
 module.exports = {
@@ -201,22 +208,27 @@ module.exports = {
     [
       'link',
       {
-        href: 'https://fonts.googleapis.com/css?family=Inter:300,400,500,600|Open+Sans:400,600;display=swap',
+        href:
+          'https://fonts.googleapis.com/css?family=Inter:300,400,500,600|Open+Sans:400,600;display=swap',
         rel: 'stylesheet'
       }
     ],
     [
       'link',
       {
-        href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        href:
+          'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
         rel: 'stylesheet'
       }
     ],
-    ['link', {
-      rel: 'icon',
-      href: '/logo.png'
-    }],
-     ['link', { rel: 'manifest', href: '/manifest.json' }],
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/logo.png'
+      }
+    ],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     [
@@ -248,10 +260,12 @@ module.exports = {
   ],
   themeConfig: {
     logo: '/logo.png',
-    nav: [{
+    nav: [
+      {
         text: '文档',
         ariaLabel: '文档菜单',
-        items: [{
+        items: [
+          {
             text: '教程',
             link: '/guide/introduction'
           },
@@ -279,10 +293,12 @@ module.exports = {
       },
       {
         text: '生态系统',
-        items: [{
+        items: [
+          {
             text: '社区',
             ariaLabel: '社区菜单',
-            items: [{
+            items: [
+              {
                 text: '团队',
                 link: '/community/team/'
               },
@@ -302,7 +318,8 @@ module.exports = {
           },
           {
             text: '官方项目',
-            items: [{
+            items: [
+              {
                 text: 'Vue Router',
                 link: 'https://next.router.vuejs.org/'
               },
@@ -316,7 +333,8 @@ module.exports = {
               },
               {
                 text: 'Vue Test Utils',
-                link: 'https://vuejs.github.io/vue-test-utils-next-docs/guide/introduction.html'
+                link:
+                  'https://vuejs.github.io/vue-test-utils-next-docs/guide/introduction.html'
               },
               {
                 text: 'Devtools',
@@ -333,7 +351,8 @@ module.exports = {
       {
         text: '支持 Vue',
         link: '/support-vuejs/',
-        items: [{
+        items: [
+          {
             text: '一次性捐款',
             link: '/support-vuejs/#one-time-donations'
           },
