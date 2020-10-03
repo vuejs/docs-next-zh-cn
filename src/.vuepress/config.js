@@ -8,7 +8,7 @@ const sidebar = {
   ],
   guide: [
     {
-      title: 'Essentials',
+      title: '基础',
       collapsable: false,
       children: [
         '/guide/installation',
