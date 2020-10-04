@@ -36,7 +36,6 @@
 
 Vue 3 中需要关注的一些新功能包括：
 
-- `createRenderer` API 从 `@vue/runtime-core` 创建自定义渲染器
 - [`createRenderer` API 来自 `@vue/runtime-core`](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
 - [单文件组件 Composition API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
 - [单文件组件状态驱动的 CSS 变量 (`<style vars>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
