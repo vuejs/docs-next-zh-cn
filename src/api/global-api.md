@@ -131,6 +131,17 @@ const MyComponent = defineComponent({
 })
 ```
 
+或者是一个 `setup` 函数，函数名称将作为组件名称来使用
+
+```js
+import { defineComponent, ref } from 'vue'
+
+const HelloWorld = defineComponent(function HelloWorld() {
+  const count = ref(0)
+  return { count }
+})
+```
+
 ## defineAsyncComponent
 
 创建一个只有在需要时才会加载的异步组件。
@@ -182,12 +193,25 @@ const AsyncComp = defineAsyncComponent({
   // 如果提供了 timeout ，并且加载组件的时间超过了设定值，将显示错误组件
   // 默认值：Infinity（即永不超时，单位 ms）
   timeout: 3000,
-  // 一个函数，返回一个布尔值，指示当加载程序promise拒绝时异步组件是否应重试
-  retryWhen: error => error.code !== 404,
-  // 允许的最大重试次数
-  maxRetries: 3,
   // 定义组件是否可挂起 | 默认值：true
-  suspensible: false
+  suspensible: false,
+  /**
+   *
+   * @param {*} error 错误信息对象
+   * @param {*} retry 一个函数，用于指示当 promise 加载器 reject 时，加载器是否应该重试
+   * @param {*} fail  一个函数，指示加载程序结束退出
+   * @param {*} attempts 允许的最大重试次数
+   */
+  onError(error, retry, fail, attempts) {
+    if (error.message.match(/fetch/) && attempts <= 3) {
+      // 请求发生错误时重试，最多可尝试 3 次
+      retry()
+    } else {
+      // 注意，retry/fail 就像 promise 的 resolve/reject 一样：
+      // 必须调用其中一个才能继续错误处理。
+      fail()
+    }
+  }
 })
 ```
 
@@ -220,9 +244,9 @@ render() {
 
 ### 参数
 
-接受一个参数：`component`
+接受一个参数：`name`
 
-#### component
+#### name
 
 - **类型：**`String`
 
