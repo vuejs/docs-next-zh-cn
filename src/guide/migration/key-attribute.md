@@ -5,22 +5,22 @@ badges:
 
 # `key` attribute <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-- **NEW:** `key`s are no longer necessary on `v-if`/`v-else`/`v-else-if` branches, since Vue now automatically generates unique `key`s.
-  - **BREAKING:** If you manually provide `key`s, then each branch must use a unique `key`. You can no longer intentionally use the same `key` to force branch reuse.
-- **BREAKING:** `<template v-for>` `key` should be placed on the `<template>` tag (rather than on its children).
+- **NEW**：对于 `v-if`/`v-else`/`v-else-if` 的各分支项 `key` 将不再是必须的，因为现在 Vue 会自动生成唯一的 `key`。
+  - **BREAKING**：如果你手动提供 `key`，那么每个分支必须使用唯一的 `key`。你不能通过故意使用相同的 `key` 来强制重用分支。
+- **BREAKING**：`<template v-for>` 的 `key` 应该设置在 `<template>` 标签上 (而不是设置在它的子节点上)。
 
-## Background
+## 背景
 
-The `key` special attribute is used as a hint for Vue's virtual DOM algorithm to keep track of a node's identity. That way, Vue knows when it can reuse and patch existing nodes and when it needs to reorder or recreate them. For more information, see the following sections:
+特殊的 `key` attribute 被用于提示 Vue 的虚拟 DOM 算法来保持对节点身份的持续跟踪。这样 Vue 可以知道何时能够重用和修补现有节点，以及何时需要对它们重新排序或重新创建。关于其它更多信息，可以查看以下章节：
 
-- [List Rendering: Maintaining State](/guide/list.html#maintaining-state)
-- [API Reference: `key` Special Attribute](/api/special-attributes.html#key)
+- [列表渲染：维护状态](/guide/list.html#%E7%BB%B4%E6%8A%A4%E7%8A%B6%E6%80%81)
+- [API Reference：特殊指令 `key`](/api/special-attributes.html#key)
 
-## On conditional branches
+## 在条件分支中
 
-In Vue 2.x, it was recommended to use `key`s on `v-if`/`v-else`/`v-else-if` branches.
+Vue 2.x 建议在 `v-if`/`v-else`/`v-else-if` 的分支中使用 `key`。
 
 ```html
 <!-- Vue 2.x -->
@@ -28,7 +28,7 @@ In Vue 2.x, it was recommended to use `key`s on `v-if`/`v-else`/`v-else-if` bran
 <div v-else key="no">No</div>
 ```
 
-The example above still works in Vue 3.x. However, we no longer recommend using the `key` attribute on `v-if`/`v-else`/`v-else-if` branches, since unique `key`s are now automatically generated on conditional branches if you don't provide them.
+这个示例在 Vue 3.x 中仍能正常工作。但是我们不再建议在 `v-if`/`v-else`/`v-else-if` 的分支中继续使用 `key` attribute，因为没有为条件分支提供 `key` 时，也会自动生成唯一的 `key`。
 
 ```html
 <!-- Vue 3.x -->
@@ -36,7 +36,7 @@ The example above still works in Vue 3.x. However, we no longer recommend using 
 <div v-else>No</div>
 ```
 
-The breaking change is that if you manually provide `key`s, each branch must use a unique `key`. In most cases, you can remove these `key`s.
+非兼容变更体现在如果你手动提供了 `key`，那么每个分支都必须使用一个唯一的 `key`。因此大多数情况下都不需要设置这些 `key`。
 
 ```html
 <!-- Vue 2.x -->
@@ -52,9 +52,9 @@ The breaking change is that if you manually provide `key`s, each branch must use
 <div v-else key="b">No</div>
 ```
 
-## With `<template v-for>`
+## 结合 `<template v-for>`
 
-In Vue 2.x, a `<template>` tag could not have a `key`. Instead, you could place the `key`s on each of its children.
+在 Vue 2.x 中 `<template>` 标签不能拥有 `key`。不过你可以为其每个子节点分别设置 `key`。
 
 ```html
 <!-- Vue 2.x -->
@@ -64,7 +64,7 @@ In Vue 2.x, a `<template>` tag could not have a `key`. Instead, you could place 
 </template>
 ```
 
-In Vue 3.x, the `key` should be placed on the `<template>` tag instead.
+在 Vue 3.x 中 `key` 则应该被设置在 `<template>` 标签上。
 
 ```html
 <!-- Vue 3.x -->
@@ -74,7 +74,7 @@ In Vue 3.x, the `key` should be placed on the `<template>` tag instead.
 </template>
 ```
 
-Similarly, when using `<template v-for>` with a child that uses `v-if`, the `key` should be moved up to the `<template>` tag.
+类似地，当使用 `<template v-for>` 时存在使用 `v-if` 的子节点，`key` 应改为设置在 `<template>` 标签上。
 
 ```html
 <!-- Vue 2.x -->

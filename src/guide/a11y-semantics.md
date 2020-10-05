@@ -255,9 +255,9 @@
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-#### aria-hidden=“true”
+#### aria-hidden="true"
 
-添加 `aria hidden=“true”` 将隐藏辅助技术中的元素，但使其在视觉上对其他用户可用。不要把它用在可聚焦的元素上，纯粹用于装饰性的、复制的或屏幕外的内容上。
+添加 `aria hidden="true"` 将隐藏辅助技术中的元素，但使其在视觉上对其他用户可用。不要把它用在可聚焦的元素上，纯粹用于装饰性的、复制的或屏幕外的内容上。
 
 ```html
 <p>This is not hidden from screen readers.</p>

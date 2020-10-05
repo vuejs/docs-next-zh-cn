@@ -1,10 +1,13 @@
 const sidebar = {
-  cookbook: [{
-    title: 'Cookbook',
-    collapsable: false,
-    children: ['/cookbook/', '/cookbook/editable-svg-icons']
-  }],
-  guide: [{
+  cookbook: [
+    {
+      title: 'Cookbook',
+      collapsable: false,
+      children: ['/cookbook/', '/cookbook/editable-svg-icons']
+    }
+  ],
+  guide: [
+    {
       title: '基础',
       collapsable: false,
       children: [
@@ -60,7 +63,8 @@ const sidebar = {
     {
       title: '高阶指南',
       collapsable: false,
-      children: [{
+      children: [
+        {
           title: '响应性',
           children: [
             '/guide/reactivity',
@@ -88,7 +92,8 @@ const sidebar = {
       children: [
         '/guide/single-file-component',
         '/guide/testing',
-        '/guide/typescript-support'
+        '/guide/typescript-support',
+        '/guide/mobile'
       ]
     },
     {
@@ -110,38 +115,38 @@ const sidebar = {
       title: '从 Vue 2 迁移',
       collapsable: true,
       children: [
-        'migration/introduction',
-        'migration/array-refs',
-        'migration/async-components',
-        'migration/attribute-coercion',
-        'migration/custom-directives',
-        'migration/custom-elements-interop',
-        'migration/data-option',
-        'migration/events-api',
-        'migration/filters',
-        'migration/fragments',
-        'migration/functional-components',
-        'migration/global-api',
-        'migration/global-api-treeshaking',
-        'migration/inline-template-attribute',
-        'migration/key-attribute',
-        'migration/keycode-modifiers',
-        'migration/props-default-this',
-        'migration/render-function-api',
-        'migration/slots-unification',
-        'migration/transition',
-        'migration/v-model',
-        'migration/v-if-v-for',
-        'migration/v-bind'
+        '/guide/migration/introduction',
+        '/guide/migration/array-refs',
+        '/guide/migration/async-components',
+        '/guide/migration/attribute-coercion',
+        '/guide/migration/custom-directives',
+        '/guide/migration/custom-elements-interop',
+        '/guide/migration/data-option',
+        '/guide/migration/events-api',
+        '/guide/migration/filters',
+        '/guide/migration/fragments',
+        '/guide/migration/functional-components',
+        '/guide/migration/global-api',
+        '/guide/migration/global-api-treeshaking',
+        '/guide/migration/inline-template-attribute',
+        '/guide/migration/key-attribute',
+        '/guide/migration/keycode-modifiers',
+        '/guide/migration/props-default-this',
+        '/guide/migration/render-function-api',
+        '/guide/migration/slots-unification',
+        '/guide/migration/transition',
+        '/guide/migration/v-model',
+        '/guide/migration/v-if-v-for',
+        '/guide/migration/v-bind'
       ]
     },
     {
       title: '贡献文档',
       collapsable: true,
       children: [
-        'contributing/writing-guide',
-        'contributing/doc-style-guide',
-        'contributing/translations'
+        '/guide/contributing/writing-guide',
+        '/guide/contributing/doc-style-guide',
+        '/guide/contributing/translations'
       ]
     }
   ],
@@ -177,21 +182,23 @@ const sidebar = {
     },
     '/api/composition-api'
   ],
-  examples: [{
-    title: '示例',
-    collapsable: false,
-    children: [
-      '/examples/markdown',
-      '/examples/commits',
-      '/examples/grid-component',
-      '/examples/tree-view',
-      '/examples/svg',
-      '/examples/modal',
-      '/examples/elastic-header',
-      '/examples/select2',
-      '/examples/todomvc'
-    ]
-  }]
+  examples: [
+    {
+      title: '示例',
+      collapsable: false,
+      children: [
+        '/examples/markdown',
+        '/examples/commits',
+        '/examples/grid-component',
+        '/examples/tree-view',
+        '/examples/svg',
+        '/examples/modal',
+        '/examples/elastic-header',
+        '/examples/select2',
+        '/examples/todomvc'
+      ]
+    }
+  ]
 }
 
 module.exports = {
@@ -201,21 +208,48 @@ module.exports = {
     [
       'link',
       {
-        href: 'https://fonts.googleapis.com/css?family=Inter:300,400,500,600|Open+Sans:400,600;display=swap',
+        href:
+          'https://fonts.googleapis.com/css?family=Inter:300,400,500,600|Open+Sans:400,600;display=swap',
         rel: 'stylesheet'
       }
     ],
     [
       'link',
       {
-        href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        href:
+          'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
         rel: 'stylesheet'
       }
     ],
-    ['link', {
-      rel: 'icon',
-      href: '/logo.png'
-    }],
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/logo.png'
+      }
+    ],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    [
+      'meta',
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }
+    ],
+    [
+      'link',
+      {
+        rel: 'apple-touch-icon',
+        href: '/images/icons/apple-icon-152x152.png'
+      }
+    ],
+    [
+      'meta',
+      {
+        name: 'msapplication-TileImage',
+        content: '/images/icons/ms-icon-144x144.png'
+      }
+    ],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
     // localization for china
     [
       'script',
@@ -226,10 +260,12 @@ module.exports = {
   ],
   themeConfig: {
     logo: '/logo.png',
-    nav: [{
+    nav: [
+      {
         text: '文档',
         ariaLabel: '文档菜单',
-        items: [{
+        items: [
+          {
             text: '教程',
             link: '/guide/introduction'
           },
@@ -257,10 +293,12 @@ module.exports = {
       },
       {
         text: '生态系统',
-        items: [{
+        items: [
+          {
             text: '社区',
             ariaLabel: '社区菜单',
-            items: [{
+            items: [
+              {
                 text: '团队',
                 link: '/community/team/'
               },
@@ -280,7 +318,8 @@ module.exports = {
           },
           {
             text: '官方项目',
-            items: [{
+            items: [
+              {
                 text: 'Vue Router',
                 link: 'https://next.router.vuejs.org/'
               },
@@ -294,7 +333,8 @@ module.exports = {
               },
               {
                 text: 'Vue Test Utils',
-                link: 'https://vuejs.github.io/vue-test-utils-next-docs/guide/introduction.html'
+                link:
+                  'https://vuejs.github.io/vue-test-utils-next-docs/guide/introduction.html'
               },
               {
                 text: 'Devtools',
@@ -311,7 +351,8 @@ module.exports = {
       {
         text: '支持 Vue',
         link: '/support-vuejs/',
-        items: [{
+        items: [
+          {
             text: '一次性捐款',
             link: '/support-vuejs/#one-time-donations'
           },
@@ -343,7 +384,7 @@ module.exports = {
         ]
       }
     ],
-    repo: 'vuejs/docs-next',
+    repo: 'vuejs/docs-next-zh-cn',
     editLinks: false,
     editLinkText: 'Edit this on GitHub!',
     lastUpdated: 'Last updated',
@@ -359,8 +400,8 @@ module.exports = {
     },
     smoothScroll: false,
     algolia: {
-      // indexName: 'vuejs-v3',
-      // apiKey: 'bc6e8acb44ed4179c30d0a45d6140d3f'
+      indexName: 'vuejs_cn3',
+      apiKey: '773de665ca11d74cede4e35ecff46931'
     }
   },
   plugins: [

@@ -36,7 +36,7 @@ data() {
 }
 ```
 
-结果渲染为：
+渲染的结果为：
 
 ```html
 <div class="static active"></div>
@@ -101,19 +101,19 @@ data() {
 }
 ```
 
-渲染为：
+渲染的结果为：
 
 ```html
 <div class="active text-danger"></div>
 ```
 
-如果你也想根据条件切换列表中的 class，可以用三元表达式：
+如果你想根据条件切换列表中的 class，可以使用三元表达式：
 
 ```html
 <div :class="[isActive ? activeClass : '', errorClass]"></div>
 ```
 
-这样写将始终添加 `errorClass`，但是只有在 `isActive` 是 truthy<sup>[[1]](#footnote-1)</sup> 时才添加 `activeClass。`
+这样写将始终添加 `errorClass`，但是只有在 `isActive` 为 truthy<sup>[[1]](#footnote-1)</sup> 时才添加 `activeClass。`
 
 不过，当有多个条件 class 时这样写有些繁琐。所以在数组语法中也可以使用对象语法：
 
@@ -121,7 +121,7 @@ data() {
 <div :class="[{ active: isActive }, errorClass]"></div>
 ```
 
-### 用在组件上
+### 在组件上使用
 
 > 这个章节假设你已经对 [Vue 组件](component-basics.md)有一定的了解。当然你也可以先跳过这里，稍后再回过头来看。
 
@@ -161,7 +161,7 @@ HTML 将被渲染为：
 <p class="foo bar active">Hi</p>
 ```
 
-如果你的组件有多个根元素，你需要定义哪个组件将接收这个类。可以使用 `$attrs` 组件属性执行此操作：
+如果你的组件有多个根元素，你需要定义哪些部分将接收这个类。可以使用 `$attrs` 组件属性执行此操作：
 
 
 ```html
@@ -181,7 +181,7 @@ app.component('my-component', {
 })
 ```
 
-你可以在[非 prop Attribute](component-attrs.html) 部分了解更多关于组件属性继承的信息。
+你可以在[非 prop Attribute](component-attrs.html) 小节了解更多关于组件属性继承的信息。
 
 ## 绑定内联样式
 
@@ -243,4 +243,4 @@ data() {
 
 这样写只会渲染数组中最后一个被浏览器支持的值。在本例中，如果浏览器支持不带浏览器前缀的 flexbox，那么就只会渲染 `display: flex`。
 
-<small>**译者注 ** <a id="footnote-1"></a>[ 1] truthy 不是 `true`，详见 [MDN](https://cn.vuejs.org/v2/guide/computed.html) 的解释。</small>
+<small>**译者注** <a id="footnote-1"></a>[1] truthy 不是 `true`，详见 [MDN](https://cn.vuejs.org/v2/guide/computed.html) 的解释。</small>
