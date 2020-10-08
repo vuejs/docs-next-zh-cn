@@ -1,17 +1,12 @@
 # 介绍
 
-## 为什么是 Composition API？
+## 什么是 Composition API？
 
 :::tip 提示
 在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md) 和[创建组件](component-basics.md)。
 :::
 
-<<<<<<< HEAD
-
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于 Composition API 的免费视频</VideoLesson>
-=======
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合 API 的免费视频。</VideoLesson>
->>>>>>> upstream/master
 
 通过创建 Vue 组件，我们可以将接口的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用程序在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用程序变得非常大的时候——想想几百个组件。在处理如此大的应用程序时，共享和重用代码变得尤为重要。
 
@@ -74,16 +69,10 @@ export default {
 
 ### `setup` 组件选项
 
-<<<<<<< HEAD
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">在 Vue Mastery 上观看关于 setup 的免费视频</VideoLesson>
-
-新的 `setup` 组件选项在**创建组件之前**执行，一旦 `props` 被解析，并充当 Composition API 的入口点。
-=======
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">观看 Vue Mastery 上的免费 setup 视频。</VideoLesson>
 
 
 新的 `setup` 组件选项在**创建组件之前**执行，一旦 `props` 被解析，并充当合成 API 的入口点。
->>>>>>> upstream/master
 
 :::warning
 由于在执行 `setup` 时尚未创建组件实例，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
@@ -138,11 +127,11 @@ setup (props) {
 }
 ```
 
-这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量不是响应式的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！
+这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量不是被动的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！
 
 ### 带 `ref` 的响应式变量
 
-在 Vue 3.0 中，我们可以通过一个新的 `ref` 函数使任何变量在任何地方都具有响应式，如下所示：
+在 Vue 3.0 中，我们可以通过一个新的 `ref` 函数使任何响应式变量在任何地方起作用，如下所示：
 
 ```js
 import { ref } from 'vue'
@@ -194,7 +183,7 @@ setup (props) {
 }
 ```
 
-完成！现在，每当我们调用 `getUserRepositories` 时，`repositories` 都将发生变化，视图将更新以响应更改。我们的组件现在应该如下所示：
+完成！现在，每当我们调用 `getUserRepositories` 时，`repositories` 都将发生变化，视图将更新以反映更改。我们的组件现在应该如下所示：
 
 ```js
 // src/components/UserRepositories.vue
@@ -243,11 +232,11 @@ export default {
 
 我们将从生命周期钩子开始。
 
-###  `setup` 内部注册生命周期钩子
+### 生命周期钩子注册内部 `setup`
 
-为了使 Composition API 的特性与选项 API 相比更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。Composition API 上的生命周期钩子与选项 API 的名称相同，但前缀为 `on`：即 `mounted` 将变为 `onMounted`。
+为了使 Composition API 的特性与选项 API 相比更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。Composition API 上的生命周期钩子与选项 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
 
-这些函数都接受一个回调函数，当钩子被组件调用时将执行这个回调。
+这些函数接受在组件调用钩子时将执行的回调。
 
 让我们将其添加到 `setup` 函数中：
 
@@ -272,7 +261,7 @@ setup (props) {
 }
 ```
 
-现在我们需要对 `user` prop 所做的更改做出响应。为此，我们将使用独立的 `watch` 函数。
+现在我们需要对 `user` prop 所做的更改做出反应。为此，我们将使用独立的 `watch` 函数。
 
 ### `watch` 响应式更改
 
@@ -344,7 +333,7 @@ setup (props) {
 }
 ```
 
-你可能已经注意到在我们的 `setup` 的顶部使用了 `toRefs`。这是为了确保我们的侦听器能够对 `user` prop 所做的更改做出响应。
+你可能已经注意到在我们的 `setup` 的顶部使用了 `toRefs`。这是为了确保我们的侦听器能够对 `user` prop 所做的更改做出反应。
 
 有了这些变化，我们就把第一个逻辑关注点移到了一个地方。我们现在可以对第二个关注点执行相同的操作——基于 `searchQuery` 进行过滤，这次是使用计算属性。
 
