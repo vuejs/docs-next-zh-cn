@@ -2,6 +2,8 @@
 
 现在是时候深入了！Vue 最独特的特性之一，是其非侵入性的响应性系统。数据模型是被代理的 JavaScript 对象。而当你修改它们时，视图会进行更新。这让状态管理非常简单直观，不过理解其工作原理同样重要，这样你可以避开一些常见的问题。在这个章节，我们将研究一下 Vue 响应性系统的底层的细节。
 
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity" title="Learn how how reactivity works in depth with Vue Mastery">在 Vue Mastery 上免费观看关于深入响应性原理的视频。</VideoLesson>
+
 ## 什么是响应性
 
 这个术语在程序设计中经常被提及，但这是什么意思呢？响应性是一种允许我们以声明式的方式去适应变化的一种编程范例。人们通常展示的典型例子，是一份 excel 电子表格 (一个非常好的例子)。

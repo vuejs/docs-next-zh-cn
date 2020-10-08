@@ -6,8 +6,12 @@
 在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md) 和[创建组件](component-basics.md)。
 :::
 
+<<<<<<< HEAD
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于 Composition API 的免费视频</VideoLesson>
+=======
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合 API 的免费视频。</VideoLesson>
+>>>>>>> upstream/master
 
 通过创建 Vue 组件，我们可以将接口的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用程序在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用程序变得非常大的时候——想想几百个组件。在处理如此大的应用程序时，共享和重用代码变得尤为重要。
 
@@ -70,9 +74,16 @@ export default {
 
 ### `setup` 组件选项
 
+<<<<<<< HEAD
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">在 Vue Mastery 上观看关于 setup 的免费视频</VideoLesson>
 
 新的 `setup` 组件选项在**创建组件之前**执行，一旦 `props` 被解析，并充当 Composition API 的入口点。
+=======
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">观看 Vue Mastery 上的免费 setup 视频。</VideoLesson>
+
+
+新的 `setup` 组件选项在**创建组件之前**执行，一旦 `props` 被解析，并充当合成 API 的入口点。
+>>>>>>> upstream/master
 
 :::warning
 由于在执行 `setup` 时尚未创建组件实例，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
