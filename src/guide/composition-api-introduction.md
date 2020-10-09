@@ -6,6 +6,8 @@
 在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md) 和[创建组件](component-basics.md)。
 :::
 
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合 API 的免费视频。</VideoLesson>
+
 通过创建 Vue 组件，我们可以将接口的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用程序在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用程序变得非常大的时候——想想几百个组件。在处理如此大的应用程序时，共享和重用代码变得尤为重要。
 
 假设在我们的应用程序中，我们有一个视图来显示某个用户的仓库列表。除此之外，我们还希望应用搜索和筛选功能。处理此视图的组件可能如下所示：
@@ -66,6 +68,9 @@ export default {
 既然我们知道了**为什么**，我们就可以知道**怎么做**。为了开始使用 Composition api，我们首先需要一个可以实际使用它的地方。在 Vue 组件中，我们将此位置称为 `setup`。
 
 ### `setup` 组件选项
+
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">观看 Vue Mastery 上的免费 setup 视频。</VideoLesson>
+
 
 新的 `setup` 组件选项在**创建组件之前**执行，一旦 `props` 被解析，并充当合成 API 的入口点。
 

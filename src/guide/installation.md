@@ -52,7 +52,7 @@ yarn global add @vue/cli@next
 npm install -g @vue/cli@next
 ```
 
-Then in the Vue projects，run
+然后在 Vue 项目运行：
 
 ```bash
 vue upgrade --next
