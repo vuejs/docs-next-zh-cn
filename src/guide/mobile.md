@@ -1,23 +1,23 @@
 # Mobile
 
-## Introduction
+## 介绍
 
-While Vue.js does not natively support mobile app development, there are a number of solutions for creating native iOS and Android apps with Vue.js.
+虽然 Vue.js 本身并不支持移动应用开发，但是有很多解决方案可以用 Vue.js 创建本地 iOS 和 Android 应用。
 
-## Hybrid-App Development
+## 混合应用开发
 
 ### Capacitor
 
-[Capacitor](https://capacitorjs.com/) is a project from the [Ionic Team](https://ionic.io/) that allows developers to build native iOS, Android, and PWA apps with a single codebase by providing an API that can be run across multiple platforms.
+[Capacitor](https://capacitorjs.com/) 是一个来自 [Ionic Team](https://ionic.io/) 的项目，通过提供跨多个平台运行的 API，开发者可以使用单个代码库构建本地 iOS、Android 和 PWA 应用。
 
-**Resources**
+**资源**
 
 - [Capacitor + Vue.js Guide](https://capacitorjs.com/solution/vue)
 
 ### NativeScript
 
-[NativeScript](https://www.nativescript.org) powers cross-platform (truly native) mobile apps, using the web skills you already know. Combined they are a fantastic pair for developing immersive mobile experiences.
+[NativeScript](https://www.nativescript.org) 使用已熟悉的 Web 技能为跨平台（真正的本机）移动应用提供支持。两者结合在一起是开发沉浸式移动体验的绝佳选择。
 
-**Resources**
+**资源**
 
 - [NativeScript + Vue.js Guide](https://nativescript.org/vue/)
