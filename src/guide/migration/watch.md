@@ -6,13 +6,12 @@ badges:
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-- **BREAKING**: When watching an array, the callback will only trigger when the array is replaced. If you need to to trigger on mutation, the `deep` option must be specified.
+- **非兼容**: 当侦听一个数组时，只有当数组被替换时才会触发回调。如果你需要在数组改变时触发回调，必须指定 `deep` 选项。
+## 3.x 语法
 
-## 3.x Syntax
-
-When using [the `watch` option](/api/options-data.html#watch) to watch an array, the callback will only trigger when the array is replaced. In other words, the watch callback will no longer be triggered on array mutation. To trigger on mutation, the `deep` option must be specified.
+当使用 [`watch` 选项](/api/options-data.html#watch)侦听数组时，只有在数组被替换时才会触发回调。换句话说，在数组改变时 watch 回调将不再被触发。要想在数组改变时触发 watch 回调，必须指定 `deep` 选项。
 
 ```js
 watch: {
@@ -25,6 +24,6 @@ watch: {
 }
 ```
 
-## Migration Strategy
+## 迁移策略
 
-If you rely on watching array mutations, add the `deep` property to ensure that your callback is triggered correctly.
+如果你依赖侦听数组的改变，添加 `deep` property，以确保正确地触发回调。
