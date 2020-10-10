@@ -7,7 +7,7 @@ Vue 的过渡系统提供了非常多简单的方法设置进入、离开和列�
 - SVG 节点的位置
 - 元素的大小和其他的 property
 
-这些数据要么本身就以数值形式存储，要么可以转换为数值。有了这些数值后，我们就可以结合 Vue 的响应式和组件系统，使用第三方库来实现切换元素的过渡状态。
+这些数据要么本身就以数值形式存储，要么可以转换为数值。有了这些数值后，我们就可以结合 Vue 的响应式和组件系统，使用第三方库来为状态变化进行动画效果处理。
 
 ## 状态动画与侦听器
 
@@ -52,7 +52,7 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-更新数字时，更改将在输入下方设置动画。
+更新数字时，输入框下方会对更改设置动画效果。
 
 ## 动态状态过渡
 
@@ -67,7 +67,7 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 
 ## 把过渡放到组件里
 
-管理太多的状态过渡会很快的增加组件实例复杂性，幸好很多的动画可以提取到专用的子组件。我们来将之前的示例改写一下：
+管理太多的状态过渡会增加组件实例的复杂性，幸好很多的动画可以提取到专用的子组件中。我们把之前的示例改写一下：
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -145,17 +145,17 @@ app.mount('#app')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-我们能在组件中结合使用这一节讲到各种过渡策略和 Vue [内建的过渡系统](transitions.html)。总之，对于完成各种过渡动效几乎没有阻碍。
+我们能在组件中结合使用这一节讲到各种过渡策略和 Vue [内建的过渡系统](transitions.html)。总之，完成各种过渡动效几乎没有阻碍。
 
-你可以看到我们如何使用它进行数据可视化，物理效果，角色动画和交互，天空是极限。
+你可以看到我们如何使用它进行数据可视化、物理效果、角色动画和交互，一切都没有限制。
 
 ## 赋予设计以生命
 
-只要一个动画，就可以带来生命。不幸的是，当设计师创建图标、logo 和吉祥物的时候，他们交付的通常都是图片或静态的 SVG。所以，虽然 GitHub 的章鱼猫、Twitter 的小鸟以及其它许多 logo 类似于生灵，它们看上去实际上并不是活着的。
+动画效果可以栩栩如生。不幸的是，设计师创建图标、logo 和吉祥物的时候，他们交付的通常都是图片或静态的 SVG。所以，虽然 GitHub 的章鱼猫、Twitter 的小鸟以及其它许多 logo 类似于生灵，它们看上去实际上并不是活着的。
 
-Vue 可以帮到你。因为 SVG 的本质是数据，我们只需要这些动物兴奋、思考或警戒的样例。然后 Vue 就可以辅助完成这几种状态之间的过渡动画，来制作你的欢迎页面、加载指示、以及更加带有情感的提示。
+Vue 可以帮到你。因为 SVG 的本质是数据，我们只需要准备好这些生物兴奋、思考或警戒的样例。然后 Vue 就可以辅助完成这几种状态之间的过渡动画，来制作你的欢迎页面、加载指示和更加带有情感的通知提示。
 
-Sarah Drasner 展示了下面这个 demo，这个 demo 结合了时间和交互相关的状态改变：
+Sarah Drasner 展示了下面这个根据时间和交互变化发生状态改变的 demo：
 
-<p data-height="400" data-theme-id="light" data-slug-hash="YZBGNp" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Vue-controlled Wall-E" class="codepen">See the Pen <a href="https://codepen.io/sdras/pen/YZBGNp/">Vue-controlled Wall-E</a> by Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="400" data-theme-id="light" data-slug-hash="YZBGNp" data-default-tab="result" data-user="sdras" data-embed-version="2" data-pen-title="Vue-controlled Wall-E" class="codepen" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" >See the Pen <a href="https://codepen.io/sdras/pen/YZBGNp/">Vue-controlled Wall-E</a> by Sarah Drasner (<a href="https://codepen.io/sdras">@sdras</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
