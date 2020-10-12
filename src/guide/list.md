@@ -2,7 +2,7 @@
 
 ## 用 `v-for` 把一个数组对应为一组元素
 
-我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的别名。
+我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的**别名**。
 
 ```html
 <ul id="array-rendering">
@@ -31,7 +31,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-在 ` v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
+在 `v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
 
 ```html
 <ul id="array-with-index">
@@ -61,7 +61,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-你也可以用`of`替代`in`作为分隔符，因为它更接近 JavaScript 迭代器的语法：
+你也可以用 `of` 替代 `in` 作为分隔符，因为它更接近 JavaScript 迭代器的语法：
 
 ```html
 <div v-for="item of items"></div>
@@ -69,7 +69,7 @@ Vue.createApp({
 
 ## 在 `v-for` 里使用对象
 
-你也可以用`v-for`来遍历一个对象的 property。
+你也可以用 `v-for` 来遍历一个对象的 property。
 
 ```html
 <ul id="v-for-object" class="demo">
@@ -102,7 +102,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-你也可以提供第二个的参数为 property 名称 (也就是键名)：
+你也可以提供第二个的参数为 property 名称 (也就是键名 key)：
 
 ```html
 <li v-for="(value, name) in myObject">
@@ -133,7 +133,7 @@ Vue.createApp({
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 :::tip 提示
-在遍历对象时，会按 `Object.keys()` 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下都一致。
+在遍历对象时，会按 `Object.keys()` 的结果遍历，但是不能保证它在不同 JavaScript 引擎下的结果都一致。
 :::
 
 ## 维护状态
@@ -155,7 +155,7 @@ Vue.createApp({
 因为它是 Vue 识别节点的一个通用机制，`key` 并不仅与 `v-for` 特别关联。后面我们将在指南中看到，它还具有其它用途。
 
 :::tip 提示
-不要使用对象或数组之类的非基本类型值作为 `v-for ` 的 key。请用字符串或数值类型的值。
+不要使用对象或数组之类的非基本类型值作为 `v-for` 的 key。请用字符串或数值类型的值。
 :::
 
 更多 `key` attribute 的细节用法请移步至 [`key` 的 API 文档](../api/special-attributes.html#key)。
@@ -187,6 +187,8 @@ example1.items = example1.items.filter(item => item.message.match(/Foo/))
 你可能认为这将导致 Vue 丢弃现有 DOM 并重新渲染整个列表。幸运的是，事实并非如此。Vue 为了使得 DOM 元素得到最大范围的重用而实现了一些智能的启发式方法，所以用一个含有相同元素的数组去替换原来的数组是非常高效的操作。
 
 ## 显示过滤/排序后的结果
+
+// stop here.
 
 有时，我们想要显示一个数组经过过滤或排序后的版本，而不实际变更或重置原始数据。在这种情况下，可以创建一个计算属性，来返回过滤或排序后的数组。
 
