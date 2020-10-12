@@ -103,6 +103,7 @@ const dinner = {
 
 const handler = {
   get(target, prop, receiver) {
+    console.log('intercepted!')
     return Reflect.get(...arguments)
   }
 }
