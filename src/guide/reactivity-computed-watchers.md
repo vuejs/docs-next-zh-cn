@@ -128,7 +128,7 @@ Vue 的响应式系统会缓存副作用函数，并异步地刷新它们，这�
 
 ```js
 
-// fire before component updates
+// fire after component updates
 watchEffect(
   () => {
     /* ... */
