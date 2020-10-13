@@ -16,7 +16,7 @@ badges:
 - 删除枚举 attribute 的内部概念，并将这些 attribute 视为普通的非布尔 attribute
 - **重大改变**：如果值为布尔值，则不再删除 attribute `false`。相反，它被设置为 attr=“false”。移除 attribute，使用 `null` 或者 `undefined`。
 
-For more information，read on！
+如需更深入的解释，请继续阅读！
 
 ## 2.x 语法
 
