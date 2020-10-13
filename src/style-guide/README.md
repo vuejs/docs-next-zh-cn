@@ -4,13 +4,13 @@ sidebar: auto
 
 # 风格指南
 
-这里是官方的 Vue 特有代码的风格指南。如果在工程中使用 Vue，为了回避错误、小纠结和反模式，该指南是份不错的参考。不过我们也不确信风格指南的所有内容对于所有的团队或工程都是理想的。所以根据过去的经验、周围的技术栈、个人价值观做出有意义的偏差是可取的。
+这里是官方的 Vue 特有代码的风格指南。如果在工程中使用 Vue，为了回避错误、小纠结和反模式，该指南是份不错的参考。不过我们也不确信风格指南的所有内容对于所有的团队或工程都是理想的。所以根据过去的经验、周边的技术栈、个人价值观做出有意义的偏差是可取的。
 
 对于其绝大部分，我们也总体上避免就 JavaScript 或 HTML 的本身提出建议。我们不介意你是否使用分号或结尾的逗号。我们不介意你在 HTML attribute 中使用单引号还是双引号。不过当我们发现在 Vue 的情景下有帮助的特定模式时，也会存在例外。
 
 最终，我们把所有的规则归为了四个大类：
 
-## 规则归类
+## 规则类别
 
 ### 优先级 A：必要的
 
@@ -75,14 +75,14 @@ export default {
 ```
 </div>
 
-### Prop 生命<sup data-p="a">必要</sup>
+### Prop 定义<sup data-p="a">必要</sup>
 
 **Prop 定义应尽量详细**
 
 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。
 
 ::: details 详解
-细致的 [prop 定义](https://vuejs.org/v2/guide/components.html#Prop-Validation)有两个好处：
+细致的 [prop 定义](https://cn.vuejs.org/v2/guide/components-props.html#Prop-%E9%AA%8C%E8%AF%81)有两个好处：
 
 - 它们写明了组件的 API，所以很容易看懂组件的用法；
 - 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
@@ -186,7 +186,7 @@ data() {
 ```
 </div>
 
-### 避免 `v-if` 和 `v-for` 用在一起<sup data-p="a">必要</sup>
+### 避免 `v-if` 和 `v-for` 一起使用<sup data-p="a">必要</sup>
 
 **永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上。**
 
@@ -339,11 +339,11 @@ computed: {
 
 **对于应用来说，顶级 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
 
-这条规则只和[单文件组件](../guide/single-file-components.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
+这条规则只和[单文件组件](../guide/single-file-component.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
 
 **不管怎样，对于组件库，我们应该更倾向于选用基于 class 的策略而不是 `scoped` attribute。**
 
-这让覆写内部样式更容易：使用了常人可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
+这让覆写内部样式更容易：使用了人类可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
 
 ::: details 详解
 如果你和其他开发者一起开发一个大型工程，或有时引入三方 HTML/CSS (比如来自 Auth0)，设置一致的作用域会确保你的样式只会运用在它们想要作用的组件上。
@@ -426,7 +426,7 @@ computed: {
 ```
 </div>
 
-### 私有 property 名<sup data-p="a">必要</sup>
+### 私有 property 名称<sup data-p="a">必要</sup>
 
 **使用模块作用域保持不允许外部访问的函数的私有性。如果无法做到这一点，就始终为插件、混入等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
 
@@ -523,7 +523,7 @@ export default myGreatMixin
 ```
 </div>
 
-## 优先级 B 的规则：强烈推荐 <span class="hide-from-sidebar">(增强可读性)</span>
+## 优先级 B 的规则：强烈推荐 <span class="hide-from-sidebar">(增强代码可读性)</span>
 
 ### 组件文件<sup data-p="b">强烈推荐</sup>
 
@@ -564,7 +564,7 @@ components/
 ### 单文件组件文件的大小写<sup data-p="b">强烈推荐</sup>
 
 
-**[单文件组件](../guide/single-file-components.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
+**[单文件组件](../guide/single-file-component.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
 
 单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。然而，混用文件命名方式有的时候会导致大小写不敏感的文件系统的问题，这也是横线连接命名同样完全可取的原因。
 
@@ -596,7 +596,7 @@ components/
 ```
 </div>
 
-### 基础组件名<sup data-p="b">强烈推荐</sup>
+### 基础组件名称<sup data-p="b">强烈推荐</sup>
 
 **应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 `Base`、`App` 或 `V`。**
 
@@ -672,7 +672,7 @@ components/
 ```
 </div>
 
-### 单组件名<sup data-p="b">强烈推荐</sup>
+### 单组件名称<sup data-p="b">强烈推荐</sup>
 
 **只应该拥有单个活跃实例的组件应该以 `The` 前缀命名，以示其唯一性。**
 
@@ -698,7 +698,7 @@ components/
 ```
 </div>
 
-### 紧密耦合的组件名<sup data-p="b">强烈推荐</sup>
+### 紧密耦合的组件名称<sup data-p="b">强烈推荐</sup>
 
 **和父组件紧密耦合的子组件应该以父组件名作为前缀命名。**
 
@@ -768,9 +768,9 @@ components/
 ```
 </div>
 
-### 组件名中的单词顺序<sup data-p="b">强烈推荐</sup>
+### 组件名称中的单词顺序<sup data-p="b">强烈推荐</sup>
 
-**组件名应该以高阶的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。**
+**组件名称应该以高阶的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。**
 
 ::: details 详解
 你可能会疑惑：
@@ -849,7 +849,7 @@ components/
 
 ### 自闭合组件<sup data-p="b">强烈推荐</sup>
 
-**在[单文件组件](../guide/single-file-components.html)、字符串模板和 [JSX](../guide/render-function.html#JSX) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
+**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#JSX) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
 
 自闭合组件表示它们不仅没有内容，而且**刻意**没有内容。其不同之处就好像书上的一页白纸对比贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也更简洁。
 
@@ -883,13 +883,13 @@ components/
 ```
 </div>
 
-### 模板中的组件名大小写<sup data-p="b">强烈推荐</sup>
+### 模板中的组件名称大小写<sup data-p="b">强烈推荐</sup>
 
-**对于绝大多数项目来说，在[单文件组件](../guide/single-file-components.html)和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的。**
+**对于绝大多数项目来说，在[单文件组件](../guide/single-file-component.html)和字符串模板中组件名称应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的。**
 
 PascalCase 相比 kebab-case 有一些优势：
 
-- 编辑器可以在模板里自动补全组件名，因为 PascalCase 同样适用于 JavaScript。
+- 编辑器可以在模板里自动补全组件名称，因为 PascalCase 同样适用于 JavaScript。
 - `MyComponent>` 视觉上比 `<my-component>` 更能够和单个单词的 HTML 元素区别开来，因为前者的不同之处有两个大写字母，后者只有一个横线。
 - 如果你在模板中使用任何非 Vue 的自定义元素，比如一个 Web Component，PascalCase 确保了你的 Vue 组件在视觉上仍然是易识别的。
 
@@ -937,7 +937,7 @@ PascalCase 相比 kebab-case 有一些优势：
 ```
 </div>
 
-### JS/JSX 中的组件名大小写<sup data-p="b">强烈推荐</sup>
+### JS/JSX 中使用的组件名称<sup data-p="b">强烈推荐</sup>
 
 **JS/[JSX](../guide/render-function.html#JSX) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
 
@@ -1007,9 +1007,9 @@ export default {
 ```
 </div>
 
-### 完整单词的组件名<sup data-p="b">强烈推荐</sup>
+### 完整单词的组件名称<sup data-p="b">强烈推荐</sup>
 
-**组件名应该倾向于完整单词而不是缩写。**
+**组件名称应该倾向于完整单词而不是缩写。**
 
 编辑器中的自动补全已经让书写长命名的代价非常之低了，而其带来的明确性却是非常宝贵的。不常用的缩写尤其应该避免。
 
@@ -1033,7 +1033,7 @@ components/
 ```
 </div>
 
-### Prop 名大小写<sup data-p="b">强烈推荐</sup>
+### Prop 名称<sup data-p="b">强烈推荐</sup>
 
 **在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#JSX) 中应该始终使用 kebab-case。**
 
@@ -1104,7 +1104,7 @@ props: {
 ```
 </div>
 
-### 模板中简单的表达式<sup data-p="b">强烈推荐</sup>
+### 模板中的简单表达式<sup data-p="b">强烈推荐</sup>
 
 **组件模板应该只包含简单的表达式，复杂的表达式则应该重构为计算属性或方法。**
 
@@ -1317,7 +1317,7 @@ computed: {
 
 ## 优先级 C 的规则：推荐 <span class="hide-from-sidebar">(将选择和认知成本最小化)</span>
 
-### 组件/实例的选项的顺序<sup data-p="c">推荐</sup>
+### 组件/实例的选项顺序<sup data-p="c">推荐</sup>
 
 **组件/实例的选项应该有统一的顺序。**
 
@@ -1479,7 +1479,7 @@ computed: {
 
 ### 单文件组件的顶级元素的顺序<sup data-p="c">推荐</sup>
 
-**[单文件组件] (../guide/single-file-components.html)应该总是让 `<script>`、`<template>` 和 `<style>` 标签的顺序保持一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
+**[单文件组件](../guide/single-file-component.html)应该总是让 `<script>`、`<template>` 和 `<style>` 标签的顺序保持一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
@@ -1530,6 +1530,8 @@ computed: {
 <style>/* ... */</style>
 ```
 </div>
+
+## 优先级 D 的规则：谨慎使用 <span class="hide-from-sidebar">(潜在风险)</span>
 
 ### `scoped` 中的元素选择器<sup data-p="d">谨慎使用</sup>
 
