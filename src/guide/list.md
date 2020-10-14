@@ -188,8 +188,6 @@ example1.items = example1.items.filter(item => item.message.match(/Foo/))
 
 ## 显示过滤/排序后的结果
 
-// stop here.
-
 有时，我们想要显示一个数组经过过滤或排序后的版本，而不实际变更或重置原始数据。在这种情况下，可以创建一个计算属性，来返回过滤或排序后的数组。
 
 例如：
@@ -270,39 +268,39 @@ methods: {
 注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#avoid-v-if-with-v-for-essential)。
 :::
 
-当它们处于同一节点，`v-for` 的优先级比 `v-if` 更高，这意味着 `v-if` 将分别重复运行于每个 `v-for` 循环中。当你只想为*部分*项渲染节点时，这种优先级的机制会十分有用，如下：
+当它们处于同一节点，`v-if` 的优先级比 `v-for` 更高，这意味着 `v-if` 将没有权限访问 `v-for` 里的变量：
 
 
 ```html
+<!-- This will throw an error because property "todo" is not defined on instance. -->
+
 <li v-for="todo in todos" v-if="!todo.isComplete">
   {{ todo }}
 </li>
 ```
 
-上面的代码将只渲染未完成的 todo。
-
-而如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt)) 上。如：
+可以把 `v-for` 移动到 `<template>` 标签中来修正：
 
 ```html
-<ul v-if="todos.length">
-  <li v-for="todo in todos">
+<template v-for="todo in todos">
+  <li v-if="!todo.isComplete">
     {{ todo }}
   </li>
-</ul>
-<p v-else>No todos left!</p>
+</template>
+```else>No todos left!</p>
 ```
 
 ## 在组件上使用 `v-for`
 
 > 这部分内容假定你已经了解[组件](component-basics.md)相关知识。你也完全可以先跳过它，以后再回来查看。
 
-在自定义组件上，你可以像在任何普通元素上一样使用 `v-for`。
+在自定义组件上，你可以像在任何普通元素上一样使用 `v-for`：
 
 ```html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
-然而，任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要使用 prop：
+然而，任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要使用 props：
 
 ```html
 <my-component
