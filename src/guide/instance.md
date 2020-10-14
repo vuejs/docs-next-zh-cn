@@ -1,27 +1,53 @@
-# 应用实例
+# 应用 & 组件实例
 
-## 创建一个实例
+## 创建一个应用实例
 
 每个 Vue 应用都是通过用 `createApp` 函数创建一个新的**应用实例**开始的：
 
 ```js
-Vue.createApp(/* 选项 */)
+const app = Vue.createApp({ /* 选项 */ })
 ```
 
-创建实例后，我们可以*挂载*它，将容器传递给 `mount` 方法。例如，如果要在 `<div id="app"></div>` 上挂载 Vue 应用，则应传递 `#app`：
+“全局”注册应用实例后就可以被该应用中的组件使用了。我们将在后面的指南中详细讨论，简单的例子：
 
 ```js
-Vue.createApp(/* 选项 */).mount('#app')
+const app = Vue.createApp({})
+app.component('SearchInput', SearchInputComponent)
+app.directive('focus', FocusDirective)
+app.use(LocalePlugin)
 ```
 
-虽然没有完全遵循 [MVVM 模型](https://en.wikipedia.org/wiki/Model_View_ViewModel)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示实例。
+应用实例暴露的大多数方法都会返回该同一实例，允许链式：
 
-当创建一个实例时，你可以传入一个**选项对象**。这篇教程主要描述的就是如何使用这些选项来创建你想要的行为。作为参考，你也可以在 [API 文档](../api/options-data.html)中浏览完整的选项列表。
+```js
+Vue.createApp({})
+  .component('SearchInput', SearchInputComponent)
+  .directive('focus', FocusDirective)
+  .use(LocalePlugin)
+```
 
-一个 Vue 应用由一个通过 `createApp` 创建的**根实例**，以及可选的嵌套的、可复用的组件树组成。举个例子，一个 `todo` 应用的组件树可以是这样的：
+你可以在 [API reference](./api/application-api.html) 中浏览完整的应用 API。
+
+## 根组件
+
+传递给 `createApp` 的选项用于配置**根组件**。当我们**挂载**应用时，该组件被用作渲染的起点。
+
+一个应用需要被挂载到一个 DOM 元素中。例如，如果我们想把一个 Vue 应用挂载到 `<div id="app"></div>`，我们应该传递 `#app`：
+
+```js
+const RootComponent = { /* 选项 */ }
+const app = Vue.createApp(RootComponent)
+const vm = app.mount('#app')
+```
+
+与大多数应用方法不同的是，`mount` 不返回应用本身。相反，它返回的是根组件实例。
+
+虽然没有完全遵循 [MVVM 模型](https://en.wikipedia.org/wiki/Model_View_ViewMode)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示组件实例。
+
+尽管本页面上的所有示例都只需要一个单一的组件就可以，但是大多数的真实应用都是被组织成一个嵌套的、可重用的组件树。举个例子，一个 todo 应用组件树可能是这样的：
 
 ```
-根实例
+Root Component
 └─ TodoList
    ├─ TodoItem
    │  ├─ DeleteTodoButton
@@ -31,107 +57,44 @@ Vue.createApp(/* 选项 */).mount('#app')
       └─ TodoListStatistics
 ```
 
-我们会在稍后的[组件系统](component-basics.html)章节具体展开。不过现在，你只需要明白所有的 Vue 组件都是实例，并且接受相同的选项对象。
+每个组件将有自己的组件实例 `vm`。对于一些组件，如 `TodoItem`，在任何时候都可能有多个实例渲染。这个应用中的所有组件实例将共享同一个应用实例。
 
-## Data 和 Methods
+我们会在稍后的[组件系统](component-basics.html)章节具体展开。不过现在，你只需要明白根组件与其他组件没什么不同，配置选项一样的，所对应的组件实例行为也是一样的。
 
-当一个实例被创建时，它将 `data` 对象中的所有的 property 加入到 [Vue 的**响应式系统**中](reactivity.html)。当这些 property 的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。
+## 组件实例 property
+
+在前面的指南中，我们认识了 `data` property。在 `data` 中定义的 property 是通过组件实例暴露的：
 
 ```js
-// 我们的 data 对象
-const data = { a: 1 }
-
-// 该对象被加入到一个根实例中
-const vm = Vue.createApp({
+const app = Vue.createApp({
   data() {
-    return data
+    return { count: 4 }
   }
-}).mount('#app')
+})
 
-// 获得这个实例上的 property
-// 返回源数据中对应的字段
-vm.a === data.a // => true
+const vm = app.mount('#app')
 
-// 设置 property 也会影响到原始数据
-vm.a = 2
-data.a // => 2
+console.log(vm.count) // => 4
 ```
 
-当这些数据改变时，视图会进行重渲染。值得注意的是只有当实例被创建时就已经存在于 `data` 中的 property 才是**响应式**的。也就是说如果你添加一个新的 property，比如：
+还有各种其他的组件选项，可以将用户定义的 property 添加到组件实例中，例如 `methods`，`props`，`computed`，`inject` 和 `setup`。我们将在后面的指南中深入讨论它们。组件实例的所有 property，无论如何定义，都可以在组件的模板中访问。
 
-```js
-vm.b = 'hi'
-```
+Vue 还通过组件实例暴露了一些内置 property，如 `$attrs` 和 `$emit`。这些 property 都有一个 `$` 前缀，以避免与用户定义的 property 名冲突。
 
-那么对 `b` 的改动将不会触发任何视图的更新。如果你知道你会在晚些时候需要一个 property，但是一开始它为空或不存在，那么你仅需要设置一些初始值。比如：
+## 生命周期钩子
 
-```js
-data() {
-  return {
-    newTodoText: '',
-    visitCount: 0,
-    hideCompletedTodos: false,
-    todos: [],
-    error: null
-  }
-}
-```
-
-这里唯一的例外是使用 `Object.freeze()`，这会阻止修改现有的 property，也意味着响应系统无法再*追踪*变化。
-
-```js
-const obj = {
-  foo: 'bar'
-}
-
-Object.freeze(obj)
-
-const vm = Vue.createApp({
-  data() {
-    return obj
-  }
-}).mount('#app')
-```
-
-```html
-<div id="app">
-  <p>{{ foo }}</p>
-  <!-- 这里的`foo`不会更新! -->
-  <button v-on:click="foo = 'baz'">Change it</button>
-</div>
-```
-
-除了 data property，实例还暴露了一些有用的实例 property 与方法。它们都有前缀 `$`，以便与用户定义的 property 区分开来。例如：
-
-```js
-const vm = Vue.createApp({
-  data() {
-    return {
-      a: 1
-    }
-  }
-}).mount('#example')
-
-vm.$data.a // => 1
-```
-以后你可以在 [API 参考](../api/instance-properties.html)中查阅到完整的实例 property 和方法的列表。
-
-## 实例生命周期钩子
-
-每个实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做**生命周期钩子**的函数，这给了用户在不同阶段添加自己的代码的机会。
+每个组件在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做**生命周期钩子**的函数，这给了用户在不同阶段添加自己的代码的机会。
 
 比如 [created](../api/options-lifecycle-hooks.html#created) 钩子可以用来在一个实例被创建之后执行代码：
 
 ```js
 Vue.createApp({
   data() {
-    return {
-      a: 1
-    }
+    return { count: 1}
   },
   created() {
     // `this` 指向 vm 实例
-    console.log('a is: ' + this.a) // => "a is: 1"
+    console.log('count is: ' + this.count) // => "count is: 1"
   }
 })
 ```
