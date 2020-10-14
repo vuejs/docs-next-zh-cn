@@ -156,6 +156,7 @@ const sidebar = {
     '/api/global-api',
     {
       title: '选项',
+      path: '/api/options-api',
       collapsable: false,
       children: [
         '/api/options-data',
@@ -174,6 +175,7 @@ const sidebar = {
     {
       title: '响应性 API',
       collapsable: false,
+      path: '/api/reactivity-api',
       children: [
         '/api/basic-reactivity',
         '/api/refs-api',
@@ -289,7 +291,7 @@ module.exports = {
       },
       {
         text: 'API Reference',
-        link: '/api/application-config'
+        link: '/api/'
       },
       {
         text: '生态系统',
