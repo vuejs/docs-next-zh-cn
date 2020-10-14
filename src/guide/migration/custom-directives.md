@@ -83,6 +83,26 @@ app.directive('highlight', {
 
 既然定制指令生命周期钩子映射了组件本身的那些，那么它们就更容易推理和记住了！
 
+### Edge Case: Accessing the component instance
+
+It's generally recommended to keep directives independent of the component instance they are used in. Accessing the instance from within a custom directive is often a sign that the directive should rather be a component itself. However, there are situations where this actually makes sense.
+
+In Vue 2, the component instance had to be accessed through the `vnode` argument:
+
+```javascript
+bind(el, binding, vnode) {
+  const vm = vnode.context
+}
+```
+
+In Vue 3, the instance is now part of the `binding`:
+
+```javascript
+mounted(el, binding, vnode) {
+  const vm = binding.instance
+}
+```
+
 ## 实施细节
 
 在 Vue 3 中，我们现在支持片段，这允许我们为每个组件返回多个 DOM 节点。你可以想象，对于具有多个 lis 的组件或一个表的子元素这样的组件有多方便：

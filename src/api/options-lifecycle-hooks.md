@@ -118,7 +118,7 @@
   **该钩子在服务器端渲染期间不被调用。**
 
 -  **参考**
-  - [动态组件 - keep-alive](../guide/component-basics.html#keep-alive)
+  - [动态组件 - keep-alive](../guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
 
 ## beforeUnmount
 

@@ -48,7 +48,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 <todo-button>
     <!-- 添加一个图标的组件 -->
   <font-awesome-icon name="plus"></font-awesome-icon>
-  Your Profile
+  Add todo
 </todo-button>
 ```
 
@@ -262,7 +262,7 @@ app.component('todo-list', {
 ```html
 <ul>
   <li v-for="( item, index ) in items">
-    <slot v-bind:item="item"></slot>
+    <slot :item="item"></slot>
   </li>
 </ul>
 ```
@@ -331,7 +331,7 @@ app.component('todo-list', {
   <template v-slot:other="otherSlotProps">
     ...
   </template>
-</current-user>
+</todo-list>
 ```
 
 ### 解构插槽 Prop

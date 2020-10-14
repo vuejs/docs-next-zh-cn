@@ -264,7 +264,7 @@ computed: {
   </li>
 </ul>
 ```
-更新为:
+更新为：
 
 ``` html
 <ul v-if="shouldShowUsers">
@@ -716,7 +716,7 @@ components/
    |- index.vue
 ```
 
-or:
+或:
 
 ```
 components/
@@ -849,7 +849,7 @@ components/
 
 ### 自闭合组件<sup data-p="b">强烈推荐</sup>
 
-**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#JSX) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
+**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
 
 自闭合组件表示它们不仅没有内容，而且**刻意**没有内容。其不同之处就好像书上的一页白纸对比贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也更简洁。
 
@@ -939,7 +939,7 @@ PascalCase 相比 kebab-case 有一些优势：
 
 ### JS/JSX 中使用的组件名称<sup data-p="b">强烈推荐</sup>
 
-**JS/[JSX](../guide/render-function.html#JSX) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
+**JS/[JSX](../guide/render-function.html#jsx) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
 
 ::: details 详解
 
@@ -1035,7 +1035,7 @@ components/
 
 ### Prop 名称<sup data-p="b">强烈推荐</sup>
 
-**在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#JSX) 中应该始终使用 kebab-case。**
+**在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#jsx) 中应该始终使用 kebab-case。**
 
 我们单纯的遵循每个语言的约定。在 JavaScript 中更自然的是 camelCase。而在 HTML 中则是 kebab-case。
 
@@ -1071,7 +1071,7 @@ props: {
 
 **多个 attribute 的元素应该分多行撰写，每个 attribute 一行。**
 
-在 JavaScript 中，用多行分隔对象的多个 property 是很常见的最佳实践，因为这样更易读。模板和 [JSX](../guide/render-function.html#JSX) 值得我们做相同的考虑。
+在 JavaScript 中，用多行分隔对象的多个 property 是很常见的最佳实践，因为这样更易读。模板和 [JSX](../guide/render-function.html#jsx) 值得我们做相同的考虑。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>

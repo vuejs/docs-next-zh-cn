@@ -197,7 +197,7 @@
   <!-- 缩写 -->
   <button @click="doThis"></button>
 
-  <!-- 动态事件缩写 (2.6.0+) -->
+  <!-- 动态事件缩写 -->
   <button @[event]="doThis"></button>
 
   <!-- 停止冒泡 -->

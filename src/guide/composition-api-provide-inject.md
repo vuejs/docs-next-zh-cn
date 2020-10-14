@@ -2,7 +2,7 @@
 
 > 本指南假定你已经阅读了 [Provide / Inject](component-provide-inject.html)、[Composition API Introduction](composition-api-introduction.html) 和[响应式基础](reactivity-fundamentals.html)。如果你不熟悉组合 API，请先阅读这篇文章。
 
-我们也可以在 Composition API 中使用[provide/inject](component-provide-inject.html) 。两者都只能在当前活动实例的 [`setup()`](composition-api-setup.html) 期间调用。
+我们也可以在 Composition API 中使用 [provide/inject](component-provide-inject.html)。两者都只能在当前活动实例的 [`setup()`](composition-api-setup.html) 期间调用。
 
 ## 设想场景
 
@@ -36,7 +36,7 @@ export default {
 <!-- src/components/MyMarker.vue -->
 <script>
 export default {
-  inject: ['location', 'longitude', 'latitude']
+  inject: ['location', 'geolocation']
 }
 </script>
 ```
@@ -111,7 +111,7 @@ export default {
 
 ### 添加响应性
 
-为了增加提供值和注入值之间的响应性，我们可以在提供值时使用 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 或 [reactive](reactivity-fundamentals.html#声明响应式状态) 。
+为了增加提供值和注入值之间的响应性，我们可以在提供值时使用 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 或 [reactive](reactivity-fundamentals.html#声明响应式状态)。
 
 使用 `MyMap` 组件，我们的代码可以更新如下：
 
@@ -190,7 +190,7 @@ export default {
 </script>
 ```
 
-然而，有时我们需要在注入数据的组件内部更新注入的数据 。在这种情况下，我们建议提供一个方法来负责改变响应式 property。
+然而，有时我们需要在注入数据的组件内部更新注入的数据。在这种情况下，我们建议提供一个方法来负责改变响应式 property。
 
 ``` vue{21-23,27}
 <!-- src/components/MyMap.vue -->

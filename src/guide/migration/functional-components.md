@@ -87,14 +87,14 @@ export default DynamicHeading
 
 ### 单文件组件 (SFC)
 
-在 3.x 中，有状态组件和函数式组件之间的性能差异已经大大减少，并且在大多数用例中是微不足道的。因此，在 SFCs 上使用 `functional` 的开发人员的迁移路径是删除该 attribute，无需额外工作。
+在 3.x 中，有状态组件和函数式组件之间的性能差异已经大大减少，并且在大多数用例中是微不足道的。因此，在 SFCs 上使用 `functional` 的开发人员的迁移路径是删除该 attribute，并将 `props` 的所有引用重命名为 `$props`，将 `attrs` 重命名为 `$attrs`。
 
 使用之前的 `<dynamic-heading>` 示例，下面是它现在的样子。
 
 ```js{1}
 <template>
   <component
-    v-bind:is="`h${props.level}`"
+    v-bind:is="`h${$props.level}`"
     v-bind="$attrs"
   />
 </template>
