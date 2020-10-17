@@ -10,6 +10,8 @@
 
   指定 `name` 选项的另一个好处是便于调试。有名字的组件有更友好的警告信息。另外，当在有 [vue-devtools](https://github.com/vuejs/vue-devtools)，未命名组件将显示成 `<AnonymousComponent>`，这很没有语义。通过提供 `name` 选项，可以获得更有语义信息的组件树。
 
+<!-- TODO: translation -->
+
 ## delimiters
 
 - **Type:** `Array<string>`

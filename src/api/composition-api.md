@@ -159,6 +159,8 @@ const foo = inject<string>('foo') // string | undefined
   - [Provide / Inject](../guide/component-provide-inject.html)
   - [组合 API Provide / Inject](../guide/composition-api-provide-inject.html)
 
+<!-- TODO: translation -->
+
 ## `getCurrentInstance`
 
 `getCurrentInstance` enables access to an internal component instance useful for advanced usages or for library creators.
@@ -177,6 +179,7 @@ const MyComponent = {
 
 > When using outside of [setup](#setup) or [Lifecycle Hooks](#lifecycle-hooks), please call `getCurrentInstance()` on `setup` and use the instance instead.
 ```ts
+
 const MyComponent = {
   setup() {
     const internalInstance = getCurrentInstance() // works

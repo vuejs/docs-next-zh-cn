@@ -83,6 +83,8 @@ app.directive('highlight', {
 
 既然定制指令生命周期钩子映射了组件本身的那些，那么它们就更容易推理和记住了！
 
+<!-- TODO: translation -->
+
 ### Edge Case: Accessing the component instance
 
 It's generally recommended to keep directives independent of the component instance they are used in. Accessing the instance from within a custom directive is often a sign that the directive should rather be a component itself. However, there are situations where this actually makes sense.

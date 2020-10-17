@@ -48,7 +48,7 @@ Mustache 标签将会被替代为对应组件实例中 `msg` property 的值。�
 
 ### Attribute
 
-Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使用 [`v-bind` 指令](../api/#v-bind)：
+Mustache 语法不能在 HTML attribute 中使用 ，然而，可以使用 [`v-bind` 指令](../api/#v-bind)：
 
 ```html
 <div v-bind:id="dynamicId"></div>
