@@ -167,9 +167,11 @@ const foo = inject<string>('foo') // string | undefined
 
 ```ts
 import { getCurrentInstance } from 'vue'
+
 const MyComponent = {
   setup() {
     const internalInstance = getCurrentInstance()
+
     internalInstance.appContext.config.globalProperties // access to globalProperties
   }
 }
@@ -178,20 +180,25 @@ const MyComponent = {
 `getCurrentInstance` **only** works during [setup](#setup) or [Lifecycle Hooks](#lifecycle-hooks)
 
 > When using outside of [setup](#setup) or [Lifecycle Hooks](#lifecycle-hooks), please call `getCurrentInstance()` on `setup` and use the instance instead.
-```ts
 
+```ts
 const MyComponent = {
   setup() {
     const internalInstance = getCurrentInstance() // works
+
     const id = useComponentId() // works
+
     const handleClick = () => {
       getCurrentInstance() // doesn't work
       useComponentId() // doesn't work
+
       internalInstance // works
     }
+
     onMounted(() => {
       getCurrentInstance() // works
     })
+
     return () =>
       h(
         'button',
@@ -202,6 +209,7 @@ const MyComponent = {
       )
   }
 }
+
 // also works if called on a composable
 function useComponentId() {
   return getCurrentInstance().uid
