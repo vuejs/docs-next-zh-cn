@@ -287,7 +287,6 @@ methods: {
     {{ todo }}
   </li>
 </template>
-```else>No todos left!</p>
 ```
 
 ## 在组件上使用 `v-for`
