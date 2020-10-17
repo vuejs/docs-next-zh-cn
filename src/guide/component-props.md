@@ -26,7 +26,7 @@ props: {
 
 这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户。你会在这个页面接下来的部分看到[类型检查和其它 prop 验证](#prop-validation)。
 
-## 传递静态或动态 Prop
+## 传递静态或动态的 Prop
 
 这样，你已经知道了可以像这样给 prop 传入一个静态的值：
 
@@ -130,7 +130,7 @@ post: {
 
 这里有两种常见的试图变更一个 prop 的情形：
 
-1. 这个 **prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用**。在这种情况下，最好定义一个本地的 data property 并将这个 prop 用作其初始值：
+1. 这个 **prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用**。在这种情况下，最好定义一个本地的 data property 并将这个 prop 作为其初始值：
 
 ```js
 props: ['initialCounter'],
@@ -245,7 +245,7 @@ app.component('blog-post', {
 ```
 用于验证 `author` prop 的值是否是通过 `new Person` 创建的。
 
-## Prop 的大小写 (camelCase vs kebab-case)
+## Prop 的大小写命名 (camelCase vs kebab-case)
 
 HTML 中的 attribute 名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：
 
