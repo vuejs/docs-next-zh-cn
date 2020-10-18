@@ -84,7 +84,7 @@ const app = Vue.createApp({
 
 通过将 `inheritAttrs` 选项设置为 `false`，你可以访问组件的 `$attrs` property，该 property 包括组件 `props` 和 `emits` property 中未包含的所有属性 (例如，`class`、`style`、`v-on` 监听器等)。
 
-使用 [previous section](#attribute-inheritance) 中的 date-picker 组件示例，如果需要将所有非 prop attribute 应用于 `input` 元素而不是根 `div` 元素，则可以使用 `v-bind` 缩写来完成。
+使用[上一节](#attribute-继承)中的 date-picker 组件示例，如果需要将所有非 prop attribute 应用于 `input` 元素而不是根 `div` 元素，则可以使用 `v-bind` 缩写来完成。
 
 ```js{5}
 app.component('date-picker', {

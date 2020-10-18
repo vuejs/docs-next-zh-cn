@@ -72,3 +72,32 @@ Filters 已从 Vue 3.0 中删除，不再受支持。
 ## 迁移策略
 
 我们建议用计算属性或方法代替过滤器，而不是使用过滤器。
+
+<!-- TODO: translation -->
+
+### Global Filters
+
+If you are using filters that were globally registered and then used throughout your app, it's likely not convenient to replace them with computed properties or methods in each individual component.
+
+Instead, you can make your global filters available to all components through [globalProperties](../../api/application-config.html#globalproperties):
+
+```javascript
+// main.js
+const app = createApp(App)
+app.config.globalProperties.$filters = {
+  currencyUSD(value) {
+    return '$' + value
+  }
+}
+```
+
+Then you can fix all templates using this `$filters` object like this:
+
+```html
+<template>
+  <h1>Bank Account Balance</h1>
+  <p>{{ $filters.currencyUSD(accountBalance) }}</p>
+</template>
+```
+
+Note that with this approach, you can only use methods, not computed properties, as the latter only make sense when defined in the context of an individual component.

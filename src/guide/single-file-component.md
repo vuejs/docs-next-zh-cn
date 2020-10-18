@@ -35,7 +35,7 @@
 
 即便你不喜欢单文件组件，你仍然可以把 JavaScript、CSS 分离成独立的文件然后做到热重载和预编译。
 
-``` html
+```html
 <!-- my-component.vue -->
 <template>
   <div>This will be pre-compiled</div>
@@ -54,9 +54,9 @@
 
 有了 `.vue` 组件，我们就进入了高阶 JavaScript 应用领域。如果你没有准备好的话，意味着还需要学会使用一些附加的工具：
 
-- **Node Package Manager (NPM)**： 阅读 [Getting Started guide](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry) 中关于如何从注册地 (registry) 获取包的章节。
+- **Node 包管理器 (npm)**： 阅读 [Getting Started guide](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry) 中关于如何从注册地 (registry) 获取包的章节。
 
-- **Modern JavaScript with ES2015/16**：阅读 Babel 的 [Learn ES2015 guide](https://babeljs.io/docs/en/learn)。你不需要立刻记住每一个方法，但是你可以保留这个页面以便后期参考。
+- **现代 JavaScript 与 ES2015/16**：阅读 Babel 的 [Learn ES2015 guide](https://babeljs.io/docs/en/learn)。你不需要立刻记住每一个方法，但是你可以保留这个页面以便后期参考。
 
 在你花一天时间了解这些资源之后，我们建议你参考 [Vue CLI](https://cli.vuejs.org/)。只要遵循指示，你就能很快地运行一个带有 `.vue` 组件、ES2015、webpack 和热重载 (hot-reloading) 的 Vue 项目！
 
