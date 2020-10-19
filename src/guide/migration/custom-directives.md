@@ -49,7 +49,7 @@ Vue.directive('highlight', {
 - **beforeUpdate**:<sup style="color:green">新的！</sup>这是在元素本身更新之前调用的，很像组件生命周期钩子
 - update → <sup style="color:red">移除！</sup>有太多的相似之处要更新，所以这是多余的，请改用 `updated`
 - componentUpdated → **updated**
-- **beforeUnmount** <sup style="color:green">新的！</sup>与组件生命周期钩子类似，它将在卸载元素之前调用。
+- **beforeUnmount**:<sup style="color:green">新的！</sup>与组件生命周期钩子类似，它将在卸载元素之前调用。
 - unbind -> **unmounted**
 
 最终 API 如下：
