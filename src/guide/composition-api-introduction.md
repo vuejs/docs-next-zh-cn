@@ -399,7 +399,7 @@ setup (props) {
 // src/composables/useUserRepositories.js
 
 import { fetchUserRepositories } from '@/api/repositories'
-import { ref, onMounted, watch, toRefs } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 export default function useUserRepositories(user) {
   const repositories = ref([])
@@ -422,7 +422,7 @@ export default function useUserRepositories(user) {
 ```js
 // src/composables/useRepositoryNameSearch.js
 
-import { ref, onMounted, watch, toRefs } from 'vue'
+import { ref, computed } from 'vue'
 
 export default function useRepositoryNameSearch(repositories) {
   const searchQuery = ref('')
