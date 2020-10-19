@@ -1,8 +1,8 @@
-# Data 属性和方法
+# Data Property 和方法
 
-## Data 属性
+## Data Property
 
-组件的 `data` 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。它应该返回一个对象，然后 Vue 把这个对象包装到响应性系统中，并以 `$data` 的形式存储在组件实例中。为方便起见，该对象的任何顶级属性也直接通过组件实例暴露出来：
+组件的 `data` 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。它应该返回一个对象，然后 Vue 把这个对象包装到响应性系统中，并以 `$data` 的形式存储在组件实例中。为方便起见，该对象的任何顶级 property 也直接通过组件实例暴露出来：
 
 ```js
 const app = Vue.createApp({
@@ -25,11 +25,11 @@ vm.$data.count = 6
 console.log(vm.count) // => 6
 ```
 
-这些实例属性仅在首次创建实例时添加，所以你需要确保它们都在 `data` 函数返回的对象中。必要时，对尚未提供所需值的属性使用 `null`、`undefined` 或其他占位符值。
+这些实例 property 仅在首次创建实例时添加，所以你需要确保它们都在 `data` 函数返回的对象中。必要时，对尚未提供所需值的 property 使用 `null`、`undefined` 或其他占位符值。
 
 可以将新的 property 直接添加到组件实例，而不包含在 `data` 中。但是，由于响应式 `$data` 对象不支持该 property，所以 [Vue 的响应性系统](reactivity.html) 不会自动跟踪它。
 
-Vue 使用 `$` 前缀通过组件实例暴露自己的内置 API。它还为内部属性保留 `_` 前缀。你应该避免使用这两个字符开头的的顶级 `data` 属性名称。
+Vue 使用 `$` 前缀通过组件实例暴露自己的内置 API。它还为内部 property 保留 `_` 前缀。你应该避免使用这两个字符开头的的顶级 `data` property 名称。
 
 ## 方法
 
@@ -59,7 +59,7 @@ console.log(vm.count) // => 5
 
 Vue 自动为 `methods` 绑定 `this`，以便于它始终指向组件实例。这将确保方法在用作事件监听或回调时保持正确的 `this` 指向。在定义 `methods` 时应避免使用箭头函数，因为这会阻止 Vue 绑定恰当的 `this` 指向。
 
-和组件实例的其他所有属性一样，可以从组件的模板中访问 `methods`。在模板中，它们通常被当做事件监听使用：
+和组件实例的其他所有 property 一样，可以从组件的模板中访问 `methods`。在模板中，它们通常被当做事件监听使用：
 
 ```html
 <button @click="increment">Up vote</button>
