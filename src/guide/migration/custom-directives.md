@@ -47,7 +47,7 @@ Vue.directive('highlight', {
 - bind → **beforeMount**
 - inserted → **mounted**
 - **beforeUpdate**：新的！这是在元素本身更新之前调用的，很像组件生命周期钩子。
-- update → 移除！有太多的相似之处要更新，所以这是多余的，请改用 `updated`
+- update → 移除！有太多的相似之处要更新，所以这是多余的，请改用 `updated`。
 - componentUpdated → **updated**
 - **beforeUnmount**：新的！与组件生命周期钩子类似，它将在卸载元素之前调用。
 - unbind -> **unmounted**
