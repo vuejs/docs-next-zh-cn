@@ -36,7 +36,7 @@ Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求�
 对于生产环境，我们推荐链接到指定的版本号进行构建，以避免新版本造成的不可预期的破坏：
 
 ## npm
-在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Browserify](http://browserify.org/) 模块打包器配合使用。同时 Vue 也提供配套工具来开发[单文件组件](../guide/single-file-component.html)。
+在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。npm 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Rollup](https://rollupjs.org/) 模块打包器配合使用。同时 Vue 也提供配套工具来开发[单文件组件](../guide/single-file-component.html)。
 
 ```bash
 # 最新稳定版
