@@ -6,7 +6,7 @@ Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求�
 
 1. 在页面上以 [CDN package](#cdn) 的形式导入。
 2. 使用 [npm](#npm) 安装它。
-3. 使用官方的 [CLI](#cli) 来构建一个项目，它为现代前端工作流程提供了功能齐备的构建设置 (例如，热重载、保存时的提示等等)。
+3. 使用官方的 [CLI](#cli) 来构建一个项目，它为现代前端工作流程提供了功能完备的构建设置 (例如，热重载、保存时的提示等等)。
 
 ## 发布版本说明
 
@@ -33,7 +33,7 @@ Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求�
 ```html
 <script src="https://unpkg.com/vue@next"></script>
 ```
-对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏：
+对于生产环境，我们推荐链接到指定的版本号进行构建，以避免新版本造成的不可预期的破坏：
 
 ## npm
 在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Browserify](http://browserify.org/) 模块打包器配合使用。同时 Vue 也提供配套工具来开发[单文件组件](../guide/single-file-component.html)。
@@ -45,18 +45,18 @@ $ npm install vue@next
 
 ## 命令行工具 (CLI)
 
-Vue 提供了一个[官方的 CLI](https://github.com/vuejs/vue-cli)，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了 batteries-included 的构建设置。只需要几分钟的时间就可以运行起来并带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 [Vue CLI 的文档](https://cli.vuejs.org)。
+Vue 提供了一个[官方的 CLI](https://github.com/vuejs/vue-cli)，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了完备的构建设置。仅需几分钟就可以建立并且运行起一个带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 [Vue CLI 的文档](https://cli.vuejs.org)。
 
 :::tip
 CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读[指南](./introduction.html)，在熟悉 Vue 本身之后再使用 CLI。
 :::
 
-对于 Vue 3，你应该使用 `npm` 上可用的 Vue CLI v4.5 作为 `@vue/cli@next`。要升级，你应该需要全局重新安装最新版本的 `@vue/cli`：
+对于 Vue 3，你应该使用 `npm` 上可用的 Vue CLI v4.5 作为 `@vue/cli`。要升级，你应该需要全局重新安装最新版本的 `@vue/cli`：
 
 ```bash
-yarn global add @vue/cli@next
+yarn global add @vue/cli
 # OR
-npm install -g @vue/cli@next
+npm install -g @vue/cli
 ```
 
 然后在 Vue 项目运行：
@@ -69,7 +69,7 @@ vue upgrade --next
 
 [Vite](https://github.com/vitejs/vite) 是一个 web 开发构建工具，由于其原生 ES 模块导入方法，它允许快速提供代码。
 
-通过在终端中运行以下命令，可以使用 Vite 快速构建 Vue 项目。
+通过在终端中运行以下命令，可以使用 Vite 快速建立 Vue 项目。
 
 使用 npm：
 
@@ -91,7 +91,7 @@ $ yarn dev
 
 ## 对不同构建版本的解释
 
-在 [npm 包的 dist/ 目录](https://cdn.jsdelivr.net/npm/vue@3.0.0-rc.1/dist/)你将会找到很多不同的 Vue.js 构建版本。这里列出了它们之间的差别：
+在 [npm 包的 dist/ 目录](https://cdn.jsdelivr.net/npm/vue@3.0.1/dist/)你将会找到很多不同的 Vue.js 构建版本。这里列出了它们之间的差别：
 
 ### 使用 CDN 或没有构建工具
 
@@ -118,7 +118,7 @@ $ yarn dev
 #### `vue(.runtime).esm-bundler.js`：
 
 - 使用构建工具像 `webpack`，`rollup` 和 `parcel`。
-- <a id="argue-1"></a>TODO：将 prod/dev 分支留给 `process.env.NODE_ENV guards` (需要更换构建工具)
+- 将 prod/dev 分支留给 `process.env.NODE_ENV guards` (需要更换构建工具)
 - 不提供最小化版本 (捆绑后与其余代码一起完成)
 - import 依赖 (例如：`@vue/runtime-core`，`@vue/runtime-compiler`)
   - 导入的依赖项也是 esm bundler 构建，并将依次导入其依赖项 (例如：@vue/runtime-core imports @vue/reactivity)
