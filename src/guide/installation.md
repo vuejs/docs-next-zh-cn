@@ -1,5 +1,13 @@
 # 安装
 
+Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求以多种方式集成到一个项目中。
+
+将 Vue.js 添加到项目中有三种主要方式。
+
+1. 在页面上以 [CDN package](#cdn) 的形式导入。
+2. 使用 [npm](#npm) 安装它。
+3. 使用官方的 [CLI](#cli) 来构建一个项目，它为现代前端工作流程提供了功能齐备的构建设置 (例如，热重载、保存时的提示等等)。
+
 ## 发布版本说明
 
 最新版本：![npm](https://img.shields.io/npm/v/vue/next.svg)
@@ -8,7 +16,7 @@
 
 ## Vue Devtools
 
-> 当前是 Beta 版 —— Vuex 和 Router 的集成仍然是 WIP 
+> 当前是 Beta 版——Vuex 和 Router 的集成仍然是 WIP 
 
 在使用 Vue 时，我们推荐在你的浏览器上安装 [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools)，它允许你在一个更友好的界面中审查和调试 Vue 应用。
 
@@ -27,8 +35,8 @@
 ```
 对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏：
 
-## NPM
-在用 Vue 构建大型应用时推荐使用 NPM 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Browserify](http://browserify.org/) 模块打包器配合使用。同时 Vue 也提供配套工具来开发[单文件组件](../guide/single-file-component.html)。
+## npm
+在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Browserify](http://browserify.org/) 模块打包器配合使用。同时 Vue 也提供配套工具来开发[单文件组件](../guide/single-file-component.html)。
 
 ```bash
 # 最新稳定版
@@ -39,9 +47,8 @@ $ npm install vue@next
 
 Vue 提供了一个[官方的 CLI](https://github.com/vuejs/vue-cli)，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了 batteries-included 的构建设置。只需要几分钟的时间就可以运行起来并带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 [Vue CLI 的文档](https://cli.vuejs.org)。
 
-
 :::tip
-CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读<a href="./">指南</a>，在熟悉 Vue 本身之后再使用 CLI。
+CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读[指南](./introduction.html)，在熟悉 Vue 本身之后再使用 CLI。
 :::
 
 对于 Vue 3，你应该使用 `npm` 上可用的 Vue CLI v4.5 作为 `@vue/cli@next`。要升级，你应该需要全局重新安装最新版本的 `@vue/cli`：
@@ -64,7 +71,7 @@ vue upgrade --next
 
 通过在终端中运行以下命令，可以使用 Vite 快速构建 Vue 项目。
 
-使用 NPM：
+使用 npm：
 
 ```bash
 $ npm init vite-app <project-name>
@@ -84,7 +91,7 @@ $ yarn dev
 
 ## 对不同构建版本的解释
 
-在 [NPM 包的 dist/ 目录](https://cdn.jsdelivr.net/npm/vue@3.0.0-rc.1/dist/)你将会找到很多不同的 Vue.js 构建版本。这里列出了它们之间的差别：
+在 [npm 包的 dist/ 目录](https://cdn.jsdelivr.net/npm/vue@3.0.0-rc.1/dist/)你将会找到很多不同的 Vue.js 构建版本。这里列出了它们之间的差别：
 
 ### 使用 CDN 或没有构建工具
 

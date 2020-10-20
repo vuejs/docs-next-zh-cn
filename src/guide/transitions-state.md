@@ -145,7 +145,7 @@ app.mount('#app')
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-我们能在组件中结合使用这一节讲到各种过渡策略和 Vue [内建的过渡系统](transitions.html)。总之，对于完成各种过渡动效几乎没有阻碍。
+我们能在组件中结合使用这一节讲到各种过渡策略和 Vue [内建的过渡系统](transitions-enterleave.html)。总之，对于完成各种过渡动效几乎没有阻碍。
 
 你可以看到我们如何使用它进行数据可视化，物理效果，角色动画和交互，天空是极限。
 

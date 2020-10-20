@@ -235,7 +235,7 @@ app.component('blog-post', {
 </button>
 ```
 
-多亏了 `v-on:enlarge-text="postFontSize += 0.1"` 监听器，父级将接收事件并更新 `postFontSize` 值。
+多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级将接收事件并更新 `postFontSize` 值。
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="KKpGyrp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: emitting events">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/KKpGyrp">

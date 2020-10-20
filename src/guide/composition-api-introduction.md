@@ -3,7 +3,7 @@
 ## 什么是 Composition API？
 
 :::tip 提示
-在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md) 和[创建组件](component-basics.md)。
+在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md)和[创建组件](component-basics.md)。
 :::
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合 API 的免费视频。</VideoLesson>
@@ -284,7 +284,7 @@ watch(counter, (newValue, oldValue) => {
 
 例如，每当 `counter` 被修改时 `counter.value=5`，watch 将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到我们的控制台中。
 
-**以下是等效的选项 API ：**
+**以下是等效的选项 API：**
 
 ```js
 export default {
@@ -399,7 +399,7 @@ setup (props) {
 // src/composables/useUserRepositories.js
 
 import { fetchUserRepositories } from '@/api/repositories'
-import { ref, onMounted, watch, toRefs } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 export default function useUserRepositories(user) {
   const repositories = ref([])
@@ -422,7 +422,7 @@ export default function useUserRepositories(user) {
 ```js
 // src/composables/useRepositoryNameSearch.js
 
-import { ref, onMounted, watch, toRefs } from 'vue'
+import { ref, computed } from 'vue'
 
 export default function useRepositoryNameSearch(repositories) {
   const searchQuery = ref('')
