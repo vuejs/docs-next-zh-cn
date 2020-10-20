@@ -6,7 +6,7 @@ Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求�
 
 1. 在页面上以 [CDN package](#cdn) 的形式导入。
 2. 使用 [npm](#npm) 安装它。
-3. 使用官方的 [CLI](#cli) 来构建一个项目，它为现代前端工作流程提供了功能齐备的构建设置 (例如，热重载、保存时的提示等等)。
+3. 使用官方的 [CLI](#cli) 来构建一个项目，它为现代前端工作流程提供了功能完备的构建设置 (例如，热重载、保存时的提示等等)。
 
 ## 发布版本说明
 
@@ -33,7 +33,7 @@ Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求�
 ```html
 <script src="https://unpkg.com/vue@next"></script>
 ```
-对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏：
+对于生产环境，我们推荐链接到指定的版本号进行构建，以避免新版本造成的不可预期的破坏：
 
 ## npm
 在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Browserify](http://browserify.org/) 模块打包器配合使用。同时 Vue 也提供配套工具来开发[单文件组件](../guide/single-file-component.html)。
@@ -45,7 +45,7 @@ $ npm install vue@next
 
 ## 命令行工具 (CLI)
 
-Vue 提供了一个[官方的 CLI](https://github.com/vuejs/vue-cli)，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了 batteries-included 的构建设置。只需要几分钟的时间就可以运行起来并带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 [Vue CLI 的文档](https://cli.vuejs.org)。
+Vue 提供了一个[官方的 CLI](https://github.com/vuejs/vue-cli)，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了完备的构建设置。仅需几分钟就可以建立并且运行起一个带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 [Vue CLI 的文档](https://cli.vuejs.org)。
 
 :::tip
 CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读[指南](./introduction.html)，在熟悉 Vue 本身之后再使用 CLI。
