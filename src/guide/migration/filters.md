@@ -75,9 +75,9 @@ badges:
 
 ### 全局过滤器
 
-在你的应用中，如果全局注册了过滤器，那么在每个组件中使用计算属性或方法就不是很方便。
+在你的应用中，如果全局注册了过滤器，那么在每个组件中使用它就不是很方便。
 
-相反地，你可以通过[全局属性](../../api/application-config.html#globalproperties)在所有组件中使用全局过滤器:
+相反地，你可以通过[全局属性](../../api/application-config.html#globalproperties)在所有组件中使用它:
 
 ```javascript
 // main.js
