@@ -7,11 +7,11 @@ badges:
 
 ## 概览
 
-Filters 已从 Vue 3.0 中删除，不再受支持。
+从 Vue 3.0 开始，过滤器已删除，不再支持。
 
 ## 2.x 语法
 
-在 2.x，开发者可以使用过滤器来应用通用文本格式。
+在 2.x，开发者可以使用过滤器来处理通用文本格式。
 
 例如：
 
@@ -38,11 +38,11 @@ Filters 已从 Vue 3.0 中删除，不再受支持。
 </script>
 ```
 
-虽然这看起来很方便，但它需要一个自定义语法，打破大括号内表达式是“只是 JavaScript”的假设，这既有学习成本，也有实现成本。
+虽然这看起来很方便，但它需要一个自定义语法，打破大括号内表达式是“只是 JavaScript”的假设，这不仅有学习成本，而且有实现成本。
 
 ## 3.x 更新
 
-在 3.x 中，filters 已删除，不再受支持。相反，我们建议用方法调用或计算属性替换它们。
+在 3.x 中，过滤器已删除，不再支持。相反地，我们建议用方法调用或计算属性替换它们。
 
 使用上面的例子，这里是一个如何实现它的例子。
 
@@ -73,17 +73,16 @@ Filters 已从 Vue 3.0 中删除，不再受支持。
 
 我们建议用计算属性或方法代替过滤器，而不是使用过滤器。
 
-<!-- TODO: translation -->
+### 全局过滤器
 
-### Global Filters
+如果在应用中全局注册了过滤器，那么在每个组件中用计算属性或方法调用来替换它可能就没那么方便了。
 
-If you are using filters that were globally registered and then used throughout your app, it's likely not convenient to replace them with computed properties or methods in each individual component.
-
-Instead, you can make your global filters available to all components through [globalProperties](../../api/application-config.html#globalproperties):
+相反地，你可以通过[全局属性](../../api/application-config.html#globalproperties)在所有组件中使用它:
 
 ```javascript
 // main.js
 const app = createApp(App)
+
 app.config.globalProperties.$filters = {
   currencyUSD(value) {
     return '$' + value
@@ -91,7 +90,7 @@ app.config.globalProperties.$filters = {
 }
 ```
 
-Then you can fix all templates using this `$filters` object like this:
+然后，你可以通过 `$filters` 对象修改所有的模板，像下面这样：
 
 ```html
 <template>
@@ -100,4 +99,4 @@ Then you can fix all templates using this `$filters` object like this:
 </template>
 ```
 
-Note that with this approach, you can only use methods, not computed properties, as the latter only make sense when defined in the context of an individual component.
+注意，这种方式只能用于方法中，不可以在计算属性中使用，因为后者只有在单个组件的上下文中定义时才有意义。
