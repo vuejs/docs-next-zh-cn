@@ -2,7 +2,7 @@
 
 Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求以多种方式集成到一个项目中。
 
-将 Vue.js 添加到项目中有三种主要方式。
+将 Vue.js 添加到项目中有三种主要方式：
 
 1. 在页面上以 [CDN package](#cdn) 的形式导入。
 2. 使用 [npm](#npm) 安装它。
@@ -28,12 +28,12 @@ Vue.js 在设计上是可以逐步采纳的。这意味着它可以根据需求�
 
 ## CDN
 
-对于制作原型或学习，你可以这样使用最新版本
+对于制作原型或学习，你可以这样使用最新版本：
 
 ```html
 <script src="https://unpkg.com/vue@next"></script>
 ```
-对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏：
+对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏。
 
 ## npm
 在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Browserify](http://browserify.org/) 模块打包器配合使用。同时 Vue 也提供配套工具来开发[单文件组件](../guide/single-file-component.html)。
@@ -97,7 +97,7 @@ $ yarn dev
 
 #### `vue(.runtime).global(.prod).js`：
 
-- 若要通过浏览器中的 `<script src="...">` 直接使用，则暴露 Vue 全局；
+- 若要通过浏览器中的 `<script src="...">` 直接使用，则暴露 Vue 全局。
 - 浏览器内模板编译：
   - `vue.global.js` 是包含编译器和运行时的“完整”构建，因此它支持动态编译模板。
   - `vue.runtime.global.js` 只包含运行时，并且需要在构建步骤期间预编译模板。
@@ -153,4 +153,5 @@ Vue.createApp({
 
 当使用 `vue-loader` 时，`*.vue` 文件中的模板在生成时预编译为 JavaScript，在最终的打包器中并不需要编译器，因此可以只使用运行时构建。
 
-<small>**译者注**<a id="footnote-1"></a>[1] 对于中国大陆用户，建议将 NPM 源设置为[国内的镜像](https://npm.taobao.org/)，可以大幅提升安装速度。</small>
+<small>**译者注**  
+<a id="footnote-1"></a>[1] 对于中国大陆用户，建议将 NPM 源设置为[国内的镜像](https://npm.taobao.org/)，可以大幅提升安装速度。</small>
