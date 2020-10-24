@@ -1,6 +1,6 @@
 # 应用 API
 
-在 Vue 3 中，全局改变 Vue 行为的 API 现在移动到了由新的 `createApp` 方法所创建的应用实例上。此外，现在它们的影响仅限于该特定应用实例：
+在 Vue 3 中，改变全局 Vue 行为的 API 现在被移动到了由新的 `createApp` 方法所创建的应用实例上。此外，现在它们的影响仅限于该特定应用实例：
 
 ```js
 import { createApp } from 'vue'
@@ -19,7 +19,7 @@ const app = createApp({})
   - `{string} name`
   - `{Function | Object} [definition]`
 
-- **返回：**
+- **返回值：**
 
   - 如果传入 `definition` 参数，返回应用实例。
   - 如果不传入 `definition` 参数，返回组件定义。
@@ -35,7 +35,7 @@ import { createApp } from 'vue'
 
 const app = createApp({})
 
-//  注册一个选项对象
+// 注册一个名为my-component的组件
 app.component('my-component', {
   /* ... */
 })
@@ -70,7 +70,7 @@ app.config = {...}
   - `{string} name`
   - `{Function | Object} [definition]`
 
-- **返回：**
+- **返回值：**
 
   - 如果传入 `definition` 参数，返回应用实例。
   - 如果不传入 `definition` 参数，返回指令定义。
@@ -87,7 +87,7 @@ const app = createApp({})
 
 // 注册
 app.directive('my-directive', {
-  // 指令具有一组生命周期钩子：
+  // 指令是具有一组生命周期的钩子：
   // 在绑定元素的父组件挂载之前调用
   beforeMount() {},
   // 绑定元素的父组件挂载时调用
@@ -150,12 +150,12 @@ app.directive('focus', {
 
 上面作为 el 参数收到的真实 DOM 元素的蓝图。
 
-#### prevNode
+#### prevNode 
 
 上一个虚拟节点，仅在 `beforeUpdate` 和 `updated` 钩子中可用。
 
 :::tip Note
-除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。如果你需要跨钩子共享信息，建议通过元素的[自定义数据属性集](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)进行共享。
+除了 `el` 之外，你应该将这些参数视为只读，并且永远不要修改它们。如果你需要跨钩子共享信息，建议通过元素的[自定义数据属性集](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/dataset)进行共享。
 :::
 
 - **参考：**[自定义指令](../guide/custom-directive.html)
@@ -166,7 +166,7 @@ app.directive('focus', {
 
   - `{Object} mixin`
 
-- **返回：**
+- **返回值：**
 
   - 应用实例
 
@@ -183,7 +183,7 @@ app.directive('focus', {
   - `{Element | string} rootContainer`
   - `{boolean} isHydrate`
 
-- **返回：**
+- **返回值：**
 
   - 根组件实例
 
@@ -217,7 +217,7 @@ app.mount('#my-app')
   - `{string | Symbol} key`
   - `value`
 
-- **返回：**
+- **返回值：**
 
   - 应用实例
 
@@ -293,7 +293,7 @@ setTimeout(() => app.unmount('#my-app'), 5000)
   - `{Object | Function} plugin`
   - `...options (可选)`
 
-- **返回：**
+- **返回值：**
 
   - 应用实例
 
