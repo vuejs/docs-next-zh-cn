@@ -157,7 +157,7 @@ console.log(counter.value) // 1
 
 ![按引用传递与按值传递](https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif)
 
-在任何值周围都有一个包装器对象，这样我们就可以在整个应用程序中安全地传递它，而不必担心在某个地方失去它的响应式。
+在任何值周围都有一个包装器对象，这样我们就可以在整个应用程序中安全地传递它，而不必担心在某个地方失去它的响应性。
 
 :::tip 提示
 换句话说，`ref` 对我们的值创建了一个**响应式引用**。使用**引用**的概念将在整个 Composition API 中经常使用。

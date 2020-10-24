@@ -36,7 +36,7 @@
   data: vm => ({ a: vm.myProp })
   ```
 
--  **参考**[深入响应式原理](../guide/reactivity.html)
+-  **参考**[深入响应性原理](../guide/reactivity.html)
 
 ## props
 

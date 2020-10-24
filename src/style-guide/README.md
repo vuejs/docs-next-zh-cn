@@ -1364,7 +1364,7 @@ computed: {
         - `renderTracked`
         - `renderTriggered`
 
-8.  **非响应式的 property** (不依赖响应系统的实例 property)
+8.  **非响应式的 property** (不依赖响应性系统的实例 property)
     - `methods`
 
 9. **渲染** (组件输出的声明式描述)
