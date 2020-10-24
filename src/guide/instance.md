@@ -26,7 +26,7 @@ Vue.createApp({})
   .use(LocalePlugin)
 ```
 
-你可以在 [API reference](./api/application-api.html) 中浏览完整的应用 API。
+你可以在 [API 参考](./api/application-api.html) 中浏览完整的应用 API。
 
 ## 根组件
 
