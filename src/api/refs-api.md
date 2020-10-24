@@ -203,7 +203,7 @@ type CustomRefFactory<T> = (
 
 ```js
 const foo = shallowRef({})
-// 改变ref的值是响应式的
+// 改变 ref 的值是响应式的
 foo.value = {}
 // 但是这个值不会被转换。
 isReactive(foo.value) // false
@@ -225,7 +225,7 @@ watchEffect(() => {
   console.log(shallow.value.greet)
 })
 
-// 这不会触发效果，因为ref很浅
+// 这不会触发作用，因为 ref 很浅层
 shallow.value.greet = 'Hello, universe'
 
 // 记录 "Hello, universe"

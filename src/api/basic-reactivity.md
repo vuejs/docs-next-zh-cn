@@ -10,7 +10,7 @@
 const obj = reactive({ count: 0 })
 ```
 
-响应式转换是“深”的——它影响所有嵌套 property。在基于 [ES2015 Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的实现中，返回的代理是**不**等于原始对象。建议只使用响应式代理，避免依赖原始对象。
+响应式转换是“深层”的——它影响所有嵌套 property。在基于 [ES2015 Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的实现中，返回的代理是**不**等于原始对象。建议只使用响应式代理，避免依赖原始对象。
 
 **类型声明：**
 
@@ -45,7 +45,7 @@ copy.count++ // 警告!
 
 ## `isReactive`
 
-检查对象是否是 [`reactive`](#reactive)创建的响应式代理
+检查对象是否是 [`reactive`](#reactive)创建的响应式 Proxy。
 
 ```js
 import { reactive, isReactive } from 'vue'
@@ -60,7 +60,7 @@ export default {
 ```
 
 
-如果代理是 [`readonly`](#readonly) 创建的，但还包装了由 [`reactive`](#reactive) 创建的另一个代理，它也会返回 `true`。
+如果 Proxy 是 [`readonly`](#readonly) 创建的，但还包装了由 [`reactive`](#reactive) 创建的另一个 Proxy ，它也会返回 `true`。
 
 
 ```js{7-15}
