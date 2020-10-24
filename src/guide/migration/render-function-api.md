@@ -94,7 +94,7 @@ export default {
 }
 ```
 
-有关 `setup()` 如何工作的详细信息，见 [Composition API Guide](/guide/composition-api-introduction.html)。
+有关 `setup()` 如何工作的详细信息，参考[组合式 API 指南](/guide/composition-api-introduction.html)。
 
 ## VNode Props 格式化
 

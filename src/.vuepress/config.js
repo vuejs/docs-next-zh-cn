@@ -51,7 +51,7 @@ const sidebar = {
       ]
     },
     {
-      title: '可复用性&组合',
+      title: '可复用性&组合式',
       collapsable: false,
       children: [
         '/guide/mixins',
@@ -74,7 +74,7 @@ const sidebar = {
           ]
         },
         {
-          title: '组合 API',
+          title: '组合式 API',
           children: [
             '/guide/composition-api-introduction',
             '/guide/composition-api-setup',

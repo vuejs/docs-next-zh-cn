@@ -220,4 +220,4 @@ app.mixin({
 
 - 可重用性是有限的：我们不能向 mixin 传递任何参数来改变它的逻辑，这降低了它们在抽象逻辑方面的灵活性
 
-为了解决这些问题，我们添加了一种通过逻辑关注点组织代码的新方法：[Composition API](composition-api-introduction.html)。
+为了解决这些问题，我们添加了一种通过逻辑关注点组织代码的新方法：[组合式 API](composition-api-introduction.html)。
