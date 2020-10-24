@@ -5,7 +5,7 @@ Vue.js API 包含以下类目：
 - [应用配置](/api/application-config.html)
 - [应用 API](/api/application-api.html)
 - [全局 API](/api/global-api.html)
-- [选项 API](/api/options-api.html)
+- [选项式 API](/api/options-api.html)
 - [实例 property](/api/instance-properties.html)
 - [实例方法](/api/instance-methods.html)
 - [指令](/api/directives.html)
