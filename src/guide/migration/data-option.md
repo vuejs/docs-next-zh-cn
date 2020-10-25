@@ -8,7 +8,7 @@ badges:
 
 ## 概览
 
-- **breaking**：`data` 组件选项声明不再接收纯 JavaScript `object`，而需要 `function` 声明。
+- **非兼容**：`data` 组件选项声明不再接收纯 JavaScript `object`，而需要 `function` 声明。
 
 当合并来自 mixin 或 extend 的多个 `data` 返回值时，现在是浅层次合并的而不是深层次合并的(只合并根级属性)。
 

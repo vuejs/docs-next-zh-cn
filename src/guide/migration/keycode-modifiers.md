@@ -9,8 +9,8 @@ badges:
 
 以下是变更的简要总结：
 
-- **BREAKING**：不再支持使用数字 (即键码) 作为 `v-on` 修饰符
-- **BREAKING**：不再支持 `config.keyCodes`
+- **非兼容**：不再支持使用数字 (即键码) 作为 `v-on` 修饰符
+- **非兼容**：不再支持 `config.keyCodes`
 
 ## 2.x 语法
 

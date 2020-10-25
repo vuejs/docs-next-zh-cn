@@ -12,7 +12,7 @@ badges:
 以下是变化的变更总结：
 
 - `this.$slots` 现在将 slots 作为函数公开
-- **BREAKING**：移除 `this.$scopedSlots`
+- **非兼容**：移除 `this.$scopedSlots`
 
 更多信息，请继续阅读！
 
