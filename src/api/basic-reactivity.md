@@ -45,7 +45,7 @@ copy.count++ // 警告!
 
 ## `isReactive`
 
-检查对象是否是 [`reactive`](#reactive)创建的响应式 Proxy。
+检查对象是否是 [`reactive`](#reactive)创建的响应式 proxy。
 
 ```js
 import { reactive, isReactive } from 'vue'
