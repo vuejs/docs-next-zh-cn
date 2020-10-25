@@ -1,4 +1,6 @@
-# 传入
+# Teleport
+
+<div class="vueschool"><a href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how to use teleport with Vue School">通过 Vue School 的免费课程，学习如何使用 teleport。</a></div>
 
 Vue 鼓励我们通过将 UI 和相关行为封装到组件中来构建 UI。我们可以将它们嵌套在另一个内部，以构建一个组成应用程序 UI 的树。
 
@@ -53,7 +55,7 @@ app.component('modal-button', {
 
 Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下呈现 HTML，而不必求助于全局状态或将其拆分为两个组件。
 
-让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue 将这个 HTML **传入至该 body** 标记。
+让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue “**Teleport** 这个 HTML **到**该‘**body**’标签”。
 
 ```js
 app.component('modal-button', {
@@ -124,7 +126,7 @@ app.component('child-component', {
 
 这也意味着来自父组件的注入按预期工作，并且子组件将嵌套在 Vue Devtools 中的父组件之下，而不是放在实际内容移动到的位置。
 
-## 在同一目标上使用多个传送
+## 在同一目标上使用多个 teleport
 
 一个常见的用例场景是一个可重用的 `<Modal>` 组件，它可能同时有多个实例处于活动状态。对于这种情况，多个 `<teleport>` 组件可以将其内容挂载到同一个目标元素。顺序将是一个简单的追加——稍后挂载将位于目标元素中较早的挂载之后。
 

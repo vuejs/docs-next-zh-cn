@@ -40,12 +40,16 @@
 
 Vue 3 中需要关注的一些新功能包括：
 
+- [组合式 API](/guide/composition-api-introduction.html)
+- [Teleport](/guide/teleport.html)
+- [片段](/guide/migration/fragments.html)
+- [触发组件选项](/guide/component-custom-events.html)
 - [`createRenderer` API 来自 `@vue/runtime-core`](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
 - [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
 - [单文件组件状态驱动的 CSS 变量 (`<style vars>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
 - [单文件组件 `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 
-## 重大改变
+## 非兼容的变更
 
 ::: tip 提示
 我们仍在开发 Vue 3 的专用迁移版本，该版本的行为与 Vue 2 兼容，运行时警告不兼容。如果你计划迁移一个非常重要的 Vue 2 应用程序，我们强烈建议你等待迁移版本完成以获得更流畅的体验。
