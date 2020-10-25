@@ -51,7 +51,7 @@ const sidebar = {
       ]
     },
     {
-      title: '可复用性&组合式',
+      title: '可复用&组合',
       collapsable: false,
       children: [
         '/guide/mixins',
