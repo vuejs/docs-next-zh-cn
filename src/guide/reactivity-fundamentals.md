@@ -45,7 +45,7 @@ console.log(count.value) // 1
 
 ### Ref 展开
 
-当 ref 作为渲染上下文 (从 [setup ()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动展开为内部值。不需要在模板中追加 `.value`：
+当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动展开为内部值。不需要在模板中追加 `.value`：
 
 ```vue-html
 <template>

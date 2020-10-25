@@ -1343,7 +1343,7 @@ computed: {
 5. **组合式 API** (使用组合式 API 的入口点)
     - `setup`
 
-6. **Local State** (本地的响应式 property)
+6. **Local State** (原生响应式 property)
     - `data`
     - `computed`
 
