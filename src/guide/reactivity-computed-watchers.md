@@ -147,7 +147,7 @@ watchEffect(
 `onTrack` 和 `onTrigger` 选项可用于调试侦听器的行为。
 
 - `onTrack` 将在响应式 property 或 ref 作为依赖项被追踪时被调用。
-- `onTrigger`将在依赖项变更导致副作用被触发时被调用。
+- `onTrigger` 将在依赖项变更导致副作用被触发时被调用。
 
 这两个回调都将接收到一个包含有关所依赖项信息的调试器事件。建议在以下回调中编写 `debugger` 语句来检查依赖关系：
 
