@@ -317,7 +317,7 @@ setup (props) {
 
   const repositories = ref([])
   const getUserRepositories = async () => {
-    // 更新 `prop.user ` 到 `user.value` 访问引用值
+    // 更新 `prop.user` 到 `user.value` 访问引用值
     repositories.value = await fetchUserRepositories(user.value)
   }
 
