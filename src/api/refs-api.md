@@ -112,7 +112,7 @@ stateAsRefs.foo.value++
 console.log(state.foo) // 3
 ```
 
-当从合成函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应式的情况下对返回的对象进行分解/扩散：
+当从合成函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应性的情况下对返回的对象进行分解/扩散：
 
 ```js
 function useFeatureX() {
@@ -129,7 +129,7 @@ function useFeatureX() {
 
 export default {
   setup() {
-    // 可以在不失去响应式的情况下破坏结构
+    // 可以在不失去响应性的情况下破坏结构
     const { foo, bar } = useFeatureX()
 
     return {

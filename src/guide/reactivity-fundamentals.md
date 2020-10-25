@@ -1,4 +1,4 @@
-# 响应式原理
+# 响应性基础
 
 ## 声明响应式状态
 
@@ -17,9 +17,9 @@ const state = reactive({
 
 Vue 中响应式状态的基本用例是我们可以在渲染期间使用它。因为依赖跟踪的关系，当响应式状态改变时视图会自动更新。
 
-这就是 Vue 响应式系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部交由 `reactive()` 使其成为响应式对象。模板会被编译成能够使用这些响应式 property 的[渲染函数](render-function.html)。
+这就是 Vue 响应性系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部交由 `reactive()` 使其成为响应式对象。模板会被编译成能够使用这些响应式 property 的[渲染函数](render-function.html)。
 
-在[响应式基础 API](../api/basic-reactivity.html) 章节你可以学习更多关于 `reactive` 的内容。
+在[响应性基础 API](../api/basic-reactivity.html) 章节你可以学习更多关于 `reactive` 的内容。
 
 ## 创建独立的响应式值作为 `refs`
 
@@ -124,7 +124,7 @@ const book = reactive({
 let { author, title } = book
 ```
 
-遗憾的是，使用解构的两个 property 的响应式都会丢失。对于这种情况，我们需要将我们的响应式对象转换为一组 ref。这些 ref 将保留与源对象的响应式关联：
+遗憾的是，使用解构的两个 property 的响应性都会丢失。对于这种情况，我们需要将我们的响应式对象转换为一组 ref。这些 ref 将保留与源对象的响应式关联：
 
 ```js
 import { reactive, toRefs } from 'vue'
