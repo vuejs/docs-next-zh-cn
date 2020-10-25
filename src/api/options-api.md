@@ -1,6 +1,6 @@
-# 选项 API
+# 选项式 API
 
-选项 API 包含以下部分：
+选项式 API 包含以下部分：
 
 - [Data](/api/options-data.html)
 - [DOM](/api/options-dom.html)
