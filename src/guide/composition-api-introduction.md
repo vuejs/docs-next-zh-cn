@@ -55,7 +55,7 @@ export default {
 
 用组件的选项 (`data`、`computed`、`methods`、`watch`) 组织逻辑在大多数情况下都有效。然而，当我们的组件变得更大时，**逻辑关注点**的列表也会增长。这可能会导致组件难以阅读和理解，尤其是对于那些一开始就没有编写这些组件的人来说。
 
-![Vue 选项 API: 按选项类型分组的代码](https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png)
+![Vue 选项式 API: 按选项类型分组的代码](https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png)
 
 一个大型组件的示例，其中**逻辑关注点**是按颜色分组。
 
@@ -234,7 +234,7 @@ export default {
 
 ### 生命周期钩子注册内部 `setup`
 
-为了使组合式 API的特性与选项 API 相比更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。组合式 API 上的生命周期钩子与选项 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
+为了使组合式 API 的特性与选项式 API 相比更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
 
 这些函数接受在组件调用钩子时将执行的回调。
 
@@ -284,7 +284,7 @@ watch(counter, (newValue, oldValue) => {
 
 例如，每当 `counter` 被修改时 `counter.value=5`，watch 将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到我们的控制台中。
 
-**以下是等效的选项 API：**
+**以下是等效的选项式 API：**
 
 ```js
 export default {

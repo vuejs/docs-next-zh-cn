@@ -86,7 +86,7 @@ type StopHandle = () => void
 
 ## `watch`
 
- `watch` API 与选项 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的 data 源，并在单独的回调函数中副作用。默认情况下，它也是惰性的——即，回调是仅在侦听源发生更改时调用。
+ `watch` API 与选项式 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的 data 源，并在单独的回调函数中副作用。默认情况下，它也是惰性的——即，回调是仅在侦听源发生更改时调用。
 
 - 与 [watchEffect](#watcheffect) 比较，`watch` 允许我们：
 

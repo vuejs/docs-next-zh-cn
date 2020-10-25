@@ -291,7 +291,7 @@ module.exports = {
         ]
       },
       {
-        text: 'API Reference',
+        text: 'API 参考',
         link: '/api/'
       },
       {

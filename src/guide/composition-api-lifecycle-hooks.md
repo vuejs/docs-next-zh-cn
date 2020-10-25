@@ -8,7 +8,7 @@
 
 下表包含如何在 [setup ()](composition-api-setup.html) 内部调用生命周期钩子：
 
-|    选项 API       | Hook inside `setup` |
+|    选项式 API       | Hook inside `setup` |
 | ----------------- | -------------------------- |
 | `beforeCreate`    | Not needed\*               |
 | `created`         | Not needed\*               |
