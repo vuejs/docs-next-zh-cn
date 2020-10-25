@@ -1,10 +1,9 @@
-<!-- TODO: translation -->
+# 资料属性与方法
 
-# Data Properties and Methods
+## 资料属性
 
-## Data Properties
 
-The `data` option for a component is a function. Vue calls this function as part of creating a new component instance. It should return an object, which Vue will then wrap in its reactivity system and store on the component instance as `$data`. For convenience, any top-level properties of that object are also exposed directly via the component instance:
+组件的`数据`选项是一个函数。 Vue在创建新组件实例的过程中调用此函数。它应该返回一个对象，然后Vue将其包装在其响应式系统中并以`$data`的形式存储在组件实例上。为了方便起见，该对象的所有顶级属性也直接通过组件实例公开：
 
 ```js
 const app = Vue.createApp({
@@ -27,15 +26,17 @@ vm.$data.count = 6
 console.log(vm.count) // => 6
 ```
 
-These instance properties are only added when the instance is first created, so you need to ensure they are all present in the object returned by the `data` function. Where necessary, use `null`, `undefined` or some other placeholder value for properties where the desired value isn't yet available.
+这些实例属性仅在首次创建实例时添加，因此您需要确保它们全部存在于由`data`函数返回的对象中。必要时，对尚未使用值的属性使用`null`，`undefined`或其他占位符值。
 
-It is possible to add a new property directly to the component instance without including it in `data`. However, because this property isn't backed by the reactive `$data` object, it won't automatically be tracked by [Vue's reactivity system](reactivity.html).
 
-Vue uses a `$` prefix when exposing its own built-in APIs via the component instance. It also reserves the prefix `_` for internal properties. You should avoid using names for top-level `data` properties that start with either of these characters.
+可以将新属性直接添加到组件实例中，而无需将其包含在`data`中。但是，由于此属性不受反应性`$data`对象的支持，因此[Vue的响应系统](reactivity.html)不会自动对其进行跟踪。
+
+
+Vue使用`$`前缀，当通过组件实例公开自己的内​​​​置API。同时它还为内部属性保留前缀`_`。您应该避免变量开头命名为这些字符于`data`属性中。
 
 ## Methods
 
-To add methods to a component instance we use the `methods` option. This should be an object containing the desired methods:
+将方法添加到组件实例，我们使用`methods`选项。应该包含所需方法的对象：
 
 ```js
 const app = Vue.createApp({
@@ -59,33 +60,36 @@ vm.increment()
 console.log(vm.count) // => 5
 ```
 
-Vue automatically binds the `this` value for `methods` so that it always refers to the component instance. This ensures that a method retains the correct `this` value if it's used as an event listener or callback. You should avoid using arrow functions when defining `methods`, as that prevents Vue from binding the appropriate `this` value.
+Vue自动将`methods`的`this`值绑定在一起，始终引用组件实例中。如果将方法用作事件侦听器或回调，则可以确保该方法保留正确的` this`。您应该在定义`methods`时避免使用箭头函数，因为这会阻擋Vue绑定适当的`this`值。
 
-Just like all other properties of the component instance, the `methods` are accessible from within the component's template. Inside a template they are most commonly used as event listeners:
+
+就像组件实例的所有其他属性一样，`methods`可从组件模板中访问。在模板内部，它们最常用作事件侦听器：
 
 ```html
 <button @click="increment">Up vote</button>
 ```
+在上面的示例中，单击`<button>`时将调用方法`increment`。
 
-In the example above, the method `increment` will be called when the `<button>` is clicked.
 
-It is also possible to call a method directly from a template. As we'll see shortly, it's usually better to use a [computed property](computed.html) instead. However, using a method can be useful in scenarios where computed properties aren't a viable option. You can call a method anywhere that a template supports JavaScript expressions:
+也可以直接从模板中调用方法。稍后我们将看到，通常最好使用[computed property](computed.html)。然而，在计算属性不可使用的情况下，使用方法可能会很有用。您可以在模板支持JavaScript表达式的任何地方调用方法：
 
 ```html
 <span :title="toTitleDate(date)">
   {{ formatDate(date) }}
 </span>
 ```
+响应
 
-If the methods `toTitleDate` or `formatDate` access any reactive data then it will be tracked as a rendering dependency, just as if it had been used in the template directly.
+如果方法`toTitleDate`或`formatDate`访问任何响应性数据，将其作为呈现依赖项进行跟踪，就如同直接在模板中使用了它一样。
 
-Methods called from a template should not have any side effects, such as changing data or triggering asynchronous processes. If you find yourself tempted to do that you should probably use a [lifecycle hook](instance.html#lifecycle-hooks) instead.
+从模板调用的方法不应有任何副作用，例如您很想更改数据或触发异步过程，则应该改用[lifecycle hook](instance.html＃lifecycle-hooks)。
 
-### Debouncing and Throttling
 
-Vue doesn't include built-in support for debouncing or throttling but it can be implemented using libraries such as [Lodash](https://lodash.com/).
+### 防抖和节流
 
-In cases where a component is only used once, the debouncing can be applied directly within `methods`:
+Vue無内置抖动或节流，但可以使用[Lodash]（https://lodash.com/）之类的库来实现。
+
+如果某个组件仅使用一次，则可以在`methods`中直接应用`debouncing`：
 
 ```html
 <script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
@@ -102,6 +106,8 @@ In cases where a component is only used once, the debouncing can be applied dire
 ```
 
 However, this approach is potentially problematic for components that are reused because they'll all share the same debounced function. To keep the component instances independent from each other, we can add the debounced function in the `created` lifecycle hook:
+
+但是，这种方法对于重用的组件可能会出现问题，因为它们都将共享相同的去抖动功能。为了使组件实例彼此独立，我们可以在`created`生命周期hook中添加去抖动功能：
 
 ```js
 app.component('save-button', {
