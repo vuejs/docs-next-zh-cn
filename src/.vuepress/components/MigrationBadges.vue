@@ -1,6 +1,6 @@
 <script>
 const validBadges = {
-  new:"新",
+  new:"新增",
   breaking:"非兼容",
   removed:"移除",
   updated:"更新"
