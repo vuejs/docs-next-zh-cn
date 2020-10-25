@@ -145,4 +145,4 @@ app.component('child-component', {
 </div>
 ```
 
-你可以在 [API reference](../api/built-in-components.html#teleport) 查看 `teleport` 组件。
+你可以在 [API 参考](../api/built-in-components.html#teleport) 查看 `teleport` 组件。

@@ -1,4 +1,4 @@
-# 选项/Assets
+# 选项/资源
 
 ## directives
 
