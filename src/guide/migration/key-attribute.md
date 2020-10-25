@@ -16,7 +16,7 @@ badges:
 特殊的 `key` attribute 被用于提示 Vue 的虚拟 DOM 算法来保持对节点身份的持续跟踪。这样 Vue 可以知道何时能够重用和修补现有节点，以及何时需要对它们重新排序或重新创建。关于其它更多信息，可以查看以下章节：
 
 - [列表渲染：维护状态](/guide/list.html#%E7%BB%B4%E6%8A%A4%E7%8A%B6%E6%80%81)
-- [API Reference：特殊指令 `key`](/api/special-attributes.html#key)
+- [API 参考：特殊指令 `key`](/api/special-attributes.html#key)
 
 ## 在条件分支中
 
