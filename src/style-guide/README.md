@@ -1340,7 +1340,7 @@ computed: {
     - `props`
     - `emits`
 
-5. **组合 API** (使用组合 API 的入口点)
+5. **组合式 API** (使用组合式 API 的入口点)
     - `setup`
 
 6. **Local State** (本地的响应式 property)

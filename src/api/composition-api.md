@@ -1,10 +1,10 @@
-# 组合 API
+# 组合式 API
 
 > 本节例子中代码使用的[单文件组件](../guide/single-file-component.html)语法
 
 ## `setup`
 
-一个组件选项，在创建组件**之前**执行，一旦 `props` 被解析，并作为组合 API 的入口点
+一个组件选项，在创建组件**之前**执行，一旦 `props` 被解析，并作为组合式 API 的入口点
 
 - **入参：**
 
@@ -76,7 +76,7 @@ function setup(props: Data, context: SetupContext): Data
   }
   ```
 
-- **参考**：[Composition API `setup`](../guide/composition-api-setup.html)
+- **参考**：[组合式 API `setup`](../guide/composition-api-setup.html)
 
 ## 生命周期钩子
 
@@ -104,7 +104,7 @@ const MyComponent = {
 
 组件实例上下文也是在生命周期钩子的同步执行期间设置的，因此在生命周期钩子内同步创建的侦听器和计算属性也会在组件卸载时自动删除。
 
-**选项 API 生命周期选项和组合 API 之间的映射**
+**选项 API 生命周期选项和组合式 API 之间的映射**
 
   - ~~`beforeCreate`~~ -> use `setup()`
   - ~~`created`~~ -> use `setup()`
@@ -118,7 +118,7 @@ const MyComponent = {
   - `renderTracked` -> `onRenderTracked`
   - `renderTriggered` -> `onRenderTriggered`
 
-- **参考**：[组合 API 生命周期钩子](../guide/composition-api-lifecycle-hooks.html)
+- **参考**：[组合式 API 生命周期钩子](../guide/composition-api-lifecycle-hooks.html)
 
 ## Provide / Inject
 
@@ -157,7 +157,7 @@ const foo = inject<string>('foo') // string | undefined
 
 - **参考**：
   - [Provide / Inject](../guide/component-provide-inject.html)
-  - [组合 API Provide / Inject](../guide/composition-api-provide-inject.html)
+  - [组合式 API Provide / Inject](../guide/composition-api-provide-inject.html)
 
 <!-- TODO: translation -->
 

@@ -1,12 +1,12 @@
 # 介绍
 
-## 什么是 Composition API？
+## 什么是组合式 API？
 
 :::tip 提示
 在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md)和[创建组件](component-basics.md)。
 :::
 
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合 API 的免费视频。</VideoLesson>
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合式 API 的免费视频。</VideoLesson>
 
 通过创建 Vue 组件，我们可以将接口的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用程序在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用程序变得非常大的时候——想想几百个组件。在处理如此大的应用程序时，共享和重用代码变得尤为重要。
 
@@ -55,17 +55,17 @@ export default {
 
 用组件的选项 (`data`、`computed`、`methods`、`watch`) 组织逻辑在大多数情况下都有效。然而，当我们的组件变得更大时，**逻辑关注点**的列表也会增长。这可能会导致组件难以阅读和理解，尤其是对于那些一开始就没有编写这些组件的人来说。
 
-![Vue 选项 API: 按选项类型分组的代码](https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png)
+![Vue 选项式 API: 按选项类型分组的代码](https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png)
 
 一个大型组件的示例，其中**逻辑关注点**是按颜色分组。
 
 这种碎片化使得理解和维护复杂组件变得困难。选项的分离掩盖了潜在的逻辑问题。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块。
 
-如果我们能够将与同一个逻辑关注点相关的代码配置在一起会更好。而这正是 Composition API 使我们能够做到的。
+如果我们能够将与同一个逻辑关注点相关的代码配置在一起会更好。而这正是组合式 API 使我们能够做到的。
 
-## Composition API 基础
+## 组合式 API 基础
 
-既然我们知道了**为什么**，我们就可以知道**怎么做**。为了开始使用 Composition api，我们首先需要一个可以实际使用它的地方。在 Vue 组件中，我们将此位置称为 `setup`。
+既然我们知道了**为什么**，我们就可以知道**怎么做**。为了开始使用组合式 API，我们首先需要一个可以实际使用它的地方。在 Vue 组件中，我们将此位置称为 `setup`。
 
 ### `setup` 组件选项
 
@@ -160,7 +160,7 @@ console.log(counter.value) // 1
 在任何值周围都有一个包装器对象，这样我们就可以在整个应用程序中安全地传递它，而不必担心在某个地方失去它的响应性。
 
 :::tip 提示
-换句话说，`ref` 对我们的值创建了一个**响应式引用**。使用**引用**的概念将在整个 Composition API 中经常使用。
+换句话说，`ref` 对我们的值创建了一个**响应式引用**。使用**引用**的概念将在整个组合式 API 中经常使用。
 :::
 
 回到我们的例子，让我们创建一个响应式的 `repositories` 变量：
@@ -234,7 +234,7 @@ export default {
 
 ### 生命周期钩子注册内部 `setup`
 
-为了使 Composition API 的特性与选项 API 相比更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。Composition API 上的生命周期钩子与选项 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
+为了使组合式 API 的特性与选项式 API 相比更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
 
 这些函数接受在组件调用钩子时将执行的回调。
 
@@ -284,7 +284,7 @@ watch(counter, (newValue, oldValue) => {
 
 例如，每当 `counter` 被修改时 `counter.value=5`，watch 将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到我们的控制台中。
 
-**以下是等效的选项 API：**
+**以下是等效的选项式 API：**
 
 ```js
 export default {
@@ -393,7 +393,7 @@ setup (props) {
 }
 ```
 
-对于其他的**逻辑关注点**我们也可以这样做，但是你可能已经在问这个问题了——*这不就是把代码移到 `setup` 选项并使它变得非常大吗*？嗯，那是真的。这就是为什么在继续其他任务之前，我们将首先将上述代码提取到一个独立的**组合函数**。让我们从创建 `useUserRepositories` 开始：
+对于其他的**逻辑关注点**我们也可以这样做，但是你可能已经在问这个问题了——*这不就是把代码移到 `setup` 选项并使它变得非常大吗*？嗯，那是真的。这就是为什么在继续其他任务之前，我们将首先将上述代码提取到一个独立的**组合式函数**。让我们从创建 `useUserRepositories` 开始：
 
 ```js
 // src/composables/useUserRepositories.js
@@ -529,4 +529,4 @@ export default {
 
 我们完成了！
 
-请记住，我们只触及了 Composition API 的表面以及它允许我们做什么。要了解更多信息，请参阅深入指南。
+请记住，我们只触及了组合式 API 的表面以及它允许我们做什么。要了解更多信息，请参阅深入指南。

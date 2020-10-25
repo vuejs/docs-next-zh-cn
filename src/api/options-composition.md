@@ -188,7 +188,7 @@
 
 - **类型：**`Function`
 
-`setup` 函数是一个新的组件选项。它作为在组件内部使用组合 API 的入口点。
+`setup` 函数是一个新的组件选项。它作为在组件内部使用组合式 API 的入口点。
 
 - **调用时间**
 
@@ -318,4 +318,4 @@
 
   - 将 `props` 作为单独的参数可以使单独键入更容易，而不会弄乱上下文中其他 property 的类型。这也使得在具有 TSX 支持的 `setup`、`render` 和普通功能组件之间保持一致的签名成为可能。
 
--  **参考** [Composition API](composition-api.html)
+-  **参考** [组合式 API](composition-api.html)
