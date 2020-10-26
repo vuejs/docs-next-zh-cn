@@ -10,7 +10,6 @@
 this.$emit('my-event')
 ```
 
-
 ```html
 <my-component @my-event="doSomething"></my-component>
 ```
