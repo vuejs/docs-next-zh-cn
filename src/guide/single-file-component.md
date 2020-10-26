@@ -60,7 +60,7 @@
 
 在你花一天时间了解这些资源之后，我们建议你参考 [Vue CLI](https://cli.vuejs.org/)。只要遵循指示，你就能很快地运行一个带有 `.vue` 组件、ES2015、webpack 和热重载 (hot-reloading) 的 Vue 项目！
 
-### 针对高级用户
+### 针对高阶用户
 
 CLI 会为你搞定大多数工具的配置问题，同时也支持细粒度自定义[配置项](https://cli.vuejs.org/config/)。
 
