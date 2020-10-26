@@ -1,10 +1,8 @@
-<!-- TODO: translation -->
+# Data Property 和方法
 
-# Data Properties and Methods
+## Data Property
 
-## Data Properties
-
-The `data` option for a component is a function. Vue calls this function as part of creating a new component instance. It should return an object, which Vue will then wrap in its reactivity system and store on the component instance as `$data`. For convenience, any top-level properties of that object are also exposed directly via the component instance:
+组件的 `data` 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。它应该返回一个对象，然后 Vue 会通过响应性系统将其包裹起来，并以 `$data` 的形式存储在组件实例中。为方便起见，该对象的任何顶级 property 也直接通过组件实例暴露出来：
 
 ```js
 const app = Vue.createApp({
@@ -18,24 +16,24 @@ const vm = app.mount('#app')
 console.log(vm.$data.count) // => 4
 console.log(vm.count)       // => 4
 
-// Assigning a value to vm.count will also update $data.count
+// 修改 vm.count 的值也会更新 $data.count
 vm.count = 5
 console.log(vm.$data.count) // => 5
 
-// ... and vice-versa
+// 反之亦然
 vm.$data.count = 6
 console.log(vm.count) // => 6
 ```
 
-These instance properties are only added when the instance is first created, so you need to ensure they are all present in the object returned by the `data` function. Where necessary, use `null`, `undefined` or some other placeholder value for properties where the desired value isn't yet available.
+这些实例 property 仅在实例首次创建时被添加，所以你需要确保它们都在 `data` 函数返回的对象中。必要时，要对尚未提供所需值的 property 使用 `null`、`undefined` 或其他占位的值。。
 
-It is possible to add a new property directly to the component instance without including it in `data`. However, because this property isn't backed by the reactive `$data` object, it won't automatically be tracked by [Vue's reactivity system](reactivity.html).
+直接将不包含在 `data` 中的新 property 添加到组件实例是可行的。但由于该 property 不在背后的响应式 `$data` 对象内，所以 [Vue 的响应性系统](reactivity.html)不会自动跟踪它。
 
-Vue uses a `$` prefix when exposing its own built-in APIs via the component instance. It also reserves the prefix `_` for internal properties. You should avoid using names for top-level `data` properties that start with either of these characters.
+Vue 使用 `$` 前缀通过组件实例暴露自己的内置 API。它还为内部 property 保留 `_` 前缀。你应该避免使用这两个字符开头的的顶级 `data` property 名称。
 
-## Methods
+## 方法
 
-To add methods to a component instance we use the `methods` option. This should be an object containing the desired methods:
+我们用 `methods` 选项向组件实例添加方法，它应该是一个包含所需方法的对象：
 
 ```js
 const app = Vue.createApp({
@@ -44,7 +42,7 @@ const app = Vue.createApp({
   },
   methods: {
     increment() {
-      // `this` will refer to the component instance
+      // `this` 指向该组件实例
       this.count++
     }
   }
@@ -59,17 +57,17 @@ vm.increment()
 console.log(vm.count) // => 5
 ```
 
-Vue automatically binds the `this` value for `methods` so that it always refers to the component instance. This ensures that a method retains the correct `this` value if it's used as an event listener or callback. You should avoid using arrow functions when defining `methods`, as that prevents Vue from binding the appropriate `this` value.
+Vue 自动为 `methods` 绑定 `this`，以便于它始终指向组件实例。这将确保方法在用作事件监听或回调时保持正确的 `this` 指向。在定义 `methods` 时应避免使用箭头函数，因为这会阻止 Vue 绑定恰当的 `this` 指向。
 
-Just like all other properties of the component instance, the `methods` are accessible from within the component's template. Inside a template they are most commonly used as event listeners:
+这些 `methods` 和组件实例的其它所有 property 一样可以在组件的模板中被访问。在模板中，它们通常被当做事件监听使用：
 
 ```html
 <button @click="increment">Up vote</button>
 ```
 
-In the example above, the method `increment` will be called when the `<button>` is clicked.
+在上面的例子中，点击 `<button>` 时，会调用 `increment` 方法。
 
-It is also possible to call a method directly from a template. As we'll see shortly, it's usually better to use a [computed property](computed.html) instead. However, using a method can be useful in scenarios where computed properties aren't a viable option. You can call a method anywhere that a template supports JavaScript expressions:
+也可以直接从模板中调用方法。就像下一章节即将看到的，通常换做[计算属性](computed.html)会更好。但是，在计算属性不可行的情况下，使用方法可能会很有用。你可以在模板支持 JavaScript 表达式的任何地方调用方法：
 
 ```html
 <span :title="toTitleDate(date)">
@@ -77,45 +75,45 @@ It is also possible to call a method directly from a template. As we'll see shor
 </span>
 ```
 
-If the methods `toTitleDate` or `formatDate` access any reactive data then it will be tracked as a rendering dependency, just as if it had been used in the template directly.
+如果 `toTitleDate` 或 `formatDate` 访问任何响应式数据，则将其作为渲染依赖项进行跟踪，就像直接在模板中使用过一样。
 
-Methods called from a template should not have any side effects, such as changing data or triggering asynchronous processes. If you find yourself tempted to do that you should probably use a [lifecycle hook](instance.html#lifecycle-hooks) instead.
+从模板调用的方法不应该有任何副作用，比如更改数据或触发异步进程。如果你想这么做，应该换做[生命周期钩子](instance.html#生命周期钩子)。
 
-### Debouncing and Throttling
+### 防抖和节流
 
-Vue doesn't include built-in support for debouncing or throttling but it can be implemented using libraries such as [Lodash](https://lodash.com/).
+Vue 没有内置支持防抖和节流，但可以使用 [Lodash](https://lodash.com/) 等库来实现。
 
-In cases where a component is only used once, the debouncing can be applied directly within `methods`:
+如果某个组件仅使用一次，可以在 `methods` 中直接应用防抖：
 
 ```html
 <script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
 <script>
   Vue.createApp({
     methods: {
-      // Debouncing with Lodash
+      // 用 Lodash 的防抖函数
       click: _.debounce(function() {
-        // ... respond to click ...
+        // ... 响应点击 ...
       }, 500)
     }
   }).mount('#app')
 </script>
 ```
 
-However, this approach is potentially problematic for components that are reused because they'll all share the same debounced function. To keep the component instances independent from each other, we can add the debounced function in the `created` lifecycle hook:
+但是，这种方法对于可复用组件有潜在的问题，因为它们都共享相同的防抖函数。为了使组件实例彼此独立，可以在生命周期钩子的 `created` 里添加该防抖函数:
 
 ```js
 app.component('save-button', {
   created() {
-    // Debouncing with Lodash
+    // 用 Lodash 的防抖函数
     this.debouncedClick = _.debounce(this.click, 500)
   },
   unmounted() {
-    // Cancel the timer when the component is removed
+    // 移除组件时，取消定时器
     this.debouncedClick.cancel()
   },
   methods: {
     click() {
-      // ... respond to click ...
+      // ... 响应点击 ...
     }
   },
   template: `
