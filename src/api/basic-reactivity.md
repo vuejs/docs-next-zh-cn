@@ -10,7 +10,7 @@
 const obj = reactive({ count: 0 })
 ```
 
-响应式转换是“深层”的——它影响所有嵌套 property。在基于 [ES2015 Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的实现中，返回的代理是**不**等于原始对象。建议只使用响应式代理，避免依赖原始对象。
+响应式转换是“深层”的——它影响所有嵌套 property。在基于 [ES2015 Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的实现中，返回的代理是**不**等于原始对象的。建议只使用响应式代理，避免依赖原始对象。
 
 **类型声明：**
 
