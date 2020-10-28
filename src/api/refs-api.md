@@ -225,7 +225,7 @@ watchEffect(() => {
   console.log(shallow.value.greet)
 })
 
-// 这不会触发副作用，因为 ref 很浅层的
+// 这不会触发副作用，因为 ref 是浅层的
 shallow.value.greet = 'Hello, universe'
 
 // 记录 "Hello, universe"
