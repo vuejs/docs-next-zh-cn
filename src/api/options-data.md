@@ -36,7 +36,7 @@
   data: vm => ({ a: vm.myProp })
   ```
 
--  **参考**[深入响应式原理](../guide/reactivity.html)
+-  **参考**[深入响应性原理](../guide/reactivity.html)
 
 ## props
 
@@ -177,8 +177,8 @@
 
 - **详细：**
 
-一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。Vue 实例将会在实例化时调用 `$watch()`，遍历 watch 对象的每一个 property。
-
+一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。组件实例将会在实例化时调用 `$watch()`，参阅 [$watch](instance-methods.html#watch)，了解更多关于 `deep`、`immediate` 和 `flush` 选项的信息。
+ 
 - **示例：**
 
   ```js

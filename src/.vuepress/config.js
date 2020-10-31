@@ -15,6 +15,7 @@ const sidebar = {
         '/guide/introduction',
         '/guide/instance',
         '/guide/template-syntax',
+        '/guide/data-methods',
         '/guide/computed',
         '/guide/class-and-style',
         '/guide/conditional',
@@ -50,7 +51,7 @@ const sidebar = {
       ]
     },
     {
-      title: '可复用性&组合',
+      title: '可复用&组合',
       collapsable: false,
       children: [
         '/guide/mixins',
@@ -73,7 +74,7 @@ const sidebar = {
           ]
         },
         {
-          title: '组合 API',
+          title: '组合式 API',
           children: [
             '/guide/composition-api-introduction',
             '/guide/composition-api-setup',
@@ -156,6 +157,7 @@ const sidebar = {
     '/api/global-api',
     {
       title: '选项',
+      path: '/api/options-api',
       collapsable: false,
       children: [
         '/api/options-data',
@@ -174,6 +176,7 @@ const sidebar = {
     {
       title: '响应性 API',
       collapsable: false,
+      path: '/api/reactivity-api',
       children: [
         '/api/basic-reactivity',
         '/api/refs-api',
@@ -203,7 +206,12 @@ const sidebar = {
 
 module.exports = {
   title: 'Vue.js',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  description: 'Vue.js - The 渐进式 JavaScript 框架',
+  locales: {
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
   head: [
     [
       'link',
@@ -288,8 +296,8 @@ module.exports = {
         ]
       },
       {
-        text: 'API Reference',
-        link: '/api/application-config'
+        text: 'API 参考',
+        link: '/api/'
       },
       {
         text: '生态系统',

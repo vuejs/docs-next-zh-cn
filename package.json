@@ -2,13 +2,15 @@
   "devDependencies": {
     "@vuepress/plugin-pwa": "^1.5.4",
     "node-sass": "^4.13.1",
+    "patch-package": "^6.2.2",
     "sass-loader": "^8.0.2",
     "vuepress": "^1.5.4"
   },
   "scripts": {
     "dev": "yarn serve",
     "serve": "vuepress dev src",
-    "build": "vuepress build src"
+    "build": "vuepress build src",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.27",

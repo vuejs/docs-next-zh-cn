@@ -88,7 +88,6 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
 // tacos
 ```
 
@@ -110,11 +109,10 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
 // tacos
 ```
 
-我们之前提到过，为了有一个 API 能够在某些内容发生变化时更新最终值，我们必须在内容发生变化时设置新的值。我们在处理器，一个名为 `track` 的函数中执行此操作，该函数可以传入 `target` 和 `key`两个参数。
+我们之前提到过，为了有一个 API 能够在某些内容发生变化时更新最终值，我们必须在内容发生变化时设置新的值。我们在处理器，一个名为 `track` 的函数中执行此操作，该函数可以传入 `target` 和 `key` 两个参数。
 
 ```js{7}
 const dinner = {
@@ -131,7 +129,6 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
 // tacos
 ```
 
@@ -156,7 +153,6 @@ const handler = {
 const proxy = new Proxy(dinner, handler)
 console.log(proxy.meal)
 
-// intercepted!
 // tacos
 ```
 
@@ -200,7 +196,7 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们在依赖严格比对的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 Proxy。
+在大多数情况下，原始版本和包装版本的行为相同，但请注意，它们在依赖严格比对的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项式 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 Proxy。
 
 但是，当使用合成 API 显式创建响应式对象时，最佳做法是不要保留对原始对象的引用，而只使用响应式版本：
 

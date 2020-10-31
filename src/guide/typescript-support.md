@@ -173,7 +173,7 @@ const Component = defineComponent({
 
 如果你发现验证器没有得到类型推断或者成员完成不起作用，那么用期望的类型注释参数可能有助于解决这些问题。
 
-## 与 Composition API 一起使用
+## 与组合式 API 一起使用
 
 在 `setup()` 函数中，不需要将类型传递给 `props` 参数，因为它将从 `props` 组件选项推断类型。
 

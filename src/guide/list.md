@@ -2,7 +2,7 @@
 
 ## 用 `v-for` 把一个数组对应为一组元素
 
-我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的别名。
+我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的**别名**。
 
 ```html
 <ul id="array-rendering">
@@ -31,7 +31,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-在 ` v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
+在 `v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
 
 ```html
 <ul id="array-with-index">
@@ -61,7 +61,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-你也可以用`of`替代`in`作为分隔符，因为它更接近 JavaScript 迭代器的语法：
+你也可以用 `of` 替代 `in` 作为分隔符，因为它更接近 JavaScript 迭代器的语法：
 
 ```html
 <div v-for="item of items"></div>
@@ -69,7 +69,7 @@ Vue.createApp({
 
 ## 在 `v-for` 里使用对象
 
-你也可以用`v-for`来遍历一个对象的 property。
+你也可以用 `v-for` 来遍历一个对象的 property。
 
 ```html
 <ul id="v-for-object" class="demo">
@@ -102,7 +102,7 @@ Vue.createApp({
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-你也可以提供第二个的参数为 property 名称 (也就是键名)：
+你也可以提供第二个的参数为 property 名称 (也就是键名 key)：
 
 ```html
 <li v-for="(value, name) in myObject">
@@ -133,7 +133,7 @@ Vue.createApp({
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 :::tip 提示
-在遍历对象时，会按 `Object.keys()` 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下都一致。
+在遍历对象时，会按 `Object.keys()` 的结果遍历，但是不能保证它在不同 JavaScript 引擎下的结果都一致。
 :::
 
 ## 维护状态
@@ -155,7 +155,7 @@ Vue.createApp({
 因为它是 Vue 识别节点的一个通用机制，`key` 并不仅与 `v-for` 特别关联。后面我们将在指南中看到，它还具有其它用途。
 
 :::tip 提示
-不要使用对象或数组之类的非基本类型值作为 `v-for ` 的 key。请用字符串或数值类型的值。
+不要使用对象或数组之类的非基本类型值作为 `v-for` 的 key。请用字符串或数值类型的值。
 :::
 
 更多 `key` attribute 的细节用法请移步至 [`key` 的 API 文档](../api/special-attributes.html#key)。
@@ -268,39 +268,38 @@ methods: {
 注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#avoid-v-if-with-v-for-essential)。
 :::
 
-当它们处于同一节点，`v-for` 的优先级比 `v-if` 更高，这意味着 `v-if` 将分别重复运行于每个 `v-for` 循环中。当你只想为*部分*项渲染节点时，这种优先级的机制会十分有用，如下：
+当它们处于同一节点，`v-if` 的优先级比 `v-for` 更高，这意味着 `v-if` 将没有权限访问 `v-for` 里的变量：
 
 
 ```html
+<!-- This will throw an error because property "todo" is not defined on instance. -->
+
 <li v-for="todo in todos" v-if="!todo.isComplete">
   {{ todo }}
 </li>
 ```
 
-上面的代码将只渲染未完成的 todo。
-
-而如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt)) 上。如：
+可以把 `v-for` 移动到 `<template>` 标签中来修正：
 
 ```html
-<ul v-if="todos.length">
-  <li v-for="todo in todos">
+<template v-for="todo in todos">
+  <li v-if="!todo.isComplete">
     {{ todo }}
   </li>
-</ul>
-<p v-else>No todos left!</p>
+</template>
 ```
 
 ## 在组件上使用 `v-for`
 
 > 这部分内容假定你已经了解[组件](component-basics.md)相关知识。你也完全可以先跳过它，以后再回来查看。
 
-在自定义组件上，你可以像在任何普通元素上一样使用 `v-for`。
+在自定义组件上，你可以像在任何普通元素上一样使用 `v-for`：
 
 ```html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
-然而，任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要使用 prop：
+然而，任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要使用 props：
 
 ```html
 <my-component

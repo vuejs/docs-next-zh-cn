@@ -1,6 +1,10 @@
 # 介绍
 
-本指南主要是为有 Vue 2 经验的用户提供的，他们希望了解 Vue 3 的新功能和更改。这些列表可能看起来很长，但这是因为我们希望尽可能全面，并为每个记录的变化提供详细的例子。**在试用 vue3 之前，你不必从头阅读这些内容**
+::: info
+刚接触 Vue.js？先从[基础指南](/guide/introduction.html)开始吧。
+:::
+
+本指南主要是为有 Vue 2 经验的用户希望了解 Vue 3 的新功能和更改而提供的。**在试用 Vue 3 之前，你不必从头阅读这些内容**。虽然看起来有很多变化，但很多你已经了解和喜欢 Vue 的部分仍是一样的。不过我们希望尽可能全面，并为每处变化提供详细的例子。
 
 - [快速开始](#快速开始)
 - [值得注意的新特性](#值得注意的新特性)
@@ -36,12 +40,16 @@
 
 Vue 3 中需要关注的一些新功能包括：
 
+- [组合式 API](/guide/composition-api-introduction.html)
+- [Teleport](/guide/teleport.html)
+- [片段](/guide/migration/fragments.html)
+- [触发组件选项](/guide/component-custom-events.html)
 - [`createRenderer` API 来自 `@vue/runtime-core`](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
-- [单文件组件 Composition API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
+- [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
 - [单文件组件状态驱动的 CSS 变量 (`<style vars>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
 - [单文件组件 `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 
-## 重大改变
+## 非兼容的变更
 
 ::: tip 提示
 我们仍在开发 Vue 3 的专用迁移版本，该版本的行为与 Vue 2 兼容，运行时警告不兼容。如果你计划迁移一个非常重要的 Vue 2 应用程序，我们强烈建议你等待迁移版本完成以获得更流畅的体验。
@@ -104,7 +112,7 @@ Vue 3 中需要关注的一些新功能包括：
 
 ## 支持的库
 
-我们所有的官方库和工具现在都支持 Vue 3，但大多数仍然处于 beta 状态，并在 NPM 的 `next` dist 标签下发布。**我们正计划在 2020 年底前稳定所有项目，并将其转换为使用 `latest` 的 dist 标签**。
+我们所有的官方库和工具现在都支持 Vue 3，但大多数仍然处于 beta 状态，并在 npm 的 `next` dist 标签下发布。**我们正计划在 2020 年底前稳定所有项目，并将其转换为使用 `latest` 的 dist 标签**。
 
 ### Vue CLI
 
@@ -141,7 +149,7 @@ Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破
 
 ### 其他项目
 
-| 项目               | NPM | 仓库 |
+| 项目               | npm | 仓库 |
 | -------------------   | --- | ---- |
 | @vue/babel-plugin-jsx | [![rc][jsx-badge]][jsx-npm] | [[Github][jsx-code]] |
 | eslint-plugin-vue     | [![beta][epv-badge]][epv-npm] | [[Github][epv-code]] |

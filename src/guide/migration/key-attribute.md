@@ -7,16 +7,16 @@ badges:
 
 ## 概览
 
-- **NEW**：对于 `v-if`/`v-else`/`v-else-if` 的各分支项 `key` 将不再是必须的，因为现在 Vue 会自动生成唯一的 `key`。
-  - **BREAKING**：如果你手动提供 `key`，那么每个分支必须使用唯一的 `key`。你不能通过故意使用相同的 `key` 来强制重用分支。
-- **BREAKING**：`<template v-for>` 的 `key` 应该设置在 `<template>` 标签上 (而不是设置在它的子节点上)。
+- **新增**：对于 `v-if`/`v-else`/`v-else-if` 的各分支项 `key` 将不再是必须的，因为现在 Vue 会自动生成唯一的 `key`。
+  - **非兼容**：如果你手动提供 `key`，那么每个分支必须使用唯一的 `key`。你不能通过故意使用相同的 `key` 来强制重用分支。
+- **非兼容**：`<template v-for>` 的 `key` 应该设置在 `<template>` 标签上 (而不是设置在它的子节点上)。
 
 ## 背景
 
 特殊的 `key` attribute 被用于提示 Vue 的虚拟 DOM 算法来保持对节点身份的持续跟踪。这样 Vue 可以知道何时能够重用和修补现有节点，以及何时需要对它们重新排序或重新创建。关于其它更多信息，可以查看以下章节：
 
 - [列表渲染：维护状态](/guide/list.html#%E7%BB%B4%E6%8A%A4%E7%8A%B6%E6%80%81)
-- [API Reference：特殊指令 `key`](/api/special-attributes.html#key)
+- [API 参考：特殊指令 `key`](/api/special-attributes.html#key)
 
 ## 在条件分支中
 

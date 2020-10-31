@@ -76,7 +76,7 @@
       - `from` property 是在可用的注入内容中搜索用的 key (字符串或 Symbol)
       - `default` property 是降级情况下使用的 value
 
-  > 提示：提示：`provide` 和 `inject` 绑定并不是可响应的。这是刻意为之的。然而，如果你传入了一个可监听的对象，那么其对象的 property 还是可响应的。
+  > 提示：提示：`provide` 和 `inject` 绑定并不是响应式的。这是刻意为之的。然而，如果你传入了一个响应式的对象，那么其对象的 property 仍是响应式的。
 
 - **示例：**
 
@@ -188,7 +188,7 @@
 
 - **类型：**`Function`
 
-`setup` 函数是一个新的组件选项。它作为在组件内部使用组合 API 的入口点。
+`setup` 函数是一个新的组件选项。它作为在组件内部使用组合式 API 的入口点。
 
 - **调用时间**
 
@@ -225,7 +225,7 @@
 
 - **渲染函数/JSX 的方法**
 
-  `setup` 还可以返回一个渲染函数，该函数可以直接使用在同一作用域中声明的反应状态：
+  `setup` 还可以返回一个渲染函数，该函数可以直接使用在同一作用域中声明的响应式状态：
 
   ```js
   import { h, ref, reactive } from 'vue'
@@ -318,4 +318,4 @@
 
   - 将 `props` 作为单独的参数可以使单独键入更容易，而不会弄乱上下文中其他 property 的类型。这也使得在具有 TSX 支持的 `setup`、`render` 和普通功能组件之间保持一致的签名成为可能。
 
--  **参考** [Composition API](composition-api.html)
+-  **参考** [组合式 API](composition-api.html)

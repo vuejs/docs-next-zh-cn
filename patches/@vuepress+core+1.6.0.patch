@@ -1,0 +1,13 @@
+diff --git a/node_modules/@vuepress/core/lib/client/app.js b/node_modules/@vuepress/core/lib/client/app.js
+index 85b27d7..39a5dcc 100644
+--- a/node_modules/@vuepress/core/lib/client/app.js
++++ b/node_modules/@vuepress/core/lib/client/app.js
+@@ -77,7 +77,7 @@ export async function createApp (isServer) {
+           return false
+         }
+         return {
+-          selector: to.hash
++          selector: decodeURIComponent(to.hash)
+         }
+       } else {
+         return { x: 0, y: 0 }
