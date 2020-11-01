@@ -142,7 +142,7 @@ export default {
 
 ## `isRef`
 
-Checks if a value is a ref object。
+Check if a value is a ref object。
 
 ## `customRef`
 
