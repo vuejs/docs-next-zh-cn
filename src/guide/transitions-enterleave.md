@@ -448,7 +448,7 @@ Vue.createApp(Demo).mount('#demo')
 </transition>
 ```
 
-实际上，通过使用多个 `v-if` 或将单个元素绑定到一个动态 property，可以在任意数量的元素之间进行过渡。例如：
+实际上，通过使用 `v-if`/`v-else-if`/`v-else` 或将单个元素绑定到一个动态 property，可以在任意数量的元素之间进行过渡。例如：
 
 
 <!-- TODO: 重写示例并放入 codepen 示例 -->
@@ -458,10 +458,10 @@ Vue.createApp(Demo).mount('#demo')
   <button v-if="docState === 'saved'" key="saved">
     Edit
   </button>
-  <button v-if="docState === 'edited'" key="edited">
+  <button v-else-if="docState === 'edited'" key="edited">
     Save
   </button>
-  <button v-if="docState === 'editing'" key="editing">
+  <button v-else-if="docState === 'editing'" key="editing">
     Cancel
   </button>
 </transition>
