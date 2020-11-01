@@ -57,7 +57,7 @@ function useFoo(x: number | Ref<number>) {
 
 ## `toRef`
 
-可以用来为源响应式对象上的 property 性创建一个 [`ref`](#ref)。然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。
+可以用来为源响应式对象上的 property 新创建一个 [`ref`](#ref)。然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。
 
 ```js
 const state = reactive({
