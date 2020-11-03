@@ -191,7 +191,7 @@ const App = {
 ```html
 <div id="blog-posts-events-demo">
   <div v-bind:style="{ fontSize: postFontSize + 'em' }">
-    <blog-post v-for="post in posts" :key="post.id" :title="title"></blog-post>
+    <blog-post v-for="post in posts" :key="post.id" :title="post.title"></blog-post>
   </div>
 </div>
 ```
