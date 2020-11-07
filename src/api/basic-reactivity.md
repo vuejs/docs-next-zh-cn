@@ -41,7 +41,7 @@ copy.count++ // 警告!
 
 ## `isProxy`
 
-检查对象是 [`reactive`](#reactive) 还是 [`readonly`](#readonly)创建的代理
+检查对象是否是由 [`reactive`](#reactive) 或 [`readonly`](#readonly) 创建的代理。
 
 ## `isReactive`
 
