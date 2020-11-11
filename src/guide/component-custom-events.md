@@ -4,7 +4,17 @@
 
 ## 事件名 
 
-不同于组件和 prop，事件名不存在任何自动化的大小写转换。而是触发的事件名需要完全匹配监听这个事件所用的名称。举个例子，如果触发一个 camelCase 名字的事件：
+不同于组件和 prop，事件名不存在任何自动化的大小写转换。而是触发的事件名需要完全匹配监听这个事件所用的名称。
+
+```js
+this.$emit('my-event')
+```
+
+```html
+<my-component @my-event="doSomething"></my-component>
+```
+
+如果我们触发一个 camelCase 名字的事件：
 
 ```js
 this.$emit('myEvent')

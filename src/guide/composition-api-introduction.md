@@ -127,7 +127,7 @@ setup (props) {
 }
 ```
 
-这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量不是被动的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！
+这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量是非响应式的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！
 
 ### 带 `ref` 的响应式变量
 
@@ -157,7 +157,7 @@ console.log(counter.value) // 1
 
 ![按引用传递与按值传递](https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif)
 
-在任何值周围都有一个包装器对象，这样我们就可以在整个应用程序中安全地传递它，而不必担心在某个地方失去它的响应式。
+在任何值周围都有一个包装器对象，这样我们就可以在整个应用程序中安全地传递它，而不必担心在某个地方失去它的响应性。
 
 :::tip 提示
 换句话说，`ref` 对我们的值创建了一个**响应式引用**。使用**引用**的概念将在整个组合式 API 中经常使用。
@@ -317,13 +317,13 @@ setup (props) {
 
   const repositories = ref([])
   const getUserRepositories = async () => {
-    // 更新`prop.user ` 到 `user.value`访问引用值
+    // 更新 `prop.user` 到 `user.value` 访问引用值
     repositories.value = await fetchUserRepositories(user.value)
   }
 
   onMounted(getUserRepositories)
 
-  // 在用户prop的响应式引用上设置一个侦听器
+  // 在用户 prop 的响应式引用上设置一个侦听器
   watch(user, getUserRepositories)
 
   return {
@@ -363,18 +363,18 @@ import { ref, onMounted, watch, toRefs, computed } from 'vue'
 
 // in our component
 setup (props) {
-  // 使用 `toRefs` 创建对props的 `user` property 的响应式引用
+  // 使用 `toRefs` 创建对 props 的 `user` property 的响应式引用
   const { user } = toRefs(props)
 
   const repositories = ref([])
   const getUserRepositories = async () => {
-    // 更新`props.user ` 到 `user.value`访问引用值
+    // 更新 `props.user ` 到 `user.value` 访问引用值
     repositories.value = await fetchUserRepositories(user.value)
   }
 
   onMounted(getUserRepositories)
 
-  // 在用户prop的响应式引用上设置一个侦听器
+  // 在用户 prop 的响应式引用上设置一个侦听器
   watch(user, getUserRepositories)
 
   const searchQuery = ref('')

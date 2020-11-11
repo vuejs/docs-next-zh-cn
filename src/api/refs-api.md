@@ -57,7 +57,7 @@ function useFoo(x: number | Ref<number>) {
 
 ## `toRef`
 
-可以用来为源响应式对象上的 property 性创建一个 [`ref`](#ref)。然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。
+可以用来为源响应式对象上的 property 新创建一个 [`ref`](#ref)。然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。
 
 ```js
 const state = reactive({
@@ -112,7 +112,7 @@ stateAsRefs.foo.value++
 console.log(state.foo) // 3
 ```
 
-当从合成函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应式的情况下对返回的对象进行分解/扩散：
+当从合成函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应性的情况下对返回的对象进行分解/扩散：
 
 ```js
 function useFeatureX() {
@@ -129,7 +129,7 @@ function useFeatureX() {
 
 export default {
   setup() {
-    // 可以在不失去响应式的情况下破坏结构
+    // 可以在不失去响应性的情况下破坏结构
     const { foo, bar } = useFeatureX()
 
     return {
@@ -203,7 +203,7 @@ type CustomRefFactory<T> = (
 
 ```js
 const foo = shallowRef({})
-// 改变ref的值是响应式的
+// 改变 ref 的值是响应式的
 foo.value = {}
 // 但是这个值不会被转换。
 isReactive(foo.value) // false
@@ -225,7 +225,7 @@ watchEffect(() => {
   console.log(shallow.value.greet)
 })
 
-// 这不会触发效果，因为ref很浅
+// 这不会触发作用，因为 ref 很浅层
 shallow.value.greet = 'Hello, universe'
 
 // 记录 "Hello, universe"

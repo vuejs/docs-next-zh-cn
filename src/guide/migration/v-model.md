@@ -10,12 +10,12 @@ badges:
 
 就变化内容而言，此部分属于高阶内容：
 
-- **BREAKING**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
+- **非兼容**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
   - prop：`value` -> `modelValue`；
   - event：`input` -> `update:modelValue`；
-- **BREAKING**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 作为代替；
-- **NEW**：现在可以在同一个组件上使用多个 `v-model` 进行双向绑定；
-- **NEW**：现在可以自定义 `v-model` 修饰符。
+- **非兼容**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 作为代替；
+- **新增**：现在可以在同一个组件上使用多个 `v-model` 进行双向绑定；
+- **新增**：现在可以自定义 `v-model` 修饰符。
 
 更多信息，请见下文。
 
