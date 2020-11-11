@@ -65,7 +65,7 @@ Vue 3 中需要关注的一些新功能包括：
 ### 模板指令
 
 - [组件上 `v-model` 用法已更改](/guide/migration/v-model.html)
-- [`<template v-for>` 和非 - `v-for` 节点上 `key` 用法已更改](/guide/migration/key-attribute.html)
+- [`<template v-for>` 和非 `v-for` 节点上 `key` 用法已更改](/guide/migration/key-attribute.html)
 - [在同一元素上使用的 `v-if` 和 `v-for` 优先级已更改](/guide/migration/v-if-v-for.html)
 - [`v-bind="object"` 现在排序敏感](/guide/migration/v-bind.html)
 - [`v-for` 中的 `ref` 不再注册 ref 数组](/guide/migration/array-refs.html)
