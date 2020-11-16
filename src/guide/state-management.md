@@ -10,7 +10,7 @@
 
 ## 简单状态管理起步使用
 
-经常被忽略的是，Vue 应用中响应式 `data` 对象的实际来源——当访问数据对象时，一个组件实例只是简单的代理访问。所以，如果你有一处需要被多个实例间共享的状态，你可以使用一个 [reactive](/guide/reactivity-fundamentals.html#declaring-reactive-state) 方法让对象作为响应式对象。
+经常被忽略的是，Vue 应用中响应式 `data` 对象的实际来源——当访问数据对象时，一个组件实例只是简单的代理访问。所以，如果你有一处需要被多个实例间共享的状态，你可以使用一个 [reactive](/guide/reactivity-fundamentals.html#声明响应式状态) 方法让对象作为响应式对象。
 
 ```js
 const sourceOfTruth = Vue.reactive({

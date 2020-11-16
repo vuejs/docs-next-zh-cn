@@ -193,7 +193,7 @@
 
   For more information about `flush` see [Effect Flush Timing](../guide/reactivity-computed-watchers.html#effect-flush-timing).
 
--  **参考** [Watchers](../guide/computed.html#watchers)
+-  **参考** [Watchers](../guide/computed.html#侦听器)
 
 ## $emit
 
@@ -270,7 +270,7 @@
 
 -  **参考**
   - [`emits` 选项](./options-data.html#emits)
-  - [事件抛出一个值](../guide/component-basics.html#emitting-a-value-with-an-event)
+  - [事件抛出一个值](../guide/component-basics.html#使用事件抛出一个值)
 
 ## $forceUpdate
 

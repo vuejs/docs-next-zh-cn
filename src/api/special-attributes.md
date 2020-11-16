@@ -71,4 +71,4 @@
 
 -  **参考**
   - [动态组件](../guide/component-dynamic-async.html)
-  - [DOM 模板解析说明](../guide/component-basics.html#dom-template-parsing-caveats)
+  - [DOM 模板解析说明](../guide/component-basics.html#解析-dom-模板时的注意事项)

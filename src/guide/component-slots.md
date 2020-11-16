@@ -374,7 +374,7 @@ function (slotProps) {
 
 ## 动态插槽名
 
-[动态指令参数](template-syntax.md#dynamic-arguments)也可以用在 `v-slot` 上，来定义动态的插槽名：
+[动态指令参数](template-syntax.md#动态参数)也可以用在 `v-slot` 上，来定义动态的插槽名：
 
 ```html
 <base-layout>
