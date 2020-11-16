@@ -206,7 +206,7 @@
   `<keep-alive>` 不会在函数式组件中正常工作，因为它们没有缓存实例。
   :::
 
--  **参考：** [动态组件 - keep-alive](../guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+-  **参考：** [动态组件 - keep-alive](../guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
 
 ## slot
 
@@ -220,7 +220,7 @@
 
   详细用法，请参考下面教程的链接。
 
--  **参考：** [通过插槽分发内容](../guide/component-basics.html#content-distribution-with-slots)
+-  **参考：** [通过插槽分发内容](../guide/component-basics.html#通过插槽分发内容)
 
 ## teleport
 

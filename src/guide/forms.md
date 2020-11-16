@@ -327,4 +327,4 @@ vm.selected.number // => 123
 
 HTML 原生的输入元素类型并不总能满足需求。幸好，Vue 的组件系统允许你创建具有完全自定义行为且可复用的输入组件。这些输入组件甚至可以和 `v-model` 一起使用！
 
-要了解更多，请参阅组件指南中的[自定义输入](./component-basics.html#using-v-model-on-components)组件。
+要了解更多，请参阅组件指南中的[自定义输入](./component-basics.html#在组件上使用-v-model)组件。

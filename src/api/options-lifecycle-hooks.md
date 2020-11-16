@@ -12,7 +12,7 @@
 
   在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## created
 
@@ -22,7 +22,7 @@
 
   在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，property 和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，`$el` property 目前尚不可用。
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## beforeMount
 
@@ -34,7 +34,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## mounted
 
@@ -56,7 +56,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## beforeUpdate
 
@@ -68,7 +68,7 @@
 
   **该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。**
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## updated
 
@@ -92,7 +92,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## activated
 
@@ -130,7 +130,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## unmounted
 
@@ -142,7 +142,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考：**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## errorCaptured
 

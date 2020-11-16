@@ -186,6 +186,6 @@ this.$emit('update:title', newValue)
 ## 下一步
 
 更多新的 `v-model` 语法相关信息，请参考：
-- [在组件中使用 `v-model`](../component-basics.html#using-v-model-on-components) 
-- [`v-model` 参数](../component-custom-events.html#v-model-arguments)
-- [处理 `v-model` 修饰符](../component-custom-events.html#v-model-arguments)
+- [在组件中使用 `v-model`](../component-basics.html#在组件上使用-v-model) 
+- [`v-model` 参数](../component-custom-events.html#v-model-参数)
+- [处理 `v-model` 修饰符](../component-custom-events.html#处理-v-model-修饰符)
