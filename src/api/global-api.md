@@ -160,7 +160,7 @@ const AsyncComp = defineAsyncComponent(() =>
 app.component('async-component', AsyncComp)
 ```
 
-当使用[局部注册](../guide/component-registration.html#local-registration)时，你也可以直接提供一个返回 `Promise` 的函数：
+当使用[局部注册](../guide/component-registration.html#局部注册)时，你也可以直接提供一个返回 `Promise` 的函数：
 ```js
 import { createApp, defineAsyncComponent } from 'vue'
 
