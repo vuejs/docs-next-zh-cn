@@ -4,7 +4,7 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 
 将 Vue.js 添加到项目中有三种主要方式：
 
-1. 在页面上以 [CDN 包](#cdn) 的形式导入。
+1. 在页面上以 [CDN 包](#cdn)的形式导入。
 2. 使用 [npm](#npm) 安装它。
 3. 使用官方的 [CLI](#cli) 来构建一个项目，它为现代前端工作流程提供了功能齐备的构建设置 (例如，热重载、保存时的提示等等)。
 
@@ -22,7 +22,7 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 
 [获取 Chrome 扩展程序](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
 
-[获取 Firefox 插件](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+[获取 Firefox 附加组件](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
 
 [获取独立的 Electron 应用程序](https://github.com/vuejs/vue-devtools/blob/dev/packages/shell-electron/README.md)
 
@@ -101,7 +101,7 @@ $ yarn dev
 - 浏览器内模板编译：
   - `vue.global.js` 是包含编译器和运行时的“完整”构建，因此它支持动态编译模板。
   - `vue.runtime.global.js` 只包含运行时，并且需要在构建步骤期间预编译模板。
-- 内联所有 Vue 核心内部包 - 即：它是一个单独的文件，不依赖于其他文件。这意味着你必须导入此文件和此文件中的所有内容，以确保获得相同的代码实例。
+- 内联所有 Vue 核心内部包——即：它是一个单独的文件，不依赖于其他文件。这意味着你必须导入此文件和此文件中的所有内容，以确保获得相同的代码实例。
 - 包含硬编码的 prod/dev 分支，并且 prod 构建是预先压缩过的。将 `*.prod.js` 文件用于生产环境。
 
 :::tip 提示
@@ -118,7 +118,7 @@ $ yarn dev
 #### `vue(.runtime).esm-bundler.js`：
 
 - 用于 `webpack`，`rollup` 和 `parcel` 等构建工具。
-- 留下 prod/dev 分支的 `process.env.NODE_ENV` 守卫(必须由构建工具替换)。
+- 留下 prod/dev 分支的 `process.env.NODE_ENV` 守卫语句 (必须由构建工具替换)。
 - 不提供压缩版本 (打包后与其余代码一起压缩)。
 - import 依赖 (例如：`@vue/runtime-core`，`@vue/runtime-compiler`)
   - 导入的依赖项也是 esm bundler 构建，并将依次导入其依赖项 (例如：@vue/runtime-core imports @vue/reactivity)。
