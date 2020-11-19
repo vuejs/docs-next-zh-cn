@@ -84,7 +84,7 @@ app.component('modal-button', {
 })
 ```
 
-因此，一旦我们单击按钮打开模式，Vue 将正确地将模态内容渲染为 `body` 标签的子级。
+因此，一旦我们单击按钮打开模态，Vue 将正确地将模态内容渲染为 `body` 标签的子级。
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="gOPNvjR" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vue 3 Teleport">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/gOPNvjR">
