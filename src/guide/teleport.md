@@ -6,7 +6,7 @@ Vue 鼓励我们通过将 UI 和相关行为封装到组件中来构建 UI。我
 
 然而，有时组件模板的一部分逻辑上属于该组件，而从技术角度来看，最好将模板的这一部分移动到 DOM 中 Vue app 之外的其他位置。
 
-一个常见的场景是创建一个包含全屏模式的组件。在大多数情况下，你希望模态的逻辑存在于组件中，但是模态的定位很快就很难通过 CSS 来解决，或者需要更改组件组合。
+一个常见的场景是创建一个包含全屏模式的组件。在大多数情况下，你希望模态框的逻辑存在于组件中，但是模态框的定位很快就很难通过 CSS 来解决，或者需要更改组件组合。
 
 考虑下面的 HTML 结构。
 
@@ -23,7 +23,7 @@ Vue 鼓励我们通过将 UI 和相关行为封装到组件中来构建 UI。我
 
 让我们来看看 `modal-button` 组件：
 
-该组件将有一个 `button` 元素来触发模态的打开，以及一个具有类 `.modal` 的 `div` 元素，它将包含模态的内容和一个用于自关闭的按钮。
+该组件将有一个 `button` 元素来触发模态框的打开，以及一个具有类 `.modal` 的 `div` 元素，它将包含模态框的内容和一个用于自关闭的按钮。
 
 ```js
 const app = Vue.createApp({});
@@ -51,7 +51,7 @@ app.component('modal-button', {
 })
 ```
 
-当在初始的 HTML 结构中使用这个组件时，我们可以看到一个问题——模态是在深度嵌套的 `div` 中渲染的，而模态的 `position:absolute` 以父级相对定位的 `div` 作为引用。
+当在初始的 HTML 结构中使用这个组件时，我们可以看到一个问题——模态框是在深度嵌套的 `div` 中渲染的，而模态框的 `position:absolute` 以父级相对定位的 `div` 作为引用。
 
 Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下呈现 HTML，而不必求助于全局状态或将其拆分为两个组件。
 
@@ -84,7 +84,7 @@ app.component('modal-button', {
 })
 ```
 
-因此，一旦我们单击按钮打开模态，Vue 将正确地将模态内容渲染为 `body` 标签的子级。
+因此，一旦我们单击按钮打开模态框，Vue 将正确地将模态框内容渲染为 `body` 标签的子级。
 
 <p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="gOPNvjR" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vue 3 Teleport">
   <span>See the Pen <a href="https://codepen.io/team/Vue/pen/gOPNvjR">
