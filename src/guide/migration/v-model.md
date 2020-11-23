@@ -35,7 +35,7 @@ badges:
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
 ```
@@ -68,7 +68,7 @@ export default {
 }
 ```
 
-所以，在这个例子中 `v-model` 的简写如下：
+所以，在这个例子中 `v-model` 是以下的简写：
 
 ```html
 <ChildComponent :title="pageTitle" @change="pageTitle = $event" />
@@ -101,7 +101,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent
   :modelValue="pageTitle"
@@ -116,7 +116,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model:title="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
@@ -128,7 +128,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model:title="pageTitle" v-model:content="pageContent" />
 
-<!-- 简写： -->
+<!-- 是以下的简写： -->
 
 <ChildComponent
   :title="pageTitle"
