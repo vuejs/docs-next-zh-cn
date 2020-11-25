@@ -27,7 +27,7 @@
 
 参见 [TypeScript 编译选项文档](https://www.typescriptlang.org/docs/handbook/compiler-options.html)查看更多细节。
 
-## Webpack 配置
+## Webpack 配置
 
 如果你使用自定义 Webpack 配置，' ts-loader ' 需要被配置来解析 vue 文件里的 `<script lang="ts">` 代码块：
 
