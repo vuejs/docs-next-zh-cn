@@ -29,7 +29,7 @@
 
 ## Webpack 配置
 
-如果你使用自定义Webpack配置， ' ts-loader ' 需要被配置来解析vue文件里的 `<script lang="ts">` 代码块：
+如果你使用自定义Webpack配置，' ts-loader ' 需要被配置来解析vue文件里的 `<script lang="ts">` 代码块：
 
 ```js{10}
 // webpack.config.js
