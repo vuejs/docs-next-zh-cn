@@ -126,6 +126,8 @@ const MyComponent = {
 
 - **类型声明**：
 
+<!-- TODO: translation -->
+
 ```ts
 interface InjectionKey<T> extends Symbol {}
 
@@ -135,6 +137,12 @@ function provide<T>(key: InjectionKey<T> | string, value: T): void
 function inject<T>(key: InjectionKey<T> | string): T | undefined
 // with default value
 function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
+// with factory
+function inject<T>(
+  key: InjectionKey<T> | string,
+  defaultValue: () => T,
+  treatDefaultAsFactory: true
+): T
 ```
 
 Vue 提供了一个 `InjectionKey` 接口，该接口是扩展 `Symbol` 的泛型类型。它可用于在提供者和消费者之间同步注入值的类型：

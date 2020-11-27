@@ -86,7 +86,6 @@ badges:
 | `draggable`            | `draggable` &rarr; `false`           |
 | `spellcheck`           | `spellcheck` &rarr; `true`           |
 
-
 为了保持原有的行为，并且我们将强制使用 `false` 为 `'false'`，在 3.x Vue 中，开发人员需要将 `v-bind` 表达式解析为 `false` 或 `'false'`，表示 `contenteditable` 和 `spellcheck`。
 
 在 2.x 中，枚举 attribute 的无效值被强制为 `'true'`。这通常是无意的，不太可能大规模依赖。在 3.x 中，应显式指定 `true` 或 `'true'`。

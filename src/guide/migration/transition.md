@@ -58,3 +58,9 @@ badges:
 1. 将 `.v-enter` 字符串实例替换为 `.v-enter-from`
 2. 将 `.v-leave` 字符串实例替换为 `.v-leave-from`
 3. 过渡组件相关属性名也需要进行字符串实例替换，规则如上所述。
+
+<!-- TODO: translation -->
+
+## See also
+
+- [`<TransitionGroup>` now renders no wrapper element by default](/guide/migration/transition-group.html)

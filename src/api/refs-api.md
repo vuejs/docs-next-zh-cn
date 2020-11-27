@@ -84,6 +84,10 @@ export default {
 }
 ```
 
+<!-- TODO: translation -->
+
+`toRef` will return a usable ref even if the source property doesn't currently exist. This makes it especially useful when working with optional props, which wouldn't be picked up by [`toRefs`](#torefs).
+
 ## `toRefs`
 
 将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的[`ref`](#ref)。

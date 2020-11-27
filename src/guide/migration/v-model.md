@@ -7,7 +7,6 @@ badges:
 
 ## 概览
 
-
 就变化内容而言，此部分属于高阶内容：
 
 - **非兼容**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
@@ -30,7 +29,6 @@ badges:
 ## 2.x 语法
 
 在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 和 `input` 事件：
-
 
 ```html
 <ChildComponent v-model="pageTitle" />
@@ -175,6 +173,7 @@ this.$emit('update:title', newValue)
     props: {
       modelValue: String // 以前是`value：String`
     },
+    emits: ['update:modelValue'],
     methods: {
       changePageTitle(title) {
         this.$emit('update:modelValue', title) // 以前是 `this.$emit('input', title)`

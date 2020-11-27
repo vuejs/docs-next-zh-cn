@@ -2,7 +2,7 @@
 
 ## 类 Flux 状态管理的官方实现
 
-由于状态零散地分布在许多组件和组件之间的交互中，大型应用复杂度也经常逐渐增长。为了解决这个问题，Vue 提供 [vuex](https://github.com/vuejs/vuex)：我们有受到 Elm 启发的状态管理库。vuex 甚至集成到 [vue-devtools](https://github.com/vuejs/vue-devtools)，无需配置即可进行[时光旅行调试 (time travel debugging)](https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)。
+由于状态零散地分布在许多组件和组件之间的交互中，大型应用复杂度也经常逐渐增长。为了解决这个问题，Vue 提供 [Vuex](https://next.vuex.vuejs.org)：我们有受到 Elm 启发的状态管理库。vuex 甚至集成到 [vue-devtools](https://github.com/vuejs/vue-devtools)，无需配置即可进行[时光旅行调试 (time travel debugging)](https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)。
 
 ### 给 React 开发者的参考信息
 
@@ -118,4 +118,4 @@ const appB = Vue.createApp({
 
 随着我们进一步扩展约定，即组件不允许直接变更属于 store 实例的 state，而应执行 action 来分发 (dispatch) 事件通知 store 去改变，最终达成了 [Flux](https://facebook.github.io/flux/) 架构。这样约定的好处是，能够记录所有 store 中发生的 state 变更，同时实现能做到记录变更、保存状态快照、历史回滚/时光旅行的先进的调试工具。
 
-说了一圈其实又回到了 [Vuex](https://github.com/vuejs/vuex)，如果已经读到这儿，不妨可以去尝试一下！
+说了一圈其实又回到了 [Vuex](https://next.vuex.vuejs.org/)，如果已经读到这儿，不妨可以去尝试一下！

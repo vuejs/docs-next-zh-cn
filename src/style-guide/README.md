@@ -36,7 +36,6 @@ sidebar: auto
 
 ### 组件名为多个单词<sup data-p="a">必要</sup>
 
-
 **组件名应该始终是多个单词的，根组件 `App` 以及 `<transition>`、`<component>` 之类的 Vue 内置组件除外。**
 
 这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
@@ -82,7 +81,7 @@ export default {
 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。
 
 ::: details 详解
-细致的 [prop 定义](https://cn.vuejs.org/v2/guide/components-props.html#Prop-%E9%AA%8C%E8%AF%81)有两个好处：
+细致的 [prop 定义](/guide/component-props.html#Prop-%E9%AA%8C%E8%AF%81)有两个好处：
 
 - 它们写明了组件的 API，所以很容易看懂组件的用法；
 - 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
@@ -563,7 +562,6 @@ components/
 
 ### 单文件组件文件的大小写<sup data-p="b">强烈推荐</sup>
 
-
 **[单文件组件](../guide/single-file-component.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
 
 单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。然而，混用文件命名方式有的时候会导致大小写不敏感的文件系统的问题，这也是横线连接命名同样完全可取的原因。
@@ -603,7 +601,6 @@ components/
 ::: details 详解
 
 这些组件为你的应用奠定了一致的基础样式和行为。它们可能**只**包括：
-
 
 - HTML 元素
 - 其它基础组件
@@ -1314,7 +1311,6 @@ computed: {
 ```
 </div>
 
-
 ## 优先级 C 的规则：推荐 <span class="hide-from-sidebar">(将选择和认知成本最小化)</span>
 
 ### 组件/实例的选项顺序<sup data-p="c">推荐</sup>
@@ -1674,11 +1670,11 @@ app.component('TodoItem', {
 
 ### 非 Flux 的全局状态管理<sup data-p="d">谨慎使用</sup>
 
-**应该优先通过 [Vuex](https://github.com/vuejs/vuex) 管理全局状态，而不是通过 `this.$root` 或一个全局事件总线。**
+**应该优先通过 [Vuex](https://next.vuex.vuejs.org/) 管理全局状态，而不是通过 `this.$root` 或一个全局事件总线。**
 
-通过 `this.$root` 和/或[全局事件总线管理](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced)状态在很多简单的情况下都是很方便的，但是并不适用于绝大多数的应用。
+通过 `this.$root` 和/或全局事件总线管理状态在很多简单的情况下都是很方便的，但是并不适用于绝大多数的应用。
 
-Vuex 是 Vue 的[官方类 flux 实现](https://vuejs.org/v2/guide/state-management.html#Official-Flux-Like-Implementation)，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](https://vuejs.org/v2/guide/installation.html#Vue-Devtools) 支持)。
+Vuex 是 Vue 的[官方类 flux 实现](/guide/state-management.html#类-flux-状态管理的官方实现)，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools]((/guide/installation.html#vue-Devtools) 支持)。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>

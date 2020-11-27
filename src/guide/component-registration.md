@@ -29,7 +29,6 @@ app.component('my-component-name', {
 
 在字符串模板或单个文件组件中定义组件时，定义组件名的方式有两种：
 
-
 #### 使用 kebab-case
 
 ```js

@@ -143,11 +143,9 @@ export default {
 </script>
 ```
 
-
 现在，如果这两个 property 中有任何更改，`MyMarker` 组件也将自动更新！
 
 ### 修改响应式 property
-
 
 当使用响应式提供/注入值时，**建议尽可能，在*提供者*内保持响应式 property 的任何更改**。
 

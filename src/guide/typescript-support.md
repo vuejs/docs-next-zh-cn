@@ -24,8 +24,34 @@
 
 请注意，必须包含 `strict: true` (或至少包含 `noImplicitThis: true`，它是 `strict` 标志的一部分) 才能在组件方法中利用 `this` 的类型检查，否则它总是被视为 `any` 类型。
 
-
 参见 [TypeScript 编译选项文档](https://www.typescriptlang.org/docs/handbook/compiler-options.html)查看更多细节。
+
+<!-- TODO: translation -->
+
+## Webpack Configuration
+
+If you are using a custom Webpack configuration `ts-loader` needs to be configured to parse `<script lang="ts">` blocks in `.vue` files:
+
+```js{10}
+// webpack.config.js
+module.exports = {
+  ...
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      }
+      ...
+```
 
 ## 开发工具
 
@@ -195,7 +221,7 @@ const Component = defineComponent({
 })
 ```
 
-### 类型声明 `ref`
+### 类型声明 `refs`
 
 Refs 根据初始值推断类型：
 
@@ -212,7 +238,6 @@ const Component = defineComponent({
 ```
 
 有时我们可能需要为 ref 的内部值指定复杂类型。我们可以在调用 ref 重写默认推理时简单地传递一个泛型参数：
-
 
 ```ts
 const year = ref<string | number>('2020') // year's type: Ref<string | number>

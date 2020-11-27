@@ -1,3 +1,7 @@
+---
+sidebarDepth: 1
+---
+
 # 全局 API
 
 ## createApp
@@ -9,7 +13,6 @@ const app = Vue.createApp({})
 ```
 
 你可以在 `createApp` 之后链式调用其它方法，这些方法可以在[应用 API](./application-api.html) 中找到。
-
 
 ### 参数
 
@@ -38,7 +41,6 @@ const app = Vue.createApp(
   { username: 'Evan' }
 )
 ```
-
 
 ```html
 <div id="app">
@@ -223,7 +225,6 @@ const AsyncComp = defineAsyncComponent({
 `resolveComponent` 只能在 `render` 或 `setup` 函数中使用。
 :::
 
-
 如果在当前应用实例中可用，则允许按名称解析 `component`。
 
 返回一个 `Component`。如果没有找到，则返回 `undefined`。
@@ -262,7 +263,6 @@ render() {
 :::
 
 允许使用与 `<component :is="">` 相同的机制来解析一个 `component`。
-
 
 返回已解析的 `Component` 或新创建的 `VNode`，其中组件名称作为节点标签。如果找不到 `Component`，将发出警告。
 
