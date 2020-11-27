@@ -4,6 +4,8 @@ badges:
   - new
 ---
 
+<!-- TODO: translation -->
+
 # `emits` Option <MigrationBadges :badges="$frontmatter.badges" />
 
 ## Overview

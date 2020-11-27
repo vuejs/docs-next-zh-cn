@@ -3,6 +3,8 @@ badges:
   - removed
 ---
 
+<!-- TODO: translation -->
+
 # $children <MigrationBadges :badges="$frontmatter.badges" />
 
 ## Overview

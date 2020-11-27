@@ -4,6 +4,8 @@ badges:
   - breaking
 ---
 
+<!-- TODO: translation -->
+
 # `v-on.native` modifier removed <MigrationBadges :badges="$frontmatter.badges" />
 
 ## Overview

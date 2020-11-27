@@ -4,6 +4,8 @@ badges:
   - breaking
 ---
 
+<!-- TODO: translation -->
+
 # `$attrs` includes `class` & `style` <MigrationBadges :badges="$frontmatter.badges" />
 
 ## Overview
