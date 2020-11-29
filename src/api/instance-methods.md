@@ -224,6 +224,7 @@
   })
 
   app.component('welcome-button', {
+    emits: ['welcome'],
     template: `
       <button v-on:click="$emit('welcome')">
         Click me to be welcomed
@@ -238,7 +239,7 @@
 
   ```html
   <div id="emit-example-argument">
-    <advice-component v-on:give-advice="showAdvice"></advice-component>
+    <advice-component v-on:advise="showAdvice"></advice-component>
   </div>
   ```
 
@@ -252,6 +253,7 @@
   })
 
   app.component('advice-component', {
+    emits: ['advise'],
     data() {
       return {
         adviceText: 'Some advice'
@@ -260,12 +262,14 @@
     template: `
       <div>
         <input type="text" v-model="adviceText">
-        <button v-on:click="$emit('give-advice', adviceText)">
+        <button v-on:click="$emit('advise', adviceText)">
           Click me for sending advice
         </button>
       </div>
     `
   })
+
+  app.mount('#emit-example-argument')
   ```
 
 -  **参考**

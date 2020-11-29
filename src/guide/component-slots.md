@@ -54,7 +54,6 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 如果 `<todo-button>` 的 template 中**没有**包含一个 `<slot>` 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃
 
-
 ```html
 <!-- todo-button 组件模板 -->
 
@@ -122,7 +121,6 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 ```
 
 后备内容“Submit”将会被渲染：
-
 
 ```html
 <button type="submit">
@@ -222,7 +220,6 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 注意，**`v-slot` 只能添加在 `<template>` 上** ([只有一种例外情况](#独占默认插槽的缩写语法))
 
-
 ## 作用域插槽
 
 有时让插槽内容能够访问子组件中才有的数据是很有用的。当一个组件被用来渲染一个项目数组时，这是一个常见的情况，我们希望能够自定义每个项目的渲染方式。
@@ -281,8 +278,6 @@ app.component('todo-list', {
 <img src="/images/scoped-slot.png" width="611" height="auto" style="display: block; margin: 0 auto; max-width: 100%;" loading="lazy" alt="Scoped slot diagram"> 
 
 在这个例子中，我们选择将包含所有插槽 prop 的对象命名为 `slotProps`，但你也可以使用任意你喜欢的名字。
-
-
 
 ### 独占默认插槽的缩写语法
 
@@ -345,7 +340,6 @@ function (slotProps) {
 
 这意味着 `v-slot` 的值实际上可以是任何能够作为函数定义中的参数的 JavaScript 表达式。你也可以使用 [ES2015](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) 解构来传入具体的插槽 prop，如下：
 
-
 ```html
 <todo-list v-slot="{ item }">
   <i class="fas fa-check"></i>
@@ -354,7 +348,6 @@ function (slotProps) {
 ```
 
 这样可以使模板更简洁，尤其是在该插槽提供了多个 prop 的时候。它同样开启了 prop 重命名等其它可能，例如将 `item` 重命名为 `todo`：
-
 
 ```html
 <todo-list v-slot="{ item: todo }">
@@ -415,7 +408,6 @@ function (slotProps) {
   <span class="green">{{ item }}</span>
 </todo-list>
 ```
-
 
 如果你希望使用缩写的话，你必须始终以明确插槽名取而代之：
 

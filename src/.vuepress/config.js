@@ -3,7 +3,11 @@ const sidebar = {
     {
       title: 'Cookbook',
       collapsable: false,
-      children: ['/cookbook/', '/cookbook/editable-svg-icons']
+      children: [
+        '/cookbook/',
+        '/cookbook/editable-svg-icons',
+        '/cookbook/debugging-in-vscode'
+      ]
     }
   ],
   guide: [
@@ -94,7 +98,8 @@ const sidebar = {
         '/guide/single-file-component',
         '/guide/testing',
         '/guide/typescript-support',
-        '/guide/mobile'
+        '/guide/mobile',
+        '/guide/tooling/deployment'
       ]
     },
     {
@@ -173,9 +178,12 @@ const sidebar = {
         '/guide/migration/array-refs',
         '/guide/migration/async-components',
         '/guide/migration/attribute-coercion',
+        '/guide/migration/attrs-includes-class-style',
+        '/guide/migration/children',
         '/guide/migration/custom-directives',
         '/guide/migration/custom-elements-interop',
         '/guide/migration/data-option',
+        '/guide/migration/emits-option',
         '/guide/migration/events-api',
         '/guide/migration/filters',
         '/guide/migration/fragments',
@@ -185,13 +193,17 @@ const sidebar = {
         '/guide/migration/inline-template-attribute',
         '/guide/migration/key-attribute',
         '/guide/migration/keycode-modifiers',
+        '/guide/migration/listeners-removed',
         '/guide/migration/props-default-this',
         '/guide/migration/render-function-api',
         '/guide/migration/slots-unification',
         '/guide/migration/transition',
+        '/guide/migration/transition-group',
+        '/guide/migration/v-on-native-modifier-removed',
         '/guide/migration/v-model',
         '/guide/migration/v-if-v-for',
-        '/guide/migration/v-bind'
+        '/guide/migration/v-bind',
+        '/guide/migration/watch'
       ]
     },
   ],
@@ -300,7 +312,7 @@ module.exports = {
           {
             text: 'v3 迁移指南',
             link: '/guide/migration/introduction'
-          },
+          }
         ]
       },
       {
@@ -341,7 +353,7 @@ module.exports = {
               },
               {
                 text: 'Vuex',
-                link: 'https://vuex.vuejs.org/'
+                link: 'https://next.vuex.vuejs.org/'
               },
               {
                 text: 'Vue CLI',

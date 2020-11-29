@@ -36,6 +36,10 @@ test('an async feature', async () => {
 
 `Vue.nextTick()` 是一个全局的 API 直接暴露在单个 Vue 对象上——事实上，实例方法 `$nextTick()` 只是一个方便的包装 `Vue.nextTick()` 为方便起见，回调的 `this` 上下文自动绑定到当前实例。
 
+<!-- TODO: translation -->
+
+But what if you’ve never had to deal with manual DOM manipulation, nor are you using or testing async components in your app? Or, what if, for whatever reason, you prefer to use the good old `window.setTimeout()` instead? In such a case, the code for `nextTick()` will become dead code – that is, code that’s written but never used. And dead code is hardly a good thing, especially in our client-side context where every kilobyte matters.
+
 模块捆绑程序，如 [webpack](https://webpack.js.org/) 支持 [tree-shaking](网址：https://webpack.js/webpack/js//)，这是“死代码消除”的一个花哨术语。不幸的是，由于代码是如何在以前的 Vue 版本中编写的，全局 API `Vue.nextTick()` 不可摇动，将包含在最终捆绑中不管它们实际在哪里使用。
 
 ## 3.x 语法

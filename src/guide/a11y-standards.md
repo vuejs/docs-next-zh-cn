@@ -1,6 +1,5 @@
 # 标准
 
-
 万维网联盟 (W3C) 网络可访问性倡议 (WAI) 为不同的组件制定了 Web 可访问性标准：
 
 - [用户代理无障碍指南 (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)

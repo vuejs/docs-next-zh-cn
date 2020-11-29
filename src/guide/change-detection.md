@@ -60,7 +60,6 @@ vm.items.length = 2 // 不是响应式的
 
 为了解决第一种问题，以下两种方式都可以实现和 `vm.items[indexOfItem] = newValue` 相同的效果，同时也将在响应性系统内触发状态更新：
 
-
 ```js
 // Vue.set
 Vue.set(vm.items, indexOfItem, newValue)

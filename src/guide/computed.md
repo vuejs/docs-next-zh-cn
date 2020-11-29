@@ -60,28 +60,22 @@ Vue.createApp({
   computed: {
     // 计算属性的 getter
     publishedBooksMessage() {
-      // `this` points to the vm instance
+      // `this` 指向 vm 实例
       return this.author.books.length > 0 ? 'Yes' : 'No'
     }
   }
 }).mount('#computed-basics')
 ```
 
-Result：
+结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="NWqzrjr" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Computed basic example">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqzrjr">
-  Computed basic example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Computed basic example" slug="NWqzrjr" tab="js,result" :preview="false" />
 
 这里声明了一个计算属性 `publishedBooksMessage`。
 
 尝试更改应用程序 `data` 中 `books` 数组的值，你将看到 `publishedBooksMessage` 如何相应地更改。
 
 你可以像普通属性一样将数据绑定到模板中的计算属性。Vue 知道 `vm.publishedBookMessage` 依赖于 `vm.author.books`，因此当 `vm.author.books ` 发生改变时，所有依赖 `vm.publishedBookMessage` 绑定也会更新。而且最妙的是我们已经声明的方式创建了这个依赖关系：计算属性的 getter 函数没有副作用，这使得更易于测试和理解。
-
 
 ### 计算属性缓存 vs 方法
 
@@ -196,12 +190,7 @@ computed: {
 
 结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="GRJGqXp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Watch basic example">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/GRJGqXp">
-  Watch basic example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Watch basic example" slug="GRJGqXp" tab="result" :preview="false" />
 
 在这个示例中，使用 `watch` 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。
 

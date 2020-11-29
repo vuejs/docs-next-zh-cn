@@ -4,12 +4,7 @@
 
 除了核心功能默认内置的指令 (`v-model` 和 `v-show`)，Vue 也允许注册自定义指令。注意，在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。举个聚焦输入框的例子，如下：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="JjdxaJW" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Custom directives: basic example">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/JjdxaJW">
-  Custom directives: basic example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Custom directives: basic example" slug="JjdxaJW" :preview="false" />
 
 当页面加载时，该元素将获得焦点 (注意：`autofocus` 在移动版 Safari 上不工作)。事实上，只要你在打开这个页面后还没点击过任何内容，这个输入框就应当还是处于聚焦状态。此外，你可以单击 `Rerun` 按钮，输入将被聚焦。
 
@@ -127,12 +122,7 @@ app.mount('#dynamic-arguments-example')
 
 结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="YzXgGmv" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Custom directives: dynamic arguments">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/YzXgGmv">
-  Custom directives: dynamic arguments</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Custom directives: dynamic arguments" slug="YzXgGmv" :preview="false" />
 
 我们的定制指令现在已经足够灵活，可以支持一些不同的用例。为了使其更具动态性，我们还可以允许修改绑定值。让我们创建一个附加属性 `pinPadding`，并将其绑定到 `<input type="range">`。
 
@@ -173,12 +163,7 @@ app.directive('pin', {
 
 结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="rNOaZpj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Custom directives: dynamic arguments + dynamic binding">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/rNOaZpj">
-  Custom directives: dynamic arguments + dynamic binding</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Custom directives: dynamic arguments + dynamic binding" slug="rNOaZpj" :preview="false" />
 
 ## 函数简写
 
@@ -209,40 +194,26 @@ app.directive('demo', (el, binding) => {
 
 ## 在组件中使用
 
-在 3.0 中，有了片段支持，组件可能有多个根节点。如果在具有多个根节点的组件上使用自定义指令，则会产生问题。
+<!-- TODO: translation -->
 
-要解释自定义指令如何在 3.0 中的组件上工作的详细信息，我们首先需要了解自定义指令在 3.0 中是如何编译的。对于这样的指令：
-
-
-```vue-html
-<div v-demo="test"></div>
-```
-
-将大概编译成：
-
-```js
-const vDemo = resolveDirective('demo')
-
-return withDirectives(h('div'), [[vDemo, test]])
-```
-
-其中 `vDemo` 是用户编写的指令对象，其中包含 `mounted` 和 `updated` 等钩子。
-
-`withDirectives` 返回一个克隆的 VNode，其中用户钩子被包装并作为 VNode 生命周期钩子注入 (请参见[渲染函数](ender-function.html)更多详情)：
-
-```js
-{
-  onVnodeMounted(vnode) {
-    // call vDemo.mounted(...)
-  }
-}
-```
-**因此，自定义指令作为 VNode 数据的一部分完全包含在内。当在组件上使用自定义指令时，这些 `onVnodeXXX` 钩子作为无关的 prop 传递给组件，并以 `this.$attrs` 结束**。
-
-这也意味着可以像这样在模板中直接挂接到元素的生命周期中，这在涉及到自定义指令时非常方便：
+When used on components, custom directive will always apply to component's root node, similarly to [non-prop attributes](component-attrs.html).
 
 ```vue-html
-<div @vnodeMounted="myHook" />
+<my-component v-demo="test"></my-component>
 ```
 
-这与 [attribute fallthrough behavior](component-attrs.html)。因此，组件上自定义指令的规则将与其他无关 attribute 相同：由子组件决定在哪里以及是否应用它。当子组件在内部元素上使用 `v-bind="$attrs"` 时，它也将应用对其使用的任何自定义指令。
+```js
+app.component('my-component', {
+  template: `
+    <div> // v-demo directive will be applied here
+      <span>My component content</span>
+    </div>
+  `
+})
+```
+
+<!-- TODO: translation -->
+
+Unlike attributes, directives can't be passed to a different element with `v-bind="$attrs"`.
+
+With [fragments](/guide/migration/fragments.html#overview) support, components can potentially have more than one root nodes. When applied to a multi-root component, directive will be ignored and the warning will be thrown.

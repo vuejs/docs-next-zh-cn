@@ -68,6 +68,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [`<template v-for>` 和非 `v-for` 节点上 `key` 用法已更改](/guide/migration/key-attribute.html)
 - [在同一元素上使用的 `v-if` 和 `v-for` 优先级已更改](/guide/migration/v-if-v-for.html)
 - [`v-bind="object"` 现在排序敏感](/guide/migration/v-bind.html)
+- [`v-on:event.native` 修饰符已移除](./v-on-native-modifier-removed.md)
 - [`v-for` 中的 `ref` 不再注册 ref 数组](/guide/migration/array-refs.html)
 
 ### 组件
@@ -75,11 +76,14 @@ Vue 3 中需要关注的一些新功能包括：
 - [只能使用普通函数创建功能组件](/guide/migration/functional-components.html)
 - [`functional` 属性在单文件组件 (SFC) `<template>` 和 `functional` 组件选项被抛弃](/guide/migration/functional-components.html)
 - [异步组件现在需要 `defineAsyncComponent` 方法来创建](/guide/migration/async-components.html)
+- [Component events should now be declared with the `emits` option](./emits-option.md) <!-- TODO: translation -->
 
 ### 渲染函数
 
 - [渲染函数 API 改变](/guide/migration/render-function-api.html)
 - [`$scopedSlots` property 已删除，所有插槽都通过 `$slots` 作为函数暴露](/guide/migration/slots-unification.html)
+- [`$listeners` has been removed / merged into `$attrs`](./listeners-removed) <!-- TODO: translation -->
+- [`$attrs` now includes `class` and `style` attributes](./attrs-includes-class-style.md) <!-- TODO: translation -->
 
 - [自定义指令 API 已更改为与组件生命周期一致](/guide/migration/custom-directives.html)
 - 一些转换 class 被重命名了：
@@ -98,6 +102,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [来自 mixin 的 `data` 选项现在可简单地合并](/guide/migration/data-option.html#mixin-merge-behavior-change)
 - [attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
 - [一些过渡 class 被重命名](/guide/migration/transition.html)
+- [`<TransitionGroup>` now renders no wrapper element by default](/guide/migration/transition-group.html) <!-- TODO: translation -->
 - [组建 watch 选项](/api/options-data.html#watch)和[实例方法 `$watch`](/api/instance-methods.html#watch) 不再支持以点分隔的字符串路径。请改用计算属性函数作为参数。
 - `<template>` 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
 - 在 Vue 2.x 中，应用根容器的 `outerHTML` 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。Vue 3.x 现在使用应用容器的 `innerHTML`，这意味着容器本身不再被视为模板的一部分。
@@ -108,6 +113,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [$on，$off 和 $once 实例方法](/guide/migration/events-api.html)
 - [过滤](/guide/migration/filters.html)
 - [内联模板 attribute](/guide/migration/inline-template-attribute.html)
+- [`$children` instance property](/guide/migration/children.md) <!-- TODO: translation -->
 - `$destroy` 实例方法。用户不应再手动管理单个 Vue 组件的生命周期。
 
 ## 支持的库
@@ -116,21 +122,21 @@ Vue 3 中需要关注的一些新功能包括：
 
 ### Vue CLI
 
-从 v4.5.0 开始，`vue-cli` 现在提供了内置选项，可在创建新项目时选择 Vue 3 预设。现在可以升级 `vue-cli` 并运行 `vue create` 来创建 Vue 3 项目。
+从 v4.5.0 开始，`vue-cli` 现在提供了内置选项，可在创建新项目时选择 Vue 3。现在可以升级 `vue-cli` 并运行 `vue create` 来创建 Vue 3 项目。
 
 ### Vue Router
 
-Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看 [README](https://github.com/vuejs/vue-router-next#vue-router-next-) 中完整的细节，
+Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看[迁移指南](https://next.router.vuejs.org/guide/migration/)中完整的细节，
 
-- [![beta](https://img.shields.io/npm/v/vue-router/next.svg)](https://www.npmjs.com/package/vue-router/v/next)
+- [文档](https://next.router.vuejs.org/)
 - [Github](https://github.com/vuejs/vue-router-next)
 - [RFCs](https://github.com/vuejs/rfcs/pulls?q=is%3Apr+is%3Amerged+label%3Arouter)
 
 ### Vuex
 
-Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破性变化是[插件的安装方式](https://github.com/vuejs/vuex/tree/4.0#breaking-changes)。
+Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破性变化是[插件的安装方式](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes)。
 
-- [![beta](https://img.shields.io/npm/v/vuex/next.svg)](https://www.npmjs.com/package/vuex/v/next)
+- [文档](https://next.vuex.vuejs.org/)
 - [Github](https://github.com/vuejs/vuex/tree/4.0)
 
 ### Devtools Extension
@@ -151,11 +157,11 @@ Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破
 
 | 项目               | npm | 仓库 |
 | -------------------   | --- | ---- |
-| @vue/babel-plugin-jsx | [![rc][jsx-badge]][jsx-npm] | [[Github][jsx-code]] |
+| @vue/babel-plugin-jsx | [![rc][jsx-badge]][jsx-npm]   | [[Github][jsx-code]] |
 | eslint-plugin-vue     | [![beta][epv-badge]][epv-npm] | [[Github][epv-code]] |
 | @vue/test-utils       | [![beta][vtu-badge]][vtu-npm] | [[Github][vtu-code]] |
 | vue-class-component   | [![beta][vcc-badge]][vcc-npm] | [[Github][vcc-code]] |
-| vue-loader            | [![beta][vl-badge]][vl-npm] | [[Github][vl-code]] |
+| vue-loader            | [![rc][vl-badge]][vl-npm]     | [[Github][vl-code]]  |
 | rollup-plugin-vue     | [![beta][rpv-badge]][rpv-npm] | [[Github][rpv-code]] |
 
 [jsx-badge]: https://img.shields.io/npm/v/@vue/babel-plugin-jsx.svg
@@ -189,3 +195,9 @@ Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破
 [rpv-badge]: https://img.shields.io/npm/v/rollup-plugin-vue/next.svg
 [rpv-npm]: https://www.npmjs.com/package/rollup-plugin-vue/v/next
 [rpv-code]: https://github.com/vuejs/rollup-plugin-vue/tree/next
+
+<!-- TODO: translation -->
+
+::: info
+For additional information on Vue 3 compatibility with libraries and plugins, be sure to check out [this issue in awesome-vue](https://github.com/vuejs/awesome-vue/issues/3544).
+:::

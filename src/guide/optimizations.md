@@ -7,10 +7,7 @@
 现在我们知道了侦听器是如何更新组件的，你可能会问这些更改最终是如何应用到 DOM 中的！也许你以前听说过虚拟 DOM，包括 Vue 在内的许多框架都使用这种方式来确保我们的接口能够有效地反映我们在 JavaScript 中更新的更改
 
 <div class="reactivecontent">
-  <iframe height="500" style="width: 100%;" scrolling="no" title="How does the Virtual DOM work?" src="https://codepen.io/sdras/embed/RwwQapa?height=500&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-    See the Pen <a href='https://codepen.io/sdras/pen/RwwQapa'>How does the Virtual DOM work?</a> by Sarah Drasner
-    (<a href='https://codepen.io/sdras'>@sdras</a>) on <a href='https://codepen.io'>CodePen</a>.
-  </iframe>
+  <common-codepen-snippet title="How does the Virtual DOM work?" slug="RwwQapa" tab="result" theme="light" :height="500" :team="false" user="sdras" name="Sarah Drasner" :editable="false" :preview="false" />
 </div>
 
 我们用 JavaScript 复制了一个名为 Virtual Dom 的 DOM，我们这样做是因为用 JavaScript 接触 DOM 的计算成本很高。虽然用 JavaScript 执行更新很廉价，但是找到所需的 DOM 节点并用 JS 更新它们的成本很高。所以我们批处理调用，同时更改 DOM。

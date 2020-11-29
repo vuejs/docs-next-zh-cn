@@ -26,7 +26,6 @@ Vue.directive('focus', {
 
 虽然这种声明方式很方便，但它也会导致一些问题。从技术上讲，Vue 2 没有“app”的概念，我们定义的应用只是通过 `new Vue()` 创建的根 Vue 实例。从同一个 Vue 构造函数**创建的每个根实例共享相同的全局配置**，因此：
 
-
 - 在测试期间，全局配置很容易意外地污染其他测试用例。用户需要仔细存储原始全局配置，并在每次测试后恢复 (例如重置 `Vue.config.errorHandler`)。有些 API 像 `Vue.use` 以及 `Vue.mixin` 甚至连恢复效果的方法都没有，这使得涉及插件的测试特别棘手。实际上，vue-test-utils 必须实现一个特殊的 API `createLocalVue` 来处理此问题：
 
 ```js
@@ -75,6 +74,7 @@ const app = createApp({})
 | Vue.directive              | app.directive                                                                                |
 | Vue.mixin                  | app.mixin                                                                                    |
 | Vue.use                    | app.use ([见下方](#a-note-for-plugin-authors))                                               |
+| Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-replaced-by-config-globalproperties))   | 
 
 所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
 
@@ -104,6 +104,27 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 - 如果 `config.isCustomElement` 当使用仅运行时构建时时，将发出警告，指示用户在生成设置中传递该选项；
 - 这将是 Vue CLI 配置中新的顶层选项。
 :::
+
+<!-- TODO: translation -->
+
+### `Vue.prototype` Replaced by `config.globalProperties`
+
+In Vue 2, `Vue.prototype` was commonly used to add properties that would be accessible in all components.
+
+The equivalent in Vue 3 is [`config.globalProperties`](/api/application-config.html#globalproperties). These properties will be copied across as part of instantiating a component within the application:
+
+```js
+// before - Vue 2
+Vue.prototype.$http = () => {}
+```
+
+```js
+// after - Vue 3
+const app = Vue.createApp({})
+app.config.globalProperties.$http = () => {}
+```
+
+Using `provide` (discussed [below](#provide-inject)) should also be considered as an alternative to `globalProperties`.
 
 ### 插件使用者须知
 
@@ -174,6 +195,10 @@ export default {
   template: `<div>{{ book }}</div>`
 }
 ```
+
+<!-- TODO: translation -->
+
+Using `provide` is especially useful when writing a plugin, as an alternative to `globalProperties`. 
 
 ## 在应用之间共享配置
 

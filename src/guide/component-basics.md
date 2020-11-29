@@ -37,13 +37,7 @@ app.component('button-counter', {
 ```js
 app.mount('#components-demo')
 ```
-
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="abORVEJ" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abORVEJ">
-  Component basics</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Component basics" slug="abORVEJ" tab="js,result" :preview="false" />
 
 因为组件是可复用的组件实例，所以它们与 new Vue 接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。仅有的例外是像 `el` 这样根实例特有的选项。
 
@@ -59,12 +53,7 @@ app.mount('#components-demo')
 </div>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="rNVqYvM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: reusing components">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/rNVqYvM">
-  Component basics: reusing components</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Component basics: reusing components" slug="rNVqYvM" tab="html,result" :preview="false" />
 
 注意当点击按钮时，每个组件都会各自独立维护它的 `count`。因为你每用一次组件，就会有一个它的**新实例**被创建。
 
@@ -119,12 +108,7 @@ app.mount('#blog-post-demo')
 </div>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="PoqyOaX" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: passing props">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/PoqyOaX">
-  Component basics: passing props</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Component basics: passing props" slug="PoqyOaX" tab="html,result" :preview="false" />
 
 然而在一个典型的应用中，你可能在 `data` 里有一个博文的数组：
 
@@ -212,7 +196,6 @@ app.component('blog-post', {
 })
 ```
 
-
 问题是这个按钮不会做任何事：
 
 ```html
@@ -237,12 +220,7 @@ app.component('blog-post', {
 
 多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级将接收事件并更新 `postFontSize` 值。
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="KKpGyrp" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: emitting events">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/KKpGyrp">
-  Component basics: emitting events</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="html,result" :preview="false" />
 
 我们可以在组件的 `emits` 选项中列出已抛出的事件。
 
@@ -324,6 +302,7 @@ methods: {
 ```js
 app.component('custom-input', {
   props: ['modelValue'],
+  emits: ['update:modelValue'],
   template: `
     <input
       :value="modelValue"
@@ -348,6 +327,7 @@ app.component('custom-input', {
 ```js
 app.component('custom-input', {
   props: ['modelValue'],
+  emits: ['update:modelValue'],
   template: `
     <input v-model="value">
   `,
@@ -377,12 +357,7 @@ app.component('custom-input', {
 
 可能会渲染出这样的东西：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="jOPeaob" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: slots">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/jOPeaob">
-  Component basics: slots</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Component basics: slots" slug="jOPeaob" :preview="false" />
 
 幸好，Vue 自定义的 `<slot>` 元素让这变得非常简单：
 
@@ -405,12 +380,7 @@ app.component('alert-box', {
 
 有的时候，在不同组件之间进行动态切换是非常有用的，比如在一个多标签的界面里：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="oNXaoKy" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Component basics: dynamic components">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/oNXaoKy">
-  Component basics: dynamic components</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Component basics: dynamic components" slug="oNXaoKy" :preview="false" />
 
 上述内容可以通过 Vue 的 `<component>` 元素加一个特殊的 `is` attribute 来实现：
 
@@ -464,7 +434,6 @@ app.component('alert-box', {
 
 另外，HTML 属性名不区分大小写，因此浏览器将把所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
 
-
 ```js
 //  在JavaScript中的驼峰
 
@@ -487,7 +456,6 @@ app.component('blog-post', {
 - 字符串模板 (例如：`template: '...'`)
 - [单文件组件](single-file-component.html)
 - `<script type="text/x-template">`
-
 
 到这里，你需要了解的解析 DOM 模板时的注意事项——实际上也是 Vue 的全部*必要*内容，大概就是这些了。恭喜你！接下来还有很多东西要去学习，不过首先，我们推荐你先休息一下，试用一下 Vue，自己随意做些好玩的东西。
 
