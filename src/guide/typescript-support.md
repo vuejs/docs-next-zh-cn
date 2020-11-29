@@ -27,6 +27,31 @@
 
 参见 [TypeScript 编译选项文档](https://www.typescriptlang.org/docs/handbook/compiler-options.html)查看更多细节。
 
+## Webpack 配置
+
+如果你使用自定义 Webpack 配置，需要配置 ' ts-loader ' 来解析 vue 文件里的 `<script lang="ts">` 代码块：
+
+```js{10}
+// webpack.config.js
+module.exports = {
+  ...
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      }
+      ...
+```
+
 ## 开发工具
 
 ### 项目创建
