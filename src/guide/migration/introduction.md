@@ -122,7 +122,7 @@ Vue 3 中需要关注的一些新功能包括：
 
 ### Vue CLI
 
-从 v4.5.0 开始，`vue-cli` 现在提供了内置选项，可在创建新项目时选择 Vue 3 。现在可以升级 `vue-cli` 并运行 `vue create` 来创建 Vue 3 项目。
+从 v4.5.0 开始，`vue-cli` 现在提供了内置选项，可在创建新项目时选择 Vue 3。现在可以升级 `vue-cli` 并运行 `vue create` 来创建 Vue 3 项目。
 
 ### Vue Router
 
