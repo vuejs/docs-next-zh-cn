@@ -25,43 +25,53 @@ export default {
       default: null,
       required: true,
     },
+
     slug: {
       type: String,
       default: null,
       required: true,
     },
+
     tab: {
       type: String,
       default: 'result',
     },
+
     team: {
       type: Boolean,
       default: true,
     },
+
     user: {
       type: String,
       default: 'Vue',
     },
+
     name: {
       type: String,
       default: null,
     },
+
     height: {
       type: Number,
       default: 300,
     },
+
     theme: {
       type: String,
       default: '39028',
     },
+
     preview: {
       type: Boolean,
       default: true,
     },
+
     editable: {
       type: Boolean,
       default: true,
     },
+
     version: {
       type: String,
       default: null,

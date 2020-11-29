@@ -16,7 +16,7 @@ export default {
       }
     }
   },
-  data(){
+  data() {
     return {
       validBadges
     }

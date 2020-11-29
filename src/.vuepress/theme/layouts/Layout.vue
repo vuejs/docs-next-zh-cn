@@ -53,7 +53,7 @@ export default {
 
   data () {
     return {
-       isSidebarOpen: false,
+      isSidebarOpen: false,
       isBannerOpen:  true,
       isMenuFixed: false,
       nameStorage: 'vuemastery-black-firday-2020-banner',
@@ -115,7 +115,7 @@ export default {
       this.isSidebarOpen = false
     })
 
-     // Load component according to user preferences
+    // Load component according to user preferences
     if (!localStorage.getItem(this.nameStorage)) {
       this.initBanner()
     } else {
@@ -149,7 +149,7 @@ export default {
       }
     },
 
-        //  Vue Mastery Banner
+    //  Vue Mastery Banner
     initBanner() {
       // Add event listeners
       this.toggleBannerEvents(true)
@@ -160,6 +160,7 @@ export default {
       // Check current page offset position
       this.isMenuFixed = this.isUnderBanner()
     },
+
     closeBanner (e) {
       // Remove events
       this.toggleBannerEvents(false)
@@ -168,12 +169,15 @@ export default {
       // Save action in the local storage
       localStorage.setItem(this.nameStorage, true)
     },
+
     getMenuPosition() {
       this.menuPosition = this.$refs.vueMasteryBanner.$el.clientHeight
     },
+
     isUnderBanner() {
       return window.pageYOffset > this.menuPosition
     },
+
     fixMenuAfterBanner() {
       if (this.isUnderBanner()) {
         if (!this.isMenuFixed) {
@@ -185,6 +189,7 @@ export default {
         this.isMenuFixed = false
       }
     },
+
     toggleBannerEvents(on) {
       // Add or remove event listerners attached to the DOM
       let method = on ? "addEventListener" : "removeEventListener"

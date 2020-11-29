@@ -312,7 +312,7 @@ module.exports = {
           {
             text: 'v3 迁移指南',
             link: '/guide/migration/introduction'
-          },
+          }
         ]
       },
       {
