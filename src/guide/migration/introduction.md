@@ -126,7 +126,7 @@ Vue 3 中需要关注的一些新功能包括：
 
 ### Vue Router
 
-Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看 [迁移指南](https://next.router.vuejs.org/guide/migration/) 中完整的细节，
+Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看[迁移指南](https://next.router.vuejs.org/guide/migration/)中完整的细节，
 
 - [文档](https://next.router.vuejs.org/)
 - [Github](https://github.com/vuejs/vue-router-next)
