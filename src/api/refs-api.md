@@ -144,6 +144,10 @@ export default {
 }
 ```
 
+<!-- TODO: translation -->
+
+`toRefs` will only generate refs for properties that are included in the source object. To create a ref for a specific property use [`toRef`](#toref) instead.
+
 ## `isRef`
 
 Checks if a value is a ref object。

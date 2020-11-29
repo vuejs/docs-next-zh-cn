@@ -84,14 +84,12 @@ app.component('custom-form', {
 默认情况下，组件上的 `v-model` 使用 `modelValue` 作为 prop 和 `update:modelValue` 作为事件。我们可以通过向 `v-model` 传递参数来修改这些名称：
 
 ```html
-<my-component v-model:foo="bar"></my-component>
+<my-component v-model:title="bookTitle"></my-component>
 ```
 
-在本例中，子组件将需要一个 `foo` prop 并发出 `update:foo` 要同步的事件：
+在本例中，子组件将需要一个 `title` prop 并发出 `update:title` 要同步的事件：
 
 ```js
-const app = Vue.createApp({})
-
 app.component('my-component', {
   props: {
     foo: String
@@ -100,14 +98,14 @@ app.component('my-component', {
   template: `
     <input 
       type="text"
-      :value="foo"
-      @input="$emit('update:foo', $event.target.value)">
+      :value="title"
+      @input="$emit('update:title', $event.target.value)">
   `
 })
 ```
 
 ```html
-<my-component v-model:foo="bar"></my-component>
+<my-component v-model:title="bookTitle"></my-component>
 ```
 
 ## 多个 `v-model` 绑定
@@ -124,8 +122,6 @@ app.component('my-component', {
 ```
 
 ```js
-const app = Vue.createApp({})
-
 app.component('user-name', {
   props: {
     firstName: String,
