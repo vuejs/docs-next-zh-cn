@@ -42,7 +42,7 @@ const vm = app.mount('#app')
 
 与大多数应用方法不同的是，`mount` 不返回应用本身。相反，它返回的是根组件实例。
 
-虽然没有完全遵循 [MVVM 模型](https://en.wikipedia.org/wiki/Model_View_ViewMode)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示组件实例。
+虽然没有完全遵循 [MVVM 模型](https://en.wikipedia.org/wiki/Model_View_ViewModel)，但是 Vue 的设计也受到了它的启发。因此在文档中经常会使用 `vm` (ViewModel 的缩写) 这个变量名表示组件实例。
 
 尽管本页面上的所有示例都只需要一个单一的组件就可以，但是大多数的真实应用都是被组织成一个嵌套的、可重用的组件树。举个例子，一个 todo 应用组件树可能是这样的：
 
