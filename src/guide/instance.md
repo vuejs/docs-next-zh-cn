@@ -8,7 +8,7 @@
 const app = Vue.createApp({ /* 选项 */ })
 ```
 
-该应用实例是用来在应用中注册“全局”组件的。我们将在后面的指南中详细讨论，简单的例子：
+该应用实例是用来在应用中注册“全局”组件的。我们会在后面的指南中详细讨论，简单的例子：
 
 ```js
 const app = Vue.createApp({})
@@ -26,13 +26,13 @@ Vue.createApp({})
   .use(LocalePlugin)
 ```
 
-你可以在 [API 参考](../api/application-api.html) 中浏览完整的应用 API。
+可以在 [API 参考](./api/application-api.html)中浏览完整的应用 API。
 
 ## 根组件
 
 传递给 `createApp` 的选项用于配置**根组件**。当我们**挂载**应用时，该组件被用作渲染的起点。
 
-一个应用需要被挂载到一个 DOM 元素中。例如，如果我们想把一个 Vue 应用挂载到 `<div id="app"></div>`，我们应该传递 `#app`：
+一个应用需要被挂载到一个 DOM 元素中。例如，如果你想把一个 Vue 应用挂载到 `<div id="app"></div>`，应该传入 `#app`：
 
 ```js
 const RootComponent = { /* 选项 */ }
@@ -59,7 +59,7 @@ Root Component
 
 每个组件将有自己的组件实例 `vm`。对于一些组件，如 `TodoItem`，在任何时候都可能有多个实例渲染。这个应用中的所有组件实例将共享同一个应用实例。
 
-我们会在稍后的[组件系统](component-basics.html)章节具体展开。不过现在，你只需要明白根组件与其他组件没什么不同，配置选项是一样的，所对应的组件实例行为也是一样的。
+我们会在稍后的[组件基础](component-basics.html)章节具体展开。不过现在，你只需要明白根组件与其他组件没什么不同，配置选项是一样的，所对应的组件实例行为也是一样的。
 
 ## 组件实例 property
 
@@ -107,6 +107,6 @@ Vue.createApp({
 
 ## 生命周期图示
 
-下图展示了实例的生命周期。你不需要立马弄明白所有的东西，不过随着你的不断学习和使用，它的参考价值会越来越高。
+下图展示了实例的生命周期。我们不需要立马弄明白所有的东西，不过随着不断学习和使用，它的参考价值会越来越高。
 
 <img src="/images/lifecycle.png" width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="实例的生命周期">
