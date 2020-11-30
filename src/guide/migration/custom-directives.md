@@ -7,12 +7,9 @@ badges:
 
 ## 概览
 
-下面是对变更的简要总结：
+<!-- TODO: translation -->
 
-- API 已重命名，以便更好地与组件生命周期保持一致
-- 自定义指令将由子组件通过 `v-bind="$attrs"`
-
-更多信息，请继续阅读！
+The hook functions for directives have been renamed to better align with the component lifecycle.
 
 ## 2.x 语法
 
@@ -27,7 +24,7 @@ badges:
 下面是一个例子：
 
 ```html
-<p v-highlight="yellow">高亮显示此文本亮黄色</p>
+<p v-highlight="'yellow'">高亮显示此文本亮黄色</p>
 ```
 
 ```js
@@ -58,7 +55,7 @@ Vue.directive('highlight', {
 const MyDirective = {
   beforeMount(el, binding, vnode, prevVnode) {},
   mounted() {},
-  beforeUpdate() {},
+  beforeUpdate() {}, // 新
   updated() {},
   beforeUnmount() {}, // 新
   unmounted() {}
@@ -68,7 +65,7 @@ const MyDirective = {
 生成的 API 可以这样使用，与前面的示例相同：
 
 ```html
-<p v-highlight="yellow">高亮显示此文本亮黄色</p>
+<p v-highlight="'yellow'">高亮显示此文本亮黄色</p>
 ```
 
 ```js
@@ -105,26 +102,6 @@ mounted(el, binding, vnode) {
 }
 ```
 
-## 实施细节
-
-在 Vue 3 中，我们现在支持片段，这允许我们为每个组件返回多个 DOM 节点。你可以想象，对于具有多个 `<li>` 的组件或一个表的子元素这样的组件有多方便：
-
-```html
-<template>
-  <li>Hello</li>
-  <li>Vue</li>
-  <li>Devs!</li>
-</template>
-```
-
-如此灵活，我们可能会遇到一个定制指令的问题，它可能有多个根节点。
-
-因此，自定义指令现在作为虚拟 DOM 节点数据的一部分包含在内。当在组件上使用自定义指令时，钩子作为无关的 prop 传递到组件，并以 `this.$attrs` 结束。
-
-这也意味着可以像这样在模板中直接挂接到元素的生命周期中，这在涉及到自定义指令时非常方便：
-
-```html
-<div @vnodeMounted="myHook" />
-```
-
-这与属性 fallthrough 行为是一致的，因此，当子组件在内部元素上使用 `v-bind="$attrs"` 时，它也将应用对其使用的任何自定义指令。
+:::warning
+With [fragments](/guide/migration/fragments.html#overview) support, components can potentially have more than one root node. When applied to a multi-root component, a directive will be ignored and a warning will be logged.
+:::

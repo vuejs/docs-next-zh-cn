@@ -1,6 +1,6 @@
 # Teleport
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how to use teleport with Vue School">通过 Vue School 的免费课程，学习如何使用 teleport。</a></div>
+<VideoLesson href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" title="Learn how to use teleport with Vue School">通过 Vue School 的免费课程，学习如何使用 teleport。</VideoLesson>
 
 Vue 鼓励我们通过将 UI 和相关行为封装到组件中来构建 UI。我们可以将它们嵌套在另一个内部，以构建一个组成应用程序 UI 的树。
 
@@ -86,12 +86,7 @@ app.component('modal-button', {
 
 因此，一旦我们单击按钮打开模态框，Vue 将正确地将模态框内容渲染为 `body` 标签的子级。
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="gOPNvjR" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vue 3 Teleport">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/gOPNvjR">
-  Vue 3 Teleport</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Vue 3 Teleport" slug="gOPNvjR" tab="js,result" />
 
 ## 与 Vue components 一起使用
 

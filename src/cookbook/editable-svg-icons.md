@@ -143,7 +143,7 @@ export default {
 
 我们通过 `ref` 对需要移动的路径做了分组，因为剪刀的两侧需要同步移动，所以我们创建了一个可以复用的函数，在这个函数中将 `ref` 作为参数传递进去。同时使用 GreenSock 帮助解决跨浏览器的动画支持和 `transform-origin` 问题。
 
-<p data-height="300" data-theme-id="0" data-slug-hash="dJRpgY" data-default-tab="result" data-user="Vue" data-embed-version="2" data-pen-title="Editable SVG Icon System: Animated icon" class="codepen">See the Pen <a href="https://codepen.io/team/Vue/pen/dJRpgY/">Editable SVG Icon System: Animated icon</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>) on <a href="https://codepen.io">CodePen</a>.</p><script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Editable SVG Icon System: Animated icon" slug="dJRpgY" :preview="false" :editable="false" version="2" theme="0" />
 
 相当容易实现！并且易于即时更新。
 

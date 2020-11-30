@@ -104,7 +104,7 @@
 
 - **Props：**
 
-  - `tag` - `string`，默认为 `span`。
+  - `tag` - `string`, if not defined, renders without a root element. <!-- TODO: translation -->
   - `move-class` - 覆盖移动过渡期间应用的 CSS 类。
   - 除了 `mode`，其他 attribute 和 `<transition>` 相同。
 
@@ -114,7 +114,8 @@
 
 - **用法：**
 
-  `<transition-group>` 元素作为**多个**元素/组件的过渡效果。`<transition-group>` 渲染一个真实的 DOM 元素。默认渲染 `<span>`，可以通过 `tag` attribute 配置哪个元素应该被渲染。
+  <!-- TODO: translation -->
+  `<transition-group>` provides transition effects for **multiple** elements/components. By default it doesn't render a wrapper DOM element, but one can be defined via the `tag` attribute.
 
   注意，每个 `<transition-group>` 的子节点必须有[**独立的 key**](./special-attributes.html#key)，动画才能正常工作
 
@@ -167,7 +168,6 @@
   ```
 
   注意，`<keep-alive>` 是用在其一个直属的子组件被切换的情形。如果你在其中有 `v-for` 则不会工作。如果有上述的多个条件性的子元素，`<keep-alive>` 要求同时只有一个子元素被渲染。
-
 
 - **`include` 和 `exclude`**
 

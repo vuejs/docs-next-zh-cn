@@ -98,7 +98,6 @@ type StopHandle = () => void
 
 侦听器 data 源可以是返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
 
-
 ```js
 // 侦听一个getter
 const state = reactive({ count: 0 })

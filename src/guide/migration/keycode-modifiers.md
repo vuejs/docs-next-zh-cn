@@ -44,7 +44,6 @@ Vue.config.keyCodes = {
 
 从[`KeyboardEvent.keyCode` has been deprecated](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) 开始，Vue 3 继续支持这一点就不再有意义了。因此，现在建议对任何要用作修饰符的键使用 kebab-cased (短横线) 大小写名称。
 
-
 ```html
 <!-- Vue 3 在 v-on 上使用 按键修饰符 -->
 <input v-on:keyup.delete="confirmDelete" />

@@ -8,7 +8,7 @@
 
 ```js
 const count = ref(1)
-const plusOne = computed(() => count.value++)
+const plusOne = computed(() => count.value + 1)
 
 console.log(plusOne.value) // 2
 
@@ -141,7 +141,6 @@ watchEffect(
 ```
 
 `flush` 选项还接受 `sync`，这将强制效果始终同步触发。然而，这是低效的，应该很少需要。
-
 
 ### 侦听器调试
 

@@ -1,7 +1,7 @@
 # 介绍
 
 ::: tip 提示
-已经了解 Vue 2，只想了解 Vue 3 的新功能可以参阅[迁移指南](/guide/migration/introduction.html)!
+已经了解 Vue 2，只想了解 Vue 3 的新功能可以参阅[迁移指南](/guide/migration/introduction.html)！
 :::
 
 ## Vue.js 是什么
@@ -11,6 +11,8 @@ Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**
 如果你想在深入学习 Vue 之前对它有更多了解，我们<a id="modal-player" href="#">制作了一个视频</a>，带你了解其核心概念和一个示例工程。
 
 如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看[对比其它框架](TODO:comparison.html)。
+
+<VideoLesson href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3" title="Watch a free video course on Vue Mastery">Watch a free video course on Vue Mastery</VideoLesson>
 
 ## 起步
 
@@ -91,12 +93,7 @@ const AttributeBinding = {
 Vue.createApp(AttributeBinding).mount('#bind-attribute')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="KKpRVvJ" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Attribute dynamic binding">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/KKpRVvJ">
-  Attribute dynamic binding</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Attribute dynamic binding" slug="KKpRVvJ" />
 
 这里我们遇到了一点新东西。你看到的 `v-bind` attribute 被称为**指令**。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“_将这个元素节点的 `title` attribute 和当前活跃实例的 `message` property 保持一致_”。
 
@@ -131,12 +128,7 @@ const EventHandling = {
 Vue.createApp(EventHandling).mount('#event-handling')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="dyoeGjW" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Event handling">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/dyoeGjW">
-  Event handling</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Event handling" slug="dyoeGjW" />
 
 注意在这个方法中，我们更新了应用的状态，但没有触碰 DOM——所有的 DOM 操作都由 Vue 来处理，你编写的代码只需要关注逻辑层面即可。
 
@@ -161,12 +153,7 @@ const TwoWayBinding = {
 Vue.createApp(TwoWayBinding).mount('#two-way-binding')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="poJVgZm" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Two-way binding">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/poJVgZm">
-  Two-way binding</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Two-way binding" slug="poJVgZm" />
 
 ## 条件与循环
 
@@ -194,12 +181,7 @@ Vue.createApp(ConditionalRendering).mount('#conditional-rendering')
 
 你可以在下面的沙盒中将 `seen` 从 `true` 更改为 `false`，以检查效果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="oNXdbpB" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Conditional rendering">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/oNXdbpB">
-  Conditional rendering</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Conditional rendering" slug="oNXdbpB" tab="js,result" />
 
 还有其它很多指令，每个都有特殊的功能。例如，`v-for` 指令可以绑定数组的数据来渲染一个项目列表：
 
@@ -229,12 +211,7 @@ const ListRendering = {
 Vue.createApp(ListRendering).mount('#list-rendering')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="mdJLVXq" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="List rendering">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/mdJLVXq">
-  List rendering</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="List rendering" slug="mdJLVXq" />
 
 ## 组件化应用构建
 
@@ -267,7 +244,6 @@ app.mount(...)
 ```
 
 但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](components.html#通过-Prop-向子组件传递数据)：
-
 
 ```js
 app.component('todo-item', {
@@ -319,12 +295,7 @@ app.component('todo-item', {
 app.mount('#todo-list-app')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="VwLxeEz" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Intro-Components-1">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/VwLxeEz">
-  Intro-Components-1</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Intro-Components-1" slug="VwLxeEz" />
 
 尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 `<todo-item>` 组件，提供更为复杂的模板和逻辑，而不会影响到父应用。
 

@@ -37,7 +37,6 @@ const asyncPage = {
 
 ## 3.x 语法
 
-
 现在，在 Vue 3 中，由于函数式组件被定义为纯函数，因此异步组件的定义需要通过将其包装在新的 `defineAsyncComponent` 助手方法中来显式地定义：
 
 ```js
