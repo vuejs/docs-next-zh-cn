@@ -3,17 +3,15 @@ badges:
   - removed
 ---
 
-<!-- TODO: translation -->
-
 # $children <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-The `$children` instance property has been removed from Vue 3.0 and is no longer supported.
+`$children` 实例属性已从 Vue 3.0 中移除，不再支持。
 
-## 2.x Syntax
+## 2.x 语法
 
-In 2.x, developers could access direct child components of the current instance with `this.$children`:
+在 2.x 中，开发者可以使用 `this.$children` 直接访问当前实例的子组件：
 
 ```vue
 <template>
@@ -37,6 +35,6 @@ export default {
 </script>
 ```
 
-## 3.x Update
+## 3.x 更新
 
-In 3.x, the `$children` property is removed and no longer supported. Instead, if you need to access a child component instance, we recommend using [$refs](/guide/component-template-refs.html#template-refs).
+在 3.x 中，`$children` 属性已移除，不再支持。相反地，如果你需要访问子组件实例，我们建议使用 [$refs](/guide/component-template-refs.html#template-refs)。
