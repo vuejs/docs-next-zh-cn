@@ -1,20 +1,20 @@
 ---
-title: emits Option
+title: emits 选项
 badges:
   - new
 ---
 
 <!-- TODO: translation -->
 
-# `emits` Option <MigrationBadges :badges="$frontmatter.badges" />
+# `emits` 选项 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概览
 
-Vue 3 now offers an `emits` option, similar to the existing `props` option. This option can be used to define the events that a component can emit to its parent.
+Vue 3 现在提供了一个 `emits` 选项，类似于现有的 `props` 选项。此选项可用于定义组件可向其父组件触发的事件。
 
-## 2.x Behavior
+## 2.x 行为
 
-In Vue 2, you can define the props that a component receives, but you can't declare which events it can emit:
+在Vue 2 中，你可以定义一个组件接收的 prop，但是你不能声明它可以触发哪些事件:
 
 ```vue
 <template>
@@ -30,9 +30,9 @@ In Vue 2, you can define the props that a component receives, but you can't decl
 </script>
 ```
 
-## 3.x Behavior
+## 3.x 行为
 
-Similar to props, the events that the component emits can now be defined with the `emits` option:
+与 prop 类似，组件触发的事件现在可以用 `emits` 选项来定义:
 
 ```vue
 <template>
@@ -48,20 +48,19 @@ Similar to props, the events that the component emits can now be defined with th
   }
 </script>
 ```
+该选项也接受一个对象，该对象允许开发人员为触发的事件传递的参数定义验证器，类似于 `props` 定义中的验证器。
 
-The option also accepts an object, which allows the developer to define validators for the arguments that are passed with the emitted event, similar to validators in `props` definitions.
+欲了解更多信息，请阅读 [此特性的API文档](../../api/options-data.md#emits).
 
-For more information on this, please read the [API documentation for this feature](../../api/options-data.md#emits).
+## 迁移策略
 
-## Migration Strategy
+强烈建议你使用 `emits` 记录每个组件触发的所有事件。
 
-It is highly recommended that you document all of the events emitted by each of your components using `emits`.
+这是特别重要的，因为[ `.native` 修饰符的移除](./v-on-native-modifier-removed.md)。没有使用 `emits` 声明的事件的任何侦听器现在都将包含在组件的 `$attrs` 中，默认情况下，它将绑定到组件的根节点。
 
-This is especially important because of [the removal of the `.native` modifier](./v-on-native-modifier-removed.md). Any listeners for events that aren't declared with `emits` will now be included in the component's `$attrs`, which by default will be bound to the component's root node.
+### 举例
 
-### Example
-
-For components that re-emit native events to their parent, this would now lead to two events being fired:
+对于重新向父组件触发 native 事件的组件，这将导致两个事件被触发:
 
 ```vue
 <template>
@@ -73,27 +72,25 @@ export default {
 }
 </script>
 ```
-
-When a parent listens for the `click` event on the component:
+当父组件监听组件上的 `click` 事件时:
 
 ```html
 <my-button v-on:click="handleClick"></my-button>
 ```
+现在它将被触发两次:
 
-it would now be triggered _twice_:
+- 一次来源于 `$emit()`.
+- 一次来源于绑定在根元素上的 native 事件侦听器
 
-- Once from `$emit()`.
-- Once from a native event listener applied to the root element.
+这里你有两个选择:
 
-Here you have two options:
+1. 正确的声明 `click` 事件。如果你确实在 `<my-button>` 中向事件处理程序中添加了一些逻辑，这是很有用的。
+2. 移除事件的重新触发，因为父级现在可以轻松侦听 native 事件，而无需添加 `.native`。适用于当你真的只是重新触发事件的情况。
 
-1. Properly declare the `click` event. This is useful if you actually do add some logic to that event handler in `<my-button>`.
-2. Remove the re-emitting of the event, since the parent can now listen for the native event easily, without adding `.native`. Suitable when you really only re-emit the event anyway.
+## 另请参阅
 
-## See also
-
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
-- [Migration guide - `.native` modifier removed](./v-on-native-modifier-removed.md)
-- [Migration guide - `$listeners` removed](./listeners-removed.md)
-- [Migration guide - `$attrs` includes `class` & `style`](./attrs-includes-class-style.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
+- [RFC 相关](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
+- [迁移指南 - 移除 `.native` ](./v-on-native-modifier-removed.md)
+- [迁移指南 - 移除 `$listeners` ](./listeners-removed.md)
+- [迁移指南 - `$attrs` 包括 `class` & `style`](./attrs-includes-class-style.md)
+- [迁移指南 - 渲染函数 API 中的更改](./render-function-api.md)
