@@ -103,7 +103,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
 - [一些过渡 class 被重命名](/guide/migration/transition.html)
 - [`<TransitionGroup>` now renders no wrapper element by default](/guide/migration/transition-group.html) <!-- TODO: translation -->
-- [组建 watch 选项](/api/options-data.html#watch)和[实例方法 `$watch`](/api/instance-methods.html#watch) 不再支持以点分隔的字符串路径。请改用计算属性函数作为参数。
+- [组件 watch 选项](/api/options-data.html#watch)和[实例方法 `$watch`](/api/instance-methods.html#watch) 不再支持以点分隔的字符串路径。请改用计算属性函数作为参数。
 - `<template>` 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
 - 在 Vue 2.x 中，应用根容器的 `outerHTML` 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。Vue 3.x 现在使用应用容器的 `innerHTML`，这意味着容器本身不再被视为模板的一部分。
 
