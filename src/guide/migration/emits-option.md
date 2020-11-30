@@ -72,11 +72,13 @@ export default {
 }
 </script>
 ```
+
 当父组件监听组件上的 `click` 事件时:
 
 ```html
 <my-button v-on:click="handleClick"></my-button>
 ```
+
 现在它将被触发两次:
 
 - 一次来源于 `$emit()`.
