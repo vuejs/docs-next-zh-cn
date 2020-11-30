@@ -8,15 +8,15 @@ badges:
 
 ## 概览
 
-现在 `$attrs` 包含传递给组件的 _所有_ 属性，包括 `class` 和 `style`。
+现在 `$attrs` 包含传递给组件的*所有* attribute，包括 `class` 和 `style`。
 
 ## 2.x 行为
 
-`class` 和 `style` 属性在 Vue 2 虚拟 DOM 实现中有一些特殊处理。因此，他们 _不_ 包括在 `$attrs` 中，而其他所有属性都包括在 `$attrs` 中。
+`class` 和 `style` attribute 在 Vue 2 虚拟 DOM 实现中有一些特殊处理。因此，他们*不*包括在 `$attrs` 中，而其他所有 attribute 都包括在 `$attrs` 中。
 
 在使用 `inheritAttrs: false` 时会产生副作用：
 
-- `$attrs` 中的属性不再自动添加到根元素中，而是由开发者决定在哪添加。
+- `$attrs` 中的 attribute 不再自动添加到根元素中，而是由开发者决定在哪添加。
 - 但是 `class` 和 `style` 不属于 `$attrs`，仍然会应用到组件的根元素：
 
 ```vue
@@ -48,7 +48,7 @@ export default {
 
 ## 3.x 行为
 
-`$attrs` 包含 _所有的_ 属性，这使得将所有属性应用到不同的元素会更加容易。那么上面的示例就会生成以下 HTML：
+`$attrs` 包含*所有的* attribute，这使得将所有 attribute 应用到不同的元素会更加容易。那么上面的示例就会生成以下 HTML：
 
 ```html
 <label>
@@ -58,7 +58,7 @@ export default {
 
 ## 迁移策略
 
-在使用 `inheritAttrs: false` 的组件中，确保样式仍然按照预期工作。如果你之前依赖 `class` 和 `style` 的特殊行为，那么可能会破坏一些视觉效果，因为这些属性现在可能应用到了另一个元素。
+在使用 `inheritAttrs: false` 的组件中，确保样式仍然按照预期工作。如果你之前依赖 `class` 和 `style` 的特殊行为，那么可能会破坏一些视觉效果，因为这些 attribute 现在可能应用到了另一个元素。
 
 ## 参考
 
