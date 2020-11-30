@@ -7,7 +7,7 @@ badges:
 
 ## 概览
 
-`$children` 实例属性已从 Vue 3.0 中移除，不再支持。
+`$children` 实例 property 已从 Vue 3.0 中移除，不再支持。
 
 ## 2.x 语法
 
@@ -37,4 +37,4 @@ export default {
 
 ## 3.x 更新
 
-在 3.x 中，`$children` 属性已移除，不再支持。相反地，如果你需要访问子组件实例，我们建议使用 [$refs](/guide/component-template-refs.html#template-refs)。
+在 3.x 中，`$children` property 已移除，不再支持。如果你需要访问子组件实例，我们建议使用 [$refs](/guide/component-template-refs.html#模板引用)。
