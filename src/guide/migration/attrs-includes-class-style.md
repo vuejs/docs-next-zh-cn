@@ -64,6 +64,6 @@ export default {
 
 - [相关的 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md)
 - [迁移指南 - 移除 `$listeners`](./listeners-removed.md)
-- [迁移指南 - 新的 Emits 选项](./emits-option.md)
+- [迁移指南 - 新增 Emits 选项](./emits-option.md)
 - [迁移指南 - 移除 `.native` 修饰符](./v-on-native-modifier-removed.md)
 - [迁移指南 - 渲染函数 API 的更改](./render-function-api.md)
