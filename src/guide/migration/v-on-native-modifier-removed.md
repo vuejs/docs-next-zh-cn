@@ -1,20 +1,18 @@
 ---
-title: v-on.native modifier removed
+title: 移除 v-on.native 修饰符
 badges:
   - breaking
 ---
 
-<!-- TODO: translation -->
+# 移除 `v-on.native` 修饰符 <MigrationBadges :badges="$frontmatter.badges" />
 
-# `v-on.native` modifier removed <MigrationBadges :badges="$frontmatter.badges" />
+## 概览
 
-## Overview
+`v-on` 的 `.native` 修饰符已被移除。
 
-The `.native` modifier for `v-on` has been removed.
+## 2.x 语法
 
-## 2.x Syntax
-
-Event listeners passed to a component with `v-on` are by default only triggered by emitting an event with `this.$emit`. To add a native DOM listener to the child component's root element instead, the `.native` modifier can be used:
+默认情况下，传递给组件带有 `v-on` 的事件监听器只有通过 `this.$emit` 才能触发。要将原生 DOM 监听器添加到子组件的根元素中，可以使用 `.native` 修饰符：
 
 ```html
 <my-component
@@ -23,11 +21,11 @@ Event listeners passed to a component with `v-on` are by default only triggered 
 />
 ```
 
-## 3.x Syntax
+## 3.x 语法
 
-The `.native` modifier for `v-on` has been removed. At the same time, the [new `emits` option](./emits-option.md) allows the child to define which events it does indeed emit.
+`v-on` 的 `.native` 修饰符已被移除。同时，[新增的 `emits` 选项](./emits-option.md)允许 child 定义真正触发的事件。
 
-Consequently, Vue will now add all event listeners that are _not_ defined as component-emitted events in the child as native event listeners to the child's root element (unless `inheritAttrs: false` has been set in the child's options).
+因此，对于 child 中*未*定义为组件-触发事件的所有事件监听器，Vue 现在将把他们作为原生事件监听器添加到 child 的根元素中(除非在 child 的选项中设置了 `inheritAttrs: false`)。
 
 ```html
 <my-component
@@ -46,14 +44,14 @@ Consequently, Vue will now add all event listeners that are _not_ defined as com
 </script>
 ```
 
-## Migration Strategy
+## 迁移策略
 
-- remove all instances of the `.native` modifier.
-- ensure that all your components document their events with the `emits` option.
+- 删除 `.native` 修饰符的所有实例。
+- 确保所有组件都使用 `emits` 选项记录其事件。
 
-## See also
+## 参考
 
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md#v-on-listener-fallthrough)
-- [Migration guide - New Emits Option](./emits-option.md)
-- [Migration guide - `$listeners` removed](./listeners-removed.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
+- [相关的 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md#v-on-listener-fallthrough)
+- [迁移指南 - 新增 Emits 选项](./emits-option.md)
+- [迁移指南 - 移除 `$listeners`](./listeners-removed.md)
+- [迁移指南 - 渲染函数 API 的更改](./render-function-api.md)
