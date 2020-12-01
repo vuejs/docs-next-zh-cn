@@ -12,7 +12,7 @@ badges:
 
 ## 2.x 行为
 
-`class` 和 `style` attribute 在 Vue 2 虚拟 DOM 实现中有一些特殊处理。因此，他们*不*包括在 `$attrs` 中，而其他所有 attribute 都包括在 `$attrs` 中。
+在 Vue 2 的虚拟 DOM 实现中对 `class` 和 `style` attribute 有一些特殊处理。因此，它们*不*包括在 `$attrs` 中，而其它所有 attribute 都在。
 
 在使用 `inheritAttrs: false` 时会产生副作用：
 
@@ -32,13 +32,13 @@ export default {
 </script>
 ```
 
-像这样使用时；
+像这样使用时：
 
 ```html
 <my-component id="my-id" class="my-class"></my-component>
 ```
 
-...将生成以下 HTML：
+……将生成以下 HTML：
 
 ```html
 <label class="my-class">
@@ -48,7 +48,7 @@ export default {
 
 ## 3.x 行为
 
-`$attrs` 包含*所有的* attribute，这使得将所有 attribute 应用到不同的元素会更加容易。那么上面的示例就会生成以下 HTML：
+`$attrs` 包含*所有的* attribute，这使得把它们全部应用到另一个元素上更加容易。那么上面的示例就会生成以下 HTML：
 
 ```html
 <label>
@@ -58,7 +58,7 @@ export default {
 
 ## 迁移策略
 
-在使用 `inheritAttrs: false` 的组件中，确保样式仍然按照预期工作。如果你之前依赖 `class` 和 `style` 的特殊行为，那么可能会破坏一些视觉效果，因为这些 attribute 现在可能应用到了另一个元素。
+在使用 `inheritAttrs: false` 的组件中，请确保样式仍然符合预期。如果你之前依赖 `class` 和 `style` 的特殊行为，那么可能会破坏一些视觉效果，因为这些 attribute 现在可能应用到了另一个元素。
 
 ## 参考
 
