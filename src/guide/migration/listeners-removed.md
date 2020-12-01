@@ -8,7 +8,7 @@ badges:
 
 ## 概览
 
-`$listeners` 对象在 Vue 3 中已经移除。现在事件监听器是 `$attrs` 的一部分：
+`$listeners` 对象在 Vue 3 中已被移除。现在事件监听器是 `$attrs` 的一部分：
 
 ```javascript
 {
@@ -19,7 +19,7 @@ badges:
 
 ## 2.x 语法
 
-在 Vue 2 中，你可以使用 `this.$attrs` 和 `this.$listeners` 分别访问传递给组件的 attribute 和事件监听器。结合 `inheritAttrs: false`，开发者可以将这些 attribute 和监听器应用到其他元素，而不是根元素：
+在 Vue 2 中，你可以使用 `this.$attrs` 和 `this.$listeners` 分别访问传递给组件的 attribute 和事件监听器。结合 `inheritAttrs: false`，开发者可以将这些 attribute 和监听器应用到其它元素，而不是根元素：
 
 ```html
 <template>
@@ -36,7 +36,7 @@ badges:
 
 ## 3.x 语法
 
-在 Vue 3 的虚拟 DOM 中，事件监听器现在只是以 `on` 为前缀的 attribute，同样是 `$attrs` 对象的一部分，因此 `$listeners` 被移除了。
+在 Vue 3 的虚拟 DOM 中，事件监听器现在只是以 `on` 为前缀的 attribute，这样就成了 `$attrs` 对象的一部分，因此 `$listeners` 被移除了。
 
 ```vue
 <template>
