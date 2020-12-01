@@ -92,7 +92,7 @@ app.component('custom-form', {
 ```js
 app.component('my-component', {
   props: {
-    foo: String
+    title: String
   },
   emits: ['update:title'],
   template: `
