@@ -63,17 +63,17 @@
 
 - **详细：**
 
-  这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。如果你熟悉 React，这与 React 的 `context` 特性很相似。
+  这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代 inject 一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。如果你熟悉 React，这与 React 的 `context` 特性很相似。
 
-  `provide` 选项应该是一个对象或返回一个对象的函数。该对象包含可注入其子孙的 property。在该对象中你可以使用 ES2015 Symbols 作为 key，但是只在原生支持 `Symbol` 和 `Reflect.ownKeys` 的环境下可工作。
+  `provide` 选项应该是一个对象或返回一个对象的函数。该对象包含可 inject 其子孙的 property。在该对象中你可以使用 ES2015 Symbols 作为 key，但是只在原生支持 `Symbol` 和 `Reflect.ownKeys` 的环境下可工作。
 
   `inject` 选项应该是：
 
   - 一个字符串数组，或
   - 一个对象，对象的 key 是本地的绑定名，value 是：
-    - 在可用的注入内容中搜索用的 key (字符串或 Symbol)，或
+    - 在可用的 inject 内容中搜索用的 key (字符串或 Symbol)，或
     - 一个对象，该对象的：
-      - `from` property 是在可用的注入内容中搜索用的 key (字符串或 Symbol)
+      - `from` property 是在可用的 inject 内容中搜索用的 key (字符串或 Symbol)
       - `default` property 是降级情况下使用的 value
 
   > 提示：提示：`provide` 和 `inject` 绑定并不是响应式的。这是刻意为之的。然而，如果你传入了一个响应式的对象，那么其对象的 property 仍是响应式的。
@@ -81,7 +81,7 @@
 - **示例：**
 
   ```js
-  // 父级组件提供 'foo'
+  // 父级组件 provide  'foo'
   const Provider = {
     provide: {
       foo: 'bar'
@@ -89,7 +89,7 @@
     // ...
   }
 
-  // 子组件注入 'foo'
+  // 子组件 inject  'foo'
   const Child = {
     inject: ['foo'],
     created() {
@@ -118,7 +118,7 @@
   }
   ```
 
-  使用一个注入的值作为一个 property 的默认值：
+  使用一个 inject 的值作为一个 property 的默认值：
 
   ```js
   const Child = {
@@ -133,7 +133,7 @@
   }
   ```
 
-  使用一个注入的值作为数据入口：
+  使用一个 inject 的值作为数据入口：
 
   ```js
   const Child = {
@@ -146,7 +146,7 @@
   }
   ```
 
-  注入可以通过设置默认值使其变成可选项：
+  inject 可以通过设置默认值使其变成可选项：
 
   ```js
   const Child = {
@@ -156,7 +156,7 @@
   }
   ```
 
-  如果它需要从一个不同名字的 property 注入，则使用 `from` 来表示其源 property：
+  如果它需要从一个不同名字的 property inject ，则使用 `from` 来表示其源 property：
 
   ```js
   const Child = {
@@ -287,7 +287,7 @@
 
   `props` 对象在开发过程中对于用户区代码是不可变的 (如果用户代码尝试对其进行更改，则会发出警告)。
 
-  第二个参数提供了一个上下文对象，该对象暴露了以前在 `this` 上暴露的 property 的选择列表：
+  第二个参数 provide 了一个上下文对象，该对象暴露了以前在 `this` 上暴露的 property 的选择列表：
 
   ```js
   const MyComponent = {

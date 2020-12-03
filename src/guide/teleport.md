@@ -119,7 +119,7 @@ app.component('child-component', {
 
 在这种情况下，即使在不同的地方渲染 `child-component`，它仍将是 `parent-component` 的子级，并将从中接收 `name` prop。
 
-这也意味着来自父组件的注入按预期工作，并且子组件将嵌套在 Vue Devtools 中的父组件之下，而不是放在实际内容移动到的位置。
+这也意味着来自父组件的 inject 按预期工作，并且子组件将嵌套在 Vue Devtools 中的父组件之下，而不是放在实际内容移动到的位置。
 
 ## 在同一目标上使用多个 teleport
 

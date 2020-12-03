@@ -177,9 +177,9 @@ app.directive('focus', {
 app.mount('#app')
 ```
 
-## 提供/注入 (Provide / Inject)
+## Provide / Inject
 
-与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用实例还可以提供可由应用内的任何组件注入的依赖项：
+与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用实例还可以 provide 可由应用内的任何组件 inject 的依赖项：
 
 ```js
 // 在入口

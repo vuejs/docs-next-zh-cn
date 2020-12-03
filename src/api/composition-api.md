@@ -122,7 +122,7 @@ const MyComponent = {
 
 ## Provide / Inject
 
-`provide` 和 `inject` 启用依赖注入。只有在使用当前活动实例的 [`setup()`](#setup) 期间才能调用这两者。
+`provide` 和 `inject` 启用依赖 inject 。只有在使用当前活动实例的 [`setup()`](#setup) 期间才能调用这两者。
 
 - **类型声明**：
 
@@ -145,7 +145,7 @@ function inject<T>(
 ): T
 ```
 
-Vue 提供了一个 `InjectionKey` 接口，该接口是扩展 `Symbol` 的泛型类型。它可用于在提供者和消费者之间同步注入值的类型：
+Vue 提供了一个 `InjectionKey` 接口，该接口是扩展 `Symbol` 的泛型类型。它可用于在提供者和消费者之间同步 inject 值的类型：
 
 ```ts
 import { InjectionKey, provide, inject } from 'vue'
@@ -157,7 +157,7 @@ provide(key, 'foo') // 提供非字符串值将导致错误
 const foo = inject(key) // foo 的类型: string | undefined
 ```
 
-如果使用字符串 key 或非类型化 symbols，则需要显式声明注入值的类型：
+如果使用字符串 key 或非类型化 symbols，则需要显式声明 inject 值的类型：
 
 ```ts
 const foo = inject<string>('foo') // string | undefined
