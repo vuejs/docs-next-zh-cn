@@ -6,7 +6,7 @@
 
 对于这种情况，我们可以使用 `provide` 和 `inject` 对。父组件可以作为其所有子组件的依赖项提供程序，而不管组件层次结构有多深。这个特性有两个部分：父组件有一个 `provide` 选项来提供数据，子组件有一个 `inject` 选项来开始使用这个数据。
 
-![Provide/inject scheme](/images/components_provide.png)
+![Provide/inject scheme](/docs/images/components_provide.png)
 
 例如，如果我们有这样的层次结构：
 

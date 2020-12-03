@@ -119,7 +119,7 @@ this.$emit('update:title', newValue)
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
 
-![v-bind anatomy](/images/v-bind-instead-of-sync.png)
+![v-bind anatomy](/docs/images/v-bind-instead-of-sync.png)
 
 这也可以作为 `.sync` 修饰符的替代，而且允许我们在自定义组件上使用多个 `v-model`。
 

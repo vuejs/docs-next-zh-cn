@@ -95,7 +95,7 @@ app.component('anchored-heading', {
 
 上述 HTML 对应的 DOM 节点树如下图所示
 
-![DOM Tree Visualization](/images/dom-tree.png)
+![DOM Tree Visualization](/docs/images/dom-tree.png)
 
 每个元素都是一个节点。每段文字也是一个节点。甚至注释也都是节点。一个节点就是页面的一个部分。就像家谱树一样，每个节点都可以有孩子节点 (也就是说每个部分可以包含其它的一些部分)。
 

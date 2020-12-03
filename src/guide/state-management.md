@@ -110,7 +110,7 @@ const appB = Vue.createApp({
 }).mount('#app-b')
 ```
 
-![State Management](/images/state.png)
+![State Management](/docs/images/state.png)
 
 :::tip
 重要的是，注意你不应该在 action 中替换原始的状态对象——组件和 store 需要引用同一个共享对象，变更才能够被观察到。

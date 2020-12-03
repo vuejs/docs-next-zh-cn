@@ -61,7 +61,7 @@ app.mount('#components-demo')
 
 通常一个应用会以一棵嵌套的组件树的形式来组织：
 
-![Component Tree](/images/components.png)
+![Component Tree](/docs/images/components.png)
 
 例如，你可能会有页头、侧边栏、内容区等组件，每个组件又包含了其它的像导航链接、博文之类的组件。
 

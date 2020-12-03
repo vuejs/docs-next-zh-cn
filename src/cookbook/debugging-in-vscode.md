@@ -43,7 +43,7 @@ We're assuming the port to be `8080` here. If it's not the case (for instance, i
 
 Click on the Debugging icon in the Activity Bar to bring up the Debug view, then click on the gear icon to configure a launch.json file, selecting **Chrome/Firefox: Launch** as the environment. Replace content of the generated launch.json with the corresponding configuration:
 
-![Add Chrome Configuration](/images/config_add.png)
+![Add Chrome Configuration](/docs/images/config_add.png)
 
 ```json
 {
@@ -76,7 +76,7 @@ Click on the Debugging icon in the Activity Bar to bring up the Debug view, then
 
 1.  Set a breakpoint in **src/components/HelloWorld.vue** on `line 90` where the `data` function returns a string.
 
-![Breakpoint Renderer](/images/breakpoint_set.png)
+![Breakpoint Renderer](/docs/images/breakpoint_set.png)
 
 2.  Open your favorite terminal at the root folder and serve the app using Vue CLI:
 
@@ -88,7 +88,7 @@ npm run serve
 
 4.  Your breakpoint should now be hit as a new browser instance opens `http://localhost:8080`.
 
-![Breakpoint Hit](/images/breakpoint_hit.png)
+![Breakpoint Hit](/docs/images/breakpoint_hit.png)
 
 ## Alternative Patterns
 
@@ -96,7 +96,7 @@ npm run serve
 
 There are other methods of debugging, varying in complexity. The most popular and simple of which is to use the excellent Vue.js devtools [for Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) and [for Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/). Some of the benefits of working with the devtools are that they enable you to live-edit data properties and see the changes reflected immediately. The other major benefit is the ability to do time travel debugging for Vuex.
 
-![Devtools Timetravel Debugger](/images/devtools-timetravel.gif)
+![Devtools Timetravel Debugger](/docs/images/devtools-timetravel.gif)
 
 Please note that if the page uses a production/minified build of Vue.js (such as the standard link from a CDN), devtools inspection is disabled by default so the Vue pane won't show up. If you switch to an unminified version, you may have to give the page a hard refresh to see them.
 

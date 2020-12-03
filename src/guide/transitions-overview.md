@@ -180,7 +180,7 @@ Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认�
 
 虽然使用 cubic-bezier ease 提供的两个控制柄可以为简单的动画获得很好的效果，但是 JavaScript 允许多个控制柄，以此支持更多的变化。
 
-![Ease 比较](/images/css-vs-js-ease.svg)
+![Ease 比较](/docs/images/css-vs-js-ease.svg)
 
 以弹跳为例。在 CSS 中，我们必须声明向上和向下的每个关键帧。在 JavaScript 中，我们可以通过在 [greensock API(GSAP)](https://greensock.com/) 中声明 `bounce` 来描述 ease 中所有这些移动 (其他 JS 库有其他类型的 easing 默认值)。
 

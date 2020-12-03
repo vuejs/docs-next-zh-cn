@@ -38,7 +38,7 @@
 
 如果你在 chrome 开发工具中检查这个元素，并打开 Elements 选项卡中的 Accessibility 选项卡，你将看到输入是如何从标签中获取其名称的：
 
-![Chrome开发工具显示可从标签输入的可访问名称](/images/AccessibleLabelChromeDevTools.png)
+![Chrome开发工具显示可从标签输入的可访问名称](/docs/images/AccessibleLabelChromeDevTools.png)
 
 :::warning 警告：
 
@@ -73,7 +73,7 @@
 
 请随意在 Chrome DevTools 中检查此元素，以查看可访问名称是如何更改的：
 
-![Chrome Developer Tools showing input accessible name from aria-label](/images/AccessibleARIAlabelDevTools.png)
+![Chrome Developer Tools showing input accessible name from aria-label](/docs/images/AccessibleARIAlabelDevTools.png)
 
 #### aria-labelledby
 
@@ -103,7 +103,7 @@
 
 <common-codepen-snippet title="Form ARIA labelledby" slug="ZEQXOLP" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
-![Chrome Developer Tools showing input accessible name from aria-labelledby](/images/AccessibleARIAlabelledbyDevTools.png)
+![Chrome Developer Tools showing input accessible name from aria-labelledby](/docs/images/AccessibleARIAlabelledbyDevTools.png)
 
 #### aria-describedby
 
@@ -137,7 +137,7 @@
 
 你可以通过使用 Chrome 开发工具来查看说明：
 
-![Chrome开发工具显示aria-labelledby的输入可访问名称和aria-describedby的描述](/images/AccessibleARIAdescribedby.png)
+![Chrome开发工具显示aria-labelledby的输入可访问名称和aria-describedby的描述](/docs/images/AccessibleARIAdescribedby.png)
 
 ### 占位符
 
