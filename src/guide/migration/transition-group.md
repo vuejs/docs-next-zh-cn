@@ -8,13 +8,14 @@ badges:
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
 
-`<transition-group>` no longer renders a root element by default, but can still create one with the `tag` prop.
+## 概述
 
-## 2.x Syntax
+`<transition-group>` 默认不再渲染根元素，但仍然可以使用 `tag` prop 创建一个根元素。
 
-In Vue 2, `<transition-group>`, like other custom components, needed a root element, which by default was a `<span>` but was customizable via the `tag` prop.
+## 2.x 语法
+
+在 Vue 2中，`<transition-group>`与其他自定义组件一样，需要一个根元素，默认情况下是一个 `<span>` ，但可以通过 `tag` prop 自定义。
 
 ```html
 <transition-group tag="ul">
@@ -24,12 +25,13 @@ In Vue 2, `<transition-group>`, like other custom components, needed a root elem
 </transition-group>
 ```
 
-## 3.x Syntax
+## 3.x 语法
 
-In Vue 3, we have [fragment support](/guide/migration/fragments.html), so components no longer _need_ a root node. Consequently, `<transition-group>` no longer renders one by default.
+在 Vue 3 中，我们有 [fragment 支持](/guide/migration/fragments.html) ,所以组件不再需要根节点，因此， `<transition-group>` 在默认情况下不再渲染一个根节点。
 
-- If you already have the `tag` prop defined in your Vue 2 code, like in the example above, everything will work as before
-- If you didn't have one defined _and_ your styling or other behaviors relied on the presence of the `<span>` root element to work properly, simply add `tag="span"` to the `<transition-group>`:
+- 如果您已经在 Vue 2 代码中定义了 `tag` prop，就像上面的例子一样，那么一切都会像以前一样工作
+
+- 如果您没有一个已定义的样式或其他行为依赖于存在的 `<span>` 根元素来正常运行，只需添加 `tag="span"` 到 `<transition-group>`:
 
 ```html
 <transition-group tag="span">
@@ -37,6 +39,5 @@ In Vue 3, we have [fragment support](/guide/migration/fragments.html), so compon
 </transition-group>
 ```
 
-## See also
-
-- [Some transition classes got a rename](/guide/migration/transition.html)
+## 另请参阅
+- [一些被重命名的 transition 类](/guide/migration/transition.html)
