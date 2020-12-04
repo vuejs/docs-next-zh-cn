@@ -1,26 +1,26 @@
 <!-- TODO: translation -->
 
-# Production Deployment
+# 生产部署
 
-::: info
-Most of the tips below are enabled by default if you are using [Vue CLI](https://cli.vuejs.org). This section is only relevant if you are using a custom build setup.
+:::
+如果你使用 [Vue CLI](https://cli.vuejs.org)，下面的大多数提示都是默认启用的。此部分仅当你使用自定义构建设置时才相关。
 :::
 
-## Turn on Production Mode
+## 开启生产模式
 
-During development, Vue provides a lot of warnings to help you with common errors and pitfalls. However, these warning strings become useless in production and bloat your app's payload size. In addition, some of these warning checks have small runtime costs that can be avoided in [production mode](https://cli.vuejs.org/guide/mode-and-env.html#modes).
+在开发期间，Vue提供了许多警告，以帮助你处理常见的错误和陷阱。但是，这些警告字符串在生产中会变得无意义，并且会使应用程序的有效负载变大。此外，有些警告检查的运行时成本很小，可以在[生产模式](https://cli.vuejs.org/guide/mode-and-env.html#modes)中避免。
 
-### Without Build Tools
+### 不使用构建工具
 
-If you are using the full build, i.e. directly including Vue via a script tag without a build tool, make sure to use the minified version for production. This can be found in the [Installation guide](/guide/installation.html#cdn).
+如果你正在使用完整的构建，即直接通过脚本标签引入Vue，而不使用构建工具，那么请确保在生产中使用压缩版。这可以在[安装指南](/guide/installation.html#cdn)中找到。
 
-### With Build Tools
+### 使用构建工具
 
-When using a build tool like Webpack or Browserify, the production mode will be determined by `process.env.NODE_ENV` inside Vue's source code, and it will be in development mode by default. Both build tools provide ways to overwrite this variable to enable Vue's production mode, and warnings will be stripped by minifiers during the build. Vue CLI has this pre-configured for you, but it would be beneficial to know how it is done:
+当使用 Webpack 或 Browserify 这样的构建工具时，生产模式将由Vue的源代码中的 `process.env.NODE_ENV` 决定，默认为开发模式。这两种构建工具都提供了重写这个变量以启用 Vue 的生产模式的方法，并且在构建过程中警告将被压缩工具删除。Vue CLI 已经为你预先配置了这个，但知道它是如何做的将是有好处的:
 
 #### Webpack
 
-In Webpack 4+, you can use the `mode` option:
+在 Webpack 4+，你可以使用 `mode` 选项：
 
 ```js
 module.exports = {
@@ -30,15 +30,15 @@ module.exports = {
 
 #### Browserify
 
-- Run your bundling command with the actual `NODE_ENV` environment variable set to `"production"`. This tells `vueify` to avoid including hot-reload and development related code.
+- 将当前的环境变量 `NODE_ENV` 设置为 `"production"` 作为运行的打包命令。这告诉 `vueify` 避免引入热重载和开发相关的代码。
 
-- Apply a global [envify](https://github.com/hughsk/envify) transform to your bundle. This allows the minifier to strip out all the warnings in Vue's source code wrapped in env variable conditional blocks. For example:
+- 将一个全局的 [envify](https://github.com/hughsk/envify) 转换应用到你的包中。这使得压缩工具可以删除包裹在环境变量条件块中的Vue源代码中的所有警告。例如:
 
   ```bash
   NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
   ```
 
-- Or, using [envify](https://github.com/hughsk/envify) with Gulp:
+- 或者，利用 Gulp 使用 [envify](https://github.com/hughsk/envify)
 
   ```js
   // Use the envify custom module to specify environment variables
@@ -54,7 +54,7 @@ module.exports = {
     .bundle()
   ```
 
-- Or, using [envify](https://github.com/hughsk/envify) with Grunt and [grunt-browserify](https://github.com/jmreidy/grunt-browserify):
+- 或者，利用 Grunt 和 [grunt-browserify](https://github.com/jmreidy/grunt-browserify) 使用 [envify](https://github.com/hughsk/envify) ：
 
   ```js
   // Use the envify custom module to specify environment variables
@@ -80,7 +80,7 @@ module.exports = {
 
 #### Rollup
 
-Use [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
+使用 [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
 
 ```js
 const replace = require('@rollup/plugin-replace')
@@ -95,24 +95,25 @@ rollup({
 }).then(...)
 ```
 
-## Pre-Compiling Templates
+## 预编译模板
 
-When using in-DOM templates or in-JavaScript template strings, the template-to-render-function compilation is performed on the fly. This is usually fast enough in most cases, but is best avoided if your application is performance-sensitive.
+当使用 dom 内模板或 javascript 内模板字符串时，将动态地执行从模板到渲染函数的编译。在大多数情况下，这已经足够快了，但是如果应用程序对性能敏感，最好避免这样做。
 
-The easiest way to pre-compile templates is using [Single-File Components](/guide/single-file-component.html) - the associated build setups automatically performs pre-compilation for you, so the built code contains the already compiled render functions instead of raw template strings.
+预编译模板最简单的方法是使用 [Single-File Components](/guide/single-file-component.html) ——相关的构建设置自动为你执行预编译，所以构建代码包含已经编译的渲染函数，而不是原始的模板字符串。
 
-If you are using Webpack, and prefer separating JavaScript and template files, you can use [vue-template-loader](https://github.com/ktsn/vue-template-loader), which also transforms the template files into JavaScript render functions during the build step.
+如果你正在使用 Webpack，并且更喜欢将 JavaScript 和模板文件分开，你可以使用 [vue-template-loader](https://github.com/ktsn/vue-template-loader)，它还可以在构建步骤中将模板文件转换为 JavaScript 渲染函数。
 
-## Extracting Component CSS
+## 提取组件CSS
 
-When using Single-File Components, the CSS inside components are injected dynamically as `<style>` tags via JavaScript. This has a small runtime cost, and if you are using server-side rendering it will cause a "flash of unstyled content". Extracting the CSS across all components into the same file will avoid these issues, and also result in better CSS minification and caching.
+当使用单文件组件时，组件内部的 CSS 会通过 JavaScript 以 `<style>` 标签的形式被动态注入。这有一个小的运行时成本，如果你使用服务器端渲染，它将导致 “无样式内容的闪现” 。将所有组件的 CSS 提取到同一个文件中可以避免这些问题，还可以更好地压缩和缓存 CSS。
 
-Refer to the respective build tool documentations to see how it's done:
 
-- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) (the `vue-cli` webpack template has this pre-configured)
+参考各自的构建工具文档，看看它是如何做的:
+
+- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) ( `vue-cli` webpack 模板已经预先配置了这个)
 - [Browserify + vueify](https://github.com/vuejs/vueify#css-extraction)
 - [Rollup + rollup-plugin-vue](https://rollup-plugin-vue.vuejs.org/)
 
-## Tracking Runtime Errors
+## 跟踪运行时错误
 
-If a runtime error occurs during a component's render, it will be passed to the global `app.config.errorHandler` config function if it has been set. It might be a good idea to leverage this hook together with an error-tracking service like [Sentry](https://sentry.io), which provides [an official integration](https://sentry.io/for/vue/) for Vue.
+如果在组件渲染期间发生运行时错误，它将被传递到全局的 `app.config.errorHandler` 配置函数，如果它已经被设置。将这个钩子与错误跟踪服务如 [Sentry](https://sentry.io) 一起使用可能是一个好主意，它为Vue提供了[一个官方集成](https://sentry.io/for/vue/)。
