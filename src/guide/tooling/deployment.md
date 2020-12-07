@@ -99,7 +99,7 @@ rollup({
 
 当使用 dom 内模板或 javascript 内模板字符串时，将动态地执行从模板到渲染函数的编译。在大多数情况下，这已经足够快了，但是如果应用程序对性能敏感，最好避免这样做。
 
-预编译模板最简单的方法是使用 [Single-File Components](/guide/single-file-component.html) ——相关的构建设置自动为你执行预编译，所以构建代码包含已经编译的渲染函数，而不是原始的模板字符串。
+预编译模板最简单的方法是使用[单文件组件](/guide/single-file-component.html)——相关的构建设置自动为你执行预编译，所以构建代码包含已经编译的渲染函数，而不是原始的模板字符串。
 
 如果你正在使用 Webpack，并且更喜欢将 JavaScript 和模板文件分开，你可以使用 [vue-template-loader](https://github.com/ktsn/vue-template-loader)，它还可以在构建步骤中将模板文件转换为 JavaScript 渲染函数。
 
