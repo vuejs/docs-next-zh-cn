@@ -110,7 +110,7 @@ rollup({
 
 参考各自的构建工具文档，看看它是如何做的:
 
-- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) ( `vue-cli` webpack 模板已经预先配置了这个)
+- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) (`vue-cli` webpack 模板已经预先配置了这个)
 - [Browserify + vueify](https://github.com/vuejs/vueify#css-extraction)
 - [Rollup + rollup-plugin-vue](https://rollup-plugin-vue.vuejs.org/)
 
