@@ -156,7 +156,7 @@ const original = reactive({ count: 0 })
 
 const copy = readonly(original)
 
-// 通过original修改count，将会触发依赖copy的侦听器
+// 通过 original 修改 count，将会触发依赖 copy 的侦听器
 
 original.count++
 
