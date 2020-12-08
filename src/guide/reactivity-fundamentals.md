@@ -160,6 +160,6 @@ const copy = readonly(original)
 
 original.count++
 
-// 通过copy修改count，将导致失败并出现警告
+// 通过 copy 修改 count，将导致失败并出现警告
 copy.count++ // 警告: "Set operation on key 'count' failed: target is readonly."
 ```
