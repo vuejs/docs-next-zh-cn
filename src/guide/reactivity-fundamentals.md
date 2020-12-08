@@ -156,10 +156,10 @@ const original = reactive({ count: 0 })
 
 const copy = readonly(original)
 
-// 在copy上转换original 会触发侦听器依赖
+// 通过original修改count，将会触发依赖copy的侦听器
 
 original.count++
 
-// 转换copy 将导失败并导致警告
+// 通过copy修改count，将导致失败并出现警告
 copy.count++ // 警告: "Set operation on key 'count' failed: target is readonly."
 ```
