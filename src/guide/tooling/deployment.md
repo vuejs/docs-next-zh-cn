@@ -11,7 +11,7 @@
 
 ### 不使用构建工具
 
-如果你正在使用完整的构建，即直接通过脚本标签引入Vue，而不使用构建工具，那么请确保在生产环境中使用压缩版。这可以在[安装指南](/guide/installation.html#cdn)中找到。
+如果你正在使用完整的构建，即直接通过脚本标签引入 Vue，而不使用构建工具，那么请确保在生产环境中使用压缩版。这可以在[安装指南](/guide/installation.html#cdn)中找到。
 
 ### 使用构建工具
 
@@ -37,7 +37,7 @@ module.exports = {
   NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
   ```
 
-- 或者，利用 Gulp 使用 [envify](https://github.com/hughsk/envify)
+- 或者，利用 Gulp 使用 [envify](https://github.com/hughsk/envify)：
 
   ```js
   // Use the envify custom module to specify environment variables
@@ -115,4 +115,4 @@ rollup({
 
 ## 跟踪运行时错误
 
-如果在组件渲染期间发生运行时错误，它将被传递到全局的 `app.config.errorHandler` 配置函数，如果它已经被设置。将这个钩子与错误跟踪服务如 [Sentry](https://sentry.io) 一起使用可能是一个好主意，它为Vue提供了[一个官方集成](https://sentry.io/for/vue/)。
+如果在组件渲染期间发生运行时错误，它将被传递到全局的 `app.config.errorHandler` 配置函数，如果它已经被设置。将这个钩子与错误跟踪服务如 [Sentry](https://sentry.io) 一起使用可能是一个好主意，它为 Vue 提供了[一个官方集成](https://sentry.io/for/vue/)。
