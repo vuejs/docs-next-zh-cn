@@ -23,7 +23,7 @@ export default {
       default (props) {
         // `props` 是传递给组件的原始值。
         // 在任何类型/默认强制转换之前
-        // 也可以使用 `inject` 来访问 inject 的 property
+        // 也可以使用 `inject` 来访问注入的 property
         return inject('theme', 'default-theme')
       }
     }

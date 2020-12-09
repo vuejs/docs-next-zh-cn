@@ -156,7 +156,7 @@
   }
   ```
 
-  如果它需要从一个不同名字的 property inject ，则使用 `from` 来表示其源 property：
+  如果它需要从一个不同名字的 property 注入 ，则使用 `from` 来表示其源 property：
 
   ```js
   const Child = {
@@ -287,7 +287,7 @@
 
   `props` 对象在开发过程中对于用户区代码是不可变的 (如果用户代码尝试对其进行更改，则会发出警告)。
 
-  第二个参数 provide 了一个上下文对象，该对象暴露了以前在 `this` 上暴露的 property 的选择列表：
+  第二个参数提供了一个上下文对象，该对象暴露了以前在 `this` 上暴露的 property 的选择列表：
 
   ```js
   const MyComponent = {

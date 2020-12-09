@@ -6,7 +6,7 @@
 
 ## 设想场景
 
-假设我们要重写以下代码，其中包含一个 `MyMap` 组件，该组件使用组合式 API 为 `MyMarker` 组件 provide 用户的位置。
+假设我们要重写以下代码，其中包含一个 `MyMap` 组件，该组件使用组合式 API 为 `MyMarker` 组件提供用户的位置。
 
 ```vue
 <!-- src/components/MyMap.vue -->
@@ -45,7 +45,7 @@ export default {
 
 在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入 `provide` 方法。这使我们能够调用 `provide` 时来定义每个 property。
 
- `provide` 函数允许你通过两个参数定义 property：
+`provide` 函数允许你通过两个参数定义 property：
 
 1. property 的 name (`<String>` 类型)
 2. property 的 value
@@ -111,7 +111,7 @@ export default {
 
 ### 添加响应性
 
-为了增加 provide 值和 inject 值之间的响应性，我们可以在提供值时使用 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 或 [reactive](reactivity-fundamentals.html#声明响应式状态)。
+为了增加 provide 值和 inject 值之间的响应性，我们可以在 provide 值时使用 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 或 [reactive](reactivity-fundamentals.html#声明响应式状态)。
 
 使用 `MyMap` 组件，我们的代码可以更新如下：
 
@@ -188,7 +188,7 @@ export default {
 </script>
 ```
 
-然而，有时我们需要在 inject 数据的组件内部更新 inject 的数据。在这种情况下，我们建议 provide 一个方法来负责改变响应式 property。
+然而，有时我们需要在注入数据的组件内部更新 inject 的数据。在这种情况下，我们建议 provide 一个方法来负责改变响应式 property。
 
 ``` vue{21-23,27}
 <!-- src/components/MyMap.vue -->

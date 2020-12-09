@@ -122,7 +122,7 @@ const MyComponent = {
 
 ## Provide / Inject
 
-`provide` 和 `inject` 启用依赖 inject 。只有在使用当前活动实例的 [`setup()`](#setup) 期间才能调用这两者。
+`provide` 和 `inject` 启用依赖注入。只有在使用当前活动实例的 [`setup()`](#setup) 期间才能调用这两者。
 
 - **类型声明**：
 

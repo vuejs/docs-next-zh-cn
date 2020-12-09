@@ -4,7 +4,7 @@
 
 通常，当我们需要将数据从父组件传递到子组件时，我们使用 [props](component-props.md)。想象一下这样的结构：你有一些深嵌套的组件，而你只需要来自深嵌套子组件中父组件的某些内容。在这种情况下，你仍然需要将 prop 传递到整个组件链中，这可能会很烦人。
 
-对于这种情况，我们可以使用 `provide` 和 `inject` 对。父组件可以作为其所有子组件的依赖项 provide 函数，而不管组件层次结构有多深。这个特性有两个部分：父组件有一个 `provide` 选项来 provide 数据，子组件有一个 `inject` 选项来开始使用这个数据。
+对于这种情况，我们可以使用 `provide` 和 `inject` 对。父组件可以作为其所有子组件的依赖项 provide 函数，而不管组件层次结构有多深。这个特性有两个部分：父组件有一个 `provide` 选项来提供数据，子组件有一个 `inject` 选项来开始使用这个数据。
 
 ![Provide/inject scheme](/images/components_provide.png)
 
@@ -44,7 +44,7 @@ app.component('todo-list', {
 app.component('todo-list-statistics', {
   inject: ['user'],
   created() {
-    console.log(`Injected property: ${this.user}`) // > inject property: John Doe
+    console.log(`Injected property: ${this.user}`) // > 注入 property: John Doe
   }
 })
 ```
@@ -59,7 +59,7 @@ app.component('todo-list', {
     }
   },
   provide: {
-    todoLength: this.todos.length // 将会导致错误 'Cannot read property 'length' of undefined`
+    todoLength: this.todos.length // 将会导致错误 `Cannot read property 'length' of undefined`
   },
   template: `
     ...
@@ -89,7 +89,7 @@ app.component('todo-list', {
 
 这使我们能够更安全地继续开发该组件，而不必担心可能会更改/删除子组件所依赖的某些内容。这些组件之间的接口仍然是明确定义的，就像 prop 一样。
 
-实际上，你可以将依赖 inject 看作是“long range props”，除了：
+实际上，你可以将依赖注入看作是“long range props”，除了：
 
 - 父组件不需要知道哪些子组件使用它 provide 的 property
 - 子组件不需要知道 `inject` property 来自哪里
@@ -116,4 +116,4 @@ app.component('todo-list-statistics', {
 })
 ```
 
-在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被 inject 。在[响应式计算和侦听](reactivity-computed-watchers.html#计算值)和[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读关于 `reactive` provide/inject 的更多信息。
+在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被注入。在[响应式计算和侦听](reactivity-computed-watchers.html#计算值)和[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读关于 `reactive` provide/inject 的更多信息。

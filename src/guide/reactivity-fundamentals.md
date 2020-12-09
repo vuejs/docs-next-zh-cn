@@ -147,7 +147,7 @@ console.log(book.title) // 'Vue 3 Detailed Guide'
 
 ## 使用 `readonly` 防止更改响应式对象
 
-有时我们想跟踪响应式对象 (`ref` 或 `reactive`) 的变化，但我们也希望防止在应用程序的某个位置更改它。例如，当我们有一个被 [provide](component-provide-inject.html) 的响应式对象时，我们不想让它在 inject 的时候被改变。为此，我们可以基于原始对象创建一个只读的 proxy 对象：
+有时我们想跟踪响应式对象 (`ref` 或 `reactive`) 的变化，但我们也希望防止在应用程序的某个位置更改它。例如，当我们有一个被 [provide](component-provide-inject.html) 的响应式对象时，我们不想让它在注入的时候被改变。为此，我们可以基于原始对象创建一个只读的 proxy 对象：
 
 ```js
 import { reactive, readonly } from 'vue'

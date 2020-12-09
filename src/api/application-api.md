@@ -223,7 +223,7 @@ app.mount('#my-app')
 
 - **用法：**
 
-  设置一个可以被 inject 到应用范围内所有组件中的值。组件应该使用 `inject` 来接收提供的值。
+  设置一个可以被注入到应用范围内所有组件中的值。组件应该使用 `inject` 来接收 provide 的值。
 
   从 `provide`/`inject` 的角度来看，可以将应用程序视为根级别的祖先，而根组件是其唯一的子级。
 
@@ -237,7 +237,7 @@ app.mount('#my-app')
 
 - **示例：**
 
-  向根组件中 inject 一个 property，值由应用 provide。
+  向根组件中注入一个 property，值由应用提供。
 
 ```js
 import { createApp } from 'vue'
@@ -265,7 +265,7 @@ app.provide('user', 'administrator')
 
 - **用法：**
 
-  在 provide 的 DOM 元素上卸载应用实例的根组件。
+  在提供的 DOM 元素上卸载应用实例的根组件。
 
 - **示例：**
 
