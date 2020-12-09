@@ -116,4 +116,4 @@ app.component('todo-list-statistics', {
 })
 ```
 
-在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被 inject 。在[响应式计算和侦听]((reactivity-computed-watchers.html#计算值)和[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读关于 `reactive` provide/inject 的更多信息。
+在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被 inject 。在[响应式计算和侦听](reactivity-computed-watchers.html#计算值)和[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读关于 `reactive` provide/inject 的更多信息。
