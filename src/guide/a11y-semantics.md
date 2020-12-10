@@ -1,4 +1,4 @@
-# 语义学
+# 语义
 
 ## 表单
 
@@ -21,12 +21,7 @@
 </form>
 ```
 
-<p class="codepen" data-height="368" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="YzwpPYZ" style="height: 368px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Simple Form">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/YzwpPYZ">
-  Simple Form</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Simple Form" slug="YzwpPYZ" :height="368" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 注意如何在表单元素中包含 `autocomplete='on'`，它将应用于表单中的所有输入。你也可以为每个输入设置不同的[自动完成属性的值](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)。
 
@@ -39,13 +34,7 @@
 <input type="text" name="name" id="name" v-model="name" />
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="wvMrGqz" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Label">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/wvMrGqz">
-  Form Label</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
+<common-codepen-snippet title="Form Label" slug="wvMrGqz" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 如果你在 chrome 开发工具中检查这个元素，并打开 Elements 选项卡中的 Accessibility 选项卡，你将看到输入是如何从标签中获取其名称的：
 
@@ -80,12 +69,7 @@
 />
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="jOWGqgz" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form ARIA label">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/jOWGqgz">
-  Form ARIA label</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form ARIA label" slug="jOWGqgz" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 请随意在 Chrome DevTools 中检查此元素，以查看可访问名称是如何更改的：
 
@@ -117,12 +101,7 @@
 </form>
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="ZEQXOLP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form ARIA labelledby">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/ZEQXOLP">
-  Form ARIA labelledby</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form ARIA labelledby" slug="ZEQXOLP" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby](/images/AccessibleARIAlabelledbyDevTools.png)
 
@@ -154,12 +133,7 @@
 </form>
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="JjGrKyY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form ARIA describedby">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/JjGrKyY">
-  Form ARIA describedby</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form ARIA describedby" slug="JjGrKyY" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 你可以通过使用 Chrome 开发工具来查看说明：
 
@@ -171,13 +145,7 @@
 
 占位符的一个问题是默认情况下它们不符合[颜色对比标准](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)；修复颜色对比度会使占位符看起来像输入字段中预填充的数据。查看以下示例，可以看到满足颜色对比度条件的姓氏占位符看起来像预填充的数据：
 
-
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="PoZJzeQ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Placeholder">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/PoZJzeQ">
-  Form Placeholder</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form Placeholder" slug="PoZJzeQ" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 最好提供用户在任何输入之外填写表单所需的所有信息。
 
@@ -210,12 +178,7 @@
 </fieldset>
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="GRoMqYy" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Instructions">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/GRoMqYy">
-  Form Instructions</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form Instructions" slug="GRoMqYy" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 ### 隐藏内容
 
@@ -248,12 +211,7 @@
 }
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="qBbpQwB" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Search">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/qBbpQwB">
-  Form Search</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form Search" slug="qBbpQwB" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 #### aria-hidden="true"
 
@@ -282,12 +240,7 @@
 </form>
 ```
 
-<p class="codepen" data-height="467" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="PoZEXoj" style="height: 467px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Form Buttons">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/PoZEXoj">
-  Form Buttons</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Form Buttons" slug="PoZEXoj" :height="467" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
 #### 功能图像
 
@@ -322,9 +275,4 @@
 </form>
 ```
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="mlama007" data-slug-hash="NWxXeqY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Functional Images">
-  <span>See the Pen <a href="https://codepen.io/mlama007/pen/NWxXeqY">
-  Functional Images</a> by Maria (<a href="https://codepen.io/mlama007">@mlama007</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Functional Images" slug="NWxXeqY" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />

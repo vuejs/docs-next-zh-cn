@@ -84,6 +84,10 @@ export default {
 }
 ```
 
+<!-- TODO: translation -->
+
+`toRef` will return a usable ref even if the source property doesn't currently exist. This makes it especially useful when working with optional props, which wouldn't be picked up by [`toRefs`](#torefs).
+
 ## `toRefs`
 
 将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的[`ref`](#ref)。
@@ -139,6 +143,10 @@ export default {
   }
 }
 ```
+
+<!-- TODO: translation -->
+
+`toRefs` will only generate refs for properties that are included in the source object. To create a ref for a specific property use [`toRef`](#toref) instead.
 
 ## `isRef`
 
@@ -209,7 +217,7 @@ foo.value = {}
 isReactive(foo.value) // false
 ```
 
-**参考**：[正在将独立的响应式值创建为 `refs`](../guide/reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs)
+**参考**：[正在将独立的响应式值创建为 `refs`](../guide/reactivity-fundamentals.html#创建独立的响应式值作为-refs)
 
 ## `triggerRef`
 
@@ -225,7 +233,7 @@ watchEffect(() => {
   console.log(shallow.value.greet)
 })
 
-// 这不会触发作用，因为 ref 很浅层
+// 这不会触发副作用，因为 ref 是浅层的
 shallow.value.greet = 'Hello, universe'
 
 // 记录 "Hello, universe"

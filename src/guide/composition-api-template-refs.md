@@ -1,10 +1,10 @@
-## 模板引用
+# 模板引用
 
 > 本节代码示例使用[单文件组件](single-file-component.html)的语法
 
 > 本指南假定你已经阅读了[组合式 API 简介](composition-api-introduction.html)和[响应性基础](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读此文章。
 
-在使用组合式 API 时，[响应式引用](reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs)和[模板引用](component-template-refs.html)的概念是统一的。为了获得对模板内元素或组件实例的引用，我们可以像往常一样声明 ref 并从 [setup()](composition-api-setup.html) 返回：
+在使用组合式 API 时，[响应式引用](reactivity-fundamentals.html#创建独立的响应式值作为-refs)和[模板引用](component-template-refs.html)的概念是统一的。为了获得对模板内元素或组件实例的引用，我们可以像往常一样声明 ref 并从 [setup()](composition-api-setup.html) 返回：
 
 ```html
 <template> 
@@ -35,7 +35,7 @@
 
 作为模板使用的 ref 的行为与任何其他 ref 一样：它们是响应式的，可以传递到 (或从中返回) 复合函数中。
 
-### JSX 中的用法
+## JSX 中的用法
 
 ```js
 export default {
@@ -53,7 +53,7 @@ export default {
 }
 ```
 
-### `v-for` 中的用法
+## `v-for` 中的用法
 
 组合式 API 模板引用在 `v-for` 内部使用时没有特殊处理。相反，请使用函数引用执行自定义处理：
 

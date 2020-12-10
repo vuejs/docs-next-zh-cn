@@ -18,7 +18,10 @@
 export default {
   components: { RepositoriesFilters, RepositoriesSortBy, RepositoriesList },
   props: {
-    user: { type: String }
+    user: { 
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -46,7 +49,6 @@ export default {
 }
 ```
 
-
 该组件有以下几个职责：
 
 1. 从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它
@@ -71,7 +73,6 @@ export default {
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">观看 Vue Mastery 上的免费 setup 视频。</VideoLesson>
 
-
 新的 `setup` 组件选项在**创建组件之前**执行，一旦 `props` 被解析，并充当合成 API 的入口点。
 
 :::warning
@@ -88,7 +89,10 @@ export default {
 export default {
   components: { RepositoriesFilters, RepositoriesSortBy, RepositoriesList },
   props: {
-    user: { type: String }
+    user: {
+      type: String,
+      required: true
+    }
   },
   setup(props) {
     console.log(props) // { user: '' }
@@ -193,7 +197,10 @@ import { ref } from 'vue'
 export default {
   components: { RepositoriesFilters, RepositoriesSortBy, RepositoriesList },
   props: {
-    user: { type: String }
+    user: {
+      type: String,
+      required: true
+    }
   },
   setup (props) {
     const repositories = ref([])
@@ -363,7 +370,7 @@ import { ref, onMounted, watch, toRefs, computed } from 'vue'
 
 // in our component
 setup (props) {
-  // 使用 `toRefs` 创建对 props 的 `user` property 的响应式引用
+  // 使用 `toRefs` 创建对 props 中的 `user` property 的响应式引用
   const { user } = toRefs(props)
 
   const repositories = ref([])
@@ -450,7 +457,10 @@ import { toRefs } from 'vue'
 export default {
   components: { RepositoriesFilters, RepositoriesSortBy, RepositoriesList },
   props: {
-    user: { type: String }
+    user: {
+      type: String,
+      required: true
+    }
   },
   setup (props) {
     const { user } = toRefs(props)
@@ -496,7 +506,10 @@ import useRepositoryFilters from '@/composables/useRepositoryFilters'
 export default {
   components: { RepositoriesFilters, RepositoriesSortBy, RepositoriesList },
   props: {
-    user: { type: String }
+    user: {
+      type: String,
+      required: true
+    }
   },
   setup(props) {
     const { user } = toRefs(props)

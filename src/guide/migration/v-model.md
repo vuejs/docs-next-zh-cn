@@ -7,7 +7,6 @@ badges:
 
 ## 概览
 
-
 就变化内容而言，此部分属于高阶内容：
 
 - **非兼容**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
@@ -31,11 +30,10 @@ badges:
 
 在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 和 `input` 事件：
 
-
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
 ```
@@ -68,7 +66,7 @@ export default {
 }
 ```
 
-所以，在这个例子中 `v-model` 的简写如下：
+所以，在这个例子中 `v-model` 是以下的简写：
 
 ```html
 <ChildComponent :title="pageTitle" @change="pageTitle = $event" />
@@ -101,7 +99,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent
   :modelValue="pageTitle"
@@ -116,7 +114,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model:title="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
@@ -128,7 +126,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model:title="pageTitle" v-model:content="pageContent" />
 
-<!-- 简写： -->
+<!-- 是以下的简写： -->
 
 <ChildComponent
   :title="pageTitle"
@@ -175,6 +173,7 @@ this.$emit('update:title', newValue)
     props: {
       modelValue: String // 以前是`value：String`
     },
+    emits: ['update:modelValue'],
     methods: {
       changePageTitle(title) {
         this.$emit('update:modelValue', title) // 以前是 `this.$emit('input', title)`
@@ -186,6 +185,6 @@ this.$emit('update:title', newValue)
 ## 下一步
 
 更多新的 `v-model` 语法相关信息，请参考：
-- [在组件中使用 `v-model`](../component-basics.html#using-v-model-on-components) 
-- [`v-model` 参数](../component-custom-events.html#v-model-arguments)
-- [处理 `v-model` 修饰符](../component-custom-events.html#v-model-arguments)
+- [在组件中使用 `v-model`](../component-basics.html#在组件上使用-v-model) 
+- [`v-model` 参数](../component-custom-events.html#v-model-参数)
+- [处理 `v-model` 修饰符](../component-custom-events.html#处理-v-model-修饰符)

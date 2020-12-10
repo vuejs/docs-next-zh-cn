@@ -193,7 +193,7 @@
 
   For more information about `flush` see [Effect Flush Timing](../guide/reactivity-computed-watchers.html#effect-flush-timing).
 
--  **参考** [Watchers](../guide/computed.html#watchers)
+-  **参考** [Watchers](../guide/computed.html#侦听器)
 
 ## $emit
 
@@ -224,6 +224,7 @@
   })
 
   app.component('welcome-button', {
+    emits: ['welcome'],
     template: `
       <button v-on:click="$emit('welcome')">
         Click me to be welcomed
@@ -238,7 +239,7 @@
 
   ```html
   <div id="emit-example-argument">
-    <advice-component v-on:give-advice="showAdvice"></advice-component>
+    <advice-component v-on:advise="showAdvice"></advice-component>
   </div>
   ```
 
@@ -252,6 +253,7 @@
   })
 
   app.component('advice-component', {
+    emits: ['advise'],
     data() {
       return {
         adviceText: 'Some advice'
@@ -260,17 +262,19 @@
     template: `
       <div>
         <input type="text" v-model="adviceText">
-        <button v-on:click="$emit('give-advice', adviceText)">
+        <button v-on:click="$emit('advise', adviceText)">
           Click me for sending advice
         </button>
       </div>
     `
   })
+
+  app.mount('#emit-example-argument')
   ```
 
 -  **参考**
   - [`emits` 选项](./options-data.html#emits)
-  - [事件抛出一个值](../guide/component-basics.html#emitting-a-value-with-an-event)
+  - [事件抛出一个值](../guide/component-basics.html#使用事件抛出一个值)
 
 ## $forceUpdate
 

@@ -84,30 +84,28 @@ app.component('custom-form', {
 默认情况下，组件上的 `v-model` 使用 `modelValue` 作为 prop 和 `update:modelValue` 作为事件。我们可以通过向 `v-model` 传递参数来修改这些名称：
 
 ```html
-<my-component v-model:foo="bar"></my-component>
+<my-component v-model:title="bookTitle"></my-component>
 ```
 
-在本例中，子组件将需要一个 `foo` prop 并发出 `update:foo` 要同步的事件：
-
+在本例中，子组件将需要一个 `title` prop 并发出 `update:title` 要同步的事件：
 
 ```js
-const app = Vue.createApp({})
-
 app.component('my-component', {
   props: {
-    foo: String
+    title: String
   },
+  emits: ['update:title'],
   template: `
     <input 
       type="text"
-      :value="foo"
-      @input="$emit('update:foo', $event.target.value)">
+      :value="title"
+      @input="$emit('update:title', $event.target.value)">
   `
 })
 ```
 
 ```html
-<my-component v-model:foo="bar"></my-component>
+<my-component v-model:title="bookTitle"></my-component>
 ```
 
 ## 多个 `v-model` 绑定
@@ -124,13 +122,12 @@ app.component('my-component', {
 ```
 
 ```js
-const app = Vue.createApp({})
-
 app.component('user-name', {
   props: {
     firstName: String,
     lastName: String
   },
+  emits: ['update:firstName', 'update:lastName'],
   template: `
     <input 
       type="text"
@@ -145,19 +142,13 @@ app.component('user-name', {
 })
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="GRoPPrM" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Multiple v-models">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/GRoPPrM">
-  Multiple v-models</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Multiple v-models" slug="GRoPPrM" tab="html,result" />
 
 ## 处理 `v-model` 修饰符
 
 在 2.x 中，我们对组件 `v-model` 上的 `.trim` 等修饰符提供了硬编码支持。但是，如果组件可以支持自定义修饰符，则会更有用。在 3.x 中，添加到组件 `v-model` 的修饰符将通过 `modelModifiers` prop 提供给组件：
 
-
-当我们学习表单输入绑定时，我们看到 `v-model` 有[内置修饰符](/guide/forms.html#modifiers)——`.trim`、`.number` 和 `.lazy`。但是，在某些情况下，你可能还需要添加自己的自定义修饰符。
+当我们学习表单输入绑定时，我们看到 `v-model` 有[内置修饰符](/guide/forms.html#修饰符)——`.trim`、`.number` 和 `.lazy`。但是，在某些情况下，你可能还需要添加自己的自定义修饰符。
 
 让我们创建一个示例自定义修饰符 `capitalize`，它将 `v-model` 绑定提供的字符串的第一个字母大写。
 
@@ -166,7 +157,7 @@ app.component('user-name', {
 请注意，当组件的 `created` 生命周期钩子触发时，`modelModifiers` prop 包含 `capitalize`，其值为 `true`——因为它被设置在 `v-model` 绑定 `v-model.capitalize="bar"`。
 
 ```html
-<my-component v-model.capitalize="bar"></my-component>
+<my-component v-model.capitalize="myText"></my-component>
 ```
 
 ```js
@@ -177,6 +168,7 @@ app.component('my-component', {
       default: () => ({})
     }
   },
+  emits: ['update:modelValue'],
   template: `
     <input type="text" 
       :value="modelValue"
@@ -214,6 +206,7 @@ app.component('my-component', {
     }
   },
   methods: {
+    emits: ['update:modelValue'],
     emitValue(e) {
       let value = e.target.value
       if (this.modelModifiers.capitalize) {
@@ -234,19 +227,20 @@ app.mount('#app')
 对于带参数的 `v-model` 绑定，生成的 prop 名称将为 `arg + "Modifiers"`：
 
 ```html
-<my-component v-model:foo.capitalize="bar"></my-component>
+<my-component v-model:description.capitalize="myText"></my-component>
 ```
 
 ```js
 app.component('my-component', {
-  props: ['foo', 'fooModifiers'],
+  props: ['description', 'descriptionModifiers'],
+  emits: ['update:description'],
   template: `
     <input type="text" 
-      :value="foo"
-      @input="$emit('update:foo', $event.target.value)">
+      :value="description"
+      @input="$emit('update:description', $event.target.value)">
   `,
   created() {
-    console.log(this.fooModifiers) // { capitalize: true }
+    console.log(this.descriptionModifiers) // { capitalize: true }
   }
 })
 ```

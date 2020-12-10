@@ -8,7 +8,7 @@
 
 ```js
 const count = ref(1)
-const plusOne = computed(() => count.value++)
+const plusOne = computed(() => count.value + 1)
 
 console.log(plusOne.value) // 2
 
@@ -128,7 +128,8 @@ Vue 的响应性系统会缓存副作用函数，并异步地刷新它们，这�
 
 ```js
 
-// fire before component updates
+// 在组件更新后触发，这样你就可以访问更新的 DOM。
+// 注意：这也将推迟副作用的初始运行，直到组件的首次渲染完成。
 watchEffect(
   () => {
     /* ... */
@@ -140,7 +141,6 @@ watchEffect(
 ```
 
 `flush` 选项还接受 `sync`，这将强制效果始终同步触发。然而，这是低效的，应该很少需要。
-
 
 ### 侦听器调试
 

@@ -36,7 +36,6 @@ export default {
 
 在 3.x 中，`h` 现在是全局导入的，而不是作为参数自动传递。
 
-
 ```js
 // Vue 3 渲染函数示例
 import { h } from 'vue'
@@ -66,7 +65,6 @@ export default {
 ### 3.x 语法
 
 在 3.x 中，由于 `render` 函数不再接收任何参数，它将主要用于 `setup()` 函数内部。这还有一个好处：可以访问作用域中声明的响应式状态和函数，以及传递给 `setup()` 的参数。
-
 
 ```js
 import { h, reactive } from 'vue'

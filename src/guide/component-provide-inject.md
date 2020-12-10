@@ -6,7 +6,6 @@
 
 对于这种情况，我们可以使用 `provide` 和 `inject` 对。父组件可以作为其所有子组件的依赖项提供程序，而不管组件层次结构有多深。这个特性有两个部分：父组件有一个 `provide` 选项来提供数据，子组件有一个 `inject` 选项来开始使用这个数据。
 
-
 ![Provide/inject scheme](/images/components_provide.png)
 
 例如，如果我们有这样的层次结构：
@@ -108,6 +107,13 @@ app.component('todo-list', {
     }
   }
 })
+
+app.component('todo-list-statistics', {
+  inject: ['todoLength'],
+  created() {
+    console.log(`Injected property: ${this.todoLength.value}`) // > Injected property: 5
+  }
+})
 ```
 
-在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被注入。在[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读关于 `reactive` provide/inject 的更多信息。
+在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被注入。在[响应式计算和侦听](reactivity-computed-watchers.html#计算值)和[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读关于 `reactive` provide/inject 的更多信息。

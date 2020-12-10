@@ -62,14 +62,14 @@ const app = Vue.createApp({
 ```js
 const myMixin = {
   created() {
-    console.log('mixin hook called')
+    console.log('混入对象的钩子被调用')
   }
 }
 
 const app = Vue.createApp({
   mixins: [myMixin],
   created() {
-    console.log('component hook called')
+    console.log('组件钩子被调用')
   }
 })
 
@@ -196,7 +196,7 @@ app.mixin({
 })
 ```
 
-如你所见，在控制台中，我们先从 mixin 打印 `toVal` 和 `fromVal`，然后从 `app` 打印。如果存在，我们总是返回 `fromVal`，这就是为什么 `this.$options.custom` 设置为 `你好！` 最后。让我们尝试将策略更改为*始终*从子*实例*返回值：
+如你所见，在控制台中，我们先从 mixin 打印 `toVal` 和 `fromVal`，然后从 `app` 打印。如果存在，我们总是返回 `fromVal`，这就是为什么 `this.$options.custom` 设置为 `hello!` 最后。让我们尝试将策略更改为*始终*从子*实例*返回值：
 
 ```js
 const app = Vue.createApp({
@@ -212,7 +212,6 @@ app.mixin({
   }
 })
 ```
-
 
 在 Vue 2 中，mixin 是将部分组件逻辑抽象成可重用块的主要工具。但是，他们有几个问题：
 

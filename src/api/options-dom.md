@@ -19,8 +19,8 @@
   :::
 
 -  **参考**
-  - [生命周期图示](../guide/instance.html#lifecycle-diagram)
-  - [通过插槽分发内容](../guide/component-basics.html#content-distribution-with-slots)
+  - [生命周期图示](../guide/instance.html#生命周期图示)
+  - [通过插槽分发内容](../guide/component-basics.html#通过插槽分发内容)
 
 ## render
 

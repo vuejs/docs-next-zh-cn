@@ -10,7 +10,6 @@
 
 例如，你希望以编程的方式 focus 这个 input 在组件上挂载，这可能有用
 
-
 ```js
 const app = Vue.createApp({})
 
@@ -30,7 +29,6 @@ app.component('base-input', {
 ```
 
 此外，还可以向组件本身添加另一个 `ref`，并使用它从父组件触发 `focusInput` 事件：
-
 
 ```html
 <base-input ref="usernameInput"></base-input>

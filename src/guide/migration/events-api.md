@@ -11,7 +11,7 @@ badges:
 
 ## 2.x 语法
 
-在 2.x 中，Vue 实例可用于触发通过事件触发 API 强制附加的处理程序 (`$on`，`$off` 和 `$once`)，这用于创建 event hub，以创建在整个应用程序中使用的全局事件侦听器：
+在 2.x 中，Vue 实例可用于触发由事件触发 API 通过指令式方式添加的处理函数 (`$on`，`$off` 和 `$once`)。这可以创建 event hub，用来创建在整个应用程序中可用的全局事件监听器：
 
 ```js
 // eventHub.js
@@ -27,13 +27,13 @@ import eventHub from './eventHub'
 
 export default {
   mounted() {
-    // 添加 eventHub listener
+    // 添加 eventHub 监听器
     eventHub.$on('custom-event', () => {
       console.log('Custom event triggered!')
     })
   },
   beforeDestroy() {
-    // 移除 eventHub listener
+    // 移除 eventHub 监听器
     eventHub.$off('custom-event')
   }
 }
@@ -46,7 +46,7 @@ import eventHub from './eventHub'
 export default {
   methods: {
     callGlobalCustomEvent() {
-      eventHub.$emit('custom-event') // 如果ChildComponent mounted，控制台中将显示一条消息
+      eventHub.$emit('custom-event') // 当 ChildComponent 被挂载，控制台中将显示一条消息
     }
   }
 }
@@ -54,10 +54,10 @@ export default {
 
 ## 3.x 更新
 
-我们整个从实例中移除了 `$on`，`$off` 和 `$once` 方法，`$emit` 仍然是现有 API 的一部分，因为它用于触发由父组件以声明方式附加的事件处理程序
+我们从实例中完全移除了 `$on`、`$off` 和 `$once` 方法。`$emit` 仍然包含于现有的 API 中，因为它用于触发由父组件声明式添加的事件处理函数。
 
 ## 迁移策略
 
-例如，可以通过使用实现事件发射器接口的外部库来替换现有的 event hub [mitt](https://github.com/developit/mitt)。
+可以使用实现了事件触发接口的外部库来替换现有的 event hub，例如 [mitt](https://github.com/developit/mitt) 或 [tiny-emitter](https://github.com/scottcorgan/tiny-emitter)。
 
-在兼容性构建中也可以支持这些方法。
+兼容性构建中也支持这些方法。

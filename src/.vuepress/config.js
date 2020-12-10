@@ -3,7 +3,11 @@ const sidebar = {
     {
       title: 'Cookbook',
       collapsable: false,
-      children: ['/cookbook/', '/cookbook/editable-svg-icons']
+      children: [
+        '/cookbook/',
+        '/cookbook/editable-svg-icons',
+        '/cookbook/debugging-in-vscode'
+      ]
     }
   ],
   guide: [
@@ -94,7 +98,8 @@ const sidebar = {
         '/guide/single-file-component',
         '/guide/testing',
         '/guide/typescript-support',
-        '/guide/mobile'
+        '/guide/mobile',
+        '/guide/tooling/deployment'
       ]
     },
     {
@@ -110,44 +115,6 @@ const sidebar = {
         '/guide/a11y-semantics',
         '/guide/a11y-standards',
         '/guide/a11y-resources'
-      ]
-    },
-    {
-      title: '从 Vue 2 迁移',
-      collapsable: true,
-      children: [
-        '/guide/migration/introduction',
-        '/guide/migration/array-refs',
-        '/guide/migration/async-components',
-        '/guide/migration/attribute-coercion',
-        '/guide/migration/custom-directives',
-        '/guide/migration/custom-elements-interop',
-        '/guide/migration/data-option',
-        '/guide/migration/events-api',
-        '/guide/migration/filters',
-        '/guide/migration/fragments',
-        '/guide/migration/functional-components',
-        '/guide/migration/global-api',
-        '/guide/migration/global-api-treeshaking',
-        '/guide/migration/inline-template-attribute',
-        '/guide/migration/key-attribute',
-        '/guide/migration/keycode-modifiers',
-        '/guide/migration/props-default-this',
-        '/guide/migration/render-function-api',
-        '/guide/migration/slots-unification',
-        '/guide/migration/transition',
-        '/guide/migration/v-model',
-        '/guide/migration/v-if-v-for',
-        '/guide/migration/v-bind'
-      ]
-    },
-    {
-      title: '贡献文档',
-      collapsable: true,
-      children: [
-        '/guide/contributing/writing-guide',
-        '/guide/contributing/doc-style-guide',
-        '/guide/contributing/translations'
       ]
     }
   ],
@@ -199,6 +166,55 @@ const sidebar = {
         '/examples/elastic-header',
         '/examples/select2',
         '/examples/todomvc'
+      ]
+    }
+  ],
+  migration: [
+    '/guide/migration/introduction',
+    {
+      title: '从 Vue 2 迁移',
+      collapsable: false,
+      children: [
+        '/guide/migration/array-refs',
+        '/guide/migration/async-components',
+        '/guide/migration/attribute-coercion',
+        '/guide/migration/attrs-includes-class-style',
+        '/guide/migration/children',
+        '/guide/migration/custom-directives',
+        '/guide/migration/custom-elements-interop',
+        '/guide/migration/data-option',
+        '/guide/migration/emits-option',
+        '/guide/migration/events-api',
+        '/guide/migration/filters',
+        '/guide/migration/fragments',
+        '/guide/migration/functional-components',
+        '/guide/migration/global-api',
+        '/guide/migration/global-api-treeshaking',
+        '/guide/migration/inline-template-attribute',
+        '/guide/migration/key-attribute',
+        '/guide/migration/keycode-modifiers',
+        '/guide/migration/listeners-removed',
+        '/guide/migration/props-default-this',
+        '/guide/migration/render-function-api',
+        '/guide/migration/slots-unification',
+        '/guide/migration/transition',
+        '/guide/migration/transition-group',
+        '/guide/migration/v-on-native-modifier-removed',
+        '/guide/migration/v-model',
+        '/guide/migration/v-if-v-for',
+        '/guide/migration/v-bind',
+        '/guide/migration/watch'
+      ]
+    },
+  ],
+  contributing: [
+    {
+      title: '贡献文档',
+      collapsable: false,
+      children: [
+        '/guide/contributing/writing-guide',
+        '/guide/contributing/doc-style-guide',
+        '/guide/contributing/translations'
       ]
     }
   ]
@@ -278,10 +294,6 @@ module.exports = {
             link: '/guide/introduction'
           },
           {
-            text: 'v3 迁移指南',
-            link: '/guide/migration/introduction'
-          },
-          {
             text: '风格指南',
             link: '/style-guide/'
           },
@@ -292,6 +304,14 @@ module.exports = {
           {
             text: '示例',
             link: '/examples/markdown'
+          },
+          {
+            text: '贡献文档',
+            link: '/guide/contributing/writing-guide'
+          },
+          {
+            text: 'v3 迁移指南',
+            link: '/guide/migration/introduction'
           }
         ]
       },
@@ -333,7 +353,7 @@ module.exports = {
               },
               {
                 text: 'Vuex',
-                link: 'https://vuex.vuejs.org/'
+                link: 'https://next.vuex.vuejs.org/'
               },
               {
                 text: 'Vue CLI',
@@ -400,6 +420,8 @@ module.exports = {
     sidebarDepth: 2,
     sidebar: {
       collapsable: false,
+      '/guide/migration/': sidebar.migration,
+      '/guide/contributing/': sidebar.contributing,
       '/guide/': sidebar.guide,
       '/community/': sidebar.guide,
       '/cookbook/': sidebar.cookbook,

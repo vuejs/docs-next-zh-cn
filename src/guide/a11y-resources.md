@@ -52,7 +52,6 @@
 
 - _[认知](https://webaim.org/articles/cognitive/)_ - 这些用户可以从补充媒体、内容的结构化组织、清晰和简单的写作中获益。
 
-
 请从 WebAim 查看以下链接，以便用户了解：
 
 - [web 可达性透视：探索对每个人的影响和益处](https://www.w3.org/WAI/perspective-videos/)

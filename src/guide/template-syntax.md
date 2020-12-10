@@ -33,12 +33,7 @@ Mustache 标签将会被替代为对应组件实例中 `msg` property 的值。�
 <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="yLNEJJM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Rendering v-html">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/yLNEJJM">
-  Rendering v-html</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Rendering v-html" slug="yLNEJJM" :preview="false" />
 
 这个 `span` 的内容将会被替换成为 property 值 `rawHtml`，直接作为 HTML——会忽略解析 property 值中的数据绑定。注意，你不能使用 `v-html` 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。反之，对于用户界面 (UI)，组件更适合作为可重用和可组合的基本单位。
 
@@ -173,7 +168,6 @@ Mustache 语法不能在 HTML attribute 中使用 ，然而，可以使用 [`v-b
 
 它们看起来可能与普通的 HTML 略有不同，但 `:` 与 `@` 对于 attribute 名来说都是合法字符，在所有支持 Vue 的浏览器都能被正确地解析。而且，它们不会出现在最终渲染的标记中。缩写语法是完全可选的，但随着你更深入地了解它们的作用，你会庆幸拥有它们。
 
-
 > 从下一页开始，我们将在示例中使用缩写，因为这是 Vue 开发者最常用的用法。 
 
 ### 注意事项
@@ -181,7 +175,6 @@ Mustache 语法不能在 HTML attribute 中使用 ，然而，可以使用 [`v-b
 #### 对动态参数值约定
 
 动态参数预期会求出一个字符串，异常情况下值为 `null`。这个特殊的 `null` 值可以被显性地用于移除绑定。任何其它非字符串类型的值都将会触发一个警告。
-
 
 #### 对动态参数表达式约定
 

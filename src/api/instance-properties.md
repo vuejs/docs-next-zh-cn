@@ -32,7 +32,6 @@
 
   For components using [fragments](../guide/migration/fragments), `$el` will be the placeholder DOM node that Vue uses to keep track of the component's position in the DOM. It is recommended to use [template refs](../guide/component-template-refs.html) for direct access to DOM elements instead of relying on `$el`.
 
-
 ## $options
 
 - **类型：**`Object`
@@ -80,7 +79,7 @@
 
 - **详细：**
 
-  用来访问被[插槽分发](../guide/component-basics.html#content-distribution-with-slots)的内容。每个[具名插槽](../guide/component-slots.html#named-slots)有其相应的 property (例如：`v-slot:foo` 中的内容将会在 `this.$slots.foo` 中被找到)。`default` property 包括了所有没有被包含在具名插槽中的节点，或 `v-slot:default` 的内容。
+  用来访问被[插槽分发](../guide/component-basics.html#通过插槽分发内容)的内容。每个[具名插槽](../guide/component-slots.html#具名插槽)有其相应的 property (例如：`v-slot:foo` 中的内容将会在 `this.$slots.foo` 中被找到)。`default` property 包括了所有没有被包含在具名插槽中的节点，或 `v-slot:default` 的内容。
 
   在使用[渲染函数](../guide/render-function.html)书写一个组件时，访问 `this.$slots` 最有帮助。
 
@@ -120,8 +119,8 @@
 
 -  **参考**
   - [`<slot>` 组件](built-in-components.html#slot)
-  - [通过插槽分发内容](../guide/component-basics.html#content-distribution-with-slots)
-  - [渲染函数 - 插槽](../guide/render-function.html#slots)
+  - [通过插槽分发内容](../guide/component-basics.html#通过插槽分发内容)
+  - [渲染函数 - 插槽](../guide/render-function.html#插槽)
 
 ## $refs
 
