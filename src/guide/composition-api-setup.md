@@ -48,9 +48,8 @@ setup(props) {
 }
 ```
 
-<!-- TODO: translation -->
 
-If `title` is an optional prop, it could be missing from `props`. In that case, `toRefs` won't create a ref for `title`. Instead you'd need to use `toRef`:
+如果 `title` 是可选的 prop，则传入的 `props` 中可能没有 `title` 。在这种情况下，`toRefs` 将不会为 `title` 创建一个 ref 。你需要使用 `toRef` 替代它：
 
 ```js
 // MyBook.vue
