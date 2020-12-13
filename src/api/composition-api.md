@@ -167,8 +167,6 @@ const foo = inject<string>('foo') // string | undefined
   - [Provide / Inject](../guide/component-provide-inject.html)
   - [组合式 API Provide / Inject](../guide/composition-api-provide-inject.html)
 
-<!-- TODO: translation -->
-
 ## `getCurrentInstance`
 
 `getCurrentInstance` 支持访问内部组件实例，用于高阶用法或库的开发。
