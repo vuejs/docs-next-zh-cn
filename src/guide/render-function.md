@@ -338,7 +338,7 @@ render() {
       // 如果触发事件的元素不是事件绑定的元素
       // 则返回
       if (event.target !== event.currentTarget) return
-      // 如果向上键不是回车键，则中止
+      // 如果向上键不是回车键，则终止
       // 没有同时按下按键 (13) 和 shift 键
       if (!event.shiftKey || event.keyCode !== 13) return
       // 停止事件传播
