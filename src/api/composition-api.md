@@ -171,7 +171,7 @@ const foo = inject<string>('foo') // string | undefined
 
 ## `getCurrentInstance`
 
-`getCurrentInstance` 访问内部组件实例，用于高阶用法或库的开发。
+`getCurrentInstance` 支持访问内部组件实例，用于高阶用法或库的开发。
 
 ```ts
 import { getCurrentInstance } from 'vue'
@@ -180,14 +180,14 @@ const MyComponent = {
   setup() {
     const internalInstance = getCurrentInstance()
 
-    internalInstance.appContext.config.globalProperties // 访问全局属性 globalProperties
+    internalInstance.appContext.config.globalProperties // 访问 globalProperties
   }
 }
 ```
 
-`getCurrentInstance` **只能** 在 [setup](#setup) 或 [生命周期钩子](#lifecycle-hooks) 中调用。
+`getCurrentInstance` **只能**在 [setup](#setup) 或[生命周期钩子](#lifecycle-hooks)中调用。
 
-> 需要在 [setup](#setup) 或 [生命周期钩子](#lifecycle-hooks) 外访问实例，可以先在 `setup` 中调用 `getCurrentInstance()` 获取实例来使用。
+> 如需在 [setup](#setup) 或[生命周期钩子](#lifecycle-hooks)外使用，请先在 `setup` 中调用 `getCurrentInstance()` 获取该实例然后再使用。
 
 ```ts
 const MyComponent = {
@@ -218,7 +218,7 @@ const MyComponent = {
   }
 }
 
-// 在组合函数中调用也可以正常执行
+// 在组合式函数中调用也可以正常执行
 function useComponentId() {
   return getCurrentInstance().uid
 }
