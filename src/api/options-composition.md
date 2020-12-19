@@ -156,7 +156,7 @@
   }
   ```
 
-  如果它需要从一个不同名字的 property 注入 ，则使用 `from` 来表示其源 property：
+  如果它需要从一个不同名字的 property 注入，则使用 `from` 来表示其源 property：
 
   ```js
   const Child = {
