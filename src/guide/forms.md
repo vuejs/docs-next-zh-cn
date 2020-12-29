@@ -2,7 +2,7 @@
 
 ## 基础用法
 
-你可以用 v-model 指令在表单 `<input>`、`<textarea>` 及 `<select>` 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 `v-model` 本质上不过是语法糖。它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。
+你可以用 v-model 指令在表单 `<input>`、`<textarea>` 及 `<select>` 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 `v-model` 本质上不过是语法糖。它负责监听用户的输入事件来更新数据，并在某种极端场景下进行一些特殊处理。
 
 :::tip 提示
 `v-model` 会忽略所有表单元素的 `value`、`checked`、`selected` attribute 的初始值而总是将当前活动实例的数据作为数据来源。你应该通过 JavaScript 在组件的 `data` 选项中声明初始值。
@@ -20,7 +20,7 @@
 对于需要使用[输入法](https://en.wikipedia.org/wiki/Input_method) (如中文、日文、韩文等) 的语言，你会发现 `v-model` 不会在输入法组织文字过程中得到更新。如果你也想处理这个过程，请使用 `input` 事件。
 :::
 
-### 文本 (Text)
+### 文本
 
 ```html
 <input v-model="message" placeholder="edit me" />
@@ -29,7 +29,7 @@
 
 <common-codepen-snippet title="Handling forms: basic v-model" slug="eYNPEqj" :preview="false" />
 
-### 多行文本 (textarea)
+### 多行文本
 
 ```html
 <span>Multiline message is:</span>
@@ -50,7 +50,7 @@
 <textarea v-model="text"></textarea>
 ```
 
-### 复选框 (Checkbox)
+### 复选框
 
 单个复选框，绑定到布尔值：
 
@@ -88,7 +88,7 @@ Vue.createApp({
 
 <common-codepen-snippet title="Handling forms: multiple checkboxes" slug="bGdmoyj" :preview="false" />
 
-### 单选框 (Radio)
+### 单选框
 
 ```html
 <div id="v-model-radiobutton">
@@ -114,7 +114,7 @@ Vue.createApp({
 
 <common-codepen-snippet title="Handling forms: radiobutton" slug="MWwPEMM" :preview="false" />
 
-### 选择框 (Select)
+### 选择框
 
 单选时：
 
@@ -142,7 +142,7 @@ Vue.createApp({
 
 <common-codepen-snippet title="Handling forms: select" slug="KKpGydL" :preview="false" />
 
-:::tip Note
+:::tip 提示
 如果 `v-model` 表达式的初始值未能匹配任何选项，`<select>` 元素将被渲染为“未选中”状态。在 iOS 中，这会使用户无法选择第一个选项。因为这样的情况下，iOS 不会触发 `change` 事件。因此，更推荐像上面这样提供一个值为空的禁用选项。
 :::
 
@@ -209,7 +209,7 @@ Vue.createApp({
 
 但是有时我们可能想把值绑定到当前活动实例的一个动态 property 上，这时可以用 `v-bind` 实现，此外，使用 `v-bind` 可以将输入值绑定到非字符串。
 
-### 复选框 (Checkbox)
+### 复选框
 
 ```html
 <input type="checkbox" v-model="toggle" true-value="yes" false-value="no" />
@@ -222,11 +222,11 @@ vm.toggle === 'yes'
 vm.toggle === 'no'
 ```
 
-:::tip Tip
+:::tip 提示
 这里的 `true-value` 和 `false-value` attribute 并不会影响输入控件的 `value` attribute，因为浏览器在提交表单时并不会包含未被选中的复选框。如果要确保表单中这两个值中的一个能够被提交，(即“yes”或“no”)，请换用单选按钮。
 :::
 
-### 单选框 (Radio)
+### 单选框
 
 ```html
 <input type="radio" v-model="pick" v-bind:value="a" />
@@ -237,7 +237,7 @@ vm.toggle === 'no'
 vm.pick === vm.a
 ```
 
-### Select Options
+### 选择框选项
 
 ```html
 <select v-model="selected">
