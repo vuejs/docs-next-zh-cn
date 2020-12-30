@@ -289,7 +289,7 @@ methods: {
 ```
 
 ::: warning
-请注意，我们在这里使用的是 `model-value` ，因为我们使用的是 DOM 模板中的 kebab-case。你可以在 [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 部分找到关于 kebab cased 和 camelCased 属性的详细说明
+请注意，我们在这里使用的是 `model-value`，因为我们使用的是 DOM 模板中的 kebab-case。你可以在 [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 部分找到关于 kebab cased 和 camelCased 属性的详细说明
 :::
 
 为了让它正常工作，这个组件内的 `<input>` 必须：
