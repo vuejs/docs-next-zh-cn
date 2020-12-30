@@ -39,7 +39,7 @@ app.mount('#components-demo')
 ```
 <common-codepen-snippet title="Component basics" slug="abORVEJ" tab="js,result" :preview="false" />
 
-因为组件是可复用的组件实例，所以它们与根实例接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。仅有的例外是像 `el` 这样根实例特有的选项。
+因为组件是可复用的组件实例，所以它们与根实例接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。
 
 ## 组件的复用
 
@@ -55,7 +55,7 @@ app.mount('#components-demo')
 
 <common-codepen-snippet title="Component basics: reusing components" slug="rNVqYvM" tab="html,result" :preview="false" />
 
-注意当点击按钮时，每个组件都会各自独立维护它的 `count`。因为你每用一次组件，就会有一个它的**新实例**被创建。
+注意当点击按钮时，每个组件都会各自独立维护它的 `count`。因为你每用一次组件，就会有一个它的新**实例**被创建。
 
 ## 组件的组织
 
@@ -83,7 +83,7 @@ app.component('my-component-name', {
 
 早些时候，我们提到了创建一个博文组件的事情。问题是如果你不能向这个组件传递某一篇博文的标题或内容之类的我们想展示的数据的话，它是没有办法使用的。这也正是 prop 的由来。
 
-Prop 是你可以在组件上注册的一些自定义 attribute。当一个值传递给一个 prop attribute 的时候，它就变成了那个组件实例的一个 property。为了给博文组件传递一个标题，我们可以用一个 props 选项将其包含在该组件可接受的 `prop` 列表中：
+Prop 是你可以在组件上注册的一些自定义 attribute。为了给博文组件传递一个标题，我们可以用一个 props 选项将其包含在该组件可接受的 `prop` 列表中：
 
 ```js
 const app = Vue.createApp({})
@@ -289,7 +289,7 @@ methods: {
 ```
 
 ::: warning
-请注意，我们在这里使用的是 `model value`，因为我们使用的是 DOM 模板中的 kebab-case。你可以在 [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 部分找到关于 kebab cased 和 camelCased 属性的详细说明
+请注意，我们在这里使用的是 `model-value`，因为我们使用的是 DOM 模板中的 kebab-case。你可以在 [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 部分找到关于 kebab cased 和 camelCased 属性的详细说明
 :::
 
 为了让它正常工作，这个组件内的 `<input>` 必须：
@@ -396,7 +396,7 @@ app.component('alert-box', {
 
 你可以在[这里](https://codepen.io/team/Vue/pen/oNXaoKy)查阅并体验完整的代码，或在[这个版本](https://codepen.io/team/Vue/pen/oNXapXM)了解绑定组件选项对象，而不是已注册组件名的示例。
 
-请留意，这个 attribute 可以用于常规 HTML 元素，但这些元素将被视为组件，这意味着所有的 attribute **都会作为 DOM attribute 被绑定**。对于像 `value` 这样的 property，若想让其如预期般工作，你需要使用 [.prop 修饰器](../api/directives.html#v-bind)。
+你也可以使用 `is` attribute 来创建常规的 HTML 元素。
 
 到目前为止，关于动态组件你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[动态 & 异步组件](./components-dynamic-async.html)读完。
 
