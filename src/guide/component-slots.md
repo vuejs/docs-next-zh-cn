@@ -1,6 +1,6 @@
 # 插槽
 
-> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
+> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你对组件还不太了解，推荐你先阅读它。
 
 ## 插槽内容
 
@@ -96,9 +96,9 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 > 父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。
 
-## 后备内容
+## 备用内容
 
-有时为一个插槽设置具体的后备 (也就是默认的) 内容是很有用的，它只会在没有提供内容的时候被渲染。例如在一个 `<submit-button>` 组件中：
+有时为一个插槽设置具体的备用 (也就是默认的) 内容是很有用的，它只会在没有提供内容的时候被渲染。例如在一个 `<submit-button>` 组件中：
 
 ```html
 <button type="submit">
@@ -106,7 +106,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </button>
 ```
 
-我们可能希望这个 `<button>` 内绝大多数情况下都渲染文本“Submit”。为了将“Submit”作为后备内容，我们可以将它放在 `<slot>` 标签内：
+我们可能希望这个 `<button>` 内绝大多数情况下都渲染文本“Submit”。为了将“Submit”作为备用内容，我们可以将它放在 `<slot>` 标签内：
 
 ```html
 <button type="submit">
@@ -120,7 +120,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 <submit-button></submit-button>
 ```
 
-后备内容“Submit”将会被渲染：
+备用内容“Submit”将会被渲染：
 
 ```html
 <button type="submit">
@@ -136,7 +136,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </submit-button>
 ```
 
-则这个提供的内容将会被渲染从而取代后备内容：
+则这个提供的内容将会被渲染从而取代备用内容：
 
 ```html
 <button type="submit">
@@ -243,7 +243,7 @@ app.component('todo-list', {
 })
 ```
 
-我们可能需要替换插槽以在父组件上自定义它：
+我们可能需要替换插槽使它作用在父组件上：
 
 ```html
 <todo-list>
@@ -356,7 +356,7 @@ function (slotProps) {
 </todo-list>
 ```
 
-你甚至可以定义后备内容，用于插槽 prop 是 undefined 的情形：
+你甚至可以定义备用内容，用于插槽 prop 是 undefined 的情形：
 
 ```html
 <todo-list v-slot="{ item = 'Placeholder' }">

@@ -338,7 +338,7 @@ render() {
       // 如果触发事件的元素不是事件绑定的元素
       // 则返回
       if (event.target !== event.currentTarget) return
-      // 如果向上键不是回车键，则中止
+      // 如果向上键不是回车键，则终止
       // 没有同时按下按键 (13) 和 shift 键
       if (!event.shiftKey || event.keyCode !== 13) return
       // 停止事件传播
@@ -420,8 +420,7 @@ Vue.h(
 ```jsx
 import AnchoredHeading from './AnchoredHeading.vue'
 
-new Vue({
-  el: '#demo',
+const app = createApp({
   render() {
     return (
       <AnchoredHeading level={1}>
@@ -430,6 +429,8 @@ new Vue({
     )
   }
 })
+
+app.mount('#demo')
 ```
 
 有关 JSX 如何映射到 JavaScript 的更多信息，请参阅[使用文档](https://github.com/vuejs/jsx-next#installation) 。

@@ -133,7 +133,7 @@ function useFeatureX() {
 
 export default {
   setup() {
-    // 可以在不失去响应性的情况下破坏结构
+    // 可以在不失去响应性的情况下解构
     const { foo, bar } = useFeatureX()
 
     return {
