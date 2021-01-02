@@ -212,5 +212,4 @@ app.component('my-component', {
 
 和 attribute 不同，指令不会通过 `v-bind="$attrs"` 被传入另一个元素。
 
-With [fragments](/guide/migration/fragments.html#overview) support, components can potentially have more than one root nodes. When applied to a multi-root component, directive will be ignored and the warning will be thrown.
 有了[片段](/guide/migration/fragments.html#概览)的支持，组件可以潜在地拥有多个根结点。当被应用在一个多根结点的组件上时，指令会被忽略，并且我们会抛出一个警告。
