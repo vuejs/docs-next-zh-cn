@@ -71,7 +71,7 @@
 
   - 一个字符串数组，或
   - 一个对象，对象的 key 是本地的绑定名，value 是：
-    - 在可用的注入内容中搜索用的 key (字符串或 Symbol)，或
+    - 在可用注入内容中搜索用的 key (字符串或 Symbol)，或
     - 一个对象，该对象的：
       - `from` property 是在可用的注入内容中搜索用的 key (字符串或 Symbol)
       - `default` property 是降级情况下使用的 value
@@ -81,7 +81,7 @@
 - **示例：**
 
   ```js
-  // 父级组件提供 'foo'
+  // 父级组件 provide  'foo'
   const Provider = {
     provide: {
       foo: 'bar'
@@ -89,7 +89,7 @@
     // ...
   }
 
-  // 子组件注入 'foo'
+  // 子组件 inject  'foo'
   const Child = {
     inject: ['foo'],
     created() {
@@ -118,7 +118,7 @@
   }
   ```
 
-  使用一个注入的值作为一个 property 的默认值：
+  使用一个 inject 的值作为一个 property 的默认值：
 
   ```js
   const Child = {
@@ -133,7 +133,7 @@
   }
   ```
 
-  使用一个注入的值作为数据入口：
+  使用一个 inject 的值作为数据入口：
 
   ```js
   const Child = {
@@ -146,7 +146,7 @@
   }
   ```
 
-  注入可以通过设置默认值使其变成可选项：
+  Inject 可以通过设置默认值使其变成可选项：
 
   ```js
   const Child = {

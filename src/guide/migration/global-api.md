@@ -177,7 +177,7 @@ app.directive('focus', {
 app.mount('#app')
 ```
 
-## 提供/注入 (Provide / Inject)
+## Provide / Inject
 
 与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用实例还可以提供可由应用内的任何组件注入的依赖项：
 
@@ -196,9 +196,7 @@ export default {
 }
 ```
 
-<!-- TODO: translation -->
-
-Using `provide` is especially useful when writing a plugin, as an alternative to `globalProperties`. 
+使用 `provide` 在编写插件时非常有用，可以替代 `globalProperties`。
 
 ## 在应用之间共享配置
 
