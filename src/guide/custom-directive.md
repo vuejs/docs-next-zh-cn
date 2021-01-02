@@ -167,7 +167,7 @@ app.directive('pin', {
 
 ## 函数简写
 
-在很多时候，你可能想在 `mounted` 和 `updated` 时触发相同行为，而不关心其它的钩子。比如这样写：
+在前面的例子中，你可能想在 `mounted` 和 `updated` 时触发相同行为，而不关心其他的钩子函数。那么你可以通过将这个回调函数传递给指令来实现：
 
 ```js
 app.directive('pin', (el, binding) => {
