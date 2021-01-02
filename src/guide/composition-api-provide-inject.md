@@ -1,4 +1,4 @@
-# Provide/Inject
+# Provide / Inject
 
 > 本指南假定你已经阅读了 [Provide / Inject](component-provide-inject.html)、[组合式 API 介绍](composition-api-introduction.html)和[响应性基础](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这篇文章。
 
@@ -147,7 +147,7 @@ export default {
 
 ### 修改响应式 property
 
-当使用响应式 provide/inject 值时，**建议尽可能，在*提供者*内保持响应式 property 的任何更改**。
+当使用响应式 provide / inject 值时，**建议尽可能，在*提供者*内保持响应式 property 的任何更改**。
 
 例如，在需要更改用户位置的情况下，我们最好在 `MyMap` 组件中执行此操作。
 
