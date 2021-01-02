@@ -221,7 +221,7 @@ isReactive(foo.value) // false
 
 ## `triggerRef`
 
-手动执行与 `shallowRef`](#shallowref) 关联的任何副作用。
+手动执行与 [`shallowRef`](#shallowref) 关联的任何副作用。
 
 ```js
 const shallow = shallowRef({
