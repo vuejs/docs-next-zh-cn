@@ -194,7 +194,7 @@ app.directive('demo', (el, binding) => {
 
 ## 在组件中使用
 
-和[非 prop 的 attribute] 类似，当在组件中使用时，自定义指令总是会被应用在组件的根节点上。
+和[非 prop 的 attribute](component-attrs.html) 类似，当在组件中使用时，自定义指令总是会被应用在组件的根节点上。
 
 ```vue-html
 <my-component v-demo="test"></my-component>
