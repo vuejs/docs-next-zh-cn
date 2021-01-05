@@ -194,9 +194,7 @@ app.directive('demo', (el, binding) => {
 
 ## 在组件中使用
 
-<!-- TODO: translation -->
-
-When used on components, custom directive will always apply to component's root node, similarly to [non-prop attributes](component-attrs.html).
+和[非 prop 的 attribute](component-attrs.html) 类似，当在组件中使用时，自定义指令总是会被应用在组件的根节点上。
 
 ```vue-html
 <my-component v-demo="test"></my-component>
@@ -205,15 +203,13 @@ When used on components, custom directive will always apply to component's root 
 ```js
 app.component('my-component', {
   template: `
-    <div> // v-demo directive will be applied here
+    <div> // v-demo 指令将会被应用在这里
       <span>My component content</span>
     </div>
   `
 })
 ```
 
-<!-- TODO: translation -->
+和 attribute 不同，指令不会通过 `v-bind="$attrs"` 被传入另一个元素。
 
-Unlike attributes, directives can't be passed to a different element with `v-bind="$attrs"`.
-
-With [fragments](/guide/migration/fragments.html#overview) support, components can potentially have more than one root nodes. When applied to a multi-root component, directive will be ignored and the warning will be thrown.
+有了[片段](/guide/migration/fragments.html#概览)支持以后，组件可能会有多个根节点。当被应用在一个多根节点的组件上时，指令会被忽略，并且会抛出一个警告。
