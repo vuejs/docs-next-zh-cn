@@ -12,7 +12,7 @@ badges:
 
 - 把组件接收到的原始 prop 作为参数传递给默认函数；
 
-- [注入](../composition-api-provide-inject.md) API 可以在默认函数中使用。
+- [inject](../composition-api-provide-inject.md) API 可以在默认函数中使用。
 
 ```js
 import { inject } from 'vue'

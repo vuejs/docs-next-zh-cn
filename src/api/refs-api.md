@@ -133,7 +133,7 @@ function useFeatureX() {
 
 export default {
   setup() {
-    // 可以在不失去响应性的情况下破坏结构
+    // 可以在不失去响应性的情况下解构
     const { foo, bar } = useFeatureX()
 
     return {
@@ -221,7 +221,7 @@ isReactive(foo.value) // false
 
 ## `triggerRef`
 
-手动执行与 `shallowRef`](#shallowref) 关联的任何效果。
+手动执行与 [`shallowRef`](#shallowref) 关联的任何副作用。
 
 ```js
 const shallow = shallowRef({
