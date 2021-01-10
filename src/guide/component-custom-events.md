@@ -205,8 +205,8 @@ app.component('my-component', {
       default: () => ({})
     }
   },
+  emits: ['update:modelValue'],
   methods: {
-    emits: ['update:modelValue'],
     emitValue(e) {
       let value = e.target.value
       if (this.modelModifiers.capitalize) {
