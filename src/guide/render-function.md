@@ -19,8 +19,11 @@ Vue 推荐在绝大多数情况下使用模板来创建你的 HTML。然而在�
 ```
 
 当开始写一个只能通过 `level` prop 动态生成标题 (heading) 的组件时，我们很快就可以得出这样的结论：
+
 ```js
-const app = Vue.createApp({})
+const { createApp } = Vue
+
+const app = createApp({})
 
 app.component('anchored-heading', {
   template: `
@@ -51,17 +54,18 @@ app.component('anchored-heading', {
   }
 })
 ```
+
 这个模板感觉不太好。它不仅冗长，而且我们为每个级别标题重复书写了 `<slot></slot>`。当我们添加锚元素时，我们必须在每个 `v-if/v-else-if` 分支中再次重复它。
 
 虽然模板在大多数组件中都非常好用，但是显然在这里它就不合适了。那么，我们来尝试使用 `render` 函数重写上面的例子：
 
 ```js
-const app = Vue.createApp({})
+const { createApp, h } = Vue
+
+const app = createApp({})
 
 app.component('anchored-heading', {
   render() {
-    const { h } = Vue
-
     return h(
       'h' + this.level, // tag name
       {}, // props/attributes
@@ -108,8 +112,10 @@ app.component('anchored-heading', {
 或者一个渲染函数里：
 
 ```js
+const { h } = Vue
+
 render() {
-  return Vue.h('h1', {}, this.blogTitle)
+  return h('h1', {}, this.blogTitle)
 }
 ```
 
@@ -120,7 +126,9 @@ render() {
 Vue 通过建立一个**虚拟 DOM** 来追踪自己要如何改变真实 DOM。请仔细看这行代码：
 
 ```js
-return Vue.h('h1', {}, this.blogTitle)
+const { h } = Vue
+
+return h('h1', {}, this.blogTitle)
 ```
 
 `h()` 到底会返回什么呢？其实不是一个*实际*的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息。我们把这样的节点描述为“虚拟节点 (virtual node)”，也常简写它为 **VNode**。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。
@@ -130,6 +138,8 @@ return Vue.h('h1', {}, this.blogTitle)
 `h()` 函数是一个用于创建 vnode 的实用程序。也许可以更准确地将其命名为 `createVNode()`，但由于频繁使用和简洁，它被称为 `h()` 。它接受三个参数：
 
 ```js
+const { h } = Vue
+
 // @returns {VNode}
 h(
   // {String | Object | Function | null} tag
@@ -167,7 +177,9 @@ h(
 有了这些知识，我们现在可以完成我们最开始想实现的组件：
 
 ```js
-const app = Vue.createApp({})
+const { createApp, h } = Vue
+
+const app = createApp({})
 
 /** Recursively get text from children nodes */
 function getChildrenTextContent(children) {
@@ -190,8 +202,8 @@ app.component('anchored-heading', {
       .replace(/\W+/g, '-') // replace non-word characters with dash
       .replace(/(^-|-$)/g, '') // remove leading and trailing dashes
 
-    return Vue.h('h' + this.level, [
-      Vue.h(
+    return h('h' + this.level, [
+      h(
         'a',
         {
           name: headingId,
@@ -217,9 +229,11 @@ app.component('anchored-heading', {
 组件树中的所有 VNode 必须是唯一的。这意味着，下面的渲染函数是不合法的：
 
 ```js
+const { h } = Vue
+
 render() {
-  const myParagraphVNode = Vue.h('p', 'hi')
-  return Vue.h('div', [
+  const myParagraphVNode = h('p', 'hi')
+  return h('div', [
     // 错误 - 重复的Vnode!
     myParagraphVNode, myParagraphVNode
   ])
@@ -229,10 +243,12 @@ render() {
 如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这渲染函数用完全合法的方式渲染了 20 个相同的段落：
 
 ```js
+const { h } = Vue
+
 render() {
-  return Vue.h('div',
+  return h('div',
     Array.from({ length: 20 }).map(() => {
-      return Vue.h('p', 'hi')
+      return h('p', 'hi')
     })
   )
 }
@@ -254,27 +270,31 @@ render() {
 这些都可以在渲染函数中用 JavaScript 的 `if`/`else` 和 `map()` 来重写：
 
 ```js
+const { h } = Vue
+
 props: ['items'],
 render() {
   if (this.items.length) {
-    return Vue.h('ul', this.items.map((item) => {
-      return Vue.h('li', item.name)
+    return h('ul', this.items.map((item) => {
+      return h('li', item.name)
     }))
   } else {
-    return Vue.h('p', 'No items found.')
+    return h('p', 'No items found.')
   }
 }
 ```
 
 ### `v-model`
 
- `v-model` 指令扩展为 `modelValue` 和 `onUpdate:modelValue` 在模板编译过程中，我们必须自己提供这些prop：
+`v-model` 指令扩展为 `modelValue` 和 `onUpdate:modelValue` 在模板编译过程中，我们必须自己提供这些 prop：
 
 ```js
+const { h } = Vue
+
 props: ['modelValue'],
 emits: ['update:modelValue'],
 render() {
-  return Vue.h(SomeComponent, {
+  return h(SomeComponent, {
     modelValue: this.modelValue,
     'onUpdate:modelValue': value => this.$emit('update:modelValue', value)
   })
@@ -283,11 +303,13 @@ render() {
 
 ### `v-on`
 
-我们必须为事件处理程序提供一个正确的prop名称，例如，要处理 `click` 事件，prop名称应该是 `onClick`。
+我们必须为事件处理程序提供一个正确的 prop 名称，例如，要处理 `click` 事件，prop 名称应该是 `onClick`。
 
 ```js
+const { h } = Vue
+
 render() {
-  return Vue.h('div', {
+  return h('div', {
     onClick: $event => console.log('clicked', $event.target)
   })
 }
@@ -295,13 +317,15 @@ render() {
 
 #### 事件修饰符
 
-对于 `.passive` 、 `.capture`和 `.once` 事件修饰符，Vue提供了处理程序的对象语法：
+对于 `.passive` 、 `.capture`和 `.once` 事件修饰符，Vue 提供了处理程序的对象语法：
 
 实例:
 
 ```javascript
+const { h } = Vue
+
 render() {
-  return Vue.h('input', {
+  return h('input', {
     onClick: {
       handler: this.doThisInCapturingMode,
       capture: true
@@ -321,19 +345,21 @@ render() {
 
 对于所有其它的修饰符，私有前缀都不是必须的，因为你可以在事件处理函数中使用事件方法：
 
-| 修饰符                                                 | 处理函数中的等价操作                                                                                                     |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `.stop`                                               | `event.stopPropagation()`                                                                                            |
-| `.prevent`                                            | `event.preventDefault()`                                                                                             |
-| `.self`                                               | `if (event.target !== event.currentTarget) return`                                                                   |
-| 按键：<br>`.enter`, `.13`                              | `if (event.keyCode !== 13) return` (对于别的按键修饰符来说，可将 13 改为[另一个按键码](http://keycode.info/)                  |
-| 修饰键：<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (将 `ctrlKey` 分别修改为 `altKey`, `shiftKey`, 或 `metaKey`)                  |
+| 修饰符                                         | 处理函数中的等价操作                                                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `.stop`                                        | `event.stopPropagation()`                                                                                    |
+| `.prevent`                                     | `event.preventDefault()`                                                                                     |
+| `.self`                                        | `if (event.target !== event.currentTarget) return`                                                           |
+| 按键：<br>`.enter`, `.13`                      | `if (event.keyCode !== 13) return` (对于别的按键修饰符来说，可将 13 改为[另一个按键码](http://keycode.info/) |
+| 修饰键：<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (将 `ctrlKey` 分别修改为 `altKey`, `shiftKey`, 或 `metaKey`)                    |
 
 这里是一个使用所有修饰符的例子：
 
 ```js
+const { h } = Vue
+
 render() {
-  return Vue.h('input', {
+  return h('input', {
     onKeyUp: event => {
       // 如果触发事件的元素不是事件绑定的元素
       // 则返回
@@ -356,17 +382,21 @@ render() {
 你可以通过 [`this.$slots`](../api/instance-properties.html#slots) 访问静态插槽的内容，每个插槽都是一个 VNode 数组：
 
 ```js
+const { h } = Vue
+
 render() {
   // `<div><slot></slot></div>`
-  return Vue.h('div', {}, this.$slots.default())
+  return h('div', {}, this.$slots.default())
 }
 ```
 
 ```js
+const { h } = Vue
+
 props: ['message'],
 render() {
   // `<div><slot :text="message"></slot></div>`
-  return Vue.h('div', {}, this.$slots.default({
+  return h('div', {}, this.$slots.default({
     text: this.message
   }))
 }
@@ -377,11 +407,13 @@ render() {
 <!-- TODO: translation -->
 
 ```js
+const { h, resolveComponent } = Vue
+
 render() {
   // `<div><child v-slot="props"><span>{{ props.text }}</span></child></div>`
-  return Vue.h('div', [
-    Vue.h(
-      Vue.resolveComponent('child'),
+  return h('div', [
+    h(
+      resolveComponent('child'),
       {},
       // pass `slots` as the children object
       // in the form of { name: props => VNode | Array<VNode> }
@@ -398,13 +430,15 @@ render() {
 如果你写了很多渲染函数，可能会觉得下面这样的代码写起来很痛苦：
 
 ```js
-Vue.h(
+const { h } = Vue
+
+h(
   'anchored-heading',
   {
     level: 1
   },
   {
-    default: () => [Vue.h('span', 'Hello'), ' world!']
+    default: () => [h('span', 'Hello'), ' world!']
   }
 )
 ```
