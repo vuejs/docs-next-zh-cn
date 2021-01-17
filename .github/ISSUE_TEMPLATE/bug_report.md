@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-<!--     placeholder content      -->
+<!--
 
 首先感谢大家，向我们反馈 Vuejs 3.0 官方中文仓库反馈文档错误。
 
@@ -24,3 +24,5 @@ assignees: ''
 2. [术语翻译约定](https://github.com/vuejs/docs-next-zh-cn/wiki/%E6%9C%AF%E8%AF%AD%E7%BF%BB%E8%AF%91%E7%BA%A6%E5%AE%9A)
 
 3. [协作指南](https://github.com/vuejs/docs-next-zh-cn/wiki/%E5%8D%8F%E4%BD%9C%E6%8C%87%E5%8D%97)
+
+-->
