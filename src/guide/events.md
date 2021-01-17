@@ -4,7 +4,7 @@
 
 ## 监听事件
 
-我们可以使用 `v-on` 指令 (通常缩写为 `@` 符号) 来监听 DOM 事件，并在触发事件时执行一些 JavaScript代码。用法为 `v-on:click="methodName"` 或使用快捷方式 `@click="methodName"`
+我们可以使用 `v-on` 指令 (通常缩写为 `@` 符号) 来监听 DOM 事件，并在触发事件时执行一些 JavaScript。用法为 `v-on:click="methodName"` 或使用快捷方式 `@click="methodName"`
 
 例如：
 
