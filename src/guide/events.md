@@ -37,7 +37,7 @@ Vue.createApp({
 
 ```html
 <div id="event-with-method">
-  <!-- `greet` 在下面定义的方法名 -->
+  <!-- `greet` 是在下面定义的方法名 -->
   <button @click="greet">Greet</button>
 </div>
 ```
@@ -51,7 +51,7 @@ Vue.createApp({
   },
   methods: {
     greet(event) {
-      // `this` 内部 `methods` 指向当前活动实例
+      // `methods` 内部的 `this` 指向当前活动实例
       alert('Hello ' + this.name + '!')
       // `event` 是原生 DOM event
       if (event) {
@@ -103,7 +103,7 @@ Vue.createApp({
 // ...
 methods: {
   warn(message, event) {
-    // now we have access to the native event
+    // 现在可以访问到原生事件
     if (event) {
       event.preventDefault()
     }
@@ -127,10 +127,10 @@ methods: {
 // ...
 methods: {
   one(event) {
-    // first handler logic...
+    // 第一个事件处理器逻辑...
   },
   two(event) {
-    // second handler logic...
+   // 第二个事件处理器逻辑...
   }
 }
 ```
