@@ -112,8 +112,6 @@ app.component('anchored-heading', {
 或者一个渲染函数里：
 
 ```js
-const { h } = Vue
-
 render() {
   return h('h1', {}, this.blogTitle)
 }
@@ -126,8 +124,6 @@ render() {
 Vue 通过建立一个**虚拟 DOM** 来追踪自己要如何改变真实 DOM。请仔细看这行代码：
 
 ```js
-const { h } = Vue
-
 return h('h1', {}, this.blogTitle)
 ```
 
@@ -138,8 +134,6 @@ return h('h1', {}, this.blogTitle)
 `h()` 函数是一个用于创建 vnode 的实用程序。也许可以更准确地将其命名为 `createVNode()`，但由于频繁使用和简洁，它被称为 `h()` 。它接受三个参数：
 
 ```js
-const { h } = Vue
-
 // @returns {VNode}
 h(
   // {String | Object | Function | null} tag
@@ -229,8 +223,6 @@ app.component('anchored-heading', {
 组件树中的所有 VNode 必须是唯一的。这意味着，下面的渲染函数是不合法的：
 
 ```js
-const { h } = Vue
-
 render() {
   const myParagraphVNode = h('p', 'hi')
   return h('div', [
@@ -243,8 +235,6 @@ render() {
 如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这渲染函数用完全合法的方式渲染了 20 个相同的段落：
 
 ```js
-const { h } = Vue
-
 render() {
   return h('div',
     Array.from({ length: 20 }).map(() => {
@@ -270,8 +260,6 @@ render() {
 这些都可以在渲染函数中用 JavaScript 的 `if`/`else` 和 `map()` 来重写：
 
 ```js
-const { h } = Vue
-
 props: ['items'],
 render() {
   if (this.items.length) {
@@ -289,8 +277,6 @@ render() {
 `v-model` 指令扩展为 `modelValue` 和 `onUpdate:modelValue` 在模板编译过程中，我们必须自己提供这些 prop：
 
 ```js
-const { h } = Vue
-
 props: ['modelValue'],
 emits: ['update:modelValue'],
 render() {
@@ -306,8 +292,6 @@ render() {
 我们必须为事件处理程序提供一个正确的 prop 名称，例如，要处理 `click` 事件，prop 名称应该是 `onClick`。
 
 ```js
-const { h } = Vue
-
 render() {
   return h('div', {
     onClick: $event => console.log('clicked', $event.target)
@@ -322,8 +306,6 @@ render() {
 实例:
 
 ```javascript
-const { h } = Vue
-
 render() {
   return h('input', {
     onClick: {
@@ -356,8 +338,6 @@ render() {
 这里是一个使用所有修饰符的例子：
 
 ```js
-const { h } = Vue
-
 render() {
   return h('input', {
     onKeyUp: event => {
@@ -382,8 +362,6 @@ render() {
 你可以通过 [`this.$slots`](../api/instance-properties.html#slots) 访问静态插槽的内容，每个插槽都是一个 VNode 数组：
 
 ```js
-const { h } = Vue
-
 render() {
   // `<div><slot></slot></div>`
   return h('div', {}, this.$slots.default())
@@ -391,8 +369,6 @@ render() {
 ```
 
 ```js
-const { h } = Vue
-
 props: ['message'],
 render() {
   // `<div><slot :text="message"></slot></div>`
@@ -430,8 +406,6 @@ render() {
 如果你写了很多渲染函数，可能会觉得下面这样的代码写起来很痛苦：
 
 ```js
-const { h } = Vue
-
 h(
   'anchored-heading',
   {
