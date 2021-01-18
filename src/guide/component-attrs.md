@@ -30,7 +30,7 @@ app.component('date-picker', {
 </div>
 ```
 
-同样的规则适用于事件监听器：
+同样的规则也适用于事件监听器：
 
 ```html
 <date-picker @change="submitChange"></date-picker>
