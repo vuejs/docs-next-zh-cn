@@ -2,13 +2,13 @@
 
 > 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
-通常，当我们需要将数据从父组件传递到子组件时，我们使用 [props](component-props.md)。想象一下这样的结构：你有一些深嵌套的组件，而你只需要来自深嵌套子组件中父组件的某些内容。在这种情况下，你仍然需要将 prop 传递到整个组件链中，这可能会很烦人。
+通常，当我们需要从父组件向子组件传递数据时，我们使用 [props](component-props.md)。想象一下这样的结构：你有一些深度嵌套的组件，而深层的子组件只需要父组件的某些内容。在这种情况下，如果你仍然将 prop 传递到整个组件链中，可能会很麻烦。
 
-对于这种情况，我们可以使用一对 `provide` 和 `inject`。父组件可以作为其所有子组件的依赖项提供函数，而不管组件层次结构有多深。这个特性有两个部分：父组件有一个 `provide` 选项来提供数据，子组件有一个 `inject` 选项来开始使用这个数据。
+对于这种情况，我们可以使用一对 `provide` 和 `inject`。无论组件层次结构有多深，父组件都可以作为其所有子组件的依赖提供者。这个特性有两个部分：父组件有一个 `provide` 选项来提供数据，子组件有一个 `inject` 选项来开始使用这些数据。
 
 ![Provide/inject scheme](/images/components_provide.png)
 
-例如，如果我们有这样的层次结构：
+例如，我们有这样的层次结构：
 
 ```
 Root
@@ -19,7 +19,7 @@ Root
       └─ TodoListStatistics
 ```
 
-如果要将 todo-items 的长度直接传递给 `TodoListStatistics`，我们将把这个属性向下传递到层次结构：`TodoList` -> `TodoListFooter` -> `TodoListStatistics`。通过 provide/inject 方法，我们可以直接执行以下操作：
+如果要将 todo-items 的长度直接传递给 `TodoListStatistics`，我们要将 prop 逐级传递下去：`TodoList` -> `TodoListFooter` -> `TodoListStatistics`。通过 provide/inject 方法，我们可以直接执行以下操作：
 
 ```js
 const app = Vue.createApp({})
@@ -49,7 +49,7 @@ app.component('todo-list-statistics', {
 })
 ```
 
-但是，如果我们尝试在此处 provide 一些组件实例 property，则这将不起作用：
+但是，如果我们尝试在此处 provide 一些组件的实例 property，这将是不起作用的：
 
 ```js
 app.component('todo-list', {
@@ -92,11 +92,11 @@ app.component('todo-list', {
 实际上，你可以将依赖注入看作是“long range props”，除了：
 
 - 父组件不需要知道哪些子组件使用它 provide 的 property
-- 子组件不需要知道 `inject` property 来自哪里
+- 子组件不需要知道 inject 的 property 来自哪里
 
 ## 处理响应性
 
-在上面的例子中，如果我们更改了 `todos` 的列表，这个更改将不会反映在 inject 的 `todoLength` property 中。这是因为默认情况下，`provide/inject` 绑定*不*是被动绑定。我们可以通过将 `ref` property 或 `reactive` 对象传递给 `provide` 来更改此行为。在我们的例子中，如果我们想对祖先组件中的更改做出反应，我们需要为我们 provide 的 `todoLength` 分配一个组合式 API `computed` property：
+在上面的例子中，如果我们更改了 `todos` 的列表，这个变化并不会反映在 inject 的 `todoLength` property 中。这是因为默认情况下，`provide/inject` 绑定*并不是*可响应的。我们可以通过传递一个 `ref` property 或 `reactive` 对象给 `provide` 来改变这种行为。在我们的例子中，如果我们想对祖先组件中的更改做出响应，我们需要为 provide 的 `todoLength` 分配一个组合式 API `computed` property：
 
 ```js
 app.component('todo-list', {
@@ -116,4 +116,4 @@ app.component('todo-list-statistics', {
 })
 ```
 
-在这种情况下，对 `todos.length` 将正确反映在组件中，其中“todoLength”被注入。在[响应式计算和侦听](reactivity-computed-watchers.html#计算值)和[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读关于 `reactive` provide/inject 的更多信息。
+在这种情况下，任何对 `todos.length` 的改变都会被正确地反映在注入 `todoLength` 的组件中。在[响应式计算和侦听](reactivity-computed-watchers.html#计算值)和[组合式 API 部分](composition-api-provide-inject.html#响应性)中阅读更多关于 `reactive` provide/inject 的信息。
