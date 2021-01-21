@@ -164,7 +164,7 @@ app.mount('#mixins-global')
 
 ## 自定义选项合并策略
 
-自定义选项将使用默认策略，即简单地覆盖已有值。如果想让自定义选项进行自定义逻辑合并，可以向 `app.config.optionMergeStrategies` 添加一个函数：
+自定义选项在合并时，默认策略为简单地覆盖已有值。如果想让某个自定义选项以自定义逻辑进行合并，可以在 `app.config.optionMergeStrategies` 中添加一个函数：
 
 ```js
 const app = Vue.createApp({})
