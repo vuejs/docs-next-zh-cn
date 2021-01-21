@@ -96,7 +96,7 @@ type StopHandle = () => void
 
 ### 侦听一个单一源
 
-侦听器 data 源可以是返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
+侦听器 data 源可以是具有返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
 
 ```js
 // 侦听一个getter
