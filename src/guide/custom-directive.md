@@ -2,11 +2,11 @@
 
 ## 简介
 
-除了核心功能默认内置的指令 (`v-model` 和 `v-show`)，Vue 也允许注册自定义指令。注意，在 Vue 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。举个聚焦输入框的例子，如下：
+除了核心功能默认内置的指令 (例如 `v-model` 和 `v-show`)，Vue 也允许注册自定义指令。注意，在 Vue 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。举个聚焦输入框的例子，如下：
 
 <common-codepen-snippet title="Custom directives: basic example" slug="JjdxaJW" :preview="false" />
 
-当页面加载时，该元素将获得焦点 (注意：`autofocus` 在移动版 Safari 上不工作)。事实上，只要你在打开这个页面后还没点击过任何内容，这个输入框就应当还是处于聚焦状态。此外，你可以单击 `Rerun` 按钮，输入将被聚焦。
+当页面加载时，该元素将获得焦点 (注意：`autofocus` 在移动版 Safari 上不工作)。事实上，如果你在打开这个页面后还没有点击过任何内容，那么此时这个输入框就应当处于聚焦状态。此外，你可以单击 `Rerun` 按钮，输入框将被聚焦。
 
 现在让我们用指令来实现这个功能：
 
@@ -14,9 +14,9 @@
 const app = Vue.createApp({})
 // 注册一个全局自定义指令 `v-focus`
 app.directive('focus', {
-  // 当被绑定的元素插入到 DOM 中时……
+  // 当被绑定的元素挂载到 DOM 中时……
   mounted(el) {
-    // Focus the element
+    // 聚焦元素
     el.focus()
   }
 })
@@ -35,7 +35,7 @@ directives: {
 }
 ```
 
-然后你可以在模板中任何元素上使用新的 `v-focus` property，如下：
+然后你可以在模板中任何元素上使用新的 `v-focus` attribute，如下：
 
 ```html
 <input v-focus />
@@ -45,9 +45,11 @@ directives: {
 
 一个指令定义对象可以提供如下几个钩子函数 (均为可选)：
 
-- `beforeMount`：当指令第一次绑定到元素并且在挂载父组件之前调用。在这里你可以做一次性的初始化设置。
+- `created`：在绑定元素的 attribute 或事件监听器被应用之前调用。在指令需要附加须要在普通的 `v-on` 事件监听器前调用的事件监听器时，这很有用。
 
-- `mounted`：在挂载绑定元素的父组件时调用。
+- `beforeMount`：当指令第一次绑定到元素并且在挂载父组件之前调用。
+
+- `mounted`：在绑定元素的父组件被挂载后调用。
 
 - `beforeUpdate`：在更新包含组件的 VNode 之前调用。
 
@@ -67,7 +69,7 @@ directives: {
 
 指令的参数可以是动态的。例如，在 `v-mydirective:[argument]="value"` 中，`argument` 参数可以根据组件实例数据进行更新！这使得自定义指令可以在应用中被灵活使用。
 
-例如你想要创建一个自定义指令，用来通过固定布局将元素固定在页面上。我们可以像这样创建一个通过指令值来更新竖直位置像素值的自定义指令：
+例如你想要创建一个自定义指令，用来通过固定布局将元素固定在页面上。我们可以创建一个自定义指令，它的值以像素为单位更新被固定元素的垂直位置，如下所示：
 
 ```vue-html
 <div id="dynamic-arguments-example" class="demo">
@@ -82,7 +84,7 @@ const app = Vue.createApp({})
 app.directive('pin', {
   mounted(el, binding) {
     el.style.position = 'fixed'
-    // binding.value is the value we pass to directive - in this case, it's 200
+    // binding.value 是我们传递给指令的值——在这里是 200
     el.style.top = binding.value + 'px'
   }
 })
@@ -111,7 +113,7 @@ const app = Vue.createApp({
 app.directive('pin', {
   mounted(el, binding) {
     el.style.position = 'fixed'
-    // binding.arg is an argument we pass to directive
+    // binding.arg 是我们传递给指令的参数
     const s = binding.arg || 'top'
     el.style[s] = binding.value + 'px'
   }
@@ -124,7 +126,7 @@ app.mount('#dynamic-arguments-example')
 
 <common-codepen-snippet title="Custom directives: dynamic arguments" slug="YzXgGmv" :preview="false" />
 
-我们的定制指令现在已经足够灵活，可以支持一些不同的用例。为了使其更具动态性，我们还可以允许修改绑定值。让我们创建一个附加属性 `pinPadding`，并将其绑定到 `<input type="range">`。
+我们的自定义指令现在已经足够灵活，可以支持一些不同的用例。为了使其更具动态性，我们还可以允许修改绑定值。让我们创建一个附加属性 `pinPadding`，并将其绑定到 `<input type="range">`。
 
 ```vue-html{4}
 <div id="dynamicexample">
@@ -145,7 +147,7 @@ const app = Vue.createApp({
 })
 ```
 
-让我们扩展我们的指令逻辑来重新计算固定元件更新的距离。
+让我们扩展指令逻辑以在组件更新后重新计算固定的距离。
 
 ```js{7-10}
 app.directive('pin', {
