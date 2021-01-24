@@ -164,7 +164,7 @@ app.mount('#mixins-global')
 
 ## 自定义选项合并策略
 
-自定义选项将使用默认策略，即简单地覆盖已有值。如果想让自定义选项以自定义逻辑合并，可以向 `app.config.optionMergeStrategies` 添加一个函数：
+自定义选项在合并时，默认策略为简单地覆盖已有值。如果想让某个自定义选项以自定义逻辑进行合并，可以在 `app.config.optionMergeStrategies` 中添加一个函数：
 
 ```js
 const app = Vue.createApp({})
@@ -217,6 +217,6 @@ app.mixin({
 
 - mixin 很容易发生冲突：因为每个特性的属性都被合并到同一个组件中，所以为了避免 property 名冲突和调试，你仍然需要了解其他每个特性。
 
-- 可重用性是有限的：我们不能向 mixin 传递任何参数来改变它的逻辑，这降低了它们在抽象逻辑方面的灵活性
+- 可重用性是有限的：我们不能向 mixin 传递任何参数来改变它的逻辑，这降低了它们在抽象逻辑方面的灵活性。
 
 为了解决这些问题，我们添加了一种通过逻辑关注点组织代码的新方法：[组合式 API](composition-api-introduction.html)。
