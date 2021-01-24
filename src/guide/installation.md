@@ -74,7 +74,7 @@ vue upgrade --next
 使用 npm：
 
 ```bash
-$ npm init vite-app <project-name>
+$ npm init @vitejs/app <project-name>
 $ cd <project-name>
 $ npm install
 $ npm run dev
@@ -83,7 +83,7 @@ $ npm run dev
 或者 yarn：
 
 ```bash
-$ yarn create vite-app <project-name>
+$ yarn create @vitejs/app <project-name>
 $ cd <project-name>
 $ yarn
 $ yarn dev
