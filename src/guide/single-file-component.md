@@ -65,3 +65,106 @@
 CLI 会为你搞定大多数工具的配置问题，同时也支持细粒度自定义[配置项](https://cli.vuejs.org/config/)。
 
 有时你会想从零搭建你自己的构建工具，这时你需要通过 [Vue Loader](https://vue-loader.vuejs.org) 手动配置 webpack。关于学习更多 webpack 的内容，请查阅[其官方文档](https://webpack.js.org/configuration/)和 [Webpack Academy](https://webpack.academy/p/the-core-concepts)。
+
+### rollup 构建
+
+在开发第三方库的时候，大多数时候我们都希望以一种允许类库用户 [tree shake](https://webpack.js.org/guides/tree-shaking/)的方式来构建它。为了实现 tree-shaking，我们需要构建`esm`模块。由于 webpack 以及 vue-cli 都不支持构建 `esm` 模块，我们需要依靠 [rollup](https://rollupjs.org/)。
+
+#### 安装 Rollup
+
+我们需要安装 Rollup 和一些依赖：
+
+```bash
+npm install --save-dev rollup @rollup/plugin-commonjs rollup-plugin-vue
+```
+
+这些都是我们需要用来编译 `esm` 模块中的代码的最小化的 rollup 插件。我们可能还需要添加 [rollup-plugin-babel](https://github.com/rollup/plugins/tree/master/packages/babel) 来移植它们的代码，如果我们需要与库捆绑一起的依赖关系，还需要添加 [node-resolve](https://github.com/rollup/plugins/tree/master/packages/node-resolve)。
+
+#### 配置 Rollup
+
+要配置 Rollup 进行构建，我们需要在项目的根目录创建一个 `rollup.config.js` 文件。
+
+```bash
+touch rollup.config.js
+```
+
+创建文件后，选择需要的编辑器打开并添加以下代码：
+
+```javascript
+// 导入我们的第三方插件
+import commonjs from 'rollup-plugin-commonjs'
+import VuePlugin from 'rollup-plugin-vue'
+import pkg from './package.json' // 导入我们的 package.json 文件，重新使用命名。
+
+export default {
+  // 这是一个包含所有导出的组件/函数的文件。
+  input: 'src/index.js',
+  // 这是一个输出格式的数组
+  output: [
+    {
+      file: pkg.module, // 我们的 ESM 库的名词
+      format: 'esm', // 选择的格式
+      sourcemap: true // 要求 rollup 包含 sourcemap
+    }
+  ],
+  // 这是我们所包含插件的数组
+  plugins: [commonjs(), VuePlugin()],
+  // 要求 rollup 不要将 Vue 捆绑在库中。
+  external: ['vue']
+}
+```
+
+#### 配置 package.json
+
+为了利用我们新创建的 `esm` 模块，我们需要在 `package.json` 文件中添加一些字段。
+
+```json
+ "scripts": {
+   ...
+   "build": "rollup -c rollup.config.js",
+   ...
+ },
+ "module": "dist/my-library-name.esm.js",
+ "files": [
+   "dist/",
+ ],
+```
+
+在这里，我们要说明的是：
+
+- 如何建立我们的依赖包
+- 我们要在依赖中捆绑哪些文件
+- 什么文件代表我们的 `esm`模块
+
+#### `umd` 和 `cjs` 模块构建
+
+要建立 `umd` 和 `cjs` 模块，我们可以简单地在 `rollup.config.js` 和 `package.json` 中添加几行配置。
+
+##### rollup.config.js
+
+```javascript
+output: [
+  ...{
+    file: pkg.main,
+    format: 'cjs',
+    sourcemap: true
+  },
+  {
+    file: pkg.unpkg,
+    format: 'umd',
+    name: 'MyLibraryName',
+    sourcemap: true,
+    globals: {
+      vue: 'Vue'
+    }
+  }
+]
+```
+
+##### package.json
+
+```json
+"module": "dist/my-library-name.esm.js",
+"main": "dist/my-library-name.cjs.js",
+"unpkg": "dist/my-library-name.global.js",
+```

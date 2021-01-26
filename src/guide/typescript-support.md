@@ -165,18 +165,19 @@ const Component = defineComponent({
 })
 ```
 
-### 注释 Props
+### 注解 Props
 
 Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 强制转换构造函数：
 
 ```ts
 import { defineComponent, PropType } from 'vue'
 
-interface ComplexMessage {
+interface Book {
   title: string
-  okMessage: string
-  cancelMessage: string
+  author: string
+  year: number
 }
+
 const Component = defineComponent({
   props: {
     name: String,
@@ -184,18 +185,75 @@ const Component = defineComponent({
     callback: {
       type: Function as PropType<() => void>
     },
-    message: {
-      type: Object as PropType<ComplexMessage>,
-      required: true,
-      validator(message: ComplexMessage) {
-        return !!message.title
+    book: {
+      type: Object as PropType<Book>,
+      required: true
+    }
+  }
+})
+```
+
+::: warning
+由于 TypeScript 中的 [设计限制](https://github.com/microsoft/TypeScript/issues/38845)，当它涉及到
+为了对函数表达式进行类型推理，你必须注意对象和数组的 `validators`和 `default`"。
+:::
+
+```ts
+import { defineComponent, PropType } from 'vue'
+
+interface Book {
+  title: string
+  year?: number
+}
+
+const Component = defineComponent({
+  props: {
+    bookA: {
+      type: Object as PropType<Book>,
+      // 请务必使用箭头函数
+      default: () => ({
+        title: 'Arrow Function Expression'
+      }),
+      validator: (book: Book) => !!book.title
+    },
+    bookB: {
+      type: Object as PropType<Book>,
+      // 或者提供一个明确的 this 参数
+      default(this: void) {
+        return {
+          title: 'Function Expression'
+        }
+      },
+      validator(this: void, book: Book) {
+        return !!book.title
       }
     }
   }
 })
 ```
 
-如果你发现验证器没有得到类型推导或成员补齐不工作了，那么用期望的类型标注参数可能有助于你解决这类问题。
+### 注解 emits
+
+我们可以为触发的事件注解一个有效载荷。另外，所有未声明的触发事件在调用时都会抛出一个类型错误。
+
+```ts
+const Component = defineComponent({
+  emits: {
+    addBook(payload: { bookName: string }) {
+      // perform runtime 验证
+      return payload.bookName.length > 0
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$emit('addBook', {
+        bookName: 123 // 类型错误！
+      })
+      this.$emit('non-declared-event') // 类型错误！
+    }
+  }
+})
+```
 
 ## 与组合式 API 一起使用
 

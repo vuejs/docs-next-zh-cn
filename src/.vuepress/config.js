@@ -58,6 +58,16 @@ const sidebar = {
       title: '可复用&组合',
       collapsable: false,
       children: [
+        {
+          title: '组合式 API',
+          children: [
+            '/guide/composition-api-introduction',
+            '/guide/composition-api-setup',
+            '/guide/composition-api-lifecycle-hooks',
+            '/guide/composition-api-provide-inject',
+            '/guide/composition-api-template-refs'
+          ]
+        },
         '/guide/mixins',
         '/guide/custom-directive',
         '/guide/teleport',
@@ -75,16 +85,6 @@ const sidebar = {
             '/guide/reactivity',
             '/guide/reactivity-fundamentals',
             '/guide/reactivity-computed-watchers'
-          ]
-        },
-        {
-          title: '组合式 API',
-          children: [
-            '/guide/composition-api-introduction',
-            '/guide/composition-api-setup',
-            '/guide/composition-api-lifecycle-hooks',
-            '/guide/composition-api-provide-inject',
-            '/guide/composition-api-template-refs'
           ]
         },
         '/guide/optimizations',
@@ -142,8 +142,8 @@ const sidebar = {
     '/api/built-in-components.md',
     {
       title: '响应性 API',
-      collapsable: false,
       path: '/api/reactivity-api',
+      collapsable: false,
       children: [
         '/api/basic-reactivity',
         '/api/refs-api',
@@ -371,6 +371,10 @@ module.exports = {
               {
                 text: 'Weekly news',
                 link: 'https://news.vuejs.org/'
+              },
+              {
+                text: 'Blog',
+                link: 'https://blog.vuejs.org/'
               }
             ]
           }
@@ -407,7 +411,7 @@ module.exports = {
         link: '#',
         items: [{
             text: 'English',
-            link: 'https://v3.vuejs.org'
+            link: 'https://v3.vuejs.org/'
           }
         ]
       }
@@ -432,6 +436,11 @@ module.exports = {
     algolia: {
       indexName: 'vuejs_cn3',
       apiKey: '773de665ca11d74cede4e35ecff46931'
+    },
+    carbonAds: {
+      carbon: 'CEBDT27Y',
+      custom: 'CKYD62QM',
+      placement: 'vuejsorg'
     }
   },
   plugins: [

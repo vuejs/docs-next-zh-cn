@@ -28,9 +28,7 @@
 
   组件实例使用的根 DOM 元素。
 
-  <!-- TODO: translation -->
-
-  For components using [fragments](../guide/migration/fragments), `$el` will be the placeholder DOM node that Vue uses to keep track of the component's position in the DOM. It is recommended to use [template refs](../guide/component-template-refs.html) for direct access to DOM elements instead of relying on `$el`.
+  对于使用 [片段](../guide/migration/fragments) 的组件，`$el` 是 DOM 节点占位 ，Vue 使用它来跟踪组件在 DOM 中的位置。建议使用[模板引用](../guide/component-template-refs.html)来直接访问 DOM 元素，而不是依赖 `$el`。
 
 ## $options
 
@@ -148,3 +146,4 @@
 
 -  **参考**
   - [非 Prop Attributes](../guide/component-attrs.html)
+  - [选项/杂项 - inheritAttrs](./options-misc.html#inheritattrs)

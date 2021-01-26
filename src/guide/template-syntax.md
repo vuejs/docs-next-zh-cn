@@ -55,16 +55,18 @@ Mustache 语法不能在 HTML attribute 中使用 ，然而，可以使用 [`v-b
 <button v-bind:disabled="isButtonDisabled">按钮</button>
 ```
 
-如果 `isButtonDisabled` 的值是 `null` 或 `undefined`，则 `disabled` attribute 甚至不会被包含在渲染出来的 `<button>` 元素中。
+如果 `isButtonDisabled` 的值是 truthy<sup>[[1]](#footnote-1)</sup>，那么 `disabled` attribute 将被包含在内。如果该值是一个空字符串，它也会被包括在内，与 `<button disabled="">` 保持一致。对于其他错误的值，该属性将被省略。
 
 ### 使用 JavaScript 表达式
 
 迄今为止，在我们的模板中，我们一直都只绑定简单的 property 键值。但实际上，对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持。
 
 ```html
-{{ number + 1 }} 
-{{ ok ? 'YES' : 'NO' }} 
-{{ message.split('').reverse().join('')}}
+{{ number + 1 }}
+
+{{ ok ? 'YES' : 'NO' }}
+
+{{ message.split('').reverse().join('') }}
 
 <div v-bind:id="'list-' + id"></div>
 ```
@@ -200,3 +202,7 @@ Mustache 语法不能在 HTML attribute 中使用 ，然而，可以使用 [`v-b
 #### JavaScript 表达式
 
 模板表达式都被放在沙盒中，只能访问[全局变量的一个白名单](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。
+
+
+<small>**译者注**  
+<a id="footnote-1"></a>[1] truthy 不是 `true`，详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy) 的解释。</small>

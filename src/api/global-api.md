@@ -401,7 +401,7 @@ createRenderer 函数接受两个泛型参数：
 
 自定义渲染器可以传入特定于平台的类型，如下所示：
 
-``` js
+``` ts
 import { createRenderer } from 'vue'
 const { render, createApp } = createRenderer<Node, Element>({
   patchProp,
@@ -449,3 +449,23 @@ const app = createApp({
 ```
 
 **参考**：[`$nextTick` 实例方法](instance-methods.html#nexttick)
+
+## mergeProps
+
+将包含 VNode props 的多个对象合并为一个单独的对象。返回一个新创建的对象，而作为参数传递的对象则不会被修改。
+
+可以传递不限数量的对象，后面参数的 property 优先。事件监听器被特殊处理，`class` 和 `style` 也是如此，这些 property 的值是被合并的而不是覆盖的。
+
+```js
+import { h, mergeProps } from 'vue'
+export default {
+  inheritAttrs: false,
+  render() {
+    const props = mergeProps({
+      // 该 class 将与 $attrs 中的其他 class 合并。
+      class: 'active'
+    }, this.$attrs)
+    return h('div', props)
+  }
+}
+```

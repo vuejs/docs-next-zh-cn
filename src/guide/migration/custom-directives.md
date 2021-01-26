@@ -41,6 +41,7 @@ Vue.directive('highlight', {
 
 然而，在 Vue 3 中，我们为自定义指令创建了一个更具凝聚力的 API。正如你所看到的，它们与我们的组件生命周期方法有很大的不同，即使我们正与类似的事件钩子，我们现在把它们统一起来了：
 
+- **created** - 新的! 在应用元素的 attribute 或事件监听器之前，会被调用。
 - bind → **beforeMount**
 - inserted → **mounted**
 - **beforeUpdate**：新的！这是在元素本身更新之前调用的，很像组件生命周期钩子。

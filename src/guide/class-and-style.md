@@ -111,7 +111,7 @@ data() {
 <div :class="[isActive ? activeClass : '', errorClass]"></div>
 ```
 
-这样写将始终添加 `errorClass`，但是只有在 `isActive` 为 truthy<sup>[[1]](#footnote-1)</sup> 时才添加 `activeClass。`
+这样写将始终添加 `errorClass`，但是只有在 `activeClass` 为 truthy<sup>[[1]](#footnote-1)</sup> 时才添加 `isActive`。
 
 不过，当有多个条件 class 时这样写有些繁琐。所以在数组语法中也可以使用对象语法：
 

@@ -88,6 +88,8 @@ const app = createApp({})
 // 注册
 app.directive('my-directive', {
   // 指令是具有一组生命周期的钩子：
+  // 在应用绑定元素的 attribute 或事件监听器之前被调用
+  created() {},
   // 在绑定元素的父组件挂载之前调用
   beforeMount() {},
   // 绑定元素的父组件挂载时调用
@@ -265,7 +267,7 @@ app.provide('user', 'administrator')
 
 - **用法：**
 
-  在提供的 DOM 元素上卸载应用实例的根组件。
+  卸载应用实例的根组件。
 
 - **示例：**
 
@@ -283,7 +285,7 @@ const app = createApp({})
 app.mount('#my-app')
 
 // 挂载5秒后，应用将被卸载
-setTimeout(() => app.unmount('#my-app'), 5000)
+setTimeout(() => app.unmount(), 5000)
 ```
 
 ## use
@@ -304,5 +306,17 @@ setTimeout(() => app.unmount('#my-app'), 5000)
   该安装方法将以应用实例作为第一个参数被调用。传给 `use` 的其他 `options` 参数将作为后续参数传入该安装方法。
 
   当在同一个插件上多次调用此方法时，该插件将仅安装一次。
+
+- **示例：**
+
+  ```js
+  import { createApp } from 'vue'
+  import MyPlugin from './plugins/MyPlugin'
+
+  const app = createApp({})
+
+  app.use(MyPlugin)
+  app.mount('#app')
+  ```
 
 - **参考：** [插件](../guide/plugins.html)

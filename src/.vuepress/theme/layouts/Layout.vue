@@ -23,9 +23,21 @@
 
     <Page v-else :sidebar-items="sidebarItems">
       <template #top>
+        <CarbonAds
+          v-if="adsConfig"
+          :key="'ca:' + $page.path"
+          :code="adsConfig.carbon"
+          :placement="adsConfig.placement"
+        />
         <slot name="page-top" />
       </template>
       <template #bottom>
+        <BuySellAds
+          v-if="adsConfig"
+          :key="'bsa:' + $page.path"
+          :code="adsConfig.custom"
+          :placement="adsConfig.placement"
+        />
         <slot name="page-bottom" />
       </template>
     </Page>
@@ -37,7 +49,8 @@ import Home from '@theme/components/Home.vue'
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
-import VueMasteryBanner from '@theme/components/sponsors/VueMasteryBanner.vue'
+import BuySellAds from '@theme/components/BuySellAds.vue'
+import CarbonAds from '@theme/components/CarbonAds.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
@@ -48,21 +61,18 @@ export default {
     Page,
     Sidebar,
     Navbar,
-    VueMasteryBanner
+    BuySellAds,
+    CarbonAds
   },
 
-  data () {
+  data() {
     return {
-      isSidebarOpen: false,
-      isBannerOpen:  true,
-      isMenuFixed: false,
-      nameStorage: 'vuemastery-black-firday-2020-banner',
-      menuPosition: 0
+      isSidebarOpen: false
     }
   },
 
   computed: {
-    shouldShowNavbar () {
+    shouldShowNavbar() {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       if (frontmatter.navbar === false || themeConfig.navbar === false) {
@@ -77,7 +87,7 @@ export default {
       )
     },
 
-    shouldShowSidebar () {
+    shouldShowSidebar() {
       const { frontmatter } = this.$page
       return (
         !frontmatter.home &&
@@ -86,7 +96,7 @@ export default {
       )
     },
 
-    sidebarItems () {
+    sidebarItems() {
       return resolveSidebarItems(
         this.$page,
         this.$page.regularPath,
@@ -95,32 +105,27 @@ export default {
       )
     },
 
-    pageClasses () {
+    pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
         {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
-          'no-sidebar': !this.shouldShowSidebar,
-          'vuemastery-menu-fixed': this.isMenuFixed,
-          'vuemastery-promo': this.isBannerOpen
+          'no-sidebar': !this.shouldShowSidebar
         },
         userPageClass
       ]
+    },
+
+    adsConfig() {
+      return this.$site.themeConfig.carbonAds
     }
   },
 
-  mounted () {
+  mounted() {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
     })
-
-    // Load component according to user preferences
-    if (!localStorage.getItem(this.nameStorage)) {
-      this.initBanner()
-    } else {
-      this.isBannerOpen = false
-    }
   },
 
   methods: {
@@ -147,54 +152,6 @@ export default {
           this.toggleSidebar(false)
         }
       }
-    },
-
-    //  Vue Mastery Banner
-    initBanner() {
-      // Add event listeners
-      this.toggleBannerEvents(true)
-      // Add class to the body to push fixed elements
-      this.isBannerOpen = true
-      // Get the menu position
-      this.getMenuPosition()
-      // Check current page offset position
-      this.isMenuFixed = this.isUnderBanner()
-    },
-
-    closeBanner (e) {
-      // Remove events
-      this.toggleBannerEvents(false)
-      // Hide the banner
-      this.isBannerOpen = false
-      // Save action in the local storage
-      localStorage.setItem(this.nameStorage, true)
-    },
-
-    getMenuPosition() {
-      this.menuPosition = this.$refs.vueMasteryBanner.$el.clientHeight
-    },
-
-    isUnderBanner() {
-      return window.pageYOffset > this.menuPosition
-    },
-
-    fixMenuAfterBanner() {
-      if (this.isUnderBanner()) {
-        if (!this.isMenuFixed) {
-          // The menu will be fixed
-          this.isMenuFixed = true
-        }
-      } else if (this.isMenuFixed) {
-        // The menu stay under the banner
-        this.isMenuFixed = false
-      }
-    },
-
-    toggleBannerEvents(on) {
-      // Add or remove event listerners attached to the DOM
-      let method = on ? "addEventListener" : "removeEventListener"
-      window[method]("resize", this.getMenuPosition)
-      window[method]("scroll", this.fixMenuAfterBanner)
     }
   }
 }
