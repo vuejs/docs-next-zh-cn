@@ -51,12 +51,12 @@
 </label>
 ```
 
-辅助技术更好地支持用匹配的 id 显式设置标签。
+辅助技术可以更好地支持用匹配的 id 显式设置标签。
 :::
 
 #### aria-label
 
-你也可以给输入一个带有[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) 的可访问名称。
+你也可以为输入框配置一个带有[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) 的可访问名称。
 
 ```html
 <label for="name">Name</label>
@@ -107,7 +107,7 @@
 
 #### aria-describedby
 
-[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) 的用法与 `aria-labelledby` 相同，预期提供了用户可能需要的附加信息的描述。这可用于描述任何输入的标准：
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) 的用法与 `aria-labelledby` 相同，它提供了一条包含用户可能需要的附加信息的描述。这可用于描述任何输入的标准：
 
 ```html
 <form
@@ -141,7 +141,7 @@
 
 ### 占位符
 
-避免使用占位符，因为它们可能会混淆许多用户。
+避免使用占位符，因为它们可能会使许多用户感到困惑。
 
 占位符的一个问题是默认情况下它们不符合[颜色对比标准](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)；修复颜色对比度会使占位符看起来像输入字段中预填充的数据。查看以下示例，可以看到满足颜色对比度条件的姓氏占位符看起来像预填充的数据：
 
@@ -151,7 +151,7 @@
 
 ### 操作指南
 
-为输入字段添加说明时，请确保将其正确链接到输入。你可以提供附加指令并在 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) 内绑定多个 id。这使得设计更加灵活。
+为输入字段添加说明时，请确保将其正确链接到输入。你可以提供附加指令并在 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) 内绑定多个 id。这可以使设计更加灵活。
 
 ```html
 <fieldset>
@@ -215,7 +215,7 @@
 
 #### aria-hidden="true"
 
-添加 `aria hidden="true"` 将隐藏辅助技术中的元素，但使其在视觉上对其他用户可用。不要把它用在可聚焦的元素上，纯粹用于装饰性的、复制的或屏幕外的内容上。
+添加 `aria hidden="true"` 将隐藏辅助技术中的元素，但使其在视觉上对其他用户可用。不要把它用在可聚焦的元素上，而是只用于装饰性的、重复的或屏幕外的内容。
 
 ```html
 <p>This is not hidden from screen readers.</p>
