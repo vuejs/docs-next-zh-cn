@@ -56,7 +56,7 @@
 
 #### aria-label
 
-你也可以为输入框配置一个带有[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) 的可访问名称。
+你也可以为输入配置一个带有[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) 的可访问名称。
 
 ```html
 <label for="name">Name</label>
@@ -149,9 +149,9 @@
 
 最好提供用户在任何输入之外填写表单所需的所有信息。
 
-### 操作指南
+### 用法说明
 
-为输入字段添加说明时，请确保将其正确链接到输入。你可以提供附加指令并在 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) 内绑定多个 id。这可以使设计更加灵活。
+为输入字段添加用法说明时，请确保将其正确链接到输入。你可以提供附加用法说明并在 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) 内绑定多个 id。这可以使设计更加灵活。
 
 ```html
 <fieldset>
@@ -167,7 +167,7 @@
 </fieldset>
 ```
 
-或者，你可以用 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)将指令附加到输入。
+或者，你可以用 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)将用法说明附加到输入。
 
 ```html
 <fieldset>
