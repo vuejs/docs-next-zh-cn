@@ -45,7 +45,7 @@ const sidebar = {
       ]
     },
     {
-      title: '过渡&动画',
+      title: '过渡 & 动画',
       collapsable: false,
       children: [
         '/guide/transitions-overview',
@@ -55,7 +55,7 @@ const sidebar = {
       ]
     },
     {
-      title: '可复用&组合',
+      title: '可复用 & 组合',
       collapsable: false,
       children: [
         '/guide/mixins',
