@@ -7,7 +7,7 @@
 - 在过渡钩子期间使用 JavaScript 直接操作 DOM；
 - 集成第三方 JavaScript 动画库。
 
-在这里，我们只介绍进入、离开和列表的过渡，你也可以看下一节[列表过渡](transition-list.html) 和[管理过渡状态](transitions-state.html) 。
+在这里，我们只介绍进入、离开和列表的过渡，你也可以看下一节[列表过渡](transition-list.html)和[管理过渡状态](transitions-state.html) 。
 
 ## 单元素/组件的过渡
 

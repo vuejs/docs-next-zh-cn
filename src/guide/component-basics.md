@@ -83,7 +83,7 @@ app.component('my-component-name', {
 
 早些时候，我们提到了创建一个博文组件的事情。问题是如果你不能向这个组件传递某一篇博文的标题或内容之类的我们想展示的数据的话，它是没有办法使用的。这也正是 prop 的由来。
 
-Prop 是你可以在组件上注册的一些自定义 attribute。为了给博文组件传递一个标题，我们可以用 props 选项将其包含在该组件可接受的 `prop` 列表中：
+Prop 是你可以在组件上注册的一些自定义 attribute。为了给博文组件传递一个标题，我们可以用 `props` 选项将其包含在该组件可接受的 prop 列表中：
 
 ```js
 const app = Vue.createApp({})
@@ -170,7 +170,7 @@ const App = {
 }
 ```
 
-它可以在模板中用来控制所有博文的字体大小：
+它可以在模板中用来控制所有博文的字号：
 
 ```html
 <div id="blog-posts-events-demo">

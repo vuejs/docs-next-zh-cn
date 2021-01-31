@@ -261,10 +261,6 @@ app.provide('user', 'administrator')
 
 ## unmount
 
-- **参数：**
-
-  - `{Element | string} rootContainer`
-
 - **用法：**
 
   卸载应用实例的根组件。
