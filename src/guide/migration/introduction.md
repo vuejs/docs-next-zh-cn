@@ -4,7 +4,7 @@
 刚接触 Vue.js？先从[基础指南](/guide/introduction.html)开始吧。
 :::
 
-本指南主要是为有 Vue 2 使用经验的用户希望了解 Vue 3 的新功能和更改而提供的。**在试用 Vue 3 之前，你不必从头阅读这些内容**。虽然看起来有很多变化，但很多你已经了解和喜欢 Vue 的部分仍是一样的。不过我们希望尽可能全面，并为每处变化提供详细的例子。
+本指南主要是为有 Vue 2 经验的用户希望了解 Vue 3 的新功能和更改而提供的。**在试用 Vue 3 之前，你不必从头阅读这些内容**。虽然看起来有很多变化，但很多你已经了解和喜欢 Vue 的部分仍是一样的。不过我们希望尽可能全面，并为每处变化提供详细的例子。
 
 - [快速开始](#快速开始)
 - [值得注意的新特性](#值得注意的新特性)
@@ -21,19 +21,20 @@
 ## 快速开始
 
 - 通过 CDN：`<script src="https://unpkg.com/vue@next"></script>`
-- 通过 [Codepen](https://codepen.io/yyx990803/pen/OJNoaZL) 的浏览器 playground
-- 脚手架 [Vite](https://github.com/vitejs/vite)：
+- [Codepen](https://codepen.io/yyx990803/pen/OJNoaZL) 上的浏览器内试验田
+- [CodeSandbox](https://v3.vue.new) 上的浏览器内沙盒
+- 通过脚手架 [Vite](https://github.com/vitejs/vite)：
 
   ```bash
-  npm init vite-app hello-vue3 # OR yarn create vite-app hello-vue3
+  npm init vite-app hello-vue3 # 或 yarn create vite-app hello-vue3
   ```
 
-- 脚手架 [vue-cli](https://cli.vuejs.org/)：
+- 通过脚手架 [vue-cli](https://cli.vuejs.org/)：
 
   ```bash
-  npm install -g @vue/cli # OR yarn global add @vue/cli
+  npm install -g @vue/cli # 或 yarn global add @vue/cli
   vue create hello-vue3
-  # select vue 3 preset
+  # 选择 vue 3 preset
   ```
 
 ## 值得注意的新特性
@@ -44,7 +45,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [Teleport](/guide/teleport.html)
 - [片段](/guide/migration/fragments.html)
 - [触发组件选项](/guide/component-custom-events.html)
-- [`createRenderer` API 来自 `@vue/runtime-core`](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
+- [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
 - [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
 - [单文件组件状态驱动的 CSS 变量 (`<style vars>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
 - [单文件组件 `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
@@ -64,7 +65,7 @@ Vue 3 中需要关注的一些新功能包括：
 
 ### 模板指令
 
-- [组件上 `v-model` 用法已更改](/guide/migration/v-model.html)
+- [组件上 `v-model` 用法已更改，替换 `v-bind.sync`](/guide/migration/v-model.html)
 - [`<template v-for>` 和非 `v-for` 节点上 `key` 用法已更改](/guide/migration/key-attribute.html)
 - [在同一元素上使用的 `v-if` 和 `v-for` 优先级已更改](/guide/migration/v-if-v-for.html)
 - [`v-bind="object"` 现在排序敏感](/guide/migration/v-bind.html)
@@ -84,26 +85,25 @@ Vue 3 中需要关注的一些新功能包括：
 - [`$scopedSlots` property 已删除，所有插槽都通过 `$slots` 作为函数暴露](/guide/migration/slots-unification.html)
 - [`$listeners` 被移除或整合到 `$attrs`](./listeners-removed)
 - [`$attrs` 现在包含 `class` and `style` attribute](./attrs-includes-class-style.md)
-- [自定义指令 API 已更改为与组件生命周期一致](/guide/migration/custom-directives.html)
-- 一些转换 class 被重命名了：
-  - `v-enter` -> `v-enter-from`
-  - `v-leave` -> `v-leave-from`
-- [组件 watch 选项](/api/options-data.html#watch)和[实例方法 `$watch`](/api/instance-methods.html#watch) 不再支持点分隔字符串路径，请改用计算函数作为参数
-- 在 Vue 2.x 中，应用根容器的 `outerHTML` 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。VUE3.x 现在使用应用程序容器的 `innerHTML`。
+
+### 自定义元素
+
+- [自定义元素白名单现在已经在编译时执行](/guide/migration/custom-elements-interop.html)
+- [对特殊的 `is` prop 的使用只严格限制在被保留的 `<component>` 标记中](/guide/migration/custom-elements-interop.html#customized-built-in-elements)
 
 ### 其他小改变
 
-- ~~`destroyed`~~ 生命周期选项被重命名为 `unmounted`
-- ~~`beforeDestroy`~~ 生命周期选项被重命名为 `beforeUnmount`
-- [prop `default` 工厂函数不再有权访问 `this` 是上下文](/guide/migration/props-default-this.html)
+- `destroyed` 生命周期选项被重命名为 `unmounted`
+- `beforeDestroy` 生命周期选项被重命名为 `beforeUnmount`
+- [`default` prop 工厂函数不再可以访问 `this` 上下文](/guide/migration/props-default-this.html)
 - [自定义指令 API 已更改为与组件生命周期一致](/guide/migration/custom-directives.html)
-- [`data` 应始终声明为函数](/guide/migration/data-option.html)
-- [来自 mixin 的 `data` 选项现在可简单地合并](/guide/migration/data-option.html#mixin-merge-behavior-change)
-- [attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
+- [`data` 选项应始终被声明为一个函数](/guide/migration/data-option.html)
+- [来自 mixin 的 `data` 选项现在为浅合并](/guide/migration/data-option.html#mixin-merge-behavior-change)
+- [Attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
 - [一些过渡 class 被重命名](/guide/migration/transition.html)
 - [`<TransitionGroup>` 不再默认渲染包裹元素](/guide/migration/transition-group.html)
 - [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则需要指定 `deep` 选项](/guide/migration/watch.html)
-- `<template>` 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
+- 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 的 `<template>` 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
 - 在 Vue 2.x 中，应用根容器的 `outerHTML` 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。Vue 3.x 现在使用应用容器的 `innerHTML`，这意味着容器本身不再被视为模板的一部分。
 
 ### 移除 API
@@ -121,9 +121,16 @@ Vue 3 中需要关注的一些新功能包括：
 
 ### Vue CLI
 
+<a href="https://www.npmjs.com/package/@vue/cli" target="_blank" noopener noreferrer><img src="https://img.shields.io/npm/v/@vue/cli"></a>
+
 从 v4.5.0 开始，`vue-cli` 现在提供了内置选项，可在创建新项目时选择 Vue 3。现在可以升级 `vue-cli` 并运行 `vue create` 来创建 Vue 3 项目。
 
+- [文档](https://cli.vuejs.org/zh/)
+- [GitHub](https://github.com/vuejs/vue-cli)
+
 ### Vue Router
+
+<a href="https://www.npmjs.com/package/vue-router/v/next" target="_blank" noopener noreferrer><img src="https://img.shields.io/npm/v/vue-router/next.svg"></a>
 
 Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看[迁移指南](https://next.router.vuejs.org/guide/migration/)获取完整的细节。
 
@@ -132,6 +139,8 @@ Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看[
 - [RFCs](https://github.com/vuejs/rfcs/pulls?q=is%3Apr+is%3Amerged+label%3Arouter)
 
 ### Vuex
+
+<a href="https://www.npmjs.com/package/vuex/v/next" target="_blank" noopener noreferrer><img src="https://img.shields.io/npm/v/vuex/next.svg"></a>
 
 Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破性变化是[插件的安装方式](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes)。
 
