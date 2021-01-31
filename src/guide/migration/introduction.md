@@ -83,7 +83,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [渲染函数 API 改变](/guide/migration/render-function-api.html)
 - [`$scopedSlots` property 已删除，所有插槽都通过 `$slots` 作为函数暴露](/guide/migration/slots-unification.html)
 - [`$listeners` 被移除或整合到 `$attrs`](./listeners-removed)
-- [`$attrs` 现在包含 `class` and `style` attributes](./attrs-includes-class-style.md)
+- [`$attrs` 现在包含 `class` and `style` attribute](./attrs-includes-class-style.md)
 - [自定义指令 API 已更改为与组件生命周期一致](/guide/migration/custom-directives.html)
 - 一些转换 class 被重命名了：
   - `v-enter` -> `v-enter-from`
@@ -101,7 +101,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [来自 mixin 的 `data` 选项现在可简单地合并](/guide/migration/data-option.html#mixin-merge-behavior-change)
 - [attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
 - [一些过渡 class 被重命名](/guide/migration/transition.html)
-- [`<TransitionGroup>` 不再默认渲染包装元素](/guide/migration/transition-group.html)
+- [`<TransitionGroup>` 不再默认渲染包裹元素](/guide/migration/transition-group.html)
 - [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则需要指定 `deep` 选项](/guide/migration/watch.html)
 - `<template>` 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
 - 在 Vue 2.x 中，应用根容器的 `outerHTML` 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。Vue 3.x 现在使用应用容器的 `innerHTML`，这意味着容器本身不再被视为模板的一部分。
@@ -196,5 +196,5 @@ Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破
 [rpv-code]: https://github.com/vuejs/rollup-plugin-vue/tree/next
 
 ::: info 提示
-为了了解更多关于 Vue 3 的库和插件的兼容性信息，请务必查看 [issue](https://github.com/vuejs/awesome-vue/issues/3544)。
+想了解更多关于 Vue 3 的库和插件的兼容性信息，请务必查看 [awesome-vue 中的这个 issue](https://github.com/vuejs/awesome-vue/issues/3544)。
 :::
