@@ -26,7 +26,7 @@
 - 通过脚手架 [Vite](https://github.com/vitejs/vite)：
 
   ```bash
-  npm init vite-app hello-vue3 # 或 yarn create vite-app hello-vue3
+  npm init @vitejs/app hello-vue3 # OR yarn create @vitejs/app hello-vue3
   ```
 
 - 通过脚手架 [vue-cli](https://cli.vuejs.org/)：
