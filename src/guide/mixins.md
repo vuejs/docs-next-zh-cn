@@ -132,7 +132,7 @@ app.mixin({
 app.mount('#mixins-global') // => "hello!"
 ```
 
-mixin 也可以进行全局注册。使用时格外小心！一旦使用全局 mixin，它将影响**每一个**之后创建的组件 (例如，每个子组件)。
+Mixin 也可以进行全局注册。使用时格外小心！一旦使用全局 mixin，它将影响**每一个**之后创建的组件 (例如，每个子组件)。
 
 ```js
 const app = Vue.createApp({
