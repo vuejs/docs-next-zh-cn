@@ -121,7 +121,6 @@ export default {
       this.sponsorsActive = window.pageYOffset > sponsorTop - 100
     }
   }
-
 }
 </script>
 

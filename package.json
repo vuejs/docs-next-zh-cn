@@ -19,6 +19,5 @@
     "axios": "^0.21.1",
     "intersection-observer": "^0.11.0",
     "showdown": "^1.9.1"
-  },
-  "__npminstall_done": false
+  }
 }

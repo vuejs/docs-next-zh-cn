@@ -88,11 +88,11 @@ const app = createApp({})
 // 注册
 app.directive('my-directive', {
   // 指令是具有一组生命周期的钩子：
-  // 在应用绑定元素的 attribute 或事件监听器之前被调用
+  // 在绑定元素的 attribute 或事件监听器被应用之前调用
   created() {},
   // 在绑定元素的父组件挂载之前调用
   beforeMount() {},
-  // 绑定元素的父组件挂载时调用
+  // 绑定元素的父组件被挂载时调用
   mounted() {},
   // 在包含组件的 VNode 更新之前调用
   beforeUpdate() {},

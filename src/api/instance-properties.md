@@ -28,7 +28,7 @@
 
   组件实例使用的根 DOM 元素。
 
-  对于使用 [片段](../guide/migration/fragments) 的组件，`$el` 是 DOM 节点占位 ，Vue 使用它来跟踪组件在 DOM 中的位置。建议使用[模板引用](../guide/component-template-refs.html)来直接访问 DOM 元素，而不是依赖 `$el`。
+  对于使用了[片段](../guide/migration/fragments)的组件，`$el` 是 DOM 节点占位，Vue 使用它来跟踪组件在 DOM 中的位置。建议使用[模板引用](../guide/component-template-refs.html)来直接访问 DOM 元素，而不是依赖 `$el`。
 
 ## $options
 
