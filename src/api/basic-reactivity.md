@@ -42,7 +42,7 @@ console.log(count.value) // 3
 :::
 
 ::: warning 重要
-When assigning a [ref](./refs-api.html#ref) to a `reactive` property, that ref will be automatically unwrapped.
+当将 [ref](./refs-api.html#ref)分配给 `reactive` property 时，ref 将被自动解构。
 
 ```ts
 const count = ref(1)
