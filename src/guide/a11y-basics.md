@@ -1,6 +1,6 @@
 # 基础
 
-Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的实践方式——无论是身患某种障碍、通过慢速的网络连接访问、使用老旧或损坏的硬件，还是仅仅是处于不利环境中的人。例如，在视频中添加字幕可以帮助失聪、重听或在嘈杂的环境中听不到手机的用户。同样，请确保文字对比度不要太低，这对低视力用户和那些试图在强光下使用手机的用户都有帮助。
+Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的实践方式——无论是身患某种障碍、通过慢速的网络连接访问、使用老旧或损坏的硬件，还是仅仅是处于不利环境中的人。例如，在视频中添加字幕可以帮助失聪、有听力障碍或身处嘈杂的环境从而听不到手机的用户。同样，请确保文字对比度不要太低，这对低视力用户和那些试图在强光下使用手机的用户都有帮助。
 
 你是否已经准备开始却又无从下手？
 
@@ -56,21 +56,21 @@ export default {
 
 <common-codepen-snippet title="Skip to Main" slug="VwepxJa" :height="350" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
 
-[阅读关于跳跃到主体内容的链接的文档](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[阅读关于跳过链接到主要内容的文档](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
 ## 组织内容
 
-可访问性最重要的部分之一是确保设计本身是可访问的。设计不仅要考虑颜色对比度、字体选择、文本大小和语言，还要考虑应用程序中内容的结构。
+可访问性最重要的部分之一是确保设计可以支持易于访问的实现。设计不仅要考虑颜色对比度、字体选择、文本大小和语言，还要考虑应用程序中的内容是如何组织的。
 
 ### 标题
 
-用户可以通过标题在应用程序中进行导航。为应用程序的每个部分设置描述性标题可以让用户更容易地预测每个部分的内容。说到标题，有几个推荐的可访问性实践：
+用户可以通过标题在应用程序中进行导航。为应用程序的每个部分设置描述性标题，这可以让用户更容易地预测每个部分的内容。说到标题，有几个推荐的可访问性实践：
 
 - 按级别顺序嵌套标题：`<h1>` - `<h6>`
 - 不要在一个章节内跳跃标题的级别
 - 使用实际的标题标记，而不是通过对文本设置样式以提供视觉上的标题
 
-[关于标题可进一步阅读](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
+[阅读更多有关标题的信息](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ```html
 <main role="main" aria-labelledby="main-title">
@@ -109,4 +109,4 @@ export default {
 在使用地标 HTML 元素时，建议加上冗余的地标 role attribute，以最大限度地与传统[不支持 HTML5 语义元素的浏览器](https://caniuse.com/#feat=html5semantic)兼容。
 :::
 
-[关于地标可进一步阅读](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+[阅读更多有关地标的信息](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
