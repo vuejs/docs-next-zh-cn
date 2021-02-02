@@ -3,14 +3,14 @@
 ## 什么是组合式 API？
 
 :::tip 提示
-在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md)和[创建组件](component-basics.md)。
+在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md) 和 [创建组件](component-basics.md)。
 :::
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合式 API 的免费视频。</VideoLesson>
 
-通过创建 Vue 组件，我们可以将接口的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用程序在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用程序变得非常大的时候——想想几百个组件。在处理如此大的应用程序时，共享和重用代码变得尤为重要。
+通过创建 Vue 组件，我们可以将界面的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用变得非常大的时候——想想几百个组件。当处理这样的大型应用时，共享和重用代码变得尤为重要。
 
-假设在我们的应用程序中，我们有一个视图来显示某个用户的仓库列表。除此之外，我们还希望应用搜索和筛选功能。处理此视图的组件可能如下所示：
+假设在我们的应用中，我们有一个视图来显示某个用户的存储库列表。除此之外，我们还希望应用搜索和筛选功能。处理此视图的组件可能如下所示：
 
 ```js
 // src/components/UserRepositories.vue
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     getUserRepositories () {
-      // 使用 `this.user` 获取用户仓库
+      // 使用 `this.user` 获取用户存储库
     }, // 1
     updateFilters () { ... }, // 3
   },
@@ -51,9 +51,9 @@ export default {
 
 该组件有以下几个职责：
 
-1. 从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它
+1. 从假定的外部 API 获取该用户名的存储库，并在用户更改时刷新它
 2. 使用 `searchQuery` 字符串搜索存储库
-3. 使用 `filters` 对象筛选仓库
+3. 使用 `filters` 对象筛选存储库
 
 用组件的选项 (`data`、`computed`、`methods`、`watch`) 组织逻辑在大多数情况下都有效。然而，当我们的组件变得更大时，**逻辑关注点**的列表也会增长。这可能会导致组件难以阅读和理解，尤其是对于那些一开始就没有编写这些组件的人来说。
 
@@ -61,9 +61,9 @@ export default {
 
 一个大型组件的示例，其中**逻辑关注点**是按颜色分组。
 
-这种碎片化使得理解和维护复杂组件变得困难。选项的分离掩盖了潜在的逻辑问题。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块。
+这种零散性是使人难以理解和维护一个复杂组件的原因。选项的分离掩盖了基本的逻辑关注点。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块。
 
-如果我们能够将与同一个逻辑关注点相关的代码配置在一起会更好。而这正是组合式 API 使我们能够做到的。
+如果我们能够将与同一个逻辑关注点相关的代码配置在一起，这样会更好。而这正是组合式 API 使我们能够做到的。
 
 ## 组合式 API 基础
 
@@ -73,13 +73,13 @@ export default {
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">观看 Vue Mastery 上的免费 setup 视频。</VideoLesson>
 
-新的 `setup` 组件选项在**创建组件之前**执行，一旦 `props` 被解析，并充当合成 API 的入口点。
+新的 `setup` 组件选项在创建组件**之前**执行，一旦 `props` 被解析，就作为组合式 API 的入口点。
 
 :::warning
-由于在执行 `setup` 时尚未创建组件实例，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
+由于在执行 `setup` 时，尚未创建组件实例，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
 :::
 
-`setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[稍后](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
+`setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[后面](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
 
 让我们添加 `setup` 到我们的组件中：
 
@@ -105,12 +105,12 @@ export default {
 
 现在让我们从提取第一个逻辑关注点开始 (在原始代码段中标记为“1”)。
 
-> 1. 从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它
+> 1. 从假定的外部 API 获取该用户名的存储库，并在用户更改时刷新它
 
 我们将从最明显的部分开始：
 
-- 仓库列表
-- 更新仓库列表的函数
+- 存储库列表
+- 更新存储库列表的函数
 - 返回列表和函数，以便其他组件选项可以访问它们
 
 ```js
@@ -131,7 +131,7 @@ setup (props) {
 }
 ```
 
-这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量是非响应式的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！
+这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量是非响应式的。这意味着从用户的角度来看，存储库列表将保持为空。我们来解决这个问题！
 
 ### 带 `ref` 的响应式变量
 
@@ -143,7 +143,7 @@ import { ref } from 'vue'
 const counter = ref(0)
 ```
 
-`ref` 接受参数并返回它包装在具有 `value` property 的对象中，然后可以使用该 property 访问或更改响应式变量的值：
+`ref` 接受参数，并将其包裹在一个带有 `value` property 的对象中返回，然后可以使用该 property 访问或更改响应式变量的值：
 
 ```js
 import { ref } from 'vue'
@@ -157,14 +157,14 @@ counter.value++
 console.log(counter.value) // 1
 ```
 
-在对象中包装值似乎不必要，但在 JavaScript 中保持不同数据类型的行为统一是必需的。这是因为在 JavaScript 中，`Number` 或 `String` 等基本类型是通过值传递的，而不是通过引用传递的：
+将值封装在一个对象中，看似没有必要，但为了保持 JavaScript 中不同数据类型的行为统一，这是必须的。这是因为在 JavaScript 中，`Number` 或 `String` 等基本类型是通过值传递的，而不是通过引用传递的：
 
 ![按引用传递与按值传递](https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif)
 
-在任何值周围都有一个包装器对象，这样我们就可以在整个应用程序中安全地传递它，而不必担心在某个地方失去它的响应性。
+在任何值周围都有一个封装对象，这样我们就可以在整个应用中安全地传递它，而不必担心在某个地方失去它的响应性。
 
 :::tip 提示
-换句话说，`ref` 对我们的值创建了一个**响应式引用**。使用**引用**的概念将在整个组合式 API 中经常使用。
+换句话说，`ref` 为我们的值创建了一个**响应式引用**。在整个组合式 API 中会经常使用**引用**的概念。
 :::
 
 回到我们的例子，让我们创建一个响应式的 `repositories` 变量：
@@ -173,7 +173,7 @@ console.log(counter.value) // 1
 import { fetchUserRepositories } from '@/api/repositories'
 import { ref } from 'vue'
 
-// in our component
+// 在我们的组件中
 setup (props) {
   const repositories = ref([])
   const getUserRepositories = async () => {
@@ -187,7 +187,7 @@ setup (props) {
 }
 ```
 
-完成！现在，每当我们调用 `getUserRepositories` 时，`repositories` 都将发生变化，视图将更新以反映更改。我们的组件现在应该如下所示：
+完成！现在，每当我们调用 `getUserRepositories` 时，`repositories` 都将发生变化，视图也会更新以反映变化。我们的组件现在应该如下所示：
 
 ```js
 // src/components/UserRepositories.vue
@@ -241,9 +241,9 @@ export default {
 
 ### 生命周期钩子注册内部 `setup`
 
-为了使组合式 API 的特性与选项式 API 相比更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
+为了使组合式 API 的功能比选项式 API 更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 会看起来像 `onMounted`。
 
-这些函数接受在组件调用钩子时将执行的回调。
+这些函数接受一个回调，当钩子被组件调用时，该回调将被执行。
 
 让我们将其添加到 `setup` 函数中：
 
@@ -252,14 +252,14 @@ export default {
 import { fetchUserRepositories } from '@/api/repositories'
 import { ref, onMounted } from 'vue'
 
-// in our component
+// 在我们的组件中
 setup (props) {
   const repositories = ref([])
   const getUserRepositories = async () => {
     repositories.value = await fetchUserRepositories(props.user)
   }
 
-  onMounted(getUserRepositories) // on `mounted` call `getUserRepositories`
+  onMounted(getUserRepositories) // 在 `mounted` 时调用 `getUserRepositories`
 
   return {
     repositories,
@@ -268,13 +268,13 @@ setup (props) {
 }
 ```
 
-现在我们需要对 `user` prop 所做的更改做出反应。为此，我们将使用独立的 `watch` 函数。
+现在我们需要对 `user` prop 的变化做出反应。为此，我们将使用独立的 `watch` 函数。
 
 ### `watch` 响应式更改
 
-就像我们如何使用 `watch` 选项在组件内的 `user` property 上设置侦听器一样，我们也可以使用从 Vue 导入的 `watch` 函数执行相同的操作。它接受 3 个参数：
+就像我们在组件中使用 `watch` 选项在 `user` property 上设置侦听器一样，我们也可以使用从 Vue 导入的 `watch` 函数执行相同的操作。它接受 3 个参数：
 
-- 一个**响应式引用**或我们想要侦听的 getter 函数
+- 一个我们想要观察的**响应式引用**或 getter 函数
 - 一个回调
 - 可选的配置选项
 
@@ -289,7 +289,7 @@ watch(counter, (newValue, oldValue) => {
 })
 ```
 
-例如，每当 `counter` 被修改时 `counter.value=5`，watch 将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到我们的控制台中。
+每当 `counter` 被修改时，例如 `counter.value=5`，侦听将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到我们的控制台中。
 
 **以下是等效的选项式 API：**
 
@@ -340,7 +340,7 @@ setup (props) {
 }
 ```
 
-你可能已经注意到在我们的 `setup` 的顶部使用了 `toRefs`。这是为了确保我们的侦听器能够对 `user` prop 所做的更改做出反应。
+你可能已经注意到在我们的 `setup` 的顶部使用了 `toRefs`。这是为了确保我们的侦听器能够对 `user` prop 所做的变化做出反应。
 
 有了这些变化，我们就把第一个逻辑关注点移到了一个地方。我们现在可以对第二个关注点执行相同的操作——基于 `searchQuery` 进行过滤，这次是使用计算属性。
 
@@ -368,7 +368,7 @@ console.log(twiceTheCounter.value) // 2
 import { fetchUserRepositories } from '@/api/repositories'
 import { ref, onMounted, watch, toRefs, computed } from 'vue'
 
-// in our component
+// 在我们的组件中
 setup (props) {
   // 使用 `toRefs` 创建对 props 中的 `user` property 的响应式引用
   const { user } = toRefs(props)
@@ -381,7 +381,7 @@ setup (props) {
 
   onMounted(getUserRepositories)
 
-  // 在用户 prop 的响应式引用上设置一个侦听器
+  // 在 user prop 的响应式引用上设置一个侦听器
   watch(user, getUserRepositories)
 
   const searchQuery = ref('')
@@ -473,7 +473,7 @@ export default {
     } = useRepositoryNameSearch(repositories)
 
     return {
-      // 因为我们并不关心未经过滤的仓库
+      // 因为我们并不关心未经过滤的存储库
       // 我们可以在 `repositories` 名称下暴露过滤后的结果
       repositories: repositoriesMatchingSearchQuery,
       getUserRepositories,
@@ -494,7 +494,7 @@ export default {
 }
 ```
 
-此时，你可能已经知道了这个练习，所以让我们跳到最后，迁移剩余的过滤功能。我们不需要深入了解实现细节，因为这不是本指南的重点。
+此时，你可能已经知道了其中的奥妙，所以让我们跳到最后，迁移剩余的过滤功能。我们不需要深入了解实现细节，因为这不是本指南的重点。
 
 ```js
 // src/components/UserRepositories.vue
@@ -528,7 +528,7 @@ export default {
     } = useRepositoryFilters(repositoriesMatchingSearchQuery)
 
     return {
-      // 因为我们并不关心未经过滤的仓库
+      // 因为我们并不关心未经过滤的存储库
       // 我们可以在 `repositories` 名称下暴露过滤后的结果
       repositories: filteredRepositories,
       getUserRepositories,
