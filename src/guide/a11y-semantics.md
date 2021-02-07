@@ -167,7 +167,7 @@
 </fieldset>
 ```
 
-或者，你可以用 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)将用法说明附加到输入。
+或者，你可以用 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) 将用法说明附加到输入。
 
 ```html
 <fieldset>
