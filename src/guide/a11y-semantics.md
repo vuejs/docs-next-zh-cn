@@ -56,7 +56,7 @@
 
 #### aria-label
 
-你也可以为输入配置一个带有[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) 的可访问名称。
+你也可以为输入配置一个带有 [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) 的可访问名称。
 
 ```html
 <label for="name">Name</label>
