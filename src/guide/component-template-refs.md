@@ -38,8 +38,6 @@ app.component('base-input', {
 this.$refs.usernameInput.focusInput()
 ```
 
-当 `ref` 与 `v-for` 一起使用时，你得到的 `ref` 将是一个数组，其中包含镜像数据源的子组件。
-
 :::warning
 `$refs` 只会在组件渲染完成之后生效。这仅作为一个用于直接操作子元素的“逃生舱”——你应该避免在模板或计算属性中访问 `$refs`。
 :::
