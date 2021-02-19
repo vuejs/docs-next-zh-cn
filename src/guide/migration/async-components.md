@@ -31,7 +31,7 @@ const asyncPage = {
   delay: 200,
   timeout: 3000,
   error: ErrorComponent,
-  loading: LoadingComponent
+  loading: LoadingComponent,
 }
 ```
 
@@ -53,7 +53,7 @@ const asyncPageWithOptions = defineAsyncComponent({
   delay: 200,
   timeout: 3000,
   errorComponent: ErrorComponent,
-  loadingComponent: LoadingComponent
+  loadingComponent: LoadingComponent,
 })
 ```
 
@@ -67,7 +67,7 @@ const asyncPageWithOptions = defineAsyncComponent({
   delay: 200,
   timeout: 3000,
   error: ErrorComponent,
-  loading: LoadingComponent
+  loadingComponent: LoadingComponent,
 })
 ```
 
