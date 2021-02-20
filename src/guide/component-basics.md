@@ -22,8 +22,8 @@ app.component('button-counter', {
 })
 ```
 
-:::info
-在这里演示的是一个简单的示例，但是在典型的 Vue 应用程序中，我们使用单个文件组件而不是字符串模板。你可以[在本节](single-file-component.html)找到有关它们的更多信息。
+::: info
+在这里演示的是一个简单的示例，但是在典型的 Vue 应用中，我们使用单个文件组件而不是字符串模板。你可以[在本节](single-file-component.html)找到有关它们的更多信息。
 :::
 
 组件是带有名称的可复用实例，在这个例子中是 `<button-counter>`。我们可以把这个组件作为一个根实例中的自定义元素来使用：
@@ -153,7 +153,7 @@ app.mount('#blog-posts-demo')
 
 ## 监听子组件事件
 
-在我们开发 `<blog-post>` 组件时，它的一些功能可能要求我们和父级组件进行沟通。例如我们可能会引入一个辅助功能来放大博文的字号，同时让页面的其它部分保持默认的字号。
+我们在开发 `<blog-post>` 组件时，它的一些功能可能需要与父级组件进行沟通。例如我们可能会引入一个辅助功能来放大博文的字号，同时让页面的其它部分保持默认的字号。
 
 在其父组件中，我们可以通过添加一个 `postFontSize` 数据 property 来支持这个功能：
 
@@ -204,7 +204,7 @@ app.component('blog-post', {
 </button>
 ```
 
-当点击这个按钮时，我们需要告诉父级组件放大所有博文的文本。幸好组件实例提供了一个自定义事件的系统来解决这个问题。父级组件可以像处理 native DOM 事件一样通过 `v-on` 或 `@` 监听子组件实例的任意事件：
+当点击这个按钮时，我们需要告诉父级组件放大所有博文的文本。幸好组件实例提供了一个自定义事件的系统来解决这个问题。父级组件可以像处理 Native DOM 事件一样通过 `v-on` 或 `@` 监听子组件实例的任意事件：
 
 ```html
 <blog-post ... @enlarge-text="postFontSize += 0.1"></blog-post>
@@ -218,7 +218,7 @@ app.component('blog-post', {
 </button>
 ```
 
-多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级将接收事件并更新 `postFontSize` 值。
+多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级组件将接收事件并更新 `postFontSize` 值。
 
 <common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="html,result" :preview="false" />
 
@@ -231,7 +231,7 @@ app.component('blog-post', {
 })
 ```
 
-这将允许你检查组件抛出的所有事件，还可以选择 [validate them](component-custom-events.html#validate-emitted-events)
+这将允许我们检查组件抛出的所有事件，还可以选择 [validate them](component-custom-events.html#validate-emitted-events)。
 
 ### 使用事件抛出一个值
 
@@ -336,7 +336,8 @@ app.component('custom-input', {
       get() {
         return this.modelValue
       },
-      set(value) { this.$emit('update:modelValue', value)
+      set(value) { 
+        this.$emit('update:modelValue', value)
       }
     }
   }
@@ -419,7 +420,7 @@ app.component('alert-box', {
 </table>
 ```
 
-:::warning
+::: warning
 `v-is` 值应为 JavaScript 字符串文本：
 
 ```html
@@ -432,7 +433,7 @@ app.component('alert-box', {
 
 :::
 
-另外，HTML 属性名不区分大小写，因此浏览器将把所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
+另外，HTML 属性名不区分大小写，因此浏览器将所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
 
 ```js
 //  在JavaScript中的驼峰
