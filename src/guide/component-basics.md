@@ -204,7 +204,7 @@ app.component('blog-post', {
 </button>
 ```
 
-当点击这个按钮时，我们需要告诉父级组件放大所有博文的文本。幸好组件实例提供了一个自定义事件的系统来解决这个问题。父级组件可以像处理 Native DOM 事件一样通过 `v-on` 或 `@` 监听子组件实例的任意事件：
+当点击这个按钮时，我们需要告诉父级组件放大所有博文的文本。幸好组件实例提供了一个自定义事件的系统来解决这个问题。父级组件可以像处理原生 DOM 事件一样通过 `v-on` 或 `@` 监听子组件实例的任意事件：
 
 ```html
 <blog-post ... @enlarge-text="postFontSize += 0.1"></blog-post>
@@ -218,7 +218,7 @@ app.component('blog-post', {
 </button>
 ```
 
-多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级组件将接收事件并更新 `postFontSize` 值。
+多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级组件能够接收事件并更新 `postFontSize` 值。
 
 <common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="html,result" :preview="false" />
 
@@ -433,7 +433,7 @@ app.component('alert-box', {
 
 :::
 
-另外，HTML 属性名不区分大小写，因此浏览器将所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
+另外，HTML attribute 名不区分大小写，因此浏览器将所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
 
 ```js
 //  在JavaScript中的驼峰
