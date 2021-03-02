@@ -15,7 +15,7 @@ console.log(plusOne.value) // 2
 plusOne.value++ // 错误
 ```
 
-或者，它可以使用具有 `get` 和 `set` 函数的对象来创建可写的 ref 对象。
+或者，它也可以使用具有 `get` 和 `set` 函数的对象来创建可写的 ref 对象。
 
 ```js
 const count = ref(1)
@@ -65,7 +65,7 @@ function watchEffect(
 ): StopHandle
 
 interface WatchEffectOptions {
-  flush?: 'pre' | 'post' | 'sync'  // default: 'pre'
+  flush?: 'pre' | 'post' | 'sync'  // 默认：'pre'
   onTrack?: (event: DebuggerEvent) => void
   onTrigger?: (event: DebuggerEvent) => void
 }
@@ -96,7 +96,7 @@ type StopHandle = () => void
 
 ### 侦听一个单一源
 
-侦听器 data 源可以是具有返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
+侦听器数据源可以是具有返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
 
 ```js
 // 侦听一个 getter
