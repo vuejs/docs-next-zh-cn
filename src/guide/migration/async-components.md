@@ -67,7 +67,7 @@ const asyncPageWithOptions = defineAsyncComponent({
   delay: 200,
   timeout: 3000,
   error: ErrorComponent,
-  loading: LoadingComponent
+  loadingComponent: LoadingComponent
 })
 ```
 
