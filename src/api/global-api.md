@@ -227,7 +227,7 @@ const AsyncComp = defineAsyncComponent({
 
 如果在当前应用实例中可用，则允许按名称解析 `component`。
 
-返回一个 `Component`。如果没有找到，则返回 `undefined`。
+返回一个 `Component`。如果没有找到，则返回接收的参数 `name`。
 
 ```js
 const app = Vue.createApp({})
