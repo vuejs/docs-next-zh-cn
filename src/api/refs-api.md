@@ -28,10 +28,10 @@ interface Ref<T> {
 function ref<T>(value: T): Ref<T>
 ```
 
-有时我们可能需要为 ref 的内部值指定复杂类型。我们可以通过在调用 `ref` 来覆盖默认推断时传递一个泛型参数来简洁地做到这一点：
+有时我们可能需要为 ref 的内部值指定复杂类型。想要简洁地做到这一点，我们可以在调用 `ref` 覆盖默认推断时传递一个泛型参数：
 
 ```ts
-const foo = ref<string | number>('foo') // foo's type: Ref<string | number>
+const foo = ref<string | number>('foo') // foo 的类型：Ref<string | number>
 
 foo.value = 123 // ok!
 ```
@@ -47,17 +47,17 @@ function useState<State extends string>(initial: State) {
 
 ## `unref`
 
-如果参数为 [`ref`](#ref)，则返回内部值，否则返回参数本身。这是 `val = isRef(val) ? val.value : val`。
+如果参数是一个 [`ref`](#ref)，则返回内部值，否则返回参数本身。这是 `val = isRef(val) ? val.value : val` 的语法糖函数。
 
 ```js
 function useFoo(x: number | Ref<number>) {
-  const unwrapped = unref(x) // unwrapped 确保现在是数字类型
+  const unwrapped = unref(x) // unwrapped 现在一定是数字类型
 }
 ```
 
 ## `toRef`
 
-可以用来为源响应式对象上的 property 新创建一个 [`ref`](#ref)。然后可以将 ref 传递出去，从而保持对其源 property 的响应式连接。
+可以用来为源响应式对象上的某个 property 新创建一个 [`ref`](#ref)。然后，ref 可以被传递，它会保持对其源 property 的响应式连接。
 
 ```js
 const state = reactive({
@@ -84,13 +84,11 @@ export default {
 }
 ```
 
-<!-- TODO: translation -->
-
-`toRef` will return a usable ref even if the source property doesn't currently exist. This makes it especially useful when working with optional props, which wouldn't be picked up by [`toRefs`](#torefs).
+即使源 property 不存在，`toRef` 也会返回一个可用的 ref。这使得它在使用可选 prop 时特别有用，可选 prop 并不会被 [`toRefs`](#torefs) 处理。
 
 ## `toRefs`
 
-将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的[`ref`](#ref)。
+将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的 [`ref`](#ref)。
 
 ```js
 const state = reactive({
@@ -100,7 +98,7 @@ const state = reactive({
 
 const stateAsRefs = toRefs(state)
 /*
-Type of stateAsRefs:
+stateAsRefs 的类型:
 
 {
   foo: Ref<number>,
@@ -108,7 +106,7 @@ Type of stateAsRefs:
 }
 */
 
-// ref 和 原始property “链接”
+// ref 和原始 property 已经“链接”起来了
 state.foo++
 console.log(stateAsRefs.foo.value) // 2
 
@@ -125,7 +123,7 @@ function useFeatureX() {
     bar: 2
   })
 
-  // 逻辑运行状态
+  // 操作 state 的逻辑
 
   // 返回时转换为ref
   return toRefs(state)
@@ -144,19 +142,17 @@ export default {
 }
 ```
 
-<!-- TODO: translation -->
-
-`toRefs` will only generate refs for properties that are included in the source object. To create a ref for a specific property use [`toRef`](#toref) instead.
+`toRefs` 只会为源对象中包含的 property 生成 ref。如果要为特定的 property 创建 ref，则应当使用 [`toRef`](#toref)
 
 ## `isRef`
 
-Checks if a value is a ref object。
+检查值是否为一个 ref 对象。
 
 ## `customRef`
 
-创建一个自定义的 ref，并对其依赖项跟踪和更新触发进行显式控制。它需要一个工厂函数，该函数接收 `track` 和 `trigger` 函数作为参数，并应返回一个带有 `get` 和 `set` 的对象。
+创建一个自定义的 ref，并对其依赖项跟踪和更新触发进行显式控制。它需要一个工厂函数，该函数接收 `track` 和 `trigger` 函数作为参数，并且应该返回一个带有 `get` 和 `set` 的对象。
 
-- 使用 `v-model` 使用自定义 ref 实现 `debounce` 的示例：
+- 使用自定义 ref 通过 `v-model` 实现 debounce 的示例：
 
   ```html
   <input v-model="text" />
@@ -191,7 +187,7 @@ Checks if a value is a ref object。
   }
   ```
 
-**Typing：**
+**类型声明**：
 
 ```ts
 function customRef<T>(factory: CustomRefFactory<T>): Ref<T>
@@ -207,7 +203,7 @@ type CustomRefFactory<T> = (
 
 ## `shallowRef`
 
-创建一个 ref，它跟踪自己的 `.value` 更改，但不会使其值成为响应式的。
+创建一个跟踪自身 `.value` 变化的 ref，但不会使其值也变成响应式的。
 
 ```js
 const foo = shallowRef({})
@@ -217,7 +213,7 @@ foo.value = {}
 isReactive(foo.value) // false
 ```
 
-**参考**：[正在将独立的响应式值创建为 `refs`](../guide/reactivity-fundamentals.html#创建独立的响应式值作为-refs)
+**参考**：[创建独立的响应式值作为 `refs`](../guide/reactivity-fundamentals.html#创建独立的响应式值作为-refs)
 
 ## `triggerRef`
 

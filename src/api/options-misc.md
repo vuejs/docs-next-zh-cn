@@ -10,27 +10,25 @@
 
   指定 `name` 选项的另一个好处是便于调试。有名字的组件有更友好的警告信息。另外，当在有 [vue-devtools](https://github.com/vuejs/vue-devtools)，未命名组件将显示成 `<AnonymousComponent>`，这很没有语义。通过提供 `name` 选项，可以获得更有语义信息的组件树。
 
-<!-- TODO: translation -->
-
 ## delimiters
 
-- **Type:** `Array<string>`
+- **类型：** `Array<string>`
 
-- **Default:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}` 
+- **默认：** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
 
-- **Restrictions:** This option is only available in the full build, with in-browser template compilation.
+- **限制：** 该选项仅在完整构建中可用，是带有浏览器内模板编译。
 
-- **Details:**
+- **详细：**
 
-  Sets the delimiters used for text interpolation within the template.
+  设置模板中用于文本插值的分隔符
 
-  Typically this is used to avoid conflicting with server-side frameworks that also use mustache syntax.
+  通常这是为了避免与同样使用 mustache 语法的服务器端框架发生冲突。
 
-- **Example:**
+- **示例：**
 
   ```js
   Vue.createApp({
-    // Delimiters changed to ES6 template string style
+    // 分隔符变成了 ES6 模板字符串风格
     delimiters: ['${', '}']
   })
   ```
