@@ -3,14 +3,14 @@
 ## 什么是组合式 API？
 
 :::tip 提示
-在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md) 和 [创建组件](component-basics.md)。
+在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md)和[创建组件](component-basics.md)。
 :::
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合式 API 的免费视频。</VideoLesson>
 
-通过创建 Vue 组件，我们可以将界面的可重复部分及其功能提取到可重用的代码段中。仅此一项就可以使我们的应用在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用变得非常大的时候——想想几百个组件。当处理这样的大型应用时，共享和重用代码变得尤为重要。
+通过创建 Vue 组件，我们可以将界面中可重复的部分连同其功能一起提取为可重用的代码段。仅此一项就可以使我们的应用在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用变得非常大的时候——想想几百个组件。当处理这样的大型应用时，共享和重用代码变得尤为重要。
 
-假设在我们的应用中，我们有一个视图来显示某个用户的存储库列表。除此之外，我们还希望应用搜索和筛选功能。处理此视图的组件可能如下所示：
+假设在我们的应用中，我们有一个视图来显示某个用户的仓库列表。除此之外，我们还希望应用搜索和筛选功能。处理此视图的组件可能如下所示：
 
 ```js
 // src/components/UserRepositories.vue
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     getUserRepositories () {
-      // 使用 `this.user` 获取用户存储库
+      // 使用 `this.user` 获取用户仓库
     }, // 1
     updateFilters () { ... }, // 3
   },
@@ -51,9 +51,9 @@ export default {
 
 该组件有以下几个职责：
 
-1. 从假定的外部 API 获取该用户名的存储库，并在用户更改时刷新它
-2. 使用 `searchQuery` 字符串搜索存储库
-3. 使用 `filters` 对象筛选存储库
+1. 从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它
+2. 使用 `searchQuery` 字符串搜索仓库
+3. 使用 `filters` 对象筛选仓库
 
 用组件的选项 (`data`、`computed`、`methods`、`watch`) 组织逻辑在大多数情况下都有效。然而，当我们的组件变得更大时，**逻辑关注点**的列表也会增长。这可能会导致组件难以阅读和理解，尤其是对于那些一开始就没有编写这些组件的人来说。
 
@@ -61,7 +61,7 @@ export default {
 
 一个大型组件的示例，其中**逻辑关注点**是按颜色分组。
 
-这种零散性是使人难以理解和维护一个复杂组件的原因。选项的分离掩盖了基本的逻辑关注点。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块。
+这种碎片化使得理解和维护复杂组件变得困难。选项的分离掩盖了潜在的逻辑问题。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块。
 
 如果我们能够将与同一个逻辑关注点相关的代码配置在一起，这样会更好。而这正是组合式 API 使我们能够做到的。
 
@@ -76,10 +76,10 @@ export default {
 新的 `setup` 组件选项在创建组件**之前**执行，一旦 `props` 被解析，就作为组合式 API 的入口点。
 
 :::warning
-由于在执行 `setup` 时，尚未创建组件实例，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
+由于在执行 `setup` 时，组件实例尚未被创建，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
 :::
 
-`setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[后面](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
+`setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[稍后](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
 
 让我们添加 `setup` 到我们的组件中：
 
@@ -105,12 +105,12 @@ export default {
 
 现在让我们从提取第一个逻辑关注点开始 (在原始代码段中标记为“1”)。
 
-> 1. 从假定的外部 API 获取该用户名的存储库，并在用户更改时刷新它
+> 1. 从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它
 
 我们将从最明显的部分开始：
 
-- 存储库列表
-- 更新存储库列表的函数
+- 仓库列表
+- 更新仓库列表的函数
 - 返回列表和函数，以便其他组件选项可以访问它们
 
 ```js
@@ -131,7 +131,7 @@ setup (props) {
 }
 ```
 
-这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量是非响应式的。这意味着从用户的角度来看，存储库列表将保持为空。我们来解决这个问题！
+这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量是非响应式的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！
 
 ### 带 `ref` 的响应式变量
 
@@ -274,7 +274,7 @@ setup (props) {
 
 就像我们在组件中使用 `watch` 选项在 `user` property 上设置侦听器一样，我们也可以使用从 Vue 导入的 `watch` 函数执行相同的操作。它接受 3 个参数：
 
-- 一个我们想要观察的**响应式引用**或 getter 函数
+- 一个我们想要侦听的**响应式引用**或 getter 函数
 - 一个回调
 - 可选的配置选项
 
@@ -473,7 +473,7 @@ export default {
     } = useRepositoryNameSearch(repositories)
 
     return {
-      // 因为我们并不关心未经过滤的存储库
+      // 因为我们并不关心未经过滤的仓库
       // 我们可以在 `repositories` 名称下暴露过滤后的结果
       repositories: repositoriesMatchingSearchQuery,
       getUserRepositories,
@@ -528,7 +528,7 @@ export default {
     } = useRepositoryFilters(repositoriesMatchingSearchQuery)
 
     return {
-      // 因为我们并不关心未经过滤的存储库
+      // 因为我们并不关心未经过滤的仓库
       // 我们可以在 `repositories` 名称下暴露过滤后的结果
       repositories: filteredRepositories,
       getUserRepositories,
