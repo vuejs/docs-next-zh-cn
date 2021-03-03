@@ -66,7 +66,7 @@ const asyncPageWithOptions = defineAsyncComponent({
   loader: () => import('./NextPage.vue'),
   delay: 200,
   timeout: 3000,
-  errorComponent: ErrorComponent,
+  error: ErrorComponent,
   loadingComponent: LoadingComponent
 })
 ```
