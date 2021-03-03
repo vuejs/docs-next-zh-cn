@@ -218,7 +218,7 @@
 
 - **详细：**
 
-  当虚拟 DOM 重新渲染被触发时调用。和[`renderTracked`](#rendertracked)类似，接收 `debugger event` 作为参数。此事件告诉你是什么操作触发了重新渲染，以及该操作的目标对象和键。
+  当虚拟 DOM 重新渲染被触发时调用。和 [`renderTracked`](#rendertracked) 类似，接收 `debugger event` 作为参数。此事件告诉你是什么操作触发了重新渲染，以及该操作的目标对象和键。
 
 - **用法：**
 
