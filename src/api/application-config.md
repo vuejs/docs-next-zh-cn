@@ -8,7 +8,7 @@ const app = Vue.createApp({})
 console.log(app.config)
 ```
 
-在安装应用之前，你可以修改其 property，如下所示。
+在挂载应用之前，你可以修改其 property，如下所示。
 
 ## errorHandler
 
