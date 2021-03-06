@@ -506,7 +506,7 @@ computed: {
 
 ## 多个组件之间过渡
 
-组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包装了一个[动态组件](component-basics.html#动态组件) ：
+组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包裹了一个[动态组件](component-basics.html#动态组件) ：
 
 ```html
 <div id="demo">

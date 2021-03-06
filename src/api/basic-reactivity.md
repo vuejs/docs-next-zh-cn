@@ -59,7 +59,7 @@ export default {
 }
 ```
 
-如果 proxy 是 [`readonly`](#readonly) 创建的，但还包装了由 [`reactive`](#reactive) 创建的另一个 proxy，它也会返回 `true`。
+如果 proxy 是 [`readonly`](#readonly) 创建的，但还包裹了由 [`reactive`](#reactive) 创建的另一个 proxy，它也会返回 `true`。
 
 ```js{7-15}
 import { reactive, isReactive, readonly } from 'vue'
