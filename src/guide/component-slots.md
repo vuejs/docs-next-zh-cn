@@ -264,7 +264,7 @@ app.component('todo-list', {
 </ul>
 ```
 
-可以根据自己的需要将不限数量的 attribute 绑定到 `slot` 上。
+可以根据自己的需要将很多的 attribute 绑定到 `slot` 上。
 
 ```html
 <ul>

@@ -117,9 +117,9 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 
 ### `Vue.prototype` 替换为 `config.globalProperties`
 
-在 Vue 2 中, `Vue.prototype` 通常用于添加所有组件都能访问的 property。
+在 Vue 2 中， `Vue.prototype` 通常用于添加所有组件都能访问的 property。
 
-在 Vue 3 等同于[`config.globalProperties`](/api/application-config.html#globalproperties). 这些 property 将被复制到应用中作为实例化组件的一部分。
+在 Vue 3 等同于[`config.globalProperties`](/api/application-config.html#globalproperties)。这些 property 将被复制到应用中作为实例化组件的一部分。
 
 ```js
 // 之前 - Vue 2
@@ -128,11 +128,11 @@ Vue.prototype.$http = () => {}
 
 ```js
 // 之后 - Vue 3
-const app = Vue.createApp({})
+const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
 
-使用 `provide `([下面](#provide-inject)讨论) 时，也应考虑作为 `globalProperties` 的替代品。
+使用 `provide` ([稍后](#provide-inject)会讨论) 时，也应考虑作为 `globalProperties` 的替代品。
 
 ### 插件使用者须知
 

@@ -244,7 +244,7 @@ methods: {
 <!-- This will throw an error because property "todo" is not defined on instance. -->
 
 <li v-for="todo in todos" v-if="!todo.isComplete">
-  {{ todo }}
+  {{ todo.name }}
 </li>
 ```
 

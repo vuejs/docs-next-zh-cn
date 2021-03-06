@@ -4,7 +4,7 @@
 
 ## 事件名 
 
-与组件和 prop 一样，事件名提供了自动的大小写转换。如果用驼峰命名的子组件中触发一个事件，你将可以在父组件中添加一个 kebab-case (短横线分隔命名)的监听器。
+与组件和 prop 一样，事件名提供了自动的大小写转换。如果用驼峰命名的子组件中触发一个事件，你将可以在父组件中添加一个 kebab-case (短横线分隔命名) 的监听器。
 
 ```js
 this.$emit('myEvent')
@@ -14,7 +14,7 @@ this.$emit('myEvent')
 <my-component @my-event="doSomething"></my-component>
 ```
 
-与 [props casing](/guide/component-props.html#prop-的大小写命名-camelcase-vs-kebab-case) 一样，当你使用 DOM 模板时，我们建议使用 kebab-case 事件监听器。如果你使用的是字符串模板，这个限制就不适用。
+与 [props 的命名](/guide/component-props.html#prop-的大小写命名-camelcase-vs-kebab-case)一样，当你使用 DOM 模板时，我们建议使用 kebab-case 事件监听器。如果你使用的是字符串模板，这个限制就不适用。
 
 ## 定义自定义事件
 

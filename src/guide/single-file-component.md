@@ -6,9 +6,9 @@
 
 这对于中小型项目非常有效，在这些项目里 JavaScript 只被用来增强特定的视图。但当在更复杂的项目中，或者你的前端完全由 JavaScript 驱动的时候，下面这些缺点将变得非常明显：
 
-- **全局定义 (Global definitions)** 强制要求每个 component 中的命名不得重复;
-- **字符串模板 (String templates)** 缺乏语法高亮，在 HTML 有多行的时候，需要用到丑陋的 `\`;
-- **不支持 CSS (No CSS support)** 意味着当 HTML 和 JavaScript 组件化时，CSS 明显被遗漏;
+- **全局定义 (Global definitions)** 强制要求每个 component 中的命名不得重复；
+- **字符串模板 (String templates)** 缺乏语法高亮，在 HTML 有多行的时候，需要用到丑陋的 `\`；
+- **不支持 CSS (No CSS support)** 意味着当 HTML 和 JavaScript 组件化时，CSS 明显被遗漏；
 - **没有构建步骤 (No build step)** 限制只能使用 HTML 和 ES5 JavaScript，而不能使用预处理器，如 Pug (曾经的 Jade) 和 Babel。
 
 所有这些都可以通过扩展名为 `.vue` 的 **single-file components (单文件组件)** 来解决，并且还可以使用 webpack 或 Browserify 等构建工具。
@@ -66,9 +66,9 @@ CLI 会为你搞定大多数工具的配置问题，同时也支持细粒度自�
 
 有时你会想从零搭建你自己的构建工具，这时你需要通过 [Vue Loader](https://vue-loader.vuejs.org) 手动配置 webpack。关于学习更多 webpack 的内容，请查阅[其官方文档](https://webpack.js.org/configuration/)和 [Webpack Academy](https://webpack.academy/p/the-core-concepts)。
 
-### rollup 构建
+### 使用 rollup 构建
 
-在开发第三方库的时候，大多数时候我们都希望以一种允许类库用户 [tree shake](https://webpack.js.org/guides/tree-shaking/)的方式来构建它。为了实现 tree-shaking，我们需要构建`esm`模块。由于 webpack 以及 vue-cli 都不支持构建 `esm` 模块，我们需要依靠 [rollup](https://rollupjs.org/)。
+在开发第三方库的时候，大多数时候我们都希望以一种允许类库用户 [tree shake](https://webpack.js.org/guides/tree-shaking/) 的方式来构建它。为了实现 tree-shaking，我们需要构建 `esm` 模块。由于 webpack 以及 vue-cli 都不支持构建 `esm` 模块，我们需要依靠 [rollup](https://rollupjs.org/)。
 
 #### 安装 Rollup
 
@@ -132,13 +132,13 @@ export default {
 
 在这里，我们要说明的是：
 
-- 如何建立我们的依赖包
+- 如何打包
 - 我们要在依赖中捆绑哪些文件
-- 什么文件代表我们的 `esm`模块
+- 什么文件代表我们的 `esm` 模块
 
-#### `umd` 和 `cjs` 模块构建
+#### 打包 `umd` 和 `cjs` 模块
 
-要建立 `umd` 和 `cjs` 模块，我们可以简单地在 `rollup.config.js` 和 `package.json` 中添加几行配置。
+要构建 `umd` 和 `cjs` 模块，我们可以简单地在 `rollup.config.js` 和 `package.json` 中添加几行配置。
 
 ##### rollup.config.js
 
