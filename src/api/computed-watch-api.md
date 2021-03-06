@@ -4,7 +4,7 @@
 
 ## `computed`
 
-使用 getter 函数，并为从 getter 返回的值返回一个不变的响应式 [ref](./refs-api.html#ref) 对象。
+接受一个 getter 函数，并为从 getter 返回的值返回一个不变的响应式 [ref](./refs-api.html#ref) 对象。
 
 ```js
 const count = ref(1)
@@ -12,10 +12,10 @@ const plusOne = computed(() => count.value + 1)
 
 console.log(plusOne.value) // 2
 
-plusOne.value++ // error
+plusOne.value++ // 错误
 ```
 
-或者，它可以使用具有 `get` 和 `set` 函数的对象来创建可写的 ref 对象。
+或者，它也可以使用具有 `get` 和 `set` 函数的对象来创建可写的 ref 对象。
 
 ```js
 const count = ref(1)
@@ -33,10 +33,10 @@ console.log(count.value) // 0
 **类型声明：**
 
 ```ts
-// read-only
+// 只读的
 function computed<T>(getter: () => T): Readonly<Ref<Readonly<T>>>
 
-// writable
+// 可写的
 function computed<T>(options: { get: () => T; set: (value: T) => void }): Ref<T>
 ```
 
@@ -65,7 +65,7 @@ function watchEffect(
 ): StopHandle
 
 interface WatchEffectOptions {
-  flush?: 'pre' | 'post' | 'sync'  // default: 'pre'
+  flush?: 'pre' | 'post' | 'sync' // 默认：'pre'
   onTrack?: (event: DebuggerEvent) => void
   onTrigger?: (event: DebuggerEvent) => void
 }
@@ -86,20 +86,20 @@ type StopHandle = () => void
 
 ## `watch`
 
- `watch` API 与选项式 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的数据源，并在单独的回调函数中执行副作用。默认情况下，它也是惰性的——即回调仅在侦听源发生更改时调用。
+`watch` API 与选项式 API [this.\$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的数据源，并在单独的回调函数中执行副作用。默认情况下，它也是惰性的——即回调仅在侦听源发生更改时被调用。
 
 - 与 [watchEffect](#watcheffect) 比较，`watch` 允许我们：
 
   - 惰性地执行副作用；
   - 更具体地说明应触发侦听器重新运行的状态；
-  - 访问侦听状态的先前值和当前值。
+  - 访问被侦听状态的先前值和当前值。
 
 ### 侦听一个单一源
 
-侦听器 data 源可以是具有返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
+侦听器数据源可以是具有返回值的 getter 函数，也可以是 [ref](./refs-api.html#ref)：
 
 ```js
-// 侦听一个getter
+// 侦听一个 getter
 const state = reactive({ count: 0 })
 watch(
   () => state.count,
@@ -108,7 +108,7 @@ watch(
   }
 )
 
-// 直接侦听一个ref
+// 直接侦听一个 ref
 const count = ref(0)
 watch(count, (count, prevCount) => {
   /* ... */
@@ -125,9 +125,9 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 })
 ```
 
-### 与 `watchEffect` 共享行为
+### 与 `watchEffect` 相同的行为
 
-`watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](../guide/reactivity-computed-watchers.html#停止侦听)，[副作用无效](../guide/reactivity-computed-watchers.html#清除副作用) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](../guide/reactivity-computed-watchers.html#副作用刷新时机) 和 [debugging](../guide/reactivity-computed-watchers.html#侦听器调试) 有共享行为。
+`watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](../guide/reactivity-computed-watchers.html#停止侦听)，[副作用无效](../guide/reactivity-computed-watchers.html#清除副作用) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](../guide/reactivity-computed-watchers.html#副作用刷新时机) 和 [debugging](../guide/reactivity-computed-watchers.html#侦听器调试) 方面有相同的行为。
 
 **类型声明：**
 
@@ -162,7 +162,7 @@ type MapSources<T> = {
 
 // 参见 `watchEffect` 类型声明共享选项
 interface WatchOptions extends WatchEffectOptions {
-  immediate?: boolean // default: false
+  immediate?: boolean // 默认：false
   deep?: boolean
 }
 ```
