@@ -65,7 +65,7 @@ app.mount('#components-demo')
 
 例如，你可能会有页头、侧边栏、内容区等组件，每个组件又包含了其它的像导航链接、博文之类的组件。
 
-为了能在模板中使用，这些组件必须先注册以便 Vue 能够识别。这里有两种组件的注册类型：**全局注册**和**局部注册**。至此，我们的组件都只是通过 `component` 全局注册的：
+为了能在模板中使用，这些组件必须先注册以便 Vue 能够识别。这里有两种组件的注册类型：**全局注册**和**局部注册**。至此，我们的组件都只是通过 `component` 方法全局注册的：
 
 ```js
 const app = Vue.createApp({})
@@ -75,7 +75,7 @@ app.component('my-component-name', {
 })
 ```
 
-全局注册的组件可以在随后创建的 `app` 实例模板中使用，也包括根实例组件树中的所有子组件的模板中。
+全局注册的组件可以在应用中的任何组件的模板中使用。
 
 到目前为止，关于组件注册你需要了解的就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[组件注册](component-registration.md)读完。
 
@@ -83,7 +83,7 @@ app.component('my-component-name', {
 
 早些时候，我们提到了创建一个博文组件的事情。问题是如果你不能向这个组件传递某一篇博文的标题或内容之类的我们想展示的数据的话，它是没有办法使用的。这也正是 prop 的由来。
 
-Prop 是你可以在组件上注册的一些自定义 attribute。为了给博文组件传递一个标题，我们可以用一个 props 选项将其包含在该组件可接受的 `prop` 列表中：
+Prop 是你可以在组件上注册的一些自定义 attribute。为了给博文组件传递一个标题，我们可以用 `props` 选项将其包含在该组件可接受的 prop 列表中：
 
 ```js
 const app = Vue.createApp({})
@@ -96,9 +96,9 @@ app.component('blog-post', {
 app.mount('#blog-post-demo')
 ```
 
-一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。在上述模板中，你会发现我们能够在组件实例中访问这个值，就像访问 `data` 中的值一样。
+当一个值被传递给一个 prop attribute 时，它就成为该组件实例中的一个 property。该 property 的值可以在模板中访问，就像任何其他组件 property 一样。
 
-一个 prop 被注册之后，你就可以像这样把数据作为一个自定义 attribute 传递进来：
+一个组件默认可以拥有任意数量的 prop，无论任何值都可以传递给 prop。
 
 ```html
 <div id="blog-post-demo" class="demo">
@@ -174,8 +174,12 @@ const App = {
 
 ```html
 <div id="blog-posts-events-demo">
-  <div v-bind:style="{ fontSize: postFontSize + 'em' }">
-    <blog-post v-for="post in posts" :key="post.id" :title="post.title"></blog-post>
+  <div :style="{ fontSize: postFontSize + 'em' }">
+    <blog-post
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+    ></blog-post>
   </div>
 </div>
 ```
@@ -213,7 +217,7 @@ app.component('blog-post', {
 同时子组件可以通过调用内建的 [**$emit** 方法](../api/instance-methods.html#emit)并传入事件名称来触发一个事件：
 
 ```html
-<button @click="$emit('enlarge-text')">
+<button @click="$emit('enlargeText')">
   Enlarge text
 </button>
 ```
@@ -222,12 +226,12 @@ app.component('blog-post', {
 
 <common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="html,result" :preview="false" />
 
-我们可以在组件的 `emits` 选项中列出已抛出的事件。
+我们可以在组件的 `emits` 选项中列出已抛出的事件：
 
 ```js
 app.component('blog-post', {
   props: ['title'],
-  emits: ['enlarge-text']
+  emits: ['enlargeText']
 })
 ```
 
@@ -238,7 +242,7 @@ app.component('blog-post', {
 有的时候用一个事件来抛出一个特定的值是非常有用的。例如我们可能想让 `<blog-post>` 组件决定它的文本要放大多少。这时可以使用 `$emit` 的第二个参数来提供这个值：
 
 ```html
-<button @click="$emit('enlarge-text', 0.1)">
+<button @click="$emit('enlargeText', 0.1)">
   Enlarge text
 </button>
 ```
@@ -318,11 +322,7 @@ app.component('custom-input', {
 <custom-input v-model="searchText"></custom-input>
 ```
 
-在自定义组件中创建 `v-model` 功能的另一种方法是使用 `computed` property 的功能来定义 getter 和 setter。
-
-在下面的示例中，我们使用计算属性重构 `<custom-input>` 组件。
-
-请记住，`get` 方法应返回 `modelValue` property，或用于绑定的任何 property，`set` 方法应为该 property 触发相应的 `$emit`。
+在该组件中实现 `v-model` 的另一种方法是使用 `computed` property 的功能来定义 getter 和 setter。`get` 方法应返回 `modelValue` property，`set` 方法应该触发相应的事件。
 
 ```js
 app.component('custom-input', {
@@ -360,7 +360,7 @@ app.component('custom-input', {
 
 <common-codepen-snippet title="Component basics: slots" slug="jOPeaob" :preview="false" />
 
-幸好，Vue 自定义的 `<slot>` 元素让这变得非常简单：
+这可以通过使用 Vue 的自定义 `<slot>` 元素来实现：
 
 ```js
 app.component('alert-box', {
@@ -373,7 +373,7 @@ app.component('alert-box', {
 })
 ```
 
-如你所见，我们只要在需要的地方加入插槽就行了——就这么简单！
+如你所见，我们使用 `<slot>` 作为我们想要插入内容的占位符——就这么简单！
 
 到目前为止，关于插槽你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[插槽](component-slots.md)读完。
 
@@ -412,7 +412,7 @@ app.component('alert-box', {
   <blog-post-row></blog-post-row>
 </table>
 ```
-这个自定义组件 `<blog-post-row>` 会被作为无效的内容提升到外部，并导致最终渲染结果出错。幸好这个特殊的 `v-is` attribute 给了我们一个变通的办法：
+这个自定义组件 `<blog-post-row>` 会被作为无效的内容提升到外部，并导致最终渲染结果出错。我们可以使用特殊的 `v-is` 指令作为一个变通的办法：
 
 ```html
 <table>

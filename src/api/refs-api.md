@@ -38,7 +38,7 @@ foo.value = 123 // ok!
 
 如果泛型的类型未知，建议将 `ref` 转换为 `Ref<T>`：
 
-```js
+```ts
 function useState<State extends string>(initial: State) {
   const state = ref(initial) as Ref<State> // state.value -> State extends string
   return state
@@ -49,7 +49,7 @@ function useState<State extends string>(initial: State) {
 
 如果参数是一个 [`ref`](#ref)，则返回内部值，否则返回参数本身。这是 `val = isRef(val) ? val.value : val` 的语法糖函数。
 
-```js
+```ts
 function useFoo(x: number | Ref<number>) {
   const unwrapped = unref(x) // unwrapped 现在一定是数字类型
 }

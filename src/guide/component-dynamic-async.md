@@ -38,9 +38,11 @@
 在大型应用中，我们可能需要将应用分割成小一些的代码块，并且只在需要的时候才从服务器加载一个模块。为了简化，Vue 有一个 `defineAsyncComponent` 方法：
 
 ```js
-const app = Vue.createApp({})
+const { createApp, defineAsyncComponent } = Vue
 
-const AsyncComp = Vue.defineAsyncComponent(
+const app = createApp({})
+
+const AsyncComp = defineAsyncComponent(
   () =>
     new Promise((resolve, reject) => {
       resolve({

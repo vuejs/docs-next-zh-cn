@@ -27,3 +27,8 @@ Vue.js 中使用最多的两个指令就是 `v-if` 和 `v-for`，因此开发者
 由于语法上存在歧义，建议避免在同一元素上同时使用两者。
 
 比起在模板层面管理相关逻辑，更好的办法是通过创建计算属性筛选出列表，并以此创建可见元素。
+
+## 参考
+
+- [列表渲染 - #显示过滤-排序后的结果](/guide/list.html#displaying-filtered-sorted-results)
+- [列表渲染 - `v-for` 与 `v-if` 一同使用](/guide/list.html#v-for-与-v-if-一同使用)
