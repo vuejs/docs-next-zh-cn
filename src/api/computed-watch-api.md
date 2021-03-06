@@ -65,7 +65,7 @@ function watchEffect(
 ): StopHandle
 
 interface WatchEffectOptions {
-  flush?: 'pre' | 'post' | 'sync'  // 默认：'pre'
+  flush?: 'pre' | 'post' | 'sync' // 默认：'pre'
   onTrack?: (event: DebuggerEvent) => void
   onTrigger?: (event: DebuggerEvent) => void
 }
@@ -86,7 +86,7 @@ type StopHandle = () => void
 
 ## `watch`
 
- `watch` API 与选项式 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的数据源，并在单独的回调函数中执行副作用。默认情况下，它也是惰性的——即回调仅在侦听源发生更改时被调用。
+`watch` API 与选项式 API [this.\$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的数据源，并在单独的回调函数中执行副作用。默认情况下，它也是惰性的——即回调仅在侦听源发生更改时被调用。
 
 - 与 [watchEffect](#watcheffect) 比较，`watch` 允许我们：
 
@@ -125,9 +125,9 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 })
 ```
 
-### 与 `watchEffect` 共享行为
+### 与 `watchEffect` 相同的行为
 
-`watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](../guide/reactivity-computed-watchers.html#停止侦听)，[副作用无效](../guide/reactivity-computed-watchers.html#清除副作用) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](../guide/reactivity-computed-watchers.html#副作用刷新时机) 和 [debugging](../guide/reactivity-computed-watchers.html#侦听器调试) 方面有共享行为。
+`watch` 与 [`watchEffect`](#watcheffect) 在[手动停止](../guide/reactivity-computed-watchers.html#停止侦听)，[副作用无效](../guide/reactivity-computed-watchers.html#清除副作用) (将 `onInvalidate` 作为第三个参数传递给回调)，[flush timing](../guide/reactivity-computed-watchers.html#副作用刷新时机) 和 [debugging](../guide/reactivity-computed-watchers.html#侦听器调试) 方面有相同的行为。
 
 **类型声明：**
 
