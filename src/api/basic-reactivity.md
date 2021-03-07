@@ -20,7 +20,7 @@ function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 
 ## `readonly`
 
-接受一个对象 (响应式或纯对象) 或 [ref](./refs-api.html#ref) 并返回原始对象的只读 proxy。只读 proxy 是深层的：任何被访问的嵌套 property 也是只读的。
+接受一个对象 (响应式或纯对象) 或 [ref](./refs-api.html#ref) 并返回原始对象的只读代理。只读代理是深层的：任何被访问的嵌套 property 也是只读的。
 
 ```js
 const original = reactive({ count: 0 })
@@ -45,7 +45,7 @@ copy.count++ // 警告!
 
 ## `isReactive`
 
-检查对象是否是由 [`reactive`](#reactive) 创建的响应式 proxy。
+检查对象是否是由 [`reactive`](#reactive) 创建的响应式代理。
 
 ```js
 import { reactive, isReactive } from 'vue'
@@ -59,7 +59,7 @@ export default {
 }
 ```
 
-如果 proxy 是 [`readonly`](#readonly) 创建的，但包装了由 [`reactive`](#reactive) 创建的另一个 proxy，它也会返回 `true`。
+如果该代理是 [`readonly`](#readonly) 创建的，但包装了由 [`reactive`](#reactive) 创建的另一个代理，它也会返回 `true`。
 
 ```js{7-15}
 import { reactive, isReactive, readonly } from 'vue'
@@ -83,11 +83,11 @@ export default {
 
 ## `isReadonly`
 
-检查对象是否是由 [`readonly`](#readonly) 创建的只读 proxy。
+检查对象是否是由 [`readonly`](#readonly) 创建的只读代理。
 
 ## `toRaw`
 
-返回 [`reactive`](#reactive) 或 [`readonly`](#readonly) proxy 的原始对象。这是一个“逃生舱”，可用于临时读取数据而无需承担 proxy 访问/跟踪开销，也可用于写入数据而避免触发更改。**不**建议保留对原始对象的持久引用。请谨慎使用。
+返回 [`reactive`](#reactive) 或 [`readonly`](#readonly) 代理的原始对象。这是一个“逃生舱”，可用于临时读取数据而无需承担代理访问/跟踪的开销，也可用于写入数据而避免触发更改。**不**建议保留对原始对象的持久引用。请谨慎使用。
 
 ```js
 const foo = {}
@@ -137,7 +137,7 @@ console.log(foo.nested === bar.nested) // false
 
 ## `shallowReactive`
 
-创建一个响应式 proxy，它跟踪其自身 property 的响应性，但不执行嵌套对象的深层响应式转换 (暴露原始值)。
+创建一个响应式代理，它跟踪其自身 property 的响应性，但不执行嵌套对象的深层响应式转换 (暴露原始值)。
 
 ```js
 const state = shallowReactive({
