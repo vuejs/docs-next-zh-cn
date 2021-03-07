@@ -34,7 +34,7 @@ test('an async feature', async () => {
 })
 ```
 
-`Vue.nextTick()` 是一个全局的 API 直接暴露在单个 Vue 对象上——事实上，实例方法 `$nextTick()` 只是一个方便的包装 `Vue.nextTick()` 为方便起见，回调的 `this` 上下文自动绑定到当前实例。
+`Vue.nextTick()` 是一个全局的 API 直接暴露在单个 Vue 对象上。事实上，实例方法 `$nextTick()` 只是 `Vue.nextTick()` 的一个便利的包裹器 ，回调的 `this` 上下文自动绑定到当前实例上，以方便使用。
 
 <!-- TODO: translation -->
 

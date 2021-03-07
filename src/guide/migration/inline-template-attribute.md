@@ -34,7 +34,7 @@ badges:
 
 在这种情况下，最简单的解决方法是将 `<script>` 与其他类型一起使用：
 
-```js
+```html
 <script type="text/html" id="my-comp-template">
   <div>{{ hello }}</div>
 </script>

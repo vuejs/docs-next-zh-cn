@@ -18,6 +18,44 @@ const obj = reactive({ count: 0 })
 function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 ```
 
+::: tip 提示
+`reactive` 将解构所有深层的 [refs](./refs-api.html#ref)，同时维持 ref 的响应性。
+
+```ts
+const count = ref(1)
+const obj = reactive({ count })
+
+// ref 不会被解构
+console.log(obj.count === count.value) // true
+
+// 它会更新 `obj.value`
+count.value++
+console.log(count.value) // 2
+console.log(obj.count) // 2
+
+// 它也会更新 `count` ref
+obj.count++
+console.log(obj.count) // 3
+console.log(count.value) // 3
+```
+
+:::
+
+::: warning 重要
+当将 [ref](./refs-api.html#ref) 分配给 `reactive` property 时，ref 将被自动解构。
+
+```ts
+const count = ref(1)
+const obj = reactive({})
+
+obj.count = count
+
+console.log(obj.count) // 1
+console.log(obj.count === count.value) // true
+```
+
+:::
+
 ## `readonly`
 
 接受一个对象 (响应式或纯对象) 或 [ref](./refs-api.html#ref) 并返回原始对象的只读代理。只读代理是深层的：任何被访问的嵌套 property 也是只读的。
@@ -59,7 +97,7 @@ export default {
 }
 ```
 
-如果该代理是 [`readonly`](#readonly) 创建的，但包装了由 [`reactive`](#reactive) 创建的另一个代理，它也会返回 `true`。
+如果该代理是 [`readonly`](#readonly) 创建的，但包裹了由 [`reactive`](#reactive) 创建的另一个代理，它也会返回 `true`。
 
 ```js{7-15}
 import { reactive, isReactive, readonly } from 'vue'

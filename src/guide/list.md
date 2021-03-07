@@ -168,7 +168,7 @@ example1.items = example1.items.filter(item => item.message.match(/Foo/))
 例如：
 
 ```html
-<li v-for="n in evenNumbers">{{ n }}</li>
+<li v-for="n in evenNumbers" :key="n">{{ n }}</li>
 ```
 
 ```js
@@ -188,7 +188,7 @@ computed: {
 
 ```html
 <ul v-for="numbers in sets">
-  <li v-for="n in even(numbers)">{{ n }}</li>
+  <li v-for="n in even(numbers)" :key="n">{{ n }}</li>
 </ul>
 ```
 
@@ -211,7 +211,7 @@ methods: {
 
 ```html
 <div id="range" class="demo">
-  <span v-for="n in 10">{{ n }} </span>
+  <span v-for="n in 10" :key="n">{{ n }} </span>
 </div>
 ```
 
@@ -225,7 +225,7 @@ methods: {
 
 ```html
 <ul>
-  <template v-for="item in items">
+  <template v-for="item in items" :key="item.msg">
     <li>{{ item.msg }}</li>
     <li class="divider" role="presentation"></li>
   </template>
@@ -244,16 +244,16 @@ methods: {
 <!-- This will throw an error because property "todo" is not defined on instance. -->
 
 <li v-for="todo in todos" v-if="!todo.isComplete">
-  {{ todo }}
+  {{ todo.name }}
 </li>
 ```
 
 可以把 `v-for` 移动到 `<template>` 标签中来修正：
 
 ```html
-<template v-for="todo in todos">
+<template v-for="todo in todos" :key="todo.name">
   <li v-if="!todo.isComplete">
-    {{ todo }}
+    {{ todo.name }}
   </li>
 </template>
 ```

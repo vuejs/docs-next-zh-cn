@@ -243,7 +243,7 @@ app.component('todo-list', {
 })
 ```
 
-我们可能需要替换插槽使它作用在父组件上：
+我们可能会想把 <span v-pre>`{{ item }}`</span> 替换为 `<slot>`，以便在父组件上自定义。
 
 ```html
 <todo-list>
@@ -260,6 +260,16 @@ app.component('todo-list', {
 <ul>
   <li v-for="( item, index ) in items">
     <slot :item="item"></slot>
+  </li>
+</ul>
+```
+
+可以根据自己的需要将很多的 attribute 绑定到 `slot` 上。
+
+```html
+<ul>
+  <li v-for="( item, index ) in items">
+    <slot :item="item" :index="index" :another-attribute="anotherAttribute"></slot>
   </li>
 </ul>
 ```
