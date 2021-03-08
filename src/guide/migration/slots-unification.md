@@ -3,11 +3,11 @@ badges:
   - breaking
 ---
 
-# Slot 统一 <MigrationBadges :badges="$frontmatter.badges" />
+# 插槽统一 <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
 
-此更改统一了 3.x 中的普通 slot 和作用域 slot。
+此更改统一了 3.x 中的普通插槽和作用域插槽。
 
 以下是变化的变更总结：
 
@@ -28,7 +28,7 @@ h(LayoutComponent, [
 ])
 ```
 
-此外，在引用作用域 slot 时，可以使用以下方法引用它们：
+此外，在引用作用域插槽时，可以使用以下方法引用它们：
 
 ```js
 // 2.x 语法
@@ -47,7 +47,7 @@ h(LayoutComponent, {}, {
 })
 ```
 
-当你需要以编程方式引用作用域 slot 时，它们现在被统一到 `$slots` 选项中。
+当你需要以编程方式引用作用域插槽时，它们现在被统一到 `$slots` 选项中。
 
 ```js
 // 2.x 语法
