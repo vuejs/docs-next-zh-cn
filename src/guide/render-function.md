@@ -153,7 +153,7 @@ h(
   // {String | Array | Object} children
   // 子 VNodes, 使用 `h()` 构建,
   // 或使用字符串获取 "文本 Vnode" 或者
-  // 有 slot 的对象。
+  // 有插槽的对象。
   //
   // 可选的。
   [

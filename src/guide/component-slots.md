@@ -23,7 +23,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </button>
 ```
 
-当组件渲染的时候，<slot></slot>将会被替换为“Add Todo”。
+当组件渲染的时候，`<slot></slot>` 将会被替换为“Add Todo”。
 
 ```html
 <!-- 渲染 HTML -->
@@ -254,7 +254,7 @@ app.component('todo-list', {
 
 但是，这是行不通的，因为只有 `<todo-list>` 组件可以访问 `item`，我们将从其父组件提供槽内容。
 
-要使 `item` 可用于父级提供的 slot 内容，我们可以添加一个 `<slot>` 元素并将其绑定为属性：
+要使 `item` 可用于父级提供的插槽内容，我们可以添加一个 `<slot>` 元素并将其绑定为属性：
 
 ```html
 <ul>
