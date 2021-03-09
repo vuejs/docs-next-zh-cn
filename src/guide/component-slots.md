@@ -243,7 +243,7 @@ app.component('todo-list', {
 })
 ```
 
-我们可能会想把 <span v-pre> `{{ item }}` </span> 替换为 `<slot>`，以便在父组件上自定义。
+我们可能会想把 <span v-pre>`{{ item }}`</span> 替换为 `<slot>`，以便在父组件上自定义。
 
 ```html
 <todo-list>
