@@ -54,9 +54,9 @@ const AsyncComp = defineAsyncComponent(
 app.component('async-example', AsyncComp)
 ```
 
-如你所见，此方法接受返回 `Promise` 的工厂函数。从服务器检索组件定义后，应调用 Promise 的 `resolve` 回调。你也可以调用 `reject(reason)`，以指示加载失败。
+如你所见，此方法接受返回 `Promise` 的工厂函数。从服务器检索组件定义后，应调用 Promise 的 `resolve` 回调。你也可以调用 `reject(reason)`，来表示加载失败。
 
-你也可以在工厂函数中返回一个 `Promise`，所以把 webpack 2 和 ES2015 语法加在一起，我们可以这样使用动态导入：
+你也可以在工厂函数中返回一个 `Promise`，把 webpack 2 和 ES2015 语法相结合后，我们就可以这样使用动态地导入：
 
 ```js
 import { defineAsyncComponent } from 'vue'
