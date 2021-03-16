@@ -2,6 +2,7 @@
 badges:
   - breaking
 ---
+
 # 插槽统一 <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
@@ -46,7 +47,7 @@ h(LayoutComponent, {}, {
 })
 ```
 
-当你需要编程式地引用作用域插槽时，它们现在被统一到 `$slots` 选项中。
+当你需要以编程方式引用作用域插槽时，它们现在被统一到 `$slots` 选项中。
 
 ```js
 // 2.x 语法

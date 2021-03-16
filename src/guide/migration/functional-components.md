@@ -44,8 +44,8 @@ export default {
 
 或者，对于喜欢在单个文件组件中使用 `<template>` 的用户：
 
-```js
-// Vue 2 函数式组件示例使用 <template>
+```vue
+<!-- Vue 2 函数式组件示例使用 <template> -->
 <template functional>
   <component
     :is="`h${props.level}`"
@@ -91,7 +91,7 @@ export default DynamicHeading
 
 使用之前的 `<dynamic-heading>` 示例，下面是它现在的样子。
 
-```js{1}
+```vue{1,3,4}
 <template>
   <component
     v-bind:is="`h${$props.level}`"

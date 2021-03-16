@@ -5,7 +5,9 @@
 每个 Vue 应用都是通过用 `createApp` 函数创建一个新的**应用实例**开始的：
 
 ```js
-const app = Vue.createApp({ /* 选项 */ })
+const app = Vue.createApp({
+  /* 选项 */
+})
 ```
 
 该应用实例是用来在应用中注册“全局”组件的。我们会在后面的指南中详细讨论，简单的例子：
@@ -35,7 +37,9 @@ Vue.createApp({})
 一个应用需要被挂载到一个 DOM 元素中。例如，如果你想把一个 Vue 应用挂载到 `<div id="app"></div>`，应该传入 `#app`：
 
 ```js
-const RootComponent = { /* 选项 */ }
+const RootComponent = { 
+  /* 选项 */ 
+}
 const app = Vue.createApp(RootComponent)
 const vm = app.mount('#app')
 ```
@@ -109,4 +113,4 @@ Vue.createApp({
 
 下图展示了实例的生命周期。我们不需要立马弄明白所有的东西，不过随着不断学习和使用，它的参考价值会越来越高。
 
-<img src="/images/lifecycle.png" width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="实例的生命周期">
+<img src="/images/lifecycle.svg" width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="实例的生命周期">

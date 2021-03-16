@@ -153,7 +153,7 @@ h(
   // {String | Array | Object} children
   // 子 VNodes, 使用 `h()` 构建,
   // 或使用字符串获取 "文本 Vnode" 或者
-  // 有 slot 的对象。
+  // 有插槽的对象。
   //
   // 可选的。
   [
@@ -301,26 +301,16 @@ render() {
 
 #### 事件修饰符
 
-对于 `.passive` 、 `.capture`和 `.once` 事件修饰符，Vue 提供了处理程序的对象语法：
+对于 `.passive` 、 `.capture`和 `.once` 事件修饰符，可以使用驼峰写法将他们拼接在事件名后面：
 
 实例:
 
 ```javascript
 render() {
   return h('input', {
-    onClick: {
-      handler: this.doThisInCapturingMode,
-      capture: true
-    },
-    onKeyUp: {
-      handler: this.doThisOnce,
-      once: true
-    },
-    onMouseOver: {
-      handler: this.doThisOnceInCapturingMode,
-      once: true,
-      capture: true
-    },
+    onClickCapture: this.doThisInCapturingMode,
+    onKeyupOnce: this.doThisOnce,
+    onMouseoverOnceCapture: this.doThisOnceInCapturingMode
   })
 }
 ```

@@ -173,25 +173,23 @@
   )
   ```
 
-<!-- TODO: translation -->
-
 - **Option: flush**
 
-  The `flush` option allows for greater control over the timing of the callback. It can be set to `'pre'`, `'post'` or `'sync'`.
+  `flush` 选项可以更好地控制回调的时间。它可以设置为 '`pre`'，`'post'`或 `'sync'`。
   
-  The default value is `'pre'`, which specifies that the callback should be invoked before rendering. This allows the callback to update other values before the template runs.
+  默认值是 `'pre'`，指定的回调应该在渲染前被调用。它允许回调在模板运行前更新了其他值。
   
-  The value `'post'` can be used to defer the callback until after rendering. This should be used if the callback needs access to the updated DOM or child components via `$refs`.
+  `'post'` 值是可以用来将回调推迟到渲染之后的。如果回调需要通过 `$refs` 访问更新的 DOM 或子组件，那么则使用该值。
 
-  If `flush` is set to `'sync'`, the callback will be called synchronously, as soon as the value changes.
+  如果 `flush` 被设置为 `'sync'`，一旦值发生了变化，回调将被同步调用。
 
-  For both `'pre'` and `'post'`, the callback is buffered using a queue. The callback will only be added to the queue once, even if the watched value changes multiple times. The interim values will be skipped and won't be passed to the callback.
+  对于 `'pre'` 和 `'post'`，回调使用队列进行缓冲。回调只被添加到队列中一次，即使观察值变化了多次。值的中间变化将被跳过，不会传递给回调。
   
-  Buffering the callback not only improves performance but also helps to ensure data consistency. The watchers won't be triggered until the code performing the data updates has finished.
+  缓冲回调不仅可以提高性能，还有助于保证数据的一致性。在执行数据更新的代码完成之前，侦听器不会被触发。
   
-  `'sync'` watchers should be used sparingly, as they don't have these benefits.
+  `'sync'` 侦听器应少用，因为它们没有这些好处。
 
-  For more information about `flush` see [Effect Flush Timing](../guide/reactivity-computed-watchers.html#effect-flush-timing).
+  更多关于 `flush` 的信息，请参阅 [副作用刷新时机](../guide/reactivity-computed-watchers.html#副作用刷新时机).
 
 -  **参考** [Watchers](../guide/computed.html#侦听器)
 
@@ -294,20 +292,18 @@
 
 - **示例：**
 
-<!-- TODO: translation -->
-
   ```js
   Vue.createApp({
     // ...
     methods: {
       // ...
       example() {
-        // modify data
+        // 修改数据
         this.message = 'changed'
-        // DOM is not updated yet
+        // DOM 尚未更新
         this.$nextTick(function() {
-          // DOM is now updated
-          // `this` is bound to the current instance
+          // DOM 现在更新了
+          // `this` 被绑定到当前实例
           this.doSomethingElse()
         })
       }

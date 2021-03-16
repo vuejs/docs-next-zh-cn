@@ -13,17 +13,18 @@
 经常被忽略的是，Vue 应用中响应式 `data` 对象的实际来源——当访问数据对象时，一个组件实例只是简单的代理访问。所以，如果你有一处需要被多个实例间共享的状态，你可以使用一个 [reactive](/guide/reactivity-fundamentals.html#声明响应式状态) 方法让对象作为响应式对象。
 
 ```js
-const sourceOfTruth = Vue.reactive({
+const { createApp, reactive } = Vue
+const sourceOfTruth = reactive({
   message: 'Hello'
 })
 
-const appA = Vue.createApp({
+const appA = createApp({
   data() {
     return sourceOfTruth
   }
 }).mount('#app-a')
 
-const appB = Vue.createApp({
+const appB = createApp({
   data() {
     return sourceOfTruth
   }
@@ -39,7 +40,7 @@ const appB = Vue.createApp({
 现在当 `sourceOfTruth` 发生变更，`appA` 和 `appB` 都将自动地更新它们的视图。虽然现在我们有了一个真实数据来源，但调试将是一场噩梦。应用的任何部分都可以随时更改任何数据，而不会留下变更过的记录。
 
 ```js
-const appB = Vue.createApp({
+const appB = createApp({
   data() {
     return sourceOfTruth
   },
@@ -55,7 +56,7 @@ const appB = Vue.createApp({
 const store = {
   debug: true,
 
-  state: Vue.reactive({
+  state: reactive({
     message: 'Hello!'
   }),
 
@@ -88,7 +89,7 @@ const store = {
 ```
 
 ```js
-const appA = Vue.createApp({
+const appA = createApp({
   data() {
     return {
       privateState: {},
@@ -100,7 +101,7 @@ const appA = Vue.createApp({
   }
 }).mount('#app-a')
 
-const appB = Vue.createApp({
+const appB = createApp({
   data() {
     return {
       privateState: {},

@@ -88,9 +88,11 @@ const app = createApp({})
 // 注册
 app.directive('my-directive', {
   // 指令是具有一组生命周期的钩子：
+  // 在绑定元素的 attribute 或事件监听器被应用之前调用
+  created() {},
   // 在绑定元素的父组件挂载之前调用
   beforeMount() {},
-  // 绑定元素的父组件挂载时调用
+  // 绑定元素的父组件被挂载时调用
   mounted() {},
   // 在包含组件的 VNode 更新之前调用
   beforeUpdate() {},
@@ -150,7 +152,7 @@ app.directive('focus', {
 
 上面作为 el 参数收到的真实 DOM 元素的蓝图。
 
-#### prevNode 
+#### prevNode
 
 上一个虚拟节点，仅在 `beforeUpdate` 和 `updated` 钩子中可用。
 
@@ -172,9 +174,9 @@ app.directive('focus', {
 
 - **用法：**
 
-  在整个应用范围内应用混入。一旦注册，它们就可以在当前的应用中任何组件模板内使用它。插件作者可以使用此方法将自定义行为注入组件。**不建议在应用代码中使用**。
+  将一个 mixin 应用在整个应用范围内。一旦注册，它们就可以在当前的应用中任何组件模板内使用它。插件作者可以使用此方法将自定义行为注入组件。**不建议在应用代码中使用**。
 
-- **参考：**[全局混入](../guide/mixins.html#全局混入)
+- **参考：**[全局 mixin](../guide/mixins.html#全局-mixin)
 
 ## mount
 
@@ -259,13 +261,9 @@ app.provide('user', 'administrator')
 
 ## unmount
 
-- **参数：**
-
-  - `{Element | string} rootContainer`
-
 - **用法：**
 
-  在提供的 DOM 元素上卸载应用实例的根组件。
+  卸载应用实例的根组件。
 
 - **示例：**
 
@@ -283,7 +281,7 @@ const app = createApp({})
 app.mount('#my-app')
 
 // 挂载5秒后，应用将被卸载
-setTimeout(() => app.unmount('#my-app'), 5000)
+setTimeout(() => app.unmount(), 5000)
 ```
 
 ## use
@@ -304,5 +302,17 @@ setTimeout(() => app.unmount('#my-app'), 5000)
   该安装方法将以应用实例作为第一个参数被调用。传给 `use` 的其他 `options` 参数将作为后续参数传入该安装方法。
 
   当在同一个插件上多次调用此方法时，该插件将仅安装一次。
+
+- **示例：**
+
+  ```js
+  import { createApp } from 'vue'
+  import MyPlugin from './plugins/MyPlugin'
+
+  const app = createApp({})
+
+  app.use(MyPlugin)
+  app.mount('#app')
+  ```
 
 - **参考：** [插件](../guide/plugins.html)

@@ -4,42 +4,27 @@
 
 ## 事件名 
 
-不同于组件和 prop，事件名不存在任何自动化的大小写转换。而是触发的事件名需要完全匹配监听这个事件所用的名称。
-
-```js
-this.$emit('my-event')
-```
-
-```html
-<my-component @my-event="doSomething"></my-component>
-```
-
-如果我们触发一个 camelCase 名字的事件：
+与组件和 prop 一样，事件名提供了自动的大小写转换。如果用驼峰命名的子组件中触发一个事件，你将可以在父组件中添加一个 kebab-case (短横线分隔命名) 的监听器。
 
 ```js
 this.$emit('myEvent')
 ```
 
-则监听这个名字的 kebab-case 版本是不会有任何效果的：
-
 ```html
-<!-- 没有效果 -->
 <my-component @my-event="doSomething"></my-component>
 ```
 
-不同于组件和 prop，事件名不会被用作一个 JavaScript 变量名或 property 名，所以就没有理由使用 camelCase 或 PascalCase 了。并且 `v-on` 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 `@myEvent` 将会变成 `@myevent`——导致 `myEvent` 不可能被监听到。
-
-因此，我们推荐你始终使用 **kebab-case 的事件名**。
+与 [props 的命名](/guide/component-props.html#prop-的大小写命名-camelcase-vs-kebab-case)一样，当你使用 DOM 模板时，我们建议使用 kebab-case 事件监听器。如果你使用的是字符串模板，这个限制就不适用。
 
 ## 定义自定义事件
 
-<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Learn how to define which events a component can emit with Vue School">在 Vue School 上观看关于定义自定义事件的免费视频。</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Learn how to define which events a component can emit with Vue School">在 Vue School 上观看定义自定义事件的免费视频。</VideoLesson>
 
 可以通过 `emits` 选项在组件上定义已发出的事件。
 
 ```js
 app.component('custom-form', {
-  emits: ['in-focus', 'submit']
+  emits: ['inFocus', 'submit']
 })
 ```
 
@@ -96,7 +81,7 @@ app.component('my-component', {
   },
   emits: ['update:title'],
   template: `
-    <input 
+    <input
       type="text"
       :value="title"
       @input="$emit('update:title', $event.target.value)">
@@ -170,7 +155,7 @@ app.component('my-component', {
   },
   emits: ['update:modelValue'],
   template: `
-    <input type="text" 
+    <input type="text"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)">
   `,
@@ -235,7 +220,7 @@ app.component('my-component', {
   props: ['description', 'descriptionModifiers'],
   emits: ['update:description'],
   template: `
-    <input type="text" 
+    <input type="text"
       :value="description"
       @input="$emit('update:description', $event.target.value)">
   `,
