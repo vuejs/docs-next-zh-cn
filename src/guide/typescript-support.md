@@ -152,7 +152,7 @@ const Component = defineComponent({
       return this.message + '!'
     }
 
-    // 在使用setter进行计算时，需要对getter进行注解
+    // 在使用 setter 进行计算时，需要对 getter 进行注解
     greetingUppercased: {
       get(): string {
         return this.greeting.toUpperCase();
