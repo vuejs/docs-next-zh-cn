@@ -231,7 +231,7 @@ const Component = defineComponent({
 })
 ```
 
-### 注解 Emit
+### 注解 emit
 
 我们可以为触发的事件注解一个有效载荷。另外，所有未声明的触发事件在调用时都会抛出一个类型错误。
 
