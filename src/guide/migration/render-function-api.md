@@ -66,7 +66,7 @@ export default {
 在 3.x 中，由于 `render` 函数不再接收任何参数，它将主要用于 `setup()` 函数内部。这还有一个好处：可以访问在作用域中声明的响应式状态和函数，以及传递给 `setup()` 的参数。
 
 ```js
- import { h, reactive } from 'vue'
+import { h, reactive } from 'vue'
 
 export default {
   setup(props, { slots, attrs, emit }) {
@@ -91,7 +91,7 @@ export default {
 }
 ```
 
-有关 `setup()` 如何工作的详细信息，请参考 [组合式 API 指南](/guide/composition-api-introduction.html)。
+有关 `setup()` 如何工作的详细信息，请参考[组合式 API 指南](/guide/composition-api-introduction.html)。
 
 ## VNode Prop 格式化
 
@@ -129,7 +129,7 @@ export default {
 }
 ```
 
-## 已注册组件
+## 注册组件
 
 ### 2.x 语法
 
@@ -174,7 +174,7 @@ export default {
 
 ```
 
-更多信息请参考 [渲染函数 API 更改 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes)。
+更多信息请参考[渲染函数 API 更改 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes)。
 
 ## 迁移策略
 
