@@ -194,7 +194,7 @@ const Component = defineComponent({
 ```
 
 ::: warning
-由于 TypeScript 中的[设计限制](https://github.com/microsoft/TypeScript/issues/38845)，当它涉及到为了对函数表达式进行类型推理，你必须注意对象和数组的 `validators` 和 `default`"：
+由于 TypeScript 中的[设计限制](https://github.com/microsoft/TypeScript/issues/38845)，当它涉及到为了对函数表达式进行类型推理，你必须注意对象和数组的 `validators` 和 `default` 值：
 :::
 
 ```ts
