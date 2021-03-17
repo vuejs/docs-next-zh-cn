@@ -133,9 +133,9 @@ const Component = defineComponent({
 })
 ```
 
-### 注释返回类型
+### 注解返回类型
 
-由于 Vue 声明文件的循环特性，TypeScript 可能难以推断 computed 的类型。因此，你可能需要注释返回类型的计算属性。
+由于 Vue 声明文件的循环特性，TypeScript 可能难以推断 computed 的类型。因此，你可能需要注解计算属性的返回类型。
 
 ```ts
 import { defineComponent } from 'vue'
@@ -147,12 +147,12 @@ const Component = defineComponent({
     }
   },
   computed: {
-    // 需要注释
+    // 需要注解
     greeting(): string {
       return this.message + '!'
     }
 
-    // 在使用setter进行计算时，需要对getter进行注释
+    // 在使用setter进行计算时，需要对getter进行注解
     greetingUppercased: {
       get(): string {
         return this.greeting.toUpperCase();
@@ -231,7 +231,7 @@ const Component = defineComponent({
 })
 ```
 
-### Emit 注解
+### 注解 Emit
 
 我们可以为触发的事件注解一个有效载荷。另外，所有未声明的触发事件在调用时都会抛出一个类型错误。
 
