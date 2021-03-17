@@ -2,7 +2,6 @@
 badges:
   - breaking
 ---
-
 # 渲染函数 API <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
@@ -12,16 +11,16 @@ badges:
 以下是更改的简要总结：
 
 - `h` 现在全局导入，而不是作为参数传递给渲染函数
-- 渲染函数参数更改为在有状态组件和函数组件之间更加一致
-- vnode 现在有一个扁平的 prop 结构
+- 渲染函数参数更改以在有状态组件和函数组件之间更加一致
+- VNode 现在有一个扁平的 prop 结构
 
-更多信息，请继续阅读！
+请继续阅读来获取更多信息！
 
-## Render 函数参数
+## 渲染函数参数
 
 ### 2.x 语法
 
-在 2.x 中，e `render` 函数将自动接收 `h` 函数 (它是 `createElement` 的常规别名) 作为参数：
+在 2.x 中，`render` 函数会自动接收 `h` 函数 (它是 `createElement` 的传统别名) 作为参数：
 
 ```js
 // Vue 2 渲染函数示例
@@ -64,7 +63,7 @@ export default {
 
 ### 3.x 语法
 
-在 3.x 中，由于 `render` 函数不再接收任何参数，它将主要用于 `setup()` 函数内部。这还有一个好处：可以访问作用域中声明的响应式状态和函数，以及传递给 `setup()` 的参数。
+在 3.x 中，由于 `render` 函数不再接收任何参数，它将主要用于 `setup()` 函数内部。这还有一个好处：可以访问在作用域中声明的响应式状态和函数，以及传递给 `setup()` 的参数。
 
 ```js
 import { h, reactive } from 'vue'
@@ -79,7 +78,7 @@ export default {
       state.count++
     }
 
-    // 返回render函数
+    // 返回渲染函数
     return () =>
       h(
         'div',
@@ -92,19 +91,21 @@ export default {
 }
 ```
 
-有关 `setup()` 如何工作的详细信息，参考[组合式 API 指南](/guide/composition-api-introduction.html)。
+有关 `setup()` 如何工作的详细信息，请参考[组合式 API 指南](/guide/composition-api-introduction.html)。
 
-## VNode Props 格式化
+## VNode Prop 格式化
 
 ### 2.x 语法
 
-在 2.x 中，`domProps` 包含 VNode props 中的嵌套列表：
+在 2.x 中，`domProps` 包含 VNode prop 中的嵌套列表：
 
 ```js
 // 2.x
 {
-  class: ['button', 'is-outlined'],
-  style: { color: '#34495E' },
+  staticClass: 'button',
+  class: { 'is-outlined': isOutlined },
+  staticStyle: { color: '#34495E' },
+  style: { backgroundColor: buttonColor },
   attrs: { id: 'submit' },
   domProps: { innerHTML: '' },
   on: { click: submitForm },
@@ -114,13 +115,13 @@ export default {
 
 ### 3.x 语法
 
-在 3.x 中，整个 VNode props 结构是扁平的，使用上面的例子，下面是它现在的样子
+在 3.x 中，整个 VNode prop 的结构都是扁平的。使用上面的例子，来看看它现在的样子。
 
 ```js
 // 3.x 语法
 {
-  class: ['button', 'is-outlined'],
-  style: { color: '#34495E' },
+  class: ['button', { 'is-outlined': isOutlined }],
+  style: [{ color: '#34495E' }, { backgroundColor: buttonColor }],
   id: 'submit',
   innerHTML: '',
   onClick: submitForm,
@@ -128,16 +129,63 @@ export default {
 }
 ```
 
+## 注册组件
+
+### 2.x 语法
+
+在 2.x 中，注册一个组件后，把组件名作为字符串传给渲染函数的第一个参数，渲染函数会很好地工作：
+
+```js
+// 2.x
+Vue.component('button-counter', {
+  data() {
+    return {
+      count: 0
+    }
+  }
+  template: `
+    <button @click="count++">
+      Clicked {{ count }} times.
+    </button>
+  `
+})
+
+export default {
+  render(h) {
+    return h('button-counter')
+  }
+}
+```
+
+### 3.x 语法
+
+在 3.x 中，由于 VNode 是上下文无关的，不能再用字符串 ID 隐式查找已注册组件。相反地，需要使用一个导入的 `resolveComponent` 方法：
+
+```js
+// 3.x
+import { h, resolveComponent } from 'vue'
+
+export default {
+  setup() {
+    const ButtonCounter = resolveComponent('button-counter')
+    return () => h(ButtonCounter)
+  }
+}
+
+```
+
+更多信息请参考[渲染函数 API 更改 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes)。
+
 ## 迁移策略
 
 ### 工具库作者
 
-全局导入 `h` 意味着任何包含 Vue 组件的库都将在某处包含 `import { h } from 'vue'`，因此，这会带来一些开销，因为它需要库作者在其构建设置中正确配置 Vue 的外部化：
+全局导入 `h` 意味着任何包含 Vue 组件的库都将在某处包含 `import { h } from 'vue'`。这会带来一些开销，因为它需要库作者在其构建设置中正确配置 Vue 的外部化：
 
 - Vue 不应绑定到库中
 - 对于模块构建，导入应该保持独立，由最终用户绑定器处理
-- 对于 UMD/browser 版本，它应该首先尝试全局 Vue.h，然后回退以请求调用
+- 对于 UMD / browser 构建，应该首先尝试全局 Vue.h，然后回退以请求调用
 
 ## 下一步
 
-见 [Render 函数指南](/guide/render-function)更详细的文档！
+详细文档请参考 [Render 函数指南](/guide/render-function)！

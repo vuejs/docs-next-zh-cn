@@ -11,14 +11,14 @@ badges:
 
 以下是变化的变更总结：
 
-- `this.$slots` 现在将 slots 作为函数公开
+- `this.$slots` 现在将插槽作为函数公开
 - **非兼容**：移除 `this.$scopedSlots`
 
-更多信息，请继续阅读！
+请继续阅读来获取更多信息！
 
 ## 2.x 语法
 
-当使用渲染函数时，即 `h`，2.x 用于在内容节点上定义 `slot` data property。
+当使用渲染函数时，即 `h`，2.x 用于在内容节点上定义 `slot` 数据 property。
 
 ```js
 // 2.x 语法
@@ -37,7 +37,7 @@ this.$scopedSlots.header
 
 ## 3.x 语法
 
-在 3.x 中，插槽被定义为当前节点的子对象：
+在 3.x 中，将插槽定义为当前节点的子对象：
 
 ```js
 // 3.x Syntax
@@ -54,7 +54,7 @@ h(LayoutComponent, {}, {
 this.$scopedSlots.header
 
 // 3.x 语法
-this.$slots.header
+this.$slots.header()
 ```
 
 ## 迁移策略
@@ -62,3 +62,4 @@ this.$slots.header
 大部分更改已经在 2.6 中发布。因此，迁移可以一步到位：
 
 1. 在 3.x 中，将所有 `this.$scopedSlots` 替换为 `this.$slots`。
+2. 将所有 `this.$slots.mySlot` 替换为 `this.$slots.mySlot()`。
