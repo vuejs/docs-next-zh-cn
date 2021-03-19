@@ -74,7 +74,7 @@ state.foo++
 console.log(fooRef.value) // 3
 ```
 
-当您要将 prop 的 ref 传递给复合函数时，`toRef` 很有用：
+当你要将 prop 的 ref 传递给复合函数时，`toRef` 很有用：
 
 ```js
 export default {

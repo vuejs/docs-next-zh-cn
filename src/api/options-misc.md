@@ -6,7 +6,7 @@
 
 - **详细：**
 
-  允许组件模板递归地调用自身。注意，组件在全局用 `Vue.createApp({}).component({})` 注册时，全局 ID 自动作为组件的 name。
+  允许组件模板递归地调用自身。注意，组件在全局用 [`app.component`](/api/application-api.html#component) 注册时，全局 ID 自动作为组件的 name。
 
   指定 `name` 选项的另一个好处是便于调试。有名字的组件有更友好的警告信息。另外，当在有 [vue-devtools](https://github.com/vuejs/vue-devtools)，未命名组件将显示成 `<AnonymousComponent>`，这很没有语义。通过提供 `name` 选项，可以获得更有语义信息的组件树。
 
@@ -27,7 +27,7 @@
 - **示例：**
 
   ```js
-  Vue.createApp({
+  createApp({
     // 分隔符变成了 ES6 模板字符串风格
     delimiters: ['${', '}']
   })

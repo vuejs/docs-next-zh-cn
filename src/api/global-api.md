@@ -4,12 +4,26 @@ sidebarDepth: 1
 
 # 全局 API
 
+如果你使用的是 CDN 构建，那么全局 API 的功能可以通过全局 `Vue` 对象来访问，例如：
+
+```js
+const { createApp, h, nextTick } = Vue
+```
+
+如果你使用的是 ES 模块，那么它们可以直接导入：
+
+```js
+import { createApp, h, nextTick } from 'vue'
+```
+
+处理响应性的全局函数，如 `reactive` 和 `ref`，是单独编写的。关于这些函数，请参见[响应性 API](/api/reactivity-api.html)。
+
 ## createApp
 
 返回一个提供应用上下文的应用实例。应用实例挂载的整个组件树共享同一个上下文。
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 ```
 
 你可以在 `createApp` 之后链式调用其它方法，这些方法可以在[应用 API](./application-api.html) 中找到。
@@ -19,7 +33,7 @@ const app = Vue.createApp({})
 该函数接收一个根组件选项对象作为第一个参数：
 
 ```js
-const app = Vue.createApp({
+const app = createApp({
   data() {
     return {
       ...
@@ -34,7 +48,7 @@ const app = Vue.createApp({
 使用第二个参数，我们可以将根 prop 传递给应用程序：
 
 ```js
-const app = Vue.createApp(
+const app = createApp(
   {
     props: ['username']
   },
@@ -68,7 +82,7 @@ export type CreateAppFunction<HostElement> = (
 
 ```js
 render() {
-  return Vue.h('h1', {}, 'Some title')
+  return h('h1', {}, 'Some title')
 }
 ```
 
@@ -230,7 +244,7 @@ const AsyncComp = defineAsyncComponent({
 返回一个 `Component`。如果没有找到，则返回接收的参数 `name`。
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 app.component('MyComponent', {
   /* ... */
 })
@@ -296,7 +310,7 @@ render () {
 返回一个 `Directive`。如果没有找到，则返回 `undefined`。
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 app.directive('highlight', {})
 ```
 
@@ -469,3 +483,45 @@ export default {
   }
 }
 ```
+
+<!-- translation: TODO -->
+## useCssModule
+
+:::warning
+`useCssModule` 只能在 `render` 或 `setup` 函数中使用。
+:::
+
+允许在 [`setup`](/api/composition-api.html#setup) 的[单文件组件](/guide/single-file-component.html)函数中访问 CSS 模块。
+
+```vue
+<script>
+import { h, useCssModule } from 'vue'
+export default {
+  setup () {
+    const style = useCssModule()
+    return () => h('div', {
+      class: style.success
+    }, 'Task complete!')
+  }
+}
+</script>
+<style module>
+.success {
+  color: #090;
+}
+</style>
+```
+
+关于使用 CSS 模块的更多信息，请参阅 [Vue Loader - CSS 模块](https://vue-loader.vuejs.org/guide/css-modules.html)。
+
+### 参数
+
+接受一个参数: `name`
+
+#### 名词
+
+- **类型：** `String`
+
+- **详细：**
+
+  CSS 模块的名称。默认为 `'$style'`。

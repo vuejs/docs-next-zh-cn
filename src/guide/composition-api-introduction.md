@@ -57,7 +57,7 @@ export default {
 
 用组件的选项 (`data`、`computed`、`methods`、`watch`) 组织逻辑在大多数情况下都有效。然而，当我们的组件变得更大时，**逻辑关注点**的列表也会增长。这可能会导致组件难以阅读和理解，尤其是对于那些一开始就没有编写这些组件的人来说。
 
-![Vue 选项式 API: 按选项类型分组的代码](https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png)
+![Vue 选项式 API: 按选项类型分组的代码](/images/options-api.png)
 
 一个大型组件的示例，其中**逻辑关注点**是按颜色分组。
 
@@ -308,7 +308,7 @@ export default {
 }
 ```
 
-有关 `watch` 的详细信息，请参阅我们的[深入指南](composition-api-introduction.html)。
+有关 `watch` 的详细信息，请参阅我们的[深入指南](reactivity-computed-watchers.md#watch)。
 
 **现在我们将其应用到我们的示例中：**
 

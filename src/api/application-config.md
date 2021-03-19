@@ -3,7 +3,7 @@
 每个 Vue 应用都会暴露一个 `config` 对象，该对象包含此应用的配置设置：
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 
 console.log(app.config)
 ```
@@ -72,7 +72,7 @@ app.component('child-component', {
 Vue.prototype.$http = () => {}
 
 // 之后(Vue 3.x)
-const app = Vue.createApp({})
+const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
 
@@ -106,7 +106,7 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 - **用法**：
 
 ```js
-const app = Vue.createApp({
+const app = createApp({
   mounted() {
     console.log(this.$options.hello)
   }

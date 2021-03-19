@@ -47,8 +47,8 @@ Vue 3 中需要关注的一些新功能包括：
 - [触发组件选项](/guide/component-custom-events.html)
 - [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
 - [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
-- [单文件组件状态驱动的 CSS 变量 (`<style vars>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
-- [单文件组件 `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
+- [单文件组件状态驱动的 CSS 变量 (`v-bind` in `<style>`)](https://github.com/vuejs/rfcs/blob/style-vars-2/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
+- [Suspense](/guide/migration/suspense.html) <Badge text="实验性" type="warning" />
 
 ## 非兼容的变更
 
@@ -104,20 +104,23 @@ Vue 3 中需要关注的一些新功能包括：
 - [`<TransitionGroup>` 不再默认渲染包裹元素](/guide/migration/transition-group.html)
 - [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则需要指定 `deep` 选项](/guide/migration/watch.html)
 - 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 的 `<template>` 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
-- 在 Vue 2.x 中，应用根容器的 `outerHTML` 将替换为根组件模板 (如果根组件没有模板/渲染选项，则最终编译为模板)。Vue 3.x 现在使用应用容器的 `innerHTML`，这意味着容器本身不再被视为模板的一部分。
+- [已挂载的应用不会取代它所挂载的元素](/guide/migration/mount-changes.html)
+- [生命周期 `hook：` 事件前缀改为 `vnode-`](/guide/migration/vnode-lifecycle-events.html)
 
 ### 移除 API
 
 - [`keyCode` 支持作为 `v-on` 的修饰符](/guide/migration/keycode-modifiers.html)
-- [$on，$off 和 $once 实例方法](/guide/migration/events-api.html)
+- [$on，$off 和 \$once 实例方法](/guide/migration/events-api.html)
 - [过滤](/guide/migration/filters.html)
 - [内联模板 attribute](/guide/migration/inline-template-attribute.html)
-- [`$children` 实例 property](/guide/migration/children.md)
+- [`$children` 实例 property](/guide/migration/children.html)
+- [`propsData` 选项](/guide/migration/props-data.html)
 - `$destroy` 实例方法。用户不应再手动管理单个 Vue 组件的生命周期。
+- 全局函数 `set` 和 `delete` 以及实例方法 `$set` 和 `$delete`。基于代理的变化检测不再需要它们。
 
 ## 官方支持的库
 
-我们所有的官方库和工具现在都支持 Vue 3，但大多数仍然处于 beta 状态，并在 npm 的 `next` dist 标签下发布。**我们正计划在 2020 年底前稳定所有项目，并将其转换为使用 `latest` 的 dist 标签**。
+我们所有的官方库和工具现在都支持 Vue 3，但其中一些仍处于测试版或候选发布状态。你可以在下面找到各个库的详细信息。大多数库目前使用 npm 上的 `next` dist 标签发布。我们打算在所有官方库有了兼容的稳定版本后，就改用 `latest` 标签。
 
 ### Vue CLI
 

@@ -13,7 +13,7 @@ const state = reactive({
 })
 ```
 
-`reactive` 相当于 Vue 2.x 中的 `Vue.observable()` API ，为避免与 RxJS 中的 observables 混淆因此对其重命名。该 API 返回一个响应式的对象状态。该响应式转换是“深度转换”——它会影响嵌套对象传递的所有 property。
+`reactive` 相当于 Vue 2.x 中的 `Vue.observable()` API，为避免与 RxJS 中的 observables 混淆因此对其重命名。该 API 返回一个响应式的对象状态。该响应式转换是“深度转换”——它会影响嵌套对象传递的所有 property。
 
 Vue 中响应式状态的基本用例是我们可以在渲染期间使用它。因为依赖跟踪的关系，当响应式状态改变时视图会自动更新。
 
@@ -23,7 +23,7 @@ Vue 中响应式状态的基本用例是我们可以在渲染期间使用它。�
 
 ## 创建独立的响应式值作为 `refs`
 
-想象一下，我们有一个独立的原始值 (例如，一个字符串)，我们想让它变成响应式的。当然，我们可以创建一个拥有相同字符串 property 的对象，并将其传递给 `reactive`。Vue 为我们提供了一个可以做相同事情的方法 ——`ref`：
+想象一下，我们有一个独立的原始值 (例如，一个字符串)，我们想让它变成响应式的。当然，我们可以创建一个拥有相同字符串 property 的对象，并将其传递给 `reactive`。Vue 为我们提供了一个可以做相同事情的方法——`ref`：
 
 ```js
 import { ref } from 'vue'
@@ -31,7 +31,7 @@ import { ref } from 'vue'
 const count = ref(0)
 ```
 
-`ref` 会返回一个可变的响应式对象，该对象作为它的内部值——一个**响应式的引用**，这就是名称的来源。此对象只包含一个名为 `value` 的 property ：
+`ref` 会返回一个可变的响应式对象，该对象作为它的内部值——一个**响应式的引用**，这就是名称的来源。此对象只包含一个名为 `value` 的 property：
 
 ```js
 import { ref } from 'vue'
@@ -45,13 +45,13 @@ console.log(count.value) // 1
 
 ### Ref 展开
 
-当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动展开为内部值。不需要在模板中追加 `.value`：
+当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层解构为内部值。只有嵌套的 ref 才会在模板中要求 `.value`：
 
 ```vue-html
 <template>
   <div>
     <span>{{ count }}</span>
-    <button @click="count ++">Increment count</button>
+    <button @click="nested.count.value ++">Nested Increment count</button>
   </div>
 </template>
 
@@ -61,12 +61,26 @@ console.log(count.value) // 1
     setup() {
       const count = ref(0)
       return {
-        count
+        count,
+
+        nested: {
+          count
+        }
       }
     }
   }
 </script>
 ```
+
+:::tip
+如果你不需要访问实际的对象实例，你可以用 `reactive` 来包裹它。
+
+```js
+nested: reactive({
+  count
+})
+```
+:::
 
 ### 访问响应式对象
 

@@ -6,7 +6,7 @@
 
 - **详细：**
 
-  一个字符串模板作为 component 实例的标识使用。模板将会**替换**挂载的元素。挂载元素的内容都将被忽略，除非模板的内容有分发插槽。
+  一个字符串模板作为 component 实例的标识使用。模板将会**替换**挂载元素的 `innerHTML`。挂载元素的内容都将被忽略，除非模板的内容有分发插槽。
 
   如果值以 `#` 开始，则它将被用作 `querySelector`，并使用匹配元素的 innerHTML 作为模板。常用的技巧是用 `<script type="x-template">` 包含模板。
 
@@ -39,11 +39,11 @@
   ```
 
   ```js
-  const app = Vue.createApp({})
-
+  const { createApp, h } = Vue
+  const app = createApp({})
   app.component('my-title', {
     render() {
-      return Vue.h(
+      return h(
         'h1',           // 标签名称
         this.blogTitle  // 标签内容
       )

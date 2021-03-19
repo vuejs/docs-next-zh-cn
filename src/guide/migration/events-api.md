@@ -58,6 +58,24 @@ export default {
 
 ## 迁移策略
 
-可以使用实现了事件触发接口的外部库来替换现有的 event hub，例如 [mitt](https://github.com/developit/mitt) 或 [tiny-emitter](https://github.com/scottcorgan/tiny-emitter)。
+在 Vue 3 中，已经不可能使用这些 API 从组件内部监听组件自己发出的事件了，该用例暂没有迁移的方法。
 
-兼容性构建中也支持这些方法。
+但是可以使用实现事件 emitter 接口的外部库来替换的 eventHub 模式，例如 [mitt](https://github.com/developit/mitt) 或 [tiny-emitter](https://github.com/scottcorgan/tiny-emitter)。
+
+示例:
+
+```js
+//eventHub.js
+import emitter from 'tiny-emitter/instance'
+
+export default {
+  $on: (...args) => emitter.on(...args),
+  $once: (...args) => emitter.once(...args),
+  $off: (...args) => emitter.off(...args),
+  $emit: (...args) => emitter.emit(...args)
+}
+```
+
+它提供了与 Vue 2 相同的事件 emitter API。
+
+这些方法也可能在 Vue 3 的未来兼容性构建中得到支持。

@@ -85,7 +85,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     ...
     methods: {
       transitionComplete (el) {
@@ -239,7 +239,7 @@
   <teleport to="some-string" />
   ```
 
-  - `disabled` - `boolean`。此可选属性可用于禁用 `<teleport>` 的功能，这意味着其插槽内容将不会移动到任何位置，而是在您在周围父组件中指定了 `<teleport>` 的位置渲染。
+  - `disabled` - `boolean`。此可选属性可用于禁用 `<teleport>` 的功能，这意味着其插槽内容将不会移动到任何位置，而是在你在周围父组件中指定了 `<teleport>` 的位置渲染。
 
   ```html
   <teleport to="#popup" :disabled="displayVideoInline">

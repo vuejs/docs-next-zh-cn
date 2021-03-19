@@ -41,7 +41,7 @@
   用于当前组件实例的初始化选项。需要在选项中包含自定义 property 时会有用处：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     customOption: 'foo',
     created() {
       console.log(this.$options.customOption) // => 'foo'
@@ -102,14 +102,14 @@
   ```
 
   ```js
-  const app = Vue.createApp({})
+  const app = createApp({})
 
   app.component('blog-post', {
     render() {
-      return Vue.h('div', [
-        Vue.h('header', this.$slots.header()),
-        Vue.h('main', this.$slots.default()),
-        Vue.h('footer', this.$slots.footer())
+      return h('div', [
+        h('header', this.$slots.header()),
+        h('main', this.$slots.default()),
+        h('footer', this.$slots.footer())
       ])
     }
   })

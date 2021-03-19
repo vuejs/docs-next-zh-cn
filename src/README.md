@@ -27,7 +27,7 @@ features:
       最省心的优化
 footer: |
   遵循<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener"> MIT 开源协议</a><br>
-  Copyright © 2014-2020 Evan You
+  Copyright © 2014-2021 Evan You
 socialIcons:
   - type: GitHub
     link: https://github.com/vuejs/vue-next
