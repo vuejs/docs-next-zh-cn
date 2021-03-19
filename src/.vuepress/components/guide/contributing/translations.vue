@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="({ lang, owner, repo, url, count, date }, index) in merged">
+      <tr v-for="({ lang, owner, repo, url, count, date }, index) in merged" :key="index">
         <td>
           <a v-if="url" :href="url" target="_blank">
             {{ lang }} <OutboundLink />
