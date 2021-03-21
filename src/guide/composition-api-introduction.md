@@ -308,7 +308,7 @@ export default {
 }
 ```
 
-有关 `watch` 的详细信息，请参阅我们的[深入指南](composition-api-introduction.html)。
+有关 `watch` 的详细信息，请参阅我们的[深入指南](reactivity-computed-watchers.md#watch)。
 
 **现在我们将其应用到我们的示例中：**
 
