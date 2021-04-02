@@ -52,7 +52,7 @@ nextTick(() => {
 })
 ```
 
-同时在测试中可以这样
+与
 
 ```js
 import { shallowMount } from '@vue/test-utils'
@@ -110,7 +110,7 @@ export function render() {
 随着全局 tree-shaking，用户只需为他们实际使用的功能“付费”，更好的是，知道了可选特性不会增加不使用它们的应用程序的捆绑包大小，框架大小在将来已经不再是其他核心功能的考虑因素了，如果有的话。
 
 :::warning 重要
-以上仅适用于 [ES Modules builds](/guide/installation.html#explanation-of-different-builds)，用于支持 tree-shaking 的绑定器——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出，可以使用全局外的 api 而不是导入)。
+以上仅适用于 [ES Modules builds](/guide/installation.html#explanation-of-different-builds)，用于支持 tree-shaking 的绑定器——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出，才得以使用全局外的 api 而不是导入)。
 :::
 
 ## 插件中的用法
@@ -155,7 +155,7 @@ module.exports = {
 
 这将告诉 webpack 将 Vue 模块视为一个外部库，而不是捆绑它。
 
-如果你选择的模块绑定器恰好是 [Rollup](https://rollupjs.org/)，你基本上可以免费获得相同的效果，因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的 bundle 中。但是在绑定期间，它可能会发出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency)警告，可使用 `external` 选项抑制该警告：
+如果你选择的模块绑定器恰好是 [Rollup](https://rollupjs.org/)，你基本上可以无偿获得相同的效果，因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的 bundle 中。但是在绑定期间，它可能会抛出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency)警告，可使用 `external` 选项抑制该警告：
 
 ```js
 // rollup.config.js
