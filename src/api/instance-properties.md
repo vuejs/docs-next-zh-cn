@@ -77,9 +77,9 @@
 
 - **详细：**
 
-  用来访问被[插槽分发](../guide/component-basics.html#通过插槽分发内容)的内容。每个[具名插槽](../guide/component-slots.html#具名插槽)有其相应的 property (例如：`v-slot:foo` 中的内容将会在 `this.$slots.foo()` 中被找到)。`default` property 包括了所有没有被包含在具名插槽中的节点，或 `v-slot:default` 的内容。
+  用来以编程方式访问通过[插槽分发](../guide/component-basics.html#通过插槽分发内容)的内容。每个[具名插槽](../guide/component-slots.html#具名插槽)都有其相应的 property (例如：`v-slot:foo` 中的内容将会在 `this.$slots.foo()` 中被找到)。`default` property 包括了所有没有被包含在具名插槽中的节点，或 `v-slot:default` 的内容。
 
-  在使用[渲染函数](../guide/render-function.html)书写一个组件时，访问 `this.$slots` 最有帮助。
+  在使用[渲染函数](../guide/render-function.html)编写一个组件时，访问 `this.$slots` 会很有帮助。
 
 - **示例：**
 
