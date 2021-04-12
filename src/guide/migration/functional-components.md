@@ -10,7 +10,7 @@ badges:
 就变化而言，属于高等级内容：
 
 - 在 3.x 中，函数式组件 2.x 的性能提升可以忽略不计，因此我们建议只使用有状态的组件
-- 函数式组件只能使用接收 `props` 和 `context` 的普通函数创建 (即：`slots`，`attrs`，`emit`)
+- 函数式组件只能使用接收 `props` 和 `context` 的普通函数创建 (即：`slots`，`attrs`，`emit`)。
 - **非兼容变更：**`functional` attribute 在单文件组件 (SFC) `<template>` 已被移除
 - **非兼容变更：**`{ functional: true }` 选项在通过函数创建组件已被移除
 
