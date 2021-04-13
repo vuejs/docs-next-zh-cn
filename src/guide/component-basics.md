@@ -399,7 +399,7 @@ app.component('alert-box', {
 
 你也可以使用 `is` attribute 来创建常规的 HTML 元素。
 
-到目前为止，关于动态组件你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[动态 & 异步组件](./components-dynamic-async.html)读完。
+到目前为止，关于动态组件你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把[动态 & 异步组件](./component-dynamic-async.html)读完。
 
 ## 解析 DOM 模板时的注意事项
 

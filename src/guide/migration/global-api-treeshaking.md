@@ -38,7 +38,7 @@ test('an async feature', async () => {
 
 但是，如果你从来没有处理过手动的 DOM 操作，也没有在你的应用中使用或测试异步组件，怎么办？或者，不管出于什么原因，你更喜欢使用老式的 `window.setTimeout()` 来代替呢？在这种情况下，`nextTick()` 的代码就会变成死代码--也就是说，写了代码但从未使用过。而死代码几乎不是一件好事，尤其是在我们的客户端上下文中，每一行代码都很重要。
 
-模块捆绑程序，如 [webpack](https://webpack.js.org/) 支持 [tree-shaking](网址：https://webpack.js/webpack/js//)，这是“死代码消除”的一个花哨术语。不幸的是，由于代码是如何在以前的 Vue 版本中编写的，全局 API `Vue.nextTick()` 不可摇动，将包含在最终捆绑中不管它们实际在哪里使用。
+模块捆绑程序，如 [webpack](https://webpack.js.org/) 支持 [tree-shaking](https://webpack.js.org/guides/tree-shaking/)，这是“死代码消除”的一个花哨术语。不幸的是，由于代码是如何在以前的 Vue 版本中编写的，全局 API `Vue.nextTick()` 不可摇动，将包含在最终捆绑中不管它们实际在哪里使用。
 
 ## 3.x 语法
 
