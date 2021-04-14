@@ -197,7 +197,7 @@ data() {
 
 ::: details 详解
 
-当 Vue 处理指令时，`v-for` 比 `v-if` 具有更高的优先级，所以这个模板：
+当 Vue 处理指令时，`v-if` 比 `v-for` 具有更高的优先级，所以这个模板：
 
 ``` html
 <ul>
@@ -211,19 +211,9 @@ data() {
 </ul>
 ```
 
-将会经过如下运算：
+这将抛出一个错误，因为 `v-if` 指令将首先被使用，而迭代的变量 `user` 此时不存在。
 
-``` js
-this.users.map(user => {
-  if (user.isActive) {
-    return user.name
-  }
-})
-```
-
-因此哪怕我们只渲染出一小部分用户的元素，也得在每次重渲染的时候遍历整个列表，不论活跃用户是否发生了变化。
-
-通过将其更换为在如下的一个计算属性上遍历：
+这可以通过迭代一个计算过的 property 来解决，就像这样：
 
 ``` js
 computed: {
@@ -244,39 +234,17 @@ computed: {
 </ul>
 ```
 
-我们将会获得如下好处：
+另外，我们也可以使用 `<template>` 标签和 `v-for` 来包装 `<li>` 元素。
 
-- 过滤后的列表*只*会在 `users` 数组发生相关变化时才被重新运算，过滤更高效。
-- 使用 `v-for="user in activeUsers"` 之后，我们在渲染的时候*只*遍历活跃用户，渲染更高效。
-- 解耦渲染层的逻辑，可维护性 (对逻辑的更改和扩展) 更强。
-
-为了获得同样的好处，我们也可以把：
-
-``` html
+```html
 <ul>
-  <li
-    v-for="user in users"
-    v-if="shouldShowUsers"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
+  <template v-for="user in users" :key="user.id">
+    <li v-if="user.isActive">
+      {{ user.name }}
+    </li>
+  </template>
 </ul>
 ```
-更新为：
-
-``` html
-<ul v-if="shouldShowUsers">
-  <li
-    v-for="user in users"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
-</ul>
-```
-
-通过将 `v-if` 移动到容器元素，我们不会再对列表中的每个用户检查 `shouldShowUsers`。取而代之的是，我们只检查它一次，且不会在 `shouldShowUsers` 为否的时候运算 `v-for`。
 
 :::
 
@@ -295,17 +263,6 @@ computed: {
 </ul>
 ```
 
-``` html
-<ul>
-  <li
-    v-for="user in users"
-    v-if="shouldShowUsers"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
-</ul>
-```
 </div>
 
 <div class="style-example style-example-good">
@@ -322,21 +279,20 @@ computed: {
 </ul>
 ```
 
-``` html
-<ul v-if="shouldShowUsers">
-  <li
-    v-for="user in users"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
+```html
+<ul>
+  <template v-for="user in users" :key="user.id">
+    <li v-if="user.isActive">
+      {{ user.name }}
+    </li>
+  </template>
 </ul>
 ```
 </div>
 
 ### 为组件样式设置作用域<sup data-p="a">必要</sup>
 
-**对于应用来说，顶级 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
+**对于应用来说，顶层 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
 
 这条规则只和[单文件组件](../guide/single-file-component.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
 
