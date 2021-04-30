@@ -8,7 +8,7 @@
 <input ref="input" />
 ```
 
-例如，你希望以编程的方式 focus 这个 input 在组件上挂载，这可能有用
+例如，你希望在组件挂载时，以编程的方式 focus 到这个 input 上，这可能有用
 
 ```js
 const app = Vue.createApp({})
