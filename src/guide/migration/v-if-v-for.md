@@ -30,5 +30,5 @@ Vue.js 中使用最多的两个指令就是 `v-if` 和 `v-for`，因此开发者
 
 ## 参考
 
-- [列表渲染 - #显示过滤-排序后的结果](/guide/list.html#displaying-filtered-sorted-results)
+- [列表渲染 - #显示过滤-排序后的结果](/guide/list.html#显示过滤-排序后的结果)
 - [列表渲染 - `v-for` 与 `v-if` 一同使用](/guide/list.html#v-for-与-v-if-一同使用)
