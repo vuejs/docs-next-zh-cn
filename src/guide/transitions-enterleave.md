@@ -7,7 +7,7 @@
 - 在过渡钩子期间使用 JavaScript 直接操作 DOM；
 - 集成第三方 JavaScript 动画库。
 
-在这里，我们只介绍进入、离开和列表的过渡，你也可以看下一节[列表过渡](transition-list.html)和[管理过渡状态](transitions-state.html) 。
+在这里，我们只介绍进入、离开和列表的过渡，你也可以看下一节[列表过渡](transitions-list.html)和[管理过渡状态](transitions-state.html) 。
 
 ## 单元素/组件的过渡
 
@@ -415,7 +415,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 多个元素的过渡
 
-我们之后讨论[多个组件的过渡](#transitioning-between-components)，对于原生标签可以使用 `v-if`/`v-else-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
+我们之后讨论[多个组件之间过渡](#多个组件之间过渡)，对于原生标签可以使用 `v-if`/`v-else-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
 
 ```html
 <transition>

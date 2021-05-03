@@ -86,7 +86,7 @@ vue add typescript
 
 ### 编辑器支持
 
-对于使用 TypeScript 开发 Vue 应用程序，我们强烈建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它为 TypeScript 提供了很好的开箱即用支持。如果你使用的是[单文件组件](./single-file-components.html) (SFCs)，那么可以使用很棒的 [Vetur extension](https://github.com/vuejs/vetur)，它在 SFCs 中提供了 TypeScript 推理和许多其他优秀的特性。
+对于使用 TypeScript 开发 Vue 应用程序，我们强烈建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它为 TypeScript 提供了很好的开箱即用支持。如果你使用的是[单文件组件](./single-file-component.html) (SFCs)，那么可以使用很棒的 [Vetur extension](https://github.com/vuejs/vetur)，它在 SFCs 中提供了 TypeScript 推理和许多其他优秀的特性。
 
 [WebStorm](https://www.jetbrains.com/webstorm/) 还为 TypeScript 和 Vue 提供现成的支持。
 

@@ -25,7 +25,7 @@ function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 const count = ref(1)
 const obj = reactive({ count })
 
-// ref 不会被解构
+// ref 会被解构
 console.log(obj.count === count.value) // true
 
 // 它会更新 `obj.count`

@@ -1,10 +1,10 @@
 ---
-title: $attrs 包括 class & style
+title: $attrs 包含 class & style
 badges:
   - breaking
 ---
 
-# `$attrs` 包括 `class` & `style` <MigrationBadges :badges="$frontmatter.badges" />
+# `$attrs` 包含 `class` & `style` <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
 
@@ -12,7 +12,7 @@ badges:
 
 ## 2.x 行为
 
-在 Vue 2 的虚拟 DOM 实现中对 `class` 和 `style` attribute 有一些特殊处理。因此，它们*不*包括在 `$attrs` 中，而其它所有 attribute 都在。
+在 Vue 2 的虚拟 DOM 实现中对 `class` 和 `style` attribute 有一些特殊处理。因此，它们*不*包含在 `$attrs` 中，而其它所有 attribute 都包含在其中。
 
 在使用 `inheritAttrs: false` 时会产生副作用：
 
