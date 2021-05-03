@@ -5,8 +5,9 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 将 Vue.js 添加到项目中有三种主要方式：
 
 1. 在页面上以 [CDN 包](#cdn)的形式导入。
-2. 使用 [npm](#npm) 安装它。
-3. 使用官方的 [CLI](#命令行工具-cli) 来构建一个项目，它为现代前端工作流程提供了功能齐备的构建设置 (例如，热重载、保存时的提示等等)。
+2. 下载 JavaScript 文件并 [自托管](#下载并自托管)。
+3. 使用 [npm](#npm) 安装它。
+4. 使用官方的 [CLI](#命令行工具-cli) 来构建一个项目，它为现代前端工作流程提供了功能齐备的构建设置 (例如，热重载、保存时的提示等等)。
 
 ## 发布版本说明
 
@@ -34,6 +35,12 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 <script src="https://unpkg.com/vue@next"></script>
 ```
 对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏。
+
+## 下载并自托管
+
+如果你想避免使用构建工具，但又无法在生产环境使用 CDN，那么你可以下载相关`.js`文件并自行托管在你的服务器上。然后你可以通过`<script>`标签引入，与使用 CDN 的方法类似。
+
+这些文件可以在 [unpkg](https://unpkg.com/browse/vue@next/dist/) 或者 [jsDelivr](https://cdn.jsdelivr.net/npm/vue@next/dist/) 这些 CDN 上浏览和下载。各种不同文件将在[以后解释](#对不同构建版本的解释)，但你通常需要同时下载开发环境构建版本以及生产环境构建版本。
 
 ## npm
 在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Browserify](http://browserify.org/) 模块打包器配合使用。Vue 还提供了编写[单文件组件](../guide/single-file-component.html)的配套工具。
