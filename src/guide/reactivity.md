@@ -267,7 +267,7 @@ const handler = {
 
 ### Proxy vs 原始标识
 
-The use of Proxy does introduce a new caveat to be aware of: the proxied object is not equal to the original object in terms of identity comparison (`===`). For example:
+Proxy 的使用确实引入了一个需要注意的新警告：在身份比较方面，被代理对象与原始对象不相等 (`===`)。例如:
 
 ```js
 const obj = {}
