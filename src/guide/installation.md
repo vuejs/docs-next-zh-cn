@@ -99,7 +99,7 @@ $ yarn
 $ yarn dev
 ```
 
-可能会出现这样的情况，当你的用户名中有一个空格，比如 'Mike Baker' 时，vite 就不能成功创建，可以尝试：
+可能会出现这样的情况，当你的用户名中有一个空格，比如 'Mike Baker' 时， Vite 就不能成功创建，可以尝试：
 
 ```bash
 $ create-vite-app <project-name>

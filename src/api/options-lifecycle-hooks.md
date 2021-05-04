@@ -242,7 +242,7 @@
     methods: {
       addToCart() {
         this.cart += 1
-        /* 这将导致 renderTriggered 调用
+        /* 这将导致 renderTriggered 被调用
           {
             key: "cart",
             target: {

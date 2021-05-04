@@ -47,7 +47,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [触发组件选项](/guide/component-custom-events.html)
 - [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
 - [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
-- [单文件组件状态驱动的 CSS 变量 (`v-bind` in `<style>`)](https://github.com/vuejs/rfcs/blob/style-vars-2/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
+- [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](https://github.com/vuejs/rfcs/blob/style-vars-2/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
 - [Suspense](/guide/migration/suspense.html) <Badge text="实验性" type="warning" />
 
 ## 非兼容的变更
@@ -105,12 +105,12 @@ Vue 3 中需要关注的一些新功能包括：
 - [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则需要指定 `deep` 选项](/guide/migration/watch.html)
 - 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 的 `<template>` 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
 - [已挂载的应用不会取代它所挂载的元素](/guide/migration/mount-changes.html)
-- [生命周期 `hook：` 事件前缀改为 `vnode-`](/guide/migration/vnode-lifecycle-events.html)
+- [生命周期 `hook:` 事件前缀改为 `vnode-`](/guide/migration/vnode-lifecycle-events.html)
 
 ### 移除 API
 
 - [`keyCode` 支持作为 `v-on` 的修饰符](/guide/migration/keycode-modifiers.html)
-- [$on，$off 和 \$once 实例方法](/guide/migration/events-api.html)
+- [$on、$off 和 $once 实例方法](/guide/migration/events-api.html)
 - [过滤](/guide/migration/filters.html)
 - [内联模板 attribute](/guide/migration/inline-template-attribute.html)
 - [`$children` 实例 property](/guide/migration/children.html)
