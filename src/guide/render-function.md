@@ -549,7 +549,7 @@ render () {
 }
 ```
 
-[`resolveDirective`](/api/global-api.html#resolvedirective) 是模板内部用来解析指令名称的同一个函数。只有当你还没有直接访问 directive 的定义对象时，才需要这样做。
+[`resolveDirective`](/api/global-api.html#resolvedirective) 是模板内部用来解析指令名称的同一个函数。只有当你还没有直接访问指令的定义对象时，才需要这样做。
 
 ## JSX
 
