@@ -273,7 +273,7 @@ render() {
 
 `resolveComponent` 是模板内部用来解析组件名称的同一个函数。
 
-`render` 函数通常只需要对[全局注册](/guide/component-registration.html#global-registration)的组件使用 `resolveComponent`。而[本地组件注册](/guide/component-registration.html#local-registration)却是可以跳过，请看下面的例子：
+`render` 函数通常只需要对[全局注册](/guide/component-registration.html#global-registration)的组件使用 `resolveComponent`。而对于[局部注册](/guide/component-registration.html#local-registration)的却可以跳过，请看下面的例子：
 
 ```js
 // 我们可以简化为
