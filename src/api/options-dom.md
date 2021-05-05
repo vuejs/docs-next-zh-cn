@@ -60,7 +60,7 @@
   ```
 
   :::tip 注意
-  `render` 函数的优先级高于根据 `template` 选项或挂载元素的 in-DOM HTML 模板编译的渲染函数。
+  `render` 函数的优先级高于根据 `template` 选项或挂载元素的 DOM 内 HTML 模板编译的渲染函数。
   :::
 
 -  **参考** [渲染函数](../guide/render-function.html)
