@@ -246,8 +246,6 @@ render() {
 }
 ```
 
-<!-- TODO: translation -->
-
 ## 创建组件 VNode
 
 要为某个组件创建一个 VNode，传递给 `h` 的第一个参数应该是组件本身。
