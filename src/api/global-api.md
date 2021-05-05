@@ -484,7 +484,6 @@ export default {
 }
 ```
 
-<!-- translation: TODO -->
 ## useCssModule
 
 :::warning
