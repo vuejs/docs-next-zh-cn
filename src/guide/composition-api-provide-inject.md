@@ -43,7 +43,7 @@ export default {
 
 ## 使用 Provide
 
-在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入 `provide` 方法。这使我们能够调用 `provide` 时来定义每个 property。
+在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入 `provide` 方法。这使我们能够调用 `provide` 来定义每个 property。
 
 `provide` 函数允许你通过两个参数定义 property：
 
@@ -83,8 +83,8 @@ export default {
 
 `inject` 函数有两个参数：
 
-1. 要 inject 的 property 的名称
-2. 一个默认的值 (**可选**)
+1. inject 的 property 的 name
+2. 默认值 (**可选**)
 
 使用 `MyMarker` 组件，可以使用以下代码对其进行重构：
 
@@ -147,7 +147,7 @@ export default {
 
 ### 修改响应式 property
 
-当使用响应式 provide / inject 值时，**建议尽可能，在*提供者*内保持响应式 property 的任何更改**。
+当使用响应式 provide / inject 值时，**建议尽可能，在*provider*内保持响应式 property 的任何更改**。
 
 例如，在需要更改用户位置的情况下，我们最好在 `MyMap` 组件中执行此操作。
 
