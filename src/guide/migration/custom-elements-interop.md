@@ -121,7 +121,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 ```
 
 :::warning
-`v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要使用用注册名称渲染组件，其值应为 JavaScript 字符串文本：
+`v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要使用注册名称来渲染组件，其值应为 JavaScript 字符串文本：
 
 ```html
 <!-- 不正确，不会渲染任何内容 -->
