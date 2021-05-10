@@ -8,9 +8,9 @@
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合式 API 的免费视频。</VideoLesson>
 
-通过创建 Vue 组件，我们可以将界面中重复的部分连同其功能一起提取为可重用的代码段。仅此一项就可以使我们的应用在可维护性和灵活性方面走得更远。然而，我们的经验已经证明，光靠这一点可能是不够的，尤其是当你的应用变得非常大的时候——想想几百个组件。当处理这样的大型应用时，共享和重用代码变得尤为重要。
+通过创建 Vue 组件，我们可以将界面中重复的部分连同其功能一起提取为可重用的代码段。仅此一项就可以使我们的应用在可维护性和灵活性方面走得相当远。然而，我们的经验已经证明，光靠这一点可能并不够，尤其是当你的应用变得非常大的时候——想想几百个组件。处理这样的大型应用时，共享和重用代码变得尤为重要。
 
-假设在我们的应用中，我们有一个视图来显示某个用户的仓库列表。除此之外，我们还希望有搜索和筛选功能。实现此视图组件的代码可能如下所示：
+假设在我们的应用中有一个视图来显示某个用户的仓库列表。此外，我们还希望有搜索和筛选功能。实现此视图组件的代码可能如下所示：
 
 ```js
 // src/components/UserRepositories.vue
@@ -51,11 +51,11 @@ export default {
 
 该组件有以下几个职责：
 
-1. 从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它
+1. 从假定的外部 API 获取该用户的仓库，并在用户有任何更改时进行刷新
 2. 使用 `searchQuery` 字符串搜索仓库
 3. 使用 `filters` 对象筛选仓库
 
-使用 (`data`、`computed`、`methods`、`watch`) 组件选项来组织逻辑在通常都很有效。然而，当我们的组件变得更大时，**逻辑关注点**的列表也会增长。这可能会导致组件难以阅读和理解，尤其是对于那些一开始就没有编写这些组件的人来讲。
+使用 (`data`、`computed`、`methods`、`watch`) 组件选项来组织逻辑在通常都很有效。然而，当我们的组件开始变得更大时，**逻辑关注点**的列表也会增长。尤其是对于那些一开始就没有编写这些组件的人来讲，这会导致组件难以阅读和理解。
 
 ![Vue 选项式 API: 按选项类型分组的代码](https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png)
 
@@ -79,7 +79,7 @@ export default {
 由于在执行 `setup` 时，组件实例尚未被创建，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
 :::
 
-`setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[稍后](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
+`setup` 选项是一个接受 `props` 和 `context` 的函数，我们将在[稍后](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
 
 让我们添加 `setup` 到我们的组件中：
 
@@ -105,7 +105,7 @@ export default {
 
 现在让我们从提取第一个逻辑关注点开始 (在原始代码段中标记为“1”)。
 
-> 1. 从假定的外部 API 获取该用户名的仓库，并在用户更改时刷新它
+> 1. 从假定的外部 API 获取该用户的仓库，并在用户有任何更改时进行刷新
 
 我们将从最明显的部分开始：
 
@@ -131,7 +131,7 @@ setup (props) {
 }
 ```
 
-这是我们的出发点，但它还不能工作，因为我们的 `repositories` 变量是非响应式的。这意味着从用户的角度来看，仓库列表将保持为空。我们来解决这个问题！
+这是我们的出发点，但它还无法生效，因为我们的 `repositories` 变量是非响应式的。这意味着从用户的角度来看，仓库列表将始终为空。让我们来解决这个问题！
 
 ### 带 `ref` 的响应式变量
 
@@ -143,7 +143,7 @@ import { ref } from 'vue'
 const counter = ref(0)
 ```
 
-`ref` 接受参数，并将其包裹在一个带有 `value` property 的对象中返回，然后可以使用该 property 访问或更改响应式变量的值：
+`ref` 接受参数并将其包裹在一个带有 `value` property 的对象中返回，然后可以使用该 property 访问或更改响应式变量的值：
 
 ```js
 import { ref } from 'vue'
@@ -157,7 +157,7 @@ counter.value++
 console.log(counter.value) // 1
 ```
 
-将值封装在一个对象中，看似没有必要，但为了保持 JavaScript 中不同数据类型的行为统一，这是必须的。这是因为在 JavaScript 中，`Number` 或 `String` 等基本类型是通过值传递的，而不是通过引用传递的：
+将值封装在一个对象中，看似没有必要，但为了保持 JavaScript 中不同数据类型的行为统一，这是必须的。这是因为在 JavaScript 中，`Number` 或 `String` 等基本类型是通过值而非引用传递的：
 
 ![按引用传递与按值传递](https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif)
 
@@ -241,7 +241,7 @@ export default {
 
 ### 生命周期钩子注册在 `setup` 内部 
 
-为了使组合式 API 的功能比选项式 API 更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 导出的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 会看起来像 `onMounted`。
+为了使组合式 API 的功能比选项式 API 更加完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于从 Vue 暴露的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
 
 这些函数接受一个回调，当钩子被组件调用时，该回调将被执行。
 
@@ -289,7 +289,7 @@ watch(counter, (newValue, oldValue) => {
 })
 ```
 
-每当 `counter` 被修改时，例如 `counter.value=5`，侦听将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到我们的控制台中。
+每当 `counter` 被修改时，例如 `counter.value=5`，侦听将触发并执行回调 (第二个参数)，在本例中，它将把 `'The new counter value is:5'` 记录到控制台中。
 
 **以下是等效的选项式 API：**
 
@@ -346,7 +346,7 @@ setup (props) {
 
 ### 独立的 `computed` 属性
 
-与 `ref` 和 `watch` 类似，也可以使用从 Vue 导入的 `computed` 函数在 Vue 组件外部创建计算属性。让我们回到我们的 counter 例子：
+与 `ref` 和 `watch` 类似，也可以使用从 Vue 导入的 `computed` 函数在 Vue 组件外部创建计算属性。让我们回到 counter 的例子：
 
 ```js
 import { ref, computed } from 'vue'
@@ -359,7 +359,7 @@ console.log(counter.value) // 1
 console.log(twiceTheCounter.value) // 2
 ```
 
-在这里，我们为 `computed` 函数传递了它的第一个参数，它是一个 getter 类回调函数，输出的是一个*只读*的**响应式引用**。为了访问新创建的计算变量的 **value**，我们需要像使用 `ref` 一样使用 `.value` property。
+在这里，我们为 `computed` 函数传递了它的第一个参数，它是一个类似 getter 的回调函数，输出的是一个*只读*的**响应式引用**。为了访问新创建的计算变量的 **value**，我们需要像 `ref` 一样使用 `.value` property。
 
 让我们将搜索功能移到 `setup` 中：
 
