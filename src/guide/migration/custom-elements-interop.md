@@ -13,14 +13,14 @@ badges:
 
 ## 自主定制元素
 
-如果我们想添加在 Vue 外部定义的自定义元素 (例如使用 Web 组件 API)，我们需要“指示”Vue 将其视为自定义元素。让我们以下面的模板为例。
+如果我们想在 Vue 外部定义添加自定义元素 (例如使用 Web 组件 API)，我们需要“指示”Vue 将其视为自定义元素。让我们以下面的模板为例。
 
 ```html
 <plastic-button></plastic-button>
 ```
 ### 2.x 语法
 
-在 Vue 2.x 中，将标记作为自定义元素白名单是通过 `Vue.config.ignoredElements`：
+在 Vue 2.x 中，通过 `Vue.config.ignoredElements` 配置自定义元素白名单：
 
 ```js
 // 这将使Vue忽略在Vue外部定义的自定义元素
@@ -62,7 +62,7 @@ Vue.config.ignoredElements = ['plastic-button']
 
 ## 定制内置元素
 
-自定义元素规范提供了一种将自定义元素用作[自定义内置模板](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)的方法，方法是向内置元素添加 `is` 属性：
+自定义元素规范提供了一种将自定义元素作为[自定义内置模板](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)的方法，方法是向内置元素添加 `is` 属性：
 
 ```html
 <button is="plastic-button">点击我!</button>
@@ -102,7 +102,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 
 ### 2x 语法
 
-在 Vue 2 中，我们建议通过在原生 tag 上使用 `is` prop 来解决这些限制：
+在 Vue 2 中，我们建议在原生 tag 上使用 `is` prop 来解决这些限制：
 
 ```html
 <table>
@@ -121,7 +121,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 ```
 
 :::warning
-`v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要按注册名称渲染组件，其值应为 JavaScript 字符串文本：
+`v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要使用注册名称来渲染组件，其值应为 JavaScript 字符串文本：
 
 ```html
 <!-- 不正确，不会渲染任何内容 -->
