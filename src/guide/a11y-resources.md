@@ -45,7 +45,7 @@
 
 - _[听觉的](https://webaim.org/articles/auditory/)_ - 这些用户可以从字幕、文字记录或手语视频中获益。
 
-- _[运动的](https://webaim.org/articles/motor/)_ - 这些用户可以从一系列[运动障碍辅助技术](https://webaim.org/articles/motor/assistive)中受益：语音识别软件、眼球跟踪、单开关接入、头棒、单开关接入、sip 和 puff 开关、超大轨迹球鼠标、自适应键盘或其他辅助技术。
+- _[运动的](https://webaim.org/articles/motor/)_ - 这些用户可以从一系列[运动障碍辅助技术](https://webaim.org/articles/motor/assistive)中受益：语音识别软件、眼球跟踪、单开关接入、头棒、sip 和 puff 开关、超大轨迹球鼠标、自适应键盘或其他辅助技术。
 
 - _[认知的](https://webaim.org/articles/cognitive/)_ - 这些用户可以从补充媒体、内容的结构化组织、清晰和简单的写作中获益。
 
