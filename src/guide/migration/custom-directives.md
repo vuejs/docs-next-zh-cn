@@ -1,6 +1,8 @@
 ---
 badges:
-  - breaking
+
+- breaking
+
 ---
 
 # 自定义指令 <MigrationBadges :badges="$frontmatter.badges" />
@@ -8,8 +10,7 @@ badges:
 ## 概览
 
 <!-- TODO: translation -->
-
-The hook functions for directives have been renamed to better align with the component lifecycle.
+为了更好的与组件的生命周期保持一致，在 Vue 3.x 中将自定义指令的钩子函数进行了重新命名。
 
 ## 2.x 语法
 
@@ -39,7 +40,7 @@ Vue.directive('highlight', {
 
 ## 3.x 语法
 
-然而，在 Vue 3 中，我们为自定义指令创建了一个更具凝聚力的 API。正如你所看到的，它们与我们的组件生命周期方法有很大的不同，即使我们正与类似的事件钩子，我们现在把它们统一起来了：
+然而，在 Vue 3 中，我们为自定义指令创建了一些更具凝聚力的 API。正如你所看到的，它们与我们的组件生命周期方法有很大的不同，即使我们正与类似的事件钩子，我们现在把它们统一起来了：
 
 - created - 新的！在元素的 attribute 或事件侦听器应用之前调用。
 - bind → **beforeMount**
@@ -47,7 +48,7 @@ Vue.directive('highlight', {
 - **beforeUpdate**：新的！这是在元素本身更新之前调用的，很像组件生命周期钩子。
 - update → 移除！有太多的相似之处要更新，所以这是多余的，请改用 `updated`。
 - componentUpdated → **updated**
-- **beforeUnmount**：新的！与组件生命周期钩子类似，它将在卸载元素之前调用。
+- **beforeUnmount**：新的！与组件生命周期钩子类似，它将在元素卸载之前调用。
 - unbind -> **unmounted**
 
 最终 API 如下：
@@ -79,15 +80,15 @@ app.directive('highlight', {
 })
 ```
 
-既然定制指令生命周期钩子映射了组件本身的那些，那么它们就更容易推理和记住了！
+现在自定义指令的钩子函数与组件生命周期钩子函数相映射，那么它们就更容易推理和记住了！
 
 <!-- TODO: translation -->
 
-### Edge Case: Accessing the component instance
+### 边界情况：访问组件实例
 
-It's generally recommended to keep directives independent of the component instance they are used in. Accessing the instance from within a custom directive is often a sign that the directive should rather be a component itself. However, there are situations where this actually makes sense.
+通常建议保持指令独立于使用它们的组件实例。然而，在一些实际情况下，从自定义指令中访问该实例通常表明该指令相当于组件本身。
 
-In Vue 2, the component instance had to be accessed through the `vnode` argument:
+在 Vue 2 中，必须通过 `vnode` 访问组件实例：
 
 ```javascript
 bind(el, binding, vnode) {
@@ -95,14 +96,13 @@ bind(el, binding, vnode) {
 }
 ```
 
-In Vue 3, the instance is now part of the `binding`:
+在 Vue 3 中，实例是 `binding` 的一部分：
 
 ```javascript
 mounted(el, binding, vnode) {
   const vm = binding.instance
 }
 ```
-
-:::warning
-With [fragments](/guide/migration/fragments.html#overview) support, components can potentially have more than one root node. When applied to a multi-root component, a directive will be ignored and a warning will be logged.
+:::warning 注意
+有了 `fragments` 支持, 组件可能会有多个根节点。当自定义指令应用于多根组件时，其将被忽略并记录警告。 
 :::
