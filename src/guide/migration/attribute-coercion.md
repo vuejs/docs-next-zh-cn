@@ -52,12 +52,12 @@ badges:
 
 我们打算放弃“枚举型 attribute”的内部概念，并将它们视为普通的非布尔型 HTML attribute。
 
-- 这样解决了普通非布尔型 attribute 和“枚举型 attribute”之间的不一致性
+- 这就解决了普通非布尔型 attribute 和“枚举型 attribute”之间的不一致性
 - 它还可以使用 `'true'` 和 `'false'` 以外的值，甚至可以使用 `contenteditable` 等 attribute 的关键字
 
 对于非布尔型 attribute，如果 attribute 值为 `false`，Vue 将停止删除它们，相反强制它们的值为 `'false'`。
 
-- 这样解决了 `true` 和 `false` 之间的不一致性，并使输出 `aria-*` attributes 更容易
+- 这就解决了 `true` 和 `false` 之间的不一致性，并使输出 `aria-*` attributes 更容易
 
 下表描述了新行为：
 
