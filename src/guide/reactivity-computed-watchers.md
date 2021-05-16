@@ -125,7 +125,7 @@ Vue 的响应性系统会缓存副作用函数，并异步地刷新它们，这�
 - `count` 会在初始运行时同步打印出来
 - 更改 `count` 时，将在组件**更新前**执行副作用。
 
-如果需要在组件更新 (例如：当与[模板引用](./composition-api-template-refs.md#watching-template-refs)一起) **后**重新运行侦听器副作用，我们可以传递带有 `flush` 选项的附加 `options` 对象 (默认为 `'pre'`)：
+如果需要在组件更新(例如：当与[模板引用](./composition-api-template-refs.md#侦听模板引用)一起)**后**重新运行侦听器副作用，我们可以传递带有 `flush` 选项的附加 `options` 对象 (默认为 `'pre'`)：
 
 ```js
 

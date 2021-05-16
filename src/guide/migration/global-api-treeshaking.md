@@ -110,7 +110,7 @@ export function render() {
 随着全局 tree-shaking，用户只需为他们实际使用的功能“付费”，更好的是，知道了可选特性不会增加不使用它们的应用程序的捆绑包大小，框架大小在将来已经不再是其他核心功能的考虑因素了，如果有的话。
 
 :::warning 重要
-以上仅适用于 [ES Modules builds](/guide/installation.html#explanation-of-different-builds)，用于支持 tree-shaking 的绑定器——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出，才得以使用全局外的 api 而不是导入)。
+以上仅适用于 [ES Modules builds](/guide/installation.html#对不同构建版本的解释)，用于支持 tree-shaking 的绑定器——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出，才得以使用全局外的 api 而不是导入)。
 :::
 
 ## 插件中的用法

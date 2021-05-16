@@ -10,8 +10,6 @@ Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**
 
 如果你想在深入学习 Vue 之前对它有更多了解，我们<a id="modal-player" href="#">制作了一个视频</a>，带你了解其核心概念和一个示例工程。
 
-如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看[对比其它框架](TODO:comparison.html)。
-
 <VideoLesson href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3" title="Watch a free video course on Vue Mastery">Watch a free video course on Vue Mastery</VideoLesson>
 
 ## 起步
@@ -243,7 +241,7 @@ app.mount(...)
 </ol>
 ```
 
-但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](component-basics.html#通过-Prop-向子组件传递数据)：
+但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](component-basics.html#通过-prop-向子组件传递数据)：
 
 ```js
 app.component('todo-item', {

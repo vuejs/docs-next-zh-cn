@@ -24,7 +24,7 @@ badges:
 
 - 对于某些 attribute/元素对，Vue 始终使用相应的 IDL attribute(property)：[比如拥有 `value` 的 `<input>`，`<select>`，`<progress>`，等等](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L11-L18)。
 
-- 对于“[布尔 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L33-L40)”和 [xlinks](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L44-L46)，如果它们是 `falsy` 的，Vue 会移除它们 ([`undefined`，`null` or `false`](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L52-L54)) 另外加上它们 (见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L66-L77)和[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L81-L85))。
+- 对于“[布尔 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L33-L40)”和 [xlinks](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L44-L46)，如果它们是 `falsy` 的，Vue 会移除它们 ([`undefined`，`null` or `false`](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L52-L54)) ，否则会加上它们 (见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L66-L77)和[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L81-L85))。
 
 - 对于“[枚举 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L20)” (目前 `contenteditable`，`draggable` 和 `spellcheck`)，Vue 会尝试[强制](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L24-L31)将它们串起来 (目前对 `contenteditable` 做了特殊处理，修复 [vuejs/vue#9397](https://github.com/vuejs/vue/issues/9397))。
 
@@ -43,7 +43,7 @@ badges:
 | `attr="foo"`        | `foo="foo"`             | `draggable="true"`                |
 | `attr`              | `foo=""`                | `draggable="true"`                |
 
-<small>/： 移除</small>
+<small>/：移除</small>
 
 从上表可以看出，当前实现 `true` 强制为 `'true'` 但如果 attribute 为 `false`，则移除该 attribute。这也导致了不一致性，并要求用户在非常常见的用例中手动强制布尔值为字符串，例如
  `aria-*` attribute，例如 `aria-selected`，`aria-hidden`，等等。
@@ -52,12 +52,12 @@ badges:
 
 我们打算放弃“枚举型 attribute”的内部概念，并将它们视为普通的非布尔型 HTML attribute。
 
-- 这解决了普通非布尔型 attribute 和“枚举型 attribute”之间的不一致性
-- 它还可以使用 `'true'` 和 `'false'` 以外的值，甚至可以使用 `contenteditable` 等 attribute 的关键字`
+- 这就解决了普通非布尔型 attribute 和“枚举型 attribute”之间的不一致性
+- 它还可以使用 `'true'` 和 `'false'` 以外的值，甚至可以使用 `contenteditable` 等 attribute 的关键字
 
 对于非布尔型 attribute，如果 attribute 值为 `false`，Vue 将停止删除它们，相反强制它们的值为 `'false'`。
 
-- 这解决了 `true` 和 `false` 之间的不一致性，并使输出 `aria-*` attributes 更容易
+- 这就解决了 `true` 和 `false` 之间的不一致性，并使输出 `aria-*` attributes 更容易
 
 下表描述了新行为：
 

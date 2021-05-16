@@ -42,9 +42,9 @@ export default {
 import { toRefs } from 'vue'
 
 setup(props) {
-	const { title } = toRefs(props)
+  const { title } = toRefs(props)
 
-	console.log(title.value)
+  console.log(title.value)
 }
 ```
 
@@ -55,8 +55,8 @@ setup(props) {
 // MyBook.vue
 import { toRef } from 'vue'
 setup(props) {
-	const title = toRef(props, 'title')
-	console.log(title.value)
+  const title = toRef(props, 'title')
+  console.log(title.value)
 }
 ```
 
@@ -137,7 +137,7 @@ export default {
 </script>
 ```
 
-注意，从 `setup` 返回的 [refs](../api/refs-api.html#ref) 在模板中访问时是 [shallow 自动解构](/guide/reactivity-fundamentals.html#ref-解开)的，因此不应在模板中使用 `.value`。
+注意，从 `setup` 返回的 [refs](../api/refs-api.html#ref) 在模板中访问时是[被自动解开](/guide/reactivity-fundamentals.html#ref-展开)的，因此不应在模板中使用 `.value`。
 
 ## 使用渲染函数
 

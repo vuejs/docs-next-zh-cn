@@ -301,4 +301,4 @@
   `emits` 选项中列出的事件**不会**从组件的根元素继承，也将从 `$attrs` property 中移除。
   :::
 
--  **参考** [Attribute 继承](../guide/component-attrs.html#attribute继承)
+-  **参考** [Attribute 继承](../guide/component-attrs.html#attribute-继承)

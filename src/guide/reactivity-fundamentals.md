@@ -45,12 +45,13 @@ console.log(count.value) // 1
 
 ### Ref 展开
 
-当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层解构为内部值。只有嵌套的 ref 才会在模板中要求 `.value`：
+当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层次展开内部值。只有访问嵌套的 ref 时需要在模板中添加 `.value`：
 
 ```vue-html
 <template>
   <div>
     <span>{{ count }}</span>
+    <button @click="count ++">Increment count</button>
     <button @click="nested.count.value ++">Nested Increment count</button>
   </div>
 </template>
@@ -73,7 +74,7 @@ console.log(count.value) // 1
 ```
 
 :::tip
-如果你不需要访问实际的对象实例，你可以用 `reactive` 来包裹它。
+如果你不需要访问实际的对象实例，可将其用 `reactive` 包裹:
 
 ```js
 nested: reactive({

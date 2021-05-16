@@ -394,11 +394,11 @@ module.exports = {
         items: [
           {
             text: '一次性捐款',
-            link: '/support-vuejs/#one-time-donations'
+            link: '/support-vuejs/#一次性捐款'
           },
           {
             text: '周期性捐款',
-            link: '/support-vuejs/#recurring-pledges'
+            link: '/support-vuejs/#周期性赞助'
           },
           {
             text: '贴纸',
