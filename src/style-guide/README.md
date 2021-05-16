@@ -81,7 +81,7 @@ export default {
 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。
 
 ::: details 详解
-细致的 [prop 定义](/guide/component-props.html#Prop-%E9%AA%8C%E8%AF%81)有两个好处：
+细致的 [prop 定义](/guide/component-props.html#prop-验证)有两个好处：
 
 - 它们写明了组件的 API，所以很容易看懂组件的用法；
 - 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
@@ -945,7 +945,7 @@ PascalCase 相比 kebab-case 有一些优势：
 然而，对于**只**通过 `app.component` 定义全局组件的应用来说，我们推荐 kebab-case 作为替代。原因是：
 
 - 全局组件很少被 JavaScript 引用，所以遵守 JavaScript 的命名约定意义不大。
-- 这些应用往往包含许多 DOM 内的模板，这种情况下是**必须**[使用 kebab-case](#模板中的组件名大小写-强烈推荐) 的。
+- 这些应用往往包含许多 DOM 内的模板，这种情况下是**必须**[使用 kebab-case](#模板中的组件名称大小写强烈推荐) 的。
 
 :::
 

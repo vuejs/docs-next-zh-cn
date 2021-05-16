@@ -78,13 +78,13 @@ const app = createApp({})
 | 2.x 全局 API               | 3.x 实例 API (`app`)                                                                         |
 | -------------------------- | -------------------------------------------------------------------------------------------- |
 | Vue.config                 | app.config                                                                                   |
-| Vue.config.productionTip   | _removed_ ([见下方](#config-productiontip-removed))                                          |
-| Vue.config.ignoredElements | app.config.isCustomElement ([见下方](#config-ignoredelements-is-now-config-iscustomelement)) |
+| Vue.config.productionTip   | _removed_ ([见下方](#config-productiontip-移除))                                          |
+| Vue.config.ignoredElements | app.config.isCustomElement ([见下方](#config-ignoredelements-替换为-config-iscustomelement)) |
 | Vue.component              | app.component                                                                                |
 | Vue.directive              | app.directive                                                                                |
 | Vue.mixin                  | app.mixin                                                                                    |
-| Vue.use                    | app.use ([见下方](#a-note-for-plugin-authors))                                               |
-| Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-replaced-by-config-globalproperties))   |
+| Vue.use                    | app.use ([见下方](#插件使用者须知))                                               |
+| Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-替换为-config-globalproperties))   |
 
 所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
 

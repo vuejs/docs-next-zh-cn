@@ -68,7 +68,7 @@ const AsyncComp = defineAsyncComponent(() =>
 app.component('async-component', AsyncComp)
 ```
 
-当[在本地注册组件](component-registration.html#local-registration)时，你也可以使用 `defineAsyncComponent`
+当[在局部注册组件](component-registration.html#局部注册)时，你也可以使用 `defineAsyncComponent`
 
 ```js
 import { createApp, defineAsyncComponent } from 'vue'
@@ -89,4 +89,4 @@ createApp({
 
 异步组件可以选择退出 `Suspense` 控制，并可以在其选项中指定 `suspensible:false`，让组件始终控制自己的加载状态。
 
-你可以在 [API 参考](../api/global-api.html#arguments-4)查看更多可用的选项。
+你可以在 [API 参考](../api/global-api.html#参数-4)查看更多可用的选项。
