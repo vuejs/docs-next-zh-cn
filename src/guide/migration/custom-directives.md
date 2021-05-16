@@ -99,6 +99,7 @@ mounted(el, binding, vnode) {
   const vm = binding.instance
 }
 ```
+
 :::warning 注意
-有了 `fragments` 支持, 组件可能会有多个根节点。当自定义指令应用于多根组件时，其将被忽略并记录警告。 
+有了 [fragments](/guide/migration/fragments.html#概览) 支持, 组件可能会有多个根节点。当自定义指令应用于多根组件时，其将被忽略并记录警告。 
 :::

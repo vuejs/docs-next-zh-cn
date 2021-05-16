@@ -8,8 +8,8 @@
 
 - [快速开始](#快速开始)
 - [值得注意的新特性](#值得注意的新特性)
-- [重大改变](#重大改变)
-- [支持的库](#支持的库)
+- [非兼容的变更](#非兼容的变更)
+- [支持的库](#官方支持的库)
 
 ## 概览
 
@@ -89,7 +89,7 @@ Vue 3 中需要关注的一些新功能包括：
 ### 自定义元素
 
 - [自定义元素白名单现在已经在编译时执行](/guide/migration/custom-elements-interop.html)
-- [对特殊的 `is` prop 的使用只严格限制在被保留的 `<component>` 标记中](/guide/migration/custom-elements-interop.html#customized-built-in-elements)
+- [对特殊的 `is` prop 的使用只严格限制在被保留的 `<component>` 标记中](/guide/migration/custom-elements-interop.html#定制内置元素)
 
 ### 其他小改变
 
@@ -98,7 +98,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [`default` prop 工厂函数不再可以访问 `this` 上下文](/guide/migration/props-default-this.html)
 - [自定义指令 API 已更改为与组件生命周期一致](/guide/migration/custom-directives.html)
 - [`data` 选项应始终被声明为一个函数](/guide/migration/data-option.html)
-- [来自 mixin 的 `data` 选项现在为浅合并](/guide/migration/data-option.html#mixin-merge-behavior-change)
+- [来自 mixin 的 `data` 选项现在为浅合并](/guide/migration/data-option.html#mixin-合并行为变更)
 - [Attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
 - [一些过渡 class 被重命名](/guide/migration/transition.html)
 - [`<TransitionGroup>` 不再默认渲染包裹元素](/guide/migration/transition-group.html)
