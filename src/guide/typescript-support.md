@@ -4,7 +4,7 @@
 
 ## NPM 包中的官方声明
 
-随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一流的公民支持。
+随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一等公民支持。
 
 ## 推荐配置
 
@@ -14,7 +14,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    // 这样就可以对 `this` 上的数据属性进行更严格的推断`
+    // 这样就可以对 this 上的数据属性进行更严格的推断
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node"
