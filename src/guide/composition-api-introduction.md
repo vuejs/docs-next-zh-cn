@@ -55,15 +55,15 @@ export default {
 2. 使用 `searchQuery` 字符串搜索仓库
 3. 使用 `filters` 对象筛选仓库
 
-使用 (`data`、`computed`、`methods`、`watch`) 组件选项来组织逻辑在通常都很有效。然而，当我们的组件开始变得更大时，**逻辑关注点**的列表也会增长。尤其是对于那些一开始就没有编写这些组件的人来讲，这会导致组件难以阅读和理解。
+使用 (`data`、`computed`、`methods`、`watch`) 组件选项来组织逻辑通常都很有效。然而，当我们的组件开始变得更大时，**逻辑关注点**的列表也会增长。尤其对于那些一开始没有编写这些组件的人来说，这会导致组件难以阅读和理解。
 
 ![Vue 选项式 API: 按选项类型分组的代码](https://user-images.githubusercontent.com/499550/62783021-7ce24400-ba89-11e9-9dd3-36f4f6b1fae2.png)
 
-这是一个大型组件的示例，其中**逻辑关注点**是按颜色分组。
+这是一个大型组件的示例，其中**逻辑关注点**按颜色进行分组。
 
 这种碎片化使得理解和维护复杂组件变得困难。选项的分离掩盖了潜在的逻辑问题。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块。
 
-如果我们能够将与同一个逻辑关注点相关的代码配置在一起，这样会更好。而这正是组合式 API 使我们能够做到的。
+如果我们能够将同一个逻辑关注点相关代码收集在一起会更好。而这正是组合式 API 使我们能够做到的。
 
 ## 组合式 API 基础
 
@@ -73,7 +73,7 @@ export default {
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">观看 Vue Mastery 上的免费 setup 视频。</VideoLesson>
 
-新的 `setup` 组件选项在创建组件**之前**执行，一旦 `props` 被解析，就作为组合式 API 的入口点。
+新的 `setup` 组件选项在创建组件**之前**执行，一旦 `props` 被解析，就作为组合式 API 的入口点。 
 
 :::warning
 由于在执行 `setup` 时，组件实例尚未被创建，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
