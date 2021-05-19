@@ -62,7 +62,7 @@ setup(props) {
 
 ### Context
 
-传递给 `setup` 函数的第二个参数是 `context`。`context` 是一个普通的 JavaScript 对象，它暴露三个组件的 property：
+传递给 `setup` 函数的第二个参数是 `context`。`context` 是一个普通的 JavaScript 对象，它暴露组件的三个 property：
 
 ```js
 // MyBook.vue
