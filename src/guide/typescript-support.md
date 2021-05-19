@@ -111,7 +111,7 @@ const Component = defineComponent({
 })
 ```
 
-如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) 对其进行强制转换：
+如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) 对其进行指明：
 
 ```ts
 interface Book {
@@ -167,7 +167,7 @@ const Component = defineComponent({
 
 ### 注解 Props
 
-Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 强制转换构造函数：
+Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 指明构造函数：
 
 ```ts
 import { defineComponent, PropType } from 'vue'
