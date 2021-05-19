@@ -111,7 +111,7 @@ const Component = defineComponent({
 })
 ```
 
-如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) 对其进行强制转换：
+如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions) 对其进行强制转换：
 
 ```ts
 interface Book {
