@@ -28,7 +28,7 @@ function setup(props: Data, context: SetupContext): Data
 ```
 
 :::tip
-若要获取传递给 `setup()` 的参数的类型推断，请使用 [defineComponent](global-api.html#definecomponent) 是需要的。
+在 [defineComponent](global-api.html#definecomponent) 中通过 `setup` function 定义组件时，可以通过定义传递参数的类型进行类型推断
 :::
 
 - **示例：**
