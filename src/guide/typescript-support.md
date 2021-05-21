@@ -96,7 +96,7 @@ const Component = defineComponent({
 
 ## 与 Options API 一起使用
 
-TypeScript 应该能够在不显式定义类型的情况下推断大多数类型。例如，如果有一个具有数字 `count` property 的组件，如果试图对其调用特定于字符串的方法，则会出现错误：
+TypeScript 应该能够在不显式定义类型的情况下推断大多数类型。例如，对于拥有一个数字类型的 `count` property 的组件来说，如果你试图对其调用字符串独有的方法，会出现错误：
 
 ```ts
 const Component = defineComponent({
