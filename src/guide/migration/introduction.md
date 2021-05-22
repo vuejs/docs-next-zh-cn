@@ -116,7 +116,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [`$children` 实例 property](/guide/migration/children.html)
 - [`propsData` 选项](/guide/migration/props-data.html)
 - `$destroy` 实例方法。用户不应再手动管理单个 Vue 组件的生命周期。
-- 全局函数 `set` 和 `delete` 以及实例方法 `$set` 和 `$delete`。基于代理的变化检测不再需要它们。
+- 全局函数 `set` 和 `delete` 以及实例方法 `$set` 和 `$delete`。基于代理的变化检测不再需要它们了。
 
 ## 官方支持的库
 

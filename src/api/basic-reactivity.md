@@ -77,7 +77,7 @@ original.count++
 copy.count++ // 警告!
 ```
 
-与 [`reactive`](#reactive) 一样，如果任何 property 使用了 `ref`，当它通过代理访问时，则被自动解构：
+与 [`reactive`](#reactive) 一样，如果任何 property 使用了 `ref`，当它通过代理访问时，则被自动解包：
 
 ```js
 const raw = {
@@ -205,7 +205,7 @@ isReactive(state.nested) // false
 state.nested.bar++ // 非响应式
 ```
 
-与 [`reactive`](#reactive) 不同，任何使用 [`ref`](/api/refs-api.html#ref) 的 property 都**不会**被代理自动解构。
+与 [`reactive`](#reactive) 不同，任何使用 [`ref`](/api/refs-api.html#ref) 的 property 都**不会**被代理自动解包。
 
 ## `shallowReadonly`
 
@@ -225,4 +225,4 @@ state.foo++
 isReadonly(state.nested) // false
 state.nested.bar++ // 适用
 ```
-与 [`readonly`](#readonly) 不同，任何使用 [`ref`](/api/refs-api.html#ref) 的 property 都**不会**被代理自动解构。
+与 [`readonly`](#readonly) 不同，任何使用 [`ref`](/api/refs-api.html#ref) 的 property 都**不会**被代理自动解包。

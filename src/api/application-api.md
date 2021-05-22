@@ -191,7 +191,7 @@ app.directive('focus', {
 
 - **用法：**
 
-  所提供 DOM 元素的 `innerHTML` 将被替换为应用根组件的渲染模板。
+  所提供 DOM 元素的 `innerHTML` 将被替换为应用根组件的模板渲染结果。
 
 - **示例：**
 

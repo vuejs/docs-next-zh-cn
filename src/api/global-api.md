@@ -4,7 +4,7 @@ sidebarDepth: 1
 
 # 全局 API
 
-如果你使用的是 CDN 构建，那么全局 API 的功能可以通过全局 `Vue` 对象来访问，例如：
+如果你使用的是 CDN 构建，那么全局 API 可以通过全局对象 `Vue` 来访问，例如：
 
 ```js
 const { createApp, h, nextTick } = Vue
@@ -16,7 +16,7 @@ const { createApp, h, nextTick } = Vue
 import { createApp, h, nextTick } from 'vue'
 ```
 
-处理响应性的全局函数，如 `reactive` 和 `ref`，是单独编写的。关于这些函数，请参见[响应性 API](/api/reactivity-api.html)。
+处理响应性的全局函数，如 `reactive` 和 `ref`，其文档是单独编写的。关于这些函数，请参见[响应性 API](/api/reactivity-api.html)。
 
 ## createApp
 
@@ -511,11 +511,11 @@ export default {
 </style>
 ```
 
-关于使用 CSS 模块的更多信息，请参阅 [Vue Loader - CSS 模块](https://vue-loader.vuejs.org/guide/css-modules.html)。
+关于使用 CSS 模块的更多信息，请参阅 [Vue Loader - CSS Modules](https://vue-loader.vuejs.org/zh/guide/css-modules.html)。
 
 ### 参数
 
-接受一个参数: `name`
+接受一个参数：`name`
 
 #### 名词
 
