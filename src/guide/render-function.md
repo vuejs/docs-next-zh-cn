@@ -166,7 +166,7 @@ h(
 )
 ```
 
-如果没有 props ，那么通常可以将 children 作为第二个参数进行传递。在这种情况下，可以将 `null` 作为第二个参数传递，将 children 作为第三个参数。
+如果没有 prop，那么通常可以将 children 作为第二个参数传入。如果会产生歧义，可以将 `null` 作为第二个参数传入，将 children 作为第三个参数传入。
 
 ## 完整实例
 
@@ -195,8 +195,8 @@ app.component('anchored-heading', {
     // 从 children 的文本内容中创建短横线分隔 (kebab-case) id。
     const headingId = getChildrenTextContent(this.$slots.default())
       .toLowerCase()
-      .replace(/\W+/g, '-') // 用破折号替换非单词字符
-      .replace(/(^-|-$)/g, '') // 删除前后破折号
+      .replace(/\W+/g, '-') // 用短横线替换非单词字符
+      .replace(/(^-|-$)/g, '') // 删除前后短横线
 
     return h('h' + this.level, [
       h(
@@ -511,7 +511,7 @@ render() {
 
 就像 `is`, `resolveDynamicComponent` 支持传递一个组件名称、一个 HTML 元素名称或一个组件选项对象。
 
-通常不需要这种程度的灵活性。仅需一个更直接的替代方案取代 `resolveDynamicComponent`。
+通常这种程度的灵活性是不需要的。通常 `resolveDynamicComponent` 可以被换做一个更直接的替代方案。
 
 例如，如果我们只需要支持组件名称，那么可以使用 `resolveComponent` 来代替。
 
