@@ -24,7 +24,7 @@
   })
   ```
 
--  **参考**[自定义指令](../guide/custom-directive.html)
+-  **参考：**[自定义指令](../guide/custom-directive.html)
 
 ## components
 

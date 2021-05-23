@@ -8,7 +8,7 @@ export const labels = {
   loading: 'Loading...'
 }
 
-// 回帖按语言代码的字母顺序排列。
+// 代码仓库按语言代码的字母顺序排列。
 // 在此列表中添加新项目时，你可能需要清除一下 sessionStorage。
 export const repos = [
   { lang: 'en-us', owner: 'vuejs', repo: 'docs-next', branch: 'master', url: 'https://v3.vuejs.org/' },

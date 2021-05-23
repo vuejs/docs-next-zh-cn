@@ -166,7 +166,7 @@ h(
 )
 ```
 
-如果没有 props ，那么通常可以将 children 作为第二个参数进行传递。在这种情况下，可以将 `null` 作为第二个参数传递，将 children 作为第三个参数。
+如果没有 prop，那么通常可以将 children 作为第二个参数传入。如果会产生歧义，可以将 `null` 作为第二个参数传入，将 children 作为第三个参数传入。
 
 ## 完整实例
 
@@ -195,8 +195,8 @@ app.component('anchored-heading', {
     // 从 children 的文本内容中创建短横线分隔 (kebab-case) id。
     const headingId = getChildrenTextContent(this.$slots.default())
       .toLowerCase()
-      .replace(/\W+/g, '-') // 用破折号替换非单词字符
-      .replace(/(^-|-$)/g, '') // 删除前后破折号
+      .replace(/\W+/g, '-') // 用短横线替换非单词字符
+      .replace(/(^-|-$)/g, '') // 删除前后短横线
 
     return h('h' + this.level, [
       h(
@@ -511,7 +511,7 @@ render() {
 
 就像 `is`, `resolveDynamicComponent` 支持传递一个组件名称、一个 HTML 元素名称或一个组件选项对象。
 
-通常不需要这种程度的灵活性。仅需一个更直接的替代方案取代 `resolveDynamicComponent`。
+通常这种程度的灵活性是不需要的。通常 `resolveDynamicComponent` 可以被换做一个更直接的替代方案。
 
 例如，如果我们只需要支持组件名称，那么可以使用 `resolveComponent` 来代替。
 
@@ -590,6 +590,33 @@ app.mount('#demo')
 ```
 
 有关 JSX 如何映射到 JavaScript 的更多信息，请参阅[使用文档](https://github.com/vuejs/jsx-next#installation) 。
+
+<!-- TODO： translation-->
+
+## 函数式组件
+
+Functional components are an alternative form of component that don't have any state of their own. They are rendered without creating a component instance, bypassing the usual component lifecycle.
+
+To create a functional component we use a plain function, rather than an options object. The function is effectively the `render` function for the component. As there is no `this` reference for a functional component, Vue will pass in the `props` as the first argument:
+
+```js
+const FunctionalComponent = (props, context) => {
+  // ...
+}
+```
+
+The second argument, `context`, contains three properties: `attrs`, `emit`, and `slots`. These are equivalent to the instance properties [`$attrs`](/api/instance-properties.html#attrs), [`$emit`](/api/instance-methods.html#emit), and [`$slots`](/api/instance-properties.html#slots) respectively.
+
+Most of the usual configuration options for components are not available for functional components. However, it is possible to define [`props`](/api/options-data.html#props) and [`emits`](/api/options-data.html#emits) by adding them as properties:
+
+```js
+FunctionalComponent.props = ['value']
+FunctionalComponent.emits = ['click']
+```
+
+If the `props` option is not specified, then the `props` object passed to the function will contain all attributes, the same as `attrs`. The prop names will not be normalized to camelCase unless the `props` option is specified.
+
+Functional components can be registered and consumed just like normal components. If you pass a function as the first argument to `h`, it will be treated as a functional component.
 
 ## 模板编译
 

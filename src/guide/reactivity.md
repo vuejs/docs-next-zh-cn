@@ -35,8 +35,8 @@ console.log(sum) // Still 5
 
 作为一个高阶的概述，我们需要做到以下几点：
 
-1. **追踪当一个值被读取时**，例如，`val1 + val2` 读取了两个，即 `val1` 和 `val2`。
-2. **检测当某个改变时**，例如，当我们赋值 `val1 = 3`。
+1. **当一个值被读取时进行追踪**，例如 `val1 + val2` 会同时读取 `val1` 和 `val2`。
+2. **当某个改变时进行检测**，例如，当我们赋值 `val1 = 3`。
 3. **重新运行代码来读取原始值**，例如，再次运行 `sum = val1 + val2` 来更新 `sum` 的值。
 
 我们不能直接用前面的例子中的代码来继续，但是我们后面会再来看看这个例子，以及如何调整它来兼容 Vue 的响应性系统。
@@ -129,7 +129,7 @@ console.log(proxy.meal)
 
 Here we've intercepted attempts to read properties of the target object. A handler function like this is also known as a *trap*. There are many different types of trap available, each handling a different type of interaction.
 
-Beyond a console log, we could do anything here we wish. We could even _not_ return the real value if we wanted to. This is what makes Proxies so powerful for creating APIs.
+除了控制台日志，我们可以在这里做任何我们想做的事情。如果我们愿意，我们甚至可以不返回实际值。这就是为什么 Proxy 对于创建 API 如此强大。
 
 One challenge with using a Proxy is the `this` binding. We'd like any methods to be bound to the Proxy, rather than the target object, so that we can intercept them too. Thankfully, ES6 introduced another new feature, called `Reflect`, that allows us to make this problem disappear with minimal effort:
 
@@ -267,7 +267,7 @@ const handler = {
 
 ### Proxy vs 原始标识
 
-Proxy 的使用确实引入了一个需要注意的新警告：在身份比较方面，被代理对象与原始对象不相等 (`===`)。例如:
+Proxy 的使用确实引入了一个需要注意的新警告：在身份比较方面，被代理对象与原始对象不相等 (`===`)。例如：
 
 ```js
 const obj = {}
@@ -298,7 +298,7 @@ const obj = reactive({
 console.log(obj.count === 0) // true
 ```
 
-## 侦听器
+## 如何让渲染响应变化
 
 The template for a component is compiled down into a [`render`](/guide/render-function.html) function. The `render` function creates the [VNodes](/guide/render-function.html#the-virtual-dom-tree) that describe how the component should be rendered. It is wrapped in an effect, allowing Vue to track the properties that are 'touched' while it is running.
 

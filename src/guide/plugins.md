@@ -75,7 +75,7 @@ export default {
 }
 ```
 
-插件用户现在可以将 `inject[in18] ` 到他们的组件并访问该对象。
+插件用户现在可以将 `inject[i18n] ` 注入到他们的组件并访问该对象。
 
 另外，由于我们可以访问 `app` 对象，因此插件可以使用所有其他功能，例如使用 `mixin` 和 `directive`。要了解有关 `createApp` 和应用程序实例的更多信息，请查看 [Application API 文档](/api/application-api.html)。
 

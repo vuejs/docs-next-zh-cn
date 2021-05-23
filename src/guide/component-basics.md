@@ -235,7 +235,7 @@ app.component('blog-post', {
 })
 ```
 
-这将允许我们检查组件抛出的所有事件，还可以选择 [validate them](component-custom-events.html#validate-emitted-events)。
+这将允许我们检查组件抛出的所有事件，还可以选择[验证它们](component-custom-events.html#验证抛出的事件)。
 
 ### 使用事件抛出一个值
 
@@ -293,7 +293,7 @@ methods: {
 ```
 
 ::: warning
-请注意，我们在这里使用的是 `model-value`，因为我们使用的是 DOM 模板中的 kebab-case。你可以在 [DOM Template Parsing Caveats](#dom-template-parsing-caveats) 部分找到关于 kebab cased 和 camelCased 属性的详细说明
+请注意，我们在这里使用的是 `model-value`，因为我们使用的是 DOM 模板中的 kebab-case。你可以在[解析 DOM 模板时的注意事项](#解析-dom-模板时的注意事项)部分找到关于 kebab cased 和 camelCased 属性的详细说明
 :::
 
 为了让它正常工作，这个组件内的 `<input>` 必须：
