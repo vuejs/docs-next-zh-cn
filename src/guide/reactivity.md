@@ -150,7 +150,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-我们之前提到过，为了有一个 API 能够在某些内容发生变化时更新最终值，我们必须在内容发生变化时设置新的值。我们在处理器，一个名为 `track` 的函数中执行此操作，该函数可以传入 `target` 和 `key` 两个参数。
+使用 Proxy 实现响应性的第一步就是跟踪一个 property 何时被读取。我们在一个名为 `track` 的处理器函数中执行此操作，该函数可以传入 `target` 和 `key` 两个参数。
 
 ```js{7}
 const dinner = {
@@ -202,7 +202,7 @@ console.log(proxy.meal)
 - **跟踪更改它的函数**：我们在 proxy 中的 getter 中执行此操作，称为 `effect`
 - **触发函数以便它可以更新最终值**：我们在 proxy 中的 setter 中进行该操作，名为 `trigger`
 
-proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在 property 的值被访问或修改的情况下进行依赖跟踪和变更通知。从 Vue 3 开始，我们的响应性现在可以在[独立的包](https://github.com/vuejs/vue-next/tree/master/packages/reactivity)中使用。需要注意的是，记录转换后的数据对象时，浏览器控制台输出的格式会有所不同，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
+proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在 property 的值被访问或修改的情况下进行依赖跟踪和变更通知。有一点需要注意，控制台日志会以不同的方式对 proxy 对象进行格式化，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
 If we were to rewrite our original example using a component we might do it something like this:
 
