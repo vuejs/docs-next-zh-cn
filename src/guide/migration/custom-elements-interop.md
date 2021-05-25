@@ -18,6 +18,7 @@ badges:
 ```html
 <plastic-button></plastic-button>
 ```
+
 ### 2.x 语法
 
 在 Vue 2.x 中，通过 `Vue.config.ignoredElements` 配置自定义元素白名单：
@@ -100,7 +101,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 > 提示：本节仅影响直接在页面的 HTML 中写入 Vue 模板的情况。
 > 在 DOM 模板中使用时，模板受原生 HTML 解析规则的约束。一些 HTML 元素，例如 `<ul>`，`<ol>`，`<table>` 和 `<select>` 对它们内部可以出现的元素有限制，和一些像 `<li>`，`<tr>`，和 `<option>` 只能出现在某些其他元素中。
 
-### 2x 语法
+### 2.x 语法
 
 在 Vue 2 中，我们建议在原生 tag 上使用 `is` prop 来解决这些限制：
 
