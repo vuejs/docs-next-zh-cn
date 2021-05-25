@@ -44,7 +44,7 @@ app.component('date-picker', {
 })
 ```
 
-当有一个 HTML 元素将 `change` 事件作为 `date-picker` 的根元素时，这可能会有帮助。
+当有一个具有`change`事件的HTML 元素将作为 `date-picker` 的根元素时，这可能会有帮助。
 
 ```js
 app.component('date-picker', {
