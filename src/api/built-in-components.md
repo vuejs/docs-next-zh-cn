@@ -104,9 +104,9 @@
 
 - **Props：**
 
-  - `tag` - `string`, if not defined, renders without a root element. <!-- TODO: translation -->
+  - `tag` - `string` - 如果未定义，则不渲染动画元素。
   - `move-class` - 覆盖移动过渡期间应用的 CSS 类。
-  - 除了 `mode`，其他 attribute 和 `<transition>` 相同。
+  - 除了 `mode` - 其他 attribute 和 `<transition>` 相同。
 
 - **事件：**
 
@@ -114,10 +114,9 @@
 
 - **用法：**
 
-  <!-- TODO: translation -->
-  `<transition-group>` provides transition effects for **multiple** elements/components. By default it doesn't render a wrapper DOM element, but one can be defined via the `tag` attribute.
+  `<transition-group>` 提供了**多个**元素/组件的过渡效果。默认情况下，它不会渲染一个 DOM 元素包裹器，但是可以通过 `tag` attribute 来定义。
 
-  注意，每个 `<transition-group>` 的子节点必须有[**独立的 key**](./special-attributes.html#key)，动画才能正常工作
+  注意，每个 `<transition-group>` 的子节点必须有[**独立的 key**](./special-attributes.html#key)，动画才能正常工作。
 
   `<transition-group>` 支持通过 CSS transform 过渡移动。当一个子节点被更新，从屏幕上的位置发生变化，它会被应用一个移动中的 CSS 类 (通过 `name` attribute 或配置 `move-class` attribute 自动生成)。如果 CSS `transform` property 是“可过渡”property，当应用移动类时，将会使用 [FLIP 技术](https://aerotwist.com/blog/flip-your-animations/)使元素流畅地到达动画终点。
 
