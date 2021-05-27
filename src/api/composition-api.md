@@ -117,6 +117,9 @@ const MyComponent = {
   - `errorCaptured` -> `onErrorCaptured`
   - `renderTracked` -> `onRenderTracked`
   - `renderTriggered` -> `onRenderTriggered`
+  - `activated` -> `onActivated`
+  - `deactivated` -> `onDeactivated`
+
 
 - **参考**：[组合式 API 生命周期钩子](../guide/composition-api-lifecycle-hooks.html)
 
