@@ -47,10 +47,10 @@ export default {
 
 `provide` 函数允许你通过两个参数定义 property：
 
-1. property 的 name (`<String>` 类型)
-2. property 的 value
+1. name (`<String>` 类型)
+2. value
 
-使用 `MyMap` 组件，我们 provide 的值可以按如下方式重构：
+使用 `MyMap` 组件后，provide 的值可以按如下方式重构：
 
 ```vue{7,14-20}
 <!-- src/components/MyMap.vue -->
@@ -79,11 +79,11 @@ export default {
 
 ## 使用 inject
 
-在 `setup()` 中使用 `inject` 时，还需要从 `vue` 显式导入它。一旦我们这样做了，我们就可以调用它来定义如何将它暴露给我们的组件。
+在 `setup()` 中使用 `inject` 时，也需要从 `vue` 显式导入。一旦我们这样做了，我们就可以调用它来定义如何将它暴露给我们的组件。
 
 `inject` 函数有两个参数：
 
-1. inject 的 property 的 name
+1. name
 2. 默认值 (**可选**)
 
 使用 `MyMarker` 组件，可以使用以下代码对其进行重构：
