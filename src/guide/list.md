@@ -235,7 +235,7 @@ methods: {
 ## `v-for` 与 `v-if` 一同使用
 
 :::tip
-注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#avoid-v-if-with-v-for-essential)。
+注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#避免-v-if-和-v-for-一起使用必要)。
 :::
 
 当它们处于同一节点，`v-if` 的优先级比 `v-for` 更高，这意味着 `v-if` 将没有权限访问 `v-for` 里的变量：

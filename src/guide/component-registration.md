@@ -23,7 +23,7 @@ app.component('my-component-name', {
 
 这样会帮助我们避免与当前以及未来的 HTML 元素发生冲突。
 
-你可以在[风格指南](../style-guide/#base-component-names-strongly-recommended)中查阅到关于组件名的其它建议。
+你可以在[风格指南](../style-guide/#基础组件名称强烈推荐)中查阅到关于组件名的其它建议。
 
 ### 组件名大小写
 

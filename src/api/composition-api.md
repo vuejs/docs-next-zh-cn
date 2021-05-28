@@ -28,7 +28,7 @@ function setup(props: Data, context: SetupContext): Data
 ```
 
 :::tip
-若要获取传递给 `setup()` 的参数的类型推断，请使用 [defineComponent](global-api.html#definecomponent) 是需要的。
+若要对传递给 `setup()` 的参数进行类型推断，你需要使用 [defineComponent](global-api.html#definecomponent)。
 :::
 
 - **示例：**
@@ -186,9 +186,9 @@ const MyComponent = {
 }
 ```
 
-`getCurrentInstance` **只能**在 [setup](#setup) 或[生命周期钩子](#lifecycle-hooks)中调用。
+`getCurrentInstance` **只能**在 [setup](#setup) 或[生命周期钩子](#生命周期钩子)中调用。
 
-> 如需在 [setup](#setup) 或[生命周期钩子](#lifecycle-hooks)外使用，请先在 `setup` 中调用 `getCurrentInstance()` 获取该实例然后再使用。
+> 如需在 [setup](#setup) 或[生命周期钩子](#生命周期钩子)外使用，请先在 `setup` 中调用 `getCurrentInstance()` 获取该实例然后再使用。
 
 ```ts
 const MyComponent = {

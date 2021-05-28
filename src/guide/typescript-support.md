@@ -4,7 +4,7 @@
 
 ## NPM 包中的官方声明
 
-随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一流的公民支持。
+随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一等公民支持。
 
 ## 推荐配置
 
@@ -14,7 +14,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    // 这样就可以对 `this` 上的数据属性进行更严格的推断`
+    // 这样就可以对 `this` 上的数据属性进行更严格的推断
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node"
@@ -96,7 +96,7 @@ const Component = defineComponent({
 
 ## 与 Options API 一起使用
 
-TypeScript 应该能够在不显式定义类型的情况下推断大多数类型。例如，如果有一个具有数字 `count` property 的组件，如果试图对其调用特定于字符串的方法，则会出现错误：
+TypeScript 应该能够在不显式定义类型的情况下推断大多数类型。例如，对于拥有一个数字类型的 `count` property 的组件来说，如果你试图对其调用字符串独有的方法，会出现错误：
 
 ```ts
 const Component = defineComponent({
@@ -111,7 +111,7 @@ const Component = defineComponent({
 })
 ```
 
-如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) 对其进行强制转换：
+如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions) 对其进行指明：
 
 ```ts
 interface Book {
@@ -167,7 +167,7 @@ const Component = defineComponent({
 
 ### 注解 Props
 
-Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 强制转换构造函数：
+Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 指明构造函数：
 
 ```ts
 import { defineComponent, PropType } from 'vue'

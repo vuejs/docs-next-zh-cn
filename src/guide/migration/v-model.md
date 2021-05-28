@@ -144,7 +144,7 @@ this.$emit('update:title', newValue)
 <ChildComponent v-model.capitalize="pageTitle" />
 ```
 
-我们可以在 [Custom Events](../component-custom-events.html#handling-v-model-modifiers) 部分中了解有关自定义 `v-model` 修饰符的更多信息。
+我们可以在 [Custom Events](../component-custom-events.html#处理-v-model-修饰符) 部分中了解有关自定义 `v-model` 修饰符的更多信息。
 
 ## 迁移策略
 

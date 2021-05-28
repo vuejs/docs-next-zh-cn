@@ -98,7 +98,7 @@
   app.mount('#transition-demo')
   ```
 
--  **参考：** [进入 & 离开过渡](/guide/transitions-enterleave.html#transitioning-single-elements-components)
+-  **参考：** [进入 & 离开过渡](/guide/transitions-enterleave.html#单元素-组件的过渡)
 
 ## transition-group
 

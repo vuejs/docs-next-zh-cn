@@ -31,7 +31,7 @@ import { ref } from 'vue'
 const count = ref(0)
 ```
 
-`ref` 会返回一个可变的响应式对象，该对象作为它的内部值——一个**响应式的引用**，这就是名称的来源。此对象只包含一个名为 `value` 的 property ：
+`ref` 会返回一个可变的响应式对象，该对象作为一个**响应式的引用**维护着它内部的值，这就是 `ref` 名称的来源。该对象只包含一个名为 `value` 的 property：
 
 ```js
 import { ref } from 'vue'
@@ -45,13 +45,14 @@ console.log(count.value) // 1
 
 ### Ref 展开
 
-当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动展开为内部值。不需要在模板中追加 `.value`：
+当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层次展开内部值。只有访问嵌套的 ref 时需要在模板中添加 `.value`：
 
 ```vue-html
 <template>
   <div>
     <span>{{ count }}</span>
     <button @click="count ++">Increment count</button>
+    <button @click="nested.count.value ++">Nested Increment count</button>
   </div>
 </template>
 
@@ -61,12 +62,26 @@ console.log(count.value) // 1
     setup() {
       const count = ref(0)
       return {
-        count
+        count,
+
+        nested: {
+          count
+        }
       }
     }
   }
 </script>
 ```
+
+:::tip
+如果你不需要访问实际的对象实例，可将其用 `reactive` 包裹:
+
+```js
+nested: reactive({
+  count
+})
+```
+:::
 
 ### 访问响应式对象
 
