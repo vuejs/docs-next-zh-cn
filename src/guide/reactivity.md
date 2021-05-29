@@ -55,9 +55,9 @@ const updateSum = () => {
 
 但我们如何告知 Vue 这个函数呢？
 
-Vue 通过使用 *effect* 来跟踪当前正在运行的函数。副作用是一个围绕函数的包裹器，在函数被调用之前就启动跟踪。Vue 知道哪个副作用在何时运行，并能在需要时再次执行它。
+Vue 通过一个*副作用 (effect)* 来跟踪当前正在运行的函数。副作用是一个函数的包裹器，在函数被调用之前就启动跟踪。Vue 知道哪个副作用在何时运行，并能在需要时再次执行它。
 
-为了更好地理解这一点，让我们尝试在没有 Vue 的情况下自己实现类似的东西，看看它可能如何工作。
+为了更好地理解这一点，让我们尝试脱离 Vue 实现类似的东西，以看看它如何工作。
 
 我们需要的是能够包裹总和的东西，像这样：
 
@@ -70,7 +70,7 @@ createEffect(() => {
 我们需要 `createEffect` 来跟踪和执行。我们的实现如下：
 
 ```js
-// 维持一个执行副作用的堆栈
+// 维持一个执行副作用的栈
 const runningEffects = []
 
 const createEffect = fn => {
@@ -86,25 +86,25 @@ const createEffect = fn => {
 }
 ```
 
-当我们的副作用被调用时，在调用 `fn` 之前，它会把自己推到 `runningEffects` 数组中。任何想知道当前正在运行的副作用的东西都可以检查这个数组。
+当我们的副作用被调用时，在调用 `fn` 之前，它会把自己推到 `runningEffects` 数组中。这个数组可以用来检查当前正在运行的副作用。
 
 副作用是许多关键功能的起点。例如，组件的渲染和计算属性都在内部使用副作用。任何时候，只要有东西对数据变化做出奇妙的回应，你就可以肯定它已经被包裹在一个副作用中了。
 
-虽然 Vue 的公开 API 不包括任何直接创建副作用的方法，但它确实暴露了一个叫做 `watchEffect` 的函数，它的行为很像我们例子中的 `createEffect` 函数。我们会在[指南后面](/guide/reactivity-computed-watchers.html#watcheffect)详细讨论这个问题。
+虽然 Vue 的公开 API 不包括任何直接创建副作用的方法，但它确实暴露了一个叫做 `watchEffect` 的函数，它的行为很像我们例子中的 `createEffect` 函数。我们会在[该指南后面的部分](/guide/reactivity-computed-watchers.html#watcheffect)详细讨论这个问题。
 
 但知道什么代码在执行只是难题的一部分。Vue 如何知道副作用使用了什么值，以及如何知道它们何时发生变化？
 
-## Vue如何跟踪变化
+## Vue 如何跟踪变化
 
 我们不能像前面的例子中那样跟踪局部变量的重新分配，在 JavaScript 中没有这样的机制。我们可以跟踪的是对象 property 的变化。
 
-当我们从一个组件的 `data` 函数中返回一个普通的 JavaScript 对象时，Vue 会将该对象包裹在一个带有 `get` 和 `set` 处理程序的 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 中。代理是在 ES6 中引入的，它使 Vue 3 避免了 Vue 早期版本中存在的一些响应性问题。
+当我们从一个组件的 `data` 函数中返回一个普通的 JavaScript 对象时，Vue 会将该对象包裹在一个带有 `get` 和 `set` 处理程序的 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 中。Proxy 是在 ES6 中引入的，它使 Vue 3 避免了 Vue 早期版本中存在的一些响应性问题。
 
 <div class="reactivecontent">
   <common-codepen-snippet title="Proxies and Vue's Reactivity Explained Visually" slug="VwmxZXJ" tab="result" theme="light" :height="500" :editable="false" :preview="false" />
 </div>
 
-那看起来灵敏，不过，需要一些[代理](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)的知识才能理解! 所以让我们深入了解一下。有很多关于代理的文档，但你真正需要知道的是，**代理是一个封装另一个对象的对象，允许你拦截与该对象的任何交互。**
+那看起来灵敏，不过，需要一些 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的知识才能理解！所以让我们深入了解一下。有很多关于 Proxy 的文档，但你真正需要知道的是，**Proxy 是一个对象，它包装了另一个对象，并允许你拦截对该对象的任何交互。**
 
 我们这样使用它：`new Proxy(target, handler)`
 
@@ -131,7 +131,7 @@ console.log(proxy.meal)
 
 除了控制台日志，我们可以在这里做任何我们想做的事情。如果我们愿意，我们甚至可以不返回实际值。这就是为什么 Proxy 对于创建 API 如此强大。
 
-使用代理的一个难点是 `this` 绑定。我们希望任何方法都绑定到代理，而不是目标对象，这样我们也可以拦截它们。值得庆幸的是，ES6 引入了另一个名为 `Reflect` 的新特性，它允许我们以最小的代价消除了这个问题：
+使用 Proxy 的一个难点是 `this` 绑定。我们希望任何方法都绑定到这个 Proxy，而不是目标对象，这样我们也可以拦截它们。值得庆幸的是，ES6 引入了另一个名为 `Reflect` 的新特性，它允许我们以最小的代价消除了这个问题：
 
 ```js{7}
 const dinner = {
