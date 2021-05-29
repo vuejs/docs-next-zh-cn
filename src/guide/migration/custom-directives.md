@@ -91,7 +91,7 @@ bind(el, binding, vnode) {
 }
 ```
 
-在 Vue 3 中，实例是 `binding` 参数的一个属性：
+在 Vue 3 中，实例是 `binding` 参数的一个 property：
 
 ```javascript
 mounted(el, binding, vnode) {
