@@ -139,7 +139,7 @@ const dinner = {
 }
 
 const handler = {
-  get(target, prop, receiver) {
+  get(target, property, receiver) {
     return Reflect.get(...arguments)
   }
 }
@@ -158,8 +158,8 @@ const dinner = {
 }
 
 const handler = {
-  get(target, prop, receiver) {
-    track(target, prop)
+  get(target, property, receiver) {
+    track(target, property)
     return Reflect.get(...arguments)
   }
 }
@@ -180,12 +180,12 @@ const dinner = {
 }
 
 const handler = {
-  get(target, prop, receiver) {
-    track(target, prop)
+  get(target, property, receiver) {
+    track(target, property)
     return Reflect.get(...arguments)
   },
-  set(target, key, value, receiver) {
-    trigger(target, key)
+  set(target, property, value, receiver) {
+    trigger(target, property)
     return Reflect.set(...arguments)
   }
 }
@@ -198,9 +198,9 @@ console.log(proxy.meal)
 
 还记得几段前的列表吗？现在我们有了一些关于 Vue 如何处理这些更改的答案：
 
-- <strike>当某个值发生变化时进行检测</strike>：我们不再需要这样做，因为 Proxy 允许我们拦截它
-- **跟踪更改它的函数**：我们在 proxy 中的 getter 中执行此操作，称为 `effect`
-- **触发函数以便它可以更新最终值**：我们在 proxy 中的 setter 中进行该操作，名为 `trigger`
+- **读值时的跟踪**：proxy 的 `get` 处理函数中 `track` 函数记录了该 property 和当前副作用。
+- **检测该值何时发生变化**：在 proxy 上调用 `set` 处理函数。
+- **触发函数以便它可以更新最终值**：`trigger` 函数查找哪些副作用依赖于该 property 和它们的执行。
 
 proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在 property 的值被访问或修改的情况下进行依赖跟踪和变更通知。有一点需要注意，控制台日志会以不同的方式对 proxy 对象进行格式化，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
@@ -276,9 +276,9 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-在大多数情况下，原始版本和被包裹版本的行为相同，但请注意，它们在依赖严格比对的操作下将是失败的，例如 `.filter()` 或 `.map()`。使用选项式 API 时，这种警告不太可能出现，因为所有响应式都是从 `this` 访问的，并保证已经是 proxy。
+其他依赖严等于比较的操作也会受到影响，例如 `.includes()` 或 `.indexOf()`。
 
-但是，当使用组合式 API 显式创建响应式对象时，最佳做法是不要保留对原始对象的引用，而只使用响应式版本：
+这里的最佳实践是永远不要维持有对原始对象的引用，而只使用响应式版本。
 
 ```js
 const obj = reactive({
@@ -286,7 +286,7 @@ const obj = reactive({
 }) // 未引用原始
 ```
 
-这确保了平等性的比较和响应性的行为都符合预期。
+这确保了等值的比较和响应性的行为都符合预期。
 
 请注意，Vue 不会在 Proxy 中包裹数字或字符串等原始值，所以你仍然可以对这些值直接使用 `===` 来比较：
 
