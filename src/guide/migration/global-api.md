@@ -181,7 +181,7 @@ app.directive('focus', {
   mounted: el => el.focus()
 })
 
-// 现在，所有通过`app.mount()`挂载的应用实例及其组件树，将具有相同的“button-counter”组件和“focus”指令，而不会污染全局环境
+// 现在，所有通过 `app.mount()` 挂载的应用实例及其组件树，将具有相同的 “button-counter” 组件和 “focus” 指令，而不会污染全局环境
 app.mount('#app')
 ```
 
