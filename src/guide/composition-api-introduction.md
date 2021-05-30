@@ -76,7 +76,7 @@ export default {
 新的 `setup` 组件选项在创建组件**之前**执行，一旦 `props` 被解析，就作为组合式 API 的入口点。
 
 :::warning
-由于在执行 `setup` 时，组件实例尚未被创建，因此在 `setup` 选项中没有 `this`。这意味着，除了 `props` 之外，你将无法访问组件中声明的任何属性——**本地状态**、**计算属性**或**方法**。
+在 `setup` 中你应该避免使用 `this`，因为它不会找到组件实例。`setup` 的调用发生在 `data` property、`computed` property 或 `methods` 被解析之前，所以它们无法在 `setup` 中被获取。
 :::
 
 `setup` 选项应该是一个接受 `props` 和 `context` 的函数，我们将在[稍后](composition-api-setup.html#参数)讨论。此外，我们从 `setup` 返回的所有内容都将暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。

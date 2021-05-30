@@ -158,7 +158,7 @@ Vue.createApp({
 <span>Selected: {{ selected }}</span>
 ```
 
-<common-codepen-snippet title="Handling forms: select bound to array" slug="gOpBXPz" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Handling forms: select bound to array" slug="gOpBXPz" tab="result" :preview="false" />
 
 用 `v-for` 渲染的动态选项：
 

@@ -46,12 +46,26 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 这些文件可以在 [unpkg](https://unpkg.com/browse/vue@next/dist/) 或者 [jsDelivr](https://cdn.jsdelivr.net/npm/vue@next/dist/) 这些 CDN 上浏览和下载。各种不同文件将在[以后解释](#对不同构建版本的解释)，但你通常需要同时下载开发环境构建版本以及生产环境构建版本。
 
 ## npm
-在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Rollup](https://rollupjs.org/) 模块打包器配合使用。Vue 还提供了编写[单文件组件](../guide/single-file-component.html)的配套工具。
+
+在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [Webpack](https://webpack.js.org/) 或 [Rollup](https://rollupjs.org/) 模块打包器配合使用。
 
 ```bash
 # 最新稳定版
 $ npm install vue@next
 ```
+
+Vue 还提供了编写[单文件组件](../guide/single-file-component.html)的配套工具。如果你想使用单文件组件，那么你还需要安装 `@vue/compiler-sfc`:
+
+```bash
+$ npm install -D @vue/compiler-sfc
+```
+
+<!-- TODO: translation -->
+If you're coming from Vue 2 then note that `@vue/compiler-sfc` replaces `vue-template-compiler`.
+
+In addition to `@vue/compiler-sfc`, you'll also need a suitable SFC loader or plugin for your chosen bundler. See the [SFC documentation](../guide/single-file-component.html) for more information.
+
+In most cases, the preferred way to create a webpack build with minimal configuration is to use Vue CLI.
 
 ## 命令行工具 (CLI)
 

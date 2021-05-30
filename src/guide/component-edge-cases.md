@@ -21,7 +21,7 @@
 
 在 Vue 中渲染纯 HTML 元素的速度非常快，但有时你可能有一个包含**很多**静态内容的组件。在这些情况下，可以通过向根元素添加 `v-once` 指令来确保只对其求值一次，然后进行缓存，如下所示：
 
-``` js
+```js
 app.component('terms-of-service', {
   template: `
     <div v-once>

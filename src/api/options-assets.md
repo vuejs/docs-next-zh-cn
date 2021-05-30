@@ -9,6 +9,7 @@
   包含组件实例可用指令的哈希表。
 
 - **用法：**
+
   ```js
   const app = createApp({})
 
@@ -35,6 +36,7 @@
   包含组件实例可用组件的哈希表。
 
 - **用法：**
+
   ```js
   const Foo = {
     template: `<div>Foo</div>`

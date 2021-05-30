@@ -53,7 +53,7 @@ app.mount('#components-demo')
 </div>
 ```
 
-<common-codepen-snippet title="Component basics: reusing components" slug="rNVqYvM" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Component basics: reusing components" slug="rNVqYvM" tab="result" :preview="false" />
 
 注意当点击按钮时，每个组件都会各自独立维护它的 `count`。因为你每用一次组件，就会有一个它的新**实例**被创建。
 
@@ -108,7 +108,7 @@ app.mount('#blog-post-demo')
 </div>
 ```
 
-<common-codepen-snippet title="Component basics: passing props" slug="PoqyOaX" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Component basics: passing props" slug="PoqyOaX" tab="result" :preview="false" />
 
 然而在一个典型的应用中，你可能在 `data` 里有一个博文的数组：
 
@@ -224,7 +224,7 @@ app.component('blog-post', {
 
 多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级组件能够接收事件并更新 `postFontSize` 值。
 
-<common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="result" :preview="false" />
 
 我们可以在组件的 `emits` 选项中列出已抛出的事件：
 

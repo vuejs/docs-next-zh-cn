@@ -60,7 +60,7 @@ export default {
 
 <script>
 import { provide } from 'vue'
-import MyMarker from './MyMarker.vue
+import MyMarker from './MyMarker.vue'
 
 export default {
   components: {
@@ -123,7 +123,7 @@ export default {
 
 <script>
 import { provide, reactive, ref } from 'vue'
-import MyMarker from './MyMarker.vue
+import MyMarker from './MyMarker.vue'
 
 export default {
   components: {
@@ -159,7 +159,7 @@ export default {
 
 <script>
 import { provide, reactive, ref } from 'vue'
-import MyMarker from './MyMarker.vue
+import MyMarker from './MyMarker.vue'
 
 export default {
   components: {
@@ -198,7 +198,7 @@ export default {
 
 <script>
 import { provide, reactive, ref } from 'vue'
-import MyMarker from './MyMarker.vue
+import MyMarker from './MyMarker.vue'
 
 export default {
   components: {
@@ -254,7 +254,7 @@ export default {
 
 <script>
 import { provide, reactive, readonly, ref } from 'vue'
-import MyMarker from './MyMarker.vue
+import MyMarker from './MyMarker.vue'
 
 export default {
   components: {

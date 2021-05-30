@@ -146,7 +146,7 @@ data() {
 ```js
 props: ['size'],
 computed: {
-  normalizedSize: function () {
+  normalizedSize() {
     return this.size.trim().toLowerCase()
   }
 }
@@ -183,22 +183,22 @@ app.component('my-component', {
     propE: {
       type: Object,
       // 对象或数组默认值必须从一个工厂函数获取
-      default: function() {
+      default() {
         return { message: 'hello' }
       }
     },
     // 自定义验证函数
     propF: {
-      validator: function(value) {
+      validator(value) {
         // 这个值必须匹配下列字符串中的一个
-        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+        return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // 具有默认值的函数
     propG: {
       type: Function,
       // 与对象或数组默认值不同，这不是一个工厂函数 —— 这是一个用作默认值的函数
-      default: function() {
+      default() {
         return 'Default function'
       }
     }

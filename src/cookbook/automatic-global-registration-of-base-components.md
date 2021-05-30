@@ -1,5 +1,6 @@
 # Automatic Global Registration of Base Components
 
+<!-- TODO: translation -->
 ## Base Example
 
 Many of your components will be relatively generic, possibly only wrapping an element like an input or a button. We sometimes refer to these as [base components](../style-guide/#base-component-names-strongly-recommended) and they tend to be used very frequently across your components.

@@ -591,7 +591,7 @@ app.mount('#demo')
 
 有关 JSX 如何映射到 JavaScript 的更多信息，请参阅[使用文档](https://github.com/vuejs/jsx-next#installation) 。
 
-<!-- TODO： translation-->
+<!-- TODO: translation-->
 
 ## 函数式组件
 
