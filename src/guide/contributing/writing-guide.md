@@ -64,7 +64,7 @@
 - **避免缩写**在编写代码和示例代码中 (例如，`attribute` 优于 `attr`，`message` 优于 `msg`)，除非你在 API 中明确引用了缩写 (例如 `$attrs`)。标准键盘上包含的缩写符号 (例如，`@`，`#`，`&`) 可以。
 
 - **当引用直接下面的示例时，请使用冒号 (`:`) 结束句子**，而不是句点 (`.`)
-- **使用牛津逗号** (；例如：“a，b，and c” 替换 “a，b and c”)。![为什么牛津逗号很重要](/images/oxford-comma.jpg)
+- **使用牛津逗号** (例如：“a，b，and c” 替换 “a，b and c”)。![为什么牛津逗号很重要](/images/oxford-comma.jpg)
   - 来源：[The Serial (Oxford) Comma：When and Why To Use It](https://www.inkonhand.com/2015/10/the-serial-oxford-comma-when-and-why-to-use-it/)
 - **引用项目名称时，请使用项目引用自身的名称**。例如，“webpack”和“npm”都应使用小写字母，因为这是它们的文档引用它们的方式。
 - **使用标题大小写作为标题** - 至少到目前为止，因为这是我们在其余文档中使用的。有研究表明，句子大小写 (仅标题的第一个单词以大写字母开头) 实际上在可读性上是优越的，并且还减少了文档作者的认知开销，因为他们不必记住是否要大写“and”，“with”和“about”。
