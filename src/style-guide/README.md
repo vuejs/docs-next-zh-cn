@@ -38,18 +38,18 @@ sidebar: auto
 
 **组件名应该始终是多个单词的，根组件 `App` 以及 `<transition>`、`<component>` 之类的 Vue 内置组件除外。**
 
-这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
+这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('todo', {
   // ...
 })
 ```
 
-``` js
+```js
 export default {
   name: 'Todo',
   // ...
@@ -60,13 +60,13 @@ export default {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 app.component('todo-item', {
   // ...
 })
 ```
 
-``` js
+```js
 export default {
   name: 'TodoItem',
   // ...
@@ -90,7 +90,7 @@ export default {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 // 这样做只有开发原型系统时可以接受
 props: ['status']
 ```
@@ -99,13 +99,13 @@ props: ['status']
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 props: {
   status: String
 }
 ```
 
-``` js
+```js
 // 更好的例子
 props: {
   status: {
@@ -134,7 +134,7 @@ props: {
 ::: details 详解
 假设你有一个待办事项列表：
 
-``` js
+```js
 data() {
   return {
     todos: [
@@ -161,7 +161,7 @@ data() {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <ul>
   <li v-for="todo in todos">
     {{ todo.text }}
@@ -173,7 +173,7 @@ data() {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <ul>
   <li
     v-for="todo in todos"
@@ -199,7 +199,7 @@ data() {
 
 当 Vue 处理指令时，`v-if` 比 `v-for` 具有更高的优先级，所以这个模板：
 
-``` html
+```html
 <ul>
   <li
     v-for="user in users"
@@ -215,7 +215,7 @@ data() {
 
 这可以通过迭代一个计算过的 property 来解决，就像这样：
 
-``` js
+```js
 computed: {
   activeUsers() {
     return this.users.filter(user => user.isActive)
@@ -223,7 +223,7 @@ computed: {
 }
 ```
 
-``` html
+```html
 <ul>
   <li
     v-for="user in activeUsers"
@@ -251,7 +251,7 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <ul>
   <li
     v-for="user in users"
@@ -268,7 +268,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <ul>
   <li
     v-for="user in activeUsers"
@@ -310,7 +310,7 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <template>
   <button class="btn btn-close">×</button>
 </template>
@@ -326,7 +326,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <template>
   <button class="button button-close">×</button>
 </template>
@@ -344,7 +344,7 @@ computed: {
 </style>
 ```
 
-``` html
+```html
 <template>
   <button :class="[$style.button, $style.buttonClose]">×</button>
 </template>
@@ -362,7 +362,7 @@ computed: {
 </style>
 ```
 
-``` html
+```html
 <template>
   <button class="c-Button c-Button--close">×</button>
 </template>
@@ -398,7 +398,7 @@ Vue 使用 `_` 前缀来定义其自身的私有 property，所以使用相同�
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -409,7 +409,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -420,7 +420,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -431,7 +431,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -447,7 +447,7 @@ const myGreatMixin = {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -458,7 +458,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 // Even better!
 const myGreatMixin = {
   // ...
@@ -489,7 +489,7 @@ export default myGreatMixin
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('TodoList', {
   // ...
 })
@@ -574,7 +574,7 @@ components/
 
 - 因为这些组件会被频繁使用，所以你可能想把它们放到全局而不是在各处分别导入它们。使用相同的前缀可以让 webpack 这样工作：
 
-  ``` js
+  ```js
   const requireComponent = require.context("./src", true, /Base[A-Z]\w+\.(vue|js)$/)
   requireComponent.keys().forEach(function (fileName) {
     let baseComponentConfig = requireComponent(fileName)
@@ -811,12 +811,12 @@ components/
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <!-- 在单文件组件、字符串模板和 JSX 中 -->
 <MyComponent></MyComponent>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中                   -->
 <my-component/>
 ```
@@ -825,12 +825,12 @@ components/
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- 在单文件组件、字符串模板和 JSX 中 -->
 <MyComponent/>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中                   -->
 <my-component></my-component>
 ```
@@ -853,17 +853,17 @@ PascalCase 相比 kebab-case 有一些优势：
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <!-- 在单文件组件和字符串模板中 -->
 <mycomponent/>
 ```
 
-``` html
+```html
 <!-- 在单文件组件和字符串模板中 -->
 <myComponent/>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中            -->
 <MyComponent></MyComponent>
 ```
@@ -872,19 +872,19 @@ PascalCase 相比 kebab-case 有一些优势：
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- 在单文件组件和字符串模板中 -->
 <MyComponent/>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中            -->
 <my-component></my-component>
 ```
 
 或者
 
-``` html
+```html
 <!-- 在所有地方 -->
 <my-component></my-component>
 ```
@@ -908,24 +908,24 @@ PascalCase 相比 kebab-case 有一些优势：
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('myComponent', {
   // ...
 })
 ```
 
-``` js
+```js
 import myComponent from './MyComponent.vue'
 ```
 
-``` js
+```js
 export default {
   name: 'myComponent',
   // ...
 }
 ```
 
-``` js
+```js
 export default {
   name: 'my-component',
   // ...
@@ -936,23 +936,23 @@ export default {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 app.component('MyComponent', {
   // ...
 })
 ```
 
-``` js
+```js
 app.component('my-component', {
   // ...
 })
 ```
 
-``` js
+```js
 import MyComponent from './MyComponent.vue'
 ```
 
-``` js
+```js
 export default {
   name: 'MyComponent',
   // ...
@@ -995,13 +995,13 @@ components/
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 props: {
   'greeting-text': String
 }
 ```
 
-``` html
+```html
 <WelcomeMessage greetingText="hi"/>
 ```
 </div>
@@ -1009,13 +1009,13 @@ props: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 props: {
   greetingText: String
 }
 ```
 
-``` html
+```html
 <WelcomeMessage greeting-text="hi"/>
 ```
 </div>
@@ -1029,11 +1029,11 @@ props: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
 ```
 
-``` html
+```html
 <MyComponent foo="a" bar="b" baz="c"/>
 ```
 </div>
@@ -1041,14 +1041,14 @@ props: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <img
   src="https://vuejs.org/images/logo.png"
   alt="Vue Logo"
 >
 ```
 
-``` html
+```html
 <MyComponent
   foo="a"
   bar="b"
@@ -1066,7 +1066,7 @@ props: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 {{
   fullName.split(' ').map((word) => {
     return word[0].toUpperCase() + word.slice(1)
@@ -1078,12 +1078,12 @@ props: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- 在模板中 -->
 {{ normalizedFullName }}
 ```
 
-``` js
+```js
 // 复杂表达式已经移入一个计算属性
 computed: {
   normalizedFullName() {
@@ -1120,7 +1120,7 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 computed: {
   price() {
     const basePrice = this.manufactureCost / (1 - this.profitMargin)
@@ -1136,7 +1136,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 computed: {
   basePrice() {
     return this.manufactureCost / (1 - this.profitMargin)
@@ -1162,11 +1162,11 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <input type=text>
 ```
 
-``` html
+```html
 <AppSidebar :style={width:sidebarWidth+'px'}>
 ```
 </div>
@@ -1174,11 +1174,11 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <input type="text">
 ```
 
-``` html
+```html
 <AppSidebar :style="{ width: sidebarWidth + 'px' }">
 ```
 </div>
@@ -1190,21 +1190,21 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <input
   v-bind:value="newTodoText"
   :placeholder="newTodoInstructions"
 >
 ```
 
-``` html
+```html
 <input
   v-on:input="onInput"
   @focus="onFocus"
 >
 ```
 
-``` html
+```html
 <template v-slot:header>
   <h1>Here might be a page title</h1>
 </template>
@@ -1218,35 +1218,35 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <input
   :value="newTodoText"
   :placeholder="newTodoInstructions"
 >
 ```
 
-``` html
+```html
 <input
   v-bind:value="newTodoText"
   v-bind:placeholder="newTodoInstructions"
 >
 ```
 
-``` html
+```html
 <input
   @input="onInput"
   @focus="onFocus"
 >
 ```
 
-``` html
+```html
 <input
   v-on:input="onInput"
   v-on:focus="onFocus"
 >
 ```
 
-``` html
+```html
 <template v-slot:header>
   <h1>Here might be a page title</h1>
 </template>
@@ -1256,7 +1256,7 @@ computed: {
 </template>
 ```
 
-``` html
+```html
 <template #header>
   <h1>Here might be a page title</h1>
 </template>
@@ -1373,7 +1373,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 props: {
   value: {
     type: String,
@@ -1400,7 +1400,7 @@ computed: {
 }
 ```
 
-``` js
+```js
 // 没有空行在组件易于阅读和导航时也没问题。
 props: {
   value: {
@@ -1436,13 +1436,13 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <style>/* ... */</style>
 <script>/* ... */</script>
 <template>...</template>
 ```
 
-``` html
+```html
 <!-- ComponentA.vue -->
 <script>/* ... */</script>
 <template>...</template>
@@ -1458,7 +1458,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- ComponentA.vue -->
 <script>/* ... */</script>
 <template>...</template>
@@ -1470,7 +1470,7 @@ computed: {
 <style>/* ... */</style>
 ```
 
-``` html
+```html
 <!-- ComponentA.vue -->
 <template>...</template>
 <script>/* ... */</script>
@@ -1502,7 +1502,7 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <template>
   <button>×</button>
 </template>
@@ -1518,7 +1518,7 @@ button {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <template>
   <button class="btn btn-close">×</button>
 </template>
@@ -1542,7 +1542,7 @@ button {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1555,7 +1555,7 @@ app.component('TodoItem', {
 })
 ```
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1585,7 +1585,7 @@ app.component('TodoItem', {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1605,7 +1605,7 @@ app.component('TodoItem', {
 })
 ```
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1639,7 +1639,7 @@ Vuex 是 Vue 的[官方类 flux 实现](/guide/state-management.html#类-flux-�
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 // main.js
 import { createApp } from 'vue'
 import mitt from 'mitt'
@@ -1668,7 +1668,7 @@ const app = createApp({
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 // store/modules/todos.js
 export default {
   state: {
@@ -1689,7 +1689,7 @@ export default {
 }
 ```
 
-``` html
+```html
 <!-- TodoItem.vue -->
 <template>
   <span>
