@@ -170,9 +170,9 @@ console.log(proxy.meal)
 // tacos
 ```
 
-这里没有展示 `track` 的实现。它将检查当前运行的 *effect*，并将其记录在 `target` 和 `property` 旁边。这就是 Vue 如何知道 property 是副作用的依赖项。
+这里没有展示 `track` 的实现。它将检查当前运行的*副作用*，并将其记录在 `target` 和 `property` 旁边。这就是 Vue 如何知道这个 property 是该副作用的依赖项。
 
-最后，我们需要在 property 值更改时重新运行副作用。为此，我们需要在代理上使用一个 `set` 处理函数：
+最后，我们需要在 property 值更改时重新运行这个副作用。为此，我们需要在代理上使用一个 `set` 处理函数：
 
 ```js
 const dinner = {
@@ -198,11 +198,11 @@ console.log(proxy.meal)
 
 还记得几段前的列表吗？现在我们有了一些关于 Vue 如何处理这些更改的答案：
 
-- **读值时的跟踪**：proxy 的 `get` 处理函数中 `track` 函数记录了该 property 和当前副作用。
-- **检测该值何时发生变化**：在 proxy 上调用 `set` 处理函数。
-- **触发函数以便它可以更新最终值**：`trigger` 函数查找哪些副作用依赖于该 property 和它们的执行。
+1. **读值时的跟踪**：proxy 的 `get` 处理函数中 `track` 函数记录了该 property 和当前副作用。
+2. **检测该值何时发生变化**：在 proxy 上调用 `set` 处理函数。
+3. **触发函数以便它可以更新最终值**：`trigger` 函数查找哪些副作用依赖于该 property 和它们的执行。
 
-proxy 对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在 property 的值被访问或修改的情况下进行依赖跟踪和变更通知。有一点需要注意，控制台日志会以不同的方式对 proxy 对象进行格式化，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
+该被代理的对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在 property 的值被访问或修改的情况下进行依赖跟踪和变更通知。有一点需要注意，控制台日志会以不同的方式对 proxy 对象进行格式化，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
 如果我们要用一个组件重写我们原来的例子，我们可以这样做：
 
@@ -228,7 +228,7 @@ vm.val1 = 3
 console.log(vm.sum) // 6
 ```
 
-`data` 返回的对象将被包裹在响应式代理中，并存储为 `this.$data`。property `this.val1` 和 `this.val2` 分别是 `this.$data.val1` 和 `this.$data.val2` 的别名，因此它们通过相同的代理。
+`data` 返回的对象将被包裹在响应式代理中，并存储为 `this.$data`。Property `this.val1` 和 `this.val2` 分别是 `this.$data.val1` 和 `this.$data.val2` 的别名，因此它们通过相同的代理。
 
 Vue 将把 `sum` 的函数包裹在一个副作用中。当我们试图访问 `this.sum` 时，它将运行该副作用来计算数值。`$data` 周围的响应式代理将追踪 property `val1` 和 `val2` 在该副作用运行时的读取。
 
@@ -243,11 +243,11 @@ const proxy = reactive({
 
 在指南接下来的几页中，我们将探索响应性包所暴露的功能。这包括我们已经见过的 `reactive` 和 `watchEffect` 等函数，以及使用其他响应性特性的方法，如不需要创建组件的 `computed` 和 `watch`。
 
-### Proxy 对象
+### 被代理的对象
 
 Vue 在内部跟踪所有已经被转成响应式的对象，所以它总是为同一个对象返回相同的代理。
 
-当一个嵌套对象从一个响应式代理中被访问时，该对象在被返回之前也被转换为一个代理：
+当从一个响应式代理中访问一个嵌套对象时，该对象在被返回之前*也*被转换为一个代理：
 
 ```js{6-7}
 const handler = {
@@ -278,7 +278,7 @@ console.log(obj === wrapped) // false
 
 其他依赖严等于比较的操作也会受到影响，例如 `.includes()` 或 `.indexOf()`。
 
-这里的最佳实践是永远不要维持有对原始对象的引用，而只使用响应式版本。
+这里的最佳实践是永远不要持有对原始对象的引用，而只使用响应式版本。
 
 ```js
 const obj = reactive({
@@ -300,7 +300,7 @@ console.log(obj.count === 0) // true
 
 ## 如何让渲染响应变化
 
-一个组件的模板被编译成一个 [`render`](/guide/render-function.html) 函数。渲染函数创建 [VNodes](/guide/render-function.html#the-virtual-dom-tree)，描述该组件应该如何被渲染。它被包裹在一个副作用中，允许 Vue 在运行时跟踪被 “touch” 的 property。
+一个组件的模板被编译成一个 [`render`](/guide/render-function.html) 函数。渲染函数创建 [VNodes](/guide/render-function.html#虚拟-dom-树)，描述该组件应该如何被渲染。它被包裹在一个副作用中，允许 Vue 在运行时跟踪被“触达”的 property。
 
 一个 `render` 函数在概念上与一个 `computed` property 非常相似。Vue 并不确切地追踪依赖关系是如何被使用的，它只知道在函数运行的某个时间点上使用了这些依赖关系。如果这些 property 中的任何一个随后发生了变化，它将触发副作用再次运行，重新运行 `render` 函数以生成新的 VNodes。然后这些举动被用来对 DOM 进行必要的修改。
 
