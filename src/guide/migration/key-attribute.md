@@ -59,8 +59,8 @@ Vue 2.x 建议在 `v-if`/`v-else`/`v-else-if` 的分支中使用 `key`。
 ```html
 <!-- Vue 2.x -->
 <template v-for="item in list">
-  <div :key="item.id">...</div>
-  <span :key="item.id">...</span>
+  <div :key="'heading-' + item.id">...</div>
+  <span :key="'content-' + item.id">...</span>
 </template>
 ```
 

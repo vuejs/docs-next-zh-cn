@@ -37,4 +37,6 @@ badges:
 
 ## 参考
 
+<!-- TODO: translation -->
 - [过渡的 class 名更改](/guide/migration/transition.html)
+- [`<Transition>` as a root can no longer be toggled from the outside](/guide/migration/transition-as-root.html)

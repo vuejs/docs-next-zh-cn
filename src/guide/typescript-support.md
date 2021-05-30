@@ -152,6 +152,50 @@ const Component = defineComponent({
 })
 ```
 
+<!-- TODO: translation -->
+### Augmenting Types for `globalProperties`
+
+Vue 3 provides a [`globalProperties` object](../api/application-config.html#globalproperties) that can be used to add a global property that can be accessed in any component instance. For example, a [plugin](./plugins.html#writing-a-plugin) might want to inject a shared global object or function.
+
+```ts
+// User Definition
+import axios from 'axios'
+const app = Vue.createApp({})
+app.config.globalProperties.$http = axios
+// Plugin for validating some data
+export default {
+  install(app, options) {
+    app.config.globalProperties.$validate = (data: object, rule: object) => {
+      // check whether the object meets certain rules
+    }
+  }
+}
+```
+
+In order to tell TypeScript about these new properties, we can use [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation).
+
+In the above example, we could add the following type declaration:
+
+```ts
+import axios from 'axios'
+declare module '@vue/runtime-core' {
+  export interface ComponentCustomProperties {
+    $http: typeof axios
+    $validate: (data: object, rule: object) => boolean
+  }
+}
+```
+
+We can put this type declaration in the same file, or in a project-wide `*.d.ts` file (for example, in the `src/typings` folder that is automatically loaded by TypeScript). For library/plugin authors, this file should be specified in the `types` property in `package.json`.
+
+::: warning Make sure the declaration file is a TypeScript module
+In order to take advantage of module augmentation, you will need to ensure there is at least one top-level `import` or `export` in your file, even if it is just `export {}`.
+
+[In TypeScript](https://www.typescriptlang.org/docs/handbook/modules.html), any file containing a top-level `import` or `export` is considered a 'module'. If type declaration is made outside of a module, it will overwrite the original types rather than augmenting them.
+:::
+
+For more information about the `ComponentCustomProperties` type, see its [definition in `@vue/runtime-core`](https://github.com/vuejs/vue-next/blob/2587f36fe311359e2e34f40e8e47d2eebfab7f42/packages/runtime-core/src/componentOptions.ts#L64-L80) and [the TypeScript unit tests](https://github.com/vuejs/vue-next/blob/master/test-dts/componentTypeExtensions.test-d.tsx) to learn more.
+
 ### 注解返回类型
 
 由于 Vue 声明文件的循环特性，TypeScript 可能难以推断 computed 的类型。因此，你可能需要注解计算属性的返回类型。
@@ -169,17 +213,17 @@ const Component = defineComponent({
     // 需要注解
     greeting(): string {
       return this.message + '!'
-    }
+    },
 
     // 在使用 setter 进行计算时，需要对 getter 进行注解
     greetingUppercased: {
       get(): string {
-        return this.greeting.toUpperCase();
+        return this.greeting.toUpperCase()
       },
       set(newValue: string) {
-        this.message = newValue.toUpperCase();
-      },
-    },
+        this.message = newValue.toUpperCase()
+      }
+    }
   }
 })
 ```
@@ -213,7 +257,7 @@ const Component = defineComponent({
 ```
 
 ::: warning
-由于 TypeScript 中的[设计限制](https://github.com/microsoft/TypeScript/issues/38845)，当它涉及到为了对函数表达式进行类型推理，你必须注意对象和数组的 `validators` 和 `default` 值：
+由于 TypeScript 中的[设计限制](https://github.com/microsoft/TypeScript/issues/38845)，当它涉及到为了对函数表达式进行类型推理，你必须注意对象和数组的 `validator` 和 `default` 值：
 :::
 
 ```ts
@@ -322,6 +366,71 @@ year.value = 2020 // ok!
 :::tip
 如果泛型的类型未知，建议将 `ref` 转换为 `Ref<T>`。
 :::
+
+<!-- TODO: translation -->
+### Typing Template Refs
+
+Sometimes you might need to annotate a template ref for a child component in order to call its public method. For example, we have a `MyModal` child component with a method that opens the modal:
+
+```ts
+import { defineComponent, ref } from 'vue'
+const MyModal = defineComponent({
+  setup() {
+    const isContentShown = ref(false)
+    const open = () => (isContentShown.value = true)
+    return {
+      isContentShown,
+      open
+    }
+  }
+})
+```
+
+We want to call this method via a template ref from the parent component:
+
+```ts
+import { defineComponent, ref } from 'vue'
+const MyModal = defineComponent({
+  setup() {
+    const isContentShown = ref(false)
+    const open = () => (isContentShown.value = true)
+    return {
+      isContentShown,
+      open
+    }
+  }
+})
+const app = defineComponent({
+  components: {
+    MyModal
+  },
+  template: `
+    <button @click="openModal">Open from parent</button>
+    <my-modal ref="modal" />
+  `,
+  setup() {
+    const modal = ref()
+    const openModal = () => {
+      modal.value.open()
+    }
+    return { modal, openModal }
+  }
+})
+```
+
+While this will work, there is no type information about `MyModal` and its available methods. To fix this, you should use `InstanceType` when creating a ref:
+
+```ts
+setup() {
+  const modal = ref<InstanceType<typeof MyModal>>()
+  const openModal = () => {
+    modal.value?.open()
+  }
+  return { modal, openModal }
+}
+```
+
+Please note that you would also need to use [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) or any other way to check that `modal.value` is not undefined.
 
 ### 类型声明 `reactive`
 

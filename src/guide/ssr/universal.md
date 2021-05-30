@@ -1,5 +1,6 @@
 # Writing Universal Code
 
+<!-- TODO: translation -->
 Before going further, let's take a moment to discuss the constraints when writing "universal" code - that is, code that runs on both the server and the client. Due to use case and platform API differences, the behavior of our code will not be exactly the same when running in different environments. Here we will go over the key things you need to be aware of.
 
 ## Data Reactivity on the Server

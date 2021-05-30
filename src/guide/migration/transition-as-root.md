@@ -5,6 +5,7 @@ badges:
 
 # Transition as Root <MigrationBadges :badges="$frontmatter.badges" />
 
+<!-- TODO: translation -->
 ## Overview
 
 Using a `<transition>` as a component's root will no longer trigger transitions when the component is toggled from the outside.

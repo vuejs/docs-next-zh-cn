@@ -1,5 +1,6 @@
 # Source Code Structure
 
+<!-- TODO: translation -->
 ## Avoid Stateful Singletons
 
 When writing client-only code, we can assume that our code will be evaluated in a fresh context every time. However, a Node.js server is a long-running process. When our code is first imported by the process, it will be evaluated once and then stay in memory. This means that if you create a singleton object, it will be shared between every incoming request, with the risk of cross-request state pollution.

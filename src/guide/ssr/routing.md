@@ -1,5 +1,6 @@
 # Routing and Code-Splitting
 
+<!-- TODO: translation -->
 ## Routing with `vue-router`
 
 You may have noticed that our server code uses a `*` handler which accepts arbitrary URLs. This allows us to pass the visited URL into our Vue app, and reuse the same routing config for both client and server!

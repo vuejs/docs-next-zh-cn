@@ -1,5 +1,6 @@
 # Server-Side Rendering Guide
 
+<!-- TODO: translation -->
 > This guide is currently under active development
 
 ## What is Server-Side Rendering (SSR)?

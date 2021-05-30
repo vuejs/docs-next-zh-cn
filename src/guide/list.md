@@ -217,7 +217,7 @@ methods: {
 
 结果：
 
-<common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" :preview="false" />
+<common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" />
 
 ## 在 `<template>` 中使用 `v-for`
 

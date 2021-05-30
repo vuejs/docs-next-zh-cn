@@ -1,5 +1,7 @@
 # Build Configuration
 
+<!-- TODO: translation -->
+
 The webpack config for an SSR project will be similar to a client-only project. If you're not familiar with configuring webpack, you can find more information in the documentation for [Vue CLI](https://cli.vuejs.org/guide/webpack.html#working-with-webpack) or [configuring Vue Loader manually](https://vue-loader.vuejs.org/guide/#manual-setup).
 
 ## Key Differences with Client-Only Builds

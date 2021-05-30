@@ -1,5 +1,6 @@
 # Client Side Hydration
 
+<!-- TODO: translation -->
 Hydration refers to the client-side process during which Vue takes over the static HTML sent by the server and turns it into dynamic DOM that can react to client-side data changes.
 
 In `entry-client.js`, we are simply mounting the app with this line:

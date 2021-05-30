@@ -1,5 +1,6 @@
 # Getting Started
 
+<!-- TODO: translation -->
 > This guide is currently under active development
 
 ## Installation
@@ -14,7 +15,7 @@ yarn add @vue/server-renderer
 
 #### Notes
 
-- It's recommended to use Node.js version 10+.
+- It's recommended to use Node.js version 12+.
 - `@vue/server-renderer` and `vue` must have matching versions.
 - `@vue/server-renderer` relies on some Node.js native modules and therefore can only be used in Node.js. We may provide a simpler build that can be run in other JavaScript runtimes in the future.
 
@@ -64,6 +65,8 @@ yarn add express
 ```
 
 ```js
+// sever.js
+
 const { createSSRApp } = require('vue')
 const { renderToString } = require('@vue/server-renderer')
 const server = require('express')()
@@ -83,7 +86,7 @@ server.get('*', async (req, res) => {
   <html>
     <body>
       <h1>My First Heading</h1>
-      ${appContent}
+      <div id="app">${appContent}</div>
     </body>
   </html>
   `
@@ -94,4 +97,4 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-Now, when running this Node.js script, we can see a static HTML page on `localhost:8080`. However, this code is not _hydrated_: Vue hasn't yet take over the static HTML sent by the server to turn it into dynamic DOM that can react to client-side data changes. This will be covered in the [Client Side Hydration](#) section.
+Now, when running this Node.js script, we can see a static HTML page on `localhost:8080`. However, this code is not _hydrated_: Vue hasn't yet taken over the static HTML sent by the server to turn it into dynamic DOM that can react to client-side data changes. This will be covered in the [Client Side Hydration](hydration.html) section.
