@@ -44,7 +44,7 @@
 
 - **详细：**
 
-  props 可以是数组或对象，用于接收来自父组件的数据。props 可以是简单的数组，也可以是对象语法，后者允许开发者配置一些高阶选项，如类型检测、自定义验证和设置默认值。
+  一个用于从父组件接收数据的数组或对象。它可以是基于数组的简单语法，也可以是基于对象的支持诸如类型检测、自定义验证和设置默认值等高阶配置的语法。
 
   你可以基于对象的语法使用以下选项：
 
@@ -177,7 +177,7 @@
 
 - **详细：**
 
-一个对象，键是响应式 property，值是对应回调函数。值也可以是方法名，或者包含额外选项的对象。组件实例将会在实例化时调用 `$watch()`，参阅 [$watch](instance-methods.html#watch)，以了解更多关于 `deep`、`immediate` 和 `flush` 选项的信息。
+一个对象，键是要侦听的响应式 property——包含了 [data](/api/options-data.html#data-2) 或 [computed](/api/options-data.html#computed) property，而值是对应的回调函数。值也可以是方法名，或者包含额外选项的对象。组件实例将会在实例化时调用 `$watch()`，参阅 [$watch](instance-methods.html#watch)，以了解更多关于 `deep`、`immediate` 和 `flush` 选项的信息。
  
 - **示例：**
 
