@@ -21,7 +21,7 @@
   const data = { a: 1 }
 
   // 这个对象将添加到组件实例中
-  const vm = Vue.createApp({
+  const vm = createApp({
     data() {
       return data
     }
@@ -59,7 +59,7 @@
 - **示例：**
 
   ```js
-  const app = Vue.createApp({})
+  const app = createApp({})
 
   // 简单语法
   app.component('props-demo-simple', {
@@ -107,7 +107,7 @@
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return { a: 1 }
     },
@@ -152,7 +152,7 @@
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return { a: 1 }
     },
@@ -182,7 +182,7 @@
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1,
@@ -190,11 +190,12 @@
         c: {
           d: 4
         },
-        e: 'test',
-        f: 5
+        e: 5,
+        f: 6
       }
     },
     watch: {
+      // 侦听顶级 property
       a(val, oldVal) {
         console.log(`new: ${val}, old: ${oldVal}`)
       },
@@ -206,6 +207,10 @@
           console.log('c changed')
         },
         deep: true
+      },
+      // 侦听单个嵌套 property
+      'c.d': function (val, oldVal) {
+        // do something
       },
       // 该回调将会在侦听开始之后被立即调用
       e: {
@@ -263,7 +268,7 @@
 - **用法：**
 
   ```js
-  const app = Vue.createApp({})
+  const app = createApp({})
 
   // 数组语法
   app.component('todo-item', {

@@ -15,12 +15,12 @@
 
 - **用法：**
 
-  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数的参数为新值和旧值。我们只能将顶层的 `data`、`prop` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，建议使用一个函数取代。
+  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`props` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
 
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1,
@@ -62,7 +62,7 @@
   当侦听的值是一个对象或者数组时，对其属性或元素的任何更改都不会触发侦听器，因为它们引用相同的对象/数组：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         article: {
@@ -104,7 +104,7 @@
   `$watch` 返回一个取消侦听函数，用来停止触发回调：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1
@@ -215,7 +215,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       sayHi() {
         console.log('Hi!')
@@ -244,7 +244,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       showAdvice(advice) {
         alert(advice)
@@ -295,7 +295,7 @@
 - **示例：**
 
   ```js
-  Vue.createApp({
+  createApp({
     // ...
     methods: {
       // ...

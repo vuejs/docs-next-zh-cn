@@ -28,7 +28,7 @@ const obj = reactive({ count })
 // ref 会被解构
 console.log(obj.count === count.value) // true
 
-// 它会更新 `obj.value`
+// 它会更新 `obj.count`
 count.value++
 console.log(count.value) // 2
 console.log(obj.count) // 2
@@ -75,6 +75,19 @@ original.count++
 
 // 变更副本将失败并导致警告
 copy.count++ // 警告!
+```
+
+与 [`reactive`](#reactive) 一样，如果任何 property 使用了 `ref`，当它通过代理访问时，则被自动解包：
+
+```js
+const raw = {
+  count: ref(123)
+}
+
+const copy = readonly(raw)
+
+console.log(raw.count.value) // 123
+console.log(copy.count) // 123
 ```
 
 ## `isProxy`
@@ -192,6 +205,8 @@ isReactive(state.nested) // false
 state.nested.bar++ // 非响应式
 ```
 
+与 [`reactive`](#reactive) 不同，任何使用 [`ref`](/api/refs-api.html#ref) 的 property 都**不会**被代理自动解包。
+
 ## `shallowReadonly`
 
 创建一个 proxy，使其自身的 property 为只读，但不执行嵌套对象的深度只读转换 (暴露原始值)。
@@ -210,3 +225,4 @@ state.foo++
 isReadonly(state.nested) // false
 state.nested.bar++ // 适用
 ```
+与 [`readonly`](#readonly) 不同，任何使用 [`ref`](/api/refs-api.html#ref) 的 property 都**不会**被代理自动解包。

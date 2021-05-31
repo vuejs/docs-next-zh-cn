@@ -76,6 +76,14 @@ vue add typescript
 </script>
 ```
 
+或者，如果你想将 TypeScript 与 [JSF `render` 函数](/guide/render-function.html#jsx)结合起来：
+
+```html
+<script lang="tsx">
+  ...
+</script>
+```
+
 ### 编辑器支持
 
 对于使用 TypeScript 开发 Vue 应用程序，我们强烈建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它为 TypeScript 提供了很好的开箱即用支持。如果你使用的是[单文件组件](./single-file-component.html) (SFCs)，那么可以使用很棒的 [Vetur extension](https://github.com/vuejs/vetur)，它在 SFCs 中提供了 TypeScript 推理和许多其他优秀的特性。
@@ -92,6 +100,17 @@ import { defineComponent } from 'vue'
 const Component = defineComponent({
   // 已启用类型推断
 })
+```
+
+如果你使用的是[单文件组件](/guide/single-file-component.html)，则通常会被写成：
+
+```vue
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+  // 已启用类型推断
+})
+</script>
 ```
 
 ## 与 Options API 一起使用

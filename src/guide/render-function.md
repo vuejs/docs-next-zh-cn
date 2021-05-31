@@ -166,6 +166,8 @@ h(
 )
 ```
 
+如果没有 prop，那么通常可以将 children 作为第二个参数传入。如果会产生歧义，可以将 `null` 作为第二个参数传入，将 children 作为第三个参数传入。
+
 ## 完整实例
 
 有了这些知识，我们现在可以完成我们最开始想实现的组件：
@@ -175,7 +177,7 @@ const { createApp, h } = Vue
 
 const app = createApp({})
 
-/** Recursively get text from children nodes */
+/** 递归地从子节点获取文本 */
 function getChildrenTextContent(children) {
   return children
     .map(node => {
@@ -190,11 +192,11 @@ function getChildrenTextContent(children) {
 
 app.component('anchored-heading', {
   render() {
-    // create kebab-case id from the text contents of the children
+    // 从 children 的文本内容中创建短横线分隔 (kebab-case) id。
     const headingId = getChildrenTextContent(this.$slots.default())
       .toLowerCase()
-      .replace(/\W+/g, '-') // replace non-word characters with dash
-      .replace(/(^-|-$)/g, '') // remove leading and trailing dashes
+      .replace(/\W+/g, '-') // 用短横线替换非单词字符
+      .replace(/(^-|-$)/g, '') // 删除前后短横线
 
     return h('h' + this.level, [
       h(
@@ -226,7 +228,7 @@ app.component('anchored-heading', {
 render() {
   const myParagraphVNode = h('p', 'hi')
   return h('div', [
-    // 错误 - 重复的Vnode!
+    // 错误 - 重复的 Vnode!
     myParagraphVNode, myParagraphVNode
   ])
 }
@@ -241,6 +243,51 @@ render() {
       return h('p', 'hi')
     })
   )
+}
+```
+
+## 创建组件 VNode
+
+要为某个组件创建一个 VNode，传递给 `h` 的第一个参数应该是组件本身。
+
+```js
+render() {
+  return h(ButtonCounter)
+}
+```
+
+如果我们需要通过名称来解析一个组件，那么我们可以调用 `resolveComponent`：
+
+```js
+const { h, resolveComponent } = Vue
+
+// ...
+
+render() {
+  const ButtonCounter = resolveComponent('ButtonCounter')
+  return h(ButtonCounter)
+}
+```
+
+`resolveComponent` 是模板内部用来解析组件名称的同一个函数。
+
+`render` 函数通常只需要对[全局注册](/guide/component-registration.html#global-registration)的组件使用 `resolveComponent`。而对于[局部注册](/guide/component-registration.html#local-registration)的却可以跳过，请看下面的例子：
+
+```js
+// 我们可以简化为
+components: {
+  ButtonCounter
+},
+render() {
+  return h(resolveComponent('ButtonCounter'))
+}
+```
+
+我们可以直接使用它，而不是通过名称注册一个组件，然后再查找：
+
+```js
+render() {
+  return h(ButtonCounter)
 }
 ```
 
@@ -301,7 +348,7 @@ render() {
 
 #### 事件修饰符
 
-对于 `.passive` 、 `.capture`和 `.once` 事件修饰符，可以使用驼峰写法将他们拼接在事件名后面：
+对于 `.passive` 、`.capture` 和 `.once` 事件修饰符，可以使用驼峰写法将他们拼接在事件名后面：
 
 实例:
 
@@ -370,8 +417,6 @@ render() {
 
 要使用渲染函数将插槽传递给子组件，请执行以下操作：
 
-<!-- TODO: translation -->
-
 ```js
 const { h, resolveComponent } = Vue
 
@@ -381,8 +426,7 @@ render() {
     h(
       resolveComponent('child'),
       {},
-      // pass `slots` as the children object
-      // in the form of { name: props => VNode | Array<VNode> }
+      // 将 `slots` 以 { name: props => VNode | Array<VNode> } 的形式传递给子对象。
       {
         default: (props) => Vue.h('span', props.text)
       }
@@ -390,6 +434,120 @@ render() {
   ])
 }
 ```
+
+插槽以函数的形式传递，允许子组件控制每个插槽内容的创建。任何响应式数据都应该在插槽函数内访问，以确保它被注册为子组件的依赖关系，而不是父组件。相反，对 `resolveComponent` 的调用应该在插槽函数之外进行，否则它们会相对于错误的组件进行解析。
+
+```js
+// `<MyButton><MyIcon :name="icon" />{{ text }}</MyButton>`
+render() {
+  // 应该是在插槽函数外面调用 resolveComponent。
+  const Button = resolveComponent('MyButton')
+  const Icon = resolveComponent('MyIcon')
+
+  return h(
+    Button,
+    null,
+    {
+      // 使用箭头函数保存 `this` 的值
+      default: (props) => {
+        // 响应式 property 应该在插槽函数内部读取，
+        // 这样它们就会成为 children 渲染的依赖。
+        return [
+          h(Icon, { name: this.icon }),
+          this.text
+        ]
+      }
+    }
+  )
+}
+```
+
+如果一个组件从它的父组件中接收到插槽，它们可以直接传递给子组件。
+
+```js
+render() {
+  return h(Panel, null, this.$slots)
+}
+```
+
+也可以根据情况单独传递或包裹住。
+
+```js
+render() {
+  return h(
+    Panel,
+    null,
+    {
+      // 如果我们想传递一个槽函数，我们可以通过
+      header: this.$slots.header,
+
+      // 如果我们需要以某种方式对插槽进行操作，
+      // 那么我们需要用一个新的函数来包裹它
+      default: (props) => {
+        const children = this.$slots.default ? this.$slots.default(props) : []
+
+        return children.concat(h('div', 'Extra child'))
+      }
+    }
+  )
+}
+```
+
+### `<component>` 和 `is`
+
+在底层实现里，模板使用 `resolveDynamicComponent` 来实现 `is` attribute。如果我们在 `render` 函数中需要 `is` 提供的所有灵活性，我们可以使用同样的函数：
+
+```js
+const { h, resolveDynamicComponent } = Vue
+
+// ...
+
+// `<component :is="name"></component>`
+render() {
+  const Component = resolveDynamicComponent(this.name)
+  return h(Component)
+}
+```
+
+就像 `is`, `resolveDynamicComponent` 支持传递一个组件名称、一个 HTML 元素名称或一个组件选项对象。
+
+通常这种程度的灵活性是不需要的。通常 `resolveDynamicComponent` 可以被换做一个更直接的替代方案。
+
+例如，如果我们只需要支持组件名称，那么可以使用 `resolveComponent` 来代替。
+
+如果 VNode 始终是一个 HTML 元素，那么我们可以直接把它的名字传递给 `h`：
+
+```js
+// `<component :is="bold ? 'strong' : 'em'"></component>`
+render() {
+  return h(this.bold ? 'strong' : 'em')
+}
+```
+
+同样，如果传递给 `is` 的值是一个组件选项对象，那么不需要解析什么，可以直接作为 `h` 的第一个参数传递。
+
+与 `<template>` 标签一样，`<component>` 标签仅在模板中作为语法占位符需要，当迁移到 `render` 函数时，应被丢弃。
+
+### 自定义指令
+
+可以使用 [`withDirectives`](/api/global-api.html#withdirectives) 将自定义指令应用于 VNode：
+
+```js
+const { h, resolveDirective, withDirectives } = Vue
+
+// ...
+
+// <div v-pin:top.animate="200"></div>
+render () {
+  const pin = resolveDirective('pin')
+
+  return withDirectives(h('div'), [
+    [pin, 200, 'top', { animate: true }]
+  ])
+}
+```
+
+[`resolveDirective`](/api/global-api.html#resolvedirective) 是模板内部用来解析指令名称的同一个函数。只有当你还没有直接访问指令的定义对象时，才需要这样做。
 
 ## JSX
 
