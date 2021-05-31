@@ -18,7 +18,7 @@
 
 这里有一个示例存储库，可以帮助你了解完整的配置：[https://github.com/sdras/vue-sample-svg-icons/](https://github.com/sdras/vue-sample-svg-icons/)
 
-![文档网站](https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/screendocs.jpg '文档演示')
+![文档网站](/images/editable-svg-icons '文档演示')
 
 我们将创建一个使用插槽的基础图标组件 (`IconBase.vue`)。
 
@@ -88,7 +88,7 @@ export default {
 </p>
 ```
 
-<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/Screen%20Shot%202018-01-01%20at%204.51.40%20PM.png" width="450" />
+<img src="/images/editable-svg-icons-sizes.png" width="450" />
 
 ## 带动画的图标
 

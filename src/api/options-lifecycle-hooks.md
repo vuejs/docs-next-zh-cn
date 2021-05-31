@@ -42,7 +42,7 @@
 
 - **详细：**
 
-  实例被挂载后调用，这时 `Vue.createApp({}).mount()` 被新创建的 `vm.$el` 替换了。如果根实例挂载到了一个文档内的元素上，当 mounted 被调用时 `vm.$el` 也在文档内。
+  实例被挂载后调用，这时 [`app.mount`](/api/application-api.html#mount) 被新创建的 `vm.$el` 替换了。如果根实例挂载到了一个文档内的元素上，当 mounted 被调用时 `vm.$el` 也在文档内。
 
   注意 `mounted` 不会保证所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以在 `mounted` 内部使用 [vm.$nextTick](../api/instance-methods.html#nexttick)：
 
@@ -184,7 +184,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         cart: 0
@@ -230,7 +230,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         cart: 0
@@ -242,7 +242,7 @@
     methods: {
       addToCart() {
         this.cart += 1
-        /* 这将导致renderTriggered调用
+        /* 这将导致 renderTriggered 被调用
           {
             key: "cart",
             target: {

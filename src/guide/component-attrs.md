@@ -12,7 +12,7 @@
 app.component('date-picker', {
   template: `
     <div class="date-picker">
-      <input type="datetime" />
+      <input type="datetime-local" />
     </div>
   `
 })
@@ -26,7 +26,7 @@ app.component('date-picker', {
 
 <!-- 渲染 date-picker 组件 -->
 <div class="date-picker" data-status="activated">
-  <input type="datetime" />
+  <input type="datetime-local" />
 </div>
 ```
 
@@ -91,7 +91,7 @@ app.component('date-picker', {
   inheritAttrs: false,
   template: `
     <div class="date-picker">
-      <input type="datetime" v-bind="$attrs" />
+      <input type="datetime-local" v-bind="$attrs" />
     </div>
   `
 })
@@ -105,7 +105,7 @@ app.component('date-picker', {
 
 <!-- 渲染 date-picker 组件 -->
 <div class="date-picker">
-  <input type="datetime" data-status="activated" />
+  <input type="datetime-local" data-status="activated" />
 </div>
 ```
 
