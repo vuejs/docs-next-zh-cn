@@ -72,7 +72,7 @@ test('an async feature', async () => {
 
 直接调用 `Vue.nextTick()` 将导致臭名昭著的 `undefined is not a function` 错误。
 
-通过这一更改，如果模块打包工具支持 tree-shaking，则 Vue 应用程序中未使用的全局 API 将从最终的 bundle 中消除，从而获得最佳的文件大小。
+通过这一更改，如果模块打包工具支持 tree-shake，则 Vue 应用程序中未使用的全局 API 将从最终的打包产物中排除，从而获得最佳的文件大小。
 
 ## 受影响的 API
 
