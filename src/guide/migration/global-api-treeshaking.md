@@ -17,7 +17,7 @@ Vue.nextTick(() => {
 })
 ```
 
-或者，如果你在对涉及 [async components](/guide/component-dynamic-async.html) 的应用程序进行单元测试，那么很可能你编写了以下内容：
+或者，如果你在对涉及[异步组件](/guide/component-dynamic-async.html)的应用程序进行单元测试，那么很可能你编写了以下内容：
 
 ```js
 import { shallowMount } from '@vue/test-utils'
