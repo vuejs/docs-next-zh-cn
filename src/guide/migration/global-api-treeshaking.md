@@ -155,7 +155,7 @@ module.exports = {
 
 这将告诉 webpack 将 Vue 模块视为一个外部库，而不将它打包进来。
 
-如果你选择的模块打包工具恰好是 [Rollup](https://rollupjs.org/)，你基本上可以直接获得相同的效果，因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的 bundle 中。但是在输出打包期间，它可能会抛出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency)警告，可使用 `external` 选项阻止该警告：
+如果你选择的模块打包工具恰好是 [Rollup](https://rollupjs.org/)，你基本上可以直接获得相同的效果。因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的 bundle 中。但是在输出打包期间，它可能会抛出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency)警告，可使用 `external` 选项阻止该警告：
 
 ```js
 // rollup.config.js
