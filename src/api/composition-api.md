@@ -128,18 +128,16 @@ const MyComponent = {
 
 - **类型声明**：
 
-<!-- TODO: translation -->
-
 ```ts
 interface InjectionKey<T> extends Symbol {}
 
 function provide<T>(key: InjectionKey<T> | string, value: T): void
 
-// without default value
+// 没有默认值
 function inject<T>(key: InjectionKey<T> | string): T | undefined
-// with default value
+// 有默认值
 function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
-// with factory
+// 有工厂函数
 function inject<T>(
   key: InjectionKey<T> | string,
   defaultValue: () => T,
