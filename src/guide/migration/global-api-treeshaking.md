@@ -105,7 +105,7 @@ export function render() {
 }
 ```
 
-这实际上意味着只有在应用程序实际使用了 `Transition` 组件时才会导入它。换句话说，如果应用程序没有任何 `Transition` 组件，那么支持此功能的代码将不会出现在最终的捆绑包中。
+这实际上意味着只有在应用程序实际使用了 `Transition` 组件时才会导入它。换句话说，如果应用程序没有任何 `Transition` 组件，那么支持此功能的代码将不会出现在最终的打包产物中。
 
 有了全局 tree-shake 后，用户只需为他们实际使用的功能“买单”。更好的是，知道了可选特性不会增加未使用它们的应用程序的打包产物大小，以后在追加核心功能时，即使对框架大小有顾虑，这也不再是那么重要的考虑因素了。
 
@@ -141,7 +141,7 @@ const plugin = {
 }
 ```
 
-如果使用 webpack 这样的模块打包工具，这可能会导致 Vue 的源代码输出打包到插件中，而且通常情况下，这并不是你所期望的。防止这种情况发生的一种常见做法是配置模块打包工具以将 Vue 从最终 bundle 中排除。对于 webpack，你可以使用 [`externals`](https://webpack.js.org/configuration/externals/) 配置选项：
+如果使用 webpack 这样的模块打包工具，这可能会导致 Vue 的源代码输出打包到插件中，而且通常情况下，这并不是你所期望的。防止这种情况发生的一种常见做法是配置模块打包工具以将 Vue 从最终的打包产物中排除。对于 webpack，你可以使用 [`externals`](https://webpack.js.org/configuration/externals/) 配置选项：
 
 ```js
 // webpack.config.js
@@ -155,7 +155,7 @@ module.exports = {
 
 这将告诉 webpack 将 Vue 模块视为一个外部库，而不将它打包进来。
 
-如果你选择的模块打包工具恰好是 [Rollup](https://rollupjs.org/)，你基本上可以直接获得相同的效果。因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的 bundle 中。但是在输出打包期间，它可能会抛出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency)警告，可使用 `external` 选项阻止该警告：
+如果你选择的模块打包工具恰好是 [Rollup](https://rollupjs.org/)，你基本上可以直接获得相同的效果。因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的打包产物中。但是在输出打包期间，它可能会抛出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency)警告，可使用 `external` 选项阻止该警告：
 
 ```js
 // rollup.config.js
