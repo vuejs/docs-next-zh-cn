@@ -47,7 +47,7 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 
 ## npm
 
-在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。NPM 能很好地和诸如 [webpack](https://webpack.js.org/) 或 [Rollup](https://rollupjs.org/) 模块打包器配合使用。
+在用 Vue 构建大型应用时推荐使用 npm 安装<sup>[[1]](#footnote-1)</sup> 。npm 能很好地和诸如 [webpack](https://webpack.js.org/) 或 [Rollup](https://rollupjs.org/) 模块打包器配合使用。
 
 ```bash
 # 最新稳定版
