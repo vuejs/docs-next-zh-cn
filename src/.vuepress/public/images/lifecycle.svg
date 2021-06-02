@@ -1,7 +1,7 @@
 <svg width="840" height="1388" xmlns="http://www.w3.org/2000/svg">
   <g fill="none" fill-rule="evenodd">
     <text font-family="Inter, Roboto, sans-serif" font-size="14" fill="#848484">
-      <tspan x="195.593" y="1303">* 如果使用构建工具，例如使用单文件组件，则会提前执行模板编译。</tspan>
+      <tspan x="195.593" y="1303">* 如果使用构建工具，例如通过单文件组件，则模板编译会提前执行。</tspan>
     </text>
     <g transform="translate(72 1056)">
       <path d="M160 18v14l-14-7 14-7zm180 6v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3zm-7 0v2h-3v-2h3z" fill="#DB5B62" fill-rule="nonzero"/>
@@ -121,7 +121,7 @@
       <path d="M98 57v47h6l-7 14-7-14h6V57h2z" fill="#9AA9B2" fill-rule="nonzero"/>
       <rect stroke="#23AC70" fill="#3AB881" x="-.5" y="-.5" width="192" height="58" rx="8"/>
       <text font-family="Inter, Roboto, sans-serif" font-size="14" fill="#FFF">
-        <tspan x="76.162" y="24">初始化</tspan> <tspan x="54.142" y="42.5">注入 &amp; 响应式 </tspan>
+        <tspan x="76.162" y="24">初始化</tspan> <tspan x="54.142" y="42.5">注入 &amp; 响应性 </tspan>
       </text>
     </g>
     <g transform="translate(317 707)">
