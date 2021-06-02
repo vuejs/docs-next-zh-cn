@@ -26,7 +26,7 @@
       <path d="M132 65v35h6l-7 14-7-14h6V65h2z" fill="#9AA9B2" fill-rule="nonzero"/>
       <rect stroke="#2F679A" fill="#3E6B94" x="-.5" y="-.5" width="259" height="66" rx="8"/>
       <text font-family="Inter, Roboto, Microsoft YaHei, sans-serif" font-size="14">
-        <tspan x="37.555" y="28" fill="#FFF">app = Vue.</tspan> <tspan x="105.156" y="28" fill="#FFB196">createApp</tspan> <tspan x="171.976" y="28" fill="#FFF">(</tspan> <tspan x="175.638" y="28" fill="#39DD95">options</tspan> <tspan x="222.783" y="28" fill="#FFF">)</tspan> <tspan x="87.311" y="46.5" fill="#FFF">app.</tspan> <tspan x="114.559" y="46.5" fill="#FFB196">mount</tspan> <tspan x="156.469" y="46.5" fill="#FFF">(</tspan> <tspan x="160.131" y="46.5" fill="#39DD95">el</tspan> <tspan x="171.027" y="46.5" fill="#FFF">)</tspan>
+        <tspan x="37.555" y="28" fill="#FFF">app = Vue.</tspan> <tspan x="105.156" y="28" fill="#FFB196">createApp</tspan> <tspan x="170.976" y="28" fill="#FFF">(</tspan> <tspan x="175.638" y="28" fill="#39DD95">options</tspan> <tspan x="222.783" y="28" fill="#FFF">)</tspan> <tspan x="87.311" y="46.5" fill="#FFF">app.</tspan> <tspan x="114.559" y="46.5" fill="#FFB196">mount</tspan> <tspan x="156.469" y="46.5" fill="#FFF">(</tspan> <tspan x="160.131" y="46.5" fill="#39DD95">el</tspan> <tspan x="171.027" y="46.5" fill="#FFF">)</tspan>
       </text>
     </g>
     <path d="M272 467v53h6l-7 14-7-14h6v-53h2zM554 467v53h6l-7 14-7-14h6v-53h2z" fill="#9AA9B2" fill-rule="nonzero"/>
