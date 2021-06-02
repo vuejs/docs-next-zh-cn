@@ -136,9 +136,9 @@ return h('h1', {}, this.blogTitle)
 ```js
 // @returns {VNode}
 h(
-  // {String | Object | Function | null} tag
-  // 一个 HTML 标签名、一个组件、一个异步组件，或者 null。
-  // 使用 null 将会渲染一个注释。
+  // {String | Object | Function} tag
+  // 一个 HTML 标签名、一个组件、一个异步组件、或
+  // 一个函数式组件。
   //
   // 必需的。
   'div',
@@ -352,7 +352,7 @@ render() {
 
 实例:
 
-```javascript
+```js
 render() {
   return h('input', {
     onClickCapture: this.doThisInCapturingMode,
@@ -549,6 +549,48 @@ render () {
 
 [`resolveDirective`](/api/global-api.html#resolvedirective) 是模板内部用来解析指令名称的同一个函数。只有当你还没有直接访问指令的定义对象时，才需要这样做。
 
+<!-- TODO: translation -->
+### Built-in Components
+
+[Built-in components](/api/built-in-components.html) such as `<keep-alive>`, `<transition>`, `<transition-group>`, and `<teleport>` are not registered globally by default. This allows bundlers to perform tree-shaking, so that the components are only included in the build if they are used. However, that also means we can't access them using `resolveComponent` or `resolveDynamicComponent`.
+
+Templates have special handling for those components, automatically importing them when they are used. When we're writing our own `render` functions, we need to import them ourselves:
+
+```js
+const { h, KeepAlive, Teleport, Transition, TransitionGroup } = Vue
+// ...
+render () {
+  return h(Transition, { mode: 'out-in' }, /* ... */)
+}
+```
+
+## Return Values for Render Functions
+
+In all of the examples we've seen so far, the `render` function has returned a single root VNode. However, there are alternatives.
+
+Returning a string will create a text VNode, without any wrapping element:
+
+```js
+render() {
+  return 'Hello world!'
+}
+```
+
+We can also return an array of children, without wrapping them in a root node. This creates a fragment:
+
+```js
+// Equivalent to a template of `Hello<br>world!`
+render() {
+  return [
+    'Hello',
+    h('br'),
+    'world!'
+  ]
+}
+```
+
+If a component needs to render nothing, perhaps because data is still loading, it can just return `null`. This will be rendered as a comment node in the DOM.
+
 ## JSX
 
 如果你写了很多渲染函数，可能会觉得下面这样的代码写起来很痛苦：
@@ -591,7 +633,7 @@ app.mount('#demo')
 
 有关 JSX 如何映射到 JavaScript 的更多信息，请参阅[使用文档](https://github.com/vuejs/jsx-next#installation) 。
 
-<!-- TODO： translation-->
+<!-- TODO: translation-->
 
 ## 函数式组件
 

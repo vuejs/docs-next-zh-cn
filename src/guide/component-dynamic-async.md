@@ -12,7 +12,7 @@
 
 当在这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复渲染导致的性能问题。例如我们来展开说一说这个多标签界面：
 
-<common-codepen-snippet title="Dynamic components: without keep-alive" slug="jOPjZOe" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Dynamic components: without keep-alive" slug="jOPjZOe" tab="html,result" />
 
 你会注意到，如果你选择了一篇文章，切换到 *Archive* 标签，然后再切换回 Posts，是不会继续展示你之前选择的文章的。这是因为你每次切换新标签的时候，Vue 都创建了一个新的 `currentTabComponent` 实例。
 
@@ -27,7 +27,7 @@
 
 来看看修改后的结果：
 
-<common-codepen-snippet title="Dynamic components: with keep-alive" slug="VwLJQvP" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Dynamic components: with keep-alive" slug="VwLJQvP" tab="html,result" />
 
 现在这个 *Posts* 标签保持了它的状态 (被选中的文章) 甚至当它未被渲染时也是如此。你可以在这个示例查阅到完整的代码。
 

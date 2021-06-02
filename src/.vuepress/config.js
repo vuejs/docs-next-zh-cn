@@ -6,7 +6,8 @@ const sidebar = {
       children: [
         '/cookbook/',
         '/cookbook/editable-svg-icons',
-        '/cookbook/debugging-in-vscode'
+        '/cookbook/debugging-in-vscode',
+        '/cookbook/automatic-global-registration-of-base-components'
       ]
     }
   ],
@@ -201,6 +202,7 @@ const sidebar = {
         '/guide/migration/slots-unification',
         '/guide/migration/suspense',
         '/guide/migration/transition',
+        '/guide/migration/transition-as-root',
         '/guide/migration/transition-group',
         '/guide/migration/v-on-native-modifier-removed',
         '/guide/migration/v-model',
@@ -213,7 +215,13 @@ const sidebar = {
   ],
   ssr: [
     ['/guide/ssr/introduction', 'Introduction'],
-    '/guide/ssr/getting-started'
+    '/guide/ssr/getting-started',
+    '/guide/ssr/universal',
+    '/guide/ssr/structure',
+    '/guide/ssr/build-config',
+    '/guide/ssr/server',
+    '/guide/ssr/routing',
+    '/guide/ssr/hydration'
   ],
   contributing: [
     {
@@ -425,6 +433,14 @@ module.exports = {
           {
             text: '한국어',
             link: 'https://v3.ko.vuejs.org/'
+          },
+          {
+            text: '日本語',
+            link: 'https://v3.ja.vuejs.org/'
+          },
+          {
+            text: 'Русский',
+            link: 'https://v3.ru.vuejs.org/'
           },
           {
             text: '更多翻译',

@@ -12,7 +12,7 @@ Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的�
 
 通常这个链接会放在 `App.vue` 的顶部，这样它就会是所有页面上的第一个可聚焦元素：
 
-``` html
+```html
 <ul class="skip-links">
   <li>
     <a href="#main" ref="skipLink">跳到主内容</a>
@@ -22,7 +22,7 @@ Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的�
 
 若想在非聚焦状态下隐藏该链接，可以添加以下样式：
 
-``` css
+```css
 .skipLink {
   white-space: nowrap;
   margin: 1em auto;
@@ -42,7 +42,7 @@ Web 可访问性 (也称为 a11y) 是指创建可供任何人使用的网站的�
 
 一旦用户改变路由，请将焦点放回到这个跳过链接。通过用如下方式聚焦 `ref` 即可实现：
 
-``` vue
+```vue
 <script>
 export default {
   watch: {
@@ -54,7 +54,7 @@ export default {
 </script>
 ```
 
-<common-codepen-snippet title="Skip to Main" slug="VwepxJa" :height="350" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Skip to Main" slug="GRrvQJa" :height="350" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 [阅读关于跳过链接到主要内容的文档](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 

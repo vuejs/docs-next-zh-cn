@@ -46,7 +46,7 @@ Vue 3 中需要关注的一些新功能包括：
 - [片段](/guide/migration/fragments.html)
 - [触发组件选项](/guide/component-custom-events.html)
 - [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
-- [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/sfc-improvements/active-rfcs/0000-sfc-script-setup.md) <Badge text="实验性" type="warning" />
+- [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md) <Badge text="实验性" type="warning" />
 - [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](https://github.com/vuejs/rfcs/blob/style-vars-2/active-rfcs/0000-sfc-style-variables.md) <Badge text="实验性" type="warning" />
 - [Suspense](/guide/migration/suspense.html) <Badge text="实验性" type="warning" />
 
@@ -88,7 +88,7 @@ Vue 3 中需要关注的一些新功能包括：
 
 ### 自定义元素
 
-- [自定义元素白名单现在已经在编译时执行](/guide/migration/custom-elements-interop.html)
+- [自定义元素检测现在已经在编译时执行](/guide/migration/custom-elements-interop.html)
 - [对特殊的 `is` prop 的使用只严格限制在被保留的 `<component>` 标记中](/guide/migration/custom-elements-interop.html#定制内置元素)
 
 ### 其他小改变

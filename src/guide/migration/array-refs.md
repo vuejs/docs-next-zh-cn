@@ -1,7 +1,7 @@
 ---
 title: v-for 中的 Ref 数组
 badges:
-- breaking
+  - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />

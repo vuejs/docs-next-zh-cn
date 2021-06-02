@@ -52,11 +52,12 @@ Vue.directive('highlight', {
 
 ```js
 const MyDirective = {
-  beforeMount(el, binding, vnode, prevVnode) {},
+  created(el, binding, vnode, prevVnode) {}, // 新增
+  beforeMount() {},
   mounted() {},
-  beforeUpdate() {}, // 新
+  beforeUpdate() {}, // 新增
   updated() {},
-  beforeUnmount() {}, // 新
+  beforeUnmount() {}, // 新增
   unmounted() {}
 }
 ```
@@ -85,7 +86,7 @@ app.directive('highlight', {
 
 在 Vue 2 中，必须通过 `vnode` 参数访问组件实例：
 
-```javascript
+```js
 bind(el, binding, vnode) {
   const vm = vnode.context
 }
@@ -93,7 +94,7 @@ bind(el, binding, vnode) {
 
 在 Vue 3 中，实例是 `binding` 参数的一个 property：
 
-```javascript
+```js
 mounted(el, binding, vnode) {
   const vm = binding.instance
 }
