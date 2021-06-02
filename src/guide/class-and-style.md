@@ -230,7 +230,7 @@ data() {
 
 ### 自动添加前缀
 
-在 `:style` 中使用需要一个 (浏览器引擎前缀) [vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) 的 CSS property 时，Vue 将自动侦测并添加相应的前缀。Vue 是通过运行时检测来确定哪些样式的 property 是被当前浏览器支持的。如果浏览器不支持某个 property，Vue 会进行多次测试以找到支持它的前缀。
+在 `:style` 中使用需要一个 [vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) (浏览器引擎前缀) 的 CSS property 时，Vue 将自动侦测并添加相应的前缀。Vue 是通过运行时检测来确定哪些样式的 property 是被当前浏览器支持的。如果浏览器不支持某个 property，Vue 会进行多次测试以找到支持它的前缀。
 
 ### 多重值
 
