@@ -1,21 +1,20 @@
 # 内置组件
 
-<!-- TODO: translation -->
-Built-in components can be used directly in templates without needing to be registered.
+内置组件可以直接在模板中使用，而不需注册。
 
-The `<keep-alive>`, `<transition>`, `<transition-group>`, and `<teleport>` components can all be tree-shaken by bundlers, so that they are only included in the build if they're used. They can also be imported explicitly if you need direct access to the component itself:
+`<keep-alive>`、`<transition>`、`<transition-group>` 和 `<teleport>` 组件都可以被打包工具 tree-shake。所以它们只会在被使用的时候被引入。如果你需要直接访问它们，也可以将它们显性导入。
 
 ```js
-// CDN build of Vue
+// Vue 的 CDN 构建
 const { KeepAlive, Teleport, Transition, TransitionGroup } = Vue
 ```
 
 ```js
-// ESM build of Vue
+// Vue 的 ESM 构建
 import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 ```
 
-`<component>` and `<slot>` are component-like features of template syntax. They are not true components and they can't be imported like the components shown above.
+`<component>` 和 `<slot>` 是模板语法中组件形式的特性。它们不是真正的组件且无法像上述组件意义被导入。
 
 ## component
 
@@ -41,8 +40,7 @@ import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
   <component :is="href ? 'a' : 'span'"></component>
   ```
 
-  <!-- TODO: translation -->
-  The built-in components `KeepAlive`, `Transition`, `TransitionGroup`, and `Teleport` can all be passed to `is`, but you must register them if you want to pass them by name. For example:
+  内置组件 `KeepAlive`、`Transition`、`TransitionGroup` 和 `Teleport` 都可以被传递给 `is`，但是如果你想要通过名字传入它们，就必须注册。例如：
 
   ```js
   const { Transition, TransitionGroup } = Vue
@@ -59,7 +57,7 @@ import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
   }
   ```
 
-  Registration is not required if you pass the component itself to `is` rather than its name.
+  如果你传递组件本身到 `is` 而不是其名字，则不需要注册。
 
 -  **参考：**[动态组件](../guide/component-dynamic-async.html)
 
