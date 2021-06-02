@@ -39,13 +39,13 @@
     <g transform="translate(169 535)">
       <rect stroke="#23AC70" fill="#3AB881" x="-.5" y="-.5" width="207" height="58" rx="8"/>
       <text font-family="Inter, Roboto, Microsoft YaHei, sans-serif" font-size="14">
-        <tspan x="73.695" y="23.918" fill="#FFF">编译模版</tspan> <tspan x="66.568" y="42.418" fill="#FFF">至渲染函式</tspan> <tspan x="140.312" y="42.418" fill="#F6DA72">*</tspan>
+        <tspan x="73.695" y="23.918" fill="#FFF">编译模板</tspan> <tspan x="66.568" y="42.418" fill="#FFF">至渲染函式</tspan> <tspan x="140.312" y="42.418" fill="#F6DA72">*</tspan>
       </text>
     </g>
     <g transform="translate(451 535)">
       <rect stroke="#23AC70" fill="#3AB881" x="-.5" y="-.5" width="207" height="58" rx="8"/>
       <text font-family="Inter, Roboto, Microsoft YaHei, sans-serif" font-size="14">
-        <tspan x="48.016" y="23.918" fill="#FFF">编译 el’s innerHTML</tspan> <tspan x="78.727" y="42.418" fill="#FFF">至模版</tspan> <tspan x="123.989" y="42.418" fill="#F6DA72">*</tspan>
+        <tspan x="48.016" y="23.918" fill="#FFF">编译 el’s innerHTML</tspan> <tspan x="78.727" y="42.418" fill="#FFF">至模板</tspan> <tspan x="123.989" y="42.418" fill="#F6DA72">*</tspan>
       </text>
     </g>
     <path d="M413 415.433L509.057 467 413 518.567 316.943 467 413 415.433z" stroke="#F2781E" fill="#FF8228"/>
