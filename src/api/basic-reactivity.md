@@ -19,13 +19,13 @@ function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 ```
 
 ::: tip 提示
-`reactive` 将解构所有深层的 [refs](./refs-api.html#ref)，同时维持 ref 的响应性。
+`reactive` 将解包所有深层的 [refs](./refs-api.html#ref)，同时维持 ref 的响应性。
 
 ```ts
 const count = ref(1)
 const obj = reactive({ count })
 
-// ref 会被解构
+// ref 会被解包
 console.log(obj.count === count.value) // true
 
 // 它会更新 `obj.count`
@@ -42,7 +42,7 @@ console.log(count.value) // 3
 :::
 
 ::: warning 重要
-当将 [ref](./refs-api.html#ref) 分配给 `reactive` property 时，ref 将被自动解构。
+当将 [ref](./refs-api.html#ref) 分配给 `reactive` property 时，ref 将被自动解包。
 
 ```ts
 const count = ref(1)
