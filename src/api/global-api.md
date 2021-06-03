@@ -527,7 +527,7 @@ export default {
 
 ## version
 
-以字符串形式提供被安装的 Vue 的版本号。
+以字符串形式提供已安装的 Vue 的版本号。
 
 ```js
 const version = Number(Vue.version.split('.')[0])

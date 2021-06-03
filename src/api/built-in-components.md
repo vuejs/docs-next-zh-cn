@@ -14,7 +14,7 @@ const { KeepAlive, Teleport, Transition, TransitionGroup } = Vue
 import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 ```
 
-`<component>` 和 `<slot>` 是模板语法中组件形式的特性。它们不是真正的组件且无法像上述组件意义被导入。
+`<component>` 和 `<slot>` 是模板语法中组件形式的特性。它们不是真正的组件且无法像上述组件那样被导入。
 
 ## component
 
