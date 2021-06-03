@@ -152,29 +152,28 @@ const Component = defineComponent({
 })
 ```
 
-<!-- TODO: translation -->
-### Augmenting Types for `globalProperties`
+### 为 `globalProperties` 扩充类型
 
-Vue 3 provides a [`globalProperties` object](../api/application-config.html#globalproperties) that can be used to add a global property that can be accessed in any component instance. For example, a [plugin](./plugins.html#writing-a-plugin) might want to inject a shared global object or function.
+Vue 3 提供了一个 [`globalProperties` 对象](../api/application-config.html#globalproperties)，用来添加可以被任意组件实例访问的全局 property。例如一个[插件](./plugins.html#编写插件)想要注入一个共享全局对象或函数。
 
 ```ts
-// User Definition
+// 用户定义
 import axios from 'axios'
 const app = Vue.createApp({})
 app.config.globalProperties.$http = axios
-// Plugin for validating some data
+// 验证数据的插件
 export default {
   install(app, options) {
     app.config.globalProperties.$validate = (data: object, rule: object) => {
-      // check whether the object meets certain rules
+      // 检查对象是否合规
     }
   }
 }
 ```
 
-In order to tell TypeScript about these new properties, we can use [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation).
+为了告诉 TypeScript 这些新 property，我们可以使用[模块扩充 (module augmentation)](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)。
 
-In the above example, we could add the following type declaration:
+在上述示例中，我们可以添加以下类型声明：
 
 ```ts
 import axios from 'axios'
@@ -186,15 +185,15 @@ declare module '@vue/runtime-core' {
 }
 ```
 
-We can put this type declaration in the same file, or in a project-wide `*.d.ts` file (for example, in the `src/typings` folder that is automatically loaded by TypeScript). For library/plugin authors, this file should be specified in the `types` property in `package.json`.
+我们可以把这些类型声明放在同一个文件里，或一个项目级别的 `*.d.ts` 文件 (例如在 TypeScript 会自动加载的 `src/typings` 文件夹中)。对于库/插件作者来说，这个文件应该被定义在 `package.json` 的 `types` property 里。
 
-::: warning Make sure the declaration file is a TypeScript module
-In order to take advantage of module augmentation, you will need to ensure there is at least one top-level `import` or `export` in your file, even if it is just `export {}`.
+::: warning 确认声明文件是一个 TypeScript 模块
+为了利用好模块扩充，你需要确认你的文件中至少有一个顶级的 `import` 或 `export`，哪怕只是一个 `export {}`。
 
-[In TypeScript](https://www.typescriptlang.org/docs/handbook/modules.html), any file containing a top-level `import` or `export` is considered a 'module'. If type declaration is made outside of a module, it will overwrite the original types rather than augmenting them.
+[在 TypeScript 中](https://www.typescriptlang.org/docs/handbook/modules.html)，任何包含一个顶级 `import` 或 `export` 的文件都被视为一个“模块”。如果类型声明在模块之外，它会通过扩充它们来覆盖原本的类型。
 :::
 
-For more information about the `ComponentCustomProperties` type, see its [definition in `@vue/runtime-core`](https://github.com/vuejs/vue-next/blob/2587f36fe311359e2e34f40e8e47d2eebfab7f42/packages/runtime-core/src/componentOptions.ts#L64-L80) and [the TypeScript unit tests](https://github.com/vuejs/vue-next/blob/master/test-dts/componentTypeExtensions.test-d.tsx) to learn more.
+关于 `ComponentCustomProperties` 类型的更多信息，请参阅其[在 `@vue/runtime-core` 中的定义](https://github.com/vuejs/vue-next/blob/2587f36fe311359e2e34f40e8e47d2eebfab7f42/packages/runtime-core/src/componentOptions.ts#L64-L80)及[其 TypeScript 测试用例](https://github.com/vuejs/vue-next/blob/master/test-dts/componentTypeExtensions.test-d.tsx)学习更多。
 
 ### 注解返回类型
 
@@ -367,10 +366,9 @@ year.value = 2020 // ok!
 如果泛型的类型未知，建议将 `ref` 转换为 `Ref<T>`。
 :::
 
-<!-- TODO: translation -->
-### Typing Template Refs
+### 为模板引用定义类型
 
-Sometimes you might need to annotate a template ref for a child component in order to call its public method. For example, we have a `MyModal` child component with a method that opens the modal:
+有时你可能需要为一个子组件标注一个模板引用，以调用其公共方法。例如我们有一个 `MyModal` 子组件，它有一个打开模态的方法：
 
 ```ts
 import { defineComponent, ref } from 'vue'
@@ -386,7 +384,7 @@ const MyModal = defineComponent({
 })
 ```
 
-We want to call this method via a template ref from the parent component:
+我们希望从其父组件的一个模板引用调用这个方法：
 
 ```ts
 import { defineComponent, ref } from 'vue'
@@ -418,7 +416,7 @@ const app = defineComponent({
 })
 ```
 
-While this will work, there is no type information about `MyModal` and its available methods. To fix this, you should use `InstanceType` when creating a ref:
+它可以工作，但是没有关于 `MyModal` 及其可用方法的类型信息。为了解决这个问题，你应该在创建引用时使用 `InstanceType`：
 
 ```ts
 setup() {
@@ -430,7 +428,7 @@ setup() {
 }
 ```
 
-Please note that you would also need to use [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) or any other way to check that `modal.value` is not undefined.
+请注意你还需要使用[可选链操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining)或其它方式来确认 `modal.value` 不是 undefined。
 
 ### 类型声明 `reactive`
 
