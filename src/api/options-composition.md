@@ -221,7 +221,7 @@
   </script>
   ```
 
-  请注意，从 `setup` 返回的 [refs](refs-api.html#ref) 在模板中访问时会自动展开，因此模板中不需要 `.value`。
+  请注意，从 `setup` 返回的 [refs](refs-api.html#ref) 在模板中访问时会自动解包，因此模板中不需要 `.value`。
 
 - **渲染函数/JSX 的方法**
 

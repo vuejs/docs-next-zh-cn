@@ -43,9 +43,9 @@ count.value++
 console.log(count.value) // 1
 ```
 
-### Ref 展开
+### Ref 解包
 
-当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层次展开内部值。只有访问嵌套的 ref 时需要在模板中添加 `.value`：
+当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层次解包内部值。只有访问嵌套的 ref 时需要在模板中添加 `.value`：
 
 ```vue-html
 <template>
@@ -85,7 +85,7 @@ nested: reactive({
 
 ### 访问响应式对象
 
-当 `ref` 作为响应式对象的 property 被访问或更改时，为使其行为类似于普通 property，它会自动展开内部值：
+当 `ref` 作为响应式对象的 property 被访问或更改时，为使其行为类似于普通 property，它会自动解包内部值：
 
 ```js
 const count = ref(0)
@@ -109,7 +109,7 @@ console.log(state.count) // 2
 console.log(count.value) // 1
 ```
 
-Ref 展开仅发生在被响应式 `Object` 嵌套的时候。当从 `Array` 或原生集合类型如 [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)访问 ref 时，不会进行展开：
+Ref 解包仅发生在被响应式 `Object` 嵌套的时候。当从 `Array` 或原生集合类型如 [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)访问 ref 时，不会进行解包：
 
 ```js
 const books = reactive([ref('Vue 3 Guide')])
