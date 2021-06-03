@@ -34,7 +34,7 @@ export default {
 但是，因为 `props` 是响应式的，你**不能使用 ES6 解构**，因为它会消除 prop 的响应性。
 :::
 
-如果需要解构 prop，可以通过使用 `setup` 函数中的 [`toRefs`](reactivity-fundamentals.html#响应式状态解构) 来完成此操作：
+如果需要解构 props，可以通过使用 `setup` 函数中的 [`toRefs`](reactivity-fundamentals.html#响应式状态解构) 来完成此操作：
 
 ```js
 // MyBook.vue
