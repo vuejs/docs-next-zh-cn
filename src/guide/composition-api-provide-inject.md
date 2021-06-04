@@ -83,7 +83,7 @@ export default {
 
 `inject` 函数有两个参数：
 
-1. name
+1. 要 inject 的 property 的 name
 2. 默认值 (**可选**)
 
 使用 `MyMarker` 组件，可以使用以下代码对其进行重构：
