@@ -90,7 +90,7 @@ touch rollup.config.js
 
 创建文件后，选择需要的编辑器打开并添加以下代码：
 
-```javascript
+```js
 // 导入我们的第三方插件
 import commonjs from 'rollup-plugin-commonjs'
 import VuePlugin from 'rollup-plugin-vue'
@@ -142,7 +142,7 @@ export default {
 
 ##### rollup.config.js
 
-```javascript
+```js
 output: [
   ...{
     file: pkg.main,

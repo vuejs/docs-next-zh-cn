@@ -38,3 +38,4 @@ badges:
 ## 参考
 
 - [过渡的 class 名更改](/guide/migration/transition.html)
+- [`<Transition>` 作为根元素不再从外界被切换](/guide/migration/transition-as-root.html)

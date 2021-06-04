@@ -7,7 +7,7 @@
 
 那么怎么同时渲染整个列表，比如使用 `v-for`？在这种场景中，使用 `<transition-group>` 组件。在我们深入例子之前，先了解关于这个组件的几个特点：
 
-- By default, it doesn't render a wrapper element, but you can specify an element to be rendered with the `tag` attribute. <!-- TODO: translation -->
+- 默认情况下，它不会渲染一个元素的包裹器，但是你可以指定一个元素并以 `tag` attribute 进行渲染。
 - [过渡模式](/guide/transitions-enterleave#过渡模式)不可用，因为我们不再相互切换特有的元素。
 - 内部元素**总是需要**提供唯一的 `key` attribute 值。
 - CSS 过渡的类将会应用在内部的元素中，而不是这个组/容器本身。

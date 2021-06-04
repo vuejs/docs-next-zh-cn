@@ -10,7 +10,7 @@ badges:
 
 `$listeners` 对象在 Vue 3 中已被移除。现在事件监听器是 `$attrs` 的一部分：
 
-```javascript
+```js
 {
   text: 'this is an attribute',
   onClose: () => console.log('close Event triggered')
@@ -53,7 +53,7 @@ export default {
 
 如果这个组件接收一个 `id` attribute 和一个 `v-on:close` 监听器，那么 `$attrs` 对象现在将如下所示:
 
-```javascript
+```js
 {
   id: 'my-input',
   onClose: () => console.log('close Event triggered')

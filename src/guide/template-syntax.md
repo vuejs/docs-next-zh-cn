@@ -203,7 +203,7 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 
 #### JavaScript 表达式
 
-模板表达式都被放在沙盒中，只能访问[全局变量的一个白名单](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。
+模板表达式都被放在沙盒中，只能访问一个[受限的列表](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。
 
 
 <small>**译者注**  

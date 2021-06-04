@@ -15,12 +15,12 @@
 
 - **用法：**
 
-  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`prop` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
+  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`props` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
 
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1,
@@ -62,7 +62,7 @@
   当侦听的值是一个对象或者数组时，对其属性或元素的任何更改都不会触发侦听器，因为它们引用相同的对象/数组：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         article: {
@@ -104,7 +104,7 @@
   `$watch` 返回一个取消侦听函数，用来停止触发回调：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1
@@ -123,7 +123,7 @@
 
   为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。这个选项同样适用于监听数组变更。
   
-  > 注意: 当变更(不是替换)对象或数组并使用 deep 选项时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。
+  > 注意：当变更（不是替换）对象或数组并使用 deep 选项时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。
 
   ```js
   vm.$watch('someObject', callback, {
@@ -175,9 +175,9 @@
   )
   ```
 
-- **Option: flush**
+- **选项：flush**
 
-  `flush` 选项可以更好地控制回调的时间。它可以设置为 '`pre`'，`'post'`或 `'sync'`。
+  `flush` 选项可以更好地控制回调的时间。它可以设置为 `'pre'`、`'post'` 或 `'sync'`。
   
   默认值是 `'pre'`，指定的回调应该在渲染前被调用。它允许回调在模板运行前更新了其他值。
   
@@ -191,7 +191,7 @@
   
   `'sync'` 侦听器应少用，因为它们没有这些好处。
 
-  更多关于 `flush` 的信息，请参阅 [副作用刷新时机](../guide/reactivity-computed-watchers.html#副作用刷新时机).
+  更多关于 `flush` 的信息，请参阅[副作用刷新时机](../guide/reactivity-computed-watchers.html#副作用刷新时机)。
 
 -  **参考** [Watchers](../guide/computed.html#侦听器)
 
@@ -215,7 +215,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       sayHi() {
         console.log('Hi!')
@@ -244,7 +244,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       showAdvice(advice) {
         alert(advice)
@@ -295,7 +295,7 @@
 - **示例：**
 
   ```js
-  Vue.createApp({
+  createApp({
     // ...
     methods: {
       // ...

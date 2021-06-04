@@ -6,7 +6,8 @@ const sidebar = {
       children: [
         '/cookbook/',
         '/cookbook/editable-svg-icons',
-        '/cookbook/debugging-in-vscode'
+        '/cookbook/debugging-in-vscode',
+        '/cookbook/automatic-global-registration-of-base-components'
       ]
     }
   ],
@@ -194,18 +195,33 @@ const sidebar = {
         '/guide/migration/key-attribute',
         '/guide/migration/keycode-modifiers',
         '/guide/migration/listeners-removed',
+        '/guide/migration/mount-changes',
+        '/guide/migration/props-data',
         '/guide/migration/props-default-this',
         '/guide/migration/render-function-api',
         '/guide/migration/slots-unification',
+        '/guide/migration/suspense',
         '/guide/migration/transition',
+        '/guide/migration/transition-as-root',
         '/guide/migration/transition-group',
         '/guide/migration/v-on-native-modifier-removed',
         '/guide/migration/v-model',
         '/guide/migration/v-if-v-for',
         '/guide/migration/v-bind',
+        '/guide/migration/vnode-lifecycle-events',
         '/guide/migration/watch'
       ]
     },
+  ],
+  ssr: [
+    ['/guide/ssr/introduction', 'Introduction'],
+    '/guide/ssr/getting-started',
+    '/guide/ssr/universal',
+    '/guide/ssr/structure',
+    '/guide/ssr/build-config',
+    '/guide/ssr/server',
+    '/guide/ssr/routing',
+    '/guide/ssr/hydration'
   ],
   contributing: [
     {
@@ -409,9 +425,26 @@ module.exports = {
       {
         text: '多语言',
         link: '#',
-        items: [{
+        items: [
+          {
             text: 'English',
             link: 'https://v3.vuejs.org/'
+          },
+          {
+            text: '한국어',
+            link: 'https://v3.ko.vuejs.org/'
+          },
+          {
+            text: '日本語',
+            link: 'https://v3.ja.vuejs.org/'
+          },
+          {
+            text: 'Русский',
+            link: 'https://v3.ru.vuejs.org/'
+          },
+          {
+            text: '更多翻译',
+            link: '/guide/contributing/translations#community-translations'
           }
         ]
       }
@@ -426,6 +459,7 @@ module.exports = {
       collapsable: false,
       '/guide/migration/': sidebar.migration,
       '/guide/contributing/': sidebar.contributing,
+      '/guide/ssr/': sidebar.ssr,
       '/guide/': sidebar.guide,
       '/community/': sidebar.guide,
       '/cookbook/': sidebar.cookbook,
@@ -444,6 +478,21 @@ module.exports = {
     }
   },
   plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer(timestamp) {
+          const date = new Date(timestamp)
+
+          const digits = [
+            date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate(),
+            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
+          ].map(num => String(num).padStart(2, '0'))
+
+          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(/{(\d)}/g, (_, num) => digits[num])
+        }
+      }
+    ],
     [
       '@vuepress/pwa',
       {

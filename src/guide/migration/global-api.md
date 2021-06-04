@@ -181,13 +181,13 @@ app.directive('focus', {
   mounted: el => el.focus()
 })
 
-// 现在所有应用实例都挂载了，与其组件树一起，将具有相同的 “button-counter” 组件 和 “focus” 指令不污染全局环境
+// 现在，所有通过 `app.mount()` 挂载的应用实例及其组件树，将具有相同的 “button-counter” 组件和 “focus” 指令，而不会污染全局环境
 app.mount('#app')
 ```
 
 ## Provide / Inject
 
-与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用实例还可以提供可由应用内的任何组件注入的依赖项：
+与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用实例也提供了可被应用内任意组件注入的依赖项：
 
 ```js
 // 在入口
@@ -208,7 +208,7 @@ export default {
 
 ## 在应用之间共享配置
 
-在应用之间共享配置 (如组件或指令) 的一种方法是创建工厂功能，如下所示：
+在应用之间共享配置 (如组件或指令) 的一种方法是创建工厂函数，如下所示：
 
 ```js
 import { createApp } from 'vue'

@@ -79,7 +79,7 @@ badges:
 
 相反地，你可以通过[全局属性](../../api/application-config.html#globalproperties)在所有组件中使用它:
 
-```javascript
+```js
 // main.js
 const app = createApp(App)
 

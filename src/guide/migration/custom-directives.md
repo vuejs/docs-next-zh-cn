@@ -7,9 +7,7 @@ badges:
 
 ## 概览
 
-<!-- TODO: translation -->
-
-The hook functions for directives have been renamed to better align with the component lifecycle.
+指令的钩子函数已经被重命名，以更好地与组件的生命周期保持一致。
 
 ## 2.x 语法
 
@@ -54,11 +52,12 @@ Vue.directive('highlight', {
 
 ```js
 const MyDirective = {
-  beforeMount(el, binding, vnode, prevVnode) {},
+  created(el, binding, vnode, prevVnode) {}, // 新增
+  beforeMount() {},
   mounted() {},
-  beforeUpdate() {}, // 新
+  beforeUpdate() {}, // 新增
   updated() {},
-  beforeUnmount() {}, // 新
+  beforeUnmount() {}, // 新增
   unmounted() {}
 }
 ```
@@ -81,28 +80,26 @@ app.directive('highlight', {
 
 既然定制指令生命周期钩子映射了组件本身的那些，那么它们就更容易推理和记住了！
 
-<!-- TODO: translation -->
+### 边界情况：访问组件实例
 
-### Edge Case: Accessing the component instance
+通常建议保持指令独立于它们所使用的组件实例。从自定义指令中访问实例通常意味着该指令本身应该是一个组件。然而，在某些情况下这是有意义的。
 
-It's generally recommended to keep directives independent of the component instance they are used in. Accessing the instance from within a custom directive is often a sign that the directive should rather be a component itself. However, there are situations where this actually makes sense.
+在 Vue 2 中，必须通过 `vnode` 参数访问组件实例：
 
-In Vue 2, the component instance had to be accessed through the `vnode` argument:
-
-```javascript
+```js
 bind(el, binding, vnode) {
   const vm = vnode.context
 }
 ```
 
-In Vue 3, the instance is now part of the `binding`:
+在 Vue 3 中，实例是 `binding` 参数的一个 property：
 
-```javascript
+```js
 mounted(el, binding, vnode) {
   const vm = binding.instance
 }
 ```
 
 :::warning
-With [fragments](/guide/migration/fragments.html#概览) support, components can potentially have more than one root node. When applied to a multi-root component, a directive will be ignored and a warning will be logged.
+有了 [fragments](/guide/migration/fragments.html#概览) 支持，组件可能有多个根节点。当应用于多根组件时，将忽略一个指令，并记录一个警告。
 :::

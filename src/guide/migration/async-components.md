@@ -20,14 +20,14 @@ badges:
 以前，异步组件是通过将组件定义为返回 Promise 的函数来创建的，例如：
 
 ```js
-const asyncPage = () => import('./NextPage.vue')
+const asyncModal = () => import('./Modal.vue')
 ```
 
 或者，对于带有选项的更高阶的组件语法：
 
 ```js
-const asyncPage = {
-  component: () => import('./NextPage.vue'),
+const asyncModal = {
+  component: () => import('./Modal.vue'),
   delay: 200,
   timeout: 3000,
   error: ErrorComponent,
@@ -45,11 +45,11 @@ import ErrorComponent from './components/ErrorComponent.vue'
 import LoadingComponent from './components/LoadingComponent.vue'
 
 // 不带选项的异步组件
-const asyncPage = defineAsyncComponent(() => import('./NextPage.vue'))
+const asyncModal = defineAsyncComponent(() => import('./Modal.vue'))
 
 // 带选项的异步组件
-const asyncPageWithOptions = defineAsyncComponent({
-  loader: () => import('./NextPage.vue'),
+const asyncModalWithOptions = defineAsyncComponent({
+  loader: () => import('./Modal.vue'),
   delay: 200,
   timeout: 3000,
   errorComponent: ErrorComponent,
@@ -57,13 +57,17 @@ const asyncPageWithOptions = defineAsyncComponent({
 })
 ```
 
+::: tip 注意
+Vue Router 支持一个类似的机制来异步加载路由组件，也就是俗称的*懒加载*。尽管类似，这个功能和 Vue 支持的异步组件是不同的。当用 Vue Router 配置路由组件时，你**不**应该使用 `defineAsyncComponent`。你可以在 Vue Router 文档的[懒加载路由](https://next.router.vuejs.org/guide/advanced/lazy-loading.html)章节阅读更多相关内容。
+:::
+
 对 2.x 所做的另一个更改是，`component` 选项现在被重命名为 `loader`，以便准确地传达不能直接提供组件定义的信息。
 
 ```js{4}
 import { defineAsyncComponent } from 'vue'
 
-const asyncPageWithOptions = defineAsyncComponent({
-  loader: () => import('./NextPage.vue'),
+const asyncModalWithOptions = defineAsyncComponent({
+  loader: () => import('./Modal.vue'),
   delay: 200,
   timeout: 3000,
   errorComponent: ErrorComponent,
