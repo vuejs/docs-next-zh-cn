@@ -3,19 +3,18 @@ badges:
   - breaking
 ---
 
-# Transition as Root <MigrationBadges :badges="$frontmatter.badges" />
+# Transition 作为 Root <MigrationBadges :badges="$frontmatter.badges" />
 
-<!-- TODO: translation -->
-## Overview
+## 概览
 
-Using a `<transition>` as a component's root will no longer trigger transitions when the component is toggled from the outside.
+使用一个 `<transition>` 作为一个组件的根结点，当组件从外部被切换时将不再触发过渡效果。
 
-## 2.x Behavior
+## 2.x 行为
 
-In Vue 2, it was possible to trigger a transition from outside a component by using a `<transition>` as the component's root:
+在 Vue 2，通过使用 `<transition>` 作为一个组件的根节点，是可能从组件外部触发一个过渡效果的：
 
 ```html
-<!-- modal component -->
+<!-- 模态组件 -->
 <template>
   <transition>
     <div class="modal"><slot/></div>
@@ -24,19 +23,19 @@ In Vue 2, it was possible to trigger a transition from outside a component by us
 ```
 
 ```html
-<!-- usage -->
+<!-- 用法 -->
 <modal v-if="showModal">hello</modal>
 ```
 
-Toggling the value of `showModal` would trigger a transition inside the modal component.
+切换 `showModal` 的值将会在模态组件内部触发一个过渡效果。
 
-This worked by accident, not by design. A `<transition>` is supposed to be triggered by changes to its children, not by toggling the `<transition>` itself.
+这是无意为之的，并不是刻意为之。一个 `<transition>` 原本希望是被其自元素触发的，而不是被 `<transition>` 自己切换。
 
-This quirk has now been removed.
+这个怪异的现象现在被移除了。
 
-## Migration Strategy
+## 迁移策略
 
-A similar effect can be achieved by passing a prop to the component instead:
+换做向其组件传递一个 prop 就可以达到类似的效果：
 
 ```vue
 <template>
@@ -52,11 +51,11 @@ export default {
 ```
 
 ```html
-<!-- usage -->
+<!-- 用法 -->
 <modal :show="showModal">hello</modal>
 ```
 
-## See also
+## 参考
 
-- [Some transition classes got a rename](/guide/migration/transition.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](/guide/migration/transition-group.html)
+- [有些过渡的 class 名更改](/guide/migration/transition.html)
+- [`<TransitionGroup>` 不再默认渲染根元素](/guide/migration/transition-group.html)

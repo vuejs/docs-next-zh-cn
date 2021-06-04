@@ -60,12 +60,11 @@ Vue 还提供了编写[单文件组件](../guide/single-file-component.html)的�
 $ npm install -D @vue/compiler-sfc
 ```
 
-<!-- TODO: translation -->
-If you're coming from Vue 2 then note that `@vue/compiler-sfc` replaces `vue-template-compiler`.
+如果你是从 Vue 2 过渡而来的，请注意 `@vue/compiler-sfc` 替换掉了 `vue-template-compiler`
 
-In addition to `@vue/compiler-sfc`, you'll also need a suitable SFC loader or plugin for your chosen bundler. See the [SFC documentation](../guide/single-file-component.html) for more information.
+除了 `@vue/compiler-sfc` 之外，你还需要为已选择的打包工具选择一个配套的单文件组件 loader 或 plugin。更多信息请查阅[单文件组件文档](../guide/single-file-component.html)。
 
-In most cases, the preferred way to create a webpack build with minimal configuration is to use Vue CLI.
+大多数情况下，我们更倾向于使用 Vue CLI 来创建一个配置最小化的 webpack 构建。
 
 ## 命令行工具 (CLI)
 

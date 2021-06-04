@@ -525,10 +525,9 @@ export default {
 
   CSS 模块的名称。默认为 `'$style'`。
 
-<!-- TODO: translation -->
 ## version
 
-Provides the installed version of Vue as a string.
+以字符串形式提供已安装的 Vue 的版本号。
 
 ```js
 const version = Number(Vue.version.split('.')[0])
@@ -537,8 +536,8 @@ if (version === 3) {
 } else if (version === 2) {
   // Vue 2
 } else {
-  // Unsupported versions of Vue
+  // 不支持的 Vue 的版本
 }
 ```
 
-**See also**: [Application API - version](/api/application-api.html#version)
+**参考：**[应用 API - version](/api/application-api.html#version)
