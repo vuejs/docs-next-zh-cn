@@ -43,14 +43,14 @@ export default {
 
 ## 使用 Provide
 
-在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入 `provide` 方法。这使我们能够调用 `provide` 时来定义每个 property。
+在 `setup()` 中使用 `provide` 时，我们首先从 `vue` 显式导入 `provide` 方法。这使我们能够调用 `provide` 来定义每个 property。
 
 `provide` 函数允许你通过两个参数定义 property：
 
-1. property 的 name (`<String>` 类型)
-2. property 的 value
+1. name (`<String>` 类型)
+2. value
 
-使用 `MyMap` 组件，我们 provide 的值可以按如下方式重构：
+使用 `MyMap` 组件后，provide 的值可以按如下方式重构：
 
 ```vue{7,14-20}
 <!-- src/components/MyMap.vue -->
@@ -79,12 +79,12 @@ export default {
 
 ## 使用 inject
 
-在 `setup()` 中使用 `inject` 时，还需要从 `vue` 显式导入它。一旦我们这样做了，我们就可以调用它来定义如何将它暴露给我们的组件。
+在 `setup()` 中使用 `inject` 时，也需要从 `vue` 显式导入。导入以后，我们就可以调用它来定义暴露给我们的组件方式。
 
 `inject` 函数有两个参数：
 
-1. 要 inject 的 property 的名称
-2. 一个默认的值 (**可选**)
+1. 要 inject 的 property 的 name
+2. 默认值 (**可选**)
 
 使用 `MyMarker` 组件，可以使用以下代码对其进行重构：
 
@@ -147,7 +147,7 @@ export default {
 
 ### 修改响应式 property
 
-当使用响应式 provide / inject 值时，**建议尽可能，在*提供者*内保持响应式 property 的任何更改**。
+当使用响应式 provide / inject 值时，**建议尽可能将对响应式 property 的所有修改限制在*定义 provide 的组件*内部**。
 
 例如，在需要更改用户位置的情况下，我们最好在 `MyMap` 组件中执行此操作。
 
