@@ -79,7 +79,7 @@ export default {
 
 ## 使用 inject
 
-在 `setup()` 中使用 `inject` 时，也需要从 `vue` 显式导入。一旦我们这样做了，我们就可以调用它来定义如何将它暴露给我们的组件。
+在 `setup()` 中使用 `inject` 时，也需要从 `vue` 显式导入。导入以后，我们就可以调用它来定义暴露给我们的组件方式。
 
 `inject` 函数有两个参数：
 
@@ -147,7 +147,7 @@ export default {
 
 ### 修改响应式 property
 
-当使用响应式 provide / inject 值时，**建议尽可能，在*provider*内保持响应式 property 的任何更改**。
+当使用响应式 provide / inject 值时，**建议尽可能将对响应式 property 的所有修改限制在*定义 provide 的组件*内部**。
 
 例如，在需要更改用户位置的情况下，我们最好在 `MyMap` 组件中执行此操作。
 

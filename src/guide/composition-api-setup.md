@@ -111,7 +111,7 @@ export default {
 
 ## 结合模板使用
 
-如果 `setup` 返回一个对象，就可以像 `props` properties 传递给 `setup` 一样，在组件的模板中访问该对象的 property：
+如果 `setup` 返回一个对象，那么该对象的 property 以及传递给 `setup` 的 `props` 参数中的 property 就都可以在模板中访问到：
 
 ```vue-html
 <!-- MyBook.vue -->

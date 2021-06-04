@@ -81,7 +81,7 @@ export default {
 
 `setup` 选项是一个接收 `props` 和 `context` 的函数，我们将在[之后](composition-api-setup.html#参数)进行讨论。此外，我们将 `setup` 返回的所有内容都暴露给组件的其余部分 (计算属性、方法、生命周期钩子等等) 以及组件的模板。
 
-让我们添加 `setup` 到组件中：
+让我们把 `setup` 添加到组件中：
 
 ```js
 // src/components/UserRepositories.vue
@@ -239,9 +239,9 @@ export default {
 
 我们将从生命周期钩子开始。
 
-### 生命周期钩子注册在 `setup` 内部 
+### 在 `setup` 内注册生命周期钩子
 
-为了使组合式 API 的功能和选项式 API 一样完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于 Vue 暴露的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来像 `onMounted`。
+为了使组合式 API 的功能和选项式 API 一样完整，我们还需要一种在 `setup` 中注册生命周期钩子的方法。这要归功于 Vue 导出的几个新函数。组合式 API 上的生命周期钩子与选项式 API 的名称相同，但前缀为 `on`：即 `mounted` 看起来会像 `onMounted`。
 
 这些函数接受一个回调，当钩子被组件调用时，该回调将被执行。
 
