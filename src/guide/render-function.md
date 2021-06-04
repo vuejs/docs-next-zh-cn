@@ -553,7 +553,7 @@ render () {
 
 诸如 `<keep-alive>`、`<transition>`、`<transition-group>` 和 `<teleport>` 等[内置组件](/api/built-in-components.html)默认并没有被全局注册。这使得打包工具可以 tree-shake，因此这些组件只会在被用到的时候被引入构建。不过这也意味着我们无法通过 `resolveComponent` 或 `resolveDynamicComponent` 访问它们。
 
-在模板中这些组件会被特殊处理，即在它们被用到的时候自动导入。当我们撰写自己的 `render` 函数时，需要自行导入它们：
+在模板中这些组件会被特殊处理，即在它们被用到的时候自动导入。当我们编写自己的 `render` 函数时，需要自行导入它们：
 
 ```js
 const { h, KeepAlive, Teleport, Transition, TransitionGroup } = Vue
@@ -636,7 +636,7 @@ app.mount('#demo')
 
 函数式组件是自身没有任何状态的组件的另一种形式。它们在渲染过程中不会创建组件实例，并跳过常规的组件生命周期。
 
-我们使用一个简单函数，而不是一个选项对象，来创建函数式组件。该函数实际上就是该组件的 `render` 函数。而因为函数式组件里没有 `this` 引用，Vue 会把 `props` 当作第一个参数传入：
+我们使用的是一个简单函数，而不是一个选项对象，来创建函数式组件。该函数实际上就是该组件的 `render` 函数。而因为函数式组件里没有 `this` 引用，Vue 会把 `props` 当作第一个参数传入：
 
 ```js
 const FunctionalComponent = (props, context) => {
@@ -646,7 +646,7 @@ const FunctionalComponent = (props, context) => {
 
 第二个参数 `context` 包含三个 property：`attrs`、`emit` 和 `slots`。它们分别相当于实例的 [`$attrs`](/api/instance-properties.html#attrs)、[`$emit`](/api/instance-methods.html#emit) 和 [`$slots`](/api/instance-properties.html#slots) 这几个 property。
 
-大多数常规组件的配置选项在函数式组件中都不可用。然而我们还是可以把 [`props`](/api/options-data.html#props) 和 [`emits`](/api/options-data.html#emits) 作为 property 加入来达到定义它们的目的：
+大多数常规组件的配置选项在函数式组件中都不可用。然而我们还是可以把 [`props`](/api/options-data.html#props) 和 [`emits`](/api/options-data.html#emits) 作为 property 加入，以达到定义它们的目的：
 
 ```js
 FunctionalComponent.props = ['value']
