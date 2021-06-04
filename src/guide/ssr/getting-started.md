@@ -35,7 +35,7 @@ const app = createSSRApp({
 })
 ```
 
-现在，我们可以使用 `renderToString` 函数将我们的应用实例为一个字符串。这个函数返回一个 Promise 来解析渲染出的 HTML。
+现在，我们可以使用 `renderToString` 函数将我们的应用实例渲染为一个字符串。此函数返回一个 Promise 来解析渲染出的 HTML。
 
 ```js{2,13}
 const { createSSRApp } = require('vue')
@@ -53,7 +53,7 @@ const app = createSSRApp({
 const appContent = await renderToString(app)
 ```
 
-## 和一个服务器集成
+## 和服务器集成
 
 在这个示例中我们使用 [Express](https://expressjs.com/) 来运行一个应用：
 
@@ -96,4 +96,4 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-现在，当运行这段 Node.js 脚本的时候，我们可以在 `localhost:8080` 看到一个静态的 HTML 页面。然而，这段代码并不是 _hydrate_ 的：Vue 还没有将这段发送自服务器的静态 HTML 转换为响应客户端数据变化的动态 DOM。这部分会被涵盖于[客户端 hydration](hydration.html) 章节。
+现在，当运行这段 Node.js 脚本的时候，我们可以在 `localhost:8080` 看到一个静态的 HTML 页面。然而，这段代码并不是 *hydrate* 的：Vue 还没有将这段发送自服务器的静态 HTML 转换为响应客户端数据变化的动态 DOM。这部分会被涵盖在[客户端 hydration](hydration.html) 章节中。
