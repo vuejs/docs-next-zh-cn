@@ -19,7 +19,7 @@
     }
   }
 
-  Vue.createApp({
+  createApp({
     created() {
       console.log(2)
     },
@@ -221,7 +221,7 @@
   </script>
   ```
 
-  请注意，从 `setup` 返回的 [refs](refs-api.html#ref) 在模板中访问时会自动展开，因此模板中不需要 `.value`。
+  请注意，从 `setup` 返回的 [refs](refs-api.html#ref) 在模板中访问时会自动解包，因此模板中不需要 `.value`。
 
 - **渲染函数/JSX 的方法**
 
@@ -299,7 +299,7 @@
   }
   ```
 
-  `attrs` 和 `slots` 是内部组件实例上相应值的代理。这样可以确保它们即使在更新后也始终会显示最新值，以便我们可以对它们进行结构分解，而不必担心访问老的引用：
+  `attrs` 和 `slots` 是内部组件实例上相应值的代理。这样可以确保它们即使在更新后也始终会显示最新值，以便我们可以对它们进行解构，而不必担心访问过时的引用：
 
   ```js
   const MyComponent = {

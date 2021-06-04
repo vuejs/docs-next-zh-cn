@@ -6,7 +6,8 @@ const sidebar = {
       children: [
         '/cookbook/',
         '/cookbook/editable-svg-icons',
-        '/cookbook/debugging-in-vscode'
+        '/cookbook/debugging-in-vscode',
+        '/cookbook/automatic-global-registration-of-base-components'
       ]
     }
   ],
@@ -58,6 +59,16 @@ const sidebar = {
       title: '可复用 & 组合',
       collapsable: false,
       children: [
+        {
+          title: '组合式 API',
+          children: [
+            '/guide/composition-api-introduction',
+            '/guide/composition-api-setup',
+            '/guide/composition-api-lifecycle-hooks',
+            '/guide/composition-api-provide-inject',
+            '/guide/composition-api-template-refs'
+          ]
+        },
         '/guide/mixins',
         '/guide/custom-directive',
         '/guide/teleport',
@@ -75,16 +86,6 @@ const sidebar = {
             '/guide/reactivity',
             '/guide/reactivity-fundamentals',
             '/guide/reactivity-computed-watchers'
-          ]
-        },
-        {
-          title: '组合式 API',
-          children: [
-            '/guide/composition-api-introduction',
-            '/guide/composition-api-setup',
-            '/guide/composition-api-lifecycle-hooks',
-            '/guide/composition-api-provide-inject',
-            '/guide/composition-api-template-refs'
           ]
         },
         '/guide/optimizations',
@@ -142,8 +143,8 @@ const sidebar = {
     '/api/built-in-components.md',
     {
       title: '响应性 API',
-      collapsable: false,
       path: '/api/reactivity-api',
+      collapsable: false,
       children: [
         '/api/basic-reactivity',
         '/api/refs-api',
@@ -194,18 +195,33 @@ const sidebar = {
         '/guide/migration/key-attribute',
         '/guide/migration/keycode-modifiers',
         '/guide/migration/listeners-removed',
+        '/guide/migration/mount-changes',
+        '/guide/migration/props-data',
         '/guide/migration/props-default-this',
         '/guide/migration/render-function-api',
         '/guide/migration/slots-unification',
+        '/guide/migration/suspense',
         '/guide/migration/transition',
+        '/guide/migration/transition-as-root',
         '/guide/migration/transition-group',
         '/guide/migration/v-on-native-modifier-removed',
         '/guide/migration/v-model',
         '/guide/migration/v-if-v-for',
         '/guide/migration/v-bind',
+        '/guide/migration/vnode-lifecycle-events',
         '/guide/migration/watch'
       ]
     },
+  ],
+  ssr: [
+    ['/guide/ssr/introduction', 'Introduction'],
+    '/guide/ssr/getting-started',
+    '/guide/ssr/universal',
+    '/guide/ssr/structure',
+    '/guide/ssr/build-config',
+    '/guide/ssr/server',
+    '/guide/ssr/routing',
+    '/guide/ssr/hydration'
   ],
   contributing: [
     {
@@ -362,7 +378,7 @@ module.exports = {
               {
                 text: 'Vue Test Utils',
                 link:
-                  'https://vuejs.github.io/vue-test-utils-next-docs/guide/introduction.html'
+                  'https://next.vue-test-utils.vuejs.org/guide/'
               },
               {
                 text: 'Devtools',
@@ -371,6 +387,10 @@ module.exports = {
               {
                 text: 'Weekly news',
                 link: 'https://news.vuejs.org/'
+              },
+              {
+                text: 'Blog',
+                link: 'https://blog.vuejs.org/'
               }
             ]
           }
@@ -382,11 +402,11 @@ module.exports = {
         items: [
           {
             text: '一次性捐款',
-            link: '/support-vuejs/#one-time-donations'
+            link: '/support-vuejs/#一次性捐款'
           },
           {
             text: '周期性捐款',
-            link: '/support-vuejs/#recurring-pledges'
+            link: '/support-vuejs/#周期性赞助'
           },
           {
             text: '贴纸',
@@ -405,9 +425,26 @@ module.exports = {
       {
         text: '多语言',
         link: '#',
-        items: [{
+        items: [
+          {
             text: 'English',
-            link: 'https://v3.vuejs.org'
+            link: 'https://v3.vuejs.org/'
+          },
+          {
+            text: '한국어',
+            link: 'https://v3.ko.vuejs.org/'
+          },
+          {
+            text: '日本語',
+            link: 'https://v3.ja.vuejs.org/'
+          },
+          {
+            text: 'Русский',
+            link: 'https://v3.ru.vuejs.org/'
+          },
+          {
+            text: '更多翻译',
+            link: '/guide/contributing/translations#community-translations'
           }
         ]
       }
@@ -422,6 +459,7 @@ module.exports = {
       collapsable: false,
       '/guide/migration/': sidebar.migration,
       '/guide/contributing/': sidebar.contributing,
+      '/guide/ssr/': sidebar.ssr,
       '/guide/': sidebar.guide,
       '/community/': sidebar.guide,
       '/cookbook/': sidebar.cookbook,
@@ -432,9 +470,29 @@ module.exports = {
     algolia: {
       indexName: 'vuejs_cn3',
       apiKey: '773de665ca11d74cede4e35ecff46931'
+    },
+    carbonAds: {
+      carbon: 'CEBDT27Y',
+      custom: 'CKYD62QM',
+      placement: 'vuejsorg'
     }
   },
   plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer(timestamp) {
+          const date = new Date(timestamp)
+
+          const digits = [
+            date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate(),
+            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
+          ].map(num => String(num).padStart(2, '0'))
+
+          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(/{(\d)}/g, (_, num) => digits[num])
+        }
+      }
+    ],
     [
       '@vuepress/pwa',
       {

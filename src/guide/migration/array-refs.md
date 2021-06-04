@@ -1,7 +1,7 @@
 ---
 title: v-for 中的 Ref 数组
 badges:
-- breaking
+  - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
@@ -25,7 +25,9 @@ export default {
   },
   methods: {
     setItemRef(el) {
-      this.itemRefs.push(el)
+      if (el) {
+        this.itemRefs.push(el)
+      }
     }
   },
   beforeUpdate() {
@@ -40,13 +42,15 @@ export default {
 结合组合式 API:
 
 ```js
-import { ref, onBeforeUpdate, onUpdated } from 'vue'
+import { onBeforeUpdate, onUpdated } from 'vue'
 
 export default {
   setup() {
     let itemRefs = []
     const setItemRef = el => {
-      itemRefs.push(el)
+      if (el) {
+        itemRefs.push(el)
+      }
     }
     onBeforeUpdate(() => {
       itemRefs = []
@@ -55,7 +59,6 @@ export default {
       console.log(itemRefs)
     })
     return {
-      itemRefs,
       setItemRef
     }
   }

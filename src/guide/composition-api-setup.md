@@ -42,9 +42,9 @@ export default {
 import { toRefs } from 'vue'
 
 setup(props) {
-	const { title } = toRefs(props)
+  const { title } = toRefs(props)
 
-	console.log(title.value)
+  console.log(title.value)
 }
 ```
 
@@ -55,14 +55,14 @@ setup(props) {
 // MyBook.vue
 import { toRef } from 'vue'
 setup(props) {
-	const title = toRef(props, 'title')
-	console.log(title.value)
+  const title = toRef(props, 'title')
+  console.log(title.value)
 }
 ```
 
 ### Context
 
-传递给 `setup` 函数的第二个参数是 `context`。`context` 是一个普通的 JavaScript 对象，它暴露三个组件的 property：
+传递给 `setup` 函数的第二个参数是 `context`。`context` 是一个普通的 JavaScript 对象，它暴露组件的三个 property：
 
 ```js
 // MyBook.vue
@@ -92,7 +92,7 @@ export default {
 }
 ```
 
-`attrs` 和 `slots` 是有状态的对象，它们总是会随组件本身的更新而更新。这意味着你应该避免对它们进行解构，并始终以 `attrs.x` 或 `slots.x` 的方式引用 property。请注意，与 `props` 不同，`attrs` 和 ` slots` 是**非**响应式的。如果你打算根据 `attrs` 或 `slots` 更改应用副作用，那么应该在 `onUpdated` 生命周期钩子中执行此操作。
+`attrs` 和 `slots` 是有状态的对象，它们总是会随组件本身的更新而更新。这意味着你应该避免对它们进行解构，并始终以 `attrs.x` 或 `slots.x` 的方式引用 property。请注意，与 `props` 不同，`attrs` 和 `slots` 是**非**响应式的。如果你打算根据 `attrs` 或 `slots` 更改应用副作用，那么应该在 `onUpdated` 生命周期钩子中执行此操作。
 
 ## 访问组件的 property
 
@@ -137,7 +137,7 @@ export default {
 </script>
 ```
 
-注意，从 `setup` 返回的 [refs](../api/refs-api.html#ref) 在模板中访问时是[被自动解开](/guide/reactivity-fundamentals.html#ref-解开)的，因此不应在模板中使用 `.value`。
+注意，从 `setup` 返回的 [refs](../api/refs-api.html#ref) 在模板中访问时是[被自动浅解包](/guide/reactivity-fundamentals.html#ref-解包)的，因此不应在模板中使用 `.value`。
 
 ## 使用渲染函数
 

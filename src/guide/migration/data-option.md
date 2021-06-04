@@ -12,7 +12,7 @@ badges:
 
 当合并来自 mixin 或 extend 的多个 `data` 返回值时，现在是浅层次合并的而不是深层次合并的(只合并根级属性)。
 
-## 2.x Syntax
+## 2.x 语法
 
 在 2.x 中，开发者可以定义 `data` 选项是 `object` 或者是 `function`。
 
@@ -42,7 +42,7 @@ badges:
 
 虽然这对于具有共享状态的根实例提供了一些便利，但是由于只有在根实例上才有可能，这导致了混乱。
 
-## 3.x Update
+## 3.x 更新
 
 在 3.x，`data` 选项已标准化为只接受返回 `object` 的 `function`。
 
@@ -89,13 +89,13 @@ const CompA = {
 }
 ```
 
-在 Vue 2.x中，生成的 `$data` 是：
+在 Vue 2.x 中，生成的 `$data` 是：
 
 ```json
 {
-  user: {
-    id: 2,
-    name: 'Jack'
+  "user": {
+    "id": 2,
+    "name": "Jack"
   }
 }
 ```
@@ -104,8 +104,8 @@ const CompA = {
 
 ```json
 {
-  user: {
-    id: 2
+  "user": {
+    "id": 2
   }
 }
 ```

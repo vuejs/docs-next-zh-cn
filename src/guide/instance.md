@@ -5,7 +5,9 @@
 每个 Vue 应用都是通过用 `createApp` 函数创建一个新的**应用实例**开始的：
 
 ```js
-const app = Vue.createApp({ /* 选项 */ })
+const app = Vue.createApp({
+  /* 选项 */
+})
 ```
 
 该应用实例是用来在应用中注册“全局”组件的。我们会在后面的指南中详细讨论，简单的例子：
@@ -26,7 +28,7 @@ Vue.createApp({})
   .use(LocalePlugin)
 ```
 
-可以在 [API 参考](./api/application-api.html)中浏览完整的应用 API。
+可以在 [API 参考](../api/application-api.html)中浏览完整的应用 API。
 
 ## 根组件
 
@@ -35,7 +37,9 @@ Vue.createApp({})
 一个应用需要被挂载到一个 DOM 元素中。例如，如果你想把一个 Vue 应用挂载到 `<div id="app"></div>`，应该传入 `#app`：
 
 ```js
-const RootComponent = { /* 选项 */ }
+const RootComponent = { 
+  /* 选项 */ 
+}
 const app = Vue.createApp(RootComponent)
 const vm = app.mount('#app')
 ```
@@ -102,11 +106,11 @@ Vue.createApp({
 也有一些其它的钩子，在实例生命周期的不同阶段被调用，如 [mounted](../api/options-lifecycle-hooks.html#mounted)、[updated](../api/options-lifecycle-hooks.html#updated) 和 [unmounted](../api/options-lifecycle-hooks.html#unmounted)。生命周期钩子的 `this` 上下文指向调用它的当前活动实例。
 
 :::tip
-不要在选项 property 或回调上使用[箭头函数]((https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions))，比如 `created: () => console.log(this.a)` 或 `vm.$watch('a', newValue => this.myMethod())`。因为箭头函数并没有 `this`，`this` 会作为变量一直向上级词法作用域查找，直至找到为止，经常导致 `Uncaught TypeError: Cannot read property of undefined` 或 `Uncaught TypeError: this.myMethod is not a function` 之类的错误。
+不要在选项 property 或回调上使用[箭头函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)，比如 `created: () => console.log(this.a)` 或 `vm.$watch('a', newValue => this.myMethod())`。因为箭头函数并没有 `this`，`this` 会作为变量一直向上级词法作用域查找，直至找到为止，经常导致 `Uncaught TypeError: Cannot read property of undefined` 或 `Uncaught TypeError: this.myMethod is not a function` 之类的错误。
 :::
 
 ## 生命周期图示
 
 下图展示了实例的生命周期。我们不需要立马弄明白所有的东西，不过随着不断学习和使用，它的参考价值会越来越高。
 
-<img src="/images/lifecycle.png" width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="实例的生命周期">
+<img src="/images/lifecycle.svg" width="840" height="auto" style="margin: 0px auto; display: block; max-width: 100%;" loading="lazy" alt="实例的生命周期">

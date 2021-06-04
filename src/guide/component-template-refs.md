@@ -8,7 +8,7 @@
 <input ref="input" />
 ```
 
-例如，你希望以编程的方式 focus 这个 input 在组件上挂载，这可能有用
+例如，你希望在组件挂载时，以编程的方式 focus 到这个 input 上，这可能有用
 
 ```js
 const app = Vue.createApp({})
@@ -42,4 +42,4 @@ this.$refs.usernameInput.focusInput()
 `$refs` 只会在组件渲染完成之后生效。这仅作为一个用于直接操作子元素的“逃生舱”——你应该避免在模板或计算属性中访问 `$refs`。
 :::
 
-**参考**：[在组合式 API 中使用 template refs](/guide/composition-api-template-refs.html#template-refs)
+**参考**：[在组合式 API 中使用 template refs](/guide/composition-api-template-refs.html#模板引用)

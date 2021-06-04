@@ -168,7 +168,7 @@ example1.items = example1.items.filter(item => item.message.match(/Foo/))
 例如：
 
 ```html
-<li v-for="n in evenNumbers">{{ n }}</li>
+<li v-for="n in evenNumbers" :key="n">{{ n }}</li>
 ```
 
 ```js
@@ -188,7 +188,7 @@ computed: {
 
 ```html
 <ul v-for="numbers in sets">
-  <li v-for="n in even(numbers)">{{ n }}</li>
+  <li v-for="n in even(numbers)" :key="n">{{ n }}</li>
 </ul>
 ```
 
@@ -211,13 +211,13 @@ methods: {
 
 ```html
 <div id="range" class="demo">
-  <span v-for="n in 10">{{ n }} </span>
+  <span v-for="n in 10" :key="n">{{ n }} </span>
 </div>
 ```
 
 结果：
 
-<common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" :preview="false" />
+<common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" />
 
 ## 在 `<template>` 中使用 `v-for`
 
@@ -225,7 +225,7 @@ methods: {
 
 ```html
 <ul>
-  <template v-for="item in items">
+  <template v-for="item in items" :key="item.msg">
     <li>{{ item.msg }}</li>
     <li class="divider" role="presentation"></li>
   </template>
@@ -235,7 +235,7 @@ methods: {
 ## `v-for` 与 `v-if` 一同使用
 
 :::tip
-注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#avoid-v-if-with-v-for-essential)。
+注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#避免-v-if-和-v-for-一起使用必要)。
 :::
 
 当它们处于同一节点，`v-if` 的优先级比 `v-for` 更高，这意味着 `v-if` 将没有权限访问 `v-for` 里的变量：
@@ -244,16 +244,16 @@ methods: {
 <!-- This will throw an error because property "todo" is not defined on instance. -->
 
 <li v-for="todo in todos" v-if="!todo.isComplete">
-  {{ todo }}
+  {{ todo.name }}
 </li>
 ```
 
 可以把 `v-for` 移动到 `<template>` 标签中来修正：
 
 ```html
-<template v-for="todo in todos">
+<template v-for="todo in todos" :key="todo.name">
   <li v-if="!todo.isComplete">
-    {{ todo }}
+    {{ todo.name }}
   </li>
 </template>
 ```

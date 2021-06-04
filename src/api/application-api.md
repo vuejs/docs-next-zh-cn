@@ -88,9 +88,11 @@ const app = createApp({})
 // 注册
 app.directive('my-directive', {
   // 指令是具有一组生命周期的钩子：
+  // 在绑定元素的 attribute 或事件监听器被应用之前调用
+  created() {},
   // 在绑定元素的父组件挂载之前调用
   beforeMount() {},
-  // 绑定元素的父组件挂载时调用
+  // 绑定元素的父组件被挂载时调用
   mounted() {},
   // 在包含组件的 VNode 更新之前调用
   beforeUpdate() {},
@@ -189,7 +191,7 @@ app.directive('focus', {
 
 - **用法：**
 
-  将应用实例的根组件挂载在提供的 DOM 元素上。
+  所提供 DOM 元素的 `innerHTML` 将被替换为应用根组件的模板渲染结果。
 
 - **示例：**
 
@@ -229,7 +231,7 @@ app.mount('#my-app')
 
   该方法不应该与 [provide 组件选项](options-composition.html#provide-inject)或组合式 API 中的 [provide 方法](composition-api.html#provide-inject)混淆。虽然它们也是相同的 `provide`/`inject` 机制的一部分，但是是用来配置组件 provide 的值而不是应用 provide 的值。
 
-  通过应用提供值在写插件时尤其有用，因为插件一般不能使用组件提供值。这是使用 [globalProperties](application-config.html#globalProperties) 的替代选择。
+  通过应用提供值在写插件时尤其有用，因为插件一般不能使用组件提供值。这是使用 [globalProperties](application-config.html#globalproperties) 的替代选择。
 
   :::tip Note
   `provide` 和 `inject` 绑定不是响应式的。这是有意为之。不过，如果你向下传递一个响应式对象，这个对象上的 property 会保持响应式。
@@ -259,13 +261,9 @@ app.provide('user', 'administrator')
 
 ## unmount
 
-- **参数：**
-
-  - `{Element | string} rootContainer`
-
 - **用法：**
 
-  在提供的 DOM 元素上卸载应用实例的根组件。
+  卸载应用实例的根组件。
 
 - **示例：**
 
@@ -283,7 +281,7 @@ const app = createApp({})
 app.mount('#my-app')
 
 // 挂载5秒后，应用将被卸载
-setTimeout(() => app.unmount('#my-app'), 5000)
+setTimeout(() => app.unmount(), 5000)
 ```
 
 ## use
@@ -305,4 +303,39 @@ setTimeout(() => app.unmount('#my-app'), 5000)
 
   当在同一个插件上多次调用此方法时，该插件将仅安装一次。
 
-- **参考：** [插件](../guide/plugins.html)
+- **示例：**
+
+  ```js
+  import { createApp } from 'vue'
+  import MyPlugin from './plugins/MyPlugin'
+
+  const app = createApp({})
+
+  app.use(MyPlugin)
+  app.mount('#app')
+  ```
+
+- **参考：**[插件](../guide/plugins.html)
+
+## version
+
+- **用法：**
+
+  Provides the installed version of Vue as a string. This is especially useful for community [plugins](/guide/plugins.html), where you might use different strategies for different versions.
+  以字符串形式提供已安装的 Vue 的版本号。这对于基于不同版本使用不同策略的社区[插件](/guide/plugins.html)来说特别有用。
+
+- **示例：**
+
+  ```js
+  export default {
+    install(app) {
+      const version = Number(app.version.split('.')[0])
+      if (version < 3) {
+        console.warn('This plugin requires Vue 3')
+      }
+      // ...
+    }
+  }
+  ```
+
+- **参考：**: [全局 API - version](/api/global-api.html#version)

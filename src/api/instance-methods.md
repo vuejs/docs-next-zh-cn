@@ -15,12 +15,12 @@
 
 - **用法：**
 
-  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`prop` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
+  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`props` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
 
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1,
@@ -62,7 +62,7 @@
   当侦听的值是一个对象或者数组时，对其属性或元素的任何更改都不会触发侦听器，因为它们引用相同的对象/数组：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         article: {
@@ -104,7 +104,7 @@
   `$watch` 返回一个取消侦听函数，用来停止触发回调：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1
@@ -121,7 +121,9 @@
 
 - **选项：deep**
 
-  为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。注意监听数组的变更不需要这么做。
+  为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。这个选项同样适用于监听数组变更。
+  
+  > 注意：当变更（不是替换）对象或数组并使用 deep 选项时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。
 
   ```js
   vm.$watch('someObject', callback, {
@@ -173,25 +175,23 @@
   )
   ```
 
-<!-- TODO: translation -->
+- **选项：flush**
 
-- **Option: flush**
-
-  The `flush` option allows for greater control over the timing of the callback. It can be set to `'pre'`, `'post'` or `'sync'`.
+  `flush` 选项可以更好地控制回调的时间。它可以设置为 `'pre'`、`'post'` 或 `'sync'`。
   
-  The default value is `'pre'`, which specifies that the callback should be invoked before rendering. This allows the callback to update other values before the template runs.
+  默认值是 `'pre'`，指定的回调应该在渲染前被调用。它允许回调在模板运行前更新了其他值。
   
-  The value `'post'` can be used to defer the callback until after rendering. This should be used if the callback needs access to the updated DOM or child components via `$refs`.
+  `'post'` 值是可以用来将回调推迟到渲染之后的。如果回调需要通过 `$refs` 访问更新的 DOM 或子组件，那么则使用该值。
 
-  If `flush` is set to `'sync'`, the callback will be called synchronously, as soon as the value changes.
+  如果 `flush` 被设置为 `'sync'`，一旦值发生了变化，回调将被同步调用。
 
-  For both `'pre'` and `'post'`, the callback is buffered using a queue. The callback will only be added to the queue once, even if the watched value changes multiple times. The interim values will be skipped and won't be passed to the callback.
+  对于 `'pre'` 和 `'post'`，回调使用队列进行缓冲。回调只被添加到队列中一次，即使观察值变化了多次。值的中间变化将被跳过，不会传递给回调。
   
-  Buffering the callback not only improves performance but also helps to ensure data consistency. The watchers won't be triggered until the code performing the data updates has finished.
+  缓冲回调不仅可以提高性能，还有助于保证数据的一致性。在执行数据更新的代码完成之前，侦听器不会被触发。
   
-  `'sync'` watchers should be used sparingly, as they don't have these benefits.
+  `'sync'` 侦听器应少用，因为它们没有这些好处。
 
-  For more information about `flush` see [Effect Flush Timing](../guide/reactivity-computed-watchers.html#effect-flush-timing).
+  更多关于 `flush` 的信息，请参阅[副作用刷新时机](../guide/reactivity-computed-watchers.html#副作用刷新时机)。
 
 -  **参考** [Watchers](../guide/computed.html#侦听器)
 
@@ -215,7 +215,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       sayHi() {
         console.log('Hi!')
@@ -244,7 +244,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       showAdvice(advice) {
         alert(advice)
@@ -294,20 +294,18 @@
 
 - **示例：**
 
-<!-- TODO: translation -->
-
   ```js
-  Vue.createApp({
+  createApp({
     // ...
     methods: {
       // ...
       example() {
-        // modify data
+        // 修改数据
         this.message = 'changed'
-        // DOM is not updated yet
+        // DOM 尚未更新
         this.$nextTick(function() {
-          // DOM is now updated
-          // `this` is bound to the current instance
+          // DOM 现在更新了
+          // `this` 被绑定到当前实例
           this.doSomethingElse()
         })
       }

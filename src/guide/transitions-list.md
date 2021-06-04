@@ -7,12 +7,12 @@
 
 那么怎么同时渲染整个列表，比如使用 `v-for`？在这种场景中，使用 `<transition-group>` 组件。在我们深入例子之前，先了解关于这个组件的几个特点：
 
-- By default, it doesn't render a wrapper element, but you can specify an element to be rendered with the `tag` attribute. <!-- TODO: translation -->
+- 默认情况下，它不会渲染一个元素的包裹器，但是你可以指定一个元素并以 `tag` attribute 进行渲染。
 - [过渡模式](/guide/transitions-enterleave#过渡模式)不可用，因为我们不再相互切换特有的元素。
 - 内部元素**总是需要**提供唯一的 `key` attribute 值。
 - CSS 过渡的类将会应用在内部的元素中，而不是这个组/容器本身。
 
-### 列表的进入/离开过渡
+## 列表的进入/离开过渡
 
 现在让我们由一个简单的例子深入，进入和离开的过渡使用之前一样的 CSS class 名。
 
@@ -72,7 +72,7 @@ Vue.createApp(Demo).mount('#list-demo')
 
 这个例子有个问题，当添加和移除元素的时候，周围的元素会瞬间移动到他们的新布局的位置，而不是平滑的过渡，我们下面会解决这个问题。
 
-### 列表的排序过渡
+## 列表的移动过渡
 
 `<transition-group>` 组件还有一个特殊之处。不仅可以进入和离开动画，还可以改变定位。要使用这个新功能只需了解新增的 **`v-move` class**，它会在元素的改变定位的过程中应用。像之前的类名一样，可以通过 `name` attribute 来自定义前缀，也可以通过 `move-class` attribute 手动设置。
 
@@ -190,7 +190,7 @@ FLIP 动画不仅可以实现单列过渡，多维网格也[同样可以过渡](
 
 TODO：示例
 
-### 列表的交错过渡
+## 列表的交错过渡
 
 通过 data attribute 与 JavaScript 通信，就可以实现列表的交错过渡：
 
@@ -300,7 +300,7 @@ Vue.component('my-special-transition', {
 })
 ```
 
-[函数式组件](render-function.html#Functional-Components)更适合完成这个任务：
+[函数式组件](render-function.html#函数式组件)更适合完成这个任务：
 
 ```js
 Vue.component('my-special-transition', {

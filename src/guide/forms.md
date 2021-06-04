@@ -17,7 +17,7 @@
 <span id="vmodel-ime-tip"></span>
 
 :::tip 提示
-对于需要使用[输入法](https://en.wikipedia.org/wiki/Input_method) (如中文、日文、韩文等) 的语言，你会发现 `v-model` 不会在输入法组织文字过程中得到更新。如果你也想处理这个过程，请使用 `input` 事件。
+对于需要使用[输入法](https://en.wikipedia.org/wiki/Input_method) (如中文、日文、韩文等) 的语言，你会发现 `v-model` 不会在输入法组织文字过程中得到更新。如果你也想响应这些更新，请使用 `input` 事件监听器和 `value` 绑定，而不是使用 `v-model`。
 :::
 
 ### 文本 (Text)
@@ -158,7 +158,7 @@ Vue.createApp({
 <span>Selected: {{ selected }}</span>
 ```
 
-<common-codepen-snippet title="Handling forms: select bound to array" slug="gOpBXPz" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Handling forms: select bound to array" slug="gOpBXPz" tab="result" :preview="false" />
 
 用 `v-for` 渲染的动态选项：
 

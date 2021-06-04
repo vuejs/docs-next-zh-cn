@@ -19,7 +19,7 @@
 Vue.createApp({
   data() {
     return {
-      counter: 1
+      counter: 0
     }
   }
 }).mount('#basic-event')
@@ -27,7 +27,7 @@ Vue.createApp({
 
 结果：
 
-<common-codepen-snippet title="Event handling: basic" slug="xxGadPZ" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Event handling: basic" slug="xxGadPZ" tab="result" :preview="false" />
 
 ## 事件处理方法
 
@@ -64,7 +64,7 @@ Vue.createApp({
 
 结果：
 
-<common-codepen-snippet title="Event handling: with a method" slug="jOPvmaX" tab="js,result" :preview="false" />
+<common-codepen-snippet title="Event handling: with a method" slug="jOPvmaX" tab="result" :preview="false" />
 
 ## 内联处理器中的方法
 
@@ -89,7 +89,7 @@ Vue.createApp({
 
 结果：
 
-<common-codepen-snippet title="Event handling: with an inline handler" slug="WNvgjda" tab="html,result" :preview="false" />
+<common-codepen-snippet title="Event handling: with an inline handler" slug="WNvgjda" tab="result" :preview="false" />
 
 有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 `$event` 把它传入方法：
 

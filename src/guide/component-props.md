@@ -24,7 +24,7 @@ props: {
 }
 ```
 
-这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户。你会在这个页面接下来的部分看到[类型检查和其它 prop 验证](#prop-validation)。
+这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户。你会在这个页面接下来的部分看到[类型检查和其它 prop 验证](#prop-验证)。
 
 ## 传递静态或动态的 Prop
 
@@ -146,7 +146,7 @@ data() {
 ```js
 props: ['size'],
 computed: {
-  normalizedSize: function () {
+  normalizedSize() {
     return this.size.trim().toLowerCase()
   }
 }
@@ -183,22 +183,22 @@ app.component('my-component', {
     propE: {
       type: Object,
       // 对象或数组默认值必须从一个工厂函数获取
-      default: function() {
+      default() {
         return { message: 'hello' }
       }
     },
     // 自定义验证函数
     propF: {
-      validator: function(value) {
+      validator(value) {
         // 这个值必须匹配下列字符串中的一个
-        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+        return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // 具有默认值的函数
     propG: {
       type: Function,
       // 与对象或数组默认值不同，这不是一个工厂函数 —— 这是一个用作默认值的函数
-      default: function() {
+      default() {
         return 'Default function'
       }
     }

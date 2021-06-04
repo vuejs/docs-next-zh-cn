@@ -4,7 +4,7 @@
 
 ## NPM 包中的官方声明
 
-随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一流的公民支持。
+随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一等公民支持。
 
 ## 推荐配置
 
@@ -14,7 +14,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    // 这样就可以对 `this` 上的数据属性进行更严格的推断`
+    // 这样就可以对 `this` 上的数据属性进行更严格的推断
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node"
@@ -76,9 +76,17 @@ vue add typescript
 </script>
 ```
 
+或者，如果你想将 TypeScript 与 [JSF `render` 函数](/guide/render-function.html#jsx)结合起来：
+
+```html
+<script lang="tsx">
+  ...
+</script>
+```
+
 ### 编辑器支持
 
-对于使用 TypeScript 开发 Vue 应用程序，我们强烈建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它为 TypeScript 提供了很好的开箱即用支持。如果你使用的是[单文件组件](./single-file-components.html) (SFCs)，那么可以使用很棒的 [Vetur extension](https://github.com/vuejs/vetur)，它在 SFCs 中提供了 TypeScript 推理和许多其他优秀的特性。
+对于使用 TypeScript 开发 Vue 应用程序，我们强烈建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它为 TypeScript 提供了很好的开箱即用支持。如果你使用的是[单文件组件](./single-file-component.html) (SFCs)，那么可以使用很棒的 [Vetur extension](https://github.com/vuejs/vetur)，它在 SFCs 中提供了 TypeScript 推理和许多其他优秀的特性。
 
 [WebStorm](https://www.jetbrains.com/webstorm/) 还为 TypeScript 和 Vue 提供现成的支持。
 
@@ -94,9 +102,20 @@ const Component = defineComponent({
 })
 ```
 
+如果你使用的是[单文件组件](/guide/single-file-component.html)，则通常会被写成：
+
+```vue
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+  // 已启用类型推断
+})
+</script>
+```
+
 ## 与 Options API 一起使用
 
-TypeScript 应该能够在不显式定义类型的情况下推断大多数类型。例如，如果有一个具有数字 `count` property 的组件，如果试图对其调用特定于字符串的方法，则会出现错误：
+TypeScript 应该能够在不显式定义类型的情况下推断大多数类型。例如，对于拥有一个数字类型的 `count` property 的组件来说，如果你试图对其调用字符串独有的方法，会出现错误：
 
 ```ts
 const Component = defineComponent({
@@ -111,7 +130,7 @@ const Component = defineComponent({
 })
 ```
 
-如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) 对其进行强制转换：
+如果你有一个复杂的类型或接口，你可以使用 [type assertion](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions) 对其进行指明：
 
 ```ts
 interface Book {
@@ -133,9 +152,53 @@ const Component = defineComponent({
 })
 ```
 
-### 注释返回类型
+<!-- TODO: translation -->
+### Augmenting Types for `globalProperties`
 
-由于 Vue 声明文件的循环特性，TypeScript 可能难以推断 computed 的类型。因此，你可能需要注释返回类型的计算属性。
+Vue 3 provides a [`globalProperties` object](../api/application-config.html#globalproperties) that can be used to add a global property that can be accessed in any component instance. For example, a [plugin](./plugins.html#writing-a-plugin) might want to inject a shared global object or function.
+
+```ts
+// User Definition
+import axios from 'axios'
+const app = Vue.createApp({})
+app.config.globalProperties.$http = axios
+// Plugin for validating some data
+export default {
+  install(app, options) {
+    app.config.globalProperties.$validate = (data: object, rule: object) => {
+      // check whether the object meets certain rules
+    }
+  }
+}
+```
+
+In order to tell TypeScript about these new properties, we can use [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation).
+
+In the above example, we could add the following type declaration:
+
+```ts
+import axios from 'axios'
+declare module '@vue/runtime-core' {
+  export interface ComponentCustomProperties {
+    $http: typeof axios
+    $validate: (data: object, rule: object) => boolean
+  }
+}
+```
+
+We can put this type declaration in the same file, or in a project-wide `*.d.ts` file (for example, in the `src/typings` folder that is automatically loaded by TypeScript). For library/plugin authors, this file should be specified in the `types` property in `package.json`.
+
+::: warning Make sure the declaration file is a TypeScript module
+In order to take advantage of module augmentation, you will need to ensure there is at least one top-level `import` or `export` in your file, even if it is just `export {}`.
+
+[In TypeScript](https://www.typescriptlang.org/docs/handbook/modules.html), any file containing a top-level `import` or `export` is considered a 'module'. If type declaration is made outside of a module, it will overwrite the original types rather than augmenting them.
+:::
+
+For more information about the `ComponentCustomProperties` type, see its [definition in `@vue/runtime-core`](https://github.com/vuejs/vue-next/blob/2587f36fe311359e2e34f40e8e47d2eebfab7f42/packages/runtime-core/src/componentOptions.ts#L64-L80) and [the TypeScript unit tests](https://github.com/vuejs/vue-next/blob/master/test-dts/componentTypeExtensions.test-d.tsx) to learn more.
+
+### 注解返回类型
+
+由于 Vue 声明文件的循环特性，TypeScript 可能难以推断 computed 的类型。因此，你可能需要注解计算属性的返回类型。
 
 ```ts
 import { defineComponent } from 'vue'
@@ -147,36 +210,37 @@ const Component = defineComponent({
     }
   },
   computed: {
-    // 需要注释
+    // 需要注解
     greeting(): string {
       return this.message + '!'
-    }
+    },
 
-    // 在使用setter进行计算时，需要对getter进行注释
+    // 在使用 setter 进行计算时，需要对 getter 进行注解
     greetingUppercased: {
       get(): string {
-        return this.greeting.toUpperCase();
+        return this.greeting.toUpperCase()
       },
       set(newValue: string) {
-        this.message = newValue.toUpperCase();
-      },
-    },
+        this.message = newValue.toUpperCase()
+      }
+    }
   }
 })
 ```
 
-### 注释 Props
+### 注解 Props
 
-Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 强制转换构造函数：
+Vue 对定义了 `type` 的 prop 执行运行时验证。要将这些类型提供给 TypeScript，我们需要使用 `PropType` 指明构造函数：
 
 ```ts
 import { defineComponent, PropType } from 'vue'
 
-interface ComplexMessage {
+interface Book {
   title: string
-  okMessage: string
-  cancelMessage: string
+  author: string
+  year: number
 }
+
 const Component = defineComponent({
   props: {
     name: String,
@@ -184,18 +248,74 @@ const Component = defineComponent({
     callback: {
       type: Function as PropType<() => void>
     },
-    message: {
-      type: Object as PropType<ComplexMessage>,
-      required: true,
-      validator(message: ComplexMessage) {
-        return !!message.title
+    book: {
+      type: Object as PropType<Book>,
+      required: true
+    }
+  }
+})
+```
+
+::: warning
+由于 TypeScript 中的[设计限制](https://github.com/microsoft/TypeScript/issues/38845)，当它涉及到为了对函数表达式进行类型推理，你必须注意对象和数组的 `validator` 和 `default` 值：
+:::
+
+```ts
+import { defineComponent, PropType } from 'vue'
+
+interface Book {
+  title: string
+  year?: number
+}
+
+const Component = defineComponent({
+  props: {
+    bookA: {
+      type: Object as PropType<Book>,
+      // 请务必使用箭头函数
+      default: () => ({
+        title: 'Arrow Function Expression'
+      }),
+      validator: (book: Book) => !!book.title
+    },
+    bookB: {
+      type: Object as PropType<Book>,
+      // 或者提供一个明确的 this 参数
+      default(this: void) {
+        return {
+          title: 'Function Expression'
+        }
+      },
+      validator(this: void, book: Book) {
+        return !!book.title
       }
     }
   }
 })
 ```
 
-如果你发现验证器没有得到类型推导或成员补齐不工作了，那么用期望的类型标注参数可能有助于你解决这类问题。
+### 注解 emit
+
+我们可以为触发的事件注解一个有效载荷。另外，所有未声明的触发事件在调用时都会抛出一个类型错误。
+
+```ts
+const Component = defineComponent({
+  emits: {
+    addBook(payload: { bookName: string }) {
+      // perform runtime 验证
+      return payload.bookName.length > 0
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$emit('addBook', {
+        bookName: 123 // 类型错误！
+      })
+      this.$emit('non-declared-event') // 类型错误！
+    }
+  }
+})
+```
 
 ## 与组合式 API 一起使用
 
@@ -246,6 +366,71 @@ year.value = 2020 // ok!
 :::tip
 如果泛型的类型未知，建议将 `ref` 转换为 `Ref<T>`。
 :::
+
+<!-- TODO: translation -->
+### Typing Template Refs
+
+Sometimes you might need to annotate a template ref for a child component in order to call its public method. For example, we have a `MyModal` child component with a method that opens the modal:
+
+```ts
+import { defineComponent, ref } from 'vue'
+const MyModal = defineComponent({
+  setup() {
+    const isContentShown = ref(false)
+    const open = () => (isContentShown.value = true)
+    return {
+      isContentShown,
+      open
+    }
+  }
+})
+```
+
+We want to call this method via a template ref from the parent component:
+
+```ts
+import { defineComponent, ref } from 'vue'
+const MyModal = defineComponent({
+  setup() {
+    const isContentShown = ref(false)
+    const open = () => (isContentShown.value = true)
+    return {
+      isContentShown,
+      open
+    }
+  }
+})
+const app = defineComponent({
+  components: {
+    MyModal
+  },
+  template: `
+    <button @click="openModal">Open from parent</button>
+    <my-modal ref="modal" />
+  `,
+  setup() {
+    const modal = ref()
+    const openModal = () => {
+      modal.value.open()
+    }
+    return { modal, openModal }
+  }
+})
+```
+
+While this will work, there is no type information about `MyModal` and its available methods. To fix this, you should use `InstanceType` when creating a ref:
+
+```ts
+setup() {
+  const modal = ref<InstanceType<typeof MyModal>>()
+  const openModal = () => {
+    modal.value?.open()
+  }
+  return { modal, openModal }
+}
+```
+
+Please note that you would also need to use [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) or any other way to check that `modal.value` is not undefined.
 
 ### 类型声明 `reactive`
 

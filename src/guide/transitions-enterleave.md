@@ -7,7 +7,7 @@
 - 在过渡钩子期间使用 JavaScript 直接操作 DOM；
 - 集成第三方 JavaScript 动画库。
 
-在这里，我们只会讲到进入、离开和列表的过渡，你也可以看下一节的[管理过渡状态](transitions-state.html) 。
+在这里，我们只介绍进入、离开和列表的过渡，你也可以看下一节[列表过渡](transitions-list.html)和[管理过渡状态](transitions-state.html) 。
 
 ## 单元素/组件的过渡
 
@@ -62,7 +62,7 @@ Vue.createApp(Demo).mount('#demo')
 
 1. 自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。
 
-2. 如果过渡组件提供了 [JavaScript 钩子函数](#javascript-hooks) ，这些钩子函数将在恰当的时机被调用。
+2. 如果过渡组件提供了 [JavaScript 钩子函数](#javascript-钩子) ，这些钩子函数将在恰当的时机被调用。
 
 3. 如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，和 Vue 的 `nextTick` 概念不同)
 
@@ -82,7 +82,7 @@ Vue.createApp(Demo).mount('#demo')
 
 6. `v-leave-to`：离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave-from` 被删除)，在过渡/动画完成之后移除。
 
-![Transition Diagram](/images/transition.png)
+![Transition Diagram](/images/transitions.svg)
 
 对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 `<transition>`，则 `v-` 是这些class名的默认前缀。如果你使用了 `<transition name="my-transition">`，那么 `v-enter-from`会替换为 `my-transition-enter-from`。
 
@@ -415,7 +415,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 多个元素的过渡
 
-我们之后讨论[多个组件的过渡](#transitioning-between-components)，对于原生标签可以使用 `v-if`/`v-else-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
+我们之后讨论[多个组件之间过渡](#多个组件之间过渡)，对于原生标签可以使用 `v-if`/`v-else-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
 
 ```html
 <transition>
@@ -506,7 +506,7 @@ computed: {
 
 ## 多个组件之间过渡
 
-组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包装了一个[动态组件](component-basics.html#动态组件) ：
+组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包裹了一个[动态组件](component-basics.html#动态组件) ：
 
 ```html
 <div id="demo">

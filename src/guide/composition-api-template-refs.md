@@ -85,3 +85,64 @@ export default {
   }
 </script>
 ```
+## 侦听模板引用
+
+侦听模板引用的变更可以替代前面例子中演示使用的生命周期钩子。
+
+但与生命周期钩子的一个关键区别是，`watch()` 和 `watchEffect()` 副作用是在 DOM 被挂载或更新*之前*运行的，所以当侦听器运行副作用时，模板引用还没有被更新。
+
+```vue
+<template>
+  <div ref="root">This is a root element</div>
+</template>
+
+<script>
+  import { ref, watchEffect } from 'vue'
+
+  export default {
+    setup() {
+      const root = ref(null)
+
+      watchEffect(() => {
+        // 这个副作用在 DOM 更新之前运行，因此，模板引用还没有持有对元素的引用。
+        console.log(root.value) // => null
+      })
+
+      return {
+        root
+      }
+    }
+  }
+</script>
+```
+
+因此，使用模板引用的侦听器应该用 `flush: 'post'` 选项来定义，这将在 DOM 更新*后*运行副作用，确保模板引用与 DOM 保持同步，并引用正确的元素。这将在 DOM 被更新后运行副作用，并确保模板引用与 DOM 保持同步并引用正确的元素。
+
+```vue
+<template>
+  <div ref="root">This is a root element</div>
+</template>
+
+<script>
+  import { ref, watchEffect } from 'vue'
+
+  export default {
+    setup() {
+      const root = ref(null)
+
+      watchEffect(() => {
+        console.log(root.value) // => <div></div>
+      }, 
+      {
+        flush: 'post'
+      })
+
+      return {
+        root
+      }
+    }
+  }
+</script>
+```
+
+* 参考: [计算属性和侦听器](./reactivity-computed-watchers.html#副作用刷新时机)

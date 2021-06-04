@@ -2,7 +2,7 @@
 
 > 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
-一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 [props](component-props) 或 [emits](component-custom-events.html#defining-custom-events) 定义的 attribute。常见的示例包括 `class`、`style` 和 `id` 属性。
+一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 [props](component-props) 或 [emits](component-custom-events.html#定义自定义事件) 定义的 attribute。常见的示例包括 `class`、`style` 和 `id` 属性。
 
 ## Attribute 继承
 
@@ -12,7 +12,7 @@
 app.component('date-picker', {
   template: `
     <div class="date-picker">
-      <input type="datetime" />
+      <input type="datetime-local" />
     </div>
   `
 })
@@ -26,7 +26,7 @@ app.component('date-picker', {
 
 <!-- 渲染 date-picker 组件 -->
 <div class="date-picker" data-status="activated">
-  <input type="datetime" />
+  <input type="datetime-local" />
 </div>
 ```
 
@@ -44,7 +44,7 @@ app.component('date-picker', {
 })
 ```
 
-当有一个 HTML 元素将 `change` 事件作为 `date-picker` 的根元素时，这可能会有帮助。
+当有一个具有 `change` 事件的 HTML 元素将作为 `date-picker` 的根元素时，这可能会有帮助。
 
 ```js
 app.component('date-picker', {
@@ -91,7 +91,7 @@ app.component('date-picker', {
   inheritAttrs: false,
   template: `
     <div class="date-picker">
-      <input type="datetime" v-bind="$attrs" />
+      <input type="datetime-local" v-bind="$attrs" />
     </div>
   `
 })
@@ -105,7 +105,7 @@ app.component('date-picker', {
 
 <!-- 渲染 date-picker 组件 -->
 <div class="date-picker">
-  <input type="datetime" data-status="activated" />
+  <input type="datetime-local" data-status="activated" />
 </div>
 ```
 

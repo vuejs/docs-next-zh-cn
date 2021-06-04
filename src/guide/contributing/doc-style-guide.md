@@ -64,6 +64,7 @@ export default {
 ````
 
 **渲染输出**
+
 ```js
 export default {
   name: 'MyComponent'

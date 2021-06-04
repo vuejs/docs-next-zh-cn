@@ -28,7 +28,7 @@ function setup(props: Data, context: SetupContext): Data
 ```
 
 :::tip
-若要获取传递给 `setup()` 的参数的类型推断，请使用 [defineComponent](global-api.html#definecomponent) 是需要的。
+若要对传递给 `setup()` 的参数进行类型推断，你需要使用 [defineComponent](global-api.html#definecomponent)。
 :::
 
 - **示例：**
@@ -117,6 +117,8 @@ const MyComponent = {
   - `errorCaptured` -> `onErrorCaptured`
   - `renderTracked` -> `onRenderTracked`
   - `renderTriggered` -> `onRenderTriggered`
+  - `activated` -> `onActivated`
+  - `deactivated` -> `onDeactivated`
 
 - **参考**：[组合式 API 生命周期钩子](../guide/composition-api-lifecycle-hooks.html)
 
@@ -126,18 +128,16 @@ const MyComponent = {
 
 - **类型声明**：
 
-<!-- TODO: translation -->
-
 ```ts
 interface InjectionKey<T> extends Symbol {}
 
 function provide<T>(key: InjectionKey<T> | string, value: T): void
 
-// without default value
+// 没有默认值
 function inject<T>(key: InjectionKey<T> | string): T | undefined
-// with default value
+// 有默认值
 function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
-// with factory
+// 有工厂函数
 function inject<T>(
   key: InjectionKey<T> | string,
   defaultValue: () => T,
@@ -183,9 +183,9 @@ const MyComponent = {
 }
 ```
 
-`getCurrentInstance` **只能**在 [setup](#setup) 或[生命周期钩子](#lifecycle-hooks)中调用。
+`getCurrentInstance` **只能**在 [setup](#setup) 或[生命周期钩子](#生命周期钩子)中调用。
 
-> 如需在 [setup](#setup) 或[生命周期钩子](#lifecycle-hooks)外使用，请先在 `setup` 中调用 `getCurrentInstance()` 获取该实例然后再使用。
+> 如需在 [setup](#setup) 或[生命周期钩子](#生命周期钩子)外使用，请先在 `setup` 中调用 `getCurrentInstance()` 获取该实例然后再使用。
 
 ```ts
 const MyComponent = {

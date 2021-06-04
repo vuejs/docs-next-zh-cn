@@ -10,8 +10,6 @@ Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**
 
 如果你想在深入学习 Vue 之前对它有更多了解，我们<a id="modal-player" href="#">制作了一个视频</a>，带你了解其核心概念和一个示例工程。
 
-如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看[对比其它框架](TODO:comparison.html)。
-
 <VideoLesson href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3" title="Watch a free video course on Vue Mastery">Watch a free video course on Vue Mastery</VideoLesson>
 
 ## 起步
@@ -55,7 +53,7 @@ Vue.createApp(Counter).mount('#counter')
 我们已经成功创建了第一个 Vue 应用！看起来这跟渲染一个字符串模板非常类似，但是 Vue 在背后做了大量工作。现在数据和 DOM 已经被建立了关联，所有东西都是**响应式的**。我们要怎么确认呢？请看下面的示例，其中 `counter` property 每秒递增，你将看到渲染的 DOM 是如何变化的：
 
 ```js{8-10}
-const CounterApp = {
+const Counter = {
   data() {
     return {
       counter: 0
@@ -243,7 +241,7 @@ app.mount(...)
 </ol>
 ```
 
-但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](components.html#通过-Prop-向子组件传递数据)：
+但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](component-basics.html#通过-prop-向子组件传递数据)：
 
 ```js
 app.component('todo-item', {
@@ -315,7 +313,7 @@ app.mount('#todo-list-app')
 
 你可能已经注意到 Vue 组件非常类似于自定义元素——它是 [Web 组件规范](https://www.w3.org/wiki/WebComponents/)的一部分，这是因为 Vue 的组件语法部分参考了该规范。例如 Vue 组件实现了 [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) 与 `is` attribute。但是，还是有几个关键差别：
 
-1. Web Components 规范已经完成并通过，但未被所有浏览器原生实现。目前 Safari 10.1+、Chrome 54+ 和 Firefox 63+ 原生支持 Web Components。相比之下，Vue 组件不需要任何 polyfill，并且在所有支持的浏览器 (IE11 及更高版本) 之下表现一致。必要时，Vue 组件也可以包装于原生自定义元素之内。
+1. Web Components 规范已经完成并通过，但未被所有浏览器原生实现。目前 Safari 10.1+、Chrome 54+ 和 Firefox 63+ 原生支持 Web Components。相比之下，Vue 组件不需要任何 polyfill，并且在所有支持的浏览器之下表现一致 (IE 11 除外——请移步阅读[这里](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)的详情)。必要时，Vue 组件也可以包裹于原生自定义元素之内。
 
 [//]: # 'TODO: link to compatibility build'
 

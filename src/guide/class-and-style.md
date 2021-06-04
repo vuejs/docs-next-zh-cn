@@ -111,7 +111,7 @@ data() {
 <div :class="[isActive ? activeClass : '', errorClass]"></div>
 ```
 
-这样写将始终添加 `errorClass`，但是只有在 `isActive` 为 truthy<sup>[[1]](#footnote-1)</sup> 时才添加 `activeClass。`
+这样写将始终添加 `errorClass`，但是只有在 `isActive` 为 truthy<sup>[[1]](#footnote-1)</sup> 时才添加 `activeClass`。
 
 不过，当有多个条件 class 时这样写有些繁琐。所以在数组语法中也可以使用对象语法：
 
@@ -230,7 +230,7 @@ data() {
 
 ### 自动添加前缀
 
-在 `:style` 中使用需要 (浏览器引擎前缀) [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) 的 CSS property 时，如 `transform`，Vue 将自动侦测并添加相应的前缀。
+在 `:style` 中使用需要一个 [vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) (浏览器引擎前缀) 的 CSS property 时，Vue 将自动侦测并添加相应的前缀。Vue 是通过运行时检测来确定哪些样式的 property 是被当前浏览器支持的。如果浏览器不支持某个 property，Vue 会进行多次测试以找到支持它的前缀。
 
 ### 多重值
 

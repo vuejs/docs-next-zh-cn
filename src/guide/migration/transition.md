@@ -12,9 +12,9 @@ badges:
 
 ## 2.x 语法
 
-在v2.1.8版本之前, 为过渡指令提供了两个过渡类名对应初始和激活状态。
+在 v2.1.8 版本之前，为过渡指令提供了两个过渡类名对应初始和激活状态。
 
-在 v2.1.8 版本中, 引入 `v-enter-to` 来定义 enter 或 leave 变换之间的过渡动画插帧, 为了向下兼容, 并没有变动 `v-enter` 类名：
+在 v2.1.8 版本中，引入 `v-enter-to` 来定义 enter 或 leave 变换之间的过渡动画插帧，为了向下兼容，并没有变动 `v-enter` 类名：
 
 ```css
 .v-enter,
@@ -28,7 +28,7 @@ badges:
 }
 ```
 
-这样做会带来很多困惑, 类似 *enter* 和 *leave* 含义过于宽泛并且没有遵循类名钩子的命名约定。
+这样做会带来很多困惑，类似 *enter* 和 *leave* 含义过于宽泛并且没有遵循类名钩子的命名约定。
 
 ## 3.x 语法
 
@@ -59,8 +59,7 @@ badges:
 2. 将 `.v-leave` 字符串实例替换为 `.v-leave-from`
 3. 过渡组件相关属性名也需要进行字符串实例替换，规则如上所述。
 
-<!-- TODO: translation -->
+## 参考
 
-## See also
-
-- [`<TransitionGroup>` now renders no wrapper element by default](/guide/migration/transition-group.html)
+- [`<Transition>` 作为根元素不再从外界被切换](/guide/migration/transition-as-root.html)
+- [`<TransitionGroup>` 现在默认不渲染包裹器元素](/guide/migration/transition-group.html)

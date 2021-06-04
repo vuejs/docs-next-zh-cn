@@ -102,7 +102,7 @@ npm run serve
 
 上述示例的工作流程非常好。不过这里还有一个替代选项，就是你可以直接在代码中使用[原生的 debugger 语句](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/debugger)。如果你选择了这种方式，请千万记得当你调试完毕之后把这个语句移除。
 
-```js
+```vue
 <script>
 export default {
   data() {

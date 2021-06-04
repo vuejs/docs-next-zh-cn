@@ -21,7 +21,7 @@
 </form>
 ```
 
-<common-codepen-snippet title="Simple Form" slug="YzwpPYZ" :height="368" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 注意如何在表单元素中包含 `autocomplete='on'`，它将应用于表单中的所有输入。你也可以为每个输入设置不同的[自动完成属性的值](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)。
 
@@ -34,7 +34,7 @@
 <input type="text" name="name" id="name" v-model="name" />
 ```
 
-<common-codepen-snippet title="Form Label" slug="wvMrGqz" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 如果你在 chrome 开发工具中检查这个元素，并打开 Elements 选项卡中的 Accessibility 选项卡，你将看到输入是如何从标签中获取其名称的：
 
@@ -42,7 +42,7 @@
 
 :::warning 警告：
 
-虽然你可能已经看到这样包装输入字段的标签：
+虽然你可能已经看到这样包裹输入字段的标签：
 
 ```html
 <label>
@@ -69,7 +69,7 @@
 />
 ```
 
-<common-codepen-snippet title="Form ARIA label" slug="jOWGqgz" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 请随意在 Chrome DevTools 中检查此元素，以查看可访问名称是如何更改的：
 
@@ -101,7 +101,7 @@
 </form>
 ```
 
-<common-codepen-snippet title="Form ARIA labelledby" slug="ZEQXOLP" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby](/images/AccessibleARIAlabelledbyDevTools.png)
 
@@ -133,7 +133,7 @@
 </form>
 ```
 
-<common-codepen-snippet title="Form ARIA describedby" slug="JjGrKyY" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 你可以通过使用 Chrome 开发工具来查看说明：
 
@@ -145,7 +145,7 @@
 
 占位符的一个问题是默认情况下它们不符合[颜色对比标准](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)；修复颜色对比度会使占位符看起来像输入字段中预填充的数据。查看以下示例，可以看到满足颜色对比度条件的姓氏占位符看起来像预填充的数据：
 
-<common-codepen-snippet title="Form Placeholder" slug="PoZJzeQ" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form Placeholder" slug="ExZvvMw" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 最好提供用户在任何输入之外填写表单所需的所有信息。
 
@@ -178,7 +178,7 @@
 </fieldset>
 ```
 
-<common-codepen-snippet title="Form Instructions" slug="GRoMqYy" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 ### 隐藏内容
 
@@ -211,7 +211,7 @@
 }
 ```
 
-<common-codepen-snippet title="Form Search" slug="qBbpQwB" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form Search" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 #### aria-hidden="true"
 
@@ -238,7 +238,7 @@
 </form>
 ```
 
-<common-codepen-snippet title="Form Buttons" slug="PoZEXoj" :height="467" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" />
 
 #### 功能图像
 
@@ -273,4 +273,4 @@
 </form>
 ```
 
-<common-codepen-snippet title="Functional Images" slug="NWxXeqY" :height="265" tab="js,result" :team="false" user="mlama007" name="Maria" theme="light" :preview="false" :editable="false" />
+<common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" />
