@@ -10,7 +10,7 @@
 
 3. 我们需要将 webpack 的[目标](https://webpack.js.org/concepts/targets/)改为 Node.js。这会允许 webpack 以适合于 Node 的方式处理动态导入，同时也告诉 `vue-loader` 在编译 Vue 组件的时候抛出面向服务端的代码。
 
-4. 当构建一个服务端入口时，我们需要定义一个环境变量来指明当前的工作是服务端渲染。在工程的 `package.json` 中加入一些 `scripts` 会很有用：
+4. 当构建一个服务端入口时，我们需要定义一个环境变量来指明当前的工作是服务端渲染。在工程的 `package.json` 中加入一些 `scripts` 会很帮助：
 
 ```json
 "scripts": {
