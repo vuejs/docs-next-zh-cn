@@ -1,9 +1,8 @@
-# Server Configuration
+# 服务器配置
 
-<!-- TODO: translation -->
-The [code structure](./structure.html) and [webpack configuration](./build-config.html) we've described also require some changes to our Express server code.
+除了介绍过的代码结构和 webpack 配置，我们的 Express 服务端代码同样需要改动。
 
-- we need to create an application with a built `app.js` from the resulting bundle. A path to it can be found using the webpack manifest:
+- 我们需要通过一个构建好的包里的 `app.js` 创建一个应用。在 webpack manifest 里可以找到其路径：
 
   ```js
   // server.js
@@ -14,7 +13,7 @@ The [code structure](./structure.html) and [webpack configuration](./build-confi
   const createApp = require(appPath).default
   ```
 
-- we have to define correct paths to all the assets:
+- 我们需要为所有资源定义正确的路径：
 
   ```js
   // server.js
@@ -33,7 +32,7 @@ The [code structure](./structure.html) and [webpack configuration](./build-confi
   )
   ```
 
-- we need to replace the `index.html` content with our server-side rendered application content:
+- 我们需要把 `index.html` 的内容替换为服务端渲染出来的应用内容：
 
   ```js
   // server.js
@@ -56,7 +55,7 @@ The [code structure](./structure.html) and [webpack configuration](./build-confi
   })
   ```
 
-Below you can find a full code for our Express server:
+以下是 Express 服务器完整的代码：
 
 ```js
 const path = require('path')
