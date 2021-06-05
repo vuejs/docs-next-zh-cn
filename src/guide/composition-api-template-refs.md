@@ -1,10 +1,10 @@
-## 模板引用
+# 模板引用
 
 > 本节代码示例使用[单文件组件](single-file-component.html)的语法
 
-> 本指南假定你已经阅读了 [Composition API 简介](composition-api-introduction.html)和[响应式基础](reactivity-fundamentals.html)。如果你不熟悉组合 API，请先阅读此文章。
+> 本指南假定你已经阅读了[组合式 API 简介](composition-api-introduction.html)和[响应性基础](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读此文章。
 
-在使用组合 API 时，[响应式引用](reactivity-fundamentals.html#creating-standalone-reactive-values-as-refs)和[模板引用](component-template-refs.html)的概念是统一的。为了获得对模板内元素或组件实例的引用，我们可以像往常一样声明 ref 并从 [setup ()](composition-api-setup.html) 返回：
+在使用组合式 API 时，[响应式引用](reactivity-fundamentals.html#创建独立的响应式值作为-refs)和[模板引用](component-template-refs.html)的概念是统一的。为了获得对模板内元素或组件实例的引用，我们可以像往常一样声明 ref 并从 [setup()](composition-api-setup.html) 返回：
 
 ```html
 <template> 
@@ -35,7 +35,7 @@
 
 作为模板使用的 ref 的行为与任何其他 ref 一样：它们是响应式的，可以传递到 (或从中返回) 复合函数中。
 
-### JSX 中的用法
+## JSX 中的用法
 
 ```js
 export default {
@@ -53,9 +53,9 @@ export default {
 }
 ```
 
-###  `v-for` 中的用法
+## `v-for` 中的用法
 
-Composition API 模板引用在 `v-for` 内部使用时没有特殊处理。相反，请使用函数引用执行自定义处理：
+组合式 API 模板引用在 `v-for` 内部使用时没有特殊处理。相反，请使用函数引用执行自定义处理：
 
 ```html
 <template>
@@ -85,3 +85,64 @@ Composition API 模板引用在 `v-for` 内部使用时没有特殊处理。相�
   }
 </script>
 ```
+## 侦听模板引用
+
+侦听模板引用的变更可以替代前面例子中演示使用的生命周期钩子。
+
+但与生命周期钩子的一个关键区别是，`watch()` 和 `watchEffect()` 在 DOM 挂载或更新*之前*运行副作用，所以当侦听器运行时，模板引用还未被更新。
+
+```vue
+<template>
+  <div ref="root">This is a root element</div>
+</template>
+
+<script>
+  import { ref, watchEffect } from 'vue'
+
+  export default {
+    setup() {
+      const root = ref(null)
+
+      watchEffect(() => {
+        // 这个副作用在 DOM 更新之前运行，因此，模板引用还没有持有对元素的引用。
+        console.log(root.value) // => null
+      })
+
+      return {
+        root
+      }
+    }
+  }
+</script>
+```
+
+因此，使用模板引用的侦听器应该用 `flush: 'post'` 选项来定义，这将在 DOM 更新*后*运行副作用，确保模板引用与 DOM 保持同步，并引用正确的元素。
+
+```vue
+<template>
+  <div ref="root">This is a root element</div>
+</template>
+
+<script>
+  import { ref, watchEffect } from 'vue'
+
+  export default {
+    setup() {
+      const root = ref(null)
+
+      watchEffect(() => {
+        console.log(root.value) // => <div></div>
+      }, 
+      {
+        flush: 'post'
+      })
+
+      return {
+        root
+      }
+    }
+  }
+</script>
+```
+
+* 参考: [计算属性和侦听器](./reactivity-computed-watchers.html#副作用刷新时机)

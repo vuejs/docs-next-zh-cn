@@ -1,10 +1,12 @@
-# 传入
+# Teleport
+
+<VideoLesson href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" title="Learn how to use teleport with Vue School">通过 Vue School 的免费课程，学习如何使用 teleport。</VideoLesson>
 
 Vue 鼓励我们通过将 UI 和相关行为封装到组件中来构建 UI。我们可以将它们嵌套在另一个内部，以构建一个组成应用程序 UI 的树。
 
 然而，有时组件模板的一部分逻辑上属于该组件，而从技术角度来看，最好将模板的这一部分移动到 DOM 中 Vue app 之外的其他位置。
 
-一个常见的场景是创建一个包含全屏模式的组件。在大多数情况下，你希望模态的逻辑存在于组件中，但是模态的定位很快就很难通过 CSS 来解决，或者需要更改组件组合。
+一个常见的场景是创建一个包含全屏模式的组件。在大多数情况下，你希望模态框的逻辑存在于组件中，但是模态框的快速定位就很难通过 CSS 来解决，或者需要更改组件组合。
 
 考虑下面的 HTML 结构。
 
@@ -21,7 +23,7 @@ Vue 鼓励我们通过将 UI 和相关行为封装到组件中来构建 UI。我
 
 让我们来看看 `modal-button` 组件：
 
-该组件将有一个 `button` 元素来触发模态的打开，以及一个具有类 `.modal` 的 `div` 元素，它将包含模态的内容和一个用于自关闭的按钮。
+该组件将有一个 `button` 元素来触发模态框的打开，以及一个带有 class `.modal` 的 `div` 元素，它将包含模态框的内容和一个用于自关闭的按钮。
 
 ```js
 const app = Vue.createApp({});
@@ -49,11 +51,11 @@ app.component('modal-button', {
 })
 ```
 
-当在初始的 HTML 结构中使用这个组件时，我们可以看到一个问题——模态是在深度嵌套的 `div` 中渲染的，而模态的 `position:absolute` 以父级相对定位的 `div` 作为引用。
+当在初始的 HTML 结构中使用这个组件时，我们可以看到一个问题——模态框是在深度嵌套的 `div` 中渲染的，而模态框的 `position:absolute` 以父级相对定位的 `div` 作为引用。
 
-Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下呈现 HTML，而不必求助于全局状态或将其拆分为两个组件。
+Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下渲染了 HTML，而不必求助于全局状态或将其拆分为两个组件。
 
-让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue 将这个 HTML **传入至该 body** 标记。
+让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue “**Teleport** 这个 HTML **到**该‘**body**’标签”。
 
 ```js
 app.component('modal-button', {
@@ -82,14 +84,9 @@ app.component('modal-button', {
 })
 ```
 
-因此，一旦我们单击按钮打开模式，Vue 将正确地将模态内容渲染为 `body` 标签的子级。
+因此，一旦我们单击按钮打开模态框，Vue 将正确地将模态框内容渲染为 `body` 标签的子级。
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="gOPNvjR" data-preview="true" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Vue 3 Teleport">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/gOPNvjR">
-  Vue 3 Teleport</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Vue 3 Teleport" slug="gOPNvjR" tab="js,result" />
 
 ## 与 Vue components 一起使用
 
@@ -124,7 +121,7 @@ app.component('child-component', {
 
 这也意味着来自父组件的注入按预期工作，并且子组件将嵌套在 Vue Devtools 中的父组件之下，而不是放在实际内容移动到的位置。
 
-## 在同一目标上使用多个传送
+## 在同一目标上使用多个 teleport
 
 一个常见的用例场景是一个可重用的 `<Modal>` 组件，它可能同时有多个实例处于活动状态。对于这种情况，多个 `<teleport>` 组件可以将其内容挂载到同一个目标元素。顺序将是一个简单的追加——稍后挂载将位于目标元素中较早的挂载之后。
 
@@ -143,4 +140,4 @@ app.component('child-component', {
 </div>
 ```
 
-你可以在 [API reference](../api/built-in-components.html#teleport) 查看 `teleport` 组件。
+你可以在 [API 参考](../api/built-in-components.html#teleport) 查看 `teleport` 组件。

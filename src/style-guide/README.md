@@ -4,13 +4,13 @@ sidebar: auto
 
 # 风格指南
 
-这里是官方的 Vue 特有代码的风格指南。如果在工程中使用 Vue，为了回避错误、小纠结和反模式，该指南是份不错的参考。不过我们也不确信风格指南的所有内容对于所有的团队或工程都是理想的。所以根据过去的经验、周围的技术栈、个人价值观做出有意义的偏差是可取的。
+这里是官方的 Vue 特有代码的风格指南。如果在工程中使用 Vue，为了回避错误、小纠结和反模式，该指南是份不错的参考。不过我们也不确信风格指南的所有内容对于所有的团队或工程都是理想的。所以根据过去的经验、周边的技术栈、个人价值观做出有意义的偏差是可取的。
 
 对于其绝大部分，我们也总体上避免就 JavaScript 或 HTML 的本身提出建议。我们不介意你是否使用分号或结尾的逗号。我们不介意你在 HTML attribute 中使用单引号还是双引号。不过当我们发现在 Vue 的情景下有帮助的特定模式时，也会存在例外。
 
 最终，我们把所有的规则归为了四个大类：
 
-## 规则归类
+## 规则类别
 
 ### 优先级 A：必要的
 
@@ -36,21 +36,20 @@ sidebar: auto
 
 ### 组件名为多个单词<sup data-p="a">必要</sup>
 
-
 **组件名应该始终是多个单词的，根组件 `App` 以及 `<transition>`、`<component>` 之类的 Vue 内置组件除外。**
 
-这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](http://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
+这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('todo', {
   // ...
 })
 ```
 
-``` js
+```js
 export default {
   name: 'Todo',
   // ...
@@ -61,13 +60,13 @@ export default {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 app.component('todo-item', {
   // ...
 })
 ```
 
-``` js
+```js
 export default {
   name: 'TodoItem',
   // ...
@@ -75,14 +74,14 @@ export default {
 ```
 </div>
 
-### Prop 生命<sup data-p="a">必要</sup>
+### Prop 定义<sup data-p="a">必要</sup>
 
 **Prop 定义应尽量详细**
 
 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。
 
 ::: details 详解
-细致的 [prop 定义](https://vuejs.org/v2/guide/components.html#Prop-Validation)有两个好处：
+细致的 [prop 定义](/guide/component-props.html#prop-验证)有两个好处：
 
 - 它们写明了组件的 API，所以很容易看懂组件的用法；
 - 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
@@ -91,7 +90,7 @@ export default {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 // 这样做只有开发原型系统时可以接受
 props: ['status']
 ```
@@ -100,13 +99,13 @@ props: ['status']
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 props: {
   status: String
 }
 ```
 
-``` js
+```js
 // 更好的例子
 props: {
   status: {
@@ -135,7 +134,7 @@ props: {
 ::: details 详解
 假设你有一个待办事项列表：
 
-``` js
+```js
 data() {
   return {
     todos: [
@@ -162,7 +161,7 @@ data() {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <ul>
   <li v-for="todo in todos">
     {{ todo.text }}
@@ -174,7 +173,7 @@ data() {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <ul>
   <li
     v-for="todo in todos"
@@ -186,7 +185,7 @@ data() {
 ```
 </div>
 
-### 避免 `v-if` 和 `v-for` 用在一起<sup data-p="a">必要</sup>
+### 避免 `v-if` 和 `v-for` 一起使用<sup data-p="a">必要</sup>
 
 **永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上。**
 
@@ -194,13 +193,13 @@ data() {
 
 - 为了过滤一个列表中的项目 (比如 `v-for="user in users" v-if="user.isActive"`)。在这种情形下，请将 `users` 替换为一个计算属性 (比如 `activeUsers`)，让其返回过滤后的列表。
 
-- 为了避免渲染本应该被隐藏的列表 (比如 `v-for="user in users" v-if="shouldShowUsers"`)。这种情形下，请将 `v-if` 移动至容器元素上 (比如 `ul`、`ol`
+- 为了避免渲染本应该被隐藏的列表 (比如 `v-for="user in users" v-if="shouldShowUsers"`)。这种情形下，请将 `v-if` 移动至容器元素上 (比如 `ul`、`ol`)。
 
 ::: details 详解
 
-当 Vue 处理指令时，`v-for` 比 `v-if` 具有更高的优先级，所以这个模板：
+当 Vue 处理指令时，`v-if` 比 `v-for` 具有更高的优先级，所以这个模板：
 
-``` html
+```html
 <ul>
   <li
     v-for="user in users"
@@ -212,21 +211,11 @@ data() {
 </ul>
 ```
 
-将会经过如下运算：
+这将抛出一个错误，因为 `v-if` 指令将首先被使用，而迭代的变量 `user` 此时不存在。
 
-``` js
-this.users.map(user => {
-  if (user.isActive) {
-    return user.name
-  }
-})
-```
+这可以通过迭代一个计算过的 property 来解决，就像这样：
 
-因此哪怕我们只渲染出一小部分用户的元素，也得在每次重渲染的时候遍历整个列表，不论活跃用户是否发生了变化。
-
-通过将其更换为在如下的一个计算属性上遍历：
-
-``` js
+```js
 computed: {
   activeUsers() {
     return this.users.filter(user => user.isActive)
@@ -234,7 +223,7 @@ computed: {
 }
 ```
 
-``` html
+```html
 <ul>
   <li
     v-for="user in activeUsers"
@@ -245,46 +234,24 @@ computed: {
 </ul>
 ```
 
-我们将会获得如下好处：
+另外，我们也可以使用 `<template>` 标签和 `v-for` 来包装 `<li>` 元素。
 
-- 过滤后的列表*只*会在 `users` 数组发生相关变化时才被重新运算，过滤更高效。
-- 使用 `v-for="user in activeUsers"` 之后，我们在渲染的时候*只*遍历活跃用户，渲染更高效。
-- 解耦渲染层的逻辑，可维护性 (对逻辑的更改和扩展) 更强。
-
-为了获得同样的好处，我们也可以把：
-
-``` html
+```html
 <ul>
-  <li
-    v-for="user in users"
-    v-if="shouldShowUsers"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
+  <template v-for="user in users" :key="user.id">
+    <li v-if="user.isActive">
+      {{ user.name }}
+    </li>
+  </template>
 </ul>
 ```
-更新为:
-
-``` html
-<ul v-if="shouldShowUsers">
-  <li
-    v-for="user in users"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
-</ul>
-```
-
-通过将 `v-if` 移动到容器元素，我们不会再对列表中的每个用户检查 `shouldShowUsers`。取而代之的是，我们只检查它一次，且不会在 `shouldShowUsers` 为否的时候运算 `v-for`。
 
 :::
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <ul>
   <li
     v-for="user in users"
@@ -296,23 +263,12 @@ computed: {
 </ul>
 ```
 
-``` html
-<ul>
-  <li
-    v-for="user in users"
-    v-if="shouldShowUsers"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
-</ul>
-```
 </div>
 
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <ul>
   <li
     v-for="user in activeUsers"
@@ -323,27 +279,26 @@ computed: {
 </ul>
 ```
 
-``` html
-<ul v-if="shouldShowUsers">
-  <li
-    v-for="user in users"
-    :key="user.id"
-  >
-    {{ user.name }}
-  </li>
+```html
+<ul>
+  <template v-for="user in users" :key="user.id">
+    <li v-if="user.isActive">
+      {{ user.name }}
+    </li>
+  </template>
 </ul>
 ```
 </div>
 
 ### 为组件样式设置作用域<sup data-p="a">必要</sup>
 
-**对于应用来说，顶级 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
+**对于应用来说，顶层 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
 
-这条规则只和[单文件组件](../guide/single-file-components.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
+这条规则只和[单文件组件](../guide/single-file-component.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
 
 **不管怎样，对于组件库，我们应该更倾向于选用基于 class 的策略而不是 `scoped` attribute。**
 
-这让覆写内部样式更容易：使用了常人可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
+这让覆写内部样式更容易：使用了人类可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
 
 ::: details 详解
 如果你和其他开发者一起开发一个大型工程，或有时引入三方 HTML/CSS (比如来自 Auth0)，设置一致的作用域会确保你的样式只会运用在它们想要作用的组件上。
@@ -355,7 +310,7 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <template>
   <button class="btn btn-close">×</button>
 </template>
@@ -371,7 +326,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <template>
   <button class="button button-close">×</button>
 </template>
@@ -389,7 +344,7 @@ computed: {
 </style>
 ```
 
-``` html
+```html
 <template>
   <button :class="[$style.button, $style.buttonClose]">×</button>
 </template>
@@ -407,7 +362,7 @@ computed: {
 </style>
 ```
 
-``` html
+```html
 <template>
   <button class="c-Button c-Button--close">×</button>
 </template>
@@ -426,11 +381,11 @@ computed: {
 ```
 </div>
 
-### 私有 property 名<sup data-p="a">必要</sup>
+### 私有 property 名称<sup data-p="a">必要</sup>
 
-**使用模块作用域保持不允许外部访问的函数的私有性。如果无法做到这一点，就始终为插件、混入等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
+**使用模块作用域保持不允许外部访问的函数的私有性。如果无法做到这一点，就始终为插件、mixin 等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
 
-::: 详细
+::: details 详解
 
 Vue 使用 `_` 前缀来定义其自身的私有 property，所以使用相同的前缀 (比如 `_update`) 有覆写实例 property 的风险。即便你检查确认 Vue 当前版本没有用到这个 property 名，也不能保证和将来的版本没有冲突。
 
@@ -443,7 +398,7 @@ Vue 使用 `_` 前缀来定义其自身的私有 property，所以使用相同�
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -454,7 +409,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -465,7 +420,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -476,7 +431,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -492,7 +447,7 @@ const myGreatMixin = {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 const myGreatMixin = {
   // ...
   methods: {
@@ -503,7 +458,7 @@ const myGreatMixin = {
 }
 ```
 
-``` js
+```js
 // Even better!
 const myGreatMixin = {
   // ...
@@ -523,7 +478,7 @@ export default myGreatMixin
 ```
 </div>
 
-## 优先级 B 的规则：强烈推荐 <span class="hide-from-sidebar">(增强可读性)</span>
+## 优先级 B 的规则：强烈推荐 <span class="hide-from-sidebar">(增强代码可读性)</span>
 
 ### 组件文件<sup data-p="b">强烈推荐</sup>
 
@@ -534,7 +489,7 @@ export default myGreatMixin
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('TodoList', {
   // ...
 })
@@ -563,8 +518,7 @@ components/
 
 ### 单文件组件文件的大小写<sup data-p="b">强烈推荐</sup>
 
-
-**[单文件组件](../guide/single-file-components.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
+**[单文件组件](../guide/single-file-component.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
 
 单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。然而，混用文件命名方式有的时候会导致大小写不敏感的文件系统的问题，这也是横线连接命名同样完全可取的原因。
 
@@ -596,14 +550,13 @@ components/
 ```
 </div>
 
-### 基础组件名<sup data-p="b">强烈推荐</sup>
+### 基础组件名称<sup data-p="b">强烈推荐</sup>
 
 **应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 `Base`、`App` 或 `V`。**
 
 ::: details 详解
 
 这些组件为你的应用奠定了一致的基础样式和行为。它们可能**只**包括：
-
 
 - HTML 元素
 - 其它基础组件
@@ -621,7 +574,7 @@ components/
 
 - 因为这些组件会被频繁使用，所以你可能想把它们放到全局而不是在各处分别导入它们。使用相同的前缀可以让 webpack 这样工作：
 
-  ``` js
+  ```js
   const requireComponent = require.context("./src", true, /Base[A-Z]\w+\.(vue|js)$/)
   requireComponent.keys().forEach(function (fileName) {
     let baseComponentConfig = requireComponent(fileName)
@@ -672,7 +625,7 @@ components/
 ```
 </div>
 
-### 单组件名<sup data-p="b">强烈推荐</sup>
+### 单组件名称<sup data-p="b">强烈推荐</sup>
 
 **只应该拥有单个活跃实例的组件应该以 `The` 前缀命名，以示其唯一性。**
 
@@ -698,13 +651,13 @@ components/
 ```
 </div>
 
-### 紧密耦合的组件名<sup data-p="b">强烈推荐</sup>
+### 紧密耦合的组件名称<sup data-p="b">强烈推荐</sup>
 
 **和父组件紧密耦合的子组件应该以父组件名作为前缀命名。**
 
 如果一个组件只在某个父组件的场景下有意义，这层关系应该体现在其名字上。因为编辑器通常会按字母顺序组织文件，所以这样做可以把相关联的文件排在一起。
 
-::: 详情
+::: details 详解
 你可以试着通过在其父组件命名的目录中嵌套子组件以解决这个问题。比如：
 
 ```
@@ -716,7 +669,7 @@ components/
    |- index.vue
 ```
 
-or:
+或:
 
 ```
 components/
@@ -768,9 +721,9 @@ components/
 ```
 </div>
 
-### 组件名中的单词顺序<sup data-p="b">强烈推荐</sup>
+### 组件名称中的单词顺序<sup data-p="b">强烈推荐</sup>
 
-**组件名应该以高阶的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。**
+**组件名称应该以高阶的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。**
 
 ::: details 详解
 你可能会疑惑：
@@ -849,7 +802,7 @@ components/
 
 ### 自闭合组件<sup data-p="b">强烈推荐</sup>
 
-**在[单文件组件](../guide/single-file-components.html)、字符串模板和 [JSX](../guide/render-function.html#JSX) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
+**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
 
 自闭合组件表示它们不仅没有内容，而且**刻意**没有内容。其不同之处就好像书上的一页白纸对比贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也更简洁。
 
@@ -858,12 +811,12 @@ components/
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <!-- 在单文件组件、字符串模板和 JSX 中 -->
 <MyComponent></MyComponent>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中                   -->
 <my-component/>
 ```
@@ -872,24 +825,24 @@ components/
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- 在单文件组件、字符串模板和 JSX 中 -->
 <MyComponent/>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中                   -->
 <my-component></my-component>
 ```
 </div>
 
-### 模板中的组件名大小写<sup data-p="b">强烈推荐</sup>
+### 模板中的组件名称大小写<sup data-p="b">强烈推荐</sup>
 
-**对于绝大多数项目来说，在[单文件组件](../guide/single-file-components.html)和字符串模板中组件名应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的。**
+**对于绝大多数项目来说，在[单文件组件](../guide/single-file-component.html)和字符串模板中组件名称应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的。**
 
 PascalCase 相比 kebab-case 有一些优势：
 
-- 编辑器可以在模板里自动补全组件名，因为 PascalCase 同样适用于 JavaScript。
+- 编辑器可以在模板里自动补全组件名称，因为 PascalCase 同样适用于 JavaScript。
 - `MyComponent>` 视觉上比 `<my-component>` 更能够和单个单词的 HTML 元素区别开来，因为前者的不同之处有两个大写字母，后者只有一个横线。
 - 如果你在模板中使用任何非 Vue 的自定义元素，比如一个 Web Component，PascalCase 确保了你的 Vue 组件在视觉上仍然是易识别的。
 
@@ -900,17 +853,17 @@ PascalCase 相比 kebab-case 有一些优势：
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <!-- 在单文件组件和字符串模板中 -->
 <mycomponent/>
 ```
 
-``` html
+```html
 <!-- 在单文件组件和字符串模板中 -->
 <myComponent/>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中            -->
 <MyComponent></MyComponent>
 ```
@@ -919,27 +872,27 @@ PascalCase 相比 kebab-case 有一些优势：
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- 在单文件组件和字符串模板中 -->
 <MyComponent/>
 ```
 
-``` html
+```html
 <!-- 在 DOM 模板中            -->
 <my-component></my-component>
 ```
 
 或者
 
-``` html
+```html
 <!-- 在所有地方 -->
 <my-component></my-component>
 ```
 </div>
 
-### JS/JSX 中的组件名大小写<sup data-p="b">强烈推荐</sup>
+### JS/JSX 中使用的组件名称<sup data-p="b">强烈推荐</sup>
 
-**JS/[JSX](../guide/render-function.html#JSX) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
+**JS/[JSX](../guide/render-function.html#jsx) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
 
 ::: details 详解
 
@@ -948,31 +901,31 @@ PascalCase 相比 kebab-case 有一些优势：
 然而，对于**只**通过 `app.component` 定义全局组件的应用来说，我们推荐 kebab-case 作为替代。原因是：
 
 - 全局组件很少被 JavaScript 引用，所以遵守 JavaScript 的命名约定意义不大。
-- 这些应用往往包含许多 DOM 内的模板，这种情况下是**必须**[使用 kebab-case](#模板中的组件名大小写-强烈推荐) 的。
+- 这些应用往往包含许多 DOM 内的模板，这种情况下是**必须**[使用 kebab-case](#模板中的组件名称大小写强烈推荐) 的。
 
 :::
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('myComponent', {
   // ...
 })
 ```
 
-``` js
+```js
 import myComponent from './MyComponent.vue'
 ```
 
-``` js
+```js
 export default {
   name: 'myComponent',
   // ...
 }
 ```
 
-``` js
+```js
 export default {
   name: 'my-component',
   // ...
@@ -983,23 +936,23 @@ export default {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 app.component('MyComponent', {
   // ...
 })
 ```
 
-``` js
+```js
 app.component('my-component', {
   // ...
 })
 ```
 
-``` js
+```js
 import MyComponent from './MyComponent.vue'
 ```
 
-``` js
+```js
 export default {
   name: 'MyComponent',
   // ...
@@ -1007,9 +960,9 @@ export default {
 ```
 </div>
 
-### 完整单词的组件名<sup data-p="b">强烈推荐</sup>
+### 完整单词的组件名称<sup data-p="b">强烈推荐</sup>
 
-**组件名应该倾向于完整单词而不是缩写。**
+**组件名称应该倾向于完整单词而不是缩写。**
 
 编辑器中的自动补全已经让书写长命名的代价非常之低了，而其带来的明确性却是非常宝贵的。不常用的缩写尤其应该避免。
 
@@ -1033,22 +986,22 @@ components/
 ```
 </div>
 
-### Prop 名大小写<sup data-p="b">强烈推荐</sup>
+### Prop 名称<sup data-p="b">强烈推荐</sup>
 
-**在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#JSX) 中应该始终使用 kebab-case。**
+**在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#jsx) 中应该始终使用 kebab-case。**
 
 我们单纯的遵循每个语言的约定。在 JavaScript 中更自然的是 camelCase。而在 HTML 中则是 kebab-case。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 props: {
   'greeting-text': String
 }
 ```
 
-``` html
+```html
 <WelcomeMessage greetingText="hi"/>
 ```
 </div>
@@ -1056,13 +1009,13 @@ props: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 props: {
   greetingText: String
 }
 ```
 
-``` html
+```html
 <WelcomeMessage greeting-text="hi"/>
 ```
 </div>
@@ -1071,16 +1024,16 @@ props: {
 
 **多个 attribute 的元素应该分多行撰写，每个 attribute 一行。**
 
-在 JavaScript 中，用多行分隔对象的多个 property 是很常见的最佳实践，因为这样更易读。模板和 [JSX](../guide/render-function.html#JSX) 值得我们做相同的考虑。
+在 JavaScript 中，用多行分隔对象的多个 property 是很常见的最佳实践，因为这样更易读。模板和 [JSX](../guide/render-function.html#jsx) 值得我们做相同的考虑。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
 ```
 
-``` html
+```html
 <MyComponent foo="a" bar="b" baz="c"/>
 ```
 </div>
@@ -1088,14 +1041,14 @@ props: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <img
   src="https://vuejs.org/images/logo.png"
   alt="Vue Logo"
 >
 ```
 
-``` html
+```html
 <MyComponent
   foo="a"
   bar="b"
@@ -1104,7 +1057,7 @@ props: {
 ```
 </div>
 
-### 模板中简单的表达式<sup data-p="b">强烈推荐</sup>
+### 模板中的简单表达式<sup data-p="b">强烈推荐</sup>
 
 **组件模板应该只包含简单的表达式，复杂的表达式则应该重构为计算属性或方法。**
 
@@ -1113,7 +1066,7 @@ props: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 {{
   fullName.split(' ').map((word) => {
     return word[0].toUpperCase() + word.slice(1)
@@ -1125,12 +1078,12 @@ props: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- 在模板中 -->
 {{ normalizedFullName }}
 ```
 
-``` js
+```js
 // 复杂表达式已经移入一个计算属性
 computed: {
   normalizedFullName() {
@@ -1167,7 +1120,7 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 computed: {
   price() {
     const basePrice = this.manufactureCost / (1 - this.profitMargin)
@@ -1183,7 +1136,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 computed: {
   basePrice() {
     return this.manufactureCost / (1 - this.profitMargin)
@@ -1209,11 +1162,11 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <input type=text>
 ```
 
-``` html
+```html
 <AppSidebar :style={width:sidebarWidth+'px'}>
 ```
 </div>
@@ -1221,11 +1174,11 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <input type="text">
 ```
 
-``` html
+```html
 <AppSidebar :style="{ width: sidebarWidth + 'px' }">
 ```
 </div>
@@ -1237,21 +1190,21 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <input
   v-bind:value="newTodoText"
   :placeholder="newTodoInstructions"
 >
 ```
 
-``` html
+```html
 <input
   v-on:input="onInput"
   @focus="onFocus"
 >
 ```
 
-``` html
+```html
 <template v-slot:header>
   <h1>Here might be a page title</h1>
 </template>
@@ -1265,35 +1218,35 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <input
   :value="newTodoText"
   :placeholder="newTodoInstructions"
 >
 ```
 
-``` html
+```html
 <input
   v-bind:value="newTodoText"
   v-bind:placeholder="newTodoInstructions"
 >
 ```
 
-``` html
+```html
 <input
   @input="onInput"
   @focus="onFocus"
 >
 ```
 
-``` html
+```html
 <input
   v-on:input="onInput"
   v-on:focus="onFocus"
 >
 ```
 
-``` html
+```html
 <template v-slot:header>
   <h1>Here might be a page title</h1>
 </template>
@@ -1303,7 +1256,7 @@ computed: {
 </template>
 ```
 
-``` html
+```html
 <template #header>
   <h1>Here might be a page title</h1>
 </template>
@@ -1314,10 +1267,9 @@ computed: {
 ```
 </div>
 
-
 ## 优先级 C 的规则：推荐 <span class="hide-from-sidebar">(将选择和认知成本最小化)</span>
 
-### 组件/实例的选项的顺序<sup data-p="c">推荐</sup>
+### 组件/实例的选项顺序<sup data-p="c">推荐</sup>
 
 **组件/实例的选项应该有统一的顺序。**
 
@@ -1340,10 +1292,10 @@ computed: {
     - `props`
     - `emits`
 
-5. **组合 API** (使用组合 API 的入口点)
+5. **组合式 API** (使用组合式 API 的入口点)
     - `setup`
 
-6. **Local State** (本地的响应式 property)
+6. **本地状态** (本地的响应式 property)
     - `data`
     - `computed`
 
@@ -1364,7 +1316,7 @@ computed: {
         - `renderTracked`
         - `renderTriggered`
 
-8.  **非响应式的 property** (不依赖响应系统的实例 property)
+8.  **非响应式的 property** (不依赖响应性系统的实例 property)
     - `methods`
 
 9. **渲染** (组件输出的声明式描述)
@@ -1421,7 +1373,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 props: {
   value: {
     type: String,
@@ -1448,7 +1400,7 @@ computed: {
 }
 ```
 
-``` js
+```js
 // 没有空行在组件易于阅读和导航时也没问题。
 props: {
   value: {
@@ -1479,18 +1431,18 @@ computed: {
 
 ### 单文件组件的顶级元素的顺序<sup data-p="c">推荐</sup>
 
-**[单文件组件] (../guide/single-file-components.html)应该总是让 `<script>`、`<template>` 和 `<style>` 标签的顺序保持一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
+**[单文件组件](../guide/single-file-component.html)应该总是让 `<script>`、`<template>` 和 `<style>` 标签的顺序保持一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <style>/* ... */</style>
 <script>/* ... */</script>
 <template>...</template>
 ```
 
-``` html
+```html
 <!-- ComponentA.vue -->
 <script>/* ... */</script>
 <template>...</template>
@@ -1506,7 +1458,7 @@ computed: {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <!-- ComponentA.vue -->
 <script>/* ... */</script>
 <template>...</template>
@@ -1518,7 +1470,7 @@ computed: {
 <style>/* ... */</style>
 ```
 
-``` html
+```html
 <!-- ComponentA.vue -->
 <template>...</template>
 <script>/* ... */</script>
@@ -1530,6 +1482,8 @@ computed: {
 <style>/* ... */</style>
 ```
 </div>
+
+## 优先级 D 的规则：谨慎使用 <span class="hide-from-sidebar">(潜在风险)</span>
 
 ### `scoped` 中的元素选择器<sup data-p="d">谨慎使用</sup>
 
@@ -1548,7 +1502,7 @@ computed: {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` html
+```html
 <template>
   <button>×</button>
 </template>
@@ -1564,7 +1518,7 @@ button {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` html
+```html
 <template>
   <button class="btn btn-close">×</button>
 </template>
@@ -1588,7 +1542,7 @@ button {
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1601,7 +1555,7 @@ app.component('TodoItem', {
 })
 ```
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1631,7 +1585,7 @@ app.component('TodoItem', {
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1639,6 +1593,8 @@ app.component('TodoItem', {
       required: true
     }
   },
+
+  emits: ['input'],
 
   template: `
     <input
@@ -1649,7 +1605,7 @@ app.component('TodoItem', {
 })
 ```
 
-``` js
+```js
 app.component('TodoItem', {
   props: {
     todo: {
@@ -1657,6 +1613,8 @@ app.component('TodoItem', {
       required: true
     }
   },
+
+  emits: ['delete'],
 
   template: `
     <span>
@@ -1672,16 +1630,16 @@ app.component('TodoItem', {
 
 ### 非 Flux 的全局状态管理<sup data-p="d">谨慎使用</sup>
 
-**应该优先通过 [Vuex](https://github.com/vuejs/vuex) 管理全局状态，而不是通过 `this.$root` 或一个全局事件总线。**
+**应该优先通过 [Vuex](https://next.vuex.vuejs.org/) 管理全局状态，而不是通过 `this.$root` 或一个全局事件总线。**
 
-通过 `this.$root` 和/或[全局事件总线管理](https://vuejs.org/v2/guide/migration.html#dispatch-and-broadcast-replaced)状态在很多简单的情况下都是很方便的，但是并不适用于绝大多数的应用。
+通过 `this.$root` 和/或全局事件总线管理状态在很多简单的情况下都是很方便的，但是并不适用于绝大多数的应用。
 
-Vuex 是 Vue 的[官方类 flux 实现](https://vuejs.org/v2/guide/state-management.html#Official-Flux-Like-Implementation)，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](https://vuejs.org/v2/guide/installation.html#Vue-Devtools) 支持)。
+Vuex 是 Vue 的[官方类 flux 实现](/guide/state-management.html#类-flux-状态管理的官方实现)，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](/guide/installation.html#vue-devtools) 支持)。
 
 <div class="style-example style-example-bad">
 <h4>反例</h4>
 
-``` js
+```js
 // main.js
 import { createApp } from 'vue'
 import mitt from 'mitt'
@@ -1710,7 +1668,7 @@ const app = createApp({
 <div class="style-example style-example-good">
 <h4>好例子</h4>
 
-``` js
+```js
 // store/modules/todos.js
 export default {
   state: {
@@ -1731,7 +1689,7 @@ export default {
 }
 ```
 
-``` html
+```html
 <!-- TodoItem.vue -->
 <template>
   <span>

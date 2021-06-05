@@ -16,19 +16,18 @@ app.component('my-component-name', {
 
 该组件名就是 `app.component` 的第一个参数，在上面的例子中，组件的名称是“my-component-name”。
 
-你给予组件的名字可能依赖于你打算拿它来做什么。当直接在 DOM 中使用一个组件 (而不是在字符串模板或[单文件组件](../guide/single-file-component.html)) 的时候，我们强烈推荐遵循 [W3C 规范](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)中的自定义组件名 (字母全小写且必须包含一个连字符)。这会帮助你避免和当前以及未来的 HTML 元素相冲突。
+你定义的组件名字可能依赖于你打算拿它来做什么。当直接在 DOM 中使用一个组件 (而不是在字符串模板或[单文件组件](../guide/single-file-component.html)) 的时候，我们强烈推荐遵循 [W3C 规范](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)中的自定义组件名 (字母全小写且必须包含一个连字符)。这会帮助你避免和当前以及未来的 HTML 元素相冲突。
 
 1. 全部小写
 2. 包含连字符 (及：即有多个单词与连字符符号连接)
 
-这样会帮助你避免与当前以及未来的 HTML 元素发生冲突。
+这样会帮助我们避免与当前以及未来的 HTML 元素发生冲突。
 
-你可以在[风格指南](../style-guide/#base-component-names-strongly-recommended)中查阅到关于组件名的其它建议。
+你可以在[风格指南](../style-guide/#基础组件名称强烈推荐)中查阅到关于组件名的其它建议。
 
 ### 组件名大小写
 
 在字符串模板或单个文件组件中定义组件时，定义组件名的方式有两种：
-
 
 #### 使用 kebab-case
 
@@ -89,7 +88,7 @@ app.mount('#app')
 
 ## 局部注册
 
-全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建系统，全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
+全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建系统，全局注册所有的组件意味着即便你已经不再使用其中一个组件了，它仍然会被包含在最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
 
 在这些情况下，你可以通过一个普通的 JavaScript 对象来定义组件：
 
@@ -133,7 +132,7 @@ const ComponentB = {
 }
 ```
 
-或者如果你通过 Babel 和 webpack 使用 ES2015 模块，那么代码看起来更像：
+或者如果你通过 Babel 和 webpack 使用 ES2015 模块，那么代码看起来像这样：
 
 ```js
 import ComponentA from './ComponentA.vue'

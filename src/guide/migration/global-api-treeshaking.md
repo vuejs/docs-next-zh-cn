@@ -33,9 +33,12 @@ test('an async feature', async () => {
   // 运行你的断言
 })
 ```
-`Vue.nextTick()` 是一个全局的 API 直接暴露在单个 Vue 对象上——事实上，实例方法 `$nextTick()` 只是一个方便的包装 `Vue.nextTick()` 为方便起见，回调的 `this` 上下文自动绑定到当前当前实例。
 
-模块捆绑程序，如 [webpack](https://webpack.js.org/) 支持 [tree-shaking](网址：https://webpack.js/webpack/js//)，这是“死代码消除”的一个花哨术语。不幸的是，由于代码是如何在以前的 Vue 版本中编写的，全局 API `Vue.nextTick()` 不可摇动，将包含在最终捆绑中不管它们实际在哪里使用。
+`Vue.nextTick()` 是一个全局的 API 直接暴露在单个 Vue 对象上。事实上，实例方法 `$nextTick()` 只是 `Vue.nextTick()` 的一个便利的包裹器，回调的 `this` 上下文自动绑定到当前实例上，以方便使用。
+
+但是，如果你从来没有处理过手动的 DOM 操作，也没有在你的应用中使用或测试异步组件，怎么办？或者，不管出于什么原因，你更喜欢使用老式的 `window.setTimeout()` 来代替呢？在这种情况下，`nextTick()` 的代码就会变成死代码--也就是说，写了代码但从未使用过。而死代码几乎不是一件好事，尤其是在我们的客户端上下文中，每一行代码都很重要。
+
+模块捆绑程序，如 [webpack](https://webpack.js.org/) 支持 [tree-shaking](https://webpack.js.org/guides/tree-shaking/)，这是“死代码消除”的一个花哨术语。不幸的是，由于代码是如何在以前的 Vue 版本中编写的，全局 API `Vue.nextTick()` 不可摇动，将包含在最终捆绑中不管它们实际在哪里使用。
 
 ## 3.x 语法
 
@@ -49,7 +52,7 @@ nextTick(() => {
 })
 ```
 
-and
+与
 
 ```js
 import { shallowMount } from '@vue/test-utils'
@@ -107,7 +110,7 @@ export function render() {
 随着全局 tree-shaking，用户只需为他们实际使用的功能“付费”，更好的是，知道了可选特性不会增加不使用它们的应用程序的捆绑包大小，框架大小在将来已经不再是其他核心功能的考虑因素了，如果有的话。
 
 :::warning 重要
-以上仅适用于 [ES Modules builds](/guide/installation.html#explanation-of-different-builds)，用于支持 tree-shaking 的绑定器——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出，以使用全局外的 api 而不是导入)。
+以上仅适用于 [ES Modules builds](/guide/installation.html#对不同构建版本的解释)，用于支持 tree-shaking 的绑定器——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出，才得以使用全局外的 api 而不是导入)。
 :::
 
 ## 插件中的用法
@@ -152,7 +155,7 @@ module.exports = {
 
 这将告诉 webpack 将 Vue 模块视为一个外部库，而不是捆绑它。
 
-如果你选择的模块绑定器恰好是 [Rollup](https://rollupjs.org/)，你基本上可以免费获得相同的效果，因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的 bundle 中。但是在绑定期间，它可能会发出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency) 警告，可使用 `external` 选项抑制该警告：
+如果你选择的模块绑定器恰好是 [Rollup](https://rollupjs.org/)，你基本上可以无偿获得相同的效果，因为默认情况下，Rollup 会将绝对模块 id (在我们的例子中为 `'vue'`) 作为外部依赖项，而不会将它们包含在最终的 bundle 中。但是在绑定期间，它可能会抛出一个[“将 vue 作为外部依赖”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency)警告，可使用 `external` 选项抑制该警告：
 
 ```js
 // rollup.config.js

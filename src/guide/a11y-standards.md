@@ -1,6 +1,5 @@
 # 标准
 
-
 万维网联盟 (W3C) 网络可访问性倡议 (WAI) 为不同的组件制定了 Web 可访问性标准：
 
 - [用户代理无障碍指南 (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
@@ -12,7 +11,7 @@
 
 ## 网络内容无障碍指南 (WCAG)
 
-[WCAG 2.1](https://www.w3.org/TR/WCAG21/) 在 [WCAG 2.0](https://www.w3.org/TR/WCAG20/) 上进行了扩展，允许通过处理 web 的变化来实现新技术。W3C 鼓励在开发或更新 Web 可访问性策略时使用 WCAG 的最新版本。
+[WCAG 2.1](https://www.w3.org/TR/WCAG21/) 在 [WCAG 2.0](https://www.w3.org/TR/WCAG20/) 的基础上进行了扩展，以接纳 web 演进过程中的新技术。W3C 鼓励在开发或更新 Web 可访问性策略时使用 WCAG 的最新版本。
 
 ### WCAG 2.1 四大指导原则 (缩写 POUR)：
 
@@ -22,8 +21,8 @@
   - 表单界面，控件和导航是可操作的
 - [可理解性](https://www.w3.org/TR/WCAG21/#understandable)
   - 信息和用户界面的操作必须为所有用户所理解
-- [稳健性](https://www.w3.org/TR/WCAG21/#robust)
-  - 随着技术的进步，用户必须能够访问内容
+- [鲁棒性](https://www.w3.org/TR/WCAG21/#robust)
+  - 随着技术的进步，用户能够借助辅助设备访问内容
 
 ### Web 可访问性倡议——可访问的富互联网应用程序 (WAI-ARIA)
 

@@ -7,12 +7,11 @@ badges:
 
 ## 概览
 
-在 Vue 3 中，组件现在正式支持多根节点组件，即片段！
+Vue 3 现在正式支持了多根节点的组件，也就是片段！
 
 ## 2.x 语法
 
-在 2.x 中，不支持多根组件，当用户意外创建多根组件时会发出警告，因此，为了修复此错误，许多组件被包装在一个 `<div>` 中。
-
+在 2.x 中，由于不支持多根节点组件，当开发者意外创建一个时会发出警告。为了修复这个问题，许多组件被包裹在一个 `<div>` 中。
 
 ```html
 <!-- Layout.vue -->
@@ -25,9 +24,9 @@ badges:
 </template>
 ```
 
-## 3.x Synta 语法 x
+## 3.x 语法
 
-在 3.x 中，组件现在可以有多个根节点！但是，这确实要求开发者明确定义属性应该分布在哪里。
+在 3.x 中，组件可以包含多个根节点！但是，这要求开发者显式定义 attribute 应该分布在哪里。
 
 ```html
 <!-- Layout.vue -->
@@ -38,4 +37,4 @@ badges:
 </template>
 ```
 
-有关 attribute 继承如何工作的详细信息，见[非 Prop Attributes](/guide/component-attrs.html)。
+有关 attribute 继承如何工作的详细信息，见[非 Prop 的 Attribute](/guide/component-attrs.html)。

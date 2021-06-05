@@ -2,7 +2,7 @@
 
 > 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
-一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 [props](component-props) 或 [emits](component-custom-events.html#defining-custom-events) 定义的 attribute。常见的示例包括 `class`、`style` 和 `id` 属性。
+一个非 prop 的 attribute 是指传向一个组件，但是该组件并没有相应 [props](component-props) 或 [emits](component-custom-events.html#定义自定义事件) 定义的 attribute。常见的示例包括 `class`、`style` 和 `id` 属性。
 
 ## Attribute 继承
 
@@ -12,7 +12,7 @@
 app.component('date-picker', {
   template: `
     <div class="date-picker">
-      <input type="datetime" />
+      <input type="datetime-local" />
     </div>
   `
 })
@@ -26,11 +26,11 @@ app.component('date-picker', {
 
 <!-- 渲染 date-picker 组件 -->
 <div class="date-picker" data-status="activated">
-  <input type="datetime" />
+  <input type="datetime-local" />
 </div>
 ```
 
-同样的规则适用于事件监听器：
+同样的规则也适用于事件监听器：
 
 ```html
 <date-picker @change="submitChange"></date-picker>
@@ -44,7 +44,7 @@ app.component('date-picker', {
 })
 ```
 
-当有一个 HTML 元素将 `change` 事件作为 `date-picker` 的根元素时，这可能会有帮助。
+当有一个具有 `change` 事件的 HTML 元素将作为 `date-picker` 的根元素时，这可能会有帮助。
 
 ```js
 app.component('date-picker', {
@@ -84,14 +84,14 @@ const app = Vue.createApp({
 
 通过将 `inheritAttrs` 选项设置为 `false`，你可以访问组件的 `$attrs` property，该 property 包括组件 `props` 和 `emits` property 中未包含的所有属性 (例如，`class`、`style`、`v-on` 监听器等)。
 
-使用 [previous section](#attribute-inheritance) 中的 date-picker 组件示例，如果需要将所有非 prop attribute 应用于 `input` 元素而不是根 `div` 元素，则可以使用 `v-bind` 缩写来完成。
+使用[上一节](#attribute-继承)中的 date-picker 组件示例，如果需要将所有非 prop attribute 应用于 `input` 元素而不是根 `div` 元素，则可以使用 `v-bind` 缩写来完成。
 
 ```js{5}
 app.component('date-picker', {
   inheritAttrs: false,
   template: `
     <div class="date-picker">
-      <input type="datetime" v-bind="$attrs" />
+      <input type="datetime-local" v-bind="$attrs" />
     </div>
   `
 })
@@ -105,7 +105,7 @@ app.component('date-picker', {
 
 <!-- 渲染 date-picker 组件 -->
 <div class="date-picker">
-  <input type="datetime" data-status="activated" />
+  <input type="datetime-local" data-status="activated" />
 </div>
 ```
 

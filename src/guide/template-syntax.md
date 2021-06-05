@@ -1,8 +1,8 @@
 # 模板语法
 
-Vue.js 使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM 绑定至底层应用实例的数据。所有 Vue.js 的模板都是合法的 HTML，所以能被遵循规范的浏览器和 HTML 解析器解析。
+Vue.js 使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM 绑定至底层组件实例的数据。所有 Vue.js 的模板都是合法的 HTML，所以能被遵循规范的浏览器和 HTML 解析器解析。
 
-在底层的实现上，Vue 将模板编译成虚拟 DOM 渲染函数。结合响应系统，Vue 能够智能地计算出最少需要重新渲染多少组件，并把 DOM 操作次数减到最少。
+在底层的实现上，Vue 将模板编译成虚拟 DOM 渲染函数。结合响应性系统，Vue 能够智能地计算出最少需要重新渲染多少组件，并把 DOM 操作次数减到最少。
 
 如果你熟悉虚拟 DOM 并且偏爱 JavaScript 的原始力量，你也可以不用模板，[直接写渲染 (render) 函数](render-function.html)，使用可选的 JSX 语法。
 
@@ -16,7 +16,7 @@ Vue.js 使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM
 <span>Message: {{ msg }}</span>
 ```
 
-Mustache 标签将会被替代为对应数据对象上 `msg` property 的值。无论何时，绑定的数据对象上 `msg` property 发生了改变，插值处的内容都会更新。
+Mustache 标签将会被替代为对应组件实例中 `msg` property 的值。无论何时，绑定的组件实例上 `msg` property 发生了改变，插值处的内容都会更新。
 
 通过使用 [v-once 指令](../api/directives.html#v-once)，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。但请留心这会影响到该节点上的其它数据绑定：
 
@@ -33,12 +33,7 @@ Mustache 标签将会被替代为对应数据对象上 `msg` property 的值。�
 <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="yLNEJJM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Rendering v-html">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/yLNEJJM">
-  Rendering v-html</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Rendering v-html" slug="yLNEJJM" :preview="false" />
 
 这个 `span` 的内容将会被替换成为 property 值 `rawHtml`，直接作为 HTML——会忽略解析 property 值中的数据绑定。注意，你不能使用 `v-html` 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。反之，对于用户界面 (UI)，组件更适合作为可重用和可组合的基本单位。
 
@@ -48,11 +43,13 @@ Mustache 标签将会被替代为对应数据对象上 `msg` property 的值。�
 
 ### Attribute
 
-Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使用 [`v-bind` 指令](../api/#v-bind)：
+Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bind` 指令](../api/directives.html#v-bind)：
 
 ```html
 <div v-bind:id="dynamicId"></div>
 ```
+
+如果绑定的值是 `null` 或 `undefined`，那么该 attribute 将不会被包含在渲染的元素上。
 
 对于布尔 attribute (它们只要存在就意味着值为 `true`)，`v-bind` 工作起来略有不同，在这个例子中：
 
@@ -60,16 +57,18 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 <button v-bind:disabled="isButtonDisabled">按钮</button>
 ```
 
-如果 `isButtonDisabled` 的值是 `null` 或 `undefined`，则 `disabled` attribute 甚至不会被包含在渲染出来的 `<button>` 元素中。
+如果 `isButtonDisabled` 的值是 truthy<sup>[[1]](#footnote-1)</sup>，那么 `disabled` attribute 将被包含在内。如果该值是一个空字符串，它也会被包括在内，与 `<button disabled="">` 保持一致。对于其他错误的值，该 attribute 将被省略。
 
 ### 使用 JavaScript 表达式
 
 迄今为止，在我们的模板中，我们一直都只绑定简单的 property 键值。但实际上，对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持。
 
 ```html
-{{ number + 1 }} 
-{{ ok ? 'YES' : 'NO' }} 
-{{ message.split('').reverse().join('')}}
+{{ number + 1 }}
+
+{{ ok ? 'YES' : 'NO' }}
+
+{{ message.split('').reverse().join('') }}
 
 <div v-bind:id="'list-' + id"></div>
 ```
@@ -121,7 +120,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 ```
-这里的 `attributeName` 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。例如，如果你的应用实例有一个 data property `attributeName`，其值为 `"href"`，那么这个绑定将等价于 `v-bind:href`。
+这里的 `attributeName` 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。例如，如果你的组件实例有一个 data property `attributeName`，其值为 `"href"`，那么这个绑定将等价于 `v-bind:href`。
 
 同样地，你可以使用动态参数为一个动态的事件名绑定处理函数：
 
@@ -133,7 +132,7 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 
 ### 修饰符
 
-修饰符 (modifier) 是以半角句号`.`指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 ` event.preventDefault()`：
+修饰符 (modifier) 是以半角句号 `.` 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 ` event.preventDefault()`：
 
 ```html
 <form v-on:submit.prevent="onSubmit">...</form>
@@ -173,7 +172,6 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 
 它们看起来可能与普通的 HTML 略有不同，但 `:` 与 `@` 对于 attribute 名来说都是合法字符，在所有支持 Vue 的浏览器都能被正确地解析。而且，它们不会出现在最终渲染的标记中。缩写语法是完全可选的，但随着你更深入地了解它们的作用，你会庆幸拥有它们。
 
-
 > 从下一页开始，我们将在示例中使用缩写，因为这是 Vue 开发者最常用的用法。 
 
 ### 注意事项
@@ -181,7 +179,6 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 #### 对动态参数值约定
 
 动态参数预期会求出一个字符串，异常情况下值为 `null`。这个特殊的 `null` 值可以被显性地用于移除绑定。任何其它非字符串类型的值都将会触发一个警告。
-
 
 #### 对动态参数表达式约定
 
@@ -206,4 +203,8 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 
 #### JavaScript 表达式
 
-模板表达式都被放在沙盒中，只能访问[全局变量的一个白名单](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。
+模板表达式都被放在沙盒中，只能访问一个[受限的列表](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。
+
+
+<small>**译者注**  
+<a id="footnote-1"></a>[1] truthy 不是 `true`，详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy) 的解释。</small>

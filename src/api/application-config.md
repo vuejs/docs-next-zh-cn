@@ -1,12 +1,14 @@
 # 应用配置
 
-`config` 是一个包含了 Vue 应用全局配置的对象。你可以在应用挂载前修改其以下 property：
+每个 Vue 应用都会暴露一个 `config` 对象，该对象包含此应用的配置设置：
 
 ```js
-const app = Vue.createApp({})
+const app = createApp({})
 
-app.config = {...}
+console.log(app.config)
 ```
+
+在挂载应用之前，你可以修改其 property，如下所示。
 
 ## errorHandler
 
@@ -70,7 +72,7 @@ app.component('child-component', {
 Vue.prototype.$http = () => {}
 
 // 之后(Vue 3.x)
-const app = Vue.createApp({})
+const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
 
@@ -91,6 +93,10 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 
 > 注意，所有原生 HTML 和 SVG 标记不需要在此函数中匹配——Vue 解析器自动执行此检查。
 
+::: tip 重要
+这个配置项只有在使用运行时编译器 (runtime compiler) 版本时才会被独享。如果你使用的是仅运行时 (runtime-only) 版本，那么 `isCustomElement` 就必须通过构建设置，例如 [vue-loader 中的 `compilerOptions` 选项](https://vue-loader.vuejs.org/options.html#compileroptions)，传递给 `@vue/compiler-dom`。
+:::
+
 ## optionMergeStrategies
 
 - **类型**：`{ [key: string]: Function }`
@@ -100,7 +106,7 @@ app.config.isCustomElement = tag => tag.startsWith('ion-')
 - **用法**：
 
 ```js
-const app = Vue.createApp({
+const app = createApp({
   mounted() {
     console.log(this.$options.hello)
   }
@@ -114,7 +120,7 @@ app.mixin({
   hello: 'Vue'
 })
 
-// 'Hello, Vue
+// 'Hello, Vue'
 ```
 
 为自定义选项定义合并策略。

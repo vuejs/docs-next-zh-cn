@@ -6,9 +6,9 @@
 
 - **详细：**
 
-  返回组件实例的 data 对象的函数。在 `data` 中，我们不建议观察具有自身状态行为的对象，如浏览器 API 对象和原型 property。一个好主意是这里只有一个表示组件 data 的普通对象。
+  该函数返回组件实例的 data 对象。在 `data` 中，我们不建议观察具有自身状态行为的对象，如浏览器 API 对象和原型 property。一个好主意是这里只有一个表示组件 data 的普通对象。
 
-  一旦观察过，你就无法在根数据对象上添加响应式 property。因此推荐在创建实例之前，就声明所有的根级响应式 property。
+  一旦被侦听后，你就无法在根数据对象上添加响应式 property。因此推荐在创建实例之前，就声明所有的根级响应式 property。
 
   实例创建之后，可以通过 `vm.$data` 访问原始数据对象。组件实例也代理了 data 对象上所有的 property，因此访问 `vm.a` 等价于访问 `vm.$data.a`。
 
@@ -21,7 +21,7 @@
   const data = { a: 1 }
 
   // 这个对象将添加到组件实例中
-  const vm = Vue.createApp({
+  const vm = createApp({
     data() {
       return data
     }
@@ -36,7 +36,7 @@
   data: vm => ({ a: vm.myProp })
   ```
 
--  **参考**[深入响应式原理](../guide/reactivity.html)
+-  **参考**[深入响应性原理](../guide/reactivity.html)
 
 ## props
 
@@ -44,22 +44,22 @@
 
 - **详细：**
 
-  props 可以是数组或对象，用于接收来自父组件的数据。props 可以是简单的数组，或者使用对象作为替代，对象允许配置高阶选项，如类型检测、自定义验证和设置默认值。
+  一个用于从父组件接收数据的数组或对象。它可以是基于数组的简单语法，也可以是基于对象的支持诸如类型检测、自定义验证和设置默认值等高阶配置的语法。
 
   你可以基于对象的语法使用以下选项：
 
-  - `type`：可以是下列原生构造函数中的一种：`String`、`Number`、`Boolean`、`Array`、`Object`、`Date`、`Function`、`Symbol`、任何自定义构造函数、或上述内容组成的数组。会检查一个 prop 是否是给定的类型，否则抛出警告。Prop 类型的[更多信息在此](../guide/component-props.html#prop-types)。
+  - `type`：可以是下列原生构造函数中的一种：`String`、`Number`、`Boolean`、`Array`、`Object`、`Date`、`Function`、`Symbol`、任何自定义构造函数、或上述内容组成的数组。会检查一个 prop 是否是给定的类型，否则抛出警告。Prop 类型的[更多信息在此](../guide/component-props.html#prop-类型)。
   - `default`：`any`
-    为该 prop 指定一个默认值。如果该 prop 没有被传入，则换做用这个值。对象或数组的默认值必须从一个工厂函数返回
+    为该 prop 指定一个默认值。如果该 prop 没有被传入，则使用这个值。对象或数组的默认值必须从一个工厂函数返回
   - `required`：`Boolean`
-    义该 prop 是否是必填项。在非生产环境中，如果这个值为 truthy 且该 prop 没有被传入的，则一个控制台警告将会被抛出。
+    定义该 prop 是否是必填项。在非生产环境中，如果这个值为 truthy 且该 prop 没有被传入的，则一个控制台警告将会被抛出。
   - `validator`：`Function`
-    自定义验证函数会将该 prop 的值作为唯一的参数代入。在非生产环境下，如果该函数返回一个 falsy 的值 (也就是验证失败)，一个控制台警告将会被抛出。你可以在[这里](../guide/component-props.html#prop-validation)查阅更多 prop 验证的相关信息。
+    自定义验证函数会将该 prop 的值作为唯一的参数代入。在非生产环境下，如果该函数返回一个 falsy 的值 (也就是验证失败)，一个控制台警告将会被抛出。你可以在[这里](../guide/component-props.html#prop-验证)查阅更多 prop 验证的相关信息。
 
 - **示例：**
 
   ```js
-  const app = Vue.createApp({})
+  const app = createApp({})
 
   // 简单语法
   app.component('props-demo-simple', {
@@ -102,12 +102,12 @@
   }
   ```
 
-  计算属性的结果会被缓存，除非依赖的响应式 property 变化才会重新计算。注意，如果某个依赖 (比如非响应式 property) 在该实例范畴之外，则计算属性是不会被更新的。
+  计算属性的结果会被缓存，只有当依赖的响应式 property 变化时才会重新计算。注意，如果某个依赖 (比如非响应式 property) 在该实例范畴之外，则计算属性是**不会**被更新的。
 
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return { a: 1 }
     },
@@ -152,7 +152,7 @@
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return { a: 1 }
     },
@@ -177,12 +177,12 @@
 
 - **详细：**
 
-一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。Vue 实例将会在实例化时调用 `$watch()`，遍历 watch 对象的每一个 property。
-
+一个对象，键是要侦听的响应式 property——包含了 [data](/api/options-data.html#data-2) 或 [computed](/api/options-data.html#computed) property，而值是对应的回调函数。值也可以是方法名，或者包含额外选项的对象。组件实例将会在实例化时调用 `$watch()`，参阅 [$watch](instance-methods.html#watch)，以了解更多关于 `deep`、`immediate` 和 `flush` 选项的信息。
+ 
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1,
@@ -190,11 +190,12 @@
         c: {
           d: 4
         },
-        e: 'test',
-        f: 5
+        e: 5,
+        f: 6
       }
     },
     watch: {
+      // 侦听顶级 property
       a(val, oldVal) {
         console.log(`new: ${val}, old: ${oldVal}`)
       },
@@ -206,6 +207,10 @@
           console.log('c changed')
         },
         deep: true
+      },
+      // 侦听单个嵌套 property
+      'c.d': function (val, oldVal) {
+        // do something
       },
       // 该回调将会在侦听开始之后被立即调用
       e: {
@@ -248,7 +253,7 @@
 
   :::
 
--  **参考** [Watchers](../guide/computed.html#watchers)
+-  **参考** [Watchers](../guide/computed.html#侦听器)
 
 ## emits
 
@@ -256,15 +261,14 @@
 
 - **详细：**
 
-  emits 可以是数组或对象，从组件触发自定义事件，emits 可以是简单的数组，或者对象作为替代，允许配置和事件验证。
-
+  emits 可以是数组或对象，从组件触发自定义事件，emits 可以是简单的数组，也可以是对象，后者允许配置事件验证。
 
   在对象语法中，每个 property 的值可以为 `null` 或验证函数。验证函数将接收传递给 `$emit` 调用的其他参数。如果 `this.$emit('foo',1)` 被调用，`foo` 的相应验证函数将接收参数 `1`。验证函数应返回布尔值，以表示事件参数是否有效。
 
 - **用法：**
 
   ```js
-  const app = Vue.createApp({})
+  const app = createApp({})
 
   // 数组语法
   app.component('todo-item', {
@@ -297,4 +301,4 @@
   `emits` 选项中列出的事件**不会**从组件的根元素继承，也将从 `$attrs` property 中移除。
   :::
 
--  **参考** [Attribute 继承](../guide/component-attrs.html#attribute继承)
+-  **参考** [Attribute 继承](../guide/component-attrs.html#attribute-继承)

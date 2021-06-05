@@ -2,7 +2,7 @@
 
 ## 用 `v-for` 把一个数组对应为一组元素
 
-我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的别名。
+我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的**别名**。
 
 ```html
 <ul id="array-rendering">
@@ -24,14 +24,9 @@ Vue.createApp({
 
 结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="VwLGbwa" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Array">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/VwLGbwa">
-  v-for with Array</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="v-for with Array" slug="VwLGbwa" tab="js,result" :preview="false" />
 
-在 ` v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
+在 `v-for` 块中，我们可以访问所有父作用域的 property。`v-for` 还支持一个可选的第二个参数，即当前项的索引。
 
 ```html
 <ul id="array-with-index">
@@ -54,14 +49,9 @@ Vue.createApp({
 
 结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="wvaEdBP" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Array and index">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/wvaEdBP">
-  v-for with Array and index</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="v-for with Array and index" slug="wvaEdBP" tab="js,result" :preview="false" />
 
-你也可以用`of`替代`in`作为分隔符，因为它更接近 JavaScript 迭代器的语法：
+你也可以用 `of` 替代 `in` 作为分隔符，因为它更接近 JavaScript 迭代器的语法：
 
 ```html
 <div v-for="item of items"></div>
@@ -69,7 +59,7 @@ Vue.createApp({
 
 ## 在 `v-for` 里使用对象
 
-你也可以用`v-for`来遍历一个对象的 property。
+你也可以用 `v-for` 来遍历一个对象的 property。
 
 ```html
 <ul id="v-for-object" class="demo">
@@ -95,14 +85,9 @@ Vue.createApp({
 
 结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="NWqLjqy" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Object">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqLjqy">
-  v-for with Object</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="v-for with Object" slug="NWqLjqy" tab="js,result" :preview="false" />
 
-你也可以提供第二个的参数为 property 名称 (也就是键名)：
+你也可以提供第二个的参数为 property 名称 (也就是键名 key)：
 
 ```html
 <li v-for="(value, name) in myObject">
@@ -110,12 +95,7 @@ Vue.createApp({
 </li>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="poJOPjx" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Object and key">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/poJOPjx">
-  v-for with Object and key</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="v-for with Object and key" slug="poJOPjx" tab="js,result" :preview="false" />
 
 还可以用第三个参数作为索引：
 
@@ -125,15 +105,10 @@ Vue.createApp({
 </li>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="abOaWdo" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with Object key and index">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abOaWdo">
-  v-for with Object key and index</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="v-for with Object key and index" slug="abOaWdo" tab="js,result" :preview="false" />
 
 :::tip 提示
-在遍历对象时，会按 `Object.keys()` 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下都一致。
+在遍历对象时，会按 `Object.keys()` 的结果遍历，但是不能保证它在不同 JavaScript 引擎下的结果都一致。
 :::
 
 ## 维护状态
@@ -155,7 +130,7 @@ Vue.createApp({
 因为它是 Vue 识别节点的一个通用机制，`key` 并不仅与 `v-for` 特别关联。后面我们将在指南中看到，它还具有其它用途。
 
 :::tip 提示
-不要使用对象或数组之类的非基本类型值作为 `v-for ` 的 key。请用字符串或数值类型的值。
+不要使用对象或数组之类的非基本类型值作为 `v-for` 的 key。请用字符串或数值类型的值。
 :::
 
 更多 `key` attribute 的细节用法请移步至 [`key` 的 API 文档](../api/special-attributes.html#key)。
@@ -193,7 +168,7 @@ example1.items = example1.items.filter(item => item.message.match(/Foo/))
 例如：
 
 ```html
-<li v-for="n in evenNumbers">{{ n }}</li>
+<li v-for="n in evenNumbers" :key="n">{{ n }}</li>
 ```
 
 ```js
@@ -213,7 +188,7 @@ computed: {
 
 ```html
 <ul v-for="numbers in sets">
-  <li v-for="n in even(numbers)">{{ n }}</li>
+  <li v-for="n in even(numbers)" :key="n">{{ n }}</li>
 </ul>
 ```
 
@@ -236,18 +211,13 @@ methods: {
 
 ```html
 <div id="range" class="demo">
-  <span v-for="n in 10">{{ n }} </span>
+  <span v-for="n in 10" :key="n">{{ n }} </span>
 </div>
 ```
 
 结果：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="NWqLjNY" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with a range">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/NWqLjNY">
-  v-for with a range</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" />
 
 ## 在 `<template>` 中使用 `v-for`
 
@@ -255,7 +225,7 @@ methods: {
 
 ```html
 <ul>
-  <template v-for="item in items">
+  <template v-for="item in items" :key="item.msg">
     <li>{{ item.msg }}</li>
     <li class="divider" role="presentation"></li>
   </template>
@@ -265,42 +235,40 @@ methods: {
 ## `v-for` 与 `v-if` 一同使用
 
 :::tip
-注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#avoid-v-if-with-v-for-essential)。
+注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](../style-guide/#避免-v-if-和-v-for-一起使用必要)。
 :::
 
-当它们处于同一节点，`v-for` 的优先级比 `v-if` 更高，这意味着 `v-if` 将分别重复运行于每个 `v-for` 循环中。当你只想为*部分*项渲染节点时，这种优先级的机制会十分有用，如下：
-
+当它们处于同一节点，`v-if` 的优先级比 `v-for` 更高，这意味着 `v-if` 将没有权限访问 `v-for` 里的变量：
 
 ```html
+<!-- This will throw an error because property "todo" is not defined on instance. -->
+
 <li v-for="todo in todos" v-if="!todo.isComplete">
-  {{ todo }}
+  {{ todo.name }}
 </li>
 ```
 
-上面的代码将只渲染未完成的 todo。
-
-而如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 [`<template>`](conditional#conditional-groups-with-v-if-on-lt-template-gt)) 上。如：
+可以把 `v-for` 移动到 `<template>` 标签中来修正：
 
 ```html
-<ul v-if="todos.length">
-  <li v-for="todo in todos">
-    {{ todo }}
+<template v-for="todo in todos" :key="todo.name">
+  <li v-if="!todo.isComplete">
+    {{ todo.name }}
   </li>
-</ul>
-<p v-else>No todos left!</p>
+</template>
 ```
 
 ## 在组件上使用 `v-for`
 
 > 这部分内容假定你已经了解[组件](component-basics.md)相关知识。你也完全可以先跳过它，以后再回来查看。
 
-在自定义组件上，你可以像在任何普通元素上一样使用 `v-for`。
+在自定义组件上，你可以像在任何普通元素上一样使用 `v-for`：
 
 ```html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
-然而，任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要使用 prop：
+然而，任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要使用 props：
 
 ```html
 <my-component
@@ -377,15 +345,11 @@ app.component('todo-item', {
       <button @click="$emit('remove')">Remove</button>
     </li>
   `,
-  props: ['title']
+  props: ['title'],
+  emits: ['remove']
 })
 
 app.mount('#todo-list-example')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="js,result" data-user="Vue" data-slug-hash="abOaWpz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="v-for with components">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abOaWpz">
-  v-for with components</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="v-for with components" slug="abOaWpz" tab="js,result" :preview="false" />

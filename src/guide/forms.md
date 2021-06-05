@@ -2,7 +2,7 @@
 
 ## 基础用法
 
-你可以用 v-model 指令在表单 `<input>`、`<textarea>` 及 `<select>` 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 `v-model` 本质上不过是语法糖。它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。
+你可以用 v-model 指令在表单 `<input>`、`<textarea>` 及 `<select>` 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 `v-model` 本质上不过是语法糖。它负责监听用户的输入事件来更新数据，并在某种极端场景下进行一些特殊处理。
 
 :::tip 提示
 `v-model` 会忽略所有表单元素的 `value`、`checked`、`selected` attribute 的初始值而总是将当前活动实例的数据作为数据来源。你应该通过 JavaScript 在组件的 `data` 选项中声明初始值。
@@ -17,7 +17,7 @@
 <span id="vmodel-ime-tip"></span>
 
 :::tip 提示
-对于需要使用[输入法](https://en.wikipedia.org/wiki/Input_method) (如中文、日文、韩文等) 的语言，你会发现 `v-model` 不会在输入法组合文字过程中得到更新。如果你也想处理这个过程，请使用 `input` 事件。
+对于需要使用[输入法](https://en.wikipedia.org/wiki/Input_method) (如中文、日文、韩文等) 的语言，你会发现 `v-model` 不会在输入法组织文字过程中得到更新。如果你也想响应这些更新，请使用 `input` 事件监听器和 `value` 绑定，而不是使用 `v-model`。
 :::
 
 ### 文本 (Text)
@@ -27,14 +27,9 @@
 <p>Message is: {{ message }}</p>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="eYNPEqj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: basic v-model">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/eYNPEqj">
-  Handling forms: basic v-model</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: basic v-model" slug="eYNPEqj" :preview="false" />
 
-### 多行文本 (textarea)
+### 多行文本 (Textarea)
 
 ```html
 <span>Multiline message is:</span>
@@ -43,12 +38,7 @@
 <textarea v-model="message" placeholder="add multiple lines"></textarea>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="xxGyXaG" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: textarea">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/xxGyXaG">
-  Handling forms: textarea</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: textarea" slug="xxGyXaG" :preview="false" />
 
 在文本区域插值不起作用，应该使用 `v-model` 来代替。
 
@@ -69,12 +59,7 @@
 <label for="checkbox">{{ checked }}</label>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="PoqyJVE" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: checkbox">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/PoqyJVE">
-  Handling forms: checkbox</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: checkbox" slug="PoqyJVE" :preview="false" />
 
 多个复选框，绑定到同一个数组：
 
@@ -101,12 +86,7 @@ Vue.createApp({
 }).mount('#v-model-multiple-checkboxes')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="bGdmoyj" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: multiple checkboxes">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/bGdmoyj">
-  Handling forms: multiple checkboxes</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: multiple checkboxes" slug="bGdmoyj" :preview="false" />
 
 ### 单选框 (Radio)
 
@@ -132,12 +112,7 @@ Vue.createApp({
 }).mount('#v-model-radiobutton')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="MWwPEMM" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: radiobutton">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/MWwPEMM">
-  Handling forms: radiobutton</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: radiobutton" slug="MWwPEMM" :preview="false" />
 
 ### 选择框 (Select)
 
@@ -165,14 +140,9 @@ Vue.createApp({
 }).mount('#v-model-select')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="KKpGydL" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: select">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/KKpGydL">
-  Handling forms: select</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: select" slug="KKpGydL" :preview="false" />
 
-:::tip Note
+:::tip 注意
 如果 `v-model` 表达式的初始值未能匹配任何选项，`<select>` 元素将被渲染为“未选中”状态。在 iOS 中，这会使用户无法选择第一个选项。因为这样的情况下，iOS 不会触发 `change` 事件。因此，更推荐像上面这样提供一个值为空的禁用选项。
 :::
 
@@ -188,12 +158,7 @@ Vue.createApp({
 <span>Selected: {{ selected }}</span>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="gOpBXPz" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: select bound to array">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/gOpBXPz">
-  Handling forms: select bound to array</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: select bound to array" slug="gOpBXPz" tab="result" :preview="false" />
 
 用 `v-for` 渲染的动态选项：
 
@@ -223,12 +188,7 @@ Vue.createApp({
 }).mount('#v-model-select-dynamic')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abORVZm" data-editable="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Handling forms: select with dynamic options">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abORVZm">
-  Handling forms: select with dynamic options</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Handling forms: select with dynamic options" slug="abORVZm" :preview="false" />
 
 ## 值绑定
 
@@ -262,7 +222,7 @@ vm.toggle === 'yes'
 vm.toggle === 'no'
 ```
 
-:::tip Tip
+:::tip 提示
 这里的 `true-value` 和 `false-value` attribute 并不会影响输入控件的 `value` attribute，因为浏览器在提交表单时并不会包含未被选中的复选框。如果要确保表单中这两个值中的一个能够被提交，(即“yes”或“no”)，请换用单选按钮。
 :::
 
@@ -277,7 +237,7 @@ vm.toggle === 'no'
 vm.pick === vm.a
 ```
 
-### Select Options
+### 选择框选项 (Select Options)
 
 ```html
 <select v-model="selected">
@@ -296,7 +256,7 @@ vm.selected.number // => 123
 
 ### `.lazy`
 
-在默认情况下，`v-model` 在每次 `input` 事件触发后将输入框的值与数据进行同步 (除了[上述](#vmodel-ime-tip)输入法组合文字时)。你可以添加 `lazy` 修饰符，从而转为在 `change` 事件_之后_进行同步：
+在默认情况下，`v-model` 在每次 `input` 事件触发后将输入框的值与数据进行同步 (除了[上述](#vmodel-ime-tip)输入法组织文字时)。你可以添加 `lazy` 修饰符，从而转为在 `change` 事件_之后_进行同步：
 
 ```html
 <!-- 在“change”时而非“input”时更新 -->
@@ -327,4 +287,4 @@ vm.selected.number // => 123
 
 HTML 原生的输入元素类型并不总能满足需求。幸好，Vue 的组件系统允许你创建具有完全自定义行为且可复用的输入组件。这些输入组件甚至可以和 `v-model` 一起使用！
 
-要了解更多，请参阅组件指南中的[自定义输入](./component-basics.html#using-v-model-on-components)组件。
+要了解更多，请参阅组件指南中的[自定义输入](./component-basics.html#在组件上使用-v-model)组件。

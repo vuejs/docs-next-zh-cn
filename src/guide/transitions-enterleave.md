@@ -7,8 +7,7 @@
 - 在过渡钩子期间使用 JavaScript 直接操作 DOM；
 - 集成第三方 JavaScript 动画库。
 
-在这里，我们只会讲到进入、离开和列表的过渡，你也可以看下一节的[管理过渡状态](transitions-state.html) 。
-
+在这里，我们只介绍进入、离开和列表的过渡，你也可以看下一节[列表过渡](transitions-list.html)和[管理过渡状态](transitions-state.html) 。
 
 ## 单元素/组件的过渡
 
@@ -57,18 +56,13 @@ Vue.createApp(Demo).mount('#demo')
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="html,result" data-user="Vue" data-slug-hash="3466d06fb252a53c5bc0a0edb0f1588a" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Simple Transition Component">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/3466d06fb252a53c5bc0a0edb0f1588a">
-  Simple Transition Component</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Simple Transition Component" slug="3466d06fb252a53c5bc0a0edb0f1588a" tab="html,result" :editable="false" />
 
 当插入或删除包含在 `transition` 组件中的元素时，Vue 将会做以下处理：
 
 1. 自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。
 
-2. 如果过渡组件提供了 [JavaScript 钩子函数](#javascript-hooks) ，这些钩子函数将在恰当的时机被调用。
+2. 如果过渡组件提供了 [JavaScript 钩子函数](#javascript-钩子) ，这些钩子函数将在恰当的时机被调用。
 
 3. 如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，和 Vue 的 `nextTick` 概念不同)
 
@@ -76,20 +70,19 @@ Vue.createApp(Demo).mount('#demo')
 
 在进入/离开的过渡中，会有 6 个 class 切换。
 
-
 1. `v-enter-from`：定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。
 
 2. `v-enter-active`：定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。
 
-3. `v-enter-to`：**2.1.8 版及以上**定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 v-enter 被移除)，在过渡/动画完成之后移除。
+3. `v-enter-to`：定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 `v-enter-from` 被移除)，在过渡/动画完成之后移除。
 
 4. `v-leave-from`：定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。
 
 5. `v-leave-active`：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
 
-6. `v-leave-to`：**2.1.8 版及以上定义**离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave` 被删除)，在过渡/动画完成之后移除。
+6. `v-leave-to`：离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave-from` 被删除)，在过渡/动画完成之后移除。
 
-![Transition Diagram](/images/transition.png)
+![Transition Diagram](/images/transitions.svg)
 
 对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 `<transition>`，则 `v-` 是这些class名的默认前缀。如果你使用了 `<transition name="my-transition">`，那么 `v-enter-from`会替换为 `my-transition-enter-from`。
 
@@ -141,12 +134,7 @@ Vue.createApp(Demo).mount('#demo')
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="css,result" data-user="Vue" data-slug-hash="0dfa7869450ef43d6f7bd99022bc53e2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Different Enter and Leave Transitions">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/0dfa7869450ef43d6f7bd99022bc53e2">
-  Different Enter and Leave Transitions</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Different Enter and Leave Transitions" slug="0dfa7869450ef43d6f7bd99022bc53e2" tab="css,result" :editable="false" />
 
 ### CSS 动画
 
@@ -155,7 +143,7 @@ CSS 动画用法同 CSS 过渡，区别是在动画中 `v-enter-from` 类名在�
 下面是一个例子，为了简洁起见，省略了带前缀的 CSS 规则：
 
 ```html
-<div id="example-2">
+<div id="demo">
   <button @click="show = !show">Toggle show</button>
   <transition name="bounce">
     <p v-if="show">
@@ -191,7 +179,7 @@ Vue.createApp(Demo).mount('#demo')
     transform: scale(0);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(1.25);
   }
   100% {
     transform: scale(1);
@@ -199,12 +187,7 @@ Vue.createApp(Demo).mount('#demo')
 }
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="html,result" data-user="Vue" data-slug-hash="8627c50c5514752acd73d19f5e33a781" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS Animation Transition Example">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/8627c50c5514752acd73d19f5e33a781">
-  CSS Animation Transition Example</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="CSS Animation Transition Example" slug="8627c50c5514752acd73d19f5e33a781" tab="html,result" :editable="false" />
 
 ### 自定义过渡 class 类名
 
@@ -212,10 +195,10 @@ Vue.createApp(Demo).mount('#demo')
 
 - `enter-from-class`
 - `enter-active-class`
-- `enter-to-class` (2.1.8+)
+- `enter-to-class`
 - `leave-from-class`
 - `leave-active-class`
-- `leave-to-class` (2.1.8+)
+- `leave-to-class`
 
 他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如 [Animate.css](https://daneden.github.io/animate.css/). 结合使用十分有用。
 
@@ -263,9 +246,7 @@ Vue 为了知道过渡的完成，必须设置相应的事件监听器。它可�
 
 ### 显性的过渡持续时间
 
-TODO: 验证并提供示例
-
-> 2.2.0+ 新增
+<!-- TODO: 验证并提供示例 -->
 
 在很多情况下，Vue 可以自动得出过渡效果的完成时机。默认情况下，Vue 会等待其在过渡效果的根元素的第一个 `transitionend` 或 `animationend` 事件。然而也可以不这样设定——比如，我们可以拥有一个精心编排的一系列过渡效果，其中一些嵌套的内部元素相比于过渡效果的根元素有延迟的或更长的过渡效果。
 
@@ -349,7 +330,7 @@ methods: {
 
 这些钩子函数可以结合 CSS transitions/animations 使用，也可以单独使用。
 
-当只用 JavaScript 过渡的时候，在 **`enter` 和 `leave` 钩中必须使用 `done` 进行回调**。否则，它们将被同步调用，过渡会立即完成。推荐对于仅使用 JavaScript 过渡的元素添加 `:css="false"`，Vue 会跳过 CSS 的检测。这也可以避免过渡过程中 CSS 的影响。
+当只用 JavaScript 过渡的时候，在 **`enter` 和 `leave` 钩中必须使用 `done` 进行回调**。否则，它们将被同步调用，过渡会立即完成。添加 `:css="false"`，也会让 Vue 会跳过 CSS 的检测，除了性能略高之外，这可以避免过渡过程中 CSS 规则的影响。
 
 现在让我们来看一个例子。下面是一个使用 [GreenSock](https://greensock.com/) 的 JavaScript 过渡:
 
@@ -420,12 +401,7 @@ const Demo = {
 Vue.createApp(Demo).mount('#demo')
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028"  data-preview="true" data-default-tab="js,result" data-user="Vue" data-slug-hash="68ce1b8c41d0a6e71ff58df80fd85ae5" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="JavaScript Hooks Transition">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/68ce1b8c41d0a6e71ff58df80fd85ae5">
-  JavaScript Hooks Transition</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="JavaScript Hooks Transition" slug="68ce1b8c41d0a6e71ff58df80fd85ae5" tab="js,result" :editable="false" />
 
 ## 初始渲染的过渡
 
@@ -439,7 +415,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 多个元素的过渡
 
-我们之后讨论[多个组件的过渡](#transitioning-between-components)，对于原生标签可以使用 `v-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
+我们之后讨论[多个组件之间过渡](#多个组件之间过渡)，对于原生标签可以使用 `v-if`/`v-else-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
 
 ```html
 <transition>
@@ -450,20 +426,19 @@ Vue.createApp(Demo).mount('#demo')
 </transition>
 ```
 
-实际上，通过使用多个 `v-if` 或将单个元素绑定到一个动态 property，可以在任意数量的元素之间进行过渡。例如：
+实际上，通过使用 `v-if`/`v-else-if`/`v-else` 或将单个元素绑定到一个动态 property，可以在任意数量的元素之间进行过渡。例如：
 
-
-TODO: 重写示例并放入 codepen 示例
+<!-- TODO: 重写示例并放入 codepen 示例 -->
 
 ```html
 <transition>
   <button v-if="docState === 'saved'" key="saved">
     Edit
   </button>
-  <button v-if="docState === 'edited'" key="edited">
+  <button v-else-if="docState === 'edited'" key="edited">
     Save
   </button>
-  <button v-if="docState === 'editing'" key="editing">
+  <button v-else-if="docState === 'editing'" key="editing">
     Cancel
   </button>
 </transition>
@@ -496,23 +471,13 @@ computed: {
 
 这里还有一个问题，试着点击下面的按钮：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="Rwrqzpr" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Button Problem">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/Rwrqzpr">
-  Transition Modes Button Problem</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Transition Modes Button Problem" slug="Rwrqzpr" :editable="false" />
 
 在“on”按钮和“off”按钮的过渡中，两个按钮都被重绘了，一个离开过渡的时候另一个开始进入过渡。这是 `<transition>` 的默认行为 —— 进入和离开同时发生。
 
 有时这很有效，例如当过渡项绝对位于彼此的 top 时：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="abdQgLr" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Button Problem- positioning">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/abdQgLr">
-  Transition Modes Button Problem- positioning</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Transition Modes Button Problem- positioning" slug="abdQgLr" :editable="false" />
 
 同时生效的进入和离开的过渡不能满足所有要求，所以 Vue 提供了**过渡模式**
 
@@ -531,41 +496,34 @@ computed: {
 </transition>
 ```
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="ZEQmdvq" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Button Problem- solved">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/ZEQmdvq">
-  Transition Modes Button Problem- solved</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Transition Modes Button Problem- solved" slug="ZEQmdvq" :editable="false" />
 
 通过添加一个 attribute，我们修复了原来的过渡，而不必添加任何特殊 style。
 
 我们可以用它来协调更具表现力的动作，例如折叠卡片，如下所示。实际上是两个元素在彼此之间转换，但是由于开始状态和结束状态的比例是相同的：水平为0，它看起来就像一个流体运动。这种轻描淡写对于真实的 UI 微交互非常有用：
 
-<p class="codepen" data-height="300" data-theme-id="39028" data-default-tab="result" data-user="Vue" data-slug-hash="76e344bf057bd58b5936bba260b787a8" data-preview="true" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Transition Modes Flip Cards">
-  <span>See the Pen <a href="https://codepen.io/team/Vue/pen/76e344bf057bd58b5936bba260b787a8">
-  Transition Modes Flip Cards</a> by Vue (<a href="https://codepen.io/Vue">@Vue</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<common-codepen-snippet title="Transition Modes Flip Cards" slug="76e344bf057bd58b5936bba260b787a8" :editable="false" />
 
 ## 多个组件之间过渡
 
-组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包装了一个[动态组件](component-basics.html#动态组件) ：
-
-TODO: 更新到 Vue 3
+组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包裹了一个[动态组件](component-basics.html#动态组件) ：
 
 ```html
-<transition name="component-fade" mode="out-in">
-  <component :is="view"></component>
-</transition>
+<div id="demo">
+  <input v-model="view" type="radio" value="v-a" id="a"><label for="a">A</label>
+  <input v-model="view" type="radio" value="v-b" id="b"><label for="b">B</label>
+  <transition name="component-fade" mode="out-in">
+    <component :is="view"></component>
+  </transition>
+</div>
 ```
 
 ```js
-new Vue({
-  el: '#transition-components-demo',
-  data: {
-    view: 'v-a'
+const Demo = {
+  data() {
+    return {
+      view: 'v-a'
+    }
   },
   components: {
     'v-a': {
@@ -575,7 +533,9 @@ new Vue({
       template: '<div>Component B</div>'
     }
   }
-})
+}
+
+Vue.createApp(Demo).mount('#demo')
 ```
 
 ```css
@@ -583,10 +543,11 @@ new Vue({
 .component-fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.component-fade-enter, .component-fade-leave-to
-/* .component-fade-leave-active below version 2.1.8 */ {
+
+.component-fade-enter-from,
+.component-fade-leave-to {
   opacity: 0;
 }
 ```
 
-TODO: 示例
+<common-codepen-snippet title="Transitioning between components" slug="WNwVxZw" tab="html,result" theme="39028" />

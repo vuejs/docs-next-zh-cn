@@ -9,17 +9,18 @@
   - `{Object} [options]`
     - `{boolean} deep`
     - `{boolean} immediate`
+    - `{string} flush`
 
 - **返回：**`{Function} unwatch`
 
 - **用法：**
 
-  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`prop` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
+  侦听组件实例上的响应式 property 或函数计算结果的变化。回调函数得到的参数为新值和旧值。我们只能将顶层的 `data`、`props` 或 `computed` property 名作为字符串传递。对于更复杂的表达式，用一个函数取代。
 
 - **示例：**
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1,
@@ -61,7 +62,7 @@
   当侦听的值是一个对象或者数组时，对其属性或元素的任何更改都不会触发侦听器，因为它们引用相同的对象/数组：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         article: {
@@ -103,7 +104,7 @@
   `$watch` 返回一个取消侦听函数，用来停止触发回调：
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         a: 1
@@ -120,7 +121,9 @@
 
 - **选项：deep**
 
-  为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。注意监听数组的变更不需要这么做。
+  为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。这个选项同样适用于监听数组变更。
+  
+  > 注意：当变更（不是替换）对象或数组并使用 deep 选项时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。
 
   ```js
   vm.$watch('someObject', callback, {
@@ -158,7 +161,9 @@
   如果你仍然希望在回调内部调用一个取消侦听的函数，你应该先检查其函数的可用性：
 
   ```js
-  const unwatch = vm.$watch(
+  let unwatch = null
+
+  unwatch = vm.$watch(
     'value',
     function() {
       doSomething()
@@ -170,7 +175,25 @@
   )
   ```
 
--  **参考** [Watchers](../guide/computed.html#watchers)
+- **选项：flush**
+
+  `flush` 选项可以更好地控制回调的时间。它可以设置为 `'pre'`、`'post'` 或 `'sync'`。
+  
+  默认值是 `'pre'`，指定的回调应该在渲染前被调用。它允许回调在模板运行前更新了其他值。
+  
+  `'post'` 值是可以用来将回调推迟到渲染之后的。如果回调需要通过 `$refs` 访问更新的 DOM 或子组件，那么则使用该值。
+
+  如果 `flush` 被设置为 `'sync'`，一旦值发生了变化，回调将被同步调用。
+
+  对于 `'pre'` 和 `'post'`，回调使用队列进行缓冲。回调只被添加到队列中一次，即使观察值变化了多次。值的中间变化将被跳过，不会传递给回调。
+  
+  缓冲回调不仅可以提高性能，还有助于保证数据的一致性。在执行数据更新的代码完成之前，侦听器不会被触发。
+  
+  `'sync'` 侦听器应少用，因为它们没有这些好处。
+
+  更多关于 `flush` 的信息，请参阅[副作用刷新时机](../guide/reactivity-computed-watchers.html#副作用刷新时机)。
+
+-  **参考** [Watchers](../guide/computed.html#侦听器)
 
 ## $emit
 
@@ -192,7 +215,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       sayHi() {
         console.log('Hi!')
@@ -201,6 +224,7 @@
   })
 
   app.component('welcome-button', {
+    emits: ['welcome'],
     template: `
       <button v-on:click="$emit('welcome')">
         Click me to be welcomed
@@ -215,12 +239,12 @@
 
   ```html
   <div id="emit-example-argument">
-    <advice-component v-on:give-advice="showAdvice"></advice-component>
+    <advice-component v-on:advise="showAdvice"></advice-component>
   </div>
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     methods: {
       showAdvice(advice) {
         alert(advice)
@@ -229,6 +253,7 @@
   })
 
   app.component('advice-component', {
+    emits: ['advise'],
     data() {
       return {
         adviceText: 'Some advice'
@@ -237,17 +262,19 @@
     template: `
       <div>
         <input type="text" v-model="adviceText">
-        <button v-on:click="$emit('give-advice', adviceText)">
+        <button v-on:click="$emit('advise', adviceText)">
           Click me for sending advice
         </button>
       </div>
     `
   })
+
+  app.mount('#emit-example-argument')
   ```
 
 -  **参考**
   - [`emits` 选项](./options-data.html#emits)
-  - [事件抛出一个值](../guide/component-basics.html#emitting-a-value-with-an-event)
+  - [事件抛出一个值](../guide/component-basics.html#使用事件抛出一个值)
 
 ## $forceUpdate
 
@@ -268,17 +295,17 @@
 - **示例：**
 
   ```js
-  Vue.createApp({
+  createApp({
     // ...
     methods: {
       // ...
       example() {
-        // modify data
+        // 修改数据
         this.message = 'changed'
-        // DOM is not updated yet
+        // DOM 尚未更新
         this.$nextTick(function() {
-          // DOM is now updated
-          // `this` is bound to the current instance
+          // DOM 现在更新了
+          // `this` 被绑定到当前实例
           this.doSomethingElse()
         })
       }

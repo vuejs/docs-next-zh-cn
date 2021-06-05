@@ -7,20 +7,21 @@ badges:
 
 ## 概览
 
-- **BREAKING：**自定义元素白名单现在在模板编译期间执行，应该通过编译器选项而不是运行时配置来配置。
-- **BREAKING：**特定 `is` prop 用法仅限于保留的 `<component>` 标记
-- **NEW：**有了新的 `v-is` 指令来支持 2.x 用例，其中在原生元素上使用了 `v-is` 来处理原生 HTML 解析限制。
+- **非兼容**：检测并确定哪些标签应该被视为自定义元素的过程，现在会在模板编译期间执行，且应该通过编译器选项而不是运行时配置来配置。
+- **非兼容**：特定 `is` prop 用法仅限于保留的 `<component>` 标记。
+- **新增**：有了新的 `v-is` 指令来支持 2.x 用例，其中在原生元素上使用了 `v-is` 来处理原生 HTML 解析限制。
 
 ## 自主定制元素
 
-如果我们想添加在 Vue 外部定义的自定义元素 (例如使用 Web 组件 API)，我们需要“指示”Vue 将其视为自定义元素。让我们以下面的模板为例。
+如果我们想在 Vue 外部定义添加自定义元素 (例如使用 Web 组件 API)，我们需要“指示”Vue 将其视为自定义元素。让我们以下面的模板为例。
 
 ```html
 <plastic-button></plastic-button>
 ```
+
 ### 2.x 语法
 
-在 Vue 2.x 中，将标记作为自定义元素白名单是通过 `Vue.config.ignoredElements`：
+在 Vue 2.x 中，通过 `Vue.config.ignoredElements` 配置自定义元素：
 
 ```js
 // 这将使Vue忽略在Vue外部定义的自定义元素
@@ -62,7 +63,7 @@ Vue.config.ignoredElements = ['plastic-button']
 
 ## 定制内置元素
 
-自定义元素规范提供了一种将自定义元素用作[自定义内置模板](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)的方法，方法是向内置元素添加 `is` 属性：
+自定义元素规范提供了一种将自定义元素作为[自定义内置模板](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)的方法，方法是向内置元素添加 `is` 属性：
 
 ```html
 <button is="plastic-button">点击我!</button>
@@ -100,9 +101,9 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 > 提示：本节仅影响直接在页面的 HTML 中写入 Vue 模板的情况。
 > 在 DOM 模板中使用时，模板受原生 HTML 解析规则的约束。一些 HTML 元素，例如 `<ul>`，`<ol>`，`<table>` 和 `<select>` 对它们内部可以出现的元素有限制，和一些像 `<li>`，`<tr>`，和 `<option>` 只能出现在某些其他元素中。
 
-### 2x 语法
+### 2.x 语法
 
-在 Vue 2 中，我们建议通过在原生 tag 上使用 `is` prop 来解决这些限制：
+在 Vue 2 中，我们建议在原生 tag 上使用 `is` prop 来解决这些限制：
 
 ```html
 <table>
@@ -121,7 +122,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 ```
 
 :::warning
-`v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要按注册名称渲染组件，其值应为 JavaScript 字符串文本：
+`v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要使用注册名称来渲染组件，其值应为 JavaScript 字符串文本：
 
 ```html
 <!-- 不正确，不会渲染任何内容 -->

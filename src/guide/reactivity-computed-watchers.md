@@ -8,7 +8,7 @@
 
 ```js
 const count = ref(1)
-const plusOne = computed(() => count.value++)
+const plusOne = computed(() => count.value + 1)
 
 console.log(plusOne.value) // 2
 
@@ -32,7 +32,7 @@ console.log(count.value) // 0
 
 ## `watchEffect`
 
-为了根据反应状态*自动应用*和*重新应用*副作用，我们可以使用 `watchEffect` 方法。它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。
+为了根据响应式状态*自动应用*和*重新应用*副作用，我们可以使用 `watchEffect` 方法。它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。
 
 ```js
 const count = ref(0)
@@ -86,7 +86,7 @@ watchEffect(onInvalidate => {
 ```js
 const data = ref(null)
 watchEffect(async onInvalidate => {
-  onInvalidate(() => {...}) // 我们在Promise解析之前注册清除函数
+   onInvalidate(() => { /* ... */ }) // 我们在Promise解析之前注册清除函数
   data.value = await fetchData(props.id)
 })
 ```
@@ -95,9 +95,10 @@ watchEffect(async onInvalidate => {
 
 ### 副作用刷新时机
 
-Vue 的响应式系统会缓存副作用函数，并异步地刷新它们，这样可以避免同一个“tick” 中多个状态改变导致的不必要的重复调用。在核心的具体实现中，组件的 `update` 函数也是一个被侦听的副作用。当一个用户定义的副作用函数进入队列时，会在所有的组件 `update` 后执行：
+Vue 的响应性系统会缓存副作用函数，并异步地刷新它们，这样可以避免同一个“tick” 中多个状态改变导致的不必要的重复调用。在核心的具体实现中，组件的 `update` 函数也是一个被侦听的副作用。当一个用户定义的副作用函数进入队列时，默认情况下，会在所有的组件 `update` **前**执行：
 
 ```html
+
 <template>
   <div>{{ count }}</div>
 </template>
@@ -122,13 +123,14 @@ Vue 的响应式系统会缓存副作用函数，并异步地刷新它们，这�
 在这个例子中：
 
 - `count` 会在初始运行时同步打印出来
-- 更改 `count` 时，将在组件**更新后**执行副作用。
+- 更改 `count` 时，将在组件**更新前**执行副作用。
 
-如果需要在组件更新**后**重新运行侦听器副作用，我们可以传递带有 `flush` 选项的附加 `options` 对象 (默认为 `'pre'`)：
+如果需要在组件更新(例如：当与[模板引用](./composition-api-template-refs.md#侦听模板引用)一起)**后**重新运行侦听器副作用，我们可以传递带有 `flush` 选项的附加 `options` 对象 (默认为 `'pre'`)：
 
 ```js
 
-// fire before component updates
+// 在组件更新后触发，这样你就可以访问更新的 DOM。
+// 注意：这也将推迟副作用的初始运行，直到组件的首次渲染完成。
 watchEffect(
   () => {
     /* ... */
@@ -141,13 +143,12 @@ watchEffect(
 
 `flush` 选项还接受 `sync`，这将强制效果始终同步触发。然而，这是低效的，应该很少需要。
 
-
 ### 侦听器调试
 
 `onTrack` 和 `onTrigger` 选项可用于调试侦听器的行为。
 
-- 当响应式 property 或 ref 作为依赖项被追踪时，将调用 `onTrack`
-- 当依赖项变更导致副作用被触发时，将调用 `onTrigger`
+- `onTrack` 将在响应式 property 或 ref 作为依赖项被追踪时被调用。
+- `onTrigger` 将在依赖项变更导致副作用被触发时被调用。
 
 这两个回调都将接收到一个包含有关所依赖项信息的调试器事件。建议在以下回调中编写 `debugger` 语句来检查依赖关系：
 
@@ -202,9 +203,92 @@ watch(count, (count, prevCount) => {
 侦听器还可以使用数组同时侦听多个源：
 
 ```js
-watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
-  /* ... */
+const firstName = ref('');
+const lastName = ref('');
+
+watch([firstName, lastName], (newValues, prevValues) => {
+  console.log(newValues, prevValues);
 })
+
+firstName.value = "John"; // logs: ["John",""] ["", ""]
+lastName.value = "Smith"; // logs: ["John", "Smith"] ["John", ""]
+```
+
+### 侦听响应式对象
+
+使用侦听器来比较一个数组或对象的值，这些值是响应式的，要求它有一个由值构成的副本。
+
+```js
+const numbers = reactive([1, 2, 3, 4])
+
+watch(
+  () => [...numbers],
+  (numbers, prevNumbers) => {
+    console.log(numbers, prevNumbers);
+  })
+
+numbers.push(5) // logs: [1,2,3,4,5] [1,2,3,4]
+```
+
+尝试检查深度嵌套对象或数组中的 property 变化时，仍然需要 `deep` 选项设置为 true。
+
+```js
+const state = reactive({ 
+  id: 1, 
+  attributes: { 
+    name: "",
+  },
+});
+
+watch(
+  () => state,
+  (state, prevState) => {
+    console.log(
+      "not deep ",
+      state.attributes.name,
+      prevState.attributes.name
+    );
+  }
+);
+
+watch(
+  () => state,
+  (state, prevState) => {
+    console.log(
+      "deep ",
+      state.attributes.name,
+      prevState.attributes.name
+    );
+  },
+  { deep: true }
+);
+
+state.attributes.name = "Alex"; // 日志: "deep " "Alex" "Alex"
+```
+
+然而，侦听一个响应式对象或数组将始终返回该对象的当前值和上一个状态值的引用。为了完全侦听深度嵌套的对象和数组，可能需要对值进行深拷贝。这可以通过诸如 [lodash.cloneDeep](https://lodash.com/docs/4.17.15#cloneDeep) 这样的实用工具来实现。
+
+```js
+import _ from 'lodash';
+
+const state = reactive({
+  id: 1,
+  attributes: {
+    name: "",
+  },
+});
+
+watch(
+  () => _.cloneDeep(state),
+  (state, prevState) => {
+    console.log(
+      state.attributes.name, 
+      prevState.attributes.name
+    );
+  }
+);
+
+state.attributes.name = "Alex"; // 日志: "Alex" ""
 ```
 
 ### 与 `watchEffect` 共享的行为

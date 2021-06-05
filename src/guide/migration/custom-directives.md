@@ -7,12 +7,7 @@ badges:
 
 ## 概览
 
-下面是对变更的简要总结：
-
-- API 已重命名，以便更好地与组件生命周期保持一致
-- 自定义指令将由子组件通过 `v-bind="$attrs"`
-
-更多信息，请继续阅读！
+指令的钩子函数已经被重命名，以更好地与组件的生命周期保持一致。
 
 ## 2.x 语法
 
@@ -27,7 +22,7 @@ badges:
 下面是一个例子：
 
 ```html
-<p v-highlight="yellow">高亮显示此文本亮黄色</p>
+<p v-highlight="'yellow'">高亮显示此文本亮黄色</p>
 ```
 
 ```js
@@ -44,23 +39,25 @@ Vue.directive('highlight', {
 
 然而，在 Vue 3 中，我们为自定义指令创建了一个更具凝聚力的 API。正如你所看到的，它们与我们的组件生命周期方法有很大的不同，即使我们正与类似的事件钩子，我们现在把它们统一起来了：
 
+- created - 新的！在元素的 attribute 或事件侦听器应用之前调用。
 - bind → **beforeMount**
 - inserted → **mounted**
-- **beforeUpdate**:<sup style="color:green">新的！</sup>这是在元素本身更新之前调用的，很像组件生命周期钩子
-- update → <sup style="color:red">移除！</sup>有太多的相似之处要更新，所以这是多余的，请改用 `updated`
+- **beforeUpdate**：新的！这是在元素本身更新之前调用的，很像组件生命周期钩子。
+- update → 移除！有太多的相似之处要更新，所以这是多余的，请改用 `updated`。
 - componentUpdated → **updated**
-- **beforeUnmount** <sup style="color:green">新的！</sup>与组件生命周期钩子类似，它将在卸载元素之前调用。
+- **beforeUnmount**：新的！与组件生命周期钩子类似，它将在卸载元素之前调用。
 - unbind -> **unmounted**
 
 最终 API 如下：
 
 ```js
 const MyDirective = {
-  beforeMount(el, binding, vnode, prevVnode) {},
+  created(el, binding, vnode, prevVnode) {}, // 新增
+  beforeMount() {},
   mounted() {},
-  beforeUpdate() {},
+  beforeUpdate() {}, // 新增
   updated() {},
-  beforeUnmount() {}, // 新
+  beforeUnmount() {}, // 新增
   unmounted() {}
 }
 ```
@@ -68,7 +65,7 @@ const MyDirective = {
 生成的 API 可以这样使用，与前面的示例相同：
 
 ```html
-<p v-highlight="yellow">高亮显示此文本亮黄色</p>
+<p v-highlight="'yellow'">高亮显示此文本亮黄色</p>
 ```
 
 ```js
@@ -83,26 +80,26 @@ app.directive('highlight', {
 
 既然定制指令生命周期钩子映射了组件本身的那些，那么它们就更容易推理和记住了！
 
-## 实施细节
+### 边界情况：访问组件实例
 
-在 Vue 3 中，我们现在支持片段，这允许我们为每个组件返回多个 DOM 节点。你可以想象，对于具有多个 lis 的组件或一个表的子元素这样的组件有多方便：
+通常建议保持指令独立于它们所使用的组件实例。从自定义指令中访问实例通常意味着该指令本身应该是一个组件。然而，在某些情况下这是有意义的。
 
-```html
-<template>
-  <li>Hello</li>
-  <li>Vue</li>
-  <li>Devs!</li>
-</template>
+在 Vue 2 中，必须通过 `vnode` 参数访问组件实例：
+
+```js
+bind(el, binding, vnode) {
+  const vm = vnode.context
+}
 ```
 
-如此灵活，我们可能会遇到一个定制指令的问题，它可能有多个根节点。
+在 Vue 3 中，实例是 `binding` 参数的一个 property：
 
-因此，自定义指令现在作为虚拟 DOM 节点数据的一部分包含在内。当在组件上使用自定义指令时，钩子作为无关的 prop 传递到组件，并以 `this.$attrs` 结束。
-
-这也意味着可以像这样在模板中直接挂接到元素的生命周期中，这在涉及到自定义指令时非常方便：
-
-```html
-<div @vnodeMounted="myHook" />
+```js
+mounted(el, binding, vnode) {
+  const vm = binding.instance
+}
 ```
 
-这与属性 fallthrough 行为是一致的，因此，当子组件在内部元素上使用 `v-bind="$attrs"` 时，它也将应用对其使用的任何自定义指令。
+:::warning
+有了 [fragments](/guide/migration/fragments.html#概览) 支持，组件可能有多个根节点。当应用于多根组件时，将忽略一个指令，并记录一个警告。
+:::

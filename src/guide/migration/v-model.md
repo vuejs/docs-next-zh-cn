@@ -7,15 +7,14 @@ badges:
 
 ## 概览
 
-
 就变化内容而言，此部分属于高阶内容：
 
-- **BREAKING**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
+- **非兼容**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
   - prop：`value` -> `modelValue`；
   - event：`input` -> `update:modelValue`；
-- **BREAKING**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 作为代替；
-- **NEW**：现在可以在同一个组件上使用多个 `v-model` 进行双向绑定；
-- **NEW**：现在可以自定义 `v-model` 修饰符。
+- **非兼容**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 作为代替；
+- **新增**：现在可以在同一个组件上使用多个 `v-model` 进行双向绑定；
+- **新增**：现在可以自定义 `v-model` 修饰符。
 
 更多信息，请见下文。
 
@@ -31,11 +30,10 @@ badges:
 
 在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 和 `input` 事件：
 
-
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
 ```
@@ -68,7 +66,7 @@ export default {
 }
 ```
 
-所以，在这个例子中 `v-model` 的简写如下：
+所以，在这个例子中 `v-model` 是以下的简写：
 
 ```html
 <ChildComponent :title="pageTitle" @change="pageTitle = $event" />
@@ -101,7 +99,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent
   :modelValue="pageTitle"
@@ -116,7 +114,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model:title="pageTitle" />
 
-<!-- 简写: -->
+<!-- 是以下的简写: -->
 
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
@@ -128,7 +126,7 @@ this.$emit('update:title', newValue)
 ```html
 <ChildComponent v-model:title="pageTitle" v-model:content="pageContent" />
 
-<!-- 简写： -->
+<!-- 是以下的简写： -->
 
 <ChildComponent
   :title="pageTitle"
@@ -146,7 +144,7 @@ this.$emit('update:title', newValue)
 <ChildComponent v-model.capitalize="pageTitle" />
 ```
 
-我们可以在 [Custom Events](../component-custom-events.html#handling-v-model-modifiers) 部分中了解有关自定义 `v-model` 修饰符的更多信息。
+我们可以在 [Custom Events](../component-custom-events.html#处理-v-model-修饰符) 部分中了解有关自定义 `v-model` 修饰符的更多信息。
 
 ## 迁移策略
 
@@ -175,6 +173,7 @@ this.$emit('update:title', newValue)
     props: {
       modelValue: String // 以前是`value：String`
     },
+    emits: ['update:modelValue'],
     methods: {
       changePageTitle(title) {
         this.$emit('update:modelValue', title) // 以前是 `this.$emit('input', title)`
@@ -186,6 +185,6 @@ this.$emit('update:title', newValue)
 ## 下一步
 
 更多新的 `v-model` 语法相关信息，请参考：
-- [在组件中使用 `v-model`](../component-basics.html#using-v-model-on-components) 
-- [`v-model` 参数](../component-custom-events.html#v-model-arguments)
-- [处理 `v-model` 修饰符](../component-custom-events.html#v-model-arguments)
+- [在组件中使用 `v-model`](../component-basics.html#在组件上使用-v-model) 
+- [`v-model` 参数](../component-custom-events.html#v-model-参数)
+- [处理 `v-model` 修饰符](../component-custom-events.html#处理-v-model-修饰符)

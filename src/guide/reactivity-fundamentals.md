@@ -1,4 +1,4 @@
-# 响应式原理
+# 响应性基础
 
 ## 声明响应式状态
 
@@ -13,17 +13,17 @@ const state = reactive({
 })
 ```
 
-`reactive` 相当于 Vue 2.x 中的 `Vue.observable()` API ，为避免与 RxJS 中的 observables 混淆因此对其重命名。该 API 返回一个响应式的对象状态。该响应式转换是“深度转换”——它会影响嵌套对象传递的所有 property。
+`reactive` 相当于 Vue 2.x 中的 `Vue.observable()` API，为避免与 RxJS 中的 observables 混淆因此对其重命名。该 API 返回一个响应式的对象状态。该响应式转换是“深度转换”——它会影响嵌套对象传递的所有 property。
 
 Vue 中响应式状态的基本用例是我们可以在渲染期间使用它。因为依赖跟踪的关系，当响应式状态改变时视图会自动更新。
 
-这就是 Vue 响应式系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部交由 `reactive()` 使其成为响应式对象。模板会被编译成能够使用这些响应式 property 的[渲染函数](render-function.html)。
+这就是 Vue 响应性系统的本质。当从组件中的 `data()` 返回一个对象时，它在内部交由 `reactive()` 使其成为响应式对象。模板会被编译成能够使用这些响应式 property 的[渲染函数](render-function.html)。
 
-在[响应式基础 API](../api/basic-reactivity.html) 章节你可以学习更多关于 `reactive` 的内容。
+在[响应性基础 API](../api/basic-reactivity.html) 章节你可以学习更多关于 `reactive` 的内容。
 
 ## 创建独立的响应式值作为 `refs`
 
-想象一下，我们有一个独立的原始值 (例如，一个字符串)，我们想让它变成响应式的。当然，我们可以创建一个拥有相同字符串 property 的对象，并将其传递给 `reactive`。Vue 为我们提供了一个可以做相同事情的方法 ——`ref`：
+想象一下，我们有一个独立的原始值 (例如，一个字符串)，我们想让它变成响应式的。当然，我们可以创建一个拥有相同字符串 property 的对象，并将其传递给 `reactive`。Vue 为我们提供了一个可以做相同事情的方法——`ref`：
 
 ```js
 import { ref } from 'vue'
@@ -31,7 +31,7 @@ import { ref } from 'vue'
 const count = ref(0)
 ```
 
-`ref` 会返回一个可变的响应式对象，该对象作为它的内部值——一个**响应式的引用**，这就是名称的来源。此对象只包含一个名为 `value` 的 property ：
+`ref` 会返回一个可变的响应式对象，该对象作为一个**响应式的引用**维护着它内部的值，这就是 `ref` 名称的来源。该对象只包含一个名为 `value` 的 property：
 
 ```js
 import { ref } from 'vue'
@@ -43,15 +43,16 @@ count.value++
 console.log(count.value) // 1
 ```
 
-### Ref 展开
+### Ref 解包
 
-当 ref 作为渲染上下文 (从 [setup ()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动展开为内部值。不需要在模板中追加 `.value`：
+当 ref 作为渲染上下文 (从 [setup()](composition-api-setup.html) 中返回的对象) 上的 property 返回并可以在模板中被访问时，它将自动浅层次解包内部值。只有访问嵌套的 ref 时需要在模板中添加 `.value`：
 
 ```vue-html
 <template>
   <div>
     <span>{{ count }}</span>
     <button @click="count ++">Increment count</button>
+    <button @click="nested.count.value ++">Nested Increment count</button>
   </div>
 </template>
 
@@ -61,16 +62,30 @@ console.log(count.value) // 1
     setup() {
       const count = ref(0)
       return {
-        count
+        count,
+
+        nested: {
+          count
+        }
       }
     }
   }
 </script>
 ```
 
+:::tip
+如果你不需要访问实际的对象实例，可将其用 `reactive` 包裹:
+
+```js
+nested: reactive({
+  count
+})
+```
+:::
+
 ### 访问响应式对象
 
-当 `ref` 作为响应式对象的 property 被访问或更改时，为使其行为类似于普通 property，它会自动展开内部值：
+当 `ref` 作为响应式对象的 property 被访问或更改时，为使其行为类似于普通 property，它会自动解包内部值：
 
 ```js
 const count = ref(0)
@@ -94,7 +109,7 @@ console.log(state.count) // 2
 console.log(count.value) // 1
 ```
 
-Ref 展开仅发生在被响应式 `Object` 嵌套的时候。当从 `Array` 或原生集合类型如 [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)访问 ref 时，不会进行展开：
+Ref 解包仅发生在被响应式 `Object` 嵌套的时候。当从 `Array` 或原生集合类型如 [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)访问 ref 时，不会进行解包：
 
 ```js
 const books = reactive([ref('Vue 3 Guide')])
@@ -124,7 +139,7 @@ const book = reactive({
 let { author, title } = book
 ```
 
-遗憾的是，使用解构的两个 property 的响应式都会丢失。对于这种情况，我们需要将我们的响应式对象转换为一组 ref。这些 ref 将保留与源对象的响应式关联：
+遗憾的是，使用解构的两个 property 的响应性都会丢失。对于这种情况，我们需要将我们的响应式对象转换为一组 ref。这些 ref 将保留与源对象的响应式关联：
 
 ```js
 import { reactive, toRefs } from 'vue'
@@ -147,7 +162,7 @@ console.log(book.title) // 'Vue 3 Detailed Guide'
 
 ## 使用 `readonly` 防止更改响应式对象
 
-有时我们想跟踪响应式对象 (`ref` 或 `reactive`) 的变化，但我们也希望防止在应用程序的某个位置更改它。例如，当我们有一个被 [provide](component-provide-inject.html) 的响应式对象时，我们不想让它在注入的时候被改变。为此，我们可以基于原始对象创建一个只读的 Proxy 对象：
+有时我们想跟踪响应式对象 (`ref` 或 `reactive`) 的变化，但我们也希望防止在应用程序的某个位置更改它。例如，当我们有一个被 [provide](component-provide-inject.html) 的响应式对象时，我们不想让它在注入的时候被改变。为此，我们可以基于原始对象创建一个只读的 proxy 对象：
 
 ```js
 import { reactive, readonly } from 'vue'
@@ -156,10 +171,10 @@ const original = reactive({ count: 0 })
 
 const copy = readonly(original)
 
-// 在copy上转换original 会触发侦听器依赖
+// 通过 original 修改 count，将会触发依赖 copy 的侦听器
 
 original.count++
 
-// 转换copy 将导失败并导致警告
+// 通过 copy 修改 count，将导致失败并出现警告
 copy.count++ // 警告: "Set operation on key 'count' failed: target is readonly."
 ```

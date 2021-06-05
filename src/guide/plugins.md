@@ -8,7 +8,7 @@
 
 2. 添加全局资源：指令/过滤器/过渡等。如：[vue-touch](https://github.com/vuejs/vue-touch)）
 
-3. 通过全局混入来添加一些组件选项。(如[vue-router](https://github.com/vuejs/vue-router))
+3. 通过全局 mixin 来添加一些组件选项。(如[vue-router](https://github.com/vuejs/vue-router))
 
 4. 添加全局实例方法，通过把它们添加到 `config.globalProperties` 上实现。
 
@@ -42,7 +42,7 @@ export default {
     app.config.globalProperties.$translate = key => {
       return key.split('.').reduce((o, i) => {
         if (o) return o[i]
-      }, i18n)
+      }, options)
     }
   }
 }
@@ -67,7 +67,7 @@ export default {
     app.config.globalProperties.$translate = key => {
       return key.split('.').reduce((o, i) => {
         if (o) return o[i]
-      }, i18n)
+      }, options)
     }
 
     app.provide('i18n', options)
@@ -75,7 +75,7 @@ export default {
 }
 ```
 
-插件用户现在可以将 `inject[in18] ` 到他们的组件并访问该对象。
+插件用户现在可以将 `inject[i18n] ` 注入到他们的组件并访问该对象。
 
 另外，由于我们可以访问 `app` 对象，因此插件可以使用所有其他功能，例如使用 `mixin` 和 `directive`。要了解有关 `createApp` 和应用程序实例的更多信息，请查看 [Application API 文档](/api/application-api.html)。
 
@@ -85,13 +85,13 @@ export default {
   install: (app, options) => {
     app.config.globalProperties.$translate = (key) => {
       return key.split('.')
-        .reduce((o, i) => { if (o) return o[i] }, i18n)
+        .reduce((o, i) => { if (o) return o[i] }, options)
     }
 
     app.provide('i18n', options)
 
     app.directive('my-directive', {
-      bind (el, binding, vnode, oldVnode) {
+      mounted (el, binding, vnode, oldVnode) {
         // some logic ...
       }
       ...

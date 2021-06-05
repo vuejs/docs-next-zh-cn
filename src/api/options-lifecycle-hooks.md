@@ -12,7 +12,7 @@
 
   在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## created
 
@@ -22,7 +22,7 @@
 
   在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，property 和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，`$el` property 目前尚不可用。
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## beforeMount
 
@@ -34,7 +34,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## mounted
 
@@ -42,9 +42,9 @@
 
 - **详细：**
 
-  实例被挂载后调用，这时 `Vue.createApp({}).mount()` 被新创建的 `vm.$el` 替换了。如果根实例挂载到了一个文档内的元素上，当 mounted 被调用时 `vm.$el` 也在文档内。
+  实例被挂载后调用，这时 [`app.mount`](/api/application-api.html#mount) 被新创建的 `vm.$el` 替换了。如果根实例挂载到了一个文档内的元素上，当 mounted 被调用时 `vm.$el` 也在文档内。
 
-  注意 `mounted` 不会保证所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以在 `mounted` 内部使用 [vm。\$nextTick](../api/instance-methods.html#nexttick)：
+  注意 `mounted` 不会保证所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以在 `mounted` 内部使用 [vm.$nextTick](../api/instance-methods.html#nexttick)：
 
   ```js
   mounted() {
@@ -56,7 +56,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## beforeUpdate
 
@@ -68,7 +68,7 @@
 
   **该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。**
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## updated
 
@@ -78,9 +78,9 @@
 
   由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
 
-  当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用[计算属性](./options-data.html#computed)或 [watcher](./options-data.html#watch) 取而代之。
+  当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用[计算属性](./options-data.html#computed)或[侦听器](./options-data.html#watch)取而代之。
 
-  注意，`updated` **不会**保证所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以在 `updated` 里使用 [vm。\$nextTick](../api/instance-methods.html#nexttick)：
+  注意，`updated` **不会**保证所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以在 `updated` 里使用 [vm.$nextTick](../api/instance-methods.html#nexttick)：
 
   ```js
   updated() {
@@ -92,7 +92,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## activated
 
@@ -104,8 +104,8 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考**
-  - [动态组件 - keep-alive](../guide/component-basics.html#keep-alive)
+-  **参考：**
+  - [动态组件 - keep-alive](../guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
 
 ## deactivated
 
@@ -117,8 +117,8 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考**
-  - [动态组件 - keep-alive](../guide/component-basics.html#keep-alive)
+-  **参考：**
+  - [动态组件 - keep-alive](../guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
 
 ## beforeUnmount
 
@@ -130,7 +130,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## unmounted
 
@@ -142,7 +142,7 @@
 
   **该钩子在服务器端渲染期间不被调用。**
 
--  **参考**[生命周期图示](../guide/instance.html#lifecycle-diagram)
+-  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
 ## errorCaptured
 
@@ -184,7 +184,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         cart: 0
@@ -218,7 +218,7 @@
 
 - **详细：**
 
-  当虚拟 DOM 重新渲染为 triggered.Similarly 为[`renderTracked`](#rendertracked)，接收 `debugger event` 作为参数。此事件告诉你是什么操作触发了重新渲染，以及该操作的目标对象和键。
+  当虚拟 DOM 重新渲染被触发时调用。和 [`renderTracked`](#rendertracked) 类似，接收 `debugger event` 作为参数。此事件告诉你是什么操作触发了重新渲染，以及该操作的目标对象和键。
 
 - **用法：**
 
@@ -230,7 +230,7 @@
   ```
 
   ```js
-  const app = Vue.createApp({
+  const app = createApp({
     data() {
       return {
         cart: 0
@@ -242,7 +242,7 @@
     methods: {
       addToCart() {
         this.cart += 1
-        /* 这将导致renderTriggered调用
+        /* 这将导致 renderTriggered 被调用
           {
             key: "cart",
             target: {
