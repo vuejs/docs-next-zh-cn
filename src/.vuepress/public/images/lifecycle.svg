@@ -103,7 +103,7 @@
       <g transform="translate(519 863)">
         <rect stroke="#23AC70" fill="#3AB881" x="20.5" y="-.5" width="139.833" height="78" rx="8"/>
         <text font-family="Inter, Roboto, sans-serif" font-size="14" fill="#FFF">
-          <tspan x="60.006" y="34.333">虚拟 DOM</tspan> <tspan x="43.424" y="50.833">重新渲染和修复</tspan>
+          <tspan x="60.006" y="34.333">虚拟 DOM</tspan> <tspan x="43.424" y="50.833">重新渲染和更新</tspan>
         </text>
       </g>
       <text font-family="Inter, Roboto, sans-serif" font-size="14" fill="#8E9EA9" transform="translate(431 749)">
