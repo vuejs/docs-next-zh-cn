@@ -5,7 +5,7 @@ badges:
 
 # VNode 生命周期事件 <MigrationBadges :badges="$frontmatter.badges" />
 
-## 总览
+## 概述
 
 在 Vue 2，我们可以通过事件来监听组件生命周期中的关键阶段。这些事件名都是以 `hook:` 开头并跟随相应的生命周期钩子的名字。
 
