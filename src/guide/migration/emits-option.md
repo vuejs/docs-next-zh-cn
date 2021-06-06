@@ -1,20 +1,18 @@
 ---
-title: emits Option
+title: emits 选项
 badges:
   - new
 ---
 
-<!-- TODO: translation -->
+# `emits` 选项 <MigrationBadges :badges="$frontmatter.badges" />
 
-# `emits` Option <MigrationBadges :badges="$frontmatter.badges" />
+## 概述
 
-## Overview
+Vue 3 目前提供一个 `emits` 选项，和现有的 `props` 选项类似。这个选项可以用来定义组件可以向其父组件触发的事件。
 
-Vue 3 now offers an `emits` option, similar to the existing `props` option. This option can be used to define the events that a component can emit to its parent.
+## 2.x 的行为
 
-## 2.x Behavior
-
-In Vue 2, you can define the props that a component receives, but you can't declare which events it can emit:
+在 Vue 2 中，你可以定义一个组件可接收的 prop，但是你无法声明它可以触发哪些事件：
 
 ```vue
 <template>
@@ -30,9 +28,9 @@ In Vue 2, you can define the props that a component receives, but you can't decl
 </script>
 ```
 
-## 3.x Behavior
+## 3.x 的行为
 
-Similar to props, the events that the component emits can now be defined with the `emits` option:
+和 prop 类似，组件可触发的事件可以通过 `emits` 选项被定义：
 
 ```vue
 <template>
@@ -49,19 +47,19 @@ Similar to props, the events that the component emits can now be defined with th
 </script>
 ```
 
-The option also accepts an object, which allows the developer to define validators for the arguments that are passed with the emitted event, similar to validators in `props` definitions.
+该选项也可以接收一个对象，该对象允许开发者定义传入事件参数的验证器，和 `props` 定义里的验证器类似。
 
-For more information on this, please read the [API documentation for this feature](../../api/options-data.md#emits).
+更多信息请参阅[这部分特性的 API 文档](../../api/options-data.md#emits)。
 
-## Migration Strategy
+## 迁移策略
 
-It is highly recommended that you document all of the events emitted by each of your components using `emits`.
+这里高度推荐把使用 `emits` 的每个组件的所有的事件整理成文档。
 
-This is especially important because of [the removal of the `.native` modifier](./v-on-native-modifier-removed.md). Any listeners for events that aren't declared with `emits` will now be included in the component's `$attrs`, which by default will be bound to the component's root node.
+这尤为重要，因为我们[移除了 `v-on.native` 修饰符](./v-on-native-modifier-removed.md)。任何未声明 `emits` 的事件监听器都会被算入组件的 `$attrs` 并绑定在组件的根结点上。
 
-### Example
+### 示例
 
-For components that re-emit native events to their parent, this would now lead to two events being fired:
+对于向父组件重复触发原生事件的组件来说，这会导致触发两个事件：
 
 ```vue
 <template>
@@ -69,31 +67,31 @@ For components that re-emit native events to their parent, this would now lead t
 </template>
 <script>
 export default {
-  emits: [] // without declared event
+  emits: [] // 不声明事件
 }
 </script>
 ```
 
-When a parent listens for the `click` event on the component:
+当一个父级组件拥有 `click` 事件的监听器时：
 
 ```html
 <my-button v-on:click="handleClick"></my-button>
 ```
 
-it would now be triggered _twice_:
+该事件会被触发*两次*:
 
-- Once from `$emit()`.
-- Once from a native event listener applied to the root element.
+- 一次来自 `$emit()`。
+- 另一次来自应用在根元素上的原生事件监听器。
 
-Here you have two options:
+现在你有两个选项：
 
-1. Properly declare the `click` event. This is useful if you actually do add some logic to that event handler in `<my-button>`.
-2. Remove the re-emitting of the event, since the parent can now listen for the native event easily, without adding `.native`. Suitable when you really only re-emit the event anyway.
+1. 合理声明 `click` 事件。如果你真的在 `<my-button>` 的事件处理器上加入了一些逻辑，这会很有用。
+2. 移除重复触发的时间，因为父组件可以很容易地监听原生事件而不需要添加 `.native`。适用于你只想重新触发这个事件。
 
-## See also
+## 参考
 
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
-- [Migration guide - `.native` modifier removed](./v-on-native-modifier-removed.md)
-- [Migration guide - `$listeners` removed](./listeners-removed.md)
-- [Migration guide - `$attrs` includes `class` & `style`](./attrs-includes-class-style.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
+- [相关 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
+- [迁移指南 - 移除 `.native` 修饰符](./v-on-native-modifier-removed.md)
+- [迁移指南 - 移除 `$listeners`](./listeners-removed.md)
+- [迁移指南 - `$attrs` 包含 `class` & `style`](./attrs-includes-class-style.md)
+- [迁移指南 - 渲染函数 API](./render-function-api.md)
