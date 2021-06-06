@@ -3,17 +3,17 @@ badges:
   - breaking
 ---
 
-# VNode Lifecycle Events <MigrationBadges :badges="$frontmatter.badges" />
+# VNode 生命周期事件 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 总览
 
-In Vue 2, it was possible to use events to listen for key stages in a component's lifecycle. These events had names that started with the prefix `hook:`, followed by the name of the corresponding lifecycle hook.
+在 Vue 2，我们可以通过事件来监听组件生命周期中的关键阶段。这些事件名都是以 `hook:` 开头并跟随相应的生命周期钩子的名字。
 
-In Vue 3, this prefix has been changed to `vnode-`. In addition, these events are now available for HTML elements as well as components.
+在 Vue 3，这些前缀会被改为 `vnode-`。额外地，这些事件在 HTML 元素上也可用，和在组件上的用法一样。
 
-## 2.x Syntax
+## 2.x 语法
 
-In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed with `hook:`:
+在 Vue 2，这些事件名和生命周期钩子一样，并附带 `hook:` 的前缀：
 
 ```html
 <template>
@@ -21,9 +21,9 @@ In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed 
 </template>
 ```
 
-## 3.x Syntax
+## 3.x 语法
 
-In Vue 3, the event name is prefixed with `vnode-`:
+在 Vue 3，事件名附带的是 `vnode-` 前缀：
 
 ```html
 <template>
@@ -31,7 +31,7 @@ In Vue 3, the event name is prefixed with `vnode-`:
 </template>
 ```
 
-Or just `vnode` if you're using camel case:
+或者在驼峰命名法的情况下附带前缀 `vnode`：
 
 ```html
 <template>
@@ -39,10 +39,10 @@ Or just `vnode` if you're using camel case:
 </template>
 ```
 
-## Migration Strategy
+## 迁移策略
 
-In most cases it should just require changing the prefix. The lifecycle hooks `beforeDestroy` and `destroyed` have been renamed to `beforeUnmount` and `unmounted` respectively, so the corresponding event names will also need to be updated.
+绝大多数情况下只需要修改前缀。生命周期钩子 `beforeDestroy` 和 destroyed` 已经被重命名为 `beforeUnmount` 和 `unmouted`，所以相应的事件名也需要更新。
 
-## See also
+## 参考
 
-- [Migration guide - Events API](/guide/migration/events-api.html)
+- [迁移指南：事件 API](/guide/migration/events-api.html)
