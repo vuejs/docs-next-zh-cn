@@ -1,30 +1,29 @@
-# Writing Universal Code
+# 便携通用的代码
 
-<!-- TODO: translation -->
-Before going further, let's take a moment to discuss the constraints when writing "universal" code - that is, code that runs on both the server and the client. Due to use case and platform API differences, the behavior of our code will not be exactly the same when running in different environments. Here we will go over the key things you need to be aware of.
+在更进一步之前，让我们花一些时间讨论一下编写“通用的”代码时的约束——那就是代码同时运行在服务端和客户端。因为用例及平台 API 不同，运行于不同环境下的代码行为也会不尽相同。我们在此会涉及一些需要注意的关键环节。
 
-## Data Reactivity on the Server
+## 服务端的数据响应性
 
-In a client-only app, every user will be using a fresh instance of the app in their browser. For server-side rendering we want the same: each request should have a fresh, isolated app instance so that there is no cross-request state pollution.
+在只有客户端的应用中，每个用户都在各自的浏览器中使用一个干净的应用实例。对于服务端渲染来说我们也希望如此：每个请求应该拥有一个干净的相互隔离的应用实例，以避免跨请求的状态污染。
 
-Because the actual rendering process needs to be deterministic, we will also be "pre-fetching" data on the server - this means our application state will be already resolved when we start rendering. This means data reactivity is unnecessary on the server, so it is disabled by default. Disabling data reactivity also avoids the performance cost of converting data into reactive objects.
+因为实际渲染过程需要确定性，我们也会从服务器“预获取”数据——这意味着应用状态在我们开始渲染之前已经被解析好了。这也意味着数据响应性在服务端是不必要的，因此它默认是不开启的。禁用数据响应性也避免了将数据转换为响应式对象的性能损耗。
 
-## Component Lifecycle Hooks
+## 组件生命周期钩子
 
-Since there are no dynamic updates, the only [lifecycle hooks](/guide/instance.html#lifecycle-hooks) that will be called during SSR are `beforeCreate` and `created`. This means any code inside other lifecycle hooks such as `beforeMount` or `mounted` will only be executed on the client.
+因为这里没有动态更新，唯一会在 SSR 过程中被调用的[生命周期钩子](/guide/instance.html#生命周期钩子)是 `beforeCreate` 和 `created`。这意味着其它生命周期钩子诸如 `beforeMount` 或 `mounted` 只会在客户端被执行。
 
-Another thing to note is that you should avoid code that produces global side effects in `beforeCreate` and `created`, for example setting up timers with `setInterval`. In client-side only code we may setup a timer and then tear it down in `beforeUnmount` or `unmounted`. However, because the destroy hooks will not be called during SSR, the timers will stay around forever. To avoid this, move your side-effect code into `beforeMount` or `mounted` instead.
+另一个值得注意的是你应该避免代码在 `beforeCreate` 或 `created` 中产生全局的副作用，例如通过 `setInterval` 设置定时器。在只有客户端的代码中我们可以设置定时器然后在 `beforeUnmount` 或 `unmounted` 时撤掉。然而，因为销毁相关的钩子在 SSR 过程中不会被调用，这些定时器就会永久地保留下来。为了避免这件事，请把副作用移至 `beforeMount` 或 `mounted` 以代之。
 
-## Access to Platform-Specific APIs
+## 访问特定平台的 API
 
-Universal code cannot assume access to platform-specific APIs, so if your code directly uses browser-only globals like `window` or `document`, they will throw errors when executed in Node.js, and vice-versa.
+通用的代码无法假设对特定平台 API 的访问，因此如果你的代码直接使用只存在于浏览器的全局变量例如 `window` 或 `document`，它们会在 Node.js 里执行的时候抛出错误。反之亦然。
 
-For tasks shared between server and client but using different platform APIs, it's recommended to wrap the platform-specific implementations inside a universal API, or use libraries that do this for you. For example, [axios](https://github.com/axios/axios) is an HTTP client that exposes the same API for both server and client.
+对共享于服务端和客户端但使用不同平台 API 的人物来说，我们推荐把这些特定平台的实现包裹在一个通用的 API 里，或使用现有的库来替你做这件事。例如 [axios](https://github.com/axios/axios) 是一个在服务端和客户端暴露相同 API 的 HTTP 客户端。
 
-For browser-only APIs, the common approach is to lazily access them inside client-only lifecycle hooks.
+对于只存在于浏览器的 API 来说，通常的建议是晚些时候在只存在于客户端的生命周期钩子里访问。
 
-Note that if a 3rd party library is not written with universal usage in mind, it could be tricky to integrate it into an server-rendered app. You _might_ be able to get it working by mocking some of the globals, but it would be hacky and may interfere with the environment detection code of other libraries.
+注意如果一个三方库没有为通用的用法而编写，它可能需要技巧性地集成到服务端渲染应用中。你*可以*通过仿造一些全局变量让其工作起来，但是会比较“hacky”且可能妨碍到其它库的环境监测代码。
 
-## Custom Directives
+## 自定义指令
 
-Most [custom directives](/guide/custom-directive.html#custom-directives) directly manipulate the DOM, which will cause errors during SSR. We recommend to prefer using components as the abstraction mechanism instead of directives.
+大多数[自定义指令](/guide/custom-directive.html#自定义指令)都会直接操作 DOM，这会导致 SSR 的错误。所以我们推荐使用组件这种抽象机制而不是指令。
