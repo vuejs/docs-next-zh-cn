@@ -20,7 +20,7 @@ yarn add @vue/server-renderer
 
 ## 渲染一个 Vue 应用
 
-不像使用 `createApp` 的创建只有客户端的 Vue 应用，创建一个服务端渲染应用需要使用 `createSSRApp`：
+和使用 `createApp` 创建的只有客户端的 Vue 应用不同，创建一个服务端渲染应用需要使用的是 `createSSRApp`：
 
 ```js
 const { createSSRApp } = require('vue')
