@@ -1,18 +1,16 @@
-# Build Configuration
+# 构建配置
 
-<!-- TODO: translation -->
+一个服务端渲染项目的 webpack 配置和一个只有客户端的项目类似。如果你不熟悉 webpack 配置，你可以在 [Vue CLI](https://cli.vuejs.org/zh/guide/webpack.html#webpack-相关) 或[手动配置 Vue Loader](https://vue-loader.vuejs.org/zh/guide/#手动设置) 的文档中找到更多信息。
 
-The webpack config for an SSR project will be similar to a client-only project. If you're not familiar with configuring webpack, you can find more information in the documentation for [Vue CLI](https://cli.vuejs.org/guide/webpack.html#working-with-webpack) or [configuring Vue Loader manually](https://vue-loader.vuejs.org/guide/#manual-setup).
+## 和客户端构建的关键不同
 
-## Key Differences with Client-Only Builds
+1. 我们需要为服务端代码创建一个 [webpack manifest](https://webpack.js.org/concepts/manifest/)。这是一个让 webpack 追踪所有的模块如何对应到生成的包中的 JSON 文件。
 
-1. We need to create a [webpack manifest](https://webpack.js.org/concepts/manifest/) for our server-side code. This is a JSON file that webpack keeps to track how all the modules map to the output bundles.
+2. 我们应该[将应用依赖变为外部扩展](https://webpack.js.org/configuration/externals/)。这使得服务端构建更加快速并生成更小的包文件。做这件事的时候，我们需要把交给 webpack 处理的依赖 (如 `.css` 或 `.vue` 文件) 排除在外。
 
-2. We should [externalize application dependencies](https://webpack.js.org/configuration/externals/). This makes the server build much faster and generates a smaller bundle file. When doing this, we have to exclude dependencies that need to be processed by webpack (like `.css`. or `.vue` files).
+3. 我们需要将 webpack 的[目标](https://webpack.js.org/concepts/targets/)改为 Node.js。这会允许 webpack 以适合于 Node 的方式处理动态导入，同时也告诉 `vue-loader` 在编译 Vue 组件的时候抛出面向服务端的代码。
 
-3. We need to change webpack [target](https://webpack.js.org/concepts/targets/) to Node.js. This allows webpack to handle dynamic imports in a Node-appropriate fashion, and also tells `vue-loader` to emit server-oriented code when compiling Vue components.
-
-4. When building a server entry, we would need to define an environment variable to indicate we are working with SSR. It might be helpful to add a few `scripts` to the project's `package.json`:
+4. 当构建一个服务端入口时，我们需要定义一个环境变量来指明当前的工作是服务端渲染。在工程的 `package.json` 中加入一些 `scripts` 会很帮助：
 
 ```json
 "scripts": {
@@ -22,9 +20,9 @@ The webpack config for an SSR project will be similar to a client-only project. 
 }
 ```
 
-## Example Configuration
+## 配置示例
 
-Below is a sample `vue.config.js` that adds SSR rendering to a Vue CLI project, but it can be adapted for any webpack build.
+以下是一个 `vue.config.js` 的例子，这个例子向一个 Vue CLI 工程加入了服务端渲染，但这也可以适配于任何 webpack 构建。
 
 ```js
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
@@ -33,15 +31,14 @@ const webpack = require('webpack')
 
 module.exports = {
   chainWebpack: webpackConfig => {
-    // We need to disable cache loader, otherwise the client build
-    // will used cached components from the server build
+    // 我们需要禁用 cache loader，否则客户端构建会从服务端构建使用缓存过的组件
     webpackConfig.module.rule('vue').uses.delete('cache-loader')
     webpackConfig.module.rule('js').uses.delete('cache-loader')
     webpackConfig.module.rule('ts').uses.delete('cache-loader')
     webpackConfig.module.rule('tsx').uses.delete('cache-loader')
 
     if (!process.env.SSR) {
-      // Point entry to your app's client entry file
+      // 将入口指向应用的客户端入口文件
       webpackConfig
         .entry('app')
         .clear()
@@ -49,17 +46,16 @@ module.exports = {
       return
     }
 
-    // Point entry to your app's server entry file
+    // 将入口指向应用的服务端入口文件
     webpackConfig
       .entry('app')
       .clear()
       .add('./src/entry-server.js')
 
-    // This allows webpack to handle dynamic imports in a Node-appropriate
-    // fashion, and also tells `vue-loader` to emit server-oriented code when
-    // compiling Vue components.
+    // 这允许 webpack 以适合于 Node 的方式处理动态导入，
+    // 同时也告诉 `vue-loader` 在编译 Vue 组件的时候抛出面向服务端的代码。
     webpackConfig.target('node')
-    // This tells the server bundle to use Node-style exports
+    // 这会告诉服务端的包使用 Node 风格的导出
     webpackConfig.output.libraryTarget('commonjs2')
 
     webpackConfig
@@ -68,11 +64,11 @@ module.exports = {
 
     // https://webpack.js.org/configuration/externals/#function
     // https://github.com/liady/webpack-node-externals
-    // Externalize app dependencies. This makes the server build much faster
-    // and generates a smaller bundle file.
+    // 将应用依赖变为外部扩展。
+    // 这使得服务端构建更加快速并生成更小的包文件。
 
-    // Do not externalize dependencies that need to be processed by webpack.
-    // You should also whitelist deps that modify `global` (e.g. polyfills)
+    // 不要将需要被 webpack 处理的依赖变为外部扩展
+    // 也应该把修改 `global` 的依赖 (例如各种 polyfill) 整理成一个白名单
     webpackConfig.externals(nodeExternals({ allowlist: /\.(css|vue)$/ }))
 
     webpackConfig.optimization.splitChunks(false).minimize(false)
@@ -91,18 +87,18 @@ module.exports = {
 }
 ```
 
-## Externals Caveats
+## 关于外部依赖的警告
 
-Notice that in the `externals` option we are whitelisting CSS files. This is because CSS imported from dependencies should still be handled by webpack. If you are importing any other types of files that also rely on webpack (e.g. `*.vue`, `*.sass`), you should add them to the whitelist as well.
+注意在 `externals` 选项中我们将 CSS 文件列入了白名单。这是因为从依赖导入的 CSS 应该被 webpack 处理。如果你导入其它同样需要 webpack 的类型文件 (如 `*.vue`、`*.sass`)，你应该把它们也加入到白名单中。
 
-If you are using `runInNewContext: 'once'` or `runInNewContext: true`, then you also need to whitelist polyfills that modify `global`, e.g. `babel-polyfill`. This is because when using the new context mode, **code inside a server bundle has its own `global` object.** Since you don't really need it on the server, it's actually easier to just import it in the client entry.
+如果你使用了 `runInNewContext: 'once'` 或 `runInNewContext: true`，那么你也需要把修改 `global` 的 polyfill (如 `babel-polyfill`) 也加入这个白名单。这是因为在使用新上下文模式时，**服务端构建内的代码有其自己的 `global` 对象。**但由于服务端并不真的需要它，所以它从客户端入口被引入更加容易。
 
-## Generating `clientManifest`
+## 生成 `clientManifest`
 
-In addition to the server bundle, we can also generate a client build manifest. With the client manifest and the server bundle, the renderer now has information of both the server _and_ client builds. This way it can automatically infer and inject [preload / prefetch directives](https://css-tricks.com/prefetching-preloading-prebrowsing/), `<link>` and `<script>` tags into the rendered HTML.
+对于服务端的包，我们还额外生成一个客户端构建单 (manifest)。有了这个客户端构建单和服务端的包，渲染器现在就同时有了服务端*和*客户端构建的信息。这样它就可以自动推断并向渲染出来的 HTML 中注入 [preload / prefetch 指令](https://css-tricks.com/prefetching-preloading-prebrowsing/)、`<link>` 和 `<script>` 标签。
 
-The benefits are two-fold:
+带来的好处是双向的：
 
-1. It can replace `html-webpack-plugin` for injecting the correct asset URLs when there are hashes in your generated filenames.
+1. 当生成的文件名有 hash 的时候，它可以替换 `html-webpack-plugin` 以注入正确的资源 URL。
 
-2. When rendering a bundle that leverages webpack's on-demand code splitting features, we can ensure the optimal chunks are preloaded / prefetched, and also intelligently inject `<script>` tags for needed async chunks to avoid waterfall requests on the client, thus improving TTI (time-to-interactive).
+2. 当渲染一个基于 webpack 的按需代码分隔特性的包时，我们可以确保优化过的代码块是被 preload / prefetch 的，同时会智能地注入 `<script>` 标签以避免异步代码块在客户端被瀑布式请求，从而改善可交互时间 (TTI：time-to-interactive)。
