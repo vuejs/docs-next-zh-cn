@@ -47,7 +47,7 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 
 <common-codepen-snippet title="Transitioning State 1" slug="22903bc3b53eb5b7817378ecb985ce96" tab="js,result" :editable="false" :preview="false" />
 
-更新数字时，更改将在输入下方设置动画。
+更新数字时，输入框下方会对更改设置动画效果。
 
 ## 动态状态过渡
 
@@ -57,7 +57,7 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 
 ## 把过渡放到组件里
 
-管理太多的状态过渡会很快的增加组件实例复杂性，幸好很多的动画可以提取到专用的子组件。我们来将之前的示例改写一下：
+管理太多的状态过渡会迅速增加组件实例的复杂度，幸好很多的动画可以提取到专用的子组件中。我们把之前的示例改写一下：
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -132,14 +132,14 @@ app.mount('#app')
 
 我们能在组件中结合使用这一节讲到各种过渡策略和 Vue [内建的过渡系统](transitions-enterleave.html)。总之，对于完成各种过渡动效几乎没有阻碍。
 
-你可以看到我们如何使用它进行数据可视化，物理效果，角色动画和交互，天空是极限。
+你可以看到我们如何使用它进行数据可视化、物理效果、角色动画和交互，一切都没有限制。
 
 ## 赋予设计以生命
 
-只要一个动画，就可以带来生命。不幸的是，当设计师创建图标、logo 和吉祥物的时候，他们交付的通常都是图片或静态的 SVG。所以，虽然 GitHub 的章鱼猫、Twitter 的小鸟以及其它许多 logo 类似于生灵，它们看上去实际上并不是活着的。
+动画效果可以栩栩如生。不幸的是，设计师创建图标、logo 和吉祥物的时候，他们交付的通常都是图片或静态的 SVG。所以，虽然 GitHub 的章鱼猫、Twitter 的小鸟以及其它许多 logo 类似于生灵，它们看上去实际上并不是活着的。
 
-Vue 可以帮到你。因为 SVG 的本质是数据，我们只需要这些动物兴奋、思考或警戒的样例。然后 Vue 就可以辅助完成这几种状态之间的过渡动画，来制作你的欢迎页面、加载指示、以及更加带有情感的提示。
+Vue 可以帮到你。因为 SVG 的本质是数据，我们只需要准备好这些生物兴奋、思考或警戒的样例。然后 Vue 就可以辅助完成这几种状态之间的过渡动画，来制作你的欢迎页面、加载指示和更加带有情感的通知提示。
 
-Sarah Drasner 展示了下面这个 demo，这个 demo 结合了时间和交互相关的状态改变：
+Sarah Drasner 展示了下面这个根据时间和交互变化发生状态改变的 demo：
 
 <common-codepen-snippet title="Vue-controlled Wall-E" slug="YZBGNp" :height="400" :team="false" user="sdras" name="Sarah Drasner" :editable="false" :preview="false" version="2" theme="light" />

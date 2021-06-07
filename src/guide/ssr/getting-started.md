@@ -1,27 +1,26 @@
-# Getting Started
+# 起步
 
-<!-- TODO: translation -->
-> This guide is currently under active development
+> 这份指南仍处在活跃更新的状态
 
-## Installation
+## 安装
 
-In order to create a server-side rendered application, we need to install the `@vue/server-renderer` package:
+为了创建一个服务端渲染的应用，我们需要安装 `@vue/server-renderer`：
 
 ```bash
 npm install @vue/server-renderer
-## OR
+## 或
 yarn add @vue/server-renderer
 ```
 
-#### Notes
+#### 注意
 
-- It's recommended to use Node.js version 12+.
-- `@vue/server-renderer` and `vue` must have matching versions.
-- `@vue/server-renderer` relies on some Node.js native modules and therefore can only be used in Node.js. We may provide a simpler build that can be run in other JavaScript runtimes in the future.
+- 推荐使用的 Node.js 版本是 12+。
+- `@vue/server-renderer` 和 `vue` 的版本号必须匹配。
+- `@vue/server-renderer` 依赖一些 Node.js 的原生模块，因此只能用在 Node.js 中。我们未来可以提供一个简单的可运行在其它 JavaScript 运行时中的构建。
 
-## Rendering a Vue Application
+## 渲染一个 Vue 应用
 
-Unlike a client-only Vue application, which is created using `createApp`, an SSR application needs to be created using `createSSRApp`:
+和使用 `createApp` 创建的只有客户端的 Vue 应用不同，创建一个服务端渲染应用需要使用的是 `createSSRApp`：
 
 ```js
 const { createSSRApp } = require('vue')
@@ -36,7 +35,7 @@ const app = createSSRApp({
 })
 ```
 
-Now, we can use the `renderToString` function to render our application instance to a string. This function returns a Promise which resolves to the rendered HTML.
+现在，我们可以使用 `renderToString` 函数将我们的应用实例渲染为一个字符串。此函数返回一个 Promise 来解析渲染出的 HTML。
 
 ```js{2,13}
 const { createSSRApp } = require('vue')
@@ -54,13 +53,13 @@ const app = createSSRApp({
 const appContent = await renderToString(app)
 ```
 
-## Integrating with a Server
+## 和服务器集成
 
-To run an application, in this example we will use [Express](https://expressjs.com/):
+在这个示例中我们使用 [Express](https://expressjs.com/) 来运行一个应用：
 
 ```bash
 npm install express
-## OR
+## 或
 yarn add express
 ```
 
@@ -97,4 +96,4 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-Now, when running this Node.js script, we can see a static HTML page on `localhost:8080`. However, this code is not _hydrated_: Vue hasn't yet taken over the static HTML sent by the server to turn it into dynamic DOM that can react to client-side data changes. This will be covered in the [Client Side Hydration](hydration.html) section.
+现在，当运行这段 Node.js 脚本的时候，我们可以在 `localhost:8080` 看到一个静态的 HTML 页面。然而，这段代码并不是 *hydrate* 的：Vue 还没有将这段发送自服务器的静态 HTML 转换为响应客户端数据变化的动态 DOM。这部分会被涵盖在[客户端 hydration](hydration.html) 章节中。
