@@ -2,7 +2,7 @@
 
 > 本节使用[单文件组件](single-file-component.html)代码示例的语法
 
-> 本指南假定你已经阅读了[组合式 API 简介](composition-api-introduction.html)和[响应性原理](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这篇文章。
+> 本指南假定你已经阅读了[组合式 API 简介](composition-api-introduction.html)和[响应性原理](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这两篇文章。
 
 ## 参数
 
