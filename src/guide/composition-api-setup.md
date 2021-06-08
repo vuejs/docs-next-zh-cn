@@ -2,7 +2,7 @@
 
 > 本节使用[单文件组件](single-file-component.html)代码示例的语法
 
-> 本指南假定你已经阅读了[组合式 API 简介](composition-api-introduction.html)和[响应性原理](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这篇文章。
+> 本指南假定你已经阅读了[组合式 API 简介](composition-api-introduction.html)和[响应性原理](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这两篇文章。
 
 ## 参数
 
@@ -130,7 +130,7 @@ export default {
       const readersNumber = ref(0)
       const book = reactive({ title: 'Vue 3 Guide' })
 
-      // expose to template
+      // 暴露给 template
       return {
         readersNumber,
         book
@@ -155,7 +155,7 @@ export default {
   setup() {
     const readersNumber = ref(0)
     const book = reactive({ title: 'Vue 3 Guide' })
-    // Please note that we need to explicitly expose ref value here
+    // 请注意这里我们需要显式调用 ref 的 value
     return () => h('div', [readersNumber.value, book.title])
   }
 }
