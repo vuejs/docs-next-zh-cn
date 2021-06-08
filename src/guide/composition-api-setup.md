@@ -130,7 +130,7 @@ export default {
       const readersNumber = ref(0)
       const book = reactive({ title: 'Vue 3 Guide' })
 
-      // expose to template
+      // 暴露给 template
       return {
         readersNumber,
         book
@@ -155,7 +155,7 @@ export default {
   setup() {
     const readersNumber = ref(0)
     const book = reactive({ title: 'Vue 3 Guide' })
-    // Please note that we need to explicitly expose ref value here
+    // 请注意这里我们需要显式调用 ref 的 value
     return () => h('div', [readersNumber.value, book.title])
   }
 }
