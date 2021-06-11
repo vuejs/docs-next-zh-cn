@@ -183,8 +183,8 @@ Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破
 [vd-npm]: https://www.npmjs.com/package/@vue/devtools/v/beta
 [vd-code]: https://github.com/vuejs/vue-devtools/tree/next
 
-[epv-badge]: https://img.shields.io/npm/v/eslint-plugin-vue/next.svg
-[epv-npm]: https://www.npmjs.com/package/eslint-plugin-vue/v/next
+[epv-badge]: https://img.shields.io/npm/v/eslint-plugin-vue.svg
+[epv-npm]: https://www.npmjs.com/package/eslint-plugin-vue
 [epv-code]: https://github.com/vuejs/eslint-plugin-vue
 
 [vtu-badge]: https://img.shields.io/npm/v/@vue/test-utils/next.svg
