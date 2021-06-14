@@ -63,7 +63,7 @@ app.component('child-component', {
 })
 ```
 
-添加一个全局property，该property可以在应用程序内的任何组件实例中访问。当属性名存在冲突时，组件的 property 将具有优先权。
+添加一个可以在应用的任何组件实例中访问的全局 property。组件的 property 在命名冲突具有优先权。
 
 这可以代替 Vue 2.x `Vue.prototype` 扩展：
 
