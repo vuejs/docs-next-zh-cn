@@ -1,11 +1,10 @@
-# Source Code Structure
+# 源代码结构
 
-<!-- TODO: translation -->
-## Avoid Stateful Singletons
+## 避免有状态的单例模式
 
-When writing client-only code, we can assume that our code will be evaluated in a fresh context every time. However, a Node.js server is a long-running process. When our code is first imported by the process, it will be evaluated once and then stay in memory. This means that if you create a singleton object, it will be shared between every incoming request, with the risk of cross-request state pollution.
+在编写只有客户端的代码的时候，我们会假设代码每次都会允许在一个干净的上下文中。然而 Node.js 服务器是长期运行的进程。当代码第一次被导入进程时，它会被执行一次然后保留在内存里。也就是说你创建了一个蛋例对象，它共享于每次发来的请求之间，并带有跨请求的状态污染风险。
 
-Therefore, we need to **create a new root Vue instance for each request.** In order to do that, we need to write a factory function that can be repeatedly executed to create fresh app instances for each request:
+因此，我们需要**为每个请求创建一个新的 Vue 根实例**。为了做到这一点，我们需要编写一个工厂函数来重复地执行，并为每个请求创建干净的应用实例：
 
 ```js
 // app.js
@@ -23,7 +22,7 @@ function createApp() {
 }
 ```
 
-And our server code now becomes:
+同时我们的服务端代码现在变成了：
 
 ```js
 // server.js
@@ -50,27 +49,27 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-The same rule applies to other instances as well (such as the router or store). Instead of exporting the router or store directly from a module and importing it across your app, you should create a fresh instance in `createApp` and inject it from the root Vue instance.
+同理其它实例 (诸如路由器或 store) 也是一样的。取代从一个模块直接导出路由器或 store 并将它们导入应用的，是在 `createApp` 创建一个干净的实例并从这个 Vue 根实例注入它们。
 
-## Introducing a Build Step
+## 介绍构建步骤
 
-So far, we haven't discussed how to deliver the same Vue app to the client yet. To do that, we need to use webpack to bundle our Vue app.
+截至目前，我们尚未讨论如何向客户端传递相同的 Vue 应用。为了做到这一点，我们需要使用 webpack 打包 Vue 应用。
 
-- We need to process the server code with webpack. For example, `.vue` files need to be processed with `vue-loader`, and many webpack-specific features such as importing files via `file-loader` or importing CSS via `css-loader` do not work directly in Node.js.
+- 我们需要用 webpack 处理服务端代码。例如 `.vue` 文件需要被 `vue-loader` 处理，很多 webpack 特有的功能，诸如通过 `vue-loader` 导入文件或通过 `css-loader` 导入 CSS 在 Node.js 中都不会直接工作。
 
-- Similarly, we need a separate client-side build because although the latest version of Node.js fully supports ES2015 features, older browsers will require the code to be transpiled.
+- 类似地，我们需要分隔客户端构建，因为尽管最新版本的 Node.js 完全支持 ES2015 特性，但旧浏览器仍然需要对代码进行转译。
 
-So the basic idea is that we will use webpack to bundle our app for both client and server. The server bundle will be required on the server and used to render static HTML, while the client bundle will be sent to the browser to hydrate the static markup.
+因此，基本的想法是，使用 webpack 同时打包客户端和服务端应用。服务端的包会被引入到服务端用来渲染 HTML，同时客户端的包会被送到浏览器用于 hydrate 静态标记。
 
-![architecture](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png)
+![架构](https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png)
 
-We will discuss the details of the setup in later sections - for now, let's just assume we've got the build setup figured out and we can write our Vue app code with webpack enabled.
+我们会在稍后的章节讨论设置的细节——现在，让我们先假设我们已经完成了构建的设置，且我们可以基于 webpack 编写 Vue 应用。
 
-## Code Structure with webpack
+## 使用 webpack 的目录结构
 
-Now that we are using webpack to process the app for both server and client, the majority of our source code can be written in a universal fashion, with access to all the webpack-powered features. At the same time, there are a number of things you should keep in mind when [writing universal code](./universal.html).
+现在我们使用 webpack 同时处理服务端和客户端应用，源代码的主体可以以通用的方式编写，支持所有的 webpack 特性。同时，当[编写通用的代码](./universal.html)时你需要注意一些事情。
 
-A simple project would look like this:
+一个简单的项目形如：
 
 ```bash
 src
@@ -78,20 +77,20 @@ src
 │   ├── MyUser.vue
 │   └── MyTable.vue
 ├── App.vue
-├── app.js # universal entry
-├── entry-client.js # runs in browser only
-└── entry-server.js # runs on server only
+├── app.js # 通用入口
+├── entry-client.js # 只在浏览器中运行
+└── entry-server.js # 只在服务器运行
 ```
 
 ### `app.js`
 
-`app.js` is the universal entry to our app. In a client-only app, we would create the Vue application instance right in this file and mount directly to DOM. However, for SSR that responsibility is moved into the client-only entry file. `app.js` instead creates an application instance and exports it:
+`app.js` 是应用的通用入口。在只有客户端的应用里，我们会在此创建 Vue 应用实例并直接挂载到 DOM。然而，对于 SSR 来说该职责被转移到了只在客户端里运行的入口文件。`app.js` 的职责则变为了创建一个应用实例并导出它：
 
 ```js
 import { createSSRApp } from 'vue'
 import App from './App.vue'
 
-// export a factory function for creating a root component
+// 导出一个创建根组件的工厂函数
 export default function(args) {
   const app = createSSRApp(App)
 
@@ -103,7 +102,7 @@ export default function(args) {
 
 ### `entry-client.js`
 
-The client entry creates the application using the root component factory and mounts it to the DOM:
+此客户端入口会使用根组件创建应用并挂载到 DOM：
 
 ```js
 import createApp from './app'
@@ -120,7 +119,7 @@ app.mount('#app')
 
 ### `entry-server.js`
 
-The server entry uses a default export which is a function that can be called repeatedly for each render. At this moment, it doesn't do much other than returning the app instance - but later we will perform server-side route matching and data pre-fetching logic here.
+服务端入口使用了一个默认导出，它是一个可以为每次渲染重复调用的函数。目前它除了返回应用实例并不会做其它事情——但稍后我们会在这里处理服务端路由匹配和数据预获取逻辑。
 
 ```js
 import createApp from './app'
