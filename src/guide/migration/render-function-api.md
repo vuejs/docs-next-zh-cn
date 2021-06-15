@@ -50,7 +50,7 @@ export default {
 
 ### 2.x 语法
 
-在 2.x 中，`render` 函数自动接收参数如 `h` 函数。
+在 2.x 中，`render` 函数自动接收参数，如 `h` 函数。
 
 ```js
 // Vue 2 渲染函数示例
