@@ -56,7 +56,7 @@ export default {
     // 第一个 `await` 之前工作
     const data = await loadData()
 
-    // 它阴性地包裹在一个 Promise 内
+    // 它隐性地包裹在一个 Promise 内
     // 因为函数是 `async` 的
     return {
       // ...
