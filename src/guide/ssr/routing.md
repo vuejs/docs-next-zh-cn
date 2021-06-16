@@ -1,11 +1,10 @@
-# Routing and Code-Splitting
+# 路由和代码分离
 
-<!-- TODO: translation -->
-## Routing with `vue-router`
+## 基于 `vue-router` 的路由
 
-You may have noticed that our server code uses a `*` handler which accepts arbitrary URLs. This allows us to pass the visited URL into our Vue app, and reuse the same routing config for both client and server!
+你可能已经注意到我们的服务端代码使用了一个 `*` 处理函数来接收任意 URL。这允许我们传递被访问的 URL 到 Vue 应用，并同时为客户端和服务端复用相同的路由配置！
 
-It is recommended to use the official [vue-router](https://github.com/vuejs/vue-router-next) library for this purpose. Let's first create a file where we create the router. Note that similar to application instance, we also need a fresh router instance for each request, so the file exports a `createRouter` function:
+这里推荐使用官方的 [vue-router](https://github.com/vuejs/vue-router-next)。让我们先创建一个路由文件。注意和应用实例类似，每个请求都需要一个干净的路由实例，因此文件应该导出一个 `createRouter` 函数：
 
 ```js
 // router.js
@@ -23,7 +22,7 @@ export default function() {
 }
 ```
 
-And update our `app.js`, client and server entries:
+然后更新 `app.js`、客户端入口和服务端入口：
 
 ```js
 // app.js
@@ -58,24 +57,24 @@ const { app, router } = createApp({
 })
 ```
 
-## Code-Splitting
+## 代码分离
 
-Code-splitting, or lazy-loading part of your app, helps reduce the size of assets that need to be downloaded by the browser for the initial render, and can greatly improve TTI (time-to-interactive) for apps with large bundles. The key is "loading just what is needed" for the initial screen.
+代码分离、或懒加载部分应用，可以帮助缩减浏览器初始化渲染所需下载的资源的尺寸，并大幅优化大型应用的 TTI (time-to-interactive，可交互时间)。其关键是在初始化首屏的时候“按需加载”。
 
-Vue Router provides [lazy-loading support](https://next.router.vuejs.org/guide/advanced/lazy-loading.html), allowing [webpack to code-split at that point](https://webpack.js.org/guides/code-splitting-async/). All you need to do is:
+Vue Router 提供了[懒加载支持](https://next.router.vuejs.org/zh/guide/advanced/lazy-loading.html)，允许 [webpack 在此进行代码分离](https://webpack.js.org/guides/code-splitting-async/)。你仅需要做的是：
 
 ```js
-// change this...
+// 修改这里……
 import MyUser from './components/MyUser.vue'
 const routes = [{ path: '/user', component: MyUser }]
 
-// to this:
+// 变成这里：
 const routes = [
   { path: '/user', component: () => import('./components/MyUser.vue') }
 ]
 ```
 
-On both client and server we need to wait for router to resolve async route components ahead of time in order to properly invoke in-component hooks. For this we will be using [router.isReady](https://next.router.vuejs.org/api/#isready) method Let's update our client entry:
+在客户端和服务端我们都需要等待路由器先解析异步路由组件以合理地调用组件内的钩子。为此我们会使用 [router.isReady](https://next.router.vuejs.org/zh/api/#isready) 方法。让我们来更新客户端入口：
 
 ```js
 // entry-client.js
@@ -90,7 +89,7 @@ router.isReady().then(() => {
 })
 ```
 
-We also need to update our `server.js` script:
+我们还需要更新 `server.js` 脚本：
 
 ```js
 // server.js

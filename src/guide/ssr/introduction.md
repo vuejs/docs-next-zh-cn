@@ -1,48 +1,48 @@
-# Server-Side Rendering Guide
+# 服务端渲染指南
 
-<!-- TODO: translation -->
-> This guide is currently under active development
+> 这份指南仍处在活跃更新的状态
 
-## What is Server-Side Rendering (SSR)?
+## 什么是服务端渲染 (SSR)？
 
-Vue.js is a framework for building client-side applications. By default, Vue components produce and manipulate DOM in the browser as output. However, it is also possible to render the same components into HTML strings on the server, send them directly to the browser, and finally "hydrate" the static markup into a fully interactive application on the client.
+Vue.js 是一个构建客户端应用的框架。默认情况下作为其输出，Vue 组件会在浏览器中生产并封装 DOM。然而，我们也有可能在服务器把相同的组件渲染成 HTML 字符串，然后直接发送给浏览器，最终将静态标记“hydrate”成为完整的可交互的客户端应用。
 
-A server-rendered Vue.js application can also be considered "isomorphic" or "universal". This means that the majority of your app's code runs on both the server **and** the client.
+一个服务端渲染的 Vue.js 应用也可以被认为是“同构的”或”通用的“。这意味着应用代码的主体可以同时运行在“服务端”*和*“客户端”。
 
-## Why SSR?
+## 为什么选择 SSR？
 
-Compared to a traditional SPA (Single-Page Application), the advantage of SSR primarily lies in:
+较之于一个传统的 SPA (单页面应用)，SSR 主要的好处是：
 
-- Better search engine optimization (SEO), as the search engine crawlers will directly see the fully rendered page.
+- 更好的搜索引擎优化 (SEO)。因为搜索引擎爬虫会直接读取完整的渲染出来的页面。
 
-  Note that as of now, Google and Bing can index synchronous JavaScript applications just fine. Synchronous being the key word there. If your app starts with a loading spinner, then fetches content via API call, the crawler will not wait for you to finish. This means if you have content fetched asynchronously on pages where SEO is important, SSR might be necessary.
+  注意，目前 Google 和 Bing 已经可以很好地为同步加载的 JavaScript 应用建立索引。在这里同步加载是关键。如果应用起始状态只是一个加载中的效果，而通过 API 调用获取内容，则爬虫不会等待页面加载完成。这意味着如果你有异步加载的页面内容且 SEO 也很重要，那么你需要 SSR。
 
-- Faster time-to-content, especially on the slow Internet connection or slow devices. Server-rendered markup doesn't need to wait until all JavaScript has been downloaded and executed to be displayed, so your user will see a fully-rendered page sooner. This generally results in better user experience, and can be critical for applications where time-to-content is directly associated with the conversion rate.
+- 更快的内容呈现，尤其是网络连接缓慢或设备运行速度缓慢的时候。服务端标记不需要等待所有的 JavaScript 都被下载并执行之后才显示，所以用户可以很快看到完整渲染好的内容。这通常会带来更好的用户体验，同时对于内容呈现时间和转化率呈正相关的应用来说尤为关键。
 
-There are also some trade-offs to consider when using SSR:
+这里有一些是否选用 SSR 的取舍因素：
 
-- Development constraints. Browser-specific code can only be used inside certain lifecycle hooks; some external libraries may need special treatment to be able to run in a server-rendered app.
+- 开发一致性。浏览器特有的代码可以只用在特性的生命周期钩子里；一些外部的库在服务端渲染的应用里可能需要特殊的对待。
 
-- More involved build setup and deployment requirements. Unlike a fully static SPA that can be deployed on any static file server, a server-rendered app requires an environment where a Node.js server can run.
+- 需要更多的构建设定和部署要求。不同于一个完全静态的 SPA 可以部署在任意静态服务器，一个服务端渲染的应用需要一个 Node.js 的环境。
 
-- More server-side load. Rendering a full app in Node.js is going to be more CPU-intensive than just serving static files, so if you expect high traffic, be prepared for corresponding server load and wisely employ caching strategies.
+- 更多的服务端负载。在 Node.js 中渲染一个完整的应用会比服务静态文件产生更密集的 CPU 运算。所以如果流量很高，请务必备好与其负载相对应的服务器并采取明智的缓存策略。
 
 Before using SSR for your application, the first question you should ask is whether you actually need it. It mostly depends on how important time-to-content is for your application. For example, if you are building an internal dashboard where an extra few hundred milliseconds on the initial load doesn't matter that much, SSR would be overkill. However, in cases where time-to-content is absolutely critical, SSR can help you achieve the best possible initial load performance.
+在应用中使用 SSR 之前，你需要问自己的第一个问题是是否真的需要它。
 
-## SSR vs Prerendering
+## SSR vs 预渲染
 
-If you're only investigating SSR to improve the SEO of a handful of marketing pages (e.g. `/`, `/about`, `/contact`, etc), then you probably want **prerendering** instead. Rather than using a web server to compile HTML on-the-fly, prerendering generates static HTML files for specific routes at build time. The advantage is setting up prerendering is much simpler and allows you to keep your frontend as a fully static site.
+如果你希望通过 SSR 来改善一些推广页面 SEO (例如 `/`、`/about`、`/contact` 等)，你也许需要的是**预渲染**。和使用线上编译 HTML 的 web 服务器相比，预渲染可以在构建时为静态路由生成静态 HTML 文件。它的优势在于预渲染的设置更加简单，且前端仍然是一个完全静态的站点。
 
-If you're using [webpack](https://webpack.js.org/), you can add prerendering with the [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin). It's been extensively tested with Vue apps.
+如果你使用 [webpack](https://webpack.js.org/)，你可以通过 [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) 支持预渲染。该插件已经被大量 Vue 应用检验过。
 
-## About This Guide
+## 关于该指南
 
 [//]: # 'TODO: This guide is focused on server-rendered Single-Page Applications using Node.js as the server. Mixing Vue SSR with other backend setups is a topic of its own and briefly discussed in a [dedicated section].'
 
-This guide will be very in-depth and assumes you are already familiar with Vue.js itself, and have a decent working knowledge of Node.js and webpack.
+该指南会非常深入且假设你已经熟悉 Vue.js 本身，且具有一定的 Node.js 和 webpack 知识和经验。
 
 [//]: # 'If you prefer a higher-level solution that provides a smooth out-of-the-box experience, you should probably give [Nuxt.js](https://nuxtjs.org/) a try. It's built upon the same Vue stack but abstracts away a lot of the boilerplate, and provides some extra features such as static site generation. However, it may not suit your use case if you need more direct control of your app's structure. Regardless, it would still be beneficial to read through this guide to understand better how things work together.'
 
 [//]: # 'TODO: As you read along, it would be helpful to refer to the official [HackerNews Demo](https://github.com/vuejs/vue-hackernews-2.0/), which makes use of most of the techniques covered in this guide'
 
-Finally, note that the solutions in this guide are not definitive - we've found them to be working well for us, but that doesn't mean they cannot be improved. They might get revised in the future - and feel free to contribute by submitting pull requests!
+最后，注意该指南的方案并不是最终方案——我们觉得它已经适合我们，但不意味着没有改进空间。它们将来也可能被修订——欢迎大家通过 pull request 来参与贡献！
