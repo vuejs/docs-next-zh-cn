@@ -1,18 +1,18 @@
 ---
-title: 'Mount API changes'
+title: '挂载 API 变化'
 badges:
   - breaking
 ---
 
-# Mounted application does not replace the element <MigrationBadges :badges="$frontmatter.badges" />
+# 被挂载的应用不会替换元素 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概述
 
-In Vue 2.x, when mounting an application that has a `template`, the rendered content replaces the element we mount to. In Vue 3.x, the rendered application is appended as a child of such an element, replacing element's `innerHTML`.
+在 Vue 2.x 中，当挂载一个具有 `template` 的应用时，被渲染的内容会替换我们要挂载的目标元素。在 Vue 3.x 中，被渲染的应用会作为子元素插入，从而替换目标元素的 `innerHTML`。
 
-## 2.x Syntax
+## 2.x 语法
 
-In Vue 2.x, we pass an HTML element selector to `new Vue()` or `$mount`:
+在 Vue 2.x 中，我们传入一个 HTML 元素选择器到 `new Vue()` 或 `$mount`：
 
 ```js
 new Vue({
@@ -27,7 +27,7 @@ new Vue({
   `
 })
 
-// or
+// 或
 const app = new Vue({
   data() {
     return {
@@ -42,7 +42,7 @@ const app = new Vue({
 app.$mount('#app')
 ```
 
-When we mount this application to the page that has a `div` with the passed selector (in our case, it's `id="app"`):
+当我们把应用挂载到拥有匹配被传入选择器 (在这个例子中是 `id="app"`) 的 `div` 的页面时：
 
 ```html
 <body>
@@ -52,7 +52,7 @@ When we mount this application to the page that has a `div` with the passed sele
 </body>
 ```
 
-in the rendered result, the mentioned `div` will be replaced with the rendered application content:
+在渲染结果中，被提到的 `div` 将会被应用内容所替换：
 
 ```html
 <body>
@@ -60,9 +60,9 @@ in the rendered result, the mentioned `div` will be replaced with the rendered a
 </body>
 ```
 
-## 3.x Syntax
+## 3.x 语法
 
-In Vue 3.x, when we mount an application, its rendered content will replace the `innerHTML` of the element we pass to `mount`:
+在 Vue 3.x 中，当我们挂载一个应用时，其渲染内容会替换我们传递给 `mount` 的元素的 `innerHTML`：
 
 ```js
 const app = Vue.createApp({
@@ -79,7 +79,7 @@ const app = Vue.createApp({
 app.mount('#app')
 ```
 
-When this app is mounted to the page that has a `div` with `id="app"`, this will result in:
+当这个应用挂载到拥有匹配 `id="app"` 的 `div` 的页面时，结果会是：
 
 ```html
 <body>
@@ -89,6 +89,6 @@ When this app is mounted to the page that has a `div` with `id="app"`, this will
 </body>
 ```
 
-## See also
+## 参考
 
 - [`mount` API](/api/application-api.html#mount)
