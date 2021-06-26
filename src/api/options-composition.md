@@ -30,7 +30,7 @@
   // => 2
   ```
 
--  **参考** [Mixins](../guide/mixins.html)
+-  **参考：** [Mixins](../guide/mixins.html)
 
 ## extends
 
@@ -182,19 +182,19 @@
   }
   ```
 
--  **参考** [Provide / Inject](../guide/component-provide-inject.html)
+-  **参考：** [Provide / Inject](../guide/component-provide-inject.html)
 
 ## setup
 
 - **类型：**`Function`
 
-`setup` 函数是一个新的组件选项。它作为在组件内部使用组合式 API 的入口点。
+`setup` 函数是一个新的组件选项。它是组件内部使用组合式 API 的入口点。
 
-- **调用时间**
+- **调用时间：**
 
   在创建组件实例时，在初始 prop 解析之后立即调用 `setup`。在生命周期方面，它是在 [beforeCreate](./options-lifecycle-hooks.html#beforecreate) 钩子之前调用的。
 
-- **模板使用**
+- **模板使用：**
 
   如果 `setup` 返回一个对象，则该对象的属性将合并到组件模板的渲染上下文中：
 
@@ -223,7 +223,7 @@
 
   请注意，从 `setup` 返回的 [refs](refs-api.html#ref) 在模板中访问时会自动解包，因此模板中不需要 `.value`。
 
-- **渲染函数/JSX 的方法**
+- **渲染函数/JSX 的方法：**
 
   `setup` 还可以返回一个渲染函数，该函数可以直接使用在同一作用域中声明的响应式状态：
 
@@ -240,7 +240,7 @@
   }
   ```
 
-- **参数**
+- **参数：**
 
   该函数将接收到的 prop 作为其第一个参数：
 
@@ -255,7 +255,7 @@
   }
   ```
 
-  请注意，此 `props` 对象是响应式的——即在传入新的 props 时会对其进行更新，并且可以通过使用 `watchEffect` 或 `watch` 进行观测和响应：
+  请注意，此 `props` 对象是响应式的——即在传入新的 props 时会对其进行更新，通过使用 `watchEffect` 或 `watch` 进行观测和响应：
 
   ```js
   export default {
@@ -318,4 +318,4 @@
 
   - 将 `props` 作为单独的参数可以使单独键入更容易，而不会弄乱上下文中其他 property 的类型。这也使得在具有 TSX 支持的 `setup`、`render` 和普通功能组件之间保持一致的签名成为可能。
 
--  **参考** [组合式 API](composition-api.html)
+-  **参考：** [组合式 API](composition-api.html)
