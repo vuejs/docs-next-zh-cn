@@ -19,8 +19,8 @@
       const root = ref(null)
 
       onMounted(() => {
-        // DOM元素将在初始渲染后分配给ref
-        console.log(root.value) // <div>这是根元素</div>
+        // DOM 元素将在初始渲染后分配给 ref
+        console.log(root.value) // <div>This is a root element</div>
       })
 
       return {
