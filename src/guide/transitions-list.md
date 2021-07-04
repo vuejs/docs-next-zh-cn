@@ -3,18 +3,18 @@
 目前为止，关于过渡我们已经讲到：
 
 - 单个节点
-- 同一时间渲染多个节点中的一个
+- 多个节点，每次只渲染一个
 
-那么怎么同时渲染整个列表，比如使用 `v-for`？在这种场景中，使用 `<transition-group>` 组件。在我们深入例子之前，先了解关于这个组件的几个特点：
+那么怎么同时渲染整个列表，比如使用 `v-for`？在这种场景下，我们会使用 `<transition-group>` 组件。在我们深入例子之前，先了解关于这个组件的几个特点：
 
-- 默认情况下，它不会渲染一个元素的包裹器，但是你可以指定一个元素并以 `tag` attribute 进行渲染。
+- 默认情况下，它不会渲染一个包裹元素，但是你可以通过 `tag` attribute 指定渲染一个元素。
 - [过渡模式](/guide/transitions-enterleave#过渡模式)不可用，因为我们不再相互切换特有的元素。
 - 内部元素**总是需要**提供唯一的 `key` attribute 值。
 - CSS 过渡的类将会应用在内部的元素中，而不是这个组/容器本身。
 
 ## 列表的进入/离开过渡
 
-现在让我们由一个简单的例子深入，进入和离开的过渡使用之前一样的 CSS class 名。
+现在让我们由一个简单的例子深入，进入和离开的过渡使用之前一样的 CSS 类名。
 
 ```html
 <div id="list-demo">
@@ -74,9 +74,9 @@ Vue.createApp(Demo).mount('#list-demo')
 
 ## 列表的移动过渡
 
-`<transition-group>` 组件还有一个特殊之处。不仅可以进入和离开动画，还可以改变定位。要使用这个新功能只需了解新增的 **`v-move` class**，它会在元素的改变定位的过程中应用。像之前的类名一样，可以通过 `name` attribute 来自定义前缀，也可以通过 `move-class` attribute 手动设置。
+`<transition-group>` 组件还有一个特殊之处。不仅可以进入和离开动画，还可以改变定位。要使用这个新功能只需了解新增的 **`v-move` 类**，它会在元素的改变定位的过程中应用。像之前的类名一样，可以通过 `name` attribute 来自定义前缀，也可以通过 `move-class` attribute 手动设置。
 
-该 class 主要用于指定过渡 timing 和 easing 曲线，如下所示：
+这个类主要用于指定过渡 timing 和 easing 曲线，如下所示：
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
@@ -116,7 +116,7 @@ Vue.createApp(Demo).mount('#flip-list-demo')
 
 <common-codepen-snippet title="Transition-group example" slug="049211673d3c185fde6b6eceb8baebec" tab="html,result" :editable="false" :preview="false" />
 
-这个看起来很神奇，内部的实现，Vue 使用了一个叫 [FLIP](https://aerotwist.com/blog/flip-your-animations/) 简单的动画队列使用 transforms 将元素从之前的位置平滑过渡新的位置。
+这个看起来很神奇，其实 Vue 内部使用了一个叫 [FLIP](https://aerotwist.com/blog/flip-your-animations/) 的动画技术，它使用 transform 将元素从之前的位置平滑过渡新的位置。
 
 我们将之前实现的例子和这个技术结合，使我们列表的一切变动都会有动画过渡。
 
@@ -183,10 +183,10 @@ Vue.createApp(Demo).mount('#list-complete-demo')
 <common-codepen-snippet title="Transition-group example" slug="373b4429eb5769ae2e6d097fd954fd08" tab="js,result" :editable="false" :preview="false" />
 
 :::tip
-需要注意的是使用 FLIP 过渡的元素不能设置为 `display: inline`。作为替代方案，可以设置为 ` display: inline-block` 或者放置于 flex 中
+需要注意的是使用 FLIP 过渡的元素不能设置为 `display: inline`。作为替代方案，可以设置为 ` display: inline-block` 或者将元素放置于 flex 布局中。
 :::
 
-FLIP 动画不仅可以实现单列过渡，多维网格也[同样可以过渡](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions)：
+FLIP 动画不仅可以实现单维度的过渡，多维网格种的元素也[同样可以过渡](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions)：
 
 TODO：示例
 
@@ -327,7 +327,7 @@ Vue.component('my-special-transition', {
 
 ## 动态过渡
 
-在 Vue 中即使是过渡也是数据驱动的！动态过渡最基本的例子是通过 `name` attribute 来绑定动态值。
+在 Vue 中即使是过渡也是数据驱动的！动态过渡最基础的例子是通过 `name` attribute 来绑定动态的值。
 
 ```html
 <transition :name="transitionName">
@@ -335,9 +335,9 @@ Vue.component('my-special-transition', {
 </transition>
 ```
 
-当你想用 Vue 的过渡系统来定义的 CSS 过渡/动画在不同过渡间切换会非常有用。
+当你已经定义了 Vue 的过渡类约定，并希望可以快速切换它们的时候，这会非常有用。
 
-所有过渡 attribute 都可以动态绑定，但我们不仅仅只有 attribute 可以利用，还可以通过事件钩子获取上下文中的所有数据，因为事件钩子都是方法。这意味着，根据组件的状态不同，你的 JavaScript 过渡会有不同的表现
+尽管所有过渡 attribute 都可以动态绑定，我们可用的不仅有 attribute。因为事件钩子是方法，它们可以访问任何上下文中的数据，这意味着根据组件的状态不同，你的 JavaScript 过渡可以有不同的表现。
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
@@ -421,4 +421,4 @@ app.mount('#dynamic-fade-demo')
 
 TODO：示例
 
-最后，创建动态过渡的最终方案是组件通过接受 props 来动态修改之前的过渡。一句老话，唯一的限制是你的想象力。
+最后，创建动态过渡的最终方案是组件通过接受 prop 来动态修改之前的过渡。一句老话，唯一的限制是你的想象力。
