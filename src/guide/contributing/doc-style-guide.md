@@ -4,54 +4,54 @@
 
 ## 警告
 
-VuePress 提供了一个自定义容器插件来创建警稿框。有四种类型：
+VuePress 提供了一个自定义容器插件来创建警告框。有四种类型：
 
 - **Info**：提供中立的信息
 - **Tip**：提供积极和鼓励的信息
-- **Warning**：提供用户应该知道的信息，因为存在低到中等
-- **Danger**：供对用户具有高风险的负面信息
+- **Warning**：提供用户应该知道的从低级到中级的信息
+- **Danger**：提供对用户具有高风险的负面信息
 
 **Markdown 范例**
 
 ```
 ::: info
-You can find more information at this site.
+你可以在该网站找到更多信息。
 :::
 
 ::: tip
-This is a great tip to remember!
+这是一个值得记住的好建议！
 :::
 
 ::: warning
-This is something to be cautious of.
+这是一些值得注意的东西。
 :::
 
 ::: danger DANGER
-This is something we do not recommend. Use at your own risk.
+这是一些我们不推荐的事情。您在使用的时候需要承担相应的风险。
 :::
 ```
 
 **渲染 Markdown**
 
-:::info
-You can find more information at this site。
+::: info
+你可以在该网站找到更多信息。
 :::
 
-:::tip
-This is a great tip to remember！
+::: tip
+这是一个值得记住的好建议！
 :::
 
-:::warning
-This is something to be cautious of。
+::: warning
+这是一些值得注意的东西。
 :::
 
-:::danger DANGER
-This is something we do not recommend。Use at your own risk。
+::: danger DANGER
+这是一些我们不推荐的事情。您在使用的时候需要承担相应的风险。
 :::
 
 ## 代码块
 
-VuePress 使用 Prism 提供语言语法高亮显示，方法是将语言附加到代码块的起始反撇号：
+VuePress 使用 Prism 提供语法高亮显示，方法是将语言名称附加到代码块起始的反斜杠后面：
 
 **Markdown 示例**
 
@@ -103,7 +103,7 @@ export default {
 }
 ```
 
-#### 行组
+#### 多行区间
 
 ````
 ```js{4-5}
