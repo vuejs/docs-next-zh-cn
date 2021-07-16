@@ -66,15 +66,14 @@ export default {
               ),
               navigator: {
                 navigate: ({ suggestionUrl }) => {
-                  const { pathname: hitPathname } = new URL(
+                  const { pathname: hitPathname, hash } = new URL(
                     window.location.origin + suggestionUrl
                   )
-
                   // Vue Router doesn't handle same-page navigation so we use
                   // the native browser location API for anchor navigation.
                   if (this.$router.history.current.path === hitPathname) {
                     window.location.assign(
-                      window.location.origin + suggestionUrl
+                      window.location.origin + hitPathname + hash
                     )
                   } else {
                     this.$router.push(suggestionUrl)
@@ -101,16 +100,19 @@ export default {
                         return
                       }
 
-                      // We rely on the native link scrolling when user is
-                      // already on the right anchor because Vue Router doesn't
-                      // support duplicated history entries.
-                      if (this.$router.history.current.fullPath === hit.url) {
-                        return
-                      }
-
-                      const { pathname: hitPathname } = new URL(
+                      const { pathname: hitPathname, hash } = new URL(
                         window.location.origin + hit.url
                       )
+
+                      // Vue Router doesn't handle same-page navigation so we use
+                      // the native browser location API for anchor navigation.
+                      if (this.$router.history.current.fullPath === hit.url) {
+                        event.preventDefault()
+                        window.location.assign(
+                          window.location.origin + hitPathname + hash
+                        )
+                        return
+                      }
 
                       // If the hits goes to another page, we prevent the native link behavior
                       // to leverage the Vue Router loading feature.
