@@ -75,18 +75,17 @@ const app = createApp({})
 
 应用实例暴露了 Vue 2 当前全局 API 的子集，经验法则是，_任何全局改变 Vue 行为的 API 现在都会移动到应用实例上_，以下是当前 Vue2 全局 API 及其相应实例 API 的表：
 
-| 2.x 全局 API               | 3.x 实例 API (`app`)                                                                         |
-| -------------------------- | -------------------------------------------------------------------------------------------- |
-| Vue.config                 | app.config                                                                                                                      |
-| Vue.config.productionTip   | _removed_ ([见下方](#config-productiontip-移除))                                          |
+| 2.x 全局 API               | 3.x 实例 API (`app`)                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Vue.config                 | app.config                                                                                                   |
+| Vue.config.productionTip   | _removed_ ([见下方](#config-productiontip-移除))                                                             |
 | Vue.config.ignoredElements | app.config.compilerOptions.isCustomElement ([见下方](#config-ignoredelements-替换为-config-iscustomelement)) |
-| Vue.component              | app.component                                                                                |
-| Vue.directive              | app.directive                                                                                |
-| Vue.mixin                  | app.mixin                                                                                    |
-| Vue.use                    | app.use ([见下方](#插件使用者须知))                                               |
-| Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-替换为-config-globalproperties))   |
-| Vue.extend                 | _removed_ ([see below](#vue-extend-removed))                                                                                    |
-
+| Vue.component              | app.component                                                                                                |
+| Vue.directive              | app.directive                                                                                                |
+| Vue.mixin                  | app.mixin                                                                                                    |
+| Vue.use                    | app.use ([见下方](#插件使用者须知))                                                                          |
+| Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-替换为-config-globalproperties))                        |
+| Vue.extend                 | _removed_ ([see below](#vue-extend-removed))                                                                 |
 
 所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
 
@@ -117,7 +116,7 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 
 - 如果 `config.compilerOptions.isCustomElement` 当使用仅运行时构建时时，将发出警告，指示用户在生成设置中传递该选项；
 - 这将是 Vue CLI 配置中新的顶层选项。
-:::
+  :::
 
 [迁移构建标记：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#兼容性配置)
 
@@ -141,6 +140,7 @@ app.config.globalProperties.$http = () => {}
 使用 `provide` ([稍后](#provide-inject)会讨论) 时，也应考虑作为 `globalProperties` 的替代品。
 
 <!-- TODO: translation -->
+
 [Migration build flag: `GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
 
 ### `Vue.extend` Removed
