@@ -4,7 +4,7 @@
 
 该站点基于 Vuepress 构建而成。网站内容在 src 文件夹内，格式为 Markdown。欢迎 issue 或 pull request。
 
-英文原版仓库地址：https://github.com/vuejs/docs-next
+英文原版仓库地址：https://github.com/vuejs/docs
 
 ## 开发
 
