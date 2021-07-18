@@ -1278,28 +1278,31 @@ computed: {
 1. **全局感知** (要求组件以外的知识)
     - `name`
 
-2. **模板依赖** (模板内使用的资源)
+2. **模板编译选项** (改变模板编译的方式)
+    - `compilerOptions`
+
+3. **模板依赖** (模板内使用的资源)
     - `components`
     - `directives`
 
-3. **组合** (向选项里合并 property)
+4. **组合** (向选项里合并 property)
     - `extends`
     - `mixins`
     - `provide`/`inject`
 
-4. **接口** (组件的接口)
+5. **接口** (组件的接口)
     - `inheritAttrs`
     - `props`
     - `emits`
 
-5. **组合式 API** (使用组合式 API 的入口点)
+6. **组合式 API** (使用组合式 API 的入口点)
     - `setup`
 
-6. **本地状态** (本地的响应式 property)
+7. **本地状态** (本地的响应式 property)
     - `data`
     - `computed`
 
-7. **事件** (通过响应式事件触发的回调)
+8. **事件** (通过响应式事件触发的回调)
     - `watch`
     - 生命周期钩子 (按照它们被调用的顺序)
         - `beforeCreate`
@@ -1316,10 +1319,10 @@ computed: {
         - `renderTracked`
         - `renderTriggered`
 
-8.  **非响应式的 property** (不依赖响应性系统的实例 property)
+9.  **非响应式的 property** (不依赖响应性系统的实例 property)
     - `methods`
 
-9. **渲染** (组件输出的声明式描述)
+10. **渲染** (组件输出的声明式描述)
     - `template`/`render`
 
 ### 元素 attribute 的顺序<sup data-p="c">推荐</sup>

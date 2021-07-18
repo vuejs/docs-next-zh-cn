@@ -103,3 +103,7 @@ mounted(el, binding, vnode) {
 :::warning
 有了 [fragments](/guide/migration/fragments.html#概览) 支持，组件可能有多个根节点。当应用于多根组件时，将忽略一个指令，并记录一个警告。
 :::
+
+## 迁移策略
+
+[迁移构建标记：`CUSTOM_DIR`](migration-build.html#compat-configuration)

@@ -178,6 +178,8 @@ export default {
 
 ## 迁移策略
 
+[迁移构建标记：`RENDER_FUNCTION`](migration-build.html#compat-configuration)
+
 ### 工具库作者
 
 全局导入 `h` 意味着任何包含 Vue 组件的库都将在某处包含 `import { h } from 'vue'`。这会带来一些开销，因为它需要库作者在其构建设置中正确配置 Vue 的外部化：

@@ -77,14 +77,16 @@ const app = createApp({})
 
 | 2.x 全局 API               | 3.x 实例 API (`app`)                                                                         |
 | -------------------------- | -------------------------------------------------------------------------------------------- |
-| Vue.config                 | app.config                                                                                   |
+| Vue.config                 | app.config                                                                                                                      |
 | Vue.config.productionTip   | _removed_ ([见下方](#config-productiontip-移除))                                          |
-| Vue.config.ignoredElements | app.config.isCustomElement ([见下方](#config-ignoredelements-替换为-config-iscustomelement)) |
+| Vue.config.ignoredElements | app.config.compilerOptions.isCustomElement ([见下方](#config-ignoredelements-替换为-config-iscustomelement)) |
 | Vue.component              | app.component                                                                                |
 | Vue.directive              | app.directive                                                                                |
 | Vue.mixin                  | app.mixin                                                                                    |
 | Vue.use                    | app.use ([见下方](#插件使用者须知))                                               |
 | Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-替换为-config-globalproperties))   |
+| Vue.extend                 | _removed_ ([see below](#vue-extend-removed))                                                                                    |
+
 
 所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
 
@@ -93,6 +95,8 @@ const app = createApp({})
 在 Vue 3.x 中，“使用生产版本”提示仅在使用“dev + full build”(包含运行时编译器并有警告的构建) 时才会显示。
 
 对于 ES 模块构建，由于它们是与 bundler 一起使用的，而且在大多数情况下，CLI 或样板已经正确地配置了生产环境，所以本技巧将不再出现。
+
+[迁移构建标记：`CONFIG_PRODUCTION_TIP`](migration-build.html#compat-configuration)
 
 ### `config.ignoredElements` 替换为 `config.isCustomElement`
 
@@ -104,16 +108,18 @@ Vue.config.ignoredElements = ['my-el', /^ion-/]
 
 // 之后
 const app = createApp({})
-app.config.isCustomElement = tag => tag.startsWith('ion-')
+app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 ```
 
 :::tip 重要
 
 在 Vue 3 中，元素是否是组件的检查已转移到模板编译阶段，因此只有在使用运行时编译器时才考虑此配置选项。如果你使用的是 runtime-only 版本 `isCustomElement` 必须通过 `@vue/compiler-dom` 在构建步骤替换——比如，通过 [`compilerOptions` option in vue-loader](https://vue-loader.vuejs.org/options.html#compileroptions)。
 
-- 如果 `config.isCustomElement` 当使用仅运行时构建时时，将发出警告，指示用户在生成设置中传递该选项；
+- 如果 `config.compilerOptions.isCustomElement` 当使用仅运行时构建时时，将发出警告，指示用户在生成设置中传递该选项；
 - 这将是 Vue CLI 配置中新的顶层选项。
 :::
+
+[迁移构建标记：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#compat-configuration)
 
 ### `Vue.prototype` 替换为 `config.globalProperties`
 
@@ -133,6 +139,57 @@ app.config.globalProperties.$http = () => {}
 ```
 
 使用 `provide` ([稍后](#provide-inject)会讨论) 时，也应考虑作为 `globalProperties` 的替代品。
+
+<!-- TODO: translation -->
+[Migration build flag: `GLOBAL_PROTOTYPE`](migration-build.html#compat-configuration)
+
+### `Vue.extend` Removed
+
+In Vue 2.x, `Vue.extend` was used to create a "subclass" of the base Vue constructor with the argument that should be an object containing component options. In Vue 3.x, we don't have the concept of component constructors anymore. Mounting a component should always use the `createApp` global API:
+
+```js
+// before - Vue 2
+// create constructor
+const Profile = Vue.extend({
+  template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+  data() {
+    return {
+      firstName: 'Walter',
+      lastName: 'White',
+      alias: 'Heisenberg'
+    }
+  }
+})
+// create an instance of Profile and mount it on an element
+new Profile().$mount('#mount-point')
+```
+
+```js
+// after - Vue 3
+const Profile = {
+  template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+  data() {
+    return {
+      firstName: 'Walter',
+      lastName: 'White',
+      alias: 'Heisenberg'
+    }
+  }
+}
+Vue.createApp(Profile).mount('#mount-point')
+```
+
+#### Type Inference
+
+In Vue 2, `Vue.extend` was also used for providing TypeScript type inference for the component options. In Vue 3, the `defineComponent` global API can be used in place of `Vue.extend` for the same purpose.
+
+Note that although the return type of `defineComponent` is a constructor-like type, it is only used for TSX inference. At runtime `defineComponent` is largely a noop and will return the options object as-is.
+
+#### Component Inheritance
+
+In Vue 3, we strongly recommend favoring composition via [Composition API](/api/composition-api.html) over inheritance and mixins. If for some reason you still need component inheritance, you can use the [`extends` option](/api/options-composition.html#extends) instead of `Vue.extend`.
+
+[Migration build flag: `GLOBAL_EXTEND`](migration-build.html#compat-configuration)
 
 ### 插件使用者须知
 
@@ -184,6 +241,8 @@ app.directive('focus', {
 // 现在，所有通过 `app.mount()` 挂载的应用实例及其组件树，将具有相同的 “button-counter” 组件和 “focus” 指令，而不会污染全局环境
 app.mount('#app')
 ```
+
+[迁移构建标记：`GLOBAL_MOUNT`](migration-build.html#compat-configuration)
 
 ## Provide / Inject
 

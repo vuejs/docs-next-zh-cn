@@ -34,10 +34,10 @@ badges:
 
 | 绑定表达式           | `foo` <sup>正常</sup>   | `draggable` <sup>枚举</sup>       |
 | ------------------- | ----------------------- | --------------------------------- |
-| `:attr="null"`      | /                       | `draggable="false"`               |
-| `:attr="undefined"` | /                       | /                                 |
+| `:attr="null"`      | -                       | `draggable="false"`               |
+| `:attr="undefined"` | -                       | -                                 |
 | `:attr="true"`      | `foo="true"`            | `draggable="true"`                |
-| `:attr="false"`     | /                       | `draggable="false"`               |
+| `:attr="false"`     | -                       | `draggable="false"`               |
 | `:attr="0"`         | `foo="0"`               | `draggable="true"`                |
 | `attr=""`           | `foo=""`                | `draggable="true"`                |
 | `attr="foo"`        | `foo="foo"`             | `draggable="true"`                |
@@ -63,8 +63,8 @@ badges:
 
 | 绑定表达式       | `foo` <sup>正常</sup>    | `draggable` <sup>枚举</sup> |
 | ------------------- | -------------------------- | --------------------------------- |
-| `:attr="null"`      | /                          | / <sup>*</sup>                    |
-| `:attr="undefined"` | /                          | /                                 |
+| `:attr="null"`      | -                          | - <sup>*</sup>                    |
+| `:attr="undefined"` | -                          | -                                 |
 | `:attr="true"`      | `foo="true"`               | `draggable="true"`                |
 | `:attr="false"`     | `foo="false"` <sup>*</sup> | `draggable="false"`               |
 | `:attr="0"`         | `foo="0"`                  | `draggable="0"` <sup>*</sup>      |
@@ -140,3 +140,8 @@ badges:
     </tr>
   </tbody>
 </table>
+
+[迁移构建标记：](migration-build.html#compat-configuration)
+
+- `ATTR_FALSE_VALUE`
+- `ATTR_ENUMERATED_COERSION`

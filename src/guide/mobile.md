@@ -20,4 +20,4 @@
 
 **资源**
 
-- [NativeScript + Vue.js Guide](https://nativescript.org/vue/)
+- [NativeScript + Vue.js Guide](https://nativescript-vue.org/)

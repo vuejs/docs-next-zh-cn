@@ -97,8 +97,7 @@ watchEffect(async onInvalidate => {
 
 Vue 的响应性系统会缓存副作用函数，并异步地刷新它们，这样可以避免同一个“tick” 中多个状态改变导致的不必要的重复调用。在核心的具体实现中，组件的 `update` 函数也是一个被侦听的副作用。当一个用户定义的副作用函数进入队列时，默认情况下，会在所有的组件 `update` **前**执行：
 
-```html
-
+```vue
 <template>
   <div>{{ count }}</div>
 </template>
@@ -203,15 +202,15 @@ watch(count, (count, prevCount) => {
 侦听器还可以使用数组同时侦听多个源：
 
 ```js
-const firstName = ref('');
-const lastName = ref('');
+const firstName = ref('')
+const lastName = ref('')
 
 watch([firstName, lastName], (newValues, prevValues) => {
-  console.log(newValues, prevValues);
+  console.log(newValues, prevValues)
 })
 
-firstName.value = "John"; // logs: ["John",""] ["", ""]
-lastName.value = "Smith"; // logs: ["John", "Smith"] ["John", ""]
+firstName.value = 'John' // logs: ["John",""] ["", ""]
+lastName.value = 'Smith' // logs: ["John", "Smith"] ["John", ""]
 ```
 
 ### 侦听响应式对象
@@ -224,8 +223,9 @@ const numbers = reactive([1, 2, 3, 4])
 watch(
   () => [...numbers],
   (numbers, prevNumbers) => {
-    console.log(numbers, prevNumbers);
-  })
+    console.log(numbers, prevNumbers)
+  }
+)
 
 numbers.push(5) // logs: [1,2,3,4,5] [1,2,3,4]
 ```
@@ -234,61 +234,61 @@ numbers.push(5) // logs: [1,2,3,4,5] [1,2,3,4]
 
 ```js
 const state = reactive({ 
-  id: 1, 
+  id: 1,
   attributes: { 
-    name: "",
-  },
-});
-
-watch(
-  () => state,
-  (state, prevState) => {
-    console.log(
-      "not deep ",
-      state.attributes.name,
-      prevState.attributes.name
-    );
+    name: '',
   }
-);
+})
 
 watch(
   () => state,
   (state, prevState) => {
     console.log(
-      "deep ",
+      'not deep',
       state.attributes.name,
       prevState.attributes.name
-    );
+    )
+  }
+)
+
+watch(
+  () => state,
+  (state, prevState) => {
+    console.log(
+      'deep',
+      state.attributes.name,
+      prevState.attributes.name
+    )
   },
   { deep: true }
-);
+)
 
-state.attributes.name = "Alex"; // 日志: "deep " "Alex" "Alex"
+state.attributes.name = 'Alex' // 日志: "deep" "Alex" "Alex"
 ```
 
 然而，侦听一个响应式对象或数组将始终返回该对象的当前值和上一个状态值的引用。为了完全侦听深度嵌套的对象和数组，可能需要对值进行深拷贝。这可以通过诸如 [lodash.cloneDeep](https://lodash.com/docs/4.17.15#cloneDeep) 这样的实用工具来实现。
 
 ```js
-import _ from 'lodash';
+import _ from 'lodash'
 
 const state = reactive({
   id: 1,
   attributes: {
-    name: "",
-  },
-});
+    name: '',
+  }
+})
 
 watch(
   () => _.cloneDeep(state),
   (state, prevState) => {
     console.log(
-      state.attributes.name, 
+      state.attributes.name,
       prevState.attributes.name
-    );
+    )
   }
-);
+)
 
-state.attributes.name = "Alex"; // 日志: "Alex" ""
+state.attributes.name = 'Alex' // 日志: "Alex" ""
 ```
 
 ### 与 `watchEffect` 共享的行为

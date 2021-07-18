@@ -41,7 +41,7 @@ module.exports = {
 
 点击在 Activity Bar 里的 Debugger 图标来到 Debug 视图，然后点击那个齿轮图标来配置一个 launch.json 的文件，选择 **Chrome/Firefox: Launch** 环境。然后将生成的 launch.json 的内容替换成为相应的配置：
 
-![添加 Chrome 配置](/images/config_add.png)
+<div style="padding: 10px 25px 30px"><img src="/images/config_add.png" alt="添加 Chrome 配置" style="width: 690px; border-radius: 3px; box-shadow: 0 10px 15px rgb(0 0 0 / 50%)"></div>
 
 ```json
 {
@@ -74,7 +74,7 @@ module.exports = {
 
 1.  在 **src/components/HelloWorld.vue** 的 `line 90` 的地方设置一个断点，这里的 `data` 函数返回一个字符串。
 
-![断点渲染器](/images/breakpoint_set.png)
+<div style="padding: 10px 25px 30px"><img src="/images/breakpoint_set.png" alt="断点渲染器" style="width: 690px; border-radius: 3px; box-shadow: 0 10px 15px rgb(0 0 0 / 50%)"></div>
 
 2.  在根目录打开你惯用的终端并使用 Vue CLI 开启这个应用：
 
@@ -86,7 +86,7 @@ npm run serve
 
 4.  随着一个新的浏览器实例打开 `http://localhost:8080`，你的断点现在应该被命中了。
 
-![命中断点](/images/breakpoint_hit.png)
+<div style="padding: 10px 25px 30px"><img src="/images/breakpoint_hit.png" alt="命中断点" style="width: 690px; border-radius: 3px; box-shadow: 0 10px 15px rgb(0 0 0 / 50%)"></div>
 
 ## 替代方案
 
