@@ -27,6 +27,8 @@ $ npm run serve # or yarn serve
 - 发 issue 讨论译法或书写格式
 - 发 issue 讨论部署或协作流程上的问题
 
+同时我们的文档中可能会偶尔存在暂时未翻译的段落，这些段落通常都以 `<!-- TODO: translation -->` 开头作为标记。所以也欢迎大家在源码中搜索这些段落并贡献翻译。
+
 有劳在翻译之前移步 [wiki](https://github.com/vuejs/docs-next-zh-cn/wiki) 了解相关注意事项。
 
 ## 贡献
