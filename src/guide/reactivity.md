@@ -228,7 +228,7 @@ vm.val1 = 3
 console.log(vm.sum) // 6
 ```
 
-`data` 返回的对象将被包裹在响应式代理中，并存储为 `this.$data`。Property `this.val1` 和 `this.val2` 分别是 `this.$data.val1` 和 `this.$data.val2` 的别名，因此它们通过相同的代理。
+`data` 返回的对象将被包裹在响应式代理中，并存储为 `this.$data`。属性 `this.val1` 和 `this.val2` 分别是 `this.$data.val1` 和 `this.$data.val2` 的别名，因此它们通过相同的代理。
 
 Vue 将把 `sum` 的函数包裹在一个副作用中。当我们试图访问 `this.sum` 时，它将运行该副作用来计算数值。`$data` 周围的响应式代理将追踪 property `val1` 和 `val2` 在该副作用运行时的读取。
 
