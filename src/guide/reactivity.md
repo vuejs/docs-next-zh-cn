@@ -150,7 +150,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-使用 Proxy 实现响应性的第一步就是跟踪一个 property 何时被读取。我们在一个名为 `track` 的处理器函数中执行此操作，该函数可以传入 `target` 和 `key` 两个参数。
+使用 Proxy 实现响应性的第一步就是跟踪一个 property 何时被读取。我们在一个名为 `track` 的处理器函数中执行此操作，该函数可以传入 `target` 和 `property` 两个参数。
 
 ```js{7}
 const dinner = {
