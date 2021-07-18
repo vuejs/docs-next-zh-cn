@@ -170,7 +170,7 @@ console.log(proxy.meal)
 // tacos
 ```
 
-这里没有展示 `track` 的实现。它将检查当前运行的是哪个*副作用*，并将 `target` 和 `property` 记录在案。这就是 Vue 如何知道这个 property 是该副作用的依赖项。
+这里没有展示 `track` 的实现。它将检查当前运行的是哪个*副作用*，并将其与 `target` 和 `property` 记录在一起。这就是 Vue 如何知道这个 property 是该副作用的依赖项。
 
 最后，我们需要在 property 值更改时重新运行这个副作用。为此，我们需要在代理上使用一个 `set` 处理函数：
 
