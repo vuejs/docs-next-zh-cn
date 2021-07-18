@@ -166,7 +166,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
    - You can filter for specific warnings in the browser console. It's a good idea to use the filter and focus on fixing one item at a time. You can also use negated filters like `-GLOBAL_MOUNT`.
 
-   - You can suppress specific deprecations via [compat configuration](#compat-configuration).
+   - You can suppress specific deprecations via [compat configuration](#兼容性配置).
 
    - Some warnings may be caused by a dependency that you use (e.g. `vue-router`). You can check this from the warning's component trace or stack trace (expanded on click). Focus on fixing the warnings that originate from your own source code first.
 

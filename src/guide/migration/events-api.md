@@ -58,7 +58,7 @@ export default {
 
 ## 迁移策略
 
-[迁移构建标记：`INSTANCE_EVENT_EMITTER`](migration-build.html#compat-configuration)
+[迁移构建标记：`INSTANCE_EVENT_EMITTER`](migration-build.html#兼容性配置)
 
 <!-- TODO: translation -->
 In Vue 3, it is no longer possible to use these APIs to listen to a component's own emitted events from within a component. There is no migration path for that use case.

@@ -66,7 +66,7 @@ The keys for some punctuation marks can just be included literally. e.g. For the
 
 Limitations of the syntax prevent certain characters from being matched, such as `"`, `'`, `/`, `=`, `>`, and `.`. For those characters you should check `event.key` inside the listener instead.
 
-[Migration build flags:](migration-build.html#compat-configuration)
+[Migration build flags:](migration-build.html#兼容性配置)
 
 - `CONFIG_KEY_CODES`
 - `V_ON_KEYCODE_MODIFIER`

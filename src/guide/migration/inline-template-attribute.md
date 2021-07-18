@@ -30,7 +30,7 @@ badges:
 
 `inline-template` 的大多数用例都假设没有构建工具设置，所有模板都直接写在 HTML 页面中。
 
-[迁移构建标记：`COMPILER_INLINE_TEMPLATE`](migration-build.html#compat-configuration)
+[迁移构建标记：`COMPILER_INLINE_TEMPLATE`](migration-build.html#兼容性配置)
 
 ### 选项 #1：使用 `<script>` 标签
 

@@ -117,4 +117,4 @@ export default {
 
 - [迁移：渲染函数](/guide/migration/render-function-api.html)
 - [指南：渲染函数](/guide/render-function.html)
-- [迁移构建标记：`COMPONENT_FUNCTIONAL`](migration-build.html#compat-configuration)
+- [迁移构建标记：`COMPONENT_FUNCTIONAL`](migration-build.html#兼容性配置)

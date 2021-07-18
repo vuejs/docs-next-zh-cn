@@ -96,7 +96,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-[迁移构建标记：`COMPILER_IS_ON_ELEMENT`](migration-build.html#compat-configuration)
+[迁移构建标记：`COMPILER_IS_ON_ELEMENT`](migration-build.html#兼容性配置)
 
 ## `vue:` 用于 DOM 内模板解析解决方案
 

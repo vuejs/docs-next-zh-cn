@@ -74,7 +74,7 @@ export default {
 <!-- TODO: translation -->
 ## Migration Strategy
 
-[Migration build flags:](migration-build.html#compat-configuration)
+[Migration build flags:](migration-build.html#兼容性配置)
 
 - `V_FOR_REF`
 - `COMPILER_V_FOR_REF`

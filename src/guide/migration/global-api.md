@@ -96,7 +96,7 @@ const app = createApp({})
 
 对于 ES 模块构建，由于它们是与 bundler 一起使用的，而且在大多数情况下，CLI 或样板已经正确地配置了生产环境，所以本技巧将不再出现。
 
-[迁移构建标记：`CONFIG_PRODUCTION_TIP`](migration-build.html#compat-configuration)
+[迁移构建标记：`CONFIG_PRODUCTION_TIP`](migration-build.html#兼容性配置)
 
 ### `config.ignoredElements` 替换为 `config.isCustomElement`
 
@@ -119,7 +119,7 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 - 这将是 Vue CLI 配置中新的顶层选项。
 :::
 
-[迁移构建标记：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#compat-configuration)
+[迁移构建标记：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#兼容性配置)
 
 ### `Vue.prototype` 替换为 `config.globalProperties`
 
@@ -141,7 +141,7 @@ app.config.globalProperties.$http = () => {}
 使用 `provide` ([稍后](#provide-inject)会讨论) 时，也应考虑作为 `globalProperties` 的替代品。
 
 <!-- TODO: translation -->
-[Migration build flag: `GLOBAL_PROTOTYPE`](migration-build.html#compat-configuration)
+[Migration build flag: `GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
 
 ### `Vue.extend` Removed
 
@@ -189,7 +189,7 @@ Note that although the return type of `defineComponent` is a constructor-like ty
 
 In Vue 3, we strongly recommend favoring composition via [Composition API](/api/composition-api.html) over inheritance and mixins. If for some reason you still need component inheritance, you can use the [`extends` option](/api/options-composition.html#extends) instead of `Vue.extend`.
 
-[Migration build flag: `GLOBAL_EXTEND`](migration-build.html#compat-configuration)
+[Migration build flag: `GLOBAL_EXTEND`](migration-build.html#兼容性配置)
 
 ### 插件使用者须知
 
@@ -242,7 +242,7 @@ app.directive('focus', {
 app.mount('#app')
 ```
 
-[迁移构建标记：`GLOBAL_MOUNT`](migration-build.html#compat-configuration)
+[迁移构建标记：`GLOBAL_MOUNT`](migration-build.html#兼容性配置)
 
 ## Provide / Inject
 

@@ -178,7 +178,7 @@ export default {
 
 ## 迁移策略
 
-[迁移构建标记：`RENDER_FUNCTION`](migration-build.html#compat-configuration)
+[迁移构建标记：`RENDER_FUNCTION`](migration-build.html#兼容性配置)
 
 ### 工具库作者
 

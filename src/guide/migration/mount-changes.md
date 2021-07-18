@@ -91,7 +91,7 @@ app.mount('#app')
 
 ## 迁移策略
 
-[迁移构建标记：`GLOBAL_MOUNT_CONTAINER`](migration-build.html#compat-configuration)
+[迁移构建标记：`GLOBAL_MOUNT_CONTAINER`](migration-build.html#兼容性配置)
 
 ## 参考
 

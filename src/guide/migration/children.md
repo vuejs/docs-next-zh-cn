@@ -41,4 +41,4 @@ export default {
 
 ## 迁移策略
 
-[迁移构建标记：`INSTANCE_CHILDREN`](migration-build.html#compat-configuration)
+[迁移构建标记：`INSTANCE_CHILDREN`](migration-build.html#兼容性配置)

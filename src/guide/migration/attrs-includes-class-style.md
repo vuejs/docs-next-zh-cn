@@ -60,7 +60,7 @@ export default {
 
 在使用 `inheritAttrs: false` 的组件中，请确保样式仍然符合预期。如果你之前依赖 `class` 和 `style` 的特殊行为，那么可能会破坏一些视觉效果，因为这些 attribute 现在可能应用到了另一个元素。
 
-[迁移构建标记：`INSTANCE_ATTRS_CLASS_STYLE`](migration-build.html#compat-configuration)
+[迁移构建标记：`INSTANCE_ATTRS_CLASS_STYLE`](migration-build.html#兼容性配置)
 
 ## 参考
 
