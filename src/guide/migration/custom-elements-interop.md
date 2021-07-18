@@ -9,7 +9,7 @@ badges:
 
 - **非兼容**：检测并确定哪些标签应该被视为自定义元素的过程，现在会在模板编译期间执行，且应该通过编译器选项而不是运行时配置来配置。
 - **非兼容**：特定 `is` prop 用法仅限于保留的 `<component>` 标记。
-- **新增**：有了新的 `v-is` 指令来支持 2.x 用例，其中在原生元素上使用了 `v-is` 来处理原生 HTML 解析限制。
+- **新增**：为了支持 2.x 在原生元素上使用 `is` 的用例来处理原生 HTML 解析限制，我们用 `vue:` 前缀来解析一个 Vue 组件。
 
 ## 自主定制元素
 
@@ -83,7 +83,7 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
   - 2.x 行为：渲染 `bar` 组件。
   - 3.x 行为：通过 `is` prop 渲染 `foo` 组件。
 
-- 在普通元素上使用时，它将作为 `is` 选项传递给 `createElement` 调用，并作为原生 attribute 渲染，这支持使用自定义的内置元素。
+- 在普通元素上使用时，它将作为 `is` prop 传递给 `createElement` 调用，并作为原生 attribute 渲染，这支持使用自定义的内置元素。
 
   ```html
   <button is="plastic-button">点击我！</button>
@@ -96,7 +96,9 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-## `v-is` 用于 DOM 内模板解析解决方案
+[迁移构建标记：`COMPILER_IS_ON_ELEMENT`](migration-build.html#compat-configuration)
+
+## `vue:` 用于 DOM 内模板解析解决方案
 
 > 提示：本节仅影响直接在页面的 HTML 中写入 Vue 模板的情况。
 > 在 DOM 模板中使用时，模板受原生 HTML 解析规则的约束。一些 HTML 元素，例如 `<ul>`，`<ol>`，`<table>` 和 `<select>` 对它们内部可以出现的元素有限制，和一些像 `<li>`，`<tr>`，和 `<option>` 只能出现在某些其他元素中。
@@ -113,29 +115,16 @@ Vue 对 `is` 特殊 prop 的使用是在模拟 native attribute 在浏览器中�
 
 ### 3.x 语法
 
-随着 `is` 的行为变化，我们引入了一个新的指令 `v-is`，用于解决这些情况：
+随着 `is` 的行为变化，现在将元素解析为一个 Vue 组件需要 `vue:` 前缀：
 
 ```html
 <table>
-  <tr v-is="'blog-post-row'"></tr>
+  <tr is="vue:blog-post-row"></tr>
 </table>
 ```
-
-:::warning
-`v-is` 函数像一个动态的 2.x `:is` 绑定——因此，要使用注册名称来渲染组件，其值应为 JavaScript 字符串文本：
-
-```html
-<!-- 不正确，不会渲染任何内容 -->
-<tr v-is="blog-post-row"></tr>
-
-<!-- 正确 -->
-<tr v-is="'blog-post-row'"></tr>
-```
-
-:::
 
 ## 迁移策略
 
 - 替换 `config.ignoredElements` 与 `vue-loader` 的 `compilerOptions` (使用 build 步骤) 或 `app.config.isCustomElement` (使用动态模板编译)
 
-- 将所有非 `<component>` tags 与 `is` 用法更改为 `<component is="...">` (对于 SFC 模板) 或 `v-is` (对于 DOM 模板)。
+- 将所有非 `<component>` tags 与 `is` 用法更改为 `<component is="...">` (对于 SFC 模板) 或 `vue:` 前缀 (对于 DOM 模板)。

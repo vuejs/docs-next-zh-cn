@@ -49,6 +49,8 @@ badges:
 - 删除 `.native` 修饰符的所有实例。
 - 确保所有组件都使用 `emits` 选项记录其事件。
 
+[迁移构建标记：`COMPILER_V_ON_NATIVE`](migration-build.html#compat-configuration)
+
 ## 参考
 
 - [相关的 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md#v-on-listener-fallthrough)
