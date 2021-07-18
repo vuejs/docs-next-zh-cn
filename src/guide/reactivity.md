@@ -200,7 +200,7 @@ console.log(proxy.meal)
 
 1. **读值时的跟踪**：proxy 的 `get` 处理函数中 `track` 函数记录了该 property 和当前副作用。
 2. **检测该值何时发生变化**：在 proxy 上调用 `set` 处理函数。
-3. **触发函数以便它可以更新最终值**：`trigger` 函数查找哪些副作用依赖于该 property 和它们的执行。
+3. **触发函数以便它可以更新最终值**：`trigger` 函数查找哪些副作用依赖于该 property 并执行它们。
 
 该被代理的对象对于用户来说是不可见的，但是在内部，它们使 Vue 能够在 property 的值被访问或修改的情况下进行依赖跟踪和变更通知。有一点需要注意，控制台日志会以不同的方式对 proxy 对象进行格式化，因此你可能需要安装 [vue-devtools](https://github.com/vuejs/vue-devtools)，以提供一种更易于检查的界面。
 
