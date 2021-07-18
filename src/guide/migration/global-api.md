@@ -276,7 +276,7 @@ import Bar from './Bar.vue'
 
 const createMyApp = options => {
   const app = createApp(options)
-  app.directive('focus', /* ... */)
+  app.directive('focus' /* ... */)
 
   return app
 }
