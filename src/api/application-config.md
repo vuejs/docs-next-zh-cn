@@ -76,27 +76,6 @@ const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
 
-## isCustomElement
-
-- **类型**：`(tag: string) => boolean`
-
-- **默认**：`undefined`
-
-- **用法**：
-
-```js
-// 任何以“ion-”开头的元素都将被识别为自定义元素
-app.config.isCustomElement = tag => tag.startsWith('ion-')
-```
-
-指定一个方法，用来识别在 Vue 之外定义的自定义元素（例如，使用 Web Components API）。如果组件符合此条件，则不需要本地或全局注册，并且 Vue 不会抛出关于 `Unknown custom element` 的警告。
-
-> 注意，所有原生 HTML 和 SVG 标记不需要在此函数中匹配——Vue 解析器自动执行此检查。
-
-::: tip 重要
-这个配置项只有在使用运行时编译器 (runtime compiler) 版本时才会被独享。如果你使用的是仅运行时 (runtime-only) 版本，那么 `isCustomElement` 就必须通过构建设置，例如 [vue-loader 中的 `compilerOptions` 选项](https://vue-loader.vuejs.org/options.html#compileroptions)，传递给 `@vue/compiler-dom`。
-:::
-
 ## optionMergeStrategies
 
 - **类型**：`{ [key: string]: Function }`
@@ -112,7 +91,7 @@ const app = createApp({
   }
 })
 
-app.config.optionMergeStrategies.hello = (parent, child, vm) => {
+app.config.optionMergeStrategies.hello = (parent, child) => {
   return `Hello, ${child}`
 }
 
@@ -125,7 +104,7 @@ app.mixin({
 
 为自定义选项定义合并策略。
 
-合并策略选项分别接收在父实例和子实例上定义的选项的值作为第一个和第二个参数，引用上下文实例被作为第三个参数传入。
+合并策略选项分别接收在父实例和子实例上定义的选项的值作为第一个和第二个参数。
 
 - **参考**：[自定义选项合并策略](../guide/mixins.html#自定义选项合并策略)
 
@@ -138,3 +117,91 @@ app.mixin({
 - **用法**：
 
 设置为 `true` 以在浏览器开发工具的 performance/timeline 面板中启用对组件初始化、编译、渲染和更新的性能追踪。只适用于开发模式和支持 [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API 的浏览器。
+
+<!-- TODO: translation -->
+## compilerOptions <Badge text="3.1+" />
+
+- **Type:** `Object`
+
+Configure runtime compiler options. Values set on this object will be passed to the in-browser template compiler and affect every component in the configured app. Note you can also override these options on a per-component basis using the [`compilerOptions` option](/api/options-misc.html#compileroptions).
+
+::: tip Important
+This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). If you are using the runtime-only build with a build setup, compiler options must be passed to `@vue/compiler-dom` via build tool configurations instead.
+
+- For `vue-loader`: [pass via the `compilerOptions` loader option](https://vue-loader.vuejs.org/options.html#compileroptions). Also see [how to configure it in `vue-cli`](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+
+- For `vite`: [pass via `@vitejs/plugin-vue` options](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-dom).
+:::
+
+### compilerOptions.isCustomElement
+
+- **Type:** `(tag: string) => boolean`
+
+- **Default:** `undefined`
+
+- **Usage:**
+
+```js
+// any element starting with 'ion-' will be recognized as a custom one
+app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
+```
+
+Specifies a method to recognize custom elements defined outside of Vue (e.g., using the Web Components APIs). If component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+
+> Note that all native HTML and SVG tags don't need to be matched in this function - Vue parser performs this check automatically.
+### compilerOptions.whitespace
+
+- **Type:** `'condense' | 'preserve'`
+
+- **Default:** `'condense'`
+
+- **Usage:**
+
+```js
+app.config.compilerOptions.whitespace = 'preserve'
+```
+
+By default, Vue removes/condenses whitespaces between template elements to produce more efficient compiled output:
+
+1. Leading / ending whitespaces inside an element are condensed into a single space
+2. Whitespaces between elements that contain newlines are removed
+3. Consecutive whitespaces in text nodes are condensed into a single space
+
+Setting the value to `'preserve'` will disable (2) and (3).
+
+### compilerOptions.delimiters
+
+- **Type:** `Array<string>`
+
+- **Default:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
+
+- **Usage:**
+
+```js
+// Delimiters changed to ES6 template string style
+app.config.compilerOptions.delimiters = ['${', '}']    
+```
+
+Sets the delimiters used for text interpolation within the template.
+
+Typically this is used to avoid conflicting with server-side frameworks that also use mustache syntax.
+
+### compilerOptions.comments
+
+- **Type:** `boolean`
+
+- **Default:** `false`
+
+- **Usage:**
+
+```js
+app.config.compilerOptions.comments = true
+```
+
+By default, Vue will remove HTML comments inside templates in production. Setting this option to `true` will force Vue to preserve comments even in production. Comments are always preserved during development.
+
+This option is typically used when Vue is used with other libraries that rely on HTML comments.
+
+## isCustomElement <Badge text="deprecated" type="warning"/>
+
+Deprecated in 3.1.0. Use [`compilerOptions.isCustomElement`](#compileroptions-iscustomelement) instead.

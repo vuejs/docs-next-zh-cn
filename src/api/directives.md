@@ -454,30 +454,6 @@
 - **参考**：
   - [数据绑定语法- 插值](../guide/template-syntax.html#文本)
 
-## v-is
+## v-is <Badge text="deprecated" type="warning" />
 
-> 注意：本节仅影响直接在页面的 HTML 中写入 Vue 模板的情况。
-
-- **预期**：字符串文本
-
-- **限制于**：原生 HTML 元素
-
-- **用法**：在 DOM 内模板使用时，模板受原生 HTML 解析规则的约束。某些 HTML 元素，如：`<ul>`、`<ol>`、`<table>` 和 `<select>` 等，对哪些元素可以出现在它们内部有限制，而某些元素 (如：`<li>`、`<tr>` 和 `<option>` 只能出现在某些其他元素中。作为解决方法，我们可以对以下元素使用 `v-is` 指令：
-
-```html
-<table>
-  <tr v-is="'blog-post-row'"></tr>
-</table>
-```
-
-:::warning
-`v-is` 函数类似于动态 2.x `:is` 绑定——因此要按组件的注册名称渲染组件，其值应为 JavaScript 字符串文本：
-```html
-<!-- 不正确，不会渲染任何内容 -->
-<tr v-is="blog-post-row"></tr>
-
-<!-- 正确 -->
-<tr v-is="'blog-post-row'"></tr>
-```
-
-:::
+已在 3.1.0 中被废弃。请换用[带有 `vue` 前缀的 `is` attribute](/api/special-attributes.html#is)。
