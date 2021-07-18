@@ -403,6 +403,18 @@ app.component('alert-box', {
 
 ## 解析 DOM 模板时的注意事项
 
+<!-- TODO: translation -->
+If you are writing your Vue templates directly in the DOM, Vue will have to retrieve the template string from the DOM. This leads to some caveats due to browsers' native HTML parsing behavior.
+
+:::tip
+It should be noted that the limitations discussed below only apply if you are writing your templates directly in the DOM. They do NOT apply if you are using string templates from the following sources:
+
+- String templates (e.g. `template: '...'`)
+- [Single-file (`.vue`) components](single-file-component.html)
+- `<script type="text/x-template">`
+:::
+
+### Element Placement Restrictions
 有些 HTML 元素，诸如 `<ul>`、`<ol>`、`<table>` 和 `<select>`，对于哪些元素可以出现在其内部是有严格限制的。而有些元素，诸如 `<li>`、`<tr>` 和 `<option>`，只能出现在其它某些特定的元素内部。
 
 这会导致我们使用这些有约束条件的元素时遇到一些问题。例如：
@@ -412,26 +424,20 @@ app.component('alert-box', {
   <blog-post-row></blog-post-row>
 </table>
 ```
-这个自定义组件 `<blog-post-row>` 会被作为无效的内容提升到外部，并导致最终渲染结果出错。我们可以使用特殊的 `v-is` 指令作为一个变通的办法：
+这个自定义组件 `<blog-post-row>` 会被作为无效的内容提升到外部，并导致最终渲染结果出错。我们可以使用特殊的 [`is` attribute](/api/special-attributes.html#is) 作为一个变通的办法：
 
 ```html
 <table>
-  <tr v-is="'blog-post-row'"></tr>
+  <tr is="vue:blog-post-row"></tr>
 </table>
 ```
 
-::: warning
-`v-is` 值应为 JavaScript 字符串文本：
-
-```html
-<!-- 错误的，这样不会渲染任何东西 -->
-<tr v-is="blog-post-row"></tr>
-
-<!-- 正确的 -->
-<tr v-is="'blog-post-row'"></tr>
-```
-
+<!-- TODO: translation -->
+:::tip
+When used on native HTML elements, the value of `is` must be prefixed with `vue:` in order to be interpreted as a Vue component. This is required to avoid confusion with native [customized built-in elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example).
 :::
+
+### Case Insensitivity
 
 另外，HTML attribute 名不区分大小写，因此浏览器将所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
 
@@ -451,12 +457,6 @@ app.component('blog-post', {
 
 <blog-post post-title="hello!"></blog-post>
 ```
-
-需要注意的是**如果我们从以下来源使用模板的话，这条限制是*不存在*的**：
-
-- 字符串模板 (例如：`template: '...'`)
-- [单文件组件](single-file-component.html)
-- `<script type="text/x-template">`
 
 到这里，你需要了解的解析 DOM 模板时的注意事项——实际上也是 Vue 的全部*必要*内容，大概就是这些了。恭喜你！接下来还有很多东西要去学习，不过首先，我们推荐你先休息一下，试用一下 Vue，自己随意做些好玩的东西。
 

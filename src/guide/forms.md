@@ -1,5 +1,7 @@
 # 表单输入绑定
 
+<VideoLesson href="https://vueschool.io/lessons/user-inputs-vue-devtools-in-vue-3?friend=vuejs" title="Learn how to handle form inputs on Vue School">Learn how to work with form inputs with a free Vue School lesson</VideoLesson>
+
 ## 基础用法
 
 你可以用 v-model 指令在表单 `<input>`、`<textarea>` 及 `<select>` 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 `v-model` 本质上不过是语法糖。它负责监听用户的输入事件来更新数据，并在某种极端场景下进行一些特殊处理。
