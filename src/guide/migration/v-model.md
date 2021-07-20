@@ -182,6 +182,11 @@ this.$emit('update:title', newValue)
   }
   ```
 
+[迁移构建标记：](migration-build.html#兼容性配置)
+
+- `COMPONENT_V_MODEL`
+- `COMPILER_V_BIND_SYNC`
+
 ## 下一步
 
 更多新的 `v-model` 语法相关信息，请参考：

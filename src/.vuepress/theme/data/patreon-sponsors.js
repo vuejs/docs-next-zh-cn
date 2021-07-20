@@ -36,8 +36,13 @@ export default {
     },
     {
       "url": "https://www.storyblok.com",
-      "img": "storyblok.png",
+      "img": "storyblok.svg",
       "name": "Storyblok"
+    },
+    {
+      "url": "https://ionicframework.com/vue?utm_source=partner&utm_medium=referral&utm_campaign=vuesponsorship&utm_content=vuedocs",
+      "img": "ionic.png",
+      "name": "Ionic"
     }
   ],
   "gold_sponsors": [

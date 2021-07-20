@@ -15,7 +15,7 @@
 
 这是一个文件名为 `Hello.vue` 的简单实例：
 
-<a href="https://codepen.io/team/Vue/pen/3de13b5cd0133df4ecf307b6cf2c5f94" target="_blank" rel="noopener noreferrer"><img src="/images/sfc.png" width="403" alt="Single-file component example (click for code as text)" style="display: block; margin: 15px auto; max-width: 100%"></a>
+<div style="padding: 10px 0 30px"><a href="https://codepen.io/team/Vue/pen/3de13b5cd0133df4ecf307b6cf2c5f94" target="_blank" rel="noopener noreferrer" title="Click for code as text"><img src="/images/sfc.png" width="292" alt="Single-file component example (click for code as text)" style="border-radius: 5px; box-shadow: 0 13px 20px rgb(0 0 0 / 50%); margin: 0 auto; display: block;"></a></div>
 
 现在我们获得：
 
@@ -25,7 +25,7 @@
 
 正如我们说过的，我们可以使用预处理器来构建简洁和功能更丰富的组件，比如 Pug，Babel (with ES2015 modules)，和 Stylus。
 
-<a href="https://codesandbox.io/s/vue-single-file-component-with-pre-processors-mr3ik?file=/src/App.vue" target="_blank" rel="noopener noreferrer"><img src="/images/sfc-with-preprocessors.png" width="563" alt="Single-file component with pre-processors example (click for code as text)" style="display: block; margin: 15px auto; max-width: 100%"></a>
+<div style="padding: 10px 0 30px"><a href="https://codesandbox.io/s/vue-single-file-component-with-pre-processors-mr3ik?file=/src/App.vue" target="_blank" rel="noopener noreferrer" title="Click for code as text"><img src="/images/sfc-with-preprocessors.png" width="452" alt="Single-file component with pre-processors example (click for code as text)" style="border-radius: 5px; box-shadow: 0 13px 20px rgb(0 0 0 / 50%); margin: 0 auto; display: block;"></a></div>
 
 这些特定的语言只是例子，你可以只是简单地使用 Babel，TypeScript，SCSS，PostCSS 或者其他任何能够帮助你提高生产力的预处理器。如果搭配 `vue-loader` 使用 webpack，它也能为 CSS Modules 提供头等支持。
 

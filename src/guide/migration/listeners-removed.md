@@ -64,6 +64,8 @@ export default {
 
 删除所有的 `$listeners` 用法。
 
+[迁移构建标记：`INSTANCE_LISTENERS`](migration-build.html#兼容性配置)
+
 ## 参考
 
 - [相关的 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md)

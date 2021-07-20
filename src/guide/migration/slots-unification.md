@@ -63,3 +63,5 @@ this.$slots.header()
 
 1. 在 3.x 中，将所有 `this.$scopedSlots` 替换为 `this.$slots`。
 2. 将所有 `this.$slots.mySlot` 替换为 `this.$slots.mySlot()`。
+
+[迁移构建标记：`INSTANCE_SCOPED_SLOTS`](migration-build.html#兼容性配置)

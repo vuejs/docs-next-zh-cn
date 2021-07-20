@@ -46,11 +46,27 @@ Vue.config.keyCodes = {
 
 ```html
 <!-- Vue 3 在 v-on 上使用 按键修饰符 -->
-<input v-on:keyup.delete="confirmDelete" />
-```
+<input v-on:keyup.page-down="nextPage">
+
+<!-- 同时匹配 q 和 Q -->
+<input v-on:keypress.q="quit">```
 
 因此，这意味着 `config.keyCodes` 现在也已弃用，不再受支持。
 
 ## 迁移策略
 
 对于那些在代码库中使用 `keyCode` 的用户，我们建议将它们转换为对应的 kebab-cased (短横线) 命名。
+
+<!-- TODO: translation -->
+The keys for some punctuation marks can just be included literally. e.g. For the `,` key:
+
+```html
+<input v-on:keypress.,="commaPress">
+```
+
+Limitations of the syntax prevent certain characters from being matched, such as `"`, `'`, `/`, `=`, `>`, and `.`. For those characters you should check `event.key` inside the listener instead.
+
+[Migration build flags:](migration-build.html#兼容性配置)
+
+- `CONFIG_KEY_CODES`
+- `V_ON_KEYCODE_MODIFIER`

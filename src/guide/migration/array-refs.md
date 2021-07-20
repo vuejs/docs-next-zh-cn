@@ -70,3 +70,10 @@ export default {
 - `itemRefs` 不必是数组：它也可以是一个对象，其 ref 会通过迭代的 key 被设置。
 
 - 如果需要，`itemRef` 也可以是响应式的且可以被监听。
+
+## 迁移策略
+
+[迁移构建标记：](migration-build.html#兼容性配置)
+
+- `V_FOR_REF`
+- `COMPILER_V_FOR_REF`

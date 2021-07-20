@@ -2,6 +2,8 @@
 
 ## 计算属性
 
+<VideoLesson href="https://vueschool.io/lessons/computed-properties-in-vue-3?friend=vuejs" title="Learn how computed properties work with Vue School">Learn how computed properties work with a free lesson on Vue School</VideoLesson>
+
 模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。例如，有一个嵌套数组对象：
 
 ```js

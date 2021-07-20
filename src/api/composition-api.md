@@ -11,25 +11,44 @@
   - `{Data} props`
   - `{SetupContext} context`
 
+  <!-- TODO: translation -->
+  Similar to `this.$props` when using Options API, the `props` object will only contain explicitly declared props. Also, all declared prop keys will be present on the `props` object, regardless of whether it was passed by the parent component or not. Absent optional props will have a value of `undefined`.
+
+  If you need to check the absence of an optional prop, you can give it a Symbol as its default value:
+
+  ```js
+  const isAbsent = Symbol()
+  export default {
+    props: {
+      foo: { default: isAbsent }
+    },
+    setup(props) {
+      if (props.foo === isAbsent) {
+        // foo was not provided.
+      }
+    }
+  }
+  ```
+
 - **类型声明**：
 
-```ts
-interface Data {
-  [key: string]: unknown
-}
+  ```ts
+  interface Data {
+    [key: string]: unknown
+  }
 
-interface SetupContext {
-  attrs: Data
-  slots: Slots
-  emit: (event: string, ...args: unknown[]) => void
-}
+  interface SetupContext {
+    attrs: Data
+    slots: Slots
+    emit: (event: string, ...args: unknown[]) => void
+  }
 
-function setup(props: Data, context: SetupContext): Data
-```
+  function setup(props: Data, context: SetupContext): Data
+  ```
 
-:::tip
-若要对传递给 `setup()` 的参数进行类型推断，你需要使用 [defineComponent](global-api.html#definecomponent)。
-:::
+  :::tip
+  若要对传递给 `setup()` 的参数进行类型推断，你需要使用 [defineComponent](global-api.html#definecomponent)。
+  :::
 
 - **示例：**
 
@@ -128,40 +147,40 @@ const MyComponent = {
 
 - **类型声明**：
 
-```ts
-interface InjectionKey<T> extends Symbol {}
+  ```ts
+  interface InjectionKey<T> extends Symbol {}
 
-function provide<T>(key: InjectionKey<T> | string, value: T): void
+  function provide<T>(key: InjectionKey<T> | string, value: T): void
 
-// 没有默认值
-function inject<T>(key: InjectionKey<T> | string): T | undefined
-// 有默认值
-function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
-// 有工厂函数
-function inject<T>(
-  key: InjectionKey<T> | string,
-  defaultValue: () => T,
-  treatDefaultAsFactory: true
-): T
-```
+  // 没有默认值
+  function inject<T>(key: InjectionKey<T> | string): T | undefined
+  // 有默认值
+  function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
+  // 有工厂函数
+  function inject<T>(
+    key: InjectionKey<T> | string,
+    defaultValue: () => T,
+    treatDefaultAsFactory: true
+  ): T
+  ```
 
-Vue 提供了一个 `InjectionKey` 接口，该接口是扩展 `Symbol` 的泛型类型。它可用于在提供者和消费者之间同步 inject 值的类型：
+  Vue 提供了一个 `InjectionKey` 接口，该接口是扩展 `Symbol` 的泛型类型。它可用于在提供者和消费者之间同步 inject 值的类型：
 
-```ts
-import { InjectionKey, provide, inject } from 'vue'
+  ```ts
+  import { InjectionKey, provide, inject } from 'vue'
 
-const key: InjectionKey<string> = Symbol()
+  const key: InjectionKey<string> = Symbol()
 
-provide(key, 'foo') // 提供非字符串值将导致错误
+  provide(key, 'foo') // 提供非字符串值将导致错误
 
-const foo = inject(key) // foo 的类型: string | undefined
-```
+  const foo = inject(key) // foo 的类型: string | undefined
+  ```
 
-如果使用字符串 key 或非类型化 symbols，则需要显式声明 inject 值的类型：
+  如果使用字符串 key 或非类型化 symbols，则需要显式声明 inject 值的类型：
 
-```ts
-const foo = inject<string>('foo') // string | undefined
-```
+  ```ts
+  const foo = inject<string>('foo') // string | undefined
+  ```
 
 - **参考**：
   - [Provide / Inject](../guide/component-provide-inject.html)
@@ -169,7 +188,11 @@ const foo = inject<string>('foo') // string | undefined
 
 ## `getCurrentInstance`
 
-`getCurrentInstance` 支持访问内部组件实例，用于高阶用法或库的开发。
+`getCurrentInstance` 支持访问内部组件实例。
+
+:::warning
+`getCurrentInstance` 只会暴露给高阶用户，通常是库作者。对 `getCurrentInstance` 的使用在应用代码里是非常不鼓励的。请**不要**把它在组合式 API 中作为获得等同于 `this` 的退路来使用。
+:::
 
 ```ts
 import { getCurrentInstance } from 'vue'

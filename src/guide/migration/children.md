@@ -38,3 +38,7 @@ export default {
 ## 3.x 更新
 
 在 3.x 中，`$children` property 已移除，不再支持。如果你需要访问子组件实例，我们建议使用 [$refs](/guide/component-template-refs.html#模板引用)。
+
+## 迁移策略
+
+[迁移构建标记：`INSTANCE_CHILDREN`](migration-build.html#兼容性配置)

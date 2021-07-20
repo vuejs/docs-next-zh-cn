@@ -1,5 +1,7 @@
 # 列表渲染
 
+<VideoLesson href="https://vueschool.io/lessons/list-rendering-in-vue-3?friend=vuejs" title="通过 Vue Scholl 的免费课程学习如何渲染列表">通过 Vue Scholl 的免费课程学习如何渲染列表</VideoLesson>
+
 ## 用 `v-for` 把一个数组对应为一组元素
 
 我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的**别名**。

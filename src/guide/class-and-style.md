@@ -4,6 +4,8 @@
 
 ## 绑定 HTML Class
 
+<VideoLesson href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3?friend=vuejs" title="Free Vue.js Dynamic Classes Lesson">Watch a free video lesson on Vue School</VideoLesson>
+
 ### 对象语法
 
 我们可以传给 `:class` (`v-bind:class` 的简写) 一个对象，以动态地切换 class：

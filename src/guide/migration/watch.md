@@ -27,3 +27,5 @@ watch: {
 ## 迁移策略
 
 如果你依赖侦听数组的改变，添加 `deep` property，以确保正确地触发回调。
+
+[迁移构建标记：`WATCH_ARRAY`](migration-build.html#兼容性配置)

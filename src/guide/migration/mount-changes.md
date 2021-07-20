@@ -89,6 +89,10 @@ app.mount('#app')
 </body>
 ```
 
+## 迁移策略
+
+[迁移构建标记：`GLOBAL_MOUNT_CONTAINER`](migration-build.html#兼容性配置)
+
 ## 参考
 
 - [`mount` API](/api/application-api.html#mount)

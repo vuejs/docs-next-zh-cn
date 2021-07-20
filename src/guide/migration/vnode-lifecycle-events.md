@@ -43,6 +43,8 @@ badges:
 
 绝大多数情况下只需要修改前缀。生命周期钩子 `beforeDestroy` 和 destroyed` 已经被重命名为 `beforeUnmount` 和 `unmouted`，所以相应的事件名也需要更新。
 
+[迁移构建标记：`INSTANCE_EVENT_HOOKS`](migration-build.html#兼容性配置)
+
 ## 参考
 
 - [迁移指南：事件 API](/guide/migration/events-api.html)

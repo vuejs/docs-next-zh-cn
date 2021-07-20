@@ -22,6 +22,8 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 
 > 目前处于测试阶段 - Vuex 和 Router 的集成仍在进行中。
 
+<VideoLesson href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3?friend=vuejs" title="在 Vue School 了解如何安装">在 Vue School 的免费课程中学习如何安装和使用 Vue Devtools</VideoLesson>
+
 在使用 Vue 时，我们推荐在你的浏览器上安装 [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools)，它允许你在一个更友好的界面中审查和调试 Vue 应用。
 
 [获取 Chrome 扩展程序](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
@@ -97,7 +99,7 @@ vue upgrade --next
 使用 npm：
 
 ```bash
-$ npm init @vitejs/app <project-name>
+$ npm init vite <project-name> -- --template vue
 $ cd <project-name>
 $ npm install
 $ npm run dev
@@ -106,16 +108,10 @@ $ npm run dev
 或者 yarn：
 
 ```bash
-$ yarn create @vitejs/app <project-name>
+$ yarn create vite <project-name> --template vue
 $ cd <project-name>
 $ yarn
 $ yarn dev
-```
-
-可能会出现这样的情况，当你的用户名中有一个空格，比如“Mike Baker”时，Vite 就不能成功创建。这时可以尝试：
-
-```bash
-$ create-vite-app <project-name>
 ```
 
 ## 对不同构建版本的解释

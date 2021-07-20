@@ -7,6 +7,7 @@
 本指南主要是为有 Vue 2 经验的用户希望了解 Vue 3 的新功能和更改而提供的。**在试用 Vue 3 之前，你不必从头阅读这些内容**。虽然看起来有很多变化，但很多你已经了解和喜欢 Vue 的部分仍是一样的。不过我们希望尽可能全面，并为每处变化提供详细的例子。
 
 - [快速开始](#快速开始)
+- [迁移构建](#迁移构建)
 - [值得注意的新特性](#值得注意的新特性)
 - [非兼容的变更](#非兼容的变更)
 - [支持的库](#官方支持的库)
@@ -20,13 +21,15 @@
 
 ## 快速开始
 
+如果你想要在一个新项目里快速尝试 Vue 3：
+
 - 通过 CDN：`<script src="https://unpkg.com/vue@next"></script>`
 - [Codepen](https://codepen.io/yyx990803/pen/OJNoaZL) 上的浏览器内试验田
 - [CodeSandbox](https://v3.vue.new) 上的浏览器内沙盒
 - 通过脚手架 [Vite](https://github.com/vitejs/vite)：
 
   ```bash
-  npm init @vitejs/app hello-vue3 # OR yarn create @vitejs/app hello-vue3
+  npm init vite hello-vue3 -- --template vue # OR yarn create vite hello-vue3 --template vue
   ```
 
 - 通过脚手架 [vue-cli](https://cli.vuejs.org/)：
@@ -36,6 +39,11 @@
   vue create hello-vue3
   # 选择 vue 3 preset
   ```
+
+## 迁移构建
+
+<!-- TODO: translation -->
+If you have an existing Vue 2 project or library that you intend to upgrade to Vue 3, we provide a build of Vue 3 that offers Vue 2 compatible APIs. Check out the [Migration Build](./migration-build.html) page for more details.
 
 ## 值得注意的新特性
 
@@ -51,10 +59,6 @@ Vue 3 中需要关注的一些新功能包括：
 - [Suspense](/guide/migration/suspense.html) <Badge text="实验性" type="warning" />
 
 ## 非兼容的变更
-
-::: tip 提示
-我们仍在开发 Vue 3 的专用迁移版本，该版本的行为与 Vue 2 兼容，运行时警告不兼容。如果你计划迁移一个非常重要的 Vue 2 应用程序，我们强烈建议你等待迁移版本完成以获得更流畅的体验。
-:::
 
 下面列出了从 2.x 开始的重大更改：
 

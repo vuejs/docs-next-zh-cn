@@ -35,6 +35,10 @@ badges:
 </transition-group>
 ```
 
+## 迁移策略
+
+[迁移构建标记：`TRANSITION_GROUP_ROOT`](migration-build.html#兼容性配置)
+
 ## 参考
 
 - [过渡的 class 名更改](/guide/migration/transition.html)
