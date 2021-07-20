@@ -11,7 +11,7 @@ badges:
 
 ## 2.x 语法
 
-在 2.x 中，Vue 实例可用于触发由事件触发 API 通过指令式方式添加的处理函数 (`$on`，`$off` 和 `$once`)。这可以创建 event bus，用来创建在整个应用程序中可用的全局事件监听器：
+在 2.x 中，Vue 实例可用于触发由事件触发 API 通过指令式方式添加的处理函数 (`$on`，`$off` 和 `$once`)。这可以创建 *event bus*，用来创建在整个应用程序中可用的全局事件监听器：
 
 ```js
 // eventBus.js
@@ -83,7 +83,7 @@ Event bus 模式可以被替换为实现了事件触发器接口的外部库，�
 示例:
 
 ```js
-//eventBus.js
+// eventBus.js
 import emitter from 'tiny-emitter/instance'
 
 export default {

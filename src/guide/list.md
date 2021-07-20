@@ -1,6 +1,6 @@
 # 列表渲染
 
-<VideoLesson href="https://vueschool.io/lessons/list-rendering-in-vue-3?friend=vuejs" title="Learn how to render lists on Vue School">Learn how to render list with a free Vue School lesson</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/list-rendering-in-vue-3?friend=vuejs" title="通过 Vue Scholl 的免费课程学习如何渲染列表">通过 Vue Scholl 的免费课程学习如何渲染列表</VideoLesson>
 
 ## 用 `v-for` 把一个数组对应为一组元素
 

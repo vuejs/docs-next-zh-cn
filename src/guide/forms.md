@@ -1,6 +1,6 @@
 # 表单输入绑定
 
-<VideoLesson href="https://vueschool.io/lessons/user-inputs-vue-devtools-in-vue-3?friend=vuejs" title="Learn how to handle form inputs on Vue School">Learn how to work with form inputs with a free Vue School lesson</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/user-inputs-vue-devtools-in-vue-3?friend=vuejs" title="通过 Vue School 的免费课程中了解如何处理表单输入的问题">通过 Vue School 的免费课程中了解如何处理表单输入的问题</VideoLesson>
 
 ## 基础用法
 
