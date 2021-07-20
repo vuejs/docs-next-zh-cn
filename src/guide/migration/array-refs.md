@@ -71,10 +71,9 @@ export default {
 
 - 如果需要，`itemRef` 也可以是响应式的且可以被监听。
 
-<!-- TODO: translation -->
-## Migration Strategy
+## 迁移策略
 
-[Migration build flags:](migration-build.html#兼容性配置)
+[迁移构建标记：](migration-build.html#兼容性配置)
 
 - `V_FOR_REF`
 - `COMPILER_V_FOR_REF`
