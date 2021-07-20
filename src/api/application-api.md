@@ -321,7 +321,6 @@ setTimeout(() => app.unmount(), 5000)
 
 - **用法：**
 
-  Provides the installed version of Vue as a string. This is especially useful for community [plugins](/guide/plugins.html), where you might use different strategies for different versions.
   以字符串形式提供已安装的 Vue 的版本号。这对于基于不同版本使用不同策略的社区[插件](/guide/plugins.html)来说特别有用。
 
 - **示例：**
@@ -338,4 +337,4 @@ setTimeout(() => app.unmount(), 5000)
   }
   ```
 
-- **参考：**: [全局 API - version](/api/global-api.html#version)
+- **参考：**[全局 API - version](/api/global-api.html#version)
