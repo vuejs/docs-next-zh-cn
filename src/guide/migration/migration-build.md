@@ -198,7 +198,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
     [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/9beb45490bc5f938c9e87b4ac1357cfb799565bd)
 
-## Compat Configuration
+## 兼容性配置
 
 ### Global Config
 
