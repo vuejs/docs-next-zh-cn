@@ -63,8 +63,7 @@ const app = createApp(
 </div>
 ```
 
-<!-- TODO: translation -->
-The root props are raw props, much like those passed to [`h`](#h) to create a VNode. In addition to component props, they can also include attributes and event listeners to be applied to the root component.
+根 prop 是原始的 prop，就像那些通过 [`h`](#h) 创建的 VNode。除了组件 prop，它们也包含应用于根组件的 attributes 和事件监听器。
 
 ### 类型声明
 
