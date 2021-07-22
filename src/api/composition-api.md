@@ -11,10 +11,9 @@
   - `{Data} props`
   - `{SetupContext} context`
 
-  <!-- TODO: translation -->
-  Similar to `this.$props` when using Options API, the `props` object will only contain explicitly declared props. Also, all declared prop keys will be present on the `props` object, regardless of whether it was passed by the parent component or not. Absent optional props will have a value of `undefined`.
+  与 `this.$props` 类似，组合式 API 中的 `props` 对象将仅包含明确指定的参数。并且，所有声明了的参数，不管父组件是否向其传递了，都将出现在 `props` 对象中。可选且未被传递的参数值为 `undefined`。
 
-  If you need to check the absence of an optional prop, you can give it a Symbol as its default value:
+  如果需要检测一个可选参数是否未被传递, 可以将其默认值设置为一个 Symbol：
 
   ```js
   const isAbsent = Symbol()
