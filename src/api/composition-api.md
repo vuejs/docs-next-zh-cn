@@ -124,8 +124,8 @@ const MyComponent = {
 
 **选项 API 生命周期选项和组合式 API 之间的映射**
 
-  - ~~`beforeCreate`~~ -> use `setup()`
-  - ~~`created`~~ -> use `setup()`
+  - ~~`beforeCreate`~~ -> 使用 `setup()`
+  - ~~`created`~~ -> 使用 `setup()`
   - `beforeMount` -> `onBeforeMount`
   - `mounted` -> `onMounted`
   - `beforeUpdate` -> `onBeforeUpdate`
