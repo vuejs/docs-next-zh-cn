@@ -11,9 +11,9 @@
   - `{Data} props`
   - `{SetupContext} context`
 
-  与 `this.$props` 类似，组合式 API 中的 `props` 对象将仅包含明确指定的参数。并且，所有声明了的参数，不管父组件是否向其传递了，都将出现在 `props` 对象中。可选且未被传递的参数值为 `undefined`。
+  与使用选项式 API 时的 `this.$props` 类似，该 `props` 对象将仅包含显性声明的 prop。并且，所有声明了的 prop，不管父组件是否向其传递了，都将出现在 `props` 对象中。其中未被传入的可选的 prop 的值会是 `undefined`。
 
-  如果需要检测一个可选参数是否未被传递, 可以将其默认值设置为一个 Symbol：
+  如果需要检测一个可选的 prop 是否未被传递，你可以将其默认值设置为一个 Symbol：
 
   ```js
   const isAbsent = Symbol()
