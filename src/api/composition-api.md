@@ -23,7 +23,7 @@
     },
     setup(props) {
       if (props.foo === isAbsent) {
-        // foo was not provided.
+        // foo 没有被传入。
       }
     }
   }
@@ -67,7 +67,7 @@
         const readersNumber = ref(0)
         const book = reactive({ title: 'Vue 3 Guide' })
 
-        // expose to template
+        // 暴露给模板
         return {
           readersNumber,
           book
@@ -212,19 +212,19 @@ const MyComponent = {
 ```ts
 const MyComponent = {
   setup() {
-    const internalInstance = getCurrentInstance() // works
+    const internalInstance = getCurrentInstance() // 工作
 
-    const id = useComponentId() // works
+    const id = useComponentId() // 工作
 
     const handleClick = () => {
-      getCurrentInstance() // doesn't work
-      useComponentId() // doesn't work
+      getCurrentInstance() // 不工作
+      useComponentId() // 不工作
 
-      internalInstance // works
+      internalInstance // 工作
     }
 
     onMounted(() => {
-      getCurrentInstance() // works
+      getCurrentInstance() // 工作
     })
 
     return () =>
