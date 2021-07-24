@@ -20,16 +20,16 @@ $ npm run serve # or yarn serve
 
 ## 如何参与贡献
 
-目前网站处于维护状态，我们会定期同步英文版的更新，包括文档内容和前端代码等。欢迎大家：
+有劳在翻译之前移步 [wiki](https://github.com/vuejs/docs-next-zh-cn/wiki) 了解相关注意事项。
+
+目前网站处于维护状态，我们会[定期同步英文版的更新](https://github.com/vuejs/docs-next-zh-cn/pulls?q=is%3Apr+label%3A%E4%BB%8E%E8%8B%B1%E6%96%87%E7%89%88%E5%90%8C%E6%AD%A5+is%3Aclosed)，包括文档内容和前端代码等。欢迎大家：
 
 - 同步英文站点最新的改动到这里
 - 修复错别字或错误的书写格式
 - 发 issue 讨论译法或书写格式
 - 发 issue 讨论部署或协作流程上的问题
 
-同时我们的文档中可能会偶尔存在暂时未翻译的段落，这些段落通常都以 `<!-- TODO: translation -->` 开头作为标记。所以也欢迎大家在源码中搜索这些段落并贡献翻译。
-
-有劳在翻译之前移步 [wiki](https://github.com/vuejs/docs-next-zh-cn/wiki) 了解相关注意事项。
+同时我们的文档中可能会偶尔存在暂时未翻译的段落，这些段落通常都以 `<!-- TODO: translation -->` 开头作为标记。所以也欢迎大家在源码中搜索这些段落并贡献翻译。你也可以通过[这个链接](https://github.com/vuejs/docs-next-zh-cn/search?q=TODO%3A+translation)快速找到尚未翻译好的内容。
 
 ## 贡献
 
