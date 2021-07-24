@@ -115,7 +115,7 @@
   })
   ```
 
--  **参考：**
+- **参考：**
   - [`<slot>` 组件](built-in-components.html#slot)
   - [通过插槽分发内容](../guide/component-basics.html#通过插槽分发内容)
   - [渲染函数 - 插槽](../guide/render-function.html#插槽)
@@ -130,7 +130,7 @@
 
 一个对象，持有注册过 [`ref` attribute](../guide/component-template-refs.html) 的所有 DOM 元素和组件实例。
 
--  **参考：**
+- **参考：**
   - [模板 refs](../guide/component-template-refs.html)
   - [特殊 attributes - ref](./special-attributes.md#ref)
 
@@ -144,6 +144,6 @@
 
 包含了父作用域中不作为组件 [props](./options-data.html#props) 或[自定义事件](./options-data.html#emits)的 attribute 绑定和事件。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定，并且可以通过 `v-bind="$attrs"` 传入内部组件——这在创建高阶的组件时会非常有用。
 
--  **参考**
+- **参考：**
   - [非 Prop Attributes](../guide/component-attrs.html)
   - [选项/杂项 - inheritAttrs](./options-misc.html#inheritattrs)
