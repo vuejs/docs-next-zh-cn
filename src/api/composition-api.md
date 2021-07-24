@@ -11,10 +11,9 @@
   - `{Data} props`
   - `{SetupContext} context`
 
-  <!-- TODO: translation -->
-  Similar to `this.$props` when using Options API, the `props` object will only contain explicitly declared props. Also, all declared prop keys will be present on the `props` object, regardless of whether it was passed by the parent component or not. Absent optional props will have a value of `undefined`.
+  与使用选项式 API 时的 `this.$props` 类似，该 `props` 对象将仅包含显性声明的 prop。并且，所有声明了的 prop，不管父组件是否向其传递了，都将出现在 `props` 对象中。其中未被传入的可选的 prop 的值会是 `undefined`。
 
-  If you need to check the absence of an optional prop, you can give it a Symbol as its default value:
+  如果需要检测一个可选的 prop 是否未被传递，你可以将其默认值设置为一个 Symbol：
 
   ```js
   const isAbsent = Symbol()
@@ -24,7 +23,7 @@
     },
     setup(props) {
       if (props.foo === isAbsent) {
-        // foo was not provided.
+        // foo 没有被传入。
       }
     }
   }
@@ -68,7 +67,7 @@
         const readersNumber = ref(0)
         const book = reactive({ title: 'Vue 3 Guide' })
 
-        // expose to template
+        // 暴露给模板
         return {
           readersNumber,
           book
@@ -125,8 +124,8 @@ const MyComponent = {
 
 **选项 API 生命周期选项和组合式 API 之间的映射**
 
-  - ~~`beforeCreate`~~ -> use `setup()`
-  - ~~`created`~~ -> use `setup()`
+  - ~~`beforeCreate`~~ -> 使用 `setup()`
+  - ~~`created`~~ -> 使用 `setup()`
   - `beforeMount` -> `onBeforeMount`
   - `mounted` -> `onMounted`
   - `beforeUpdate` -> `onBeforeUpdate`
@@ -213,19 +212,19 @@ const MyComponent = {
 ```ts
 const MyComponent = {
   setup() {
-    const internalInstance = getCurrentInstance() // works
+    const internalInstance = getCurrentInstance() // 工作
 
-    const id = useComponentId() // works
+    const id = useComponentId() // 工作
 
     const handleClick = () => {
-      getCurrentInstance() // doesn't work
-      useComponentId() // doesn't work
+      getCurrentInstance() // 不工作
+      useComponentId() // 不工作
 
-      internalInstance // works
+      internalInstance // 工作
     }
 
     onMounted(() => {
-      getCurrentInstance() // works
+      getCurrentInstance() // 工作
     })
 
     return () =>
