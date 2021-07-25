@@ -118,90 +118,90 @@ app.mixin({
 
 设置为 `true` 以在浏览器开发工具的 performance/timeline 面板中启用对组件初始化、编译、渲染和更新的性能追踪。只适用于开发模式和支持 [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API 的浏览器。
 
-<!-- TODO: translation -->
 ## compilerOptions <Badge text="3.1+" />
 
-- **Type:** `Object`
+- **类型**：`Object`
 
-Configure runtime compiler options. Values set on this object will be passed to the in-browser template compiler and affect every component in the configured app. Note you can also override these options on a per-component basis using the [`compilerOptions` option](/api/options-misc.html#compileroptions).
+配置运行时编译器的选项。设置在这个对象上的值将会被传入浏览器内的模板编译器，并影响配置过的应用内的每个组件。注意，你也可以使用 [`compilerOptions` 选项](/api/options-misc.html#compileroptions)在每个组件的基础上覆写这些选项。
 
-::: tip Important
-This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). If you are using the runtime-only build with a build setup, compiler options must be passed to `@vue/compiler-dom` via build tool configurations instead.
+::: tip 重要
+该配置选项只在完整的构建中生效 (例如可以在浏览器中编译模板的独立版 `vue.js`)。如果你使用的是附带额外构建设置的仅运行时版，编译器选项必须传入 `@vue/compiler-dom` 构建工具的配置来替代
 
-- For `vue-loader`: [pass via the `compilerOptions` loader option](https://vue-loader.vuejs.org/options.html#compileroptions). Also see [how to configure it in `vue-cli`](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+- 对 `vue-loader` 来说：[通过 `compilerOptions` loader 选项传入](https://vue-loader.vuejs.org/options.html#compileroptions)。也可以查阅 [`vue-cli` 中的配置方式](https://cli.vuejs.org/zh/guide/webpack.html#修改-loader-选项)。
 
-- For `vite`: [pass via `@vitejs/plugin-vue` options](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-dom).
+- 对 `vite` 来说：[通过 `@vitejs/plugin-vue` 选项传入](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-dom)。
 :::
 
 ### compilerOptions.isCustomElement
 
-- **Type:** `(tag: string) => boolean`
+- **类型**：`(tag: string) => boolean`
 
-- **Default:** `undefined`
+- **默认值**：`undefined`
 
-- **Usage:**
+- **用法**：
 
 ```js
-// any element starting with 'ion-' will be recognized as a custom one
+// 任何 'ion-' 开头的元素都会被识别为自定义元素
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 ```
 
-Specifies a method to recognize custom elements defined outside of Vue (e.g., using the Web Components APIs). If component matches this condition, it won't need local or global registration and Vue won't throw a warning about an `Unknown custom element`.
+指定一个方法来识别 Vue 以外 (例如通过 Web Components API) 定义的自定义元素。如果组件匹配了这个条件，就不需要本地或全局注册，Vue 也不会抛出 `Unknown custom element` 的警告。
 
-> Note that all native HTML and SVG tags don't need to be matched in this function - Vue parser performs this check automatically.
+> 注意所有的原生 HTML 和 SVG 标记不需要被这个函数匹配——Vue 的解析器会自动检测它们。
+
 ### compilerOptions.whitespace
 
-- **Type:** `'condense' | 'preserve'`
+- **类型**：`'condense' | 'preserve'`
 
-- **Default:** `'condense'`
+- **默认值**：`'condense'`
 
-- **Usage:**
+- **用法**：
 
 ```js
 app.config.compilerOptions.whitespace = 'preserve'
 ```
 
-By default, Vue removes/condenses whitespaces between template elements to produce more efficient compiled output:
+默认情况下，Vue 会移除/压缩模板元素之间的空格以产生更高效的编译结果：
 
-1. Leading / ending whitespaces inside an element are condensed into a single space
-2. Whitespaces between elements that contain newlines are removed
-3. Consecutive whitespaces in text nodes are condensed into a single space
+1. 元素内的多个开头/结尾空格会被压缩成一个空格
+2. 元素之间的包括折行在内的多个空格会被移除
+3. 文本结点之间可被压缩的空格都会被压缩成为一个空格
 
-Setting the value to `'preserve'` will disable (2) and (3).
+设置 `'preserve'` 的值可以禁用 (2) 和 (3)。
 
 ### compilerOptions.delimiters
 
-- **Type:** `Array<string>`
+- **类型**：`Array<string>`
 
-- **Default:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
+- **默认值**：`{{ "['\u007b\u007b', '\u007d\u007d']" }}`
 
-- **Usage:**
+- **用法**：
 
 ```js
-// Delimiters changed to ES6 template string style
+// 将边界符改变为 ES6 模板字符串风格
 app.config.compilerOptions.delimiters = ['${', '}']    
 ```
 
-Sets the delimiters used for text interpolation within the template.
+设置用在模板内的文本插值的边界符。
 
-Typically this is used to avoid conflicting with server-side frameworks that also use mustache syntax.
+这个选项一般会用于避免和同样使用大括号语法的服务端框架发生冲突。
 
 ### compilerOptions.comments
 
-- **Type:** `boolean`
+- **类型**：`boolean`
 
-- **Default:** `false`
+- **默认值**：`false`
 
-- **Usage:**
+- **用法**：
 
 ```js
 app.config.compilerOptions.comments = true
 ```
 
-By default, Vue will remove HTML comments inside templates in production. Setting this option to `true` will force Vue to preserve comments even in production. Comments are always preserved during development.
+默认情况下，Vue 会在生产环境下移除模板内的 HTML 注释。将这个选项设置为 `true` 可以强制 Vue 在生产环境下保留注释。而在开发环境下注释是始终被保留的。
 
-This option is typically used when Vue is used with other libraries that rely on HTML comments.
+这个选项一般会用于依赖 HTML 注释的其它库和 Vue 配合使用。
 
 ## isCustomElement <Badge text="deprecated" type="warning"/>
 
-Deprecated in 3.1.0. Use [`compilerOptions.isCustomElement`](#compileroptions-iscustomelement) instead.
+从 3.1.0 开始被废弃。请换用 [`compilerOptions.isCustomElement`](#compileroptions-iscustomelement)。
