@@ -122,12 +122,12 @@ app.mixin({
 
 - **类型**：`Object`
 
-配置运行时编译器的选项。设置在这个对象上的值将会被传入浏览器内的模板编译器并影响配置过的该应用内的每个组件。注意你也可以使用 [`compilerOptions` 选项](/api/options-misc.html#compileroptions)在每个组件的基础上覆写这些选项。
+配置运行时编译器的选项。设置在这个对象上的值将会被传入浏览器内的模板编译器，并影响配置过的应用内的每个组件。注意，你也可以使用 [`compilerOptions` 选项](/api/options-misc.html#compileroptions)在每个组件的基础上覆写这些选项。
 
 ::: tip 重要
-该配置选项只在完整的构建中生效 (例如可以在浏览器中编译模板的独立版 `vue.js`)。如果你使用的是附带额外构建设置的仅运行时版，编译器选项必须传入 `@vue/compiler-dom` 构建工具的配置取而代之。
+该配置选项只在完整的构建中生效 (例如可以在浏览器中编译模板的独立版 `vue.js`)。如果你使用的是附带额外构建设置的仅运行时版，编译器选项必须传入 `@vue/compiler-dom` 构建工具的配置来替代
 
-- 对 `vue-loader` 来说：[通过 `compilerOptions` loader 选项传入](https://vue-loader.vuejs.org/options.html#compileroptions)。也可以查阅 [`vue-cli` 中的配置方式](https://cli.vuejs.org/zh/guide/webpack.html#%E4%BF%AE%E6%94%B9-loader-%E9%80%89%E9%A1%B9)。
+- 对 `vue-loader` 来说：[通过 `compilerOptions` loader 选项传入](https://vue-loader.vuejs.org/options.html#compileroptions)。也可以查阅 [`vue-cli` 中的配置方式](https://cli.vuejs.org/zh/guide/webpack.html#修改-loader-选项)。
 
 - 对 `vite` 来说：[通过 `@vitejs/plugin-vue` 选项传入](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-passing-options-to-vuecompiler-dom)。
 :::
@@ -167,7 +167,7 @@ app.config.compilerOptions.whitespace = 'preserve'
 2. 元素之间的包括折行在内的多个空格会被移除
 3. 文本结点之间可被压缩的空格都会被压缩成为一个空格
 
-设置 `'preserve'` 的值可以关掉 (2) 和 (3)。
+设置 `'preserve'` 的值可以禁用 (2) 和 (3)。
 
 ### compilerOptions.delimiters
 

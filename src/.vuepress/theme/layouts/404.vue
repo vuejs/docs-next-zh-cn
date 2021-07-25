@@ -4,7 +4,7 @@
       <h1>404</h1>
 
       <blockquote>
-        <p>糟了！这个页面不存在。</p>
+        <p>糟糕！这个页面不存在。</p>
       </blockquote>
 
       <p v-show="isTranslation">

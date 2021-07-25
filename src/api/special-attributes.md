@@ -67,9 +67,9 @@
 
 - **在原生元素上使用** <Badge text="3.1+" />
 
-  当 `is` attribute 被用在一个原生 HTML 元素上时，它会被作为一个[自定义的内建元素](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)进行转译，这是一个原生 web platform 的特性。
+  当 `is` attribute 被用在一个原生 HTML 元素上时，它会被作为一个[自定义的内置元素](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)进行转译，这是一个原生 web platform 的特性。
 
-  不过，如[解析 DOM 模板时的注意事项]/guide/component-basics.html#%E8%A7%A3%E6%9E%90-dom-%E6%A8%A1%E6%9D%BF%E6%97%B6%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)里解释的，有的时候你可能需要 Vue 将一个原生元素替换为一个 Vue 组件。这是你可以把 `is` attribute 的值加上 `vue:` 前缀，这样 Vue 就会将这些元素换为 Vue 组件进行渲染：
+  不过，如[解析 DOM 模板时的注意事项]/guide/component-basics.html#解析-dom-模板时的注意事项)里解释的，有的时候你可能需要 Vue 将一个原生元素替换为一个 Vue 组件。这是你可以把 `is` attribute 的值加上 `vue:` 前缀，这样 Vue 就会将这些元素换为 Vue 组件进行渲染：
 
   ```html
   <table>
