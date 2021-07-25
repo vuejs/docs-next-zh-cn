@@ -2,18 +2,17 @@
   <div class="theme-container">
     <div class="theme-default-content">
       <h1>404</h1>
-      <!-- TODO: translation -->
 
       <blockquote>
-        <p>Whoops! This page doesn't exist.</p>
+        <p>糟了！这个页面不存在。</p>
       </blockquote>
 
       <p v-show="isTranslation">
-        New pages are added to the documentation all the time. This page might not be included in all of the translations yet.
+        我们的文档会不断产生新的页面。该页面可能还没有被所有的译者加入其中。
       </p>
 
       <RouterLink to="/">
-        Take me home.
+        回到首页。
       </RouterLink>
     </div>
   </div>
