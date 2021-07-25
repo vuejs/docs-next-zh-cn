@@ -4,7 +4,7 @@
 
 - **类型：**`string`
 
-- **详细：**
+- **详情：**
 
   允许组件模板递归地调用自身。注意，组件在全局用 [`app.component`](/api/application-api.html#component) 注册时，全局 ID 自动作为组件的 name。
 
@@ -16,7 +16,7 @@
 
 - **默认：**`true`
 
-- **详细：**
+- **详情：**
 
   默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上。当撰写包裹一个目标元素或另一个组件的组件时，这可能不会总是符合预期行为。通过设置 `inheritAttrs` 到 `false`，这些默认行为将会被去掉。而通过实例 property `$attrs` 可以让这些 attribute 生效，且可以通过 `v-bind` 显性的绑定到非根元素上。
 
@@ -42,16 +42,15 @@
 
 -  **参考**[禁用 Attribute 继承](../guide/component-attrs.html#禁用-attribute-继承)
 
-<!-- TODO: translation -->
 ## compilerOptions <Badge text="3.1+" />
 
-- **Type:** `Object`
+- **类型：**`Object`
 
-- **Details:**
+- **详情：**
 
-  This is the component-level equivalent of the [app-level `compilerOptions` config](/api/application-config.html#compileroptions).
+  这是与[应用级别的 `compilerOptions` 配置](/api/application-config.html#compileroptions)相对应的组件级别配置。
 
-- **Usage:**
+- **用法：**
 
   ```js
   const Foo = {
@@ -63,10 +62,10 @@
   }
   ```
 
-  ::: tip Important
-  Similar to the app-level `compilerOptions` config, this option is only respected when using the full build with in-browser template compilation.
+  ::: tip 重要
+  和应用级别的 `compilerOptions` 配置类似，该选项只会在使用完整的构建在浏览器内编译模板时生效。
   :::
 
 ## delimiters <Badge text="deprecated" type="warning" />
 
-Deprecated in 3.1.0. Use `compilerOptions.delimiters` instead.
+从 3.1.0 开始被废弃。请换用 `compilerOptions.delimiters`。
