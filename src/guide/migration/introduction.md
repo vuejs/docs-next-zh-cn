@@ -42,8 +42,7 @@
 
 ## 迁移构建
 
-<!-- TODO: translation -->
-If you have an existing Vue 2 project or library that you intend to upgrade to Vue 3, we provide a build of Vue 3 that offers Vue 2 compatible APIs. Check out the [Migration Build](./migration-build.html) page for more details.
+如果你有基于 Vue 2 的项目或者库，它要升级到 Vue 3，我们提供了与 Vue 2 兼容 API 的 Vue 3 构建，查看[迁移构建](./migration-build.html)获取完整的细节。
 
 ## 值得注意的新特性
 
