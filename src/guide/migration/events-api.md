@@ -60,16 +60,15 @@ export default {
 
 [迁移构建标记：`INSTANCE_EVENT_EMITTER`](migration-build.html#兼容性配置)
 
-<!-- TODO: translation -->
-In Vue 3, it is no longer possible to use these APIs to listen to a component's own emitted events from within a component. There is no migration path for that use case.
+在 Vue 3 中，借助这些 API 从一个组件内部监听其自身触发的事件已经不再可能了。该用例没有办法迁移。
 
-### Root Component Events
+### 根组件事件
 
-Static event listeners can be added to the root component by passing them as props to `createApp`:
+静态的事件监听器可以通过 prop 的形式传递给 `createApp` 以添加到根组件中。
 
 ```js
 createApp(App, {
-  // Listen for the 'expand' event
+  // 监听 'expand' 事件
   onExpand() {
     console.log('expand')
   }
@@ -96,11 +95,10 @@ export default {
 
 它提供了与 Vue 2 相同的事件触发器 API。
 
-<!-- TODO: translation -->
-In most circumstances, using a global event bus for communicating between components is discouraged. While it is often the simplest solution in the short term, it almost invariably proves to be a maintenance headache in the long term. Depending on the circumstances, there are various alternatives to using an event bus:
+在绝大多数情况下，不鼓励使用全局的 event bus 在组件之间进行通信。虽然在短期内往往是最简单的解决方案，但从长期来看，它维护起来总是令人头疼。根据具体情况来看，有多种 event bus 的替代方案：
 
-* [Props](/guide/component-basics.html#passing-data-to-child-components-with-props) and [events](/guide/component-basics.html#listening-to-child-components-events) should be your first choice for parent-child communication. Siblings can communicate via their parent.
-* [Provide and inject](/guide/component-provide-inject.html) allow a component to communicate with its slot contents. This is useful for tightly-coupled components that are always used together.
-* `provide`/`inject` can also be used for long-distance communication between components. It can help to avoid 'prop drilling', where props need to be passed down through many levels of components that don't need those props themselves.
-* Prop drilling can also be avoided by refactoring to use slots. If an interim component doesn't need the props then it might indicate a problem with separation of concerns. Introducing a slot in that component allows the parent to create the content directly, so that props can be passed without the interim component needing to get involved.
-* [Global state management](/guide/state-management.html), such as [Vuex](https://next.vuex.vuejs.org/).
+* 对于父子组件之间的沟通，[Prop](/guide/component-basics.html#passing-data-to-child-components-with-props) 和 [event](/guide/component-basics.html#listening-to-child-components-events) 应该是你的首选。兄弟节点可以通过它们的父节点通信。
+* [Provide 和 inject](/guide/component-provide-inject.html) 允许一个组件与它的插槽内容进行通信。这对于总是一起使用的紧密耦合的组件非常有用。
+* `provide`/`inject` 也能够用于组件之间的远距离通信。它可以帮助避免 'prop drilling'，即 prop 需要通过许多层级的组件传递下去，但这些组件本身可能并不需要那些 prop。
+* Prop drilling 也可以通过重构以使用插槽来避免。 如果一个中间组件不需要某些 prop，那么表明它可能存在关注点分离的问题。在该类组件中使用 slot 可以允许父节点直接为它创建内容，因此 prop 可以被直接传递而不需要中间组件的参与。
+* [全局状态管理](/guide/state-management.html)，比如 [Vuex](https://next.vuex.vuejs.org/zh/index.html)。
