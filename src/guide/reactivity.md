@@ -230,7 +230,7 @@ console.log(vm.sum) // 6
 
 `data` 返回的对象将被包裹在响应式代理中，并存储为 `this.$data`。Property `this.val1` 和 `this.val2` 分别是 `this.$data.val1` 和 `this.$data.val2` 的别名，因此它们通过相同的代理。
 
-Vue 将把 `sum` 的函数包裹在一个副作用中。当我们试图访问 `this.sum` 时，它将运行该副作用来计算数值。`$data` 周围的响应式代理将追踪 property `val1` 和 `val2` 在该副作用运行时的读取。
+Vue 将把 `sum` 的函数包裹在一个副作用中。当我们试图访问 `this.sum` 时，它将运行该副作用来计算数值。包裹 `$data` 的响应式代理将会追踪到，当副作用运行时，property `val1` 和 `val2` 被读取了。
 
 从 Vue 3 开始，我们的响应性现在可以在一个[独立包](https://github.com/vuejs/vue-next/tree/master/packages/reactivity)中使用。将 `$data` 包裹在一个代理中的函数被称为 [`reactive`](/api/basic-reactivity.html#reactive)。我们可以自己直接调用这个函数，允许我们在不需要使用组件的情况下将一个对象包裹在一个响应式代理中。
 
