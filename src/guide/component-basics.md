@@ -403,14 +403,13 @@ app.component('alert-box', {
 
 ## 解析 DOM 模板时的注意事项
 
-<!-- TODO: translation -->
-If you are writing your Vue templates directly in the DOM, Vue will have to retrieve the template string from the DOM. This leads to some caveats due to browsers' native HTML parsing behavior.
+如果想在 DOM 中直接书写 Vue 模板，Vue 不得不从 DOM 中获取字符串。这会因为浏览器的原生 HTML 解析行为而导致一些小问题。
 
 :::tip
-It should be noted that the limitations discussed below only apply if you are writing your templates directly in the DOM. They do NOT apply if you are using string templates from the following sources:
+应该注意的是，下面讨论的限制仅适用于直接在 DOM 中编写模板的情况。它们不适用于以下来源的字符串模板：
 
-- String templates (e.g. `template: '...'`)
-- [Single-file (`.vue`) components](single-file-component.html)
+- 字符串模板 (比如 `template: '...'`)
+- [单文件组件](single-file-component.html)
 - `<script type="text/x-template">`
 :::
 
@@ -432,9 +431,8 @@ It should be noted that the limitations discussed below only apply if you are wr
 </table>
 ```
 
-<!-- TODO: translation -->
 :::tip
-When used on native HTML elements, the value of `is` must be prefixed with `vue:` in order to be interpreted as a Vue component. This is required to avoid confusion with native [customized built-in elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example).
+当它用于原生 HTML 元素时，`is` 的值必须以 `vue:` 开头，才可以被解释为 Vue 组件。这是避免和原生[自定义元素](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)混淆。
 :::
 
 ### Case Insensitivity
