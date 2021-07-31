@@ -201,7 +201,7 @@ import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent({
   // 工厂函数
-  loader: () => import('./Foo.vue')
+  loader: () => import('./Foo.vue'),
   // 加载异步组件时要使用的组件
   loadingComponent: LoadingComponent,
   // 加载失败时要使用的组件
