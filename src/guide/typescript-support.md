@@ -76,7 +76,7 @@ vue add typescript
 </script>
 ```
 
-或者，如果你想将 TypeScript 与 [JSF `render` 函数](/guide/render-function.html#jsx)结合起来：
+或者，如果你想将 TypeScript 与 [JSX `render` 函数](/guide/render-function.html#jsx)结合起来：
 
 ```html
 <script lang="tsx">
