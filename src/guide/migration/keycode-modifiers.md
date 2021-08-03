@@ -49,7 +49,8 @@ Vue.config.keyCodes = {
 <input v-on:keyup.page-down="nextPage">
 
 <!-- 同时匹配 q 和 Q -->
-<input v-on:keypress.q="quit">```
+<input v-on:keypress.q="quit">
+```
 
 因此，这意味着 `config.keyCodes` 现在也已弃用，不再受支持。
 
@@ -57,16 +58,15 @@ Vue.config.keyCodes = {
 
 对于那些在代码库中使用 `keyCode` 的用户，我们建议将它们转换为对应的 kebab-cased (短横线) 命名。
 
-<!-- TODO: translation -->
-The keys for some punctuation marks can just be included literally. e.g. For the `,` key:
+对于那些包含字面量标点符号的按键，比如 `,` 键：
 
 ```html
 <input v-on:keypress.,="commaPress">
 ```
 
-Limitations of the syntax prevent certain characters from being matched, such as `"`, `'`, `/`, `=`, `>`, and `.`. For those characters you should check `event.key` inside the listener instead.
+语法的限制导致某些字符无法被匹配，比如 `"`，`'`，`/`，`=`，`>` 和 `.`。对于这些字符，你应该在监听器内使用 `event.key` 代替。
 
-[Migration build flags:](migration-build.html#兼容性配置)
+[迁移构建标记:](migration-build.html#兼容性配置)
 
 - `CONFIG_KEY_CODES`
 - `V_ON_KEYCODE_MODIFIER`
