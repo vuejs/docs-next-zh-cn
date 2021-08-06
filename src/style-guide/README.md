@@ -34,14 +34,14 @@ sidebar: auto
 
 ## 优先级 A 的规则：必要的 <span class="hide-from-sidebar">(规避错误)</span>
 
-### 组件名为多个单词<sup data-p="a">必要</sup>
+### 组件名为多个单词 <sup data-p="a">必要</sup>
 
-**组件名应该始终是多个单词的，根组件 `App` 以及 `<transition>`、`<component>` 之类的 Vue 内置组件除外。**
+**组件名应该始终由多个单词组成，除了根组件 `App`，以及 `<transition>`、`<component>` 之类的 Vue 内置组件。**
 
-这样做可以避免跟现有的以及未来的 HTML 元素[相冲突](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
+这样做可以跟现有的，以及未来的 HTML 元素[避免冲突](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 app.component('todo', {
@@ -58,7 +58,7 @@ export default {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 app.component('todo-item', {
@@ -74,30 +74,30 @@ export default {
 ```
 </div>
 
-### Prop 定义<sup data-p="a">必要</sup>
+### Prop 定义 <sup data-p="a">必要</sup>
 
-**Prop 定义应尽量详细**
+**Prop 定义应该尽量详细**
 
-在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。
+在已提交的代码中，prop 的定义应该尽量详细，至少指定其类型。
 
 ::: details 详解
-细致的 [prop 定义](/guide/component-props.html#prop-验证)有两个好处：
+细致的 [prop 定义](/guide/component-props.html#prop-验证)有两个优势：
 
-- 它们写明了组件的 API，所以很容易看懂组件的用法；
-- 在开发环境下，如果向一个组件提供格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
+- 它们写明了组件的 API，所以组件的设计用法可以通俗易懂；
+- 在开发环境下，如果为一个组件提供了格式不正确的 prop，Vue 将会告警，以帮助你捕获潜在的错误来源。
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
-// 这样做只有开发原型系统时可以接受
+// 只有在原型开发时，这么做才能被接受
 props: ['status']
 ```
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 props: {
@@ -125,7 +125,7 @@ props: {
 ```
 </div>
 
-### 为 `v-for` 设置 key 值<sup data-p="a">必要</sup>
+### 为 `v-for` 设置 key 值 <sup data-p="a">必要</sup>
 
 **总是用 `key` 配合 `v-for`**
 
