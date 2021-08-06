@@ -127,9 +127,9 @@ props: {
 
 ### 为 `v-for` 设置 key 值 <sup data-p="a">必要</sup>
 
-**总是用 `key` 配合 `v-for`**
+**始终以 `key` 配合 `v-for`。**
 
-在组件上总是必须用 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。甚至在元素上维护可预测的行为，比如动画中的[对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/) ，也是一种好的做法。
+在组件上必须始终以 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。即使是在元素上，比如动画中的[对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/) ，维持可预测的行为也是一种好的实践。
 
 ::: details 详解
 假设你有一个待办事项列表：
@@ -151,15 +151,15 @@ data() {
 }
 ```
 
-然后你把它们按照字母顺序排序。在更新 DOM 的时候，Vue 将会优化渲染把可能的 DOM 变更降到最低。即可能删掉第一个待办事项元素，然后把它重新加回到列表的最末尾。
+然后你把它们按照字母表排序。在更新 DOM 的时候，Vue 将会优化渲染，尽可能地将 DOM 操作的代价降到最低。言下之意可能是，删掉第一个待办事项元素，然后把它重新加回到列表的最末尾。
 
-这里的问题在于，不要删除仍然会留在 DOM 中的元素。比如你想使用 `<transition-group>` 给列表加过渡动画，或想在被渲染元素是 `<input>` 时保持聚焦。在这些情况下，为每一个项目添加一个唯一的键值 (比如 `:key="todo.id"`) 将会让 Vue 知道如何使行为更容易预测。
+这里的问题在于，可能会存在某种情况，不删除将会保留在 DOM 中的元素会成为重要的一环。比如，你想使用 `<transition-group>` 给列表排序动画化，或想在被渲染元素是 `<input>` 时保持聚焦。在这些情况下，为每一个项目添加一个唯一的键值 (比如 `:key="todo.id"`) 将会让 Vue 知道如何使行为更容易预测。
 
-根据我们的经验，最好*始终*添加一个唯一的键值，以便你和你的团队永远不必担心这些极端情况。也在少数对性能有严格要求的情况下，为了避免对象固化，你可以刻意做一些非常规的处理。
+根据我们的经验，最好*始终*添加一个唯一的键值，以便于你和你的团队永远不必担心这些极端情况。也在少数对性能有严格要求的情况下，为了避免对象固化，你可以刻意做一些非常规的处理。
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <ul>
@@ -171,7 +171,7 @@ data() {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <ul>
@@ -185,18 +185,17 @@ data() {
 ```
 </div>
 
-### 避免 `v-if` 和 `v-for` 一起使用<sup data-p="a">必要</sup>
+### 避免 `v-if` 和 `v-for` 一起使用 <sup data-p="a">必要</sup>
 
-**永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上。**
+**永远不要在一个元素上同时使用 `v-if` 和 `v-for`。**
 
 一般我们在两种常见的情况下会倾向于这样做：
 
-- 为了过滤一个列表中的项目 (比如 `v-for="user in users" v-if="user.isActive"`)。在这种情形下，请将 `users` 替换为一个计算属性 (比如 `activeUsers`)，让其返回过滤后的列表。
+- 为了对列表中的项目进行过滤 (比如 `v-for="user in users" v-if="user.isActive"`)。在这种情形下，请将 `users` 替换为一个计算属性 (比如 `activeUsers`)，返回过滤后的列表。
 
 - 为了避免渲染本应该被隐藏的列表 (比如 `v-for="user in users" v-if="shouldShowUsers"`)。这种情形下，请将 `v-if` 移动至容器元素上 (比如 `ul`、`ol`)。
 
 ::: details 详解
-
 当 Vue 处理指令时，`v-if` 比 `v-for` 具有更高的优先级，所以这个模板：
 
 ```html
@@ -211,9 +210,9 @@ data() {
 </ul>
 ```
 
-这将抛出一个错误，因为 `v-if` 指令将首先被使用，而迭代的变量 `user` 此时不存在。
+将抛出一个错误，因为 `v-if` 指令将首先被执行，而迭代的变量 `user` 此时不存在。
 
-这可以通过迭代一个计算过的 property 来解决，就像这样：
+这可以通过遍历一个计算属性来解决，像这样：
 
 ```js
 computed: {
@@ -234,7 +233,7 @@ computed: {
 </ul>
 ```
 
-另外，我们也可以使用 `<template>` 标签和 `v-for` 来包装 `<li>` 元素。
+另外，我们也可以使用 `<template>` 标签和 `v-for` 来包裹 `<li>` 元素。
 
 ```html
 <ul>
@@ -249,7 +248,7 @@ computed: {
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <ul>
@@ -266,7 +265,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <ul>
@@ -290,7 +289,7 @@ computed: {
 ```
 </div>
 
-### 为组件样式设置作用域<sup data-p="a">必要</sup>
+### 为组件样式设置作用域 <sup data-p="a">必要</sup>
 
 **对于应用来说，顶层 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
 
