@@ -291,23 +291,22 @@ computed: {
 
 ### 为组件样式设置作用域 <sup data-p="a">必要</sup>
 
-**对于应用来说，顶层 `App` 组件和布局组件中的样式可以是全局的，但是其它所有组件都应该是有作用域的。**
+**对于应用来说，样式在顶层 `App` 组件和布局组件中可以是全局的，但是在其它所有组件中都应该是有作用域的。**
 
-这条规则只和[单文件组件](../guide/single-file-component.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。设置作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html)，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
+这条规则只和[单文件组件](../guide/single-file-component.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) 实现，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
 
-**不管怎样，对于组件库，我们应该更倾向于选用基于 class 的策略而不是 `scoped` attribute。**
+**不管怎样，对于组件库来说，我们应该更倾向于选用基于 class 的策略，而不是 `scoped` attribute。**
 
-这让覆写内部样式更容易：使用了人类可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
+这会让覆写内部样式变得更容易：使用了人类可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
 
 ::: details 详解
-如果你和其他开发者一起开发一个大型工程，或有时引入三方 HTML/CSS (比如来自 Auth0)，设置一致的作用域会确保你的样式只会运用在它们想要作用的组件上。
+如果你正在和其他开发者一起开发一个大型工程，或有时引入三方 HTML/CSS (比如来自 Auth0)，设置一致的作用域会确保你的样式只会运用在它们想要作用的组件上。
 
-不止要使用 `scoped` attribute，使用唯一的 class 名可以帮你确保那些三方库的 CSS 不会运用在你自己的 HTML 上。比如许多工程都使用了 `button`、`btn` 或 `icon` class 名，所以即便你不使用类似 BEM 的策略，添加一个 app 专属或组件专属的前缀 (比如 `ButtonClose-icon`) 也可以提供很多保护。
-
+除了 `scoped` attribute 以外，使用唯一的 class 名可以帮你确保那些三方库的 CSS 不会运用在你自己的 HTML 上。比如说，许多工程都使用了 `button`、`btn` 或 `icon` class 名，所以即便你不使用类似 BEM 的策略，添加一个 app 专属或组件专属的前缀 (比如 `ButtonClose-icon`) 也可以提供一些保护。
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <template>
@@ -323,7 +322,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <template>
@@ -380,22 +379,20 @@ computed: {
 ```
 </div>
 
-### 私有 property 名称<sup data-p="a">必要</sup>
+### 私有 property 名称 <sup data-p="a">必要</sup>
 
-**使用模块作用域保持不允许外部访问的函数的私有性。如果无法做到这一点，就始终为插件、mixin 等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
+**使用模块作用域来保证外部无法访问到私有函数。如果无法做到这一点，就始终为插件、mixin 等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
 
 ::: details 详解
-
 Vue 使用 `_` 前缀来定义其自身的私有 property，所以使用相同的前缀 (比如 `_update`) 有覆写实例 property 的风险。即便你检查确认 Vue 当前版本没有用到这个 property 名，也不能保证和将来的版本没有冲突。
 
 对于 `$` 前缀来说，其在 Vue 生态系统中的目的是暴露给用户的一个特殊的实例 property，所以把它用于*私有* property 并不合适。
 
 不过，我们推荐把这两个前缀结合为 `$_`，作为一个用户定义的私有 property 的约定，以确保不会和 Vue 自身相冲突。
-
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 const myGreatMixin = {
@@ -444,7 +441,7 @@ const myGreatMixin = {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 const myGreatMixin = {
@@ -486,7 +483,7 @@ export default myGreatMixin
 当你需要编辑一个组件或查阅一个组件的用法时，可以更快速的找到它。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 app.component('TodoList', {
@@ -500,7 +497,7 @@ app.component('TodoItem', {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```
 components/
@@ -522,7 +519,7 @@ components/
 单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。然而，混用文件命名方式有的时候会导致大小写不敏感的文件系统的问题，这也是横线连接命名同样完全可取的原因。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```
 components/
@@ -536,7 +533,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```
 components/
@@ -589,7 +586,7 @@ components/
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```
 components/
@@ -600,7 +597,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```
 components/
@@ -631,7 +628,7 @@ components/
 这不意味着组件只可用于一个单页面，而是*每个页面*只使用一次。这些组件永远不接受任何 prop，因为它们是为你的应用定制的，而不是它们在你的应用中的上下文。如果你发现有必要添加 prop，那就表明这实际上是一个可复用的组件，只是*目前*在每个页面里只使用一次。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```
 components/
@@ -641,7 +638,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```
 components/
@@ -687,7 +684,7 @@ components/
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```
 components/
@@ -704,7 +701,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```
 components/
@@ -772,7 +769,7 @@ components/
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```
 components/
@@ -786,7 +783,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```
 components/
@@ -808,7 +805,7 @@ components/
 不幸的是，HTML 并不支持自闭合的自定义元素——只有[官方的“空”元素](https://www.w3.org/TR/html/syntax.html#void-elements)。所以上述策略仅适用于进入 DOM 之前 Vue 的模板编译器能够触达的地方，然后再产出符合 DOM 规范的 HTML。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <!-- 在单文件组件、字符串模板和 JSX 中 -->
@@ -822,7 +819,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <!-- 在单文件组件、字符串模板和 JSX 中 -->
@@ -850,7 +847,7 @@ PascalCase 相比 kebab-case 有一些优势：
 还请注意，如果你已经是 kebab-case 的重度用户，那么与 HTML 保持一致的命名约定且在多个项目中保持相同的大小写规则就可能比上述优势更为重要了。在这些情况下，**在所有的地方都使用 kebab-case 同样是可以接受的**。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <!-- 在单文件组件和字符串模板中 -->
@@ -869,7 +866,7 @@ PascalCase 相比 kebab-case 有一些优势：
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <!-- 在单文件组件和字符串模板中 -->
@@ -905,7 +902,7 @@ PascalCase 相比 kebab-case 有一些优势：
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 app.component('myComponent', {
@@ -933,7 +930,7 @@ export default {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 app.component('MyComponent', {
@@ -966,7 +963,7 @@ export default {
 编辑器中的自动补全已经让书写长命名的代价非常之低了，而其带来的明确性却是非常宝贵的。不常用的缩写尤其应该避免。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```
 components/
@@ -976,7 +973,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```
 components/
@@ -992,7 +989,7 @@ components/
 我们单纯的遵循每个语言的约定。在 JavaScript 中更自然的是 camelCase。而在 HTML 中则是 kebab-case。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 props: {
@@ -1006,7 +1003,7 @@ props: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 props: {
@@ -1026,7 +1023,7 @@ props: {
 在 JavaScript 中，用多行分隔对象的多个 property 是很常见的最佳实践，因为这样更易读。模板和 [JSX](../guide/render-function.html#jsx) 值得我们做相同的考虑。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
@@ -1038,7 +1035,7 @@ props: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <img
@@ -1063,7 +1060,7 @@ props: {
 复杂表达式会让你的模板变得不那么声明式。我们应该尽量描述应该出现的*是*什么，而非如何计算那个值。而且计算属性和方法使得代码可以重用。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 {{
@@ -1075,7 +1072,7 @@ props: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <!-- 在模板中 -->
@@ -1117,7 +1114,7 @@ computed: {
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 computed: {
@@ -1133,7 +1130,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 computed: {
@@ -1159,7 +1156,7 @@ computed: {
 在 HTML 中不带空格的 attribute 值是可以没有引号的，但这鼓励了大家在特征值里不写空格，导致可读性变差。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <input type=text>
@@ -1171,7 +1168,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <input type="text">
@@ -1187,7 +1184,7 @@ computed: {
 **指令缩写 (用 `:` 表示 `v-bind:`，`@` 表示 `v-on:` 和用 `#` 表示 `v-slot`) 应该要么都用要么都不用。**
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <input
@@ -1215,7 +1212,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <input
@@ -1373,7 +1370,7 @@ computed: {
 当你的组件开始觉得密集或难以阅读时，在多个 property 之间添加空行可以让其变得容易。在一些诸如 Vim 的编辑器里，这样格式化后的选项还能通过键盘被快速导航。
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 props: {
@@ -1436,7 +1433,7 @@ computed: {
 **[单文件组件](../guide/single-file-component.html)应该总是让 `<script>`、`<template>` 和 `<style>` 标签的顺序保持一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <style>/* ... */</style>
@@ -1458,7 +1455,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <!-- ComponentA.vue -->
@@ -1502,7 +1499,7 @@ computed: {
 :::
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```html
 <template>
@@ -1518,7 +1515,7 @@ button {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```html
 <template>
@@ -1542,7 +1539,7 @@ button {
 问题在于，这种做法在很多*简单*的场景下可能会更方便。但请当心，不要为了一时方便 (少写代码) 而牺牲数据流向的简洁性 (易于理解)。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 app.component('TodoItem', {
@@ -1585,7 +1582,7 @@ app.component('TodoItem', {
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 app.component('TodoItem', {
@@ -1639,7 +1636,7 @@ app.component('TodoItem', {
 Vuex 是 Vue 的[官方类 flux 实现](/guide/state-management.html#类-flux-状态管理的官方实现)，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](/guide/installation.html#vue-devtools) 支持)。
 
 <div class="style-example style-example-bad">
-<h4>反例</h4>
+<h4>反面例子</h4>
 
 ```js
 // main.js
@@ -1668,7 +1665,7 @@ const app = createApp({
 </div>
 
 <div class="style-example style-example-good">
-<h4>好例子</h4>
+<h4>正面例子</h4>
 
 ```js
 // store/modules/todos.js
