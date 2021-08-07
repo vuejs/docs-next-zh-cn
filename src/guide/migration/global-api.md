@@ -143,13 +143,13 @@ app.config.globalProperties.$http = () => {}
 
 [Migration build flag: `GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
 
-### `Vue.extend` Removed
+### `Vue.extend` 移除
 
-In Vue 2.x, `Vue.extend` was used to create a "subclass" of the base Vue constructor with the argument that should be an object containing component options. In Vue 3.x, we don't have the concept of component constructors anymore. Mounting a component should always use the `createApp` global API:
+在 Vue 2.x 中，`Vue.extend` 曾经被用于创建一个基于 Vue 构造函数的“子类”，其参数应为一个包含组件选项的对象。在 Vue 3.x 中，我们已经没有组件构造器的概念了。应该始终使用 `createApp` 这个全局 API 来挂载组件：
 
 ```js
-// before - Vue 2
-// create constructor
+// 之前 - Vue 2
+// 创建构造器
 const Profile = Vue.extend({
   template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
   data() {
@@ -160,12 +160,12 @@ const Profile = Vue.extend({
     }
   }
 })
-// create an instance of Profile and mount it on an element
+// 创建一个 Profile 的实例，并将它挂载到一个元素上
 new Profile().$mount('#mount-point')
 ```
 
 ```js
-// after - Vue 3
+// 之后 - Vue 3
 const Profile = {
   template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
   data() {
@@ -179,17 +179,17 @@ const Profile = {
 Vue.createApp(Profile).mount('#mount-point')
 ```
 
-#### Type Inference
+#### 类型推断
 
-In Vue 2, `Vue.extend` was also used for providing TypeScript type inference for the component options. In Vue 3, the `defineComponent` global API can be used in place of `Vue.extend` for the same purpose.
+在 Vue 2 中，`Vue.extend` 也被用来为组件选项提供 TypeScript 类型推断。在 Vue 3 中，为了达到相同的目的，`defineComponent` 全局 API 可以用来作为 `Vue.extend` 的替代方案。
 
-Note that although the return type of `defineComponent` is a constructor-like type, it is only used for TSX inference. At runtime `defineComponent` is largely a noop and will return the options object as-is.
+需要注意的是，虽然 `defineComponent` 的返回类型是一个类似构造器的类型，但是它的目的仅仅是为了 TSX 的推断。在运行时 `defineComponent` 里基本没有什么操作，只会原样返回该选项对象。
 
-#### Component Inheritance
+#### 组件继承
 
-In Vue 3, we strongly recommend favoring composition via [Composition API](/api/composition-api.html) over inheritance and mixins. If for some reason you still need component inheritance, you can use the [`extends` option](/api/options-composition.html#extends) instead of `Vue.extend`.
+在 Vue 3 中，我们强烈建议使用 [组合式 API](/api/composition-api.html) 来替代继承与 mixin。如果因为某种原因仍然需要使用组件继承，你可以使用 [`extends` 选项](/api/options-composition.html#extends) 来代替 `Vue.extend`。
 
-[Migration build flag: `GLOBAL_EXTEND`](migration-build.html#兼容性配置)
+[迁移构建标记：`GLOBAL_EXTEND`](migration-build.html#兼容性配置)
 
 ### 插件使用者须知
 
