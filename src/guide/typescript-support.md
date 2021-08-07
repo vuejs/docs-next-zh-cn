@@ -478,10 +478,9 @@ export default defineComponent({
 })
 ```
 
-<!-- TODO: translation -->
-### Typing Event Handlers
+### 为事件处理器添加类型
 
-When dealing with native DOM events, it might be useful to type the argument we pass to the handler correctly. Let's take a look at this example:
+在处理原生 DOM 事件的时候，正确地为处理函数的参数添加类型或许会是有用的。让我们看这个例子：
 
 ```vue
 <template>
@@ -491,9 +490,9 @@ When dealing with native DOM events, it might be useful to type the argument we 
 import { defineComponent } from 'vue'
 export default defineComponent({
   setup() {
-    // `evt` will be of type `any`
+    // `evt` 将会是 `any` 类型
     const handleChange = evt => {
-      console.log(evt.target.value) // TS will throw an error here
+      console.log(evt.target.value) // 此处 TS 将抛出异常
     }
     return { handleChange }
   }
@@ -501,7 +500,7 @@ export default defineComponent({
 </script>
 ```
 
-As you can see, without annotating the `evt` argument correctly, TypeScript will throw an error when we try to access the value of the `<input>` element. The solution is to cast the event target with a correct type:
+如你所见，在没有为 `evt` 参数正确地声明类型的情况下，当我们尝试获取 `<input>` 元素的值时，TypeScript 将抛出异常。解决方案是将事件的目标转换为正确的类型：
 
 ```ts
 const handleChange = (evt: Event) => {
