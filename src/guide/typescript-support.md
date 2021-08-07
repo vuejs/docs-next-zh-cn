@@ -500,7 +500,7 @@ export default defineComponent({
 </script>
 ```
 
-如你所见，在没有为 `evt` 参数正确地声明类型的情况下，当我们尝试获取 `<input>` 元素的值时，TypeScript 将抛出异常。解决方案是将 event target 转换为正确的类型：
+如你所见，在没有为 `evt` 参数正确地声明类型的情况下，当我们尝试获取 `<input>` 元素的值时，TypeScript 将抛出异常。解决方案是将事件的目标转换为正确的类型：
 
 ```ts
 const handleChange = (evt: Event) => {
