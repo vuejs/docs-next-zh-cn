@@ -183,7 +183,7 @@ Vue.createApp(Profile).mount('#mount-point')
 
 在 Vue 2 中，`Vue.extend` 也被用来为组件选项提供 TypeScript 类型推断。在 Vue 3 中，为了达到相同的目的，`defineComponent` 全局 API 可以用来作为 `Vue.extend` 的替代方案。
 
-需要注意的是，虽然 `defineComponent` 的返回类型是一个类似构造器的类型，但是它的目的仅仅是为了 TSX 的推断。在运行时 `defineComponent` 大部分是无操作的，且会将选项参数原样返回。
+需要注意的是，虽然 `defineComponent` 的返回类型是一个类似构造器的类型，但是它的目的仅仅是为了 TSX 的推断。在运行时 `defineComponent` 里基本没有什么操作，只会原样返回该选项对象。
 
 #### 组件继承
 
