@@ -293,16 +293,16 @@ computed: {
 
 **对于应用来说，样式在顶层 `App` 组件和布局组件中可以是全局的，但是在其它所有组件中都应该是有作用域的。**
 
-这条规则只和[单文件组件](../guide/single-file-component.html)有关。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) 实现，那是一个基于 class 的类似 [BEM](http://getbem.com/) 的策略，当然你也可以使用其它的库或约定。
+这条规则只适用于[单文件组件](../guide/single-file-component.html)。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) (一个基于 class 的，类似 [BEM](http://getbem.com/) 的策略) ，或者其它的库/约定来实现。
 
 **不管怎样，对于组件库来说，我们应该更倾向于选用基于 class 的策略，而不是 `scoped` attribute。**
 
-这会让覆写内部样式变得更容易：使用了人类可理解的 class 名称且没有太高的选择器优先级，而且不太会导致冲突。
+这会让覆写内部样式变得更容易：使用人类可理解的 class 名称，没有太高的选择器优先级，而且不太会导致冲突。
 
 ::: details 详解
-如果你正在和其他开发者一起开发一个大型工程，或有时引入三方 HTML/CSS (比如来自 Auth0)，设置一致的作用域会确保你的样式只会运用在它们想要作用的组件上。
+如果你正在和其他开发者一起开发一个大型工程，或有时候要引入三方 HTML/CSS (比如来自 Auth0)，设置一致的作用域能确保你的样式只会运用在它们想要作用的组件上。
 
-除了 `scoped` attribute 以外，使用唯一的 class 名可以帮你确保那些三方库的 CSS 不会运用在你自己的 HTML 上。比如说，许多工程都使用了 `button`、`btn` 或 `icon` class 名，所以即便你不使用类似 BEM 的策略，添加一个 app 专属或组件专属的前缀 (比如 `ButtonClose-icon`) 也可以提供一些保护。
+除了 `scoped` attribute 以外，使用唯一的 class 名可以帮你确保那些第三方库的 CSS 不会运用在你自己的 HTML 上。比如说，许多工程都使用了 `button`、`btn` 或 `icon` class 名，所以即便你不使用类似 BEM 的策略，添加一个 app 或组件专属的前缀 (比如 `ButtonClose-icon`) 也可以提供一些保护。
 :::
 
 <div class="style-example style-example-bad">
@@ -381,10 +381,10 @@ computed: {
 
 ### 私有 property 名称<sup data-p="a">必要</sup>
 
-**使用模块作用域来保证外部无法访问到私有函数。如果无法做到这一点，就始终为插件、mixin 等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
+**使用模块作用域来确保外部无法访问到私有函数。如果无法做到这一点，就始终为插件、mixin 等不考虑作为对外公开 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间，以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
 
 ::: details 详解
-Vue 使用 `_` 前缀来定义其自身的私有 property，所以使用相同的前缀 (比如 `_update`) 有覆写实例 property 的风险。即便你检查确认 Vue 当前版本没有用到这个 property 名，也不能保证和将来的版本没有冲突。
+Vue 使用 `_` 前缀来定义其自身的私有 property，所以使用相同的前缀 (比如 `_update`) 有覆写实例 property 的风险。即便你检查确认了 Vue 当前版本没有用到这个 property 名，也不能保证和将来的版本没有冲突。
 
 对于 `$` 前缀来说，其在 Vue 生态系统中的目的是暴露给用户的一个特殊的实例 property，所以把它用于*私有* property 并不合适。
 
@@ -516,7 +516,7 @@ components/
 
 **[单文件组件](../guide/single-file-component.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
 
-单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能的一致。然而，混用大小写的文件命名方式有时候会导致大小写不敏感的文件系统出现问题，这也是横线连接命名同样完全可取的原因。
+单词大写开头对于代码编辑器的自动补全最为友好，因为这使得我们在 JS(X) 和模板中引用组件的方式尽可能地一致。然而，混用大小写的文件命名方式，有时候会导致其在大小写不敏感的文件系统中出现问题，这也是横线连接命名同样完全可取的原因。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -624,7 +624,7 @@ components/
 
 **只应该拥有单个活跃实例的组件应该以 `The` 前缀命名，以示其唯一性。**
 
-这并不意味着组件只可被用于一个页面，而是*每个页面*只能使用一次。这些组件永远不接受任何 prop，因为它们是为你的应用所定制的，而不是它们在你的应用中的上下文。如果你发现有必要添加 prop，那就表明这实际上是一个可复用的组件，只是*目前*在每个页面里只使用一次。
+这并不意味着组件只可被用于一个页面，而是*每个页面*只能使用一次。这些组件永远不接受任何 prop，因为它们是为你的应用所定制的，而不是它们所在的上下文。如果你发现有必要添加 prop，那就表明这实际上是一个可复用的组件，只不过*目前*在每个页面里只使用一次。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -723,9 +723,9 @@ components/
 ::: details 详解
 你可能会疑惑：
 
-> “为什么我们给组件命名时不多遵从自然语言呢？”
+> “为什么我们在给组件命名时不多遵从自然语言呢？”
 
-在自然的英文里，形容词和其它描述语通常都出现在名词之前，否则需要使用连接词。比如：
+在自然的英文里，形容词和其它描述语通常都出现在名词之前，否则就需要用到连接词。比如：
 
 - Coffee _with_ milk
 - Soup _of the_ day
@@ -797,11 +797,11 @@ components/
 
 ### 自闭合组件<sup data-p="b">强烈推荐</sup>
 
-**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中没，有内容的组件应该是自闭合的 —— 但在 DOM 模板里永远不要这样做。**
+**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中，有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
 
-自闭合组件表示它们不仅没有内容，而且**刻意**没有内容。其不同之处就好比书中的一页白纸，与贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也将更简洁。
+自闭合组件表示它们不仅没有内容，而且是**刻意**没有内容。其不同之处就好比书中的一页白纸，与贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也将更简洁。
 
-不幸的是，HTML 并不支持自闭合的自定义元素 —— [官方的“空”元素](https://www.w3.org/TR/html/syntax.html#void-elements)除外。所以上述策略仅适用于在进入 DOM 之前，Vue 的模板编译器能够触达的地方，然后再产出符合 DOM 规范的 HTML。
+不幸的是，HTML 并不支持自闭合的自定义元素——[官方的“空”元素](https://www.w3.org/TR/html/syntax.html#void-elements)除外。所以上述策略仅适用于在进入 DOM 之前，Vue 的模板编译器能够触达的地方，然后再产出符合 DOM 规范的 HTML。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -833,7 +833,7 @@ components/
 
 ### 模板中的组件名称大小写<sup data-p="b">强烈推荐</sup>
 
-**对于绝大多数项目来说，在[单文件组件](../guide/single-file-component.html)和字符串模板中，组件名称应该始终是 PascalCase 的 —— 但是在 DOM 模板中是 kebab-case 的。**
+**对于绝大多数项目来说，在[单文件组件](../guide/single-file-component.html)和字符串模板中，组件名称应该始终是 PascalCase 的——但是在 DOM 模板中是 kebab-case 的。**
 
 PascalCase 相比 kebab-case 有一些优势：
 
@@ -843,7 +843,7 @@ PascalCase 相比 kebab-case 有一些优势：
 
 不幸的是，由于 HTML 是大小写不敏感的，在 DOM 模板中必须仍使用 kebab-case。
 
-还请注意，如果你已经是 kebab-case 的重度用户，那么与 HTML 保持一致的命名约定且在多个项目中保持相同的大小写规则就可能比上述优势更为重要了。在这些情况下，**在所有的地方都使用 kebab-case 同样是可以接受的**。
+还请注意，如果你已经是 kebab-case 的重度用户，那么与 HTML 保持一致的命名约定，且在多个项目中保持相同的大小写规则，就可能比上述优势更为重要了。在这些情况下，**在所有的地方都使用 kebab-case 同样是可以接受的**。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -985,7 +985,7 @@ components/
 
 **在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#jsx) 中应该始终使用 kebab-case。**
 
-我们只是单纯地遵循了每钟语言的约定。在 JavaScript 中 camelCase 更为自然 。而在 HTML 中则是 kebab-case。
+我们只是单纯地遵循了每种语言的约定。在 JavaScript 中 camelCase 更为自然 。而在 HTML 中则是 kebab-case。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -1099,7 +1099,7 @@ computed: {
 
 - __更易于测试__
 
-  当每个计算属性都仅包含一个非常简单，且依赖很少的表达式时，撰写测试以确保其正确地工作就会变得容易许多。
+  当每个计算属性都仅包含一个非常简单，且依赖很少的表达式时，撰写测试以确保其能够正确地工作就会变得容易许多。
 
 - __更易于阅读__
 
@@ -1107,9 +1107,9 @@ computed: {
 
 - __更好地“拥抱变化”__
 
-  任何能够被命名的值，都有可能被用在视图上。举个例子，我们可能打算展示一个信息，告诉用户他们节省了多少钱；也可能打算计算税费，但是也许会分开展现，而不是作为总价的一部分。
+  任何能够被命名的值，都有可能被用在视图上。举个例子，我们可能打算展示一个信息，告诉用户他们节省了多少钱。也可能打算计算税费，但是也许会分开展现，而不是作为总价的一部分。
 
-  小的，且更专注的计算属性减少了对信息将如何被使用的猜测，因此当需求变更时，重构的工作量也更小。
+  小的，且更专注的计算属性减少了对信息将如何被使用的猜测，因此当需求变更时，重构的工作量也将更小。
 :::
 
 <div class="style-example style-example-bad">
@@ -1150,9 +1150,9 @@ computed: {
 
 ### 带引号的 attribute 值<sup data-p="b">强烈推荐</sup>
 
-**非空 HTML attribute 值应该始终带有引号 (单引号或双引号，选择你在 JS 里未使用的那个)。**
+**非空 HTML attribute 的值应该始终带有引号 (单引号或双引号，选择你在 JS 里面未使用的那个)。**
 
-在 HTML 中不带空格的 attribute 值是可以没有引号的，这种实践通常导致*避免*空格，从而使得 attribute 的可读性变差。
+在 HTML 中不带空格的 attribute 的值是可以没有引号的，这种实践通常导致*避免*空格，从而使得 attribute 的可读性变差。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -1426,7 +1426,7 @@ computed: {
 
 ### 单文件组件的顶级元素的顺序<sup data-p="c">推荐</sup>
 
-**[单文件组件](../guide/single-file-component.html)应始终保持 `<script>`、`<template>` 和 `<style>` 标签顺序一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
+**[单文件组件](../guide/single-file-component.html)应始终保持 `<script>`、`<template>` 和 `<style>` 标签的顺序一致。且 `<style>` 要放在最后，因为另外两个标签至少会有一个。**
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -1488,7 +1488,7 @@ computed: {
 
 ::: details 详解
 
-为了给样式设置作用域，Vue 会为元素添加一个独一无二的 attribute，例如 `data-v-f3f3eg9`。然后选择器将被修改，使得在匹配到的元素中，只有带这个 attribute 才会真正生效 (比如 `button[data-v-f3f3eg9]`)。
+为了给样式设置作用域，Vue 会为元素添加一个独一无二的 attribute，例如 `data-v-f3f3eg9`。然后选择器将被修改，使得在匹配到的元素中，只有带这个 attribute 的才会真正生效 (比如 `button[data-v-f3f3eg9]`)。
 
 问题在于，大量的[元素与 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (比如 `button[data-v-f3f3eg9]`) 会比[类与 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000)更慢，因此应该尽可能地选用类选择器。
 
