@@ -1264,13 +1264,13 @@ computed: {
 
 ## 优先级 C 的规则：推荐 <span class="hide-from-sidebar">(将选择和认知成本最小化)</span>
 
-### 组件/实例的选项顺序<sup data-p="c">推荐</sup>
+### 组件/实例选项的顺序<sup data-p="c">推荐</sup>
 
 **组件/实例的选项应该有统一的顺序。**
 
-这是我们推荐的组件选项默认顺序。它们被划分为几大类，所以你也能知道从插件里添加的新 property 应该放到哪里。
+这是我们为组件选项推荐的默认顺序。它们被划分为几大类，你能够由此知道新的 property 应该被放到哪里。
 
-1. **全局感知** (要求组件以外的知识)
+1. **全局感知** (要求在组件以外被感知)
     - `name`
 
 2. **模板编译选项** (改变模板编译的方式)
@@ -1280,7 +1280,7 @@ computed: {
     - `components`
     - `directives`
 
-4. **组合** (向选项里合并 property)
+4. **组合** (合并 property 至选项内)
     - `extends`
     - `mixins`
     - `provide`/`inject`
@@ -1299,7 +1299,7 @@ computed: {
 
 8. **事件** (通过响应式事件触发的回调)
     - `watch`
-    - 生命周期钩子 (按照它们被调用的顺序)
+    - 生命周期事件 (按照它们被调用的顺序)
         - `beforeCreate`
         - `created`
         - `beforeMount`
@@ -1324,15 +1324,15 @@ computed: {
 
 **元素 (包括组件) 的 attribute 应该有统一的顺序。**
 
-这是我们为组件选项推荐的默认顺序。它们被划分为几大类，所以你也能知道新添加的自定义 attribute 和指令应该放到哪里。
+这是我们为组件选项推荐的默认顺序。它们被划分为几大类，你能够由此知道新添加的自定义 attribute 和指令应该被放到哪里。
 
 1. **定义** (提供组件的选项)
     - `is`
 
-2. **列表渲染** (创建多个变化的相同元素)
+2. **列表渲染** (创建相同元素的多个变化)
     - `v-for`
 
-3. **条件渲染** (元素是否渲染/显示)
+3. **条件** (元素是否渲染/显示)
     - `v-if`
     - `v-else-if`
     - `v-else`
@@ -1343,17 +1343,17 @@ computed: {
     - `v-pre`
     - `v-once`
 
-5. **全局感知** (需要超越组件的知识)
+5. **全局感知** (要求在组件以外被感知)
     - `id`
 
-6. **唯一的 Attributes** (需要唯一值的 attribute)
+6. **唯一的 Attribute** (需要唯一值的 attribute)
     - `ref`
     - `key`
 
-7. **双向绑定** (把绑定和事件结合起来)
+7. **双向绑定** (结合了绑定与事件)
     - `v-model`
 
-8. **其他 Attributes** (所有普通的绑定或未绑定的 attribute)
+8. **其他 Attribute** (所有普通的，绑定或未绑定的 attribute)
 
 9. **事件** (组件事件监听器)
     - `v-on`
@@ -1364,9 +1364,9 @@ computed: {
 
 ### 组件/实例选项中的空行<sup data-p="c">推荐</sup>
 
-**你可能想在多个 property 之间增加一个空行，特别是在这些选项一屏放不下，需要滚动才能都看到的时候。**
+**你可能想在多个 property 之间增加一个空行，特别是在这些选项多到一屏放不下，需要滚动才能看完的时候。**
 
-当你的组件开始觉得密集或难以阅读时，在多个 property 之间添加空行可以让其变得容易。在一些诸如 Vim 的编辑器里，这样格式化后的选项还能通过键盘被快速导航。
+当你开始觉得组件密集或难以阅读时，在多个 property 之间添加空行可以使其重新变得易于阅读。在一些诸如 Vim 的编辑器里，被这样格式化后的选项还能通过键盘快速导航。
 
 <div class="style-example style-example-good">
 <h4>正面例子</h4>
@@ -1399,27 +1399,24 @@ computed: {
 ```
 
 ```js
-// 没有空行在组件易于阅读和导航时也没问题。
+// 在组件仍然能够被轻松阅读与定位时，
+// 没有空行也挺好
 props: {
   value: {
     type: String,
-    required: true
+      required: true
   },
-
   focused: {
     type: Boolean,
-    default: false
+  default: false
   },
-
   label: String,
-  icon: String
+    icon: String
 },
-
 computed: {
   formattedValue() {
     // ...
   },
-
   inputClasses() {
     // ...
   }
@@ -1429,7 +1426,7 @@ computed: {
 
 ### 单文件组件的顶级元素的顺序<sup data-p="c">推荐</sup>
 
-**[单文件组件](../guide/single-file-component.html)应该总是让 `<script>`、`<template>` 和 `<style>` 标签的顺序保持一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
+**[单文件组件](../guide/single-file-component.html)应始终保持 `<script>`、`<template>` 和 `<style>` 标签顺序一致。且 `<style>` 要放在最后，因为另外两个标签至少要有一个。**
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -1487,13 +1484,13 @@ computed: {
 
 **元素选择器应该避免在 `scoped` 中出现。**
 
-在 `scoped` 样式中，类选择器比元素选择器更好，因为大量使用元素选择器是很慢的。
+在 `scoped` 样式中，类选择器要比元素选择器更好，因为大量地使用元素选择器是很慢的。
 
 ::: details 详解
 
-为了给样式设置作用域，Vue 会为元素添加一个独一无二的 attribute，例如 `data-v-f3f3eg9`。然后修改选择器，使得在匹配选择器的元素中，只有带这个 attribute 才会真正生效 (比如 `button[data-v-f3f3eg9]`)。
+为了给样式设置作用域，Vue 会为元素添加一个独一无二的 attribute，例如 `data-v-f3f3eg9`。然后选择器将被修改，使得在匹配到的元素中，只有带这个 attribute 才会真正生效 (比如 `button[data-v-f3f3eg9]`)。
 
-问题在于大量的[元素和 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (比如 `button[data-v-f3f3eg9]`) 会比[类和 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000)慢，所以应该尽可能选用类选择器。
+问题在于，大量的[元素与 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (比如 `button[data-v-f3f3eg9]`) 会比[类与 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000)更慢，因此应该尽可能地选用类选择器。
 
 :::
 
@@ -1531,11 +1528,11 @@ button {
 
 ### 隐性的父子组件通信<sup data-p="d">谨慎使用</sup>
 
-**应该优先通过 prop 和事件进行父子组件之间的通信，而不是 `this.$parent` 或变更 prop。**
+**应该优先通过 prop 和事件进行父子组件之间的通信，而不是通过 `this.$parent` 或对 prop 做出变更。**
 
-一个理想的 Vue 应用是 prop 向下传递，事件向上传递的。遵循这一约定会让你的组件更易于理解。然而，在一些边界情况下 prop 的变更或 `this.$parent` 能够简化两个深度耦合的组件。
+一个理想的 Vue 应用是 prop 向下传递，事件向上传递的。遵循这一约定会让你的组件更易于理解。然而，在一些边界情况下，对 prop 的变更或 `this.$parent` 能够简化两个深度耦合的组件。
 
-问题在于，这种做法在很多*简单*的场景下可能会更方便。但请当心，不要为了一时方便 (少写代码) 而牺牲数据流向的简洁性 (易于理解)。
+问题在于，这种做法在很多*简单*的场景下也可能会更方便。但请当心：不要为了一时方便 (少写代码) 而牺牲简明性 (易于理解的状态流)。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -1630,9 +1627,9 @@ app.component('TodoItem', {
 
 **应该优先通过 [Vuex](https://next.vuex.vuejs.org/) 管理全局状态，而不是通过 `this.$root` 或一个全局事件总线。**
 
-通过 `this.$root` 和/或全局事件总线管理状态在很多简单的情况下都是很方便的，但是并不适用于绝大多数的应用。
+通过 `this.$root` 和/或全局事件总线管理状态在很多简单的场景下都是很方便的，但是并不适用于绝大多数的应用。
 
-Vuex 是 Vue 的[官方类 flux 实现](/guide/state-management.html#类-flux-状态管理的官方实现)，其提供的不仅是一个管理状态的中心区域，还是组织、追踪和调试状态变更的好工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](/guide/installation.html#vue-devtools) 支持)。
+Vuex 是 Vue 的[官方类 flux 实现](/guide/state-management.html#类-flux-状态管理的官方实现)，其提供的不仅是一个管理状态的中心，还包括组织、追踪和调试状态变更的工具。它很好地集成在了 Vue 生态系统之中 (包括完整的 [Vue DevTools](/guide/installation.html#vue-devtools) 支持)。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
