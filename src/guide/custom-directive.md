@@ -63,7 +63,7 @@ directives: {
 
 - `unmounted`：当指令与元素解除绑定且父组件已卸载时，只调用一次。
 
-接下来我们来看一下在[自定义指令 API](../api/application-api.html#directive) 钩子函数的参数 (即 `el`、`binding`、`vnode` 和 `prevNnode`)
+接下来我们来看一下在[自定义指令 API](../api/application-api.html#directive) 钩子函数的参数 (即 `el`、`binding`、`vnode` 和 `prevNode`)
 
 ### 动态指令参数
 
