@@ -1,5 +1,4 @@
-<!-- TODO: translation -->
-# Migration Build
+# 迁移构建
 
 ## Overview
 
