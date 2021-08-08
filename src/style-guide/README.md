@@ -34,7 +34,7 @@ sidebar: auto
 
 ## 优先级 A 的规则：必要的 <span class="hide-from-sidebar">(规避错误)</span>
 
-### 组件名为多个单词 <sup data-p="a">必要</sup>
+### 组件名为多个单词<sup data-p="a">必要</sup>
 
 **组件名应该始终由多个单词组成，除了根组件 `App`，以及 `<transition>`、`<component>` 之类的 Vue 内置组件。**
 
@@ -74,7 +74,7 @@ export default {
 ```
 </div>
 
-### Prop 定义 <sup data-p="a">必要</sup>
+### Prop 定义<sup data-p="a">必要</sup>
 
 **Prop 定义应该尽量详细**
 
@@ -125,7 +125,7 @@ props: {
 ```
 </div>
 
-### 为 `v-for` 设置 key 值 <sup data-p="a">必要</sup>
+### 为 `v-for` 设置 key 值<sup data-p="a">必要</sup>
 
 **始终以 `key` 配合 `v-for`。**
 
@@ -185,7 +185,7 @@ data() {
 ```
 </div>
 
-### 避免 `v-if` 和 `v-for` 一起使用 <sup data-p="a">必要</sup>
+### 避免 `v-if` 和 `v-for` 一起使用<sup data-p="a">必要</sup>
 
 **永远不要在一个元素上同时使用 `v-if` 和 `v-for`。**
 
@@ -289,7 +289,7 @@ computed: {
 ```
 </div>
 
-### 为组件样式设置作用域 <sup data-p="a">必要</sup>
+### 为组件样式设置作用域<sup data-p="a">必要</sup>
 
 **对于应用来说，样式在顶层 `App` 组件和布局组件中可以是全局的，但是在其它所有组件中都应该是有作用域的。**
 
@@ -379,7 +379,7 @@ computed: {
 ```
 </div>
 
-### 私有 property 名称 <sup data-p="a">必要</sup>
+### 私有 property 名称<sup data-p="a">必要</sup>
 
 **使用模块作用域来保证外部无法访问到私有函数。如果无法做到这一点，就始终为插件、mixin 等不考虑作为对外公共 API 的自定义私有 property 使用 `$_` 前缀。并附带一个命名空间以回避和其它作者的冲突 (比如 `$_yourPluginName_`)。**
 
@@ -476,7 +476,7 @@ export default myGreatMixin
 
 ## 优先级 B 的规则：强烈推荐 <span class="hide-from-sidebar">(增强代码可读性)</span>
 
-### 组件文件 <sup data-p="b">强烈推荐</sup>
+### 组件文件<sup data-p="b">强烈推荐</sup>
 
 **只要有能够拼接文件的构建系统，就把每个组件单独分成文件。**
 
@@ -512,7 +512,7 @@ components/
 ```
 </div>
 
-### 单文件组件文件的大小写 <sup data-p="b">强烈推荐</sup>
+### 单文件组件文件的大小写<sup data-p="b">强烈推荐</sup>
 
 **[单文件组件](../guide/single-file-component.html)的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。**
 
@@ -546,7 +546,7 @@ components/
 ```
 </div>
 
-### 基础组件名称 <sup data-p="b">强烈推荐</sup>
+### 基础组件名称<sup data-p="b">强烈推荐</sup>
 
 **应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 `Base`、`App` 或 `V`。**
 
@@ -620,7 +620,7 @@ components/
 ```
 </div>
 
-### 单例组件名称 <sup data-p="b">强烈推荐</sup>
+### 单例组件名称<sup data-p="b">强烈推荐</sup>
 
 **只应该拥有单个活跃实例的组件应该以 `The` 前缀命名，以示其唯一性。**
 
@@ -646,14 +646,14 @@ components/
 ```
 </div>
 
-### 紧密耦合的组件名称 <sup data-p="b">强烈推荐</sup>
+### 紧密耦合的组件名称<sup data-p="b">强烈推荐</sup>
 
-**和父组件紧密耦合的子组件应该以父组件名作为前缀命名。**
+**与父组件紧密耦合的子组件应该以父组件名作为前缀命名。**
 
-如果一个组件只在某个父组件的场景下有意义，这层关系应该体现在其名字上。因为编辑器通常会按字母顺序组织文件，所以这样做可以把相关联的文件排在一起。
+如果一个组件只在某个特定父组件的上下文中有意义，那么这层关系应该体现在其命名上。因为编辑器通常会按字母顺序组织文件，这么做也可以把相关联的文件排放在一起。
 
 ::: details 详解
-你可以试着通过在其父组件命名的目录中嵌套子组件以解决这个问题。比如：
+你也许会尝试通过在其父组件命名的目录中嵌套子组件以解决这个问题。比如：
 
 ```
 components/
@@ -678,7 +678,7 @@ components/
 但是这种方式并不推荐，因为这会导致：
 
 - 许多文件的名字相同，使得在编辑器中快速切换文件变得困难。
-- 过多嵌套的子目录增加了在编辑器侧边栏中浏览组件所花的时间。
+- 过多嵌套的子目录增加了在编辑器侧边栏中浏览组件所花费的时间。
 
 :::
 
@@ -718,7 +718,7 @@ components/
 
 ### 组件名称中的单词顺序<sup data-p="b">强烈推荐</sup>
 
-**组件名称应该以高阶的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。**
+**组件名称应该以高阶的 (通常是一般化描述的) 单词开头，并以描述性的修饰词结尾。**
 
 ::: details 详解
 你可能会疑惑：
@@ -731,7 +731,7 @@ components/
 - Soup _of the_ day
 - Visitor _to the_ museum
 
-如果你愿意，你完全可以在组件名里包含这些连接词，但是单词的顺序很重要。
+如果你愿意，你完全可以在组件名里包含这些连接词，但是单词的顺序仍然很重要。
 
 同样要注意**在你的应用中所谓的“高阶”是跟语境有关的**。比如对于一个带搜索表单的应用来说，它可能包含这样的组件：
 
@@ -745,7 +745,7 @@ components/
 |- TermsCheckbox.vue
 ```
 
-你可能注意到了，我们很难看出来哪些组件是针对搜索的。现在我们来根据规则给组件重新命名：
+你可能已经注意到了，我们很难看出来哪些组件是针对搜索的。现在我们来根据规则给组件重新命名：
 
 ```
 components/
@@ -759,11 +759,11 @@ components/
 
 因为编辑器通常会按字母顺序组织文件，所以现在组件之间的重要关系一目了然。
 
-你可能想换成多级目录的方式，把所有的搜索组件放到“search”目录，把所有的设置组件放到“settings”目录。我们只推荐在非常大型 (如有 100+ 个组件) 的应用下才考虑这么做，因为：
+你也许会想要换种方式解决这个问题，把所有的搜索组件放到“search”目录，把所有的设置组件放到“settings”目录。我们只推荐在非常大型的应用 (如有 100+ 个组件) 下才考虑这么做，因为：
 
-- 在多级目录间找来找去，要比在单个 `components` 目录下滚动查找要花费更多的精力。
+- 在多级目录间找来找去，通常来说要比在单个 `components` 目录下滚动查找要花费更多的精力。
 - 存在组件重名 (比如存在多个 `ButtonDelete.vue` 组件) 的时候在编辑器里更难快速定位。
-- 让重构变得更难，因为为一个移动了的组件更新相关引用时，查找/替换通常并不高效。
+- 重构将变得更困难，因为为一个移动了的组件更新相关引用时，查找/替换通常并不高效。
 
 :::
 
@@ -797,11 +797,11 @@ components/
 
 ### 自闭合组件<sup data-p="b">强烈推荐</sup>
 
-**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
+**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中没，有内容的组件应该是自闭合的 —— 但在 DOM 模板里永远不要这样做。**
 
-自闭合组件表示它们不仅没有内容，而且**刻意**没有内容。其不同之处就好像书上的一页白纸对比贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也更简洁。
+自闭合组件表示它们不仅没有内容，而且**刻意**没有内容。其不同之处就好比书中的一页白纸，与贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也将更简洁。
 
-不幸的是，HTML 并不支持自闭合的自定义元素——只有[官方的“空”元素](https://www.w3.org/TR/html/syntax.html#void-elements)。所以上述策略仅适用于进入 DOM 之前 Vue 的模板编译器能够触达的地方，然后再产出符合 DOM 规范的 HTML。
+不幸的是，HTML 并不支持自闭合的自定义元素 —— [官方的“空”元素](https://www.w3.org/TR/html/syntax.html#void-elements)除外。所以上述策略仅适用于在进入 DOM 之前，Vue 的模板编译器能够触达的地方，然后再产出符合 DOM 规范的 HTML。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
@@ -833,12 +833,12 @@ components/
 
 ### 模板中的组件名称大小写<sup data-p="b">强烈推荐</sup>
 
-**对于绝大多数项目来说，在[单文件组件](../guide/single-file-component.html)和字符串模板中组件名称应该总是 PascalCase 的——但是在 DOM 模板中总是 kebab-case 的。**
+**对于绝大多数项目来说，在[单文件组件](../guide/single-file-component.html)和字符串模板中，组件名称应该始终是 PascalCase 的 —— 但是在 DOM 模板中是 kebab-case 的。**
 
 PascalCase 相比 kebab-case 有一些优势：
 
 - 编辑器可以在模板里自动补全组件名称，因为 PascalCase 同样适用于 JavaScript。
-- `MyComponent>` 视觉上比 `<my-component>` 更能够和单个单词的 HTML 元素区别开来，因为前者的不同之处有两个大写字母，后者只有一个横线。
+- `<MyComponent>` 视觉上比 `<my-component>` 更能够和单个单词的 HTML 元素区别开来，因为前者的不同之处有两个大写字母，后者只有一个横线。
 - 如果你在模板中使用任何非 Vue 的自定义元素，比如一个 Web Component，PascalCase 确保了你的 Vue 组件在视觉上仍然是易识别的。
 
 不幸的是，由于 HTML 是大小写不敏感的，在 DOM 模板中必须仍使用 kebab-case。
@@ -887,16 +887,16 @@ PascalCase 相比 kebab-case 有一些优势：
 
 ### JS/JSX 中使用的组件名称<sup data-p="b">强烈推荐</sup>
 
-**JS/[JSX](../guide/render-function.html#jsx) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
+**JS/[JSX](../guide/render-function.html#jsx) 中的组件名应该始终是 PascalCase 的，尽管在较为简单的应用中，只使用 `app.component` 进行全局组件注册时，可以使用 kebab-case 字符串。**
 
 ::: details 详解
 
-在 JavaScript 中，PascalCase 是类和构造函数 (本质上任何可以产生多份不同实例的东西) 的命名约定。Vue 组件也有多份实例，所以同样使用 PascalCase 是有意义的。额外的好处是，在 JSX (和模板) 里使用 PascalCase 使得代码的读者更容易分辨 Vue 组件和 HTML 元素。
+在 JavaScript 中，PascalCase 是类和构造函数 (本质上来说，任何可以产生多份不同实例的东西) 的命名约定。Vue 组件也有实例，因此同样适用 PascalCase。由此带来的额外好处是，在 JSX (和模板) 里使用 PascalCase 使得代码的读者更容易分辨组件与 HTML 元素。
 
 然而，对于**只**通过 `app.component` 定义全局组件的应用来说，我们推荐 kebab-case 作为替代。原因是：
 
 - 全局组件很少被 JavaScript 引用，所以遵守 JavaScript 的命名约定意义不大。
-- 这些应用往往包含许多 DOM 内的模板，这种情况下是**必须**[使用 kebab-case](#模板中的组件名称大小写强烈推荐) 的。
+- 这些应用往往包含许多 DOM 内的模板，这种情况下是[**必须**使用 kebab-case](#模板中的组件名称大小写强烈推荐) 的。
 
 :::
 
