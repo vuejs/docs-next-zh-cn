@@ -1,47 +1,46 @@
-<!-- TODO: translation -->
-# Migration Build
+# 迁移构建
 
-## Overview
+## 概述
 
-`@vue/compat` (aka "the migration build") is a build of Vue 3 that provides configurable Vue 2 compatible behavior.
+`@vue/compat` (即“迁移构建”) 是一个 Vue 3 的构建，其提供可配置的与 Vue 2 兼容的行为。
 
-The migration build runs in Vue 2 mode by default - most public APIs behave exactly like Vue 2, with only a few exceptions. Usage of features that have changed or been deprecated in Vue 3 will emit runtime warnings. A feature's compatibility can also be enabled/disabled on a per-component basis.
+该构建默认运行在 Vue 2 的模式下——大部分公有 API 的行为和 Vue 2 一致，仅有一小部分例外。使用在 Vue 3 中发生改变或被废弃的特性时会抛出运行时警告。一个特性的兼容性也可以基于每个组件进行开启或禁用。
 
-### Intended Use Cases
+### 目标用例
 
-- Upgrading a Vue 2 application to Vue 3 (with [limitations](#known-limitations))
-- Migrating a library to support Vue 3
-- For experienced Vue 2 developers who have not tried Vue 3 yet, the migration build can be used in place of Vue 3 to help learn the difference between versions.
+- 将一个 Vue 2 应用升级为 Vue 3 (存在[限制](#已知的限制))
+- 迁移一个库以支持 Vue 3
+- 对于尚未尝试 Vue 3 的资深 Vue 2 开发者来说，迁移构建可以用来代替 Vue 3 以更好地学习版本之间的差异。
 
-### Known Limitations
+### 已知的限制
 
-While we've tried hard to make the migration build mimic Vue 2 behavior as much as possible, there are some limitations that may prevent your app from being eligible for upgrading:
+当我们全力尝试让该迁移构建模拟尽可能多的 Vue 2 行为的时候，有些限制可能会阻止应用的顺利升级：
 
-- Dependencies that rely on Vue 2 internal APIs or undocumented behavior. The most common case is usage of private properties on `VNodes`. If your project relies on component libraries like [Vuetify](https://vuetifyjs.com/en/), [Quasar](https://quasar.dev/) or [ElementUI](https://element.eleme.io/#/en-US), it is best to wait for their Vue 3 compatible versions.
+- 基于 Vue 2 内部 API 或未成文的行为的依赖。最常见的情况就是使用 `VNodes` 上的私有 property。如果你的项目依赖诸如 [Vuetify](https://vuetifyjs.com/zh-Hans/)、[Quasar](https://quasar.dev/) 或 [ElementUI](https://element.eleme.io/#/zh-CN) 的组件库，那么最好等待一下它们的 Vue 3 兼容版本。
 
-- Internet Explorer 11 support: [Vue 3 has officially dropped the plan for IE11 support](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). If you still need to support IE11 or below, you will have to stay on Vue 2.
+- 对 IE11 的支持：[Vue 3 已经官方放弃对 IE11 的支持](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)。如果仍然需要支持 IE11 或更低版本，那你仍需继续使用 Vue 2。
 
-- Server-side rendering: the migration build can be used for SSR, but migrating a custom SSR setup is much more involved. The general idea is replacing `vue-server-renderer` with [`@vue/server-renderer`](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer). Vue 3 no longer provides a bundle renderer and it is recommended to use Vue 3 SSR with [Vite](https://vitejs.dev/guide/ssr.html). If you are using [Nuxt.js](https://nuxtjs.org/), it is probably better to wait for Nuxt 3.
+- 服务端渲染：该迁移构建可以被用于服务端渲染，但是迁移一个自定义的服务端渲染设置有更多工作要做。大致的思路是将 `vue-server-renderer` 替换为 [`@vue/server-renderer`](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer)。Vue 3 不再提供一个包渲染器，且我们推荐使用 [Vite](https://cn.vitejs.dev/guide/ssr.html) 支持 Vue 3 服务端渲染。如果你在使用 [Nuxt.js](https://zh.nuxtjs.org/)，那最好等待一下 Nuxt 3。
 
-### Expectations
+### 预期
 
-Please note that the migration build aims to cover only publicly documented Vue 2 APIs and behavior. If your application fails to run under the migration build due to reliance on undocumented behavior, it is unlikely that we'll tweak the migration build to cater to your specific case. Consider refactoring to remove reliance on the behavior in question instead.
+请注意迁移构建旨在覆盖公开成文的 Vue 2 API 和行为。如果应用依赖了未成文的行为导致在迁移构建下运行失败，我们可能不太会调整迁移构建以迎合这种特殊情况。取而代之的是，请考虑重构或移除导致这些问题行为的依赖。
 
-A word of caution: if your application is large and complex, migration will likely be a challenge even with the migration build. If your app is unfortunately not suitable for upgrade, do note that we are planning to backport Composition API and some other Vue 3 features to the 2.7 release (estimated late Q3 2021).
+多留意一下：如果你的应用较大且复杂，即便有了构建迁移，整个迁移过程也会是一个挑战。如果你的应用不幸无法顺利升级，请留意我们正在计划将组合式 API 等其它 Vue 3 特性向后迁移至 Vue 2.7 (预计在 2021 年第三季度末)。
 
-If you do get your app running on the migration build, you **can** ship it to production before the migration is complete. Although there is a small performance/size overhead, it should not noticeably affect production UX. You may have to do so when you have dependencies that rely on Vue 2 behavior, and cannot be upgraded/replaced.
+如果应用在迁移构建中顺利运行，你**可以**在迁移完成之前将其发布到生产环境。尽管存在一些小的性能或包大小的问题，但应该不会可观地影响到生产环境的用户体验。你可能需要为基于 Vue 2 行为且无法升级/替换的依赖这样做。
 
-The migration build will be provided starting with 3.1, and will continue to be published alongside the 3.2 release line. We do plan to eventually stop publishing the migration build in a future minor version (no earlier than EOY 2021), so you should still aim to switch to the standard build before then.
+该迁移构建会从 3.1 开始提供，且会随着 3.2 的发布计划进行持续发布。我们计划在将来某个小版本号起最终停止发布迁移构建 (在 2021 年底前至少不会)，因此你仍需要在此之前将其迁移到标准构建。
 
-## Upgrade Workflow
+## 升级流程
 
 The following workflow walks through the steps of migrating an actual Vue 2 app (Vue HackerNews 2.0) to Vue 3. The full commits can be found [here](https://github.com/vuejs/vue-hackernews-2.0/compare/migration). Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
 
-### Preparations
+### 准备工作
 
 - If you are still using the [deprecated named / scoped slot syntax](https://vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax), update it to the latest syntax first (which is already supported in 2.6).
 
-### Installation
+### 安装
 
 1. Upgrade tooling if applicable.
 
@@ -200,7 +199,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
 ## 兼容性配置
 
-### Global Config
+### 全局配置
 
 Compat features can be disabled individually:
 
@@ -228,7 +227,7 @@ configureCompat({
 })
 ```
 
-### Per-Component Config
+### 基于每个组件的配置
 
 A component can use the `compatConfig` option, which expects the same options as the global `configureCompat` method:
 
@@ -242,20 +241,20 @@ export default {
 }
 ```
 
-### Compiler-specific Config
+### 针对编译器的配置
 
 Features that start with `COMPILER_` are compiler-specific: if you are using the full build (with in-browser compiler), they can be configured at runtime. However if using a build setup, they must be configured via the `compilerOptions` in the build config instead (see example configs above).
 
-## Feature Reference
+## 特性参考
 
-### Compatibility Types
+### 兼容性类型
 
 - ✔ Fully compatible
 - ◐ Partially Compatible with caveats
 - ⨂ Incompatible (warning only)
 - ⭘ Compat only (no warning)
 
-### Incompatible
+### 不兼容
 
 > Should be fixed upfront or will likely lead to errors
 
@@ -268,7 +267,7 @@ Features that start with `COMPILER_` are compiler-specific: if you are using the
 | COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂    | `<template v-for>` key should now be placed on `<template>`             | [link](/guide/migration/key-attribute.html#with-template-v-for)                                |
 | COMPILER_SFC_FUNCTIONAL               | ⨂    | `<template functional>` is no longer supported in SFCs                  | [link](/guide/migration/functional-components.html#single-file-components-sfcs)                |
 
-### Partially Compatible with Caveats
+### 带有注意事项的部分兼容
 
 | ID                       | Type | Description                                                                                                                                                                                | Docs                                                                                                          |
 | ------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -280,13 +279,13 @@ Features that start with `COMPILER_` are compiler-specific: if you are using the
 | CONFIG_PRODUCTION_TIP    | ◐    | `config.productionTip` no longer necessary                                                                                                                                                 | [link](/guide/migration/global-api.html#config-productiontip-removed)                                         |
 | CONFIG_SILENT            | ◐    | `config.silent` removed                                                                                                                                                                    |                                                                                                               |
 
-### Compat only (no warning)
+### 仅兼容 (无告警)
 
 | ID                 | Type | Description                            | Docs                                     |
 | ------------------ | ---- | -------------------------------------- | ---------------------------------------- |
 | TRANSITION_CLASSES | ⭘    | Transition enter/leave classes changed | [link](/guide/migration/transition.html) |
 
-### Fully Compatible
+### 完全兼容
 
 | ID                           | Type | Description                                                           | Docs                                                                                       |
 | ---------------------------- | ---- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
