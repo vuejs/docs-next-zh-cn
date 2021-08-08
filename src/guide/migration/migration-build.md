@@ -4,7 +4,7 @@
 
 `@vue/compat` (即“迁移构建”) 是一个 Vue 3 的构建，其提供可配置的与 Vue 2 兼容的行为。
 
-该构建默认运行在 Vue 2 的模式下——大部分公有 API 的行为和 Vue 2 一致，仅有一小部分例外。使用在 Vue 3 中发生改变或被废弃的特性时会抛出运行时警告。一个特性的兼容性也可以基于每个组件进行开启或禁用。
+该构建默认运行在 Vue 2 的模式下——大部分公有 API 的行为和 Vue 2 一致，仅有一小部分例外。使用在 Vue 3 中发生改变或被废弃的特性时会抛出运行时警告。一个特性的兼容性也可以基于单个组件进行开启或禁用。
 
 ### 目标用例
 
@@ -39,16 +39,17 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 ### 准备工作
 
 - If you are still using the [deprecated named / scoped slot syntax](https://vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax), update it to the latest syntax first (which is already supported in 2.6).
+- 如果你仍然使用[废弃的具名/作用域插槽语法](https://cn.vuejs.org/v2/guide/components-slots.html#废弃了的语法)，请先将其更新至 (2.6 已经支持的) 最新的语法。
 
 ### 安装
 
-1. Upgrade tooling if applicable.
+1. 尽可能升级工具。
 
-   - If using custom webpack setup: Upgrade `vue-loader` to `^16.0.0`.
-   - If using `vue-cli`: upgrade to the latest `@vue/cli-service` with `vue upgrade`
-   - (Alternative) migrate to [Vite](https://vitejs.dev/) + [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2). [[Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/565b948919eb58f22a32afca7e321b490cb3b074)]
+   - 如果使用自定义 webpack 设置：升级 `vue-loader` 到 `^16.0.0`。
+   - 如果使用 `vue-cli`：通过 `vue upgrade` 升级到最新的 `@vue/cli-service`。
+   - (替代方案) 迁移至 [Vite](https://cn.vitejs.dev/) + [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2)。[[示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/565b948919eb58f22a32afca7e321b490cb3b074)]
 
-2. In `package.json`, update `vue` to 3.1, install `@vue/compat` of the same version, and replace `vue-template-compiler` (if present) with `@vue/compiler-sfc`:
+2. 在 `package.json` 里，更新 `vue` 到 3.1，安装 `@vue/compat` 相同的版本，且如果存在 `vue-template-compiler` 的话，将其替换为 `@vue/compiler-sfc`。
 
    ```diff
    "dependencies": {
@@ -63,11 +64,11 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
    }
    ```
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/14f6f1879b43f8610add60342661bf915f5c4b20)
+   [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/14f6f1879b43f8610add60342661bf915f5c4b20)
 
-3. In the build setup, alias `vue` to `@vue/compat` and enable compat mode via Vue compiler options.
+3. 在构建设置中，将 `vue` 别名为 `@vue/compat`，且通过 Vue 编译器选项开启兼容模式。
 
-   **Example Configs**
+   **示例配置**
 
    <details>
      <summary><b>vue-cli</b></summary>
@@ -98,7 +99,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
    </details>
 
    <details>
-     <summary><b>Plain webpack</b></summary>
+     <summary><b>普通 webpack</b></summary>
 
    ```js
    // webpack.config.js
@@ -155,47 +156,47 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
    </details>
 
-4. At this point, your application may encounter some compile-time errors / warnings (e.g. use of filters). Fix them first. If all compiler warnings are gone, you can also set the compiler to Vue 3 mode.
+4. 在这方面，应用可能会遭遇一些编译时错误/警告 (例如对过滤器的使用)。请先修复它们。如果所有的编译器警告都解决了，你也可以把编译器设置为 Vue 3 模式。
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/b05d9555f6e115dea7016d7e5a1a80e8f825be52)
+   [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/b05d9555f6e115dea7016d7e5a1a80e8f825be52)
 
-5. After fixing the errors, the app should be able to run if it is not subject to the [limitations](#known-limitations) mentioned above.
+5. 在修复这些错误之后，如果没有受制于上述的[限制](#已知的限制)，那么应用就应该可以运行了。
 
-   You will likely see a LOT of warnings from both the command line and the browser console. Here are some general tips:
+   你可能会同时从命令行和浏览器控制台看到很多警告。这里提供一些一般化的小建议：
 
-   - You can filter for specific warnings in the browser console. It's a good idea to use the filter and focus on fixing one item at a time. You can also use negated filters like `-GLOBAL_MOUNT`.
+   - 你可以在浏览器控制台里过滤特定的警告。通过过滤器使自己每次专注在某一种问题的修复上是个不错的主意。你也可以使用类似 `-GLOBAL_MOUNT` 的否定式过滤器。
 
-   - You can suppress specific deprecations via [compat configuration](#兼容性配置).
+   - 你可以通过[兼容性配置](#兼容性配置)抑制特定的废弃内容。
 
-   - Some warnings may be caused by a dependency that you use (e.g. `vue-router`). You can check this from the warning's component trace or stack trace (expanded on click). Focus on fixing the warnings that originate from your own source code first.
+   - 有些警告可能来自你使用的依赖 (如 `vue-router`)。你可以通过警告的组件轨迹或调用栈轨迹 (可以点击展开) 来进行检查。可以优先专注于修复源自你自己代码的警告。
 
-   - If you are using `vue-router`, note `<transition>` and `<keep-alive>` will not work with `<router-view>` until you upgrade to `vue-router` v4.
+   - 如果你使用了 `vue-router`，请注意在升级至 `vue-router` v4 之前，`<transition>` 和 `<keep-alive>` 无法和 `<router-view>` 一起工作。
 
-6. Update [`<transition>` class names](/guide/migration/transition.html). This is the only feature that does not have a runtime warning. You can do a project-wide search for `.*-enter` and `.*-leave` CSS class names.
+6. 升级 [`<transition>` 类名](/guide/migration/transition.html)。这是唯一没有运行时警告的特性。你可以在整个项目范围内做一次 `.*-enter` 和 `.*-leave` CSS 类名的搜索。
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/d300103ba622ae26ac26a82cd688e0f70b6c1d8f)
+   [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/d300103ba622ae26ac26a82cd688e0f70b6c1d8f)
 
-7. Update app entry to use [new global mounting API](/guide/migration/global-api.html#a-new-global-api-createapp).
+7. 更新应用的入口以使用[新的全局挂载 API](/guide/migration/global-api.html#a-new-global-api-createapp)。
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/a6e0c9ac7b1f4131908a4b1e43641f608593f714)
+   [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/a6e0c9ac7b1f4131908a4b1e43641f608593f714)
 
-8. [Upgrade `vuex` to v4](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html).
+8. [升级 `vuex` 至 v4](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html)。
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/5bfd4c61ee50f358cd5daebaa584f2c3f91e0205)
+   [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/5bfd4c61ee50f358cd5daebaa584f2c3f91e0205)
 
-9. [Upgrade `vue-router` to v4](https://next.router.vuejs.org/guide/migration/index.html). If you also use `vuex-router-sync`, you can replace it with a store getter.
+9. [升级 `vue-router` 至 v4](https://next.router.vuejs.org/guide/migration/index.html)。如果你还适用了 `vuex-router-sync`，可以同时将其替换为一个 store getter。
 
-   After the upgrade, to use `<transition>` and `<keep-alive>` with `<router-view>` requires using the new [scoped-slot based syntax](https://next.router.vuejs.org/guide/migration/index.html#router-view-keep-alive-and-transition).
+   升级过后，同 `<router-view>` 一起使用 `<transition>` 和 `<keep-alive>` 就要求使用新的[基于作用域插槽的语法](https://next.router.vuejs.org/guide/migration/index.html#router-view-keep-alive-and-transition)。
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
+   [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
 
-10. Pick off individual warnings. Note some features have conflicting behavior between Vue 2 and Vue 3 - for example, the render function API, or the functional component vs. async component change. To migrate to Vue 3 API without affecting the rest of the application, you can opt-in to Vue 3 behavior on a per-component basis with the [`compatConfig` option](#per-component-config).
+10. 单独警告单独处理。注意有些特性在 Vue 2 和 Vue 3 之间存在行为冲突——例如渲染函数 API，或函数式组件 vs. 异步组件的改变。为了迁移到 Vue 3 API 而不影响到应用的其它部分，你可以通过 [`compatConfig` 选项](#基于单个组件的配置)对单个组件选入 Vue 3 的行为。
 
-    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/d0c7d3ae789be71b8fd56ce79cb4cb1f921f893b)
+    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/d0c7d3ae789be71b8fd56ce79cb4cb1f921f893b)
 
-11. When all warnings are fixed, you can remove the migration build and switch to Vue 3 proper. Note you may not be able to do so if you still have dependencies that rely on Vue 2 behavior.
+11. 当所有的警告都被修复时，你可以正确地移除迁移构建而切换为 Vue 3。注意如果存在基于 Vue 2 行为的依赖，你可能无法做到这一点。
 
-    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/9beb45490bc5f938c9e87b4ac1357cfb799565bd)
+    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/9beb45490bc5f938c9e87b4ac1357cfb799565bd)
 
 ## 兼容性配置
 
@@ -227,7 +228,7 @@ configureCompat({
 })
 ```
 
-### 基于每个组件的配置
+### 基于单个组件的配置
 
 A component can use the `compatConfig` option, which expects the same options as the global `configureCompat` method:
 
