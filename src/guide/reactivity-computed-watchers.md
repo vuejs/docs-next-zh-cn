@@ -215,8 +215,7 @@ firstName.value = 'John' // logs: ["John", ""] ["", ""]
 lastName.value = 'Smith' // logs: ["John", "Smith"] ["John", ""]
 ```
 
-<!-- TODO: translation -->
-However, if you are changing both watched sources simultaneously in the same method, the watcher will be executed only once:
+尽管如此，如果你在同一个方法里同时改变这些被侦听的来源，侦听器仍只会执行一次：
 
 ```js{9-13}
 setup() {
@@ -230,22 +229,22 @@ setup() {
   const changeValues = () => {
     firstName.value = 'John'
     lastName.value = 'Smith'
-    // logs: ["John", "Smith"] ["", ""]
+    // 打印 ["John", "Smith"] ["", ""]
   }
 
   return { changeValues }
 }
 ```
 
-Note that multiple synchronous changes will only trigger the watcher once.
+注意多个同步更改只会触发一次侦听器。
 
-It is possible to force the watcher to trigger after every change by using the setting `flush: 'sync'`, though that isn't usually recommended. Alternatively, [nextTick](/api/global-api.html#nexttick) can be used to wait for the watcher to run before making further changes. e.g.:
+通过更改设置 `flush: 'sync'`，我们可以为每个更改都强制触发侦听器，尽管这通常是不推荐的。或者，可以用 [nextTick](/api/global-api.html#nexttick) 等待侦听器在下一步改变之前运行。例如：
 
 ```js
 const changeValues = async () => {
-  firstName.value = 'John' // logs: ["John", ""] ["", ""]
+  firstName.value = 'John' // 打印 ["John", ""] ["", ""]
   await nextTick()
-  lastName.value = 'Smith' // logs: ["John", "Smith"] ["John", ""]
+  lastName.value = 'Smith' // 打印 ["John", "Smith"] ["John", ""]
 }
 ```
 

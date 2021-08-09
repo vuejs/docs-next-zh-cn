@@ -9,8 +9,7 @@ badges:
 
 指令的钩子函数已经被重命名，以更好地与组件的生命周期保持一致。
 
-<!-- TODO: translation -->
-Additionally, the `expression` string is no longer passed as part of the `binding` object.
+额外地，`expression` 字符串不再作为 `binding` 对象的一部分被传入。
 
 ## 2.x 语法
 

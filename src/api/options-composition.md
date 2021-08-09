@@ -10,9 +10,8 @@
 
   Mixin 钩子按照传入顺序依次调用，并在调用组件自身的钩子之前被调用。
 
-  <!-- TODO: translation -->
   :::info
-  In Vue 2, mixins were the primary mechanism for creating reusable chunks of component logic. While mixins continue to be supported in Vue 3, the [Composition API](/guide/composition-api-introduction.html) is now the preferred approach for code reuse between components.
+  在 Vue 2 中，mixin 是创建可复用组件逻辑的主要机制。在 Vue 3 继续支持 mixin 的同时，[组合式 API](/guide/composition-api-introduction.html)是更推荐的在组件之间共享代码的方式。
   :::
 
 - **示例：**
@@ -43,16 +42,13 @@
 
 - **详细：**
 
-  <!-- TODO: translation -->
-  允许声明扩展另一个组件 (可以是一个简单的选项对象或构造函数)。这主要是为了便于扩展单文件组件。
-  Allows one component to extend another, inheriting its component options.
+  允许一个组件扩展到另一个组件，且继承该组件选项。
 
-  From an implementation perspective, `extends` is almost identical to `mixins`. The component specified by `extends` will be treated as though it were the first mixin.
+  从实现的角度看，`extends` 几乎等同于 `mixins`。可以认为其作为第一个 mixin 作用在被 `extends` 的组件上。
 
-  However, `extends` and `mixins` express different intents. The `mixins` option is primarily used to compose chunks of functionality, whereas `extends` is primarily concerned with inheritance.
+  然而，`extends` 和 `mixins` 表达了不同的意图。`mixins` 选项主要用来组合功能，而 `extends` 主要用来考虑继承性。
 
-  这和 `mixins` 类似。
-  As with `mixins`, any options will be merged using the relevant merge strategy.
+  和 `mixins` 类似，任何选项都会通过对应的合并策略被合并。
 
 - **示例：**
 
