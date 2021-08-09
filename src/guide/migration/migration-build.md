@@ -315,12 +315,12 @@ export default {
 | ATTR_FALSE_VALUE             | ✔    | attribute 的绑定值为布尔值 `false` 时不再将其移除 | [链接](/guide/migration/attribute-coercion.html) |
 | ATTR_ENUMERATED_COERCION     | ✔    | 不再特殊处理枚举类型 attribute | [链接](/guide/migration/attribute-coercion.html) |
 | TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` 默认不再渲染一个根元素 | [链接](/guide/migration/transition-group.html) |
-| COMPONENT_ASYNC              | ✔    | 异步组件 API 改变 (目前需要 `defineAsyncComponent`) | [链接](/guide/migration/async-components.html) |
+| COMPONENT_ASYNC              | ✔    | 异步组件 API 改变 (现在需要 `defineAsyncComponent`) | [链接](/guide/migration/async-components.html) |
 | COMPONENT_FUNCTIONAL         | ✔    | 函数式组件 API 改变 (目前必须是单纯的函数) | [链接](/guide/migration/functional-components.html) |
 | COMPONENT_V_MODEL            | ✔    | 组件的 v-model 修改 | [链接](/guide/migration/v-model.html) |
 | RENDER_FUNCTION              | ✔    | 渲染函数 API 改变 | [链接](/guide/migration/render-function-api.html) |
 | FILTERS                      | ✔    | 过滤器被移除 (该选项只会影响运行时的过滤器 API) | [链接](/guide/migration/filters.html) |
-| COMPILER_IS_ON_ELEMENT       | ✔    | `is` 目前只能严格用在 `<component>` 上 | [链接](/guide/migration/custom-elements-interop.html) |
+| COMPILER_IS_ON_ELEMENT       | ✔    | `is` 现在只能严格用在 `<component>` 上 | [链接](/guide/migration/custom-elements-interop.html) |
 | COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` 被替换为带参数的 `v-model` | [链接](/guide/migration/v-model.html) |
 | COMPILER_V_BIND_PROP         | ✔    | `v-bind.prop` 修饰符被移除 | |
 | COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` 现在是顺序敏感的 | [链接](/guide/migration/v-bind.html) |
