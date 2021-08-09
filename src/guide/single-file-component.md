@@ -92,7 +92,7 @@ touch rollup.config.js
 
 ```js
 // 导入我们的第三方插件
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
 import VuePlugin from 'rollup-plugin-vue'
 import pkg from './package.json' // 导入我们的 package.json 文件，重新使用命名。
 

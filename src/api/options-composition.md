@@ -10,11 +10,16 @@
 
   Mixin 钩子按照传入顺序依次调用，并在调用组件自身的钩子之前被调用。
 
+  <!-- TODO: translation -->
+  :::info
+  In Vue 2, mixins were the primary mechanism for creating reusable chunks of component logic. While mixins continue to be supported in Vue 3, the [Composition API](/guide/composition-api-introduction.html) is now the preferred approach for code reuse between components.
+  :::
+
 - **示例：**
 
   ```js
   const mixin = {
-    created: function() {
+    created() {
       console.log(1)
     }
   }
@@ -34,20 +39,26 @@
 
 ## extends
 
-- **类型：**`Object | Function`
+- **类型：**`Object`
 
 - **详细：**
 
+  <!-- TODO: translation -->
   允许声明扩展另一个组件 (可以是一个简单的选项对象或构造函数)。这主要是为了便于扩展单文件组件。
+  Allows one component to extend another, inheriting its component options.
+
+  From an implementation perspective, `extends` is almost identical to `mixins`. The component specified by `extends` will be treated as though it were the first mixin.
+
+  However, `extends` and `mixins` express different intents. The `mixins` option is primarily used to compose chunks of functionality, whereas `extends` is primarily concerned with inheritance.
 
   这和 `mixins` 类似。
+  As with `mixins`, any options will be merged using the relevant merge strategy.
 
 - **示例：**
 
   ```js
   const CompA = { ... }
 
-  // 在没有调用 `Vue.extend` 时候继承 CompA
   const CompB = {
     extends: CompA,
     ...

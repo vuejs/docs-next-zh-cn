@@ -9,6 +9,9 @@ badges:
 
 指令的钩子函数已经被重命名，以更好地与组件的生命周期保持一致。
 
+<!-- TODO: translation -->
+Additionally, the `expression` string is no longer passed as part of the `binding` object.
+
 ## 2.x 语法
 
 在 Vue 2，自定义指令是通过使用下面列出的钩子来创建的，这些钩子都是可选的
