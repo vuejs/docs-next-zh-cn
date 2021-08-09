@@ -73,7 +73,7 @@ badges:
 
 我们建议用计算属性或方法代替过滤器，而不是使用过滤器。
 
-[迁移构建标记：](migration-build.html#兼容性配置)
+[迁移构建开关：](migration-build.html#兼容性配置)
 
 - `FILTERS`
 - `COMPILER_FILTERS`

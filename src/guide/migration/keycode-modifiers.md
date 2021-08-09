@@ -66,7 +66,7 @@ Vue.config.keyCodes = {
 
 语法的限制导致某些字符无法被匹配，比如 `"`、`'`、`/`、`=`、`>` 和 `.`。对于这些字符，你应该在监听器内使用 `event.key` 代替。
 
-[迁移构建标记：](migration-build.html#兼容性配置)
+[迁移构建开关：](migration-build.html#兼容性配置)
 
 - `CONFIG_KEY_CODES`
 - `V_ON_KEYCODE_MODIFIER`

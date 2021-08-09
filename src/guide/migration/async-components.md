@@ -95,4 +95,4 @@ const asyncComponent = defineAsyncComponent(
 有关异步组件用法的详细信息，请参阅：
 
 - [指南：动态 & 异步组件](/guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
-- [迁移构建标记：`COMPONENT_ASYNC`](migration-build.html#兼容性配置)
+- [迁移构建开关：`COMPONENT_ASYNC`](migration-build.html#兼容性配置)

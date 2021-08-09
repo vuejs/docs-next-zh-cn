@@ -95,7 +95,7 @@ const app = createApp({})
 
 对于 ES 模块构建，由于它们是与 bundler 一起使用的，而且在大多数情况下，CLI 或样板已经正确地配置了生产环境，所以本技巧将不再出现。
 
-[迁移构建标记：`CONFIG_PRODUCTION_TIP`](migration-build.html#兼容性配置)
+[迁移构建开关：`CONFIG_PRODUCTION_TIP`](migration-build.html#兼容性配置)
 
 ### `config.ignoredElements` 替换为 `config.isCustomElement`
 
@@ -118,7 +118,7 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 - 这将是 Vue CLI 配置中新的顶层选项。
   :::
 
-[迁移构建标记：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#兼容性配置)
+[迁移构建开关：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#兼容性配置)
 
 ### `Vue.prototype` 替换为 `config.globalProperties`
 
@@ -139,7 +139,7 @@ app.config.globalProperties.$http = () => {}
 
 使用 `provide` ([稍后](#provide-inject)会讨论) 时，也应考虑作为 `globalProperties` 的替代品。
 
-[迁移构建标记：`GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
 
 ### `Vue.extend` 移除
 
@@ -187,7 +187,7 @@ Vue.createApp(Profile).mount('#mount-point')
 
 在 Vue 3 中，我们强烈建议使用 [组合式 API](/api/composition-api.html) 来替代继承与 mixin。如果因为某种原因仍然需要使用组件继承，你可以使用 [`extends` 选项](/api/options-composition.html#extends) 来代替 `Vue.extend`。
 
-[迁移构建标记：`GLOBAL_EXTEND`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_EXTEND`](migration-build.html#兼容性配置)
 
 ### 插件使用者须知
 
@@ -240,7 +240,7 @@ app.directive('focus', {
 app.mount('#app')
 ```
 
-[迁移构建标记：`GLOBAL_MOUNT`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_MOUNT`](migration-build.html#兼容性配置)
 
 ## Provide / Inject
 
