@@ -10,11 +10,15 @@
 
   Mixin 钩子按照传入顺序依次调用，并在调用组件自身的钩子之前被调用。
 
+  :::info
+  在 Vue 2 中，mixin 是创建可复用组件逻辑的主要机制。在 Vue 3 继续支持 mixin 的同时，[组合式 API](/guide/composition-api-introduction.html)是更推荐的在组件之间共享代码的方式。
+  :::
+
 - **示例：**
 
   ```js
   const mixin = {
-    created: function() {
+    created() {
       console.log(1)
     }
   }
@@ -34,20 +38,23 @@
 
 ## extends
 
-- **类型：**`Object | Function`
+- **类型：**`Object`
 
 - **详细：**
 
-  允许声明扩展另一个组件 (可以是一个简单的选项对象或构造函数)。这主要是为了便于扩展单文件组件。
+  允许一个组件扩展到另一个组件，且继承该组件选项。
 
-  这和 `mixins` 类似。
+  从实现的角度看，`extends` 几乎等同于 `mixins`。可以认为其作为第一个 mixin 作用在被 `extends` 的组件上。
+
+  然而，`extends` 和 `mixins` 表达了不同的意图。`mixins` 选项主要用来组合功能，而 `extends` 主要用来考虑继承性。
+
+  和 `mixins` 类似，任何选项都会通过对应的合并策略被合并。
 
 - **示例：**
 
   ```js
   const CompA = { ... }
 
-  // 在没有调用 `Vue.extend` 时候继承 CompA
   const CompB = {
     extends: CompA,
     ...

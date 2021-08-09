@@ -86,7 +86,9 @@ watchEffect(onInvalidate => {
 ```js
 const data = ref(null)
 watchEffect(async onInvalidate => {
-   onInvalidate(() => { /* ... */ }) // 我们在Promise解析之前注册清除函数
+  onInvalidate(() => {
+    /* ... */
+  }) // 我们在Promise解析之前注册清除函数
   data.value = await fetchData(props.id)
 })
 ```
@@ -103,19 +105,19 @@ Vue 的响应性系统会缓存副作用函数，并异步地刷新它们，这�
 </template>
 
 <script>
-  export default {
-    setup() {
-      const count = ref(0)
+export default {
+  setup() {
+    const count = ref(0)
 
-      watchEffect(() => {
-        console.log(count.value)
-      })
+    watchEffect(() => {
+      console.log(count.value)
+    })
 
-      return {
-        count
-      }
+    return {
+      count
     }
   }
+}
 </script>
 ```
 
@@ -211,6 +213,39 @@ watch([firstName, lastName], (newValues, prevValues) => {
 
 firstName.value = 'John' // logs: ["John", ""] ["", ""]
 lastName.value = 'Smith' // logs: ["John", "Smith"] ["John", ""]
+```
+
+尽管如此，如果你在同一个方法里同时改变这些被侦听的来源，侦听器仍只会执行一次：
+
+```js{9-13}
+setup() {
+  const firstName = ref('')
+  const lastName = ref('')
+
+  watch([firstName, lastName], (newValues, prevValues) => {
+    console.log(newValues, prevValues)
+  })
+
+  const changeValues = () => {
+    firstName.value = 'John'
+    lastName.value = 'Smith'
+    // 打印 ["John", "Smith"] ["", ""]
+  }
+
+  return { changeValues }
+}
+```
+
+注意多个同步更改只会触发一次侦听器。
+
+通过更改设置 `flush: 'sync'`，我们可以为每个更改都强制触发侦听器，尽管这通常是不推荐的。或者，可以用 [nextTick](/api/global-api.html#nexttick) 等待侦听器在下一步改变之前运行。例如：
+
+```js
+const changeValues = async () => {
+  firstName.value = 'John' // 打印 ["John", ""] ["", ""]
+  await nextTick()
+  lastName.value = 'Smith' // 打印 ["John", "Smith"] ["John", ""]
+}
 ```
 
 ### 侦听响应式对象
