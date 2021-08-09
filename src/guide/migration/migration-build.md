@@ -316,7 +316,7 @@ export default {
 | ATTR_ENUMERATED_COERCION     | ✔    | 不再特殊处理枚举类型 attribute | [链接](/guide/migration/attribute-coercion.html) |
 | TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` 默认不再渲染一个根元素 | [链接](/guide/migration/transition-group.html) |
 | COMPONENT_ASYNC              | ✔    | 异步组件 API 改变 (现在需要 `defineAsyncComponent`) | [链接](/guide/migration/async-components.html) |
-| COMPONENT_FUNCTIONAL         | ✔    | 函数式组件 API 改变 (目前必须是单纯的函数) | [链接](/guide/migration/functional-components.html) |
+| COMPONENT_FUNCTIONAL         | ✔    | 函数式组件 API 改变 (现在必须只是一个普通函数) | [链接](/guide/migration/functional-components.html) |
 | COMPONENT_V_MODEL            | ✔    | 组件的 v-model 修改 | [链接](/guide/migration/v-model.html) |
 | RENDER_FUNCTION              | ✔    | 渲染函数 API 改变 | [链接](/guide/migration/render-function-api.html) |
 | FILTERS                      | ✔    | 过滤器被移除 (该选项只会影响运行时的过滤器 API) | [链接](/guide/migration/filters.html) |
