@@ -308,7 +308,7 @@ export default {
 | OPTIONS_DATA_MERGE           | ✔    | 来自 mixin 或扩展的 `data` 现在都是浅合并 | [链接](/guide/migration/data-option.html) |
 | OPTIONS_BEFORE_DESTROY       | ✔    | `beforeDestroy` -> `beforeUnmount` | |
 | OPTIONS_DESTROYED            | ✔    | `destroyed` -> `unmounted` | |
-| WATCH_ARRAY                  | ✔    | 对于一个数组的操作，监听无法被触发了，除非使用了深度监听 | [链接](/guide/migration/watch.html) |
+| WATCH_ARRAY                  | ✔    | 对于一个数组的操作，侦听无法被触发了，除非使用了深度侦听 | [链接](/guide/migration/watch.html) |
 | V_FOR_REF                    | ✔    | `v-for` 内的 `ref` 不再注册 ref 数组 | [链接](/guide/migration/array-refs.html) |
 | V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` 不再支持 keyCode 修饰符 | [链接](/guide/migration/keycode-modifiers.html) |
 | CUSTOM_DIR                   | ✔    | 自定义指令钩子命名变化 | [链接](/guide/migration/custom-directives.html) |
