@@ -41,7 +41,7 @@ app.component('my-component', {
 })
 
 // 检索注册的组件(始终返回构造函数)
-const MyComponent = app.component('my-component', {})
+const MyComponent = app.component('my-component')
 ```
 
 - **参考：**[组件基础](../guide/component-basics.html)
