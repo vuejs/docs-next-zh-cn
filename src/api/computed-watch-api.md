@@ -34,10 +34,29 @@ console.log(count.value) // 0
 
 ```ts
 // 只读的
-function computed<T>(getter: () => T): Readonly<Ref<Readonly<T>>>
+function computed<T>(
+  getter: () => T,
+  debuggerOptions?: DebuggerOptions
+): Readonly<Ref<Readonly<T>>>
 
 // 可写的
-function computed<T>(options: { get: () => T; set: (value: T) => void }): Ref<T>
+function computed<T>(
+  options: {
+    get: () => T
+    set: (value: T) => void
+  },
+  debuggerOptions?: DebuggerOptions
+): Ref<T>
+interface DebuggerOptions {
+  onTrack?: (event: DebuggerEvent) => void
+  onTrigger?: (event: DebuggerEvent) => void
+}
+interface DebuggerEvent {
+  effect: ReactiveEffect
+  target: any
+  type: OperationTypes
+  key: string | symbol | undefined
+}
 ```
 
 ## `watchEffect`
@@ -84,9 +103,17 @@ type StopHandle = () => void
 
 **参考**：[`watchEffect` 指南](../guide/reactivity-computed-watchers.html#watcheffect)
 
+<!-- TODO: translation -->
+## `watchPostEffect` <Badge text="3.2+" />
+
+Alias of `watchEffect` with `flush: 'post'` option.
+## `watchSyncEffect` <Badge text="3.2+" />
+
+Alias of `watchEffect` with `flush: 'sync'` option.
+
 ## `watch`
 
-`watch` API 与选项式 API [this.\$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的数据源，并在单独的回调函数中执行副作用。默认情况下，它也是惰性的——即回调仅在侦听源发生更改时被调用。
+`watch` API 与选项式 API [this.$watch](./instance-methods.html#watch) (以及相应的 [watch](./options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的数据源，并在单独的回调函数中执行副作用。默认情况下，它也是惰性的——即回调仅在侦听源发生更改时被调用。
 
 - 与 [watchEffect](#watcheffect) 比较，`watch` 允许我们：
 

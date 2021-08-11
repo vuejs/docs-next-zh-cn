@@ -235,6 +235,41 @@ const AsyncComp = defineAsyncComponent({
 
 **参考**：[动态和异步组件](../guide/component-dynamic-async.html)
 
+<!-- TODO: translation -->
+## defineCustomElement <Badge text="3.2+" />
+
+This method accepts the same argument as [`defineComponent`](#definecomponent), but instead returns a native [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) that can be used within any framework, or with no frameworks at all.
+
+Usage example:
+
+```html
+<my-vue-element></my-vue-element>
+```
+
+```js
+import { defineCustomElement } from 'vue'
+const MyVueElement = defineCustomElement({
+  // normal Vue component options here
+  props: {},
+  emits: {},
+  template: `...`,
+  // defineCustomElement only: CSS to be injected into shadow root
+  styles: [`/* inlined css */`]
+})
+// Register the custom element.
+// After registration, all `<my-vue-element>` tags on the page will be upgraded.
+customElements.define('my-vue-element', MyVueElement)
+// You can also programmatically instantiate the element:
+// (can only be done after registration)
+document.body.appendChild(
+  new MyVueElement({
+    // initial props (optional)
+  })
+)
+```
+
+For more details on building Web Components with Vue, especially with Single File Components, see [Vue and Web Components](/guide/web-components.html#building-custom-elements-with-vue).
+
 ## resolveComponent
 
 :::warning
@@ -477,10 +512,14 @@ import { h, mergeProps } from 'vue'
 export default {
   inheritAttrs: false,
   render() {
-    const props = mergeProps({
-      // 该 class 将与 $attrs 中的其他 class 合并。
-      class: 'active'
-    }, this.$attrs)
+    const props = mergeProps(
+      {
+        // 该 class 将与 $attrs 中的其他 class 合并。
+        class: 'active'
+      },
+      this.$attrs
+    )
+
     return h('div', props)
   }
 }
@@ -498,11 +537,16 @@ export default {
 <script>
 import { h, useCssModule } from 'vue'
 export default {
-  setup () {
+  setup() {
     const style = useCssModule()
-    return () => h('div', {
-      class: style.success
-    }, 'Task complete!')
+    return () =>
+      h(
+        'div',
+        {
+          class: style.success
+        },
+        'Task complete!'
+      )
   }
 }
 </script>
@@ -513,7 +557,7 @@ export default {
 </style>
 ```
 
-关于使用 CSS 模块的更多信息，请参阅 [Vue Loader - CSS Modules](https://vue-loader.vuejs.org/zh/guide/css-modules.html)。
+关于使用 CSS 模块的更多信息，请参阅 [单文件组件样式特性：`<style module>`](/api/sfc-style.html#style-module)。
 
 ### 参数
 

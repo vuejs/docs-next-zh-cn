@@ -30,6 +30,35 @@ plusOne.value = 1
 console.log(count.value) // 0
 ```
 
+<!-- TODO: translation -->
+### Computed Debugging <Badge text="3.2+" />
+
+`computed` accepts a second argument with `onTrack` and `onTrigger` options:
+
+- `onTrack` will be called when a reactive property or ref is tracked as a dependency.
+- `onTrigger` will be called when the watcher callback is triggered by the mutation of a dependency.
+
+Both callbacks will receive a debugger event which contains information on the dependency in question. It is recommended to place a `debugger` statement in these callbacks to interactively inspect the dependency:
+
+```js
+const plusOne = computed(() => count.value + 1, {
+  onTrack(e) {
+    // triggered when count.value is tracked as a dependency
+    debugger
+  },
+  onTrigger(e) {
+    // triggered when count.value is mutated
+    debugger
+  }
+})
+// access plusOne, should trigger onTrack
+console.log(plusOne.value)
+// mutate count.value, should trigger onTrigger
+count.value++
+```
+
+`onTrack` and `onTrigger` only work in development mode.
+
 ## `watchEffect`
 
 为了根据响应式状态*自动应用*和*重新应用*副作用，我们可以使用 `watchEffect` 方法。它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。
@@ -143,6 +172,9 @@ watchEffect(
 ```
 
 `flush` 选项还接受 `sync`，这将强制效果始终同步触发。然而，这是低效的，应该很少需要。
+
+<!-- TODO: translation -->
+In Vue >= 3.2.0, `watchPostEffect` and `watchSyncEffect` aliases can also be used to make the code intention more obvious.
 
 ### 侦听器调试
 
@@ -278,22 +310,14 @@ const state = reactive({
 watch(
   () => state,
   (state, prevState) => {
-    console.log(
-      'not deep',
-      state.attributes.name,
-      prevState.attributes.name
-    )
+    console.log('not deep', state.attributes.name, prevState.attributes.name)
   }
 )
 
 watch(
   () => state,
   (state, prevState) => {
-    console.log(
-      'deep',
-      state.attributes.name,
-      prevState.attributes.name
-    )
+    console.log('deep', state.attributes.name, prevState.attributes.name)
   },
   { deep: true }
 )
@@ -316,10 +340,7 @@ const state = reactive({
 watch(
   () => _.cloneDeep(state),
   (state, prevState) => {
-    console.log(
-      state.attributes.name,
-      prevState.attributes.name
-    )
+    console.log(state.attributes.name, prevState.attributes.name)
   }
 )
 
