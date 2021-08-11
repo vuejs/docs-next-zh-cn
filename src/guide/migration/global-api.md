@@ -139,7 +139,7 @@ app.config.globalProperties.$http = () => {}
 
 使用 `provide` ([稍后](#provide-inject)会讨论) 时，也应考虑作为 `globalProperties` 的替代品。
 
-[迁移构建标记：`GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
 
 ### `Vue.extend` 移除
 
