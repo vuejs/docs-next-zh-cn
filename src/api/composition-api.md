@@ -190,7 +190,7 @@ const MyComponent = {
 `getCurrentInstance` 支持访问内部组件实例。
 
 :::warning
-`getCurrentInstance` 只暴露给高阶使用场景，典型的例子比如库。强烈反对在应用的代码中使用 `getCurrentInstance`。请**不要**把它当作在组合式 API 中获取 `this` 的替代方案来使用。
+`getCurrentInstance` 只暴露给高阶使用场景，典型的比如在库中。强烈反对在应用的代码中使用 `getCurrentInstance`。请**不要**把它当作在组合式 API 中获取 `this` 的替代方案来使用。
 :::
 
 ```ts
