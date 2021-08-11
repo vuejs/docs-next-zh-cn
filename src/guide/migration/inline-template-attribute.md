@@ -81,4 +81,4 @@ const MyComp = {
 </template>
 ```
 
-> - 提示：在 3.x，插槽可以渲染为具有原生 [fragments](/guide/migration/fragments) 支持的根目录！
+> - 提示：在 3.x，插槽可以渲染为具有原生 [片段](/guide/migration/fragments) 支持的根目录！

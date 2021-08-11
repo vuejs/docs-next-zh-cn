@@ -114,7 +114,7 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 
 在 Vue 3 中，元素是否是组件的检查已转移到模板编译阶段，因此只有在使用运行时编译器时才考虑此配置选项。如果你使用的是 runtime-only 版本 `isCustomElement` 必须通过 `@vue/compiler-dom` 在构建步骤替换——比如，通过 [`compilerOptions` option in vue-loader](https://vue-loader.vuejs.org/options.html#compileroptions)。
 
-- 如果 `config.compilerOptions.isCustomElement` 当使用仅运行时构建时时，将发出警告，指示用户在生成设置中传递该选项；
+- 如果 `config.compilerOptions.isCustomElement` 当使用仅运行时构建版本时，将发出警告，指示用户在生成设置中传递该选项；
 - 这将是 Vue CLI 配置中新的顶层选项。
   :::
 
