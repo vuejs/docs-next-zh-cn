@@ -4,7 +4,7 @@
 
 ## `setup`
 
-一个组件选项，在创建组件**之前**执行，一旦 `props` 被解析，并作为组合式 API 的入口点
+一个组件选项，在组件被创建**之前**，`prop` 被解析之后执行。它是组合式 API 的入口。
 
 - **入参：**
 
@@ -98,7 +98,7 @@
 
 ## 生命周期钩子
 
-可以使用直接导入的 `onX` 函数注册生命周期钩子：
+可以通过直接导入 `onX` 函数来注册生命周期钩子：
 
 ```js
 import { onMounted, onUpdated, onUnmounted } from 'vue'
@@ -118,11 +118,11 @@ const MyComponent = {
 }
 ```
 
-这些生命周期钩子注册函数只能在 [`setup()`](#setup) 期间同步使用，因为它们依赖于内部全局状态来定位当前活动实例 (此时正在调用其 `setup()` 的组件实例)。在没有当前活动实例的情况下调用它们将导致错误。
+这些生命周期钩子注册函数只能在 [`setup()`](#setup) 期间同步使用，因为它们依赖于内部的全局状态来定位当前活动的实例 (即此时正在调用其 `setup()` 的组件实例)。在没有当前活动实例的情况下，调用它们将会出错。
 
-组件实例上下文也是在生命周期钩子的同步执行期间设置的，因此在生命周期钩子内同步创建的侦听器和计算属性也会在组件卸载时自动删除。
+组件实例的上下文也是在生命周期钩子的同步执行期间设置的，因此，在生命周期钩子内同步创建的侦听器和计算属性也会在组件卸载时自动删除。
 
-**选项 API 生命周期选项和组合式 API 之间的映射**
+**选项式 API 的生命周期选项和组合式 API 之间的映射**
 
   - ~~`beforeCreate`~~ -> 使用 `setup()`
   - ~~`created`~~ -> 使用 `setup()`
@@ -142,7 +142,7 @@ const MyComponent = {
 
 ## Provide / Inject
 
-`provide` 和 `inject` 启用依赖注入。只有在使用当前活动实例的 [`setup()`](#setup) 期间才能调用这两者。
+`provide` 和 `inject` 启用依赖注入。这两者只能在使用当前活动实例的 [`setup()`](#setup) 期间被调用。
 
 - **类型声明**：
 
@@ -163,19 +163,19 @@ const MyComponent = {
   ): T
   ```
 
-  Vue 提供了一个 `InjectionKey` 接口，该接口是扩展 `Symbol` 的泛型类型。它可用于在提供者和消费者之间同步 inject 值的类型：
+  Vue 提供了一个 `InjectionKey` 接口，该接口是扩展了 `Symbol` 的泛型类型。它可用于在生产者和消费者之间同步 inject 值的类型：
 
   ```ts
   import { InjectionKey, provide, inject } from 'vue'
 
   const key: InjectionKey<string> = Symbol()
 
-  provide(key, 'foo') // 提供非字符串值将导致错误
+  provide(key, 'foo') // 若提供非字符串值将出错
 
   const foo = inject(key) // foo 的类型: string | undefined
   ```
 
-  如果使用字符串 key 或非类型化 symbols，则需要显式声明 inject 值的类型：
+  如果使用了字符串 key 或非类型化的 symbol，则需要显式声明 inject 值的类型：
 
   ```ts
   const foo = inject<string>('foo') // string | undefined
@@ -190,7 +190,7 @@ const MyComponent = {
 `getCurrentInstance` 支持访问内部组件实例。
 
 :::warning
-`getCurrentInstance` 只会暴露给高阶用户，通常是库作者。对 `getCurrentInstance` 的使用在应用代码里是非常不鼓励的。请**不要**把它在组合式 API 中作为获得等同于 `this` 的退路来使用。
+`getCurrentInstance` 只暴露给高阶使用场景，典型的例子比如库。强烈反对在应用的代码中使用 `getCurrentInstance`。请**不要**把它当作在组合式 API 中获取 `this` 的替代方案来使用。
 :::
 
 ```ts
@@ -212,19 +212,19 @@ const MyComponent = {
 ```ts
 const MyComponent = {
   setup() {
-    const internalInstance = getCurrentInstance() // 工作
+    const internalInstance = getCurrentInstance() // 有效
 
-    const id = useComponentId() // 工作
+    const id = useComponentId() // 有效
 
     const handleClick = () => {
-      getCurrentInstance() // 不工作
-      useComponentId() // 不工作
+      getCurrentInstance() // 无效
+      useComponentId() // 无效
 
-      internalInstance // 工作
+      internalInstance // 有效
     }
 
     onMounted(() => {
-      getCurrentInstance() // 工作
+      getCurrentInstance() // 有效
     })
 
     return () =>
