@@ -6,9 +6,9 @@ badges:
 # Suspense <MigrationBadges :badges="$frontmatter.badges" />
 
 :::warning 试验性
-Suspense 是一个试验性的新特性并且其 API 可能随时更改。特此声明以便社区能够为当前的实现提供反馈。
+Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。特此声明，以便社区能够为当前的实现提供反馈。
 
-它不应该被用在生产环境。
+生产环境请勿使用。
 :::
 
 ## 介绍
