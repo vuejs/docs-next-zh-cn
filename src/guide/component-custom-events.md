@@ -20,7 +20,7 @@ this.$emit('myEvent')
 
 <VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Learn how to define which events a component can emit with Vue School">在 Vue School 上观看定义自定义事件的免费视频。</VideoLesson>
 
-可以通过 `emits` 选项在组件上定义已发出的事件。
+可以通过 `emits` 选项在组件上定义发出的事件。
 
 ```js
 app.component('custom-form', {
