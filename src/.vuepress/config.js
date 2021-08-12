@@ -80,6 +80,7 @@ const sidebar = {
       title: '高阶指南',
       collapsable: false,
       children: [
+        '/guide/web-components',
         {
           title: '响应性',
           children: [
@@ -106,7 +107,12 @@ const sidebar = {
     {
       title: '规模化',
       collapsable: false,
-      children: ['/guide/routing', '/guide/state-management', '/guide/ssr', '/guide/security']
+      children: [
+        '/guide/routing',
+        '/guide/state-management',
+        '/guide/ssr',
+        '/guide/security'
+      ]
     },
     {
       title: '无障碍',
@@ -148,10 +154,33 @@ const sidebar = {
       children: [
         '/api/basic-reactivity',
         '/api/refs-api',
-        '/api/computed-watch-api'
+        '/api/computed-watch-api',
+        '/api/effect-scope',
       ]
     },
-    '/api/composition-api'
+    '/api/composition-api',
+    {
+      title: '单文件组件',
+      collapsable: false,
+      children: [
+        {
+          title: '规范',
+          path: '/api/sfc-spec'
+        },
+        {
+          title: '工具',
+          path: '/api/sfc-tooling'
+        },
+        {
+          title: '<script setup>',
+          path: '/api/sfc-script-setup'
+        },
+        {
+          title: '<style> 特性',
+          path: '/api/sfc-style'
+        }
+      ]
+    }
   ],
   examples: [
     {
@@ -378,8 +407,7 @@ module.exports = {
               },
               {
                 text: 'Vue Test Utils',
-                link:
-                  'https://next.vue-test-utils.vuejs.org/guide/'
+                link: 'https://next.vue-test-utils.vuejs.org/guide/'
               },
               {
                 text: 'Devtools',
@@ -497,11 +525,18 @@ module.exports = {
           const date = new Date(timestamp)
 
           const digits = [
-            date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate(),
-            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
+            date.getUTCFullYear(),
+            date.getUTCMonth() + 1,
+            date.getUTCDate(),
+            date.getUTCHours(),
+            date.getUTCMinutes(),
+            date.getUTCSeconds()
           ].map(num => String(num).padStart(2, '0'))
 
-          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(/{(\d)}/g, (_, num) => digits[num])
+          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(
+            /{(\d)}/g,
+            (_, num) => digits[num]
+          )
         }
       }
     ],
