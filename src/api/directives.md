@@ -466,14 +466,12 @@
   </ul>
   ```
 
-  <!-- TODO: translation -->
-  Since 3.2, you can also memoize part of the template with invalidation conditions using [`v-memo`](#v-memo).
+  自 3.2 开始，你还可以通过 [`v-memo`](#v-memo) 来记住带有失效条件的部分模板。
 
 - **参考**：
   - [数据绑定语法- 插值](../guide/template-syntax.html#文本)
   - [v-memo](#v-memo)
 
-<!-- TODO: translation -->
 ## v-memo <Badge text="3.2+" />
 
 - **预期** `Array`
