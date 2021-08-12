@@ -476,11 +476,11 @@
 <!-- TODO: translation -->
 ## v-memo <Badge text="3.2+" />
 
-- **Expects:** `Array`
+- **预期** `Array`
 
-- **Details:**
-
-  Memoize a sub-tree of the template. Can be used on both elements and components. The directive expects a fixed-length array of dependency values to compare for the memoization. If every value in the array was the same as last render, then updates for the entire sub-tree will be skipped. For example:
+- **详细**
+  
+  记住模板的一个子树。在元素和组件上均可以使用。该指令通过一个固定长度的依赖数组来进行记忆比较。如果数组中的每个值跟最后一次渲染时相比都没有发生变化，那么整个子树的更新都将被跳过。举例：
 
   ```html
   <div v-memo="[valueA, valueB]">
@@ -488,13 +488,13 @@
   </div>
   ```
 
-  When the component re-renders, if both `valueA` and `valueB` remain the same, all updates for this `<div>` and its children will be skipped. In fact, even the Virtual DOM VNode creation will also be skipped since the memoized copy of the sub-tree can be reused.
+  当组件重新渲染的时候，如果 `valueA` 与 `valueB` 都维持不变，那么对这个 `<div>` 以及它的所有子节点的更新都将被跳过。事实上，即使是虚拟 DOM 的 VNode 创建也将被跳过，因为子树的记忆副本可以被重用。
 
-  It is important to specify the memoization array correctly, otherwise we may skip updates that should indeed be applied. `v-memo` with an empty dependency array (`v-memo="[]"`) would be functionally equivalent to `v-once`.
+  正确地声明记忆数组是很重要的，否则某些事实上需要被应用的更新也可能会被跳过。带有空依赖数组的 `v-memo` (`v-memo="[]"`) 在功能上等效于 `v-once`。
 
-  **Usage with `v-for`**
+  **结合 `v-for` 使用**
 
-  `v-memo` is provided solely for micro optimizations in performance-critical scenarios and should be rarely needed. The most common case where this may prove helpful is when rendering large `v-for` lists (where `length > 1000`):
+  `v-memo` 仅仅是为了在某些性能非常关键的场景下提供一些微观的优化，它应该很少需要被用到。最常见的能够证明其价值的场景是渲染大型的 `v-for` 列表 (比如 `length > 1000`)：
 
   ```html
   <div v-for="item in list" :key="item.id" v-memo="[item.id === selected]">
@@ -503,16 +503,17 @@
   </div>
   ```
 
-  When the component's `selected` state changes, a large amount of VNodes will be created even though most of the items remained exactly the same. The `v-memo` usage here is essentially saying "only update this item if it went from non-selected to selected, or the other way around". This allows every unaffected item to reuse its previous VNode and skip diffing entirely. Note we don't need to include `item.id` in the memo dependency array here since Vue automatically infers it from the item's `:key`.
+  当组件的 `selected` 状态发生变化时，即使绝大多数项目都没有发生任何变化，大量的 VNode 仍将被创建。此处使用的 `v-memo` 本质上代表着“仅在这条项目从未选中到选中时更新它，反之亦然”。这允许每个未受影响的项目重用之前的 VNode，并完全跳过差异比较。注意，我们不需要把 `item.id` 包含在记忆依赖数组里面，因为 Vue 可以自动从项目的 `:key` 中推断出它来。
 
   :::warning
-  When using `v-memo` with `v-for`, make sure they are used on the same element. **`v-memo` does not work inside `v-for`.**
+  在 `v-for` 中使用 `v-memo` 时，确保它们被用在在同一个元素上。 **`v-memo` 在 `v-for` 内部是无效的。**
   :::
 
-  `v-memo` can also be used on components to manually prevent unwanted updates in certain edge cases where the child component update check has been de-optimized. But again, it is the developer's responsibility to specify correct dependency arrays to avoid skipping necessary updates.
+  `v-memo` 也可以用于组件，在子组件的更新检查未进行优化的某些极端场景下，手动防止不必要的更新。但是，重申一遍，开发者有责任指定正确的依赖数组，以避免必要的更新被跳过。
 
-- **See also:**
+- **参考:**
   - [v-once](#v-once)
+
 ## v-is <Badge text="deprecated" type="warning" />
 
 已在 3.1.0 中被废弃。请换用[带有 `vue` 前缀的 `is` attribute](/api/special-attributes.html#is)。
