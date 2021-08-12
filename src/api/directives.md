@@ -516,4 +516,4 @@
 
 ## v-is <Badge text="deprecated" type="warning" />
 
-已在 3.1.0 中被废弃。请换用[带有 `vue` 前缀的 `is` attribute](/api/special-attributes.html#is)。
+已在 3.1.0 中被废弃。请换用[带有 `vue:` 前缀的 `is` attribute](/api/special-attributes.html#is)。
