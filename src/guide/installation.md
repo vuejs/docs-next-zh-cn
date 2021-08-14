@@ -66,7 +66,7 @@ $ npm install -D @vue/compiler-sfc
 
 除了 `@vue/compiler-sfc` 之外，你还需要为已选择的打包工具选择一个配套的单文件组件 loader 或 plugin。更多信息请查阅[单文件组件文档](../guide/single-file-component.html)。
 
-大多数情况下，我们更倾向于使用 Vue CLI 来创建一个配置最小化的 webpack 构建。
+大多数情况下，我们更倾向于使用 Vue CLI 来创建一个配置最小化的 webpack 构建版本。
 
 ## 命令行工具 (CLI)
 
@@ -124,10 +124,10 @@ $ yarn dev
 
 - 若要通过浏览器中的 `<script src="...">` 直接使用，则暴露 Vue 全局。
 - 浏览器内模板编译：
-  - `vue.global.js` 是包含编译器和运行时的“完整”构建，因此它支持动态编译模板。
+  - `vue.global.js` 是包含编译器和运行时的“完整”构建版本，因此它支持动态编译模板。
   - `vue.runtime.global.js` 只包含运行时，并且需要在构建步骤期间预编译模板。
 - 内联所有 Vue 核心内部包——即：它是一个单独的文件，不依赖于其他文件。这意味着你必须导入此文件和此文件中的所有内容，以确保获得相同的代码实例。
-- 包含硬编码的 prod/dev 分支，并且 prod 构建是预先压缩过的。将 `*.prod.js` 文件用于生产环境。
+- 包含硬编码的 prod/dev 分支，并且 prod 构建版本是预先压缩过的。将 `*.prod.js` 文件用于生产环境。
 
 :::tip 提示
 全局打包不是 [UMD](https://github.com/umdjs/umd) 构建的，它们被打包成 [IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)，并且仅用于通过 `<script src="...">` 直接使用。
@@ -136,7 +136,7 @@ $ yarn dev
 #### `vue(.runtime).esm-browser(.prod).js`：
 
 - 用于通过原生 ES 模块导入使用 (在浏览器中通过 `<script type="module">` 来使用)。
-- 与全局构建共享相同的运行时编译、依赖内联和硬编码的 prod/dev 行为。
+- 与全局构建版本共享相同的运行时编译、依赖内联和硬编码的 prod/dev 行为。
 
 ### 使用构建工具
 
@@ -146,7 +146,7 @@ $ yarn dev
 - 留下 prod/dev 分支的 `process.env.NODE_ENV` 守卫语句 (必须由构建工具替换)。
 - 不提供压缩版本 (打包后与其余代码一起压缩)。
 - import 依赖 (例如：`@vue/runtime-core`，`@vue/runtime-compiler`)
-  - 导入的依赖项也是 esm bundler 构建，并将依次导入其依赖项 (例如：@vue/runtime-core imports @vue/reactivity)。
+  - 导入的依赖项也是 esm bundler 构建版本，并将依次导入其依赖项 (例如：@vue/runtime-core imports @vue/reactivity)。
   - 这意味着你**可以**单独安装/导入这些依赖，而不会导致这些依赖项的不同实例，但你必须确保它们都为同一版本。
 - 浏览器内模板编译：
   - `vue.runtime.esm-bundler.js` **(默认)** 仅运行时，并要求所有模板都要预先编译。这是构建工具的默认入口 (通过 `package.json` 中的 module 字段)，因为在使用构建工具时，模板通常是预先编译的 (例如：在 `*.vue` 文件中)。

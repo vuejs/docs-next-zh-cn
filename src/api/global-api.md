@@ -4,7 +4,7 @@ sidebarDepth: 1
 
 # 全局 API
 
-如果你使用的是 CDN 构建，那么全局 API 可以通过全局对象 `Vue` 来访问，例如：
+如果你使用的是 CDN 构建版本，那么全局 API 可以通过全局对象 `Vue` 来访问，例如：
 
 ```js
 const { createApp, h, nextTick } = Vue

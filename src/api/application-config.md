@@ -125,7 +125,7 @@ app.mixin({
 配置运行时编译器的选项。设置在这个对象上的值将会被传入浏览器内的模板编译器，并影响配置过的应用内的每个组件。注意，你也可以使用 [`compilerOptions` 选项](/api/options-misc.html#compileroptions)在每个组件的基础上覆写这些选项。
 
 ::: tip 重要
-该配置选项只在完整的构建中生效 (例如可以在浏览器中编译模板的独立版 `vue.js`)。如果你使用的是附带额外构建设置的仅运行时版，编译器选项必须传入 `@vue/compiler-dom` 构建工具的配置来替代
+该配置选项只在完整的构建版本中生效 (例如可以在浏览器中编译模板的独立版 `vue.js`)。如果你使用的是附带额外构建设置的仅运行时版本，编译器选项必须传入 `@vue/compiler-dom` 构建工具的配置来替代
 
 - 对 `vue-loader` 来说：[通过 `compilerOptions` loader 选项传入](https://vue-loader.vuejs.org/options.html#compileroptions)。也可以查阅 [`vue-cli` 中的配置方式](https://cli.vuejs.org/zh/guide/webpack.html#修改-loader-选项)。
 

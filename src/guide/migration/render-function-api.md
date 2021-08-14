@@ -186,7 +186,7 @@ export default {
 
 - Vue 不应绑定到库中
 - 对于模块构建，导入应该保持独立，由最终用户的打包器处理
-- 对于 UMD / browser 构建，应该首先尝试全局 Vue.h，不存在时再使用 require 调用
+- 对于 UMD / browser 构建版本，应该首先尝试全局 Vue.h，不存在时再使用 require 调用
 
 ## 下一步
 
