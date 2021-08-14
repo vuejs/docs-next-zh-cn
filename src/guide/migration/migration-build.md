@@ -1,36 +1,36 @@
-# 迁移构建
+# 迁移构建版本
 
 ## 概述
 
-`@vue/compat` (即“迁移构建”) 是一个 Vue 3 的构建，提供了可配置的兼容 Vue 2 的行为。
+`@vue/compat` (即“迁移构建版本”) 是一个 Vue 3 的构建版本，提供了可配置的兼容 Vue 2 的行为。
 
-该构建默认运行在 Vue 2 的模式下——大部分公有 API 的行为和 Vue 2 一致，仅有一小部分例外。使用在 Vue 3 中发生改变或被废弃的特性时会抛出运行时警告。一个特性的兼容性也可以基于单个组件进行开启或禁用。
+该构建版本默认运行在 Vue 2 的模式下——大部分公有 API 的行为和 Vue 2 一致，仅有一小部分例外。使用在 Vue 3 中发生改变或被废弃的特性时会抛出运行时警告。一个特性的兼容性也可以基于单个组件进行开启或禁用。
 
 ### 预期用例
 
 - 将一个 Vue 2 应用升级为 Vue 3 (存在[限制](#已知的限制))
 - 迁移一个库以支持 Vue 3
-- 对于尚未尝试 Vue 3 的资深 Vue 2 开发者来说，迁移构建可以用来代替 Vue 3 以更好地学习版本之间的差异。
+- 对于尚未尝试 Vue 3 的资深 Vue 2 开发者来说，迁移构建版本可以用来代替 Vue 3 以更好地学习版本之间的差异。
 
 ### 已知的限制
 
-虽然我们已经努力使迁移构建尽可能地模拟 Vue 2 的行为，但仍有一些限制可能会阻止应用的顺利升级：
+虽然我们已经努力使迁移构建版本尽可能地模拟 Vue 2 的行为，但仍有一些限制可能会阻止应用的顺利升级：
 
 - 基于 Vue 2 内部 API 或文档中未记载行为的依赖。最常见的情况就是使用 `VNodes` 上的私有 property。如果你的项目依赖诸如 [Vuetify](https://vuetifyjs.com/zh-Hans/)、[Quasar](https://quasar.dev/) 或 [Element UI](https://element.eleme.io/#/zh-CN) 等组件库，那么最好等待一下它们的 Vue 3 兼容版本。
 
 - 对 IE11 的支持：[Vue 3 已经官方放弃对 IE11 的支持](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)。如果仍然需要支持 IE11 或更低版本，那你仍需继续使用 Vue 2。
 
-- 服务端渲染：该迁移构建可以被用于服务端渲染，但是迁移一个自定义的服务端渲染设置有更多工作要做。大致的思路是将 `vue-server-renderer` 替换为 [`@vue/server-renderer`](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer)。Vue 3 不再提供一个包渲染器，且我们推荐使用 [Vite](https://cn.vitejs.dev/guide/ssr.html) 以支持 Vue 3 服务端渲染。如果你正在使用 [Nuxt.js](https://zh.nuxtjs.org/)，那最好等待一下 Nuxt 3。
+- 服务端渲染：该迁移构建版本可以被用于服务端渲染，但是迁移一个自定义的服务端渲染设置有更多工作要做。大致的思路是将 `vue-server-renderer` 替换为 [`@vue/server-renderer`](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer)。Vue 3 不再提供一个包渲染器，且我们推荐使用 [Vite](https://cn.vitejs.dev/guide/ssr.html) 以支持 Vue 3 服务端渲染。如果你正在使用 [Nuxt.js](https://zh.nuxtjs.org/)，那最好等待一下 Nuxt 3。
 
 ### 预期
 
-请注意迁移构建旨在覆盖在文档中公开记载的 Vue 2 API 和行为。如果应用依赖了未记载的行为导致在迁移构建下运行失败，我们可能不太会调整迁移构建以迎合这种特殊情况。请考虑重构或移除导致这些问题行为的依赖。
+请注意迁移构建版本旨在覆盖在文档中公开记载的 Vue 2 API 和行为。如果应用依赖了未记载的行为导致在迁移构建下运行失败，我们可能不太会调整迁移构建版本以迎合这种特殊情况。请考虑重构或移除导致这些问题行为的依赖。
 
-多留意一下：如果你的应用较大且复杂，即便有了构建迁移，整个迁移过程也会是一个挑战。如果你的应用不幸无法顺利升级，请留意我们正在计划将组合式 API 等其它 Vue 3 特性迁移回 Vue 2.7 (预计在 2021 年第三季度末)。
+多留意一下：如果你的应用较大且复杂，即便有了迁移构建版本，整个迁移过程也会是一个挑战。如果你的应用不幸无法顺利升级，请留意我们正在计划将组合式 API 等其它 Vue 3 特性迁移回 Vue 2.7 (预计在 2021 年第三季度末)。
 
-如果应用在迁移构建中顺利运行，你**可以**在迁移完成之前将其发布到生产环境。尽管存在一些小的性能或包大小的问题，但应该不会显著地影响到生产环境的用户体验。当你有基于 Vue 2 行为的依赖且无法升级/替换时，可能不得不这样做。
+如果应用在迁移构建版本中顺利运行，你**可以**在迁移完成之前将其发布到生产环境。尽管存在一些小的性能或包大小的问题，但应该不会显著地影响到生产环境的用户体验。当你有基于 Vue 2 行为的依赖且无法升级/替换时，可能不得不这样做。
 
-该迁移构建会从 3.1 开始提供，且会随着 3.2 的发布计划进行持续发布。我们计划在将来某个小版本号起最终停止发布迁移构建 (在 2021 年底前至少不会)，因此你仍需要在此之前将其迁移到标准构建。
+该迁移构建版本会从 3.1 开始提供，且会随着 3.2 的发布计划进行持续发布。我们计划在将来某个小版本号起最终停止发布迁移构建版本 (在 2021 年底前至少不会)，因此你仍需要在此之前将其迁移到标准构建版本。
 
 ## 升级流程
 
@@ -193,7 +193,7 @@
 
     [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/d0c7d3ae789be71b8fd56ce79cb4cb1f921f893b)
 
-11. 当修复了所有警告以后，你就可以移除迁移构建并切换为 Vue 3。注意如果存在基于 Vue 2 行为的依赖，你可能无法做到这一点。
+11. 当修复了所有警告以后，你就可以移除迁移构建版本并切换为 Vue 3。注意如果存在基于 Vue 2 行为的依赖，你可能无法做到这一点。
 
     [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/9beb45490bc5f938c9e87b4ac1357cfb799565bd)
 
@@ -242,7 +242,7 @@ export default {
 
 ### 针对编译器的配置
 
-以 `COMPILER_` 开头的特性是针对编译器的：如果你正在使用完整构建 (含浏览器内编译器)，它们可以在运行时中被配置。然而如果使用构建设置，它们必须换为通过在构建配置中的 `compilerOptions` 进行配置 (参阅上述的配置)。
+以 `COMPILER_` 开头的特性是针对编译器的：如果你正在使用完整构建版本 (含浏览器内编译器)，它们可以在运行时中被配置。然而如果使用构建设置，它们必须换为通过在构建配置中的 `compilerOptions` 进行配置 (参阅上述的配置)。
 
 ## 特性参考
 
@@ -270,8 +270,8 @@ export default {
 
 | ID | 类型 | 描述 | 文档 |
 | ---- | ---- | ---- | ---- |
-| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` 现在改为了 `config.compilerOptions.isCustomElement` (只在浏览器编译器构建中)。如果使用了构建设置，`isCustomElement` 必须通过构建配置传入。 | [链接](/guide/migration/global-api.html#config-ignoredelements-替换为-config-iscustomelement) |
-| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` 被移除 (兼容模式只在浏览器编译器构建中支持) | [链接](/guide/migration/inline-template-attribute.html)                                                       |
+| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` 现在改为了 `config.compilerOptions.isCustomElement` (只在浏览器编译器构建版本中)。如果使用了构建设置，`isCustomElement` 必须通过构建配置传入。 | [链接](/guide/migration/global-api.html#config-ignoredelements-替换为-config-iscustomelement) |
+| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` 被移除 (兼容模式只在浏览器编译器构建版本中支持) | [链接](/guide/migration/inline-template-attribute.html)                                                       |
 | PROPS_DEFAULT_THIS       | ◐    | prop 的默认工厂方法不再可以访问 `this` (在兼容模式下，`this` 不是一个真实的实例——它只暴露 prop、`$options` 和注入) | [链接](/guide/migration/props-default-this.html)                                                              |
 | INSTANCE_DESTROY         | ◐    | `$destroy` 实例方法被移除 (在兼容模式下，只在根实例下支持) | |
 | GLOBAL_PRIVATE_UTIL      | ◐    | `Vue.util` 是私有的，且不再可用 | |

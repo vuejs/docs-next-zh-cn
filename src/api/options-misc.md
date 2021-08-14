@@ -63,7 +63,7 @@
   ```
 
   ::: tip 重要
-  和应用级别的 `compilerOptions` 配置类似，该选项只会在使用完整的构建在浏览器内编译模板时生效。
+  和应用级别的 `compilerOptions` 配置类似，该选项只会在使用完整的构建版本在浏览器内编译模板时生效。
   :::
 
 ## delimiters <Badge text="deprecated" type="warning" />

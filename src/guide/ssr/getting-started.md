@@ -16,7 +16,7 @@ yarn add @vue/server-renderer
 
 - 推荐使用的 Node.js 版本是 12+。
 - `@vue/server-renderer` 和 `vue` 的版本号必须匹配。
-- `@vue/server-renderer` 依赖一些 Node.js 的原生模块，因此只能用在 Node.js 中。我们未来可以提供一个简单的可运行在其它 JavaScript 运行时中的构建。
+- `@vue/server-renderer` 依赖一些 Node.js 的原生模块，因此只能用在 Node.js 中。我们未来可以提供一个简单的可运行在其它 JavaScript 运行时中的构建版本。
 
 ## 渲染一个 Vue 应用
 

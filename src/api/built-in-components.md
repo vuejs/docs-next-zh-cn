@@ -5,12 +5,12 @@
 `<keep-alive>`、`<transition>`、`<transition-group>` 和 `<teleport>` 组件都可以被打包工具 tree-shake。所以它们只会在被使用的时候被引入。如果你需要直接访问它们，也可以将它们显性导入。
 
 ```js
-// Vue 的 CDN 构建
+// Vue 的 CDN 构建版本
 const { KeepAlive, Teleport, Transition, TransitionGroup } = Vue
 ```
 
 ```js
-// Vue 的 ESM 构建
+// Vue 的 ESM 构建版本
 import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 ```
 

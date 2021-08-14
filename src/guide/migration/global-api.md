@@ -65,7 +65,7 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-如果你使用的是 Vue 的 [CDN](/guide/installation.html#cdn) 构建，那么 `createApp` 是通过全局的 `Vue` 对象暴露的。
+如果你使用的是 Vue 的 [CDN](/guide/installation.html#cdn) 构建版本，那么 `createApp` 是通过全局的 `Vue` 对象暴露的。
 
 ```js
 const { createApp } = Vue
@@ -91,9 +91,9 @@ const app = createApp({})
 
 ### `config.productionTip` 移除
 
-在 Vue 3.x 中，“使用生产版本”提示仅在使用“dev + full build”(包含运行时编译器并有警告的构建) 时才会显示。
+在 Vue 3.x 中，“使用生产版本”提示仅在使用“dev + full build”(包含运行时编译器并有警告的构建版本) 时才会显示。
 
-对于 ES 模块构建，由于它们是与 bundler 一起使用的，而且在大多数情况下，CLI 或样板已经正确地配置了生产环境，所以本技巧将不再出现。
+对于 ES 模块构建版本，由于它们是与 bundler 一起使用的，而且在大多数情况下，CLI 或样板已经正确地配置了生产环境，所以本技巧将不再出现。
 
 [迁移构建标记：`CONFIG_PRODUCTION_TIP`](migration-build.html#兼容性配置)
 
