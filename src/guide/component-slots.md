@@ -254,7 +254,7 @@ app.component('todo-list', {
 
 但是，这是行不通的，因为只有 `<todo-list>` 组件可以访问 `item`，我们将从其父组件提供插槽内容。
 
-要使 `item` 可用于父级提供的插槽内容，我们可以添加一个 `<slot>` 元素并将其绑定为一个 attribute：
+要使 `item` 可用于父级提供的插槽内容，我们可以添加一个 `<slot>` 元素并将其作为一个 attribute 绑定：
 
 ```html
 <ul>
