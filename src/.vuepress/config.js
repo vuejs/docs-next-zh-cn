@@ -203,7 +203,7 @@ const sidebar = {
     '/guide/migration/introduction',
     '/guide/migration/migration-build',
     {
-      title: '从 Vue 2 迁移',
+      title: '细节',
       collapsable: false,
       children: [
         '/guide/migration/array-refs',
@@ -241,7 +241,7 @@ const sidebar = {
         '/guide/migration/vnode-lifecycle-events',
         '/guide/migration/watch'
       ]
-    },
+    }
   ],
   ssr: [
     ['/guide/ssr/introduction', 'Introduction'],
@@ -356,7 +356,7 @@ module.exports = {
             link: '/guide/contributing/writing-guide'
           },
           {
-            text: 'v3 迁移指南',
+            text: '从 Vue 2 迁移',
             link: '/guide/migration/introduction'
           }
         ]
@@ -489,9 +489,9 @@ module.exports = {
       }
     ],
     repo: 'vuejs/docs-next-zh-cn',
-    editLinks: false,
-    editLinkText: 'Edit this on GitHub!',
-    lastUpdated: 'Last updated',
+    editLinks: true,
+    editLinkText: '在 GitHub 上编辑',
+    lastUpdated: '最近更新时间',
     docsDir: 'src',
     sidebarDepth: 2,
     sidebar: {
@@ -546,7 +546,7 @@ module.exports = {
         serviceWorker: true,
         updatePopup: {
           '/': {
-            message: '新内容可用',
+            message: '内容有更新',
             buttonText: '刷新'
           }
         }
