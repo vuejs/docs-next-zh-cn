@@ -246,9 +246,8 @@
 - **修饰符**：
 
   - `.camel` - 将 kebab-case attribute 名转换为 camelCase。
-  <!-- TODO: translation -->
-  - `.prop` - force a binding to be set as a DOM property. <Badge text="3.2+"/>
-  - `.attr` - force a binding to be set as a DOM attribute. <Badge text="3.2+"/>
+  - `.prop` - 将一个绑定强制设置为一个 DOM property。<Badge text="3.2+"/>
+  - `.attr` - 将一个绑定强制设置为一个 DOM attribute。<Badge text="3.2+"/>
 
 - **用法**：
 
@@ -300,8 +299,7 @@
   <svg><a :xlink:special="foo"></a></svg>
   ```
 
-  <!-- TODO: translation -->
-  When setting a binding on an element, Vue by default checks whether the element has the key defined as a property using an `in` operator check. If the property is defined, Vue will set the value as a DOM property instead of an attribute. This should work in most cases, but you can override this behavior by explicitly using `.prop` or `.attr` modifiers. This is sometimes necessary, especially when [working with custom elements](/guide/web-components.html#passing-dom-properties).
+  当在一个元素上设置一个绑定的时候，Vue 会默认通过 `in` 操作检测该元素是否有一个被定义为 property 的 key。如果该 property 被定义了，Vue 会将这个值设置为一个 DOM property 而不是 attribute。大多数情况下，这样工作是正常的，但你也可以通过 `.prop` 或 `.attr` 修饰符显性地覆写这个行为。有的时候这是必要的，尤其是[基于自定义元素的工作](/guide/web-components.html#传递-dom-property)。
 
   The `.prop` modifier also has a dedicated shorthand, `.`:
 
@@ -466,21 +464,19 @@
   </ul>
   ```
 
-  <!-- TODO: translation -->
-  Since 3.2, you can also memoize part of the template with invalidation conditions using [`v-memo`](#v-memo).
+  从 3.2 开始，你也可以使用 [`v-memo`](#v-memo) 记住模板的无效条件的那部分。
 
 - **参考**：
   - [数据绑定语法- 插值](../guide/template-syntax.html#文本)
   - [v-memo](#v-memo)
 
-<!-- TODO: translation -->
 ## v-memo <Badge text="3.2+" />
 
-- **Expects:** `Array`
+- **预期**：`Array`
 
-- **Details:**
+- **用法**：
 
-  Memoize a sub-tree of the template. Can be used on both elements and components. The directive expects a fixed-length array of dependency values to compare for the memoization. If every value in the array was the same as last render, then updates for the entire sub-tree will be skipped. For example:
+  记住一个模板的子树。元素和组件上都可以使用。该指令接收一个固定长度的数组作为依赖值进行记忆比对。如果数组中的每个值都和上次渲染的时候相同，则整个该子树的更新会被跳过。例如：
 
   ```html
   <div v-memo="[valueA, valueB]">
@@ -488,13 +484,13 @@
   </div>
   ```
 
-  When the component re-renders, if both `valueA` and `valueB` remain the same, all updates for this `<div>` and its children will be skipped. In fact, even the Virtual DOM VNode creation will also be skipped since the memoized copy of the sub-tree can be reused.
+  当组件被重新渲染时，如果 `valueA` 和 `valueB` 都还是原来的值，则这个 `<div>` 及其子元素的所有更新将会被跳过。实际上，甚至连 Virtual DOM 的 VNode 创建也会被跳过，因为被记住的子树的拷贝是可复用的。
 
-  It is important to specify the memoization array correctly, otherwise we may skip updates that should indeed be applied. `v-memo` with an empty dependency array (`v-memo="[]"`) would be functionally equivalent to `v-once`.
+  正确指定记忆数组是非常重要的，否则我们可能会错过应有的更新。配合空依赖数组使用的 `v-memo` (`v-memo="[]"`) 功能上等同于 `v-once`。
 
-  **Usage with `v-for`**
+  **和 `v-for` 一起使用**
 
-  `v-memo` is provided solely for micro optimizations in performance-critical scenarios and should be rarely needed. The most common case where this may prove helpful is when rendering large `v-for` lists (where `length > 1000`):
+  `v-memo` 仅供性能优先场景的微观优化，这种需求应该是罕见的。最常见的有帮助的情况是渲染 `v-for` 长列表 (长度大于 1000)：
 
   ```html
   <div v-for="item in list" :key="item.id" v-memo="[item.id === selected]">
@@ -503,15 +499,15 @@
   </div>
   ```
 
-  When the component's `selected` state changes, a large amount of VNodes will be created even though most of the items remained exactly the same. The `v-memo` usage here is essentially saying "only update this item if it went from non-selected to selected, or the other way around". This allows every unaffected item to reuse its previous VNode and skip diffing entirely. Note we don't need to include `item.id` in the memo dependency array here since Vue automatically infers it from the item's `:key`.
+  当组件的 `selected` 状态改变时，大量 VNode 将会被创建，哪怕大多数条目不会改变。`v-memo` 用在这里相当于在说“只在条目由未选中变为选中或反之的情况下才会被更新”。这使得每个没有被影响到的条目复用了之前的 VNode 而跳过了整个差异比对。注意我们不需要在记忆依赖数组中包含 `item.id`，因为 Vue 会从条目的 `:key` 中自动推导出来。
 
   :::warning
-  When using `v-memo` with `v-for`, make sure they are used on the same element. **`v-memo` does not work inside `v-for`.**
+  当和 `v-for` 一起使用 `v-memo` 时，请确保它们作用在相同的元素上。**`v-memo` 不能用在 `v-for` 内部。**
   :::
 
-  `v-memo` can also be used on components to manually prevent unwanted updates in certain edge cases where the child component update check has been de-optimized. But again, it is the developer's responsibility to specify correct dependency arrays to avoid skipping necessary updates.
+  `v-memo` 也可以被用在组件上，以在一些子组件被去优化的极端情况下手动阻止不需要的更新。不过再次强调，开发者有责任指定正确的依赖数组以避免错过必要的更新。
 
-- **See also:**
+- **参考**：
   - [v-once](#v-once)
 ## v-is <Badge text="deprecated" type="warning" />
 

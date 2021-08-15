@@ -103,13 +103,13 @@ type StopHandle = () => void
 
 **参考**：[`watchEffect` 指南](../guide/reactivity-computed-watchers.html#watcheffect)
 
-<!-- TODO: translation -->
 ## `watchPostEffect` <Badge text="3.2+" />
 
-Alias of `watchEffect` with `flush: 'post'` option.
+`watchEffect` 带有 `flush: 'post'` 选项的别名。
+
 ## `watchSyncEffect` <Badge text="3.2+" />
 
-Alias of `watchEffect` with `flush: 'sync'` option.
+`watchEffect` 带有 `flush: 'sync'` 选项的别名。
 
 ## `watch`
 
