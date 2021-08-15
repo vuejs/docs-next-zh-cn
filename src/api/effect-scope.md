@@ -1,26 +1,25 @@
-<!-- TODO: translation -->
-# Effect Scope API <Badge text="3.2+" />
+# 域内作用 API <Badge text="3.2+" />
 
 :::info
-Effect scope is an advanced API primarily intended for library authors. For details on how to leverage this API, please consult its corresponding [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0041-reactivity-effect-scope.md).
+域内作用是一个高阶的 API，主要服务于库作者。关于其使用细节请咨询相应的 [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0041-reactivity-effect-scope.md)。
 :::
 
 ## `effectScope`
 
-Creates an effect scope object which can capture the reactive effects (e.g. computed and watchers) created within it so that these effects can be disposed together.
+创建一个作用域对象，以捕获在其内部创建的响应式作用 (例如计算属性或侦听器)，使得这些作用可以一起被处理。
 
-**Typing:**
+**类型**：
 
 ```ts
 function effectScope(detached?: boolean): EffectScope
 
 interface EffectScope {
-  run<T>(fn: () => T): T | undefined // undefined if scope is inactive
+  run<T>(fn: () => T): T | undefined // 如果这个域不活跃则为 undefined
   stop(): void
 }
 ```
 
-**Example:**
+**示例**：
 
 ```js
 const scope = effectScope()
@@ -33,15 +32,15 @@ scope.run(() => {
   watchEffect(() => console.log('Count: ', doubled.value))
 })
 
-// to dispose all effects in the scope
+// 处理所有域内的作用
 scope.stop()
 ```
 
 ## `getCurrentScope`
 
-Returns the current active [effect scope](#effectscope) if there is one.
+如果有，则返回当前活跃的[作用域](#effectscope)。
 
-**Typing:**
+**类型**：
 
 ```ts
 function getCurrentScope(): EffectScope | undefined
@@ -49,11 +48,11 @@ function getCurrentScope(): EffectScope | undefined
 
 ## `onScopeDispose`
 
-Registers a dispose callback on the current active [effect scope](#effectscope). The callback will be invoked when the associated effect scope is stopped.
+在当前活跃的[作用域](#effectscope)上注册一个处理回调。该回调会在相关的作用域停止之后被调用。
 
-This method can be used as a non-component-coupled replacement of `onUnmounted` in reusable composition functions, since each Vue component's `setup()` function is also invoked in an effect scope.
+该方法在复用组件功能时可用作 `onUmounted` 的非组件耦合替代品，因为每个 Vue 组件的 `setup()` 函数也会在作用域内被调用。
 
-**Typing:**
+**类型**：
 
 ```ts
 function onScopeDispose(fn: () => void): void

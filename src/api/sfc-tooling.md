@@ -1,6 +1,6 @@
-<!-- TODO: translation -->
 # SFC Tooling
 
+<!-- TODO: translation -->
 ## Online Playgrounds
 
 You don't need to install anything on your machine to try out Vue SFCs - there are many online playgrounds that allow you to do so right in the browser:
