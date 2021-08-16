@@ -158,7 +158,7 @@ const emit = defineEmits(['change', 'delete'])
 
 ## `defineExpose`
 
-使用 `<script setup>` 的组件是**默认关闭**的，例如：通过模板 ref 或者 `$parent` 链获取到的组件的公开实例，不会暴露任何在 `<script setup>` 中声明的绑定。
+使用 `<script setup>` 的组件是**默认关闭**的，也即通过模板 ref 或者 `$parent` 链获取到的组件的公开实例，不会暴露任何在 `<script setup>` 中声明的绑定。
 
 为了在 `<script setup>` 组件中明确要暴露出去的属性，使用 `defineExpose` 这个编译器宏：
 
