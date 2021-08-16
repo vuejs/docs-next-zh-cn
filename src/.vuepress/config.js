@@ -490,7 +490,7 @@ module.exports = {
     ],
     repo: 'vuejs/docs-next-zh-cn',
     editLinks: true,
-    editLinkText: '在 GitHub 上编辑',
+    editLinkText: '在 GitHub 上编辑此页',
     lastUpdated: '最近更新时间',
     docsDir: 'src',
     sidebarDepth: 2,
