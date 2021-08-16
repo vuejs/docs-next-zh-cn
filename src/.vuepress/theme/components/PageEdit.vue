@@ -4,17 +4,20 @@
       <p>
         部署于
         <a href="https://url.netlify.com/HJ8X2mxP8">Netlify</a>。
-        <span v-if="editLink" class="edit-link">
-          发现了错误或者想要为文档做贡献？
-          <a
-            :href="editLink"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ editLinkText }}
-            <OutboundLink />
-          </a>
-        </span>
+        <template v-if="editLink">
+          <br />
+          <span class="edit-link">
+           发现了错误或者想要为文档做贡献？
+            <a
+              :href="editLink"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ editLinkText }}
+              <OutboundLink />
+            </a>
+          </span>
+        </template>
         <template v-if="lastUpdated" class="last-updated">
           <br />
           <span class="prefix">{{ lastUpdatedText }}:</span>
