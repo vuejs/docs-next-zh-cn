@@ -129,7 +129,7 @@ props: {
 
 **始终以 `key` 配合 `v-for`。**
 
-在组件上必须始终以 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。即使是在元素上，比如动画中的[对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/) ，维持可预测的行为也是一种好的实践。
+在组件上必须始终以 `key` 配合 `v-for`，以便维护内部组件及其子树的状态。即使对于元素，维持可预测的行为也是一种好的做法。例如动画中的[对象固化 (object constancy)](https://bost.ocks.org/mike/constancy/) 。
 
 ::: details 详解
 假设你有一个待办事项列表：
