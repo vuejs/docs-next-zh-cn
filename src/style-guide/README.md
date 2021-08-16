@@ -78,7 +78,7 @@ export default {
 
 **Prop 定义应该尽量详细**
 
-在已提交的代码中，prop 的定义应该尽量详细，至少指定其类型。
+在提交的代码中，prop 的定义应该尽量详细，至少指定其类型。
 
 ::: details 详解
 细致的 [prop 定义](/guide/component-props.html#prop-验证)有两个优势：
