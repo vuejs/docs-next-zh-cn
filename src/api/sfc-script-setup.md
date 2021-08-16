@@ -4,12 +4,12 @@ sidebarDepth: 1
 
 # 单文件组件 `<script setup>`
 
-`<script setup>` 是在单文件组件（SFCs）中使用 [Composition API](/api/composition-api.html) 的编译时语法糖。与普通的 `<script>` 语法相比，它有更多优势：
+`<script setup>` 是在单文件组件 (SFCs) 中使用 [Composition API](/api/composition-api.html) 的编译时语法糖。与普通的 `<script>` 语法相比，它有更多优势：
 
 - 更少的模板内容，更简洁的代码。
 - 用纯 Typescript 声明 props 和发出事件的能力。
-- 更好的运行时性能（其模板会被编译成一个与其同一作用域的渲染函数，没有任何的中间代理）。
-- 更好的 IDE 类型推断性能（减少语言服务器从代码中抽离类型的工作）。
+- 更好的运行时性能 (其模板会被编译成一个与其同一作用域的渲染函数，没有任何的中间代理)。
+- 更好的 IDE 类型推断性能 (减少语言服务器从代码中抽离类型的工作)。
 
 ## 基本语法
 
@@ -21,11 +21,11 @@ console.log('hello script setup')
 </script>
 ```
 
-里面的代码会被编译成组件的 `setup()` 函数的内容。意味着不像普通的 `<script>` 那样只在组件被第一次引入的时候执行一次，`<script setup>` 中的代码会在 **每次组件实例被创建的时候执行**。
+里面的代码会被编译成组件的 `setup()` 函数的内容。意味着不像普通的 `<script>` 那样只在组件被第一次引入的时候执行一次，`<script setup>` 中的代码会在**每次组件实例被创建的时候执行**。
 
 ### 顶层的绑定会被暴露给模板
 
-当使用 `<script setup>` 的时候，任何在 `<script setup>` 声明的顶层的绑定（包括变量，函数声明，以及 import 引入的内容）都能在模板中直接使用：
+当使用 `<script setup>` 的时候，任何在 `<script setup>` 声明的顶层的绑定 (包括变量，函数声明，以及 import 引入的内容) 都能在模板中直接使用：
 
 ```vue
 <script setup>
@@ -57,7 +57,7 @@ import { capitalize } from './helpers'
 
 ## 响应式
 
-响应式状态需要明确使用 [响应式 APIs](/api/basic-reactivity.html) 来创建。和从 `setup()` 函数中返回值一样，ref 值在模板中使用的时候会自动拆箱：
+响应式状态需要明确使用[响应式 APIs](/api/basic-reactivity.html) 来创建。和从 `setup()` 函数中返回值一样，ref 值在模板中使用的时候会自动拆箱：
 
 ```vue
 <script setup>
@@ -146,19 +146,19 @@ const emit = defineEmits(['change', 'delete'])
 </script>
 ```
 
-- `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的 **编译器宏**。他们不需要导入，且会在处理 `<script setup>` 的时候被编译处理掉。
+- `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的**编译器宏**。他们不需要导入，且会在处理 `<script setup>` 的时候被编译处理掉。
 
 - `defineProps` 接收与 `props` 属性相同的值，同时 `defineEmits` 也接收 `emits` 属性相同的值。
 
 - `defineProps` 和 `defineEmits` 在选项传入后，会提供恰当的类型推断。
 
-- 传入到 `defineProps` 和 `defineEmits` 的选项会从 setup 中提升到模块的范围。因而，传入的选项不能引用在 setup 范围中声明的局部变量。这样做会引起编译错误。但是，它 _可以_ 引用导入的绑定，因为它们也在模块范围内。
+- 传入到 `defineProps` 和 `defineEmits` 的选项会从 setup 中提升到模块的范围。因而，传入的选项不能引用在 setup 范围中声明的局部变量。这样做会引起编译错误。但是，它*可以*引用导入的绑定，因为它们也在模块范围内。
 
 如果你在使用 Typescript，[使用纯类型声明来声明 prop 和 emits](#typescript-only-features) 也是可以的。
 
 ## `defineExpose`
 
-使用 `<script setup>` 的组件是 **默认关闭** 的 - 例如：通过模板 ref 或者 `$parent` 链获取到的组件的公开实例，不会暴露任何在 `<script setup>` 中声明的绑定。
+使用 `<script setup>` 的组件是**默认关闭**的，例如：通过模板 ref 或者 `$parent` 链获取到的组件的公开实例，不会暴露任何在 `<script setup>` 中声明的绑定。
 
 为了在 `<script setup>` 组件中明确要暴露出去的属性，使用 `defineExpose` 这个编译器宏：
 
@@ -195,7 +195,7 @@ const attrs = useAttrs()
 
 ## 与普通的 `<script>` 一起使用
 
-`<script setup>` 可以和普通的 `<script>` 一起使用。 普通的 `<script>` 或许会在我们需要的这些情况下被使用到:
+`<script setup>` 可以和普通的 `<script>` 一起使用。普通的 `<script>` 或许会在我们需要的这些情况下被使用到：
 
 - 无法在 `<script setup>` 声明的选项，例如 `inheritAttrs` 或通过插件启用的自定义的选项。
 - 声明命名导出。
@@ -203,7 +203,7 @@ const attrs = useAttrs()
 
 ```vue
 <script>
-// 普通 <script>, 在模块范围下执行（只执行一次）
+// 普通 <script>, 在模块范围下执行(只执行一次)
 runSideEffectOnce()
 
 // 声明额外的选项
@@ -256,9 +256,9 @@ const emit = defineEmits<{
 
 - 使用类型声明的时候，静态分析会自动生成等效的运行时声明，以消除双重声明的需要并仍然确保正确的运行时行为。
 
-  - 在开发环境下，编译器会试着从类型来推断对应的运行时验证。例如这里从 `foo: string` 类型中推断出 `foo: String`。如果类型是对导入类型的引用，这里的推断结果会是 `foo: null` （与 `any` 类型相等），因为编译器没有外部文件的信息。
+  - 在开发环境下，编译器会试着从类型来推断对应的运行时验证。例如这里从 `foo: string` 类型中推断出 `foo: String`。如果类型是对导入类型的引用，这里的推断结果会是 `foo: null` (与 `any` 类型相等)，因为编译器没有外部文件的信息。
 
-  - 在生产模式下，编译器会生成数组格式的声明来减少打包体积（这里的 props 会被编译成 `['foo', 'bar']`）。
+  - 在生产模式下，编译器会生成数组格式的声明来减少打包体积 (这里的 props 会被编译成 `['foo', 'bar']`)。
 
   - 生成的代码仍然是有着类型的 Typescript 代码，它会在后续的流程中被其它工具处理。
 
@@ -287,6 +287,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 上面代码会被编译为等价的运行时 props 的 `default` 选项。另外，`withDefaults` 辅助函数提供了对默认值的类型检查，并且确保返回的 `props` 的类型删除了已声明默认值的属性的可选标志。
 
-## 限制: 没有 Src 导入
+## 限制：没有 Src 导入
 
 由于模块执行语义的差异，`<script setup>` 中的代码依赖单文件组件的上下文。当移动到外部的 `.js` 或者 `.ts` 文件中的时候，对于开发者和工具来说都会感到混乱。因而 **`<script setup>`** 不能和 `src` 特性一起使用。
