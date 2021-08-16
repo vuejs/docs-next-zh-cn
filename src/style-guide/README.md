@@ -1411,7 +1411,7 @@ props: {
     default: false
   },
   label: String,
-    icon: String
+  icon: String
 },
 computed: {
   formattedValue() {
