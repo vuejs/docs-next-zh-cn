@@ -1408,7 +1408,7 @@ props: {
   },
   focused: {
     type: Boolean,
-  default: false
+    default: false
   },
   label: String,
     icon: String
