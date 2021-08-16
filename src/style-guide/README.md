@@ -1346,7 +1346,7 @@ computed: {
 5. **全局感知** (要求在组件以外被感知)
     - `id`
 
-6. **唯一的 Attribute** (需要唯一值的 attribute)
+6. **唯一性 Attribute** (需要唯一值的 attribute)
     - `ref`
     - `key`
 
