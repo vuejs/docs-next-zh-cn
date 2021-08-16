@@ -182,7 +182,7 @@ this.$emit('update:title', newValue)
   }
   ```
 
-[迁移构建标记：](migration-build.html#兼容性配置)
+[迁移构建开关：](migration-build.html#兼容性配置)
 
 - `COMPONENT_V_MODEL`
 - `COMPILER_V_BIND_SYNC`

@@ -37,7 +37,7 @@ badges:
 
 ## 迁移策略
 
-[迁移构建标记：`TRANSITION_GROUP_ROOT`](migration-build.html#兼容性配置)
+[迁移构建开关：`TRANSITION_GROUP_ROOT`](migration-build.html#兼容性配置)
 
 ## 参考
 
