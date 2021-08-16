@@ -5,7 +5,7 @@
         <!--部署于-->
         <!--<a href="https://url.netlify.com/HJ8X2mxP8">Netlify</a>。-->
         <template v-if="editLink">
-          <br />
+          <!--<br />-->
           <span class="edit-link">
            发现了错误或者想要为文档做贡献？
             <a
