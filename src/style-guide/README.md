@@ -38,7 +38,7 @@ sidebar: auto
 
 **组件名应该始终由多个单词组成，除了根组件 `App`，以及 `<transition>`、`<component>` 之类的 Vue 内置组件。**
 
-这样做可以跟现有的，以及未来的 HTML 元素[避免冲突](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
+这样做可以避免与现有以及未来的 HTML 元素[产生冲突](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)，因为所有的 HTML 元素名称都是单个单词的。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
