@@ -2,8 +2,8 @@
   <footer class="page-edit">
     <div class="container">
       <p>
-        部署于
-        <a href="https://url.netlify.com/HJ8X2mxP8">Netlify</a>。
+        <!--部署于-->
+        <!--<a href="https://url.netlify.com/HJ8X2mxP8">Netlify</a>。-->
         <template v-if="editLink">
           <br />
           <span class="edit-link">
