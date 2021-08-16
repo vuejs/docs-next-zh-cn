@@ -77,7 +77,7 @@ CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解�
 
 ```bash
 yarn global add @vue/cli
-# OR
+# 或
 npm install -g @vue/cli
 ```
 
