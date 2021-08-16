@@ -18,7 +18,7 @@ app.component('date-picker', {
 })
 ```
 
-如果我们需要通过 `data status` property 定义 `<date-picker>` 组件的状态，它将应用于根节点 (即 `div.date-picker`)。
+如果我们需要通过 `data-status` attribute 定义 `<date-picker>` 组件的状态，它将应用于根节点 (即 `div.date-picker`)。
 
 ```html
 <!-- 具有非prop attribute的Date-picker组件-->
@@ -97,7 +97,7 @@ app.component('date-picker', {
 })
 ```
 
-有了这个新配置，`data status` attribute 将应用于 `input` 元素！
+有了这个新配置，`data-status` attribute 将应用于 `input` 元素！
 
 ```html
 <!-- Date-picker 组件 使用非 prop attribute -->
@@ -111,7 +111,7 @@ app.component('date-picker', {
 
 ## 多个根节点上的 Attribute 继承
 
-与单个根节点组件不同，具有多个根节点的组件不具有自动 attribute 回退行为。如果未显式绑定 `$attrs`，将发出运行时警告。
+与单个根节点组件不同，具有多个根节点的组件不具有自动 attribute [fallthrough](https://en.wiktionary.org/wiki/fall-through#English)(贯穿)行为。如果未显式绑定 `$attrs`，将发出运行时警告。
 
 ```html
 <custom-layout id="custom-layout" @click="changeValue"></custom-layout>
