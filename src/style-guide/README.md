@@ -985,7 +985,7 @@ components/
 
 **在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 [JSX](../guide/render-function.html#jsx) 中应该始终使用 kebab-case。**
 
-我们只是单纯地遵循了每种语言的约定。在 JavaScript 中 camelCase 更为自然 。而在 HTML 中则是 kebab-case。
+我们只是单纯地遵循了每种语言的约定。在 JavaScript 中 camelCase 更为自然。而在 HTML 中则是 kebab-case。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
