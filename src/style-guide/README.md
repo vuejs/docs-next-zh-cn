@@ -76,7 +76,7 @@ export default {
 
 ### Prop 定义<sup data-p="a">必要</sup>
 
-**Prop 定义应该尽量详细**
+**Prop 定义应尽量详细**
 
 在提交的代码中，prop 的定义应该尽量详细，至少指定其类型。
 
