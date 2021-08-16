@@ -567,7 +567,7 @@ components/
 
 - 因为组件名应该始终是多个单词，所以这样做可以避免你在包裹简单组件时随意选择前缀 (比如 `MyButton`、`VueButton`)。
 
-- 因为这些组件会被频繁使用，所以你可能想要把它们注册到全局，而不是在各处分别导入它们。结合一个前缀即可使用 Webpack 达到目的：
+- 因为这些组件会被频繁使用，所以你可能想要把它们注册到全局，而不是在各处分别导入它们。结合一个前缀即可使用 webpack 达到目的：
 
   ```js
   const requireComponent = require.context("./src", true, /Base[A-Z]\w+\.(vue|js)$/)
