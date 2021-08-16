@@ -111,7 +111,7 @@ app.component('date-picker', {
 
 ## 多个根节点上的 Attribute 继承
 
-与单个根节点组件不同，具有多个根节点的组件不具有自动 attribute [fallthrough](https://en.wiktionary.org/wiki/fall-through#English)(贯穿)行为。如果未显式绑定 `$attrs`，将发出运行时警告。
+与单个根节点组件不同，具有多个根节点的组件不具有自动 attribute [fallthrough (隐式贯穿)](https://en.wiktionary.org/wiki/fall-through#English) 行为。如果未显式绑定 `$attrs`，将发出运行时警告。
 
 ```html
 <custom-layout id="custom-layout" @click="changeValue"></custom-layout>
