@@ -1353,7 +1353,7 @@ computed: {
 7. **双向绑定** (结合了绑定与事件)
     - `v-model`
 
-8. **其他 Attribute** (所有普通的，绑定或未绑定的 attribute)
+8. **其他 Attribute** (所有普通的、绑定或未绑定的 attribute)
 
 9. **事件** (组件事件监听器)
     - `v-on`
