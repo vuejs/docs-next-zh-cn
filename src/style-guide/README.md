@@ -1404,7 +1404,7 @@ computed: {
 props: {
   value: {
     type: String,
-      required: true
+    required: true
   },
   focused: {
     type: Boolean,
