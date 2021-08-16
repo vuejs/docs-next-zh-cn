@@ -57,7 +57,7 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 <button v-bind:disabled="isButtonDisabled">按钮</button>
 ```
 
-如果 `isButtonDisabled` 的值是 truthy<sup>[[1]](#footnote-1)</sup>，那么 `disabled` attribute 将被包含在内。如果该值是一个空字符串，它也会被包括在内，与 `<button disabled="">` 保持一致。对于其他错误的值，该 attribute 将被省略。
+如果 `isButtonDisabled` 的值是 truthy<sup>[[1]](#footnote-1)</sup>，那么 `disabled` attribute 将被包含在内。如果该值是一个空字符串，它也会被包括在内，与 `<button disabled="">` 保持一致。对于其他 falsy<sup>[[2]](#footnote-2)</sup> 的值，该 attribute 将被省略。
 
 ### 使用 JavaScript 表达式
 
@@ -207,4 +207,5 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 
 
 <small>**译者注**  
-<a id="footnote-1"></a>[1] truthy 不是 `true`，详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy) 的解释。</small>
+<p><a id="footnote-1"></a>[1] truthy 不是 `true`，详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy) 的解释。</p>
+<p><a id="footnote-2"></a>[2] falsy 不是 `false`，详见 [MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy) 的解释。</p></small>
