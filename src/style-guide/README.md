@@ -1019,7 +1019,7 @@ props: {
 
 **多个 attribute 的元素应该分多行撰写，每个 attribute 一行。**
 
-在 JavaScript 中，用多行分隔对象的多个 property 是很常见的最佳实践，因为这样更易读。模板和 [JSX](../guide/render-function.html#jsx) 同样值得考虑。
+在 JavaScript 中，用多行分隔对象的多个 property 是很常见的最佳实践，因为这样更易读。模板和 [JSX](../guide/render-function.html#jsx) 都需要做同样的考量。
 
 <div class="style-example style-example-bad">
 <h4>反面例子</h4>
