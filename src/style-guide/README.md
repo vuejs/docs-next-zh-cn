@@ -1150,7 +1150,7 @@ computed: {
 
 ### 带引号的 attribute 值<sup data-p="b">强烈推荐</sup>
 
-**非空 HTML attribute 的值应该始终带有引号 (单引号或双引号，选择你在 JS 里面未使用的那个)。**
+**非空 HTML attribute 的值应该始终带有引号 (单引号或双引号，选择未在 JS 里面使用的那个)。**
 
 在 HTML 中不带空格的 attribute 的值是可以没有引号的，这种实践通常导致*避免*空格，从而使得 attribute 的可读性变差。
 
