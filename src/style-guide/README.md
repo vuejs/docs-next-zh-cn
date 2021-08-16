@@ -293,7 +293,7 @@ computed: {
 
 **对于应用来说，样式在顶层 `App` 组件和布局组件中可以是全局的，但是在其它所有组件中都应该是有作用域的。**
 
-这条规则只适用于[单文件组件](../guide/single-file-component.html)。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) (一个基于 class 的，类似 [BEM](http://getbem.com/) 的策略) ，或者其它的库/约定来实现。
+这条规则只适用于[单文件组件](../guide/single-file-component.html)。你*不一定*要使用 [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html)。作用域也可以通过 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) (一个基于 class 的，类似 [BEM](http://getbem.com/) 的策略) 或者其它的库/约定来实现。
 
 **不管怎样，对于组件库来说，我们应该更倾向于选用基于 class 的策略，而不是 `scoped` attribute。**
 
