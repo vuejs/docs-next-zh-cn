@@ -4,16 +4,16 @@ sidebarDepth: 1
 
 # 单文件组件 `<script setup>`
 
-`<script setup>` 是在单文件组件 (SFCs) 中使用 [Composition API](/api/composition-api.html) 的编译时语法糖。与普通的 `<script>` 语法相比，它有更多优势：
+`<script setup>` 是在单文件组件 (SFC) 中使用[组合式 API](/api/composition-api.html) 的编译时语法糖。相比于普通的 `<script>` 语法，它具有更多优势：
 
-- 更少的模板内容，更简洁的代码。
-- 用纯 Typescript 声明 props 和发出事件的能力。
-- 更好的运行时性能 (其模板会被编译成一个与其同一作用域的渲染函数，没有任何的中间代理)。
+- 更少的样板内容，更简洁的代码。
+- 能够使用纯 Typescript 声明 props 和发出事件。
+- 更好的运行时性能 (其模板会被编译成与其同一作用域的渲染函数，没有任何的中间代理)。
 - 更好的 IDE 类型推断性能 (减少语言服务器从代码中抽离类型的工作)。
 
 ## 基本语法
 
-为了加入这个语法特性，需要将 `setup` 特性添加到 `<script>` 代码块上：
+要选择加入这个语法，需要将 `setup` attribute 添加到 `<script>` 代码块上：
 
 ```vue
 <script setup>
@@ -21,7 +21,7 @@ console.log('hello script setup')
 </script>
 ```
 
-里面的代码会被编译成组件的 `setup()` 函数的内容。意味着不像普通的 `<script>` 那样只在组件被第一次引入的时候执行一次，`<script setup>` 中的代码会在**每次组件实例被创建的时候执行**。
+里面的代码会被编译成组件 `setup()` 函数的内容。这意味着与普通的 `<script>` 只在组件被首次引入的时候执行一次不同，`<script setup>` 中的代码会在**每次组件实例被创建的时候执行**。
 
 ### 顶层的绑定会被暴露给模板
 
@@ -43,7 +43,7 @@ function log() {
 </template>
 ```
 
-import 导入的内容也会以同样的方式暴露。意味着你可以在模板表达式中直接使用导入的 helper 函数，并不需要通过 `methods` 选项来暴露它：
+import 导入的内容也会以同样的方式暴露。意味着可以在模板表达式中直接使用导入的 helper 函数，并不需要通过 `methods` 选项来暴露它：
 
 ```vue
 <script setup>
@@ -85,11 +85,11 @@ import MyComponent from './MyComponent.vue'
 </template>
 ```
 
-将 `MyComponent` 视为被引用为一个变量。如果你已经使用了 JSX，在这里的使用它的心智模型是一样的。其 kebab-case 格式的 `<my-component>` 同样也能在模板中使用，不过为了更好的一致性，我们强烈建议使用 PascalCase 格式作为组件的标签名称。这也有助于区分原生的自定义元素。
+将 `MyComponent` 看做被一个变量所引用。如果使用了 JSX，在这里的使用它的心智模型是一样的。其 kebab-case 格式的 `<my-component>` 同样能在模板中使用。不过，我们强烈建议使用 PascalCase 格式作为组件的标签名称，以便于更好的一致性，同时也有助于区分原生的自定义元素。
 
 ### 动态组件
 
-由于组件被引用为变量而不是用字符串建来注册的，我们在 `<script setup>` 要使用动态组件的时候，就应该使用动态的 `:is` 来绑定：
+由于组件被引用为变量而不是作为字符串键来注册的，在 `<script setup>` 中要使用动态组件的时候，就应该使用动态的 `:is` 来绑定：
 
 ```vue
 <script setup>
@@ -107,9 +107,9 @@ import Bar from './Bar.vue'
 
 ### 递归组件
 
-一个单文件组件可以通过它的文件名被其自己所引用。例如：一个名为 `FooBar.vue` 的组件可以在其模板中用 `<FooBar/>` 引用它自己。
+一个单文件组件可以通过它的文件名被其自己所引用。例如：名为 `FooBar.vue` 的组件可以在其模板中用 `<FooBar/>` 引用它自己。
 
-请注意这种方式相比于 import 导入的组件优先级更低。如果你有一个命名的 import 导入和组件的推断名冲突了，你可以使用 import 别名导入：
+请注意这种方式相比于 import 导入的组件优先级更低。如果有命名的 import 导入和组件的推断名冲突了，可以使用 import 别名导入：
 
 ```js
 import { FooBar as FooBarChild } from './components'
@@ -117,7 +117,7 @@ import { FooBar as FooBarChild } from './components'
 
 ### 命名空间组件
 
-你可以使用带点的组件标记，例如 `<Foo.Bar>` 来引用嵌套在对象属性中的组件。这在你要从单个文件中导入多个组件的时候非常有用：
+可以使用带点的组件标记，例如 `<Foo.Bar>` 来引用嵌套在对象属性中的组件。这在需要从单个文件中导入多个组件的时候非常有用：
 
 ```vue
 <script setup>
@@ -133,7 +133,7 @@ import * as Form from './form-components'
 
 ## `defineProps` 和 `defineEmits`
 
-为了声明 `props` 和 `emits` 选项且具备完整的类型推断，我们可以使用 `defineProps` 和 `defineEmits` API，它们在 `<script setup>` 中都是自动可用的：
+为了声明 `props` 和 `emits` 选项且具备完整的类型推断，可以使用 `defineProps` 和 `defineEmits` API，它们在 `<script setup>` 中都是自动可用的：
 
 ```vue
 <script setup>
@@ -148,19 +148,19 @@ const emit = defineEmits(['change', 'delete'])
 
 - `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的**编译器宏**。他们不需要导入，且会在处理 `<script setup>` 的时候被编译处理掉。
 
-- `defineProps` 接收与 `props` 属性相同的值，同时 `defineEmits` 也接收 `emits` 属性相同的值。
+- `defineProps` 接收与 `props` 属性相同的值，`defineEmits` 也接收 `emits` 属性相同的值。
 
 - `defineProps` 和 `defineEmits` 在选项传入后，会提供恰当的类型推断。
 
-- 传入到 `defineProps` 和 `defineEmits` 的选项会从 setup 中提升到模块的范围。因而，传入的选项不能引用在 setup 范围中声明的局部变量。这样做会引起编译错误。但是，它*可以*引用导入的绑定，因为它们也在模块范围内。
+- 传入到 `defineProps` 和 `defineEmits` 的选项会从 setup 中提升到模块的范围。因此，传入的选项不能引用在 setup 范围中声明的局部变量。这样做会引起编译错误。但是，它*可以*引用导入的绑定，因为它们也在模块范围内。
 
-如果你在使用 Typescript，[使用纯类型声明来声明 prop 和 emits](#typescript-only-features) 也是可以的。
+如果使用了 Typescript，[使用纯类型声明来声明 prop 和 emits](#typescript-only-features) 也是可以的。
 
 ## `defineExpose`
 
 使用 `<script setup>` 的组件是**默认关闭**的，也即通过模板 ref 或者 `$parent` 链获取到的组件的公开实例，不会暴露任何在 `<script setup>` 中声明的绑定。
 
-为了在 `<script setup>` 组件中明确要暴露出去的属性，使用 `defineExpose` 这个编译器宏：
+为了在 `<script setup>` 组件中明确要暴露出去的属性，使用 `defineExpose` 编译器宏：
 
 ```vue
 <script setup>
@@ -176,11 +176,11 @@ defineExpose({
 </script>
 ```
 
-当一个父组件通过模板 ref 的方式获取到当前组件的实例，获取到的实例会像这样 `{ a: number, b: number }` (refs 会和在普通实例中一样被自动拆箱)
+当父组件通过模板 ref 的方式获取到当前组件的实例，获取到的实例会像这样 `{ a: number, b: number }` (ref 会和在普通实例中一样被自动拆箱)
 
 ## `useSlots` 和 `useAttrs`
 
-在 `<script setup>` 使用 `slots` 和 `attrs` 的情况应该是很稀有的，因为你可以在模板中通过 `$slots` 和 `$attrs` 来访问它们。在那些稀有的需要使用它们的场景中，可以分别使用 `useSlots` 和 `useAttrs` 两个辅助函数来使用它们：
+在 `<script setup>` 使用 `slots` 和 `attrs` 的情况应该是很稀少的，因为可以在模板中通过 `$slots` 和 `$attrs` 来访问它们。在那些稀少的需要使用它们的场景中，可以分别用 `useSlots` 和 `useAttrs` 两个辅助函数来使用：
 
 ```vue
 <script setup>
@@ -191,11 +191,11 @@ const attrs = useAttrs()
 </script>
 ```
 
-`useSlots` 和 `useAttrs` 是真实的运行时函数，它会返回与 `setupContext.slots` 和 `setupContext.attrs` 同等的值。它们同样也能在普通的 composition API 中使用。
+`useSlots` 和 `useAttrs` 是真实的运行时函数，它会返回与 `setupContext.slots` 和 `setupContext.attrs` 等价的值，同样也能在普通的组合式 API 中使用。
 
 ## 与普通的 `<script>` 一起使用
 
-`<script setup>` 可以和普通的 `<script>` 一起使用。普通的 `<script>` 或许会在我们需要的这些情况下被使用到：
+`<script setup>` 可以和普通的 `<script>` 一起使用。普通的 `<script>` 在有这些需要的情况下或许会被使用到：
 
 - 无法在 `<script setup>` 声明的选项，例如 `inheritAttrs` 或通过插件启用的自定义的选项。
 - 声明命名导出。
@@ -238,7 +238,7 @@ const post = await fetch(`/api/post/1`).then(r => r.json())
 
 ### 仅限类型的 props/emit 声明
 
-props 和 emits 都可以使用传递字面量类型参数给 `defineProps` or `defineEmits` 的纯类型语法来声明：
+props 和 emits 都可以使用传递字面量类型的纯类型语法做为参数给 `defineProps` 和 `defineEmits` 来声明：
 
 ```ts
 const props = defineProps<{
@@ -271,7 +271,7 @@ const emit = defineEmits<{
 
 ### 使用类型声明时的默认 props 值
 
-仅限类型的 `defineProps` 声明的一个不足在于，它没有可以给 props 提供默认值的方式。为了解决这个问题，提供了一个 `withDefaults` 的编译器宏：
+仅限类型的 `defineProps` 声明的不足之处在于，它没有可以给 props 提供默认值的方式。为了解决这个问题，提供了 `withDefaults` 编译器宏：
 
 ```ts
 interface Props {
@@ -285,8 +285,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
-上面代码会被编译为等价的运行时 props 的 `default` 选项。另外，`withDefaults` 辅助函数提供了对默认值的类型检查，并且确保返回的 `props` 的类型删除了已声明默认值的属性的可选标志。
+上面代码会被编译为等价的运行时 props 的 `default` 选项。此外，`withDefaults` 辅助函数提供了对默认值的类型检查，并确保返回的 `props` 的类型删除了已声明默认值的属性的可选标志。
 
 ## 限制：没有 Src 导入
 
-由于模块执行语义的差异，`<script setup>` 中的代码依赖单文件组件的上下文。当移动到外部的 `.js` 或者 `.ts` 文件中的时候，对于开发者和工具来说都会感到混乱。因而 **`<script setup>`** 不能和 `src` 特性一起使用。
+由于模块执行语义的差异，`<script setup>` 中的代码依赖单文件组件的上下文。当将其移动到外部的 `.js` 或者 `.ts` 文件中的时候，对于开发者和工具来说都会感到混乱。因而 **`<script setup>`** 不能和 `src` attribute 一起使用。
