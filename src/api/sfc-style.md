@@ -6,7 +6,7 @@ sidebarDepth: 1
 
 ## `<style scoped>`
 
-当 `<style>` 标签有 `scoped` 特性的时候，它的 CSS 只会应用到当前组件的元素上。这类似于 Shadow DOM 中的样式封装。它带有一些警告，但是并不需要任何的 polyfill。它是通过 PostCSS 转换以下内容来实现的：
+当 `<style>` 标签带有 `scoped` attribute 的时候，它的 CSS 只会应用到当前组件的元素上。这类似于 Shadow DOM 中的样式封装。它带有一些注意事项，不过好处是不需要任何的 polyfill。它是通过 PostCSS 转换以下内容来实现的：
 
 ```vue
 <style scoped>
@@ -36,11 +36,11 @@ sidebarDepth: 1
 
 ### 子组件的根元素
 
-在有 `scoped` 的时候，父组件的样式将不会泄露到子组件当中。不过，子组件的根节点会同时被父组件的作用域样式和子组件的作用域样式影响。这是特意设计的，这样父组件就可以设置子组件根节点的样式来达到调整布局的目的。
+在带有 `scoped` 的时候，父组件的样式将不会泄露到子组件当中。不过，子组件的根节点会同时被父组件的作用域样式和子组件的作用域样式影响。这是有意为之的，这样父组件就可以设置子组件根节点的样式，以达到调整布局的目的。
 
 ### 深度选择器
 
-如果你想要在 `scoped` 的样式里的选择器能做更“深度”的选择，也即：影响到子组件，你可以使用 `:deep()` 这个伪类：
+处于 `scoped` 样式中的选择器如果想要做更“深度”的选择，也即：影响到子组件，可以使用 `:deep()` 这个伪类：
 
 ```vue
 <style scoped>
@@ -64,7 +64,7 @@ sidebarDepth: 1
 
 ### 插槽选择器
 
-默认情况下，作用域样式不会影响到 `<slot/>` 渲染出来的内容，因为它们被认为是父组件所持有并传递进来的。想要确切的将插槽内容作为选择器的目标，使用 `:slotted` 伪类：
+默认情况下，作用域样式不会影响到 `<slot/>` 渲染出来的内容，因为它们被认为是父组件所持有并传递进来的。使用 `:slotted` 伪类以确切地将插槽内容作为选择器的目标：
 
 ```vue
 <style scoped>
@@ -76,7 +76,7 @@ sidebarDepth: 1
 
 ### 全局选择器
 
-如果你只想让一个样式规则应用到全局，比起另外创建一个 `<style>`，你可以使用 `:global` 伪类来实现 (看下面代码)：
+如果想让其中一个样式规则应用到全局，比起另外创建一个 `<style>`，可以使用 `:global` 伪类来实现 (看下面的代码)：
 
 ```vue
 <style scoped>
@@ -102,7 +102,7 @@ sidebarDepth: 1
 
 ### 作用域样式提示
 
-- **作用域样式并没有消除对 CSS 类的需求**。由于浏览器渲染渲染各种各样 CSS 选择器的方式，`p { color: red }` 会比使用作用域样式的时候慢几倍 (也即当与属性选择器组合使用的时候)。如果你使用 class 或者 id 来替代，例如 `.example { color: red }`，那你事实上已经消除了这个性能提示。
+- **作用域样式并没有消除对 CSS 类的需求**。由于浏览器渲染渲染各种各样 CSS 选择器的方式，`p { color: red }` 结合作用域样式使用时会慢很多倍 (也即当与属性选择器组合使用的时候)。如果使用 class 或者 id 来替代，例如 `.example { color: red }`，那你事实上可以避免这个性能损失。
 
 - **小心递归组件中的后代选择器**。对于一个使用了 `.a .b` 选择器的样式规则来说，如果匹配到 `.a` 的元素包含了一个递归的子组件，那么所有的在那个子组件中的 `.b` 都会匹配到这条样式规则。
 
@@ -126,7 +126,7 @@ sidebarDepth: 1
 
 对生成的类进行散列以避免冲突，实现了将 CSS 仅作用于当前组件的相同效果。
 
-参考 [CSS Modules spec](https://github.com/css-modules/css-modules) 文档查看模式详情，例如 [global exceptions](https://github.com/css-modules/css-modules#exceptions) 和 [composition](https://github.com/css-modules/css-modules#composition)。
+参考 [CSS Modules 规范](https://github.com/css-modules/css-modules)以查看更多详情，例如 [global exceptions](https://github.com/css-modules/css-modules#exceptions) 和 [composition](https://github.com/css-modules/css-modules#composition)。
 
 ### 自定义注入名称
 
@@ -144,7 +144,7 @@ sidebarDepth: 1
 </style>
 ```
 
-### 与 Composition API 一同使用
+### 与组合式 API 一同使用
 
 注入的类可以通过 [`useCssModule`](/api/global-api.html#usecssmodule) API 在 `setup()` 和 `<script setup>` 中使用。对于使用了自定义注入名称的 `<style module>` 模块，`useCssModule` 接收一个对应的 `module` 特性值作为第一个参数。
 
