@@ -15,7 +15,7 @@ console.log(plusOne.value) // 2
 plusOne.value++ // 错误
 ```
 
-或者，它也可以是具有 `get` 和 `set` 函数的对象，以创建可写的 ref 对象。
+或者，接受一个具有 `get` 和 `set` 函数的对象，用来创建可写的 ref 对象。
 
 ```js
 const count = ref(1)
@@ -61,7 +61,7 @@ interface DebuggerEvent {
 
 ## `watchEffect`
 
-在响应式地跟踪其依赖项时立即运行一个函数，并在依赖项发生变化时重新运行它。
+立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。
 
 ```js
 const count = ref(0)
