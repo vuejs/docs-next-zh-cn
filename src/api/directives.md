@@ -180,7 +180,7 @@
 
   监听原生 DOM 事件时，方法以事件为唯一的参数。如果使用内联语句，语句可以访问一个 `$event` property：`v-on:click="handle('ok', $event)"`。
 
-  `v-on` 同样支持不带参数绑定一个事件/监听器键值对的对象。注意当使用对象语法时，是不支持任何修饰器的。
+  `v-on` 同样支持不带参数绑定一个事件/监听器键值对的对象，如需传递参数，可使用 `bind` 方法。注意当使用对象语法时，是不支持任何修饰器的。
 
 - **示例**：
 
@@ -219,7 +219,7 @@
   <button v-on:click.once="doThis"></button>
 
   <!-- 对象语法 -->
-  <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
+  <button v-on="{ mousedown: doThis, mouseup: doThat.bind(null, 'Hello, World!') }"></button>
   ```
 
   在子组件上监听自定义事件 (当子组件触发“my-event”时将调用事件处理器)：
