@@ -124,7 +124,7 @@ sidebarDepth: 1
 </style>
 ```
 
-对生成的类进行散列以避免冲突，实现了将 CSS 仅作用于当前组件的相同效果。
+对生成的类做 hash 计算以避免冲突，实现了和 scope CSS 一样将 CSS 仅作用于当前组件的效果。
 
 参考 [CSS Modules 规范](https://github.com/css-modules/css-modules)以查看更多详情，例如 [global exceptions](https://github.com/css-modules/css-modules#exceptions) 和 [composition](https://github.com/css-modules/css-modules#composition)。
 
