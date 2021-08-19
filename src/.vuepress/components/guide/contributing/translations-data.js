@@ -1,11 +1,11 @@
 export const labels = {
-  language: 'Language',
+  language: '语种',
   github: 'GitHub',
-  lastCommit: 'Last commit',
-  last90Days: 'Last 90 days',
-  loadDetails: 'Load Details',
-  commits: 'commits',
-  loading: 'Loading...'
+  lastCommit: '最后一次提交',
+  last90Days: '过去 90 天',
+  loadDetails: '加载详情',
+  commits: '提交',
+  loading: '加载中...'
 }
 
 // 代码仓库按语言代码的字母顺序排列。
