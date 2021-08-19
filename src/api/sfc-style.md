@@ -102,7 +102,7 @@ sidebarDepth: 1
 
 ### 作用域样式提示
 
-- **作用域样式并没有消除对 CSS 类的需求**。由于浏览器渲染渲染各种各样 CSS 选择器的方式，`p { color: red }` 结合作用域样式使用时会慢很多倍 (也即当与属性选择器组合使用的时候)。如果使用 class 或者 id 来替代，例如 `.example { color: red }`，那你事实上可以避免这个性能损失。
+- **作用域样式并没有消除对 CSS 类的需求**。由于浏览器渲染渲染各种各样 CSS 选择器的方式，`p { color: red }` 结合作用域样式使用时会慢很多倍 (也即当与 attribute 选择器组合使用的时候)。如果使用 class 或者 id 来替代，例如 `.example { color: red }`，那你事实上可以避免这个性能损失。
 
 - **小心递归组件中的后代选择器**。对于一个使用了 `.a .b` 选择器的样式规则来说，如果匹配到 `.a` 的元素包含了一个递归的子组件，那么所有的在那个子组件中的 `.b` 都会匹配到这条样式规则。
 
@@ -130,7 +130,7 @@ sidebarDepth: 1
 
 ### 自定义注入名称
 
-您可以通过给 `module` 属性一个值来自定义注入的 class 对象的属性键：
+您可以通过给 `module` attribute 一个值来自定义注入的 class 对象的 property 键：
 
 ```vue
 <template>
@@ -146,7 +146,7 @@ sidebarDepth: 1
 
 ### 与组合式 API 一同使用
 
-注入的类可以通过 [`useCssModule`](/api/global-api.html#usecssmodule) API 在 `setup()` 和 `<script setup>` 中使用。对于使用了自定义注入名称的 `<style module>` 模块，`useCssModule` 接收一个对应的 `module` 特性值作为第一个参数。
+注入的类可以通过 [`useCssModule`](/api/global-api.html#usecssmodule) API 在 `setup()` 和 `<script setup>` 中使用。对于使用了自定义注入名称的 `<style module>` 模块，`useCssModule` 接收一个对应的 `module` attribute 值作为第一个参数。
 
 ```js
 // 默认, 返回 <style module> 中的类
@@ -202,4 +202,4 @@ p {
 </style>
 ```
 
-实际的值会被编译成散列的 CSS 自定义属性，CSS 本身仍然是静态的。自定义属性会通过内联样式的方式应用到组件的根元素上，并且在源值变更的时候响应式更新。
+实际的值会被编译成散列的 CSS 自定义 property，CSS 本身仍然是静态的。自定义 property 会通过内联样式的方式应用到组件的根元素上，并且在源值变更的时候响应式更新。
