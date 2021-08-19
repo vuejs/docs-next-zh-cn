@@ -57,7 +57,7 @@ import { capitalize } from './helpers'
 
 ## 响应式
 
-响应式状态需要明确使用[响应式 APIs](/api/basic-reactivity.html) 来创建。和从 `setup()` 函数中返回值一样，ref 值在模板中使用的时候会自动展开：
+响应式状态需要明确使用[响应式 APIs](/api/basic-reactivity.html) 来创建。和从 `setup()` 函数中返回值一样，ref 值在模板中使用的时候会自动解包：
 
 ```vue
 <script setup>
@@ -176,7 +176,7 @@ defineExpose({
 </script>
 ```
 
-当父组件通过模板 ref 的方式获取到当前组件的实例，获取到的实例会像这样 `{ a: number, b: number }` (ref 会和在普通实例中一样被自动展开)
+当父组件通过模板 ref 的方式获取到当前组件的实例，获取到的实例会像这样 `{ a: number, b: number }` (ref 会和在普通实例中一样被自动解包)
 
 ## `useSlots` 和 `useAttrs`
 
