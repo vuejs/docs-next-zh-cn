@@ -102,13 +102,13 @@ sidebarDepth: 1
 
 ### 作用域样式提示
 
-- **作用域样式并没有消除对 CSS 类的需求**。由于浏览器渲染渲染各种各样 CSS 选择器的方式，`p { color: red }` 结合作用域样式使用时会慢很多倍 (也即当与 attribute 选择器组合使用的时候)。如果使用 class 或者 id 来替代，例如 `.example { color: red }`，那你事实上可以避免这个性能损失。
+- **作用域样式并没有消除对 CSS 类的需求**。由于浏览器渲染各种各样 CSS 选择器的方式，`p { color: red }` 结合作用域样式使用时会慢很多倍 (即，当与 attribute 选择器组合使用的时候)。如果使用 class 或者 id 来替代，例如 `.example { color: red }`，那你几乎就可以避免这个性能的损失。
 
 - **小心递归组件中的后代选择器**。对于一个使用了 `.a .b` 选择器的样式规则来说，如果匹配到 `.a` 的元素包含了一个递归的子组件，那么所有的在那个子组件中的 `.b` 都会匹配到这条样式规则。
 
 ## `<style module>`
 
-`<style module>` 标签会被编译为 [CSS Modules](https://github.com/css-modules/css-modules) 并且将生成的 CSS 类作为 `$style` 对象的键暴露给组件。
+`<style module>` 标签会被编译为 [CSS Modules](https://github.com/css-modules/css-modules) 并且将生成的 CSS 类作为 `$style` 对象的键暴露给组件：
 
 ```vue
 <template>
@@ -130,7 +130,7 @@ sidebarDepth: 1
 
 ### 自定义注入名称
 
-您可以通过给 `module` attribute 一个值来自定义注入的 class 对象的 property 键：
+你可以通过给 `module` attribute 一个值来自定义注入的类对象的 property 键：
 
 ```vue
 <template>
@@ -182,7 +182,7 @@ export default {
 </style>
 ```
 
-这个语法同样也适用于 [`<script setup>`](./sfc-script-setup)，且支持 Javascript 表达式 (需要用引号包裹起来)
+这个语法同样也适用于 [`<script setup>`](./sfc-script-setup)，且支持 JavaScript 表达式 (需要用引号包裹起来)
 
 ```vue
 <script setup>
@@ -202,4 +202,4 @@ p {
 </style>
 ```
 
-实际的值会被编译成散列的 CSS 自定义 property，CSS 本身仍然是静态的。自定义 property 会通过内联样式的方式应用到组件的根元素上，并且在源值变更的时候响应式更新。
+实际的值会被编译成 hash 的 CSS 自定义 property，CSS 本身仍然是静态的。自定义 property 会通过内联样式的方式应用到组件的根元素上，并且在源值变更的时候响应式更新。
