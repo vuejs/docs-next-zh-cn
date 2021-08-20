@@ -20,7 +20,7 @@
 
 - **详细：**
 
-  在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：data observation(数据观测)，computed properties(计算属性),methods，event/watcher (事件/侦听器)的回调函数。然而，挂载阶段还没开始，`$el` property 目前尚不可用。
+  在实例创建完成后被立即同步调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：data observation (数据观测)，computed property (计算属性)，methods，event/watcher (事件/侦听器) 的回调函数。然而，挂载阶段还没开始，且 `$el` property 目前尚不可用。
 
 -  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
