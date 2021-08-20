@@ -1,7 +1,7 @@
 # 生命周期钩子
 
 :::tip 注意
-所有的生命周期钩子自动绑定 `this` 上下文到实例中，因此你可以访问 data ，computed properties (计算属性)和 methods 。这意味着**你不应该使用箭头函数来定义一个生命周期方法** (例如 `created: () => this.fetchTodos()`) 。因为箭头函数绑定了父级上下文，因此 `this` 不会指向预期的组件实例，并且`this.fetchTodos` 的结果将会是undefined。
+所有生命周期钩子的 `this` 上下文将自动绑定至实例中，因此你可以访问 data，computed property (计算属性) 和 methods 。这意味着**你不应该使用箭头函数来定义一个生命周期方法** (例如 `created: () => this.fetchTodos()`) 。因为箭头函数绑定了父级上下文，所以 `this` 不会指向预期的组件实例，并且`this.fetchTodos` 将会是 undefined。
 :::
 
 ## beforeCreate
