@@ -418,6 +418,7 @@ function (slotProps) {
   <span class="green">{{ item }}</span>
 </todo-list>
 ```
+注：3.0版本已修正该写法。
 
 如果你希望使用缩写的话，你必须始终以明确插槽名取而代之：
 
