@@ -105,11 +105,11 @@ type StopHandle = () => void
 
 ## `watchPostEffect` <Badge text="3.2+" />
 
-`watchEffect` 带有 `flush: 'post'` 选项的别名。
+`watchEffect` 的别名，带有 `flush: 'post'` 选项。
 
 ## `watchSyncEffect` <Badge text="3.2+" />
 
-`watchEffect` 带有 `flush: 'sync'` 选项的别名。
+`watchEffect` 的别名，带有 `flush: 'sync'` 选项。
 
 ## `watch`
 
