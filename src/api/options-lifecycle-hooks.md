@@ -79,7 +79,7 @@
 
   当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用[计算属性](./options-data.html#computed)或[侦听器](./options-data.html#watch)取而代之。
 
-  注意，`updated` **不会**保证所有的子组件也都被重新渲染完毕。如果你希望等到整个视图都渲染完毕再执行某些操作，可以在 `updated` 里使用 [vm.$nextTick](../api/instance-methods.html#nexttick)：
+  注意，`updated` **不会**保证所有的子组件也都被重新渲染完毕。如果你希望等待整个视图都渲染完毕，可以在 `updated` 内部使用 [vm.$nextTick](../api/instance-methods.html#nexttick)：
 
   ```js
   updated() {
