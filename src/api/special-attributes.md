@@ -1,4 +1,4 @@
-# 特殊指令
+# 特殊attribute
 
 ## key
 
