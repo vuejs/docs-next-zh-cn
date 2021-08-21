@@ -42,7 +42,7 @@
 
 - **详细：**
 
-  在实例挂载完成后被调用，这时候传递给 [`app.mount`](/api/application-api.html#mount)的元素`el`被新创建的 `vm.$el` 替换了。如果根实例挂载到一个文档内的元素上，当 `mounted` 被调用时 `vm.$el` 也在文档内。
+  在实例挂载完成后被调用，这时候传递给 [`app.mount`](/api/application-api.html#mount) 的元素已经被新创建的 `vm.$el` 替换了。如果根实例被挂载到了一个文档内的元素上，当 `mounted` 被调用时， `vm.$el` 也会在文档内。
   注意 `mounted` **不会**保证所有的子组件也都被挂载完成。如果你希望等到整个视图都渲染完毕再执行某些操作，可以在 `mounted` 内部使用 [vm.$nextTick](../api/instance-methods.html#nexttick)：
 
   ```js
