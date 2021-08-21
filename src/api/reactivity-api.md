@@ -5,4 +5,4 @@
 - [响应性基础 API](/api/basic-reactivity.html)
 - [Refs](/api/refs-api.html)
 - [Computed 与 watch](/api/computed-watch-api.html)
-- [域内作用 API](/api/effect-scope.html)
+- [Effect 作用域 API](/api/effect-scope.html)
