@@ -1,6 +1,6 @@
-<!-- TODO: translation -->
 # SFC Syntax Specification
 
+<!-- TODO: translation -->
 ## Intro
 
 A `*.vue` file is a custom file format that uses HTML-like syntax to describe a Vue component. Each `*.vue` file consists of three types of top-level language blocks: `<template>`, `<script>`, and `<style>`, and optionally additional custom blocks:

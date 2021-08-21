@@ -235,12 +235,11 @@ const AsyncComp = defineAsyncComponent({
 
 **参考**：[动态和异步组件](../guide/component-dynamic-async.html)
 
-<!-- TODO: translation -->
 ## defineCustomElement <Badge text="3.2+" />
 
-This method accepts the same argument as [`defineComponent`](#definecomponent), but instead returns a native [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) that can be used within any framework, or with no frameworks at all.
+该方法接受和 [`defineComponent`](#definecomponent) 相同的参数，但是返回一个原生的[自定义元素](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements)，该元素可以用于任意框架或不基于框架使用。
 
-Usage example:
+用法示例：
 
 ```html
 <my-vue-element></my-vue-element>
@@ -249,26 +248,26 @@ Usage example:
 ```js
 import { defineCustomElement } from 'vue'
 const MyVueElement = defineCustomElement({
-  // normal Vue component options here
+  // 这里是普通的 Vue 组件选项
   props: {},
   emits: {},
   template: `...`,
-  // defineCustomElement only: CSS to be injected into shadow root
+  // 只用于 defineCustomElement：注入到 shadow root 中的 CSS
   styles: [`/* inlined css */`]
 })
-// Register the custom element.
-// After registration, all `<my-vue-element>` tags on the page will be upgraded.
+// 注册该自定义元素。
+// 注册过后，页面上所有的 `<my-vue-element>` 标记会被升级。
 customElements.define('my-vue-element', MyVueElement)
-// You can also programmatically instantiate the element:
-// (can only be done after registration)
+// 你也可以用编程的方式初始化这个元素：
+// (在注册之后才可以这样做)
 document.body.appendChild(
   new MyVueElement({
-    // initial props (optional)
+    // 初始化的 prop (可选)
   })
 )
 ```
 
-For more details on building Web Components with Vue, especially with Single File Components, see [Vue and Web Components](/guide/web-components.html#building-custom-elements-with-vue).
+关于使用 Vue，尤其是通过单文件组件构建 Web Components 的更多细节，请查阅[Vue 和 Web Components](/guide/web-components.html#使用-Vue-构建自定义元素)。
 
 ## resolveComponent
 
