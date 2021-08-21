@@ -16,7 +16,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-如果将对象分配为 ref 值，则通过 [reactive](./basic-reactivity.html#reactive) 方法使该对象具有高度的响应式。
+如果将对象分配为 ref 值，则通过 [reactive](./basic-reactivity.html#reactive) 函数使该对象具有高度的响应式。
 
 **类型声明：**
 
@@ -57,7 +57,7 @@ function useFoo(x: number | Ref<number>) {
 
 ## `toRef`
 
-可以用来为源响应式对象上的某个 property 新创建一个 [`ref`](#ref)。然后，ref 可以被传递，它会保持对其源 property 的响应式连接。
+可以用来为源 reactive 对象上的某个 property 新创建一个 [`ref`](#ref)。然后，ref 可以被传递，它会保持对其源 property 的响应式连接。
 
 ```js
 const state = reactive({
@@ -88,7 +88,7 @@ export default {
 
 ## `toRefs`
 
-将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的 [`ref`](#ref)。
+将 reactive 对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的 [`ref`](#ref)。
 
 ```js
 const state = reactive({
@@ -114,7 +114,7 @@ stateAsRefs.foo.value++
 console.log(state.foo) // 3
 ```
 
-当从组合式函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应性的情况下对返回的对象进行分解/扩散：
+当从组合式函数返回 reactive 对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应性的情况下对返回的对象进行解构/展开：
 
 ```js
 function useFeatureX() {
@@ -217,7 +217,7 @@ isReactive(foo.value) // false
 
 ## `triggerRef`
 
-手动执行与 [`shallowRef`](#shallowref) 关联的任何副作用。
+手动执行与 [`shallowRef`](#shallowref) 关联的任何effect。
 
 ```js
 const shallow = shallowRef({
@@ -229,7 +229,7 @@ watchEffect(() => {
   console.log(shallow.value.greet)
 })
 
-// 这不会触发副作用，因为 ref 是浅层的
+// 这不会触发effect，因为 ref 是浅层的
 shallow.value.greet = 'Hello, universe'
 
 // 记录 "Hello, universe"
