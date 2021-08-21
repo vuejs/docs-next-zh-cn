@@ -1,43 +1,43 @@
 # 翻译
 
-Vue 在全球被广泛使用，核心团队成员身处多个不同时区。社区一直在成长，我们希望让尽可能多的人能够获得文档。
+Vue 在全球被广泛使用，核心团队成员身处多个不同时区。社区一直在成长，我们也希望文档能够被尽可能多的人触及。
 
-为文档提供翻译并不是核心团队能够单独管理的。值得庆幸的是，我们有一个伟大的译者社区，为项目做出了大大小小的贡献。如果你一直在考虑为项目做贡献，也许这里是一个很好的开始。
+为文档提供翻译这件事，并不是核心团队能够独自管理的。值得庆幸的是，我们有一个伟大的译者社区，为项目做出了大大小小的贡献。如果你一直在考虑为项目做贡献，也许这里是一个很好的开始。
 
 ## 社区翻译
 
-The table below lists GitHub repositories for community translations. These are translations made by the community, for the community. Some of these translations may be incomplete but they can still make the Vue experience significantly more enjoyable for readers who prefer these languages.
+下面的表格列出了社区翻译的 GitHub 仓库。这些翻译是由社区驱动的，并服务于社区。其中的某些翻译可能并不完善，但仍然能够显著地提升相应语种的读者的 Vue 使用体验。
 
-For completeness, we've also included the official documentation in the list.
+完整起见，其中也包含了原版的官方文档。
 
 <guide-contributing-translations />
 
-Thank you to everyone who has contributed to these translations. Your hard work is very much appreciated.
+感谢所有为翻译做出贡献的人，感谢你们的辛勤劳作。
 
-## 我如何参与翻译？
+## 我要如何参与翻译？
 
-The first step is to check whether there is an existing translation for the relevant language. In addition to the table above, a good place to start is [this pinned issue](https://github.com/vuejs/docs/issues/478), which is used to keep track of the various translation initiatives happening in the community.
+首先检查一下相应的语种是否已经存在翻译版本。除了上面的表格以外，另一个参考是[这个置顶 issue](https://github.com/vuejs/docs/issues/478)，它的目的是跟踪社区中发起的各种翻译计划。
 
-If there's already an active translation then there are various ways you can help out. The GitHub repository should be a good place to start gathering information about how a particular translation is managed and who does what. All translation repositories should allow you to file issues and open Pull Requests if you have suggestions for improving the translation.
+如果一个进行中的翻译已经存在了，那么你可以通过多种方式为其提供帮助。GitHub 仓库应该是一个好的去处：了解该翻译是如何被管理的，以及成员们都在负责些什么内容。如果你有任何关于如何改善翻译的建议，所有的翻译仓库应该都会允许你提出 issue，以及发起 Pull Requests。
 
-## What if there isn't an existing translation?
+## 如果没有已存在的翻译怎么办？
 
-If you want to start a new translation then please do. You don't need our permission to start but you should read the rest of this page carefully to make sure you're clear about what's involved.
+如果你想要发起一个新的翻译，那就请开始吧。你不需要得到我们的允许，但最好先把本文余下的内容仔细读完，确保你清楚都要做些什么。
 
-Before you start, you might want to check whether there was a community translation for Vue 2. [This pinned issue](https://github.com/vuejs/vuejs.org/issues/2015) from the Vue 2 documentation may help.
+在开始之前，你可能会想要先检查一下目前是否存在 Vue 2 的社区翻译。来自 Vue 2 文档的[这个置顶 issue](https://github.com/vuejs/vuejs.org/issues/2015) 也许会有帮助。
 
-Working on a translation is more fun, and more likely to succeed, if there are multiple contributors. Even if you don't know anyone personally who can help out you may be able to find other translators from within the Vue community.
+如果有多个贡献者，翻译工作会更有趣，成功的可能性也更大。即使不认识任何可以就此提供帮助的人，或许在 Vue 社区中也能找到志同道合的人。
 
-The documentation is constantly being updated. Many changes are small and don't directly impact the translations but others make important improvements that also need translating. Before you start work on a new translation you may want to take a look at the GitHub repositories for some other languages to get a sense of how they handle the update process.
+文档不断地被更新。许多更改很小，不会对翻译产生直接影响，但也存在某些重要的改进内容需要被翻译。在开始进行新的翻译工作之前，你可能需要参考一些其他语种的 GitHub 仓库，以了解它们是如何处理更新的。
 
-When you first start a translation, you may want to use a personal GitHub repository. That's fine, so long as it's publicly accessible and open to contributions from others. Make sure the *Issues* tab is enabled in the repository's settings. You can migrate the repository to a shared organization at a later stage.
+首次开始翻译时，你可能希望使用个人的 GitHub 仓库。没关系，只要它是公开的，并且允许其它人作出贡献就行。请确保在仓库设置中启用了 *issue* 标签。在后期阶段，你可以将仓库迁移到一个共享的组织。
 
-Once you start a translation, be sure to add it to [the pinned issue](https://github.com/vuejs/docs/issues/478) so that the rest of the community can find it.
+一旦开始翻译了，请务必将它添加到[这个置顶 issue](https://github.com/vuejs/docs/issues/478) 中，以便于它被社区的其它人找到。
 
-We also encourage you to update the root-level `README.md` at an early stage. Most translations add extra information to help potential contributors get involved.
+我们也鼓励你尽早地更新顶层的 `README.md`。大都数翻译为其添加了一些额外的信息，以帮助潜在的贡献者参与进来。
 
-## Can I add my translation to this page?
+## 可以在这个页面中添加我的翻译吗？
 
-If you've translated more than half of the documentation then please open a Pull Request to add your repository to the table of community translations on this page.
+如果你已经翻译了一半以上的文档，请发起一个 Pull Request，将你的仓库添加到此页面上的社区翻译表中。
 
-The official documentation is deployed on [Netlify](https://url.netlify.com/HJ8X2mxP8). We encourage you to do the same. Some community translators use their own Netlify accounts but we're happy to host community translations on our account once they're at an advanced stage.
+官方文档部署在 [Netlify](https://url.netlify.com/HJ8X2mxP8) 上。我们鼓励你也这样做。一些社区翻译人员使用了他们自己的 Netlify 帐户，如果想使用其高级功能，我们很乐意在我们的帐户上托管社区翻译。

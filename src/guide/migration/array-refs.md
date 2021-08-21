@@ -73,7 +73,7 @@ export default {
 
 ## 迁移策略
 
-[迁移构建标记：](migration-build.html#兼容性配置)
+[迁移构建开关：](migration-build.html#兼容性配置)
 
 - `V_FOR_REF`
 - `COMPILER_V_FOR_REF`

@@ -58,7 +58,7 @@ export default {
 
 ## 迁移策略
 
-[迁移构建标记：`INSTANCE_EVENT_EMITTER`](migration-build.html#兼容性配置)
+[迁移构建开关：`INSTANCE_EVENT_EMITTER`](migration-build.html#兼容性配置)
 
 在 Vue 3 中，借助这些 API 从一个组件内部监听其自身触发的事件已经不再可能了。该用例没有办法迁移。
 

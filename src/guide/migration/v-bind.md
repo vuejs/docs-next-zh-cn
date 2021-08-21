@@ -45,4 +45,4 @@ badges:
 
 如果你依赖 `v-bind` 的覆盖功能，目前的建议是确保在单独的 property 之前定义 `v-bind` attribute。
 
-[迁移构建标记：`COMPILER_V_BIND_OBJECT_ORDER`](migration-build.html#兼容性配置)
+[迁移构建开关：`COMPILER_V_BIND_OBJECT_ORDER`](migration-build.html#兼容性配置)
