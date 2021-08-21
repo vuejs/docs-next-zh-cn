@@ -10,7 +10,7 @@
 
 - **详细：**
 
-  在实例初始化之后被立刻调用，随后进行data observation (数据观测) 和 event/watcher (事件/侦听器)的配置 。
+  在实例初始化之后，data observation (数据观测) 和 event/watcher (事件/侦听器) 配置之前被立即同步调用。
 
 -  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
