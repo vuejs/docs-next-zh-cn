@@ -311,11 +311,11 @@ app.mount('#todo-list-app')
 
 ### 与自定义元素的关系
 
-你可能已经注意到 Vue 组件非常类似**自定义元素**——它是 [Web Components 规范](https://www.w3.org/wiki/WebComponents/)的一部分。确实 Vue 组件设计 (如插槽 API) 部分受到了该规范的影响，在它还没有被浏览器原生实现之前。
+你可能已经注意到 Vue 组件与**自定义元素**非常类似——它是 [Web Components 规范](https://www.w3.org/wiki/WebComponents/)的一部分。确实，Vue 的组件设计 (如插槽 API) 在浏览器原生支持该规范前就部分受到了它的影响。
 
-它们之间主要的不同在于 Vue 组件的数据模型是作为框架的一部分而设计的，而该框架为构建复杂应用提供了很多必要的附加特性。例如响应式模板和状态管理——这两者都没有被该规范所覆盖。
+它们之间主要的不同在于，Vue 组件的数据模型是作为框架的一部分而设计的，而该框架为构建复杂应用提供了很多必要的附加功能。例如响应式模板和状态管理——这两者都没有被该规范所覆盖。
 
-Vue 也为创建和消费自定义元素提供了很好的支持。关于其更多细节，请浏览 [Vue 和 Web Components](/guide/web-components.html) 章节。
+Vue 也为创建和使用自定义元素提供了很好的支持。关于其更多细节，请浏览 [Vue 和 Web Components](/guide/web-components.html) 章节。
 
 ## 准备好了吗？
 
