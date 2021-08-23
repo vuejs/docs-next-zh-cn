@@ -29,7 +29,7 @@
 - 通过脚手架 [Vite](https://github.com/vitejs/vite)：
 
   ```bash
-  npm init vite hello-vue3 -- --template vue # OR yarn create vite hello-vue3 --template vue
+  npm init vite hello-vue3 -- --template vue # 或 yarn create vite hello-vue3 --template vue
   ```
 
 - 通过脚手架 [vue-cli](https://cli.vuejs.org/)：
