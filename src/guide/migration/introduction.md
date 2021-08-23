@@ -42,35 +42,35 @@
 
 ## 用于迁移的构建版本
 
-如果你有基于 Vue 2 的项目或者库，它要升级到 Vue 3，我们提供了与 Vue 2 兼容 API 的 Vue 3 构建版本，查看[用于迁移的构建版本](./migration-build.html)获取完整的细节。
+如果你打算要将一个基于 Vue 2 的项目或者库升级到 Vue 3，我们提供了一个与 Vue 2 API 兼容的 Vue 3 构建版本，详情见[用于迁移的构建版本](./migration-build.html)。
 
 ## 值得注意的新特性
 
-Vue 3 中需要关注的一些新功能包括：
+Vue 3 中一些需要关注的新功能包括：
 
 - [组合式 API](/guide/composition-api-introduction.html)
 - [Teleport](/guide/teleport.html)
 - [片段](/guide/migration/fragments.html)
 - [触发组件选项](/guide/component-custom-events.html)
-- [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
-- [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md) <Badge text="实验性" type="warning" />
-- [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0043-sfc-style-variables.md) <Badge text="实验性" type="warning" />
+- [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core)，用于创建自定义渲染器
+- [单文件组件组合式 API 语法糖 (`<script setup>`)](/api/sfc-script-setup.html)
+- [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](/api/sfc-style.html#state-driven-dynamic-css)
 - [SFC `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 - [Suspense](/guide/migration/suspense.html) <Badge text="实验性" type="warning" />
 
 ## 非兼容的变更
 
-下面列出了从 2.x 开始的重大更改：
+下面列出了从 2.x 开始的非兼容的变更：
 
 ### 全局 API
 
 - [全局 Vue API 已更改为使用应用程序实例](/guide/migration/global-api.html)
-- [全局和内部 API 已经被重构为可 tree-shakable](/guide/migration/global-api-treeshaking.html)
+- [全局和内部 API 已经被重构为可树摇的 (tree-shakable)](/guide/migration/global-api-treeshaking.html)
 
 ### 模板指令
 
-- [组件上 `v-model` 用法已更改，替换 `v-bind.sync`](/guide/migration/v-model.html)
-- [`<template v-for>` 和非 `v-for` 节点上 `key` 用法已更改](/guide/migration/key-attribute.html)
+- [组件上 `v-model` 用法已更改，以替换 `v-bind.sync`](/guide/migration/v-model.html)
+- [`<template v-for>` 和非 `v-for` 节点上的 `key` 用法已更改](/guide/migration/key-attribute.html)
 - [在同一元素上使用的 `v-if` 和 `v-for` 优先级已更改](/guide/migration/v-if-v-for.html)
 - [`v-bind="object"` 现在排序敏感](/guide/migration/v-bind.html)
 - [`v-on:event.native` 修饰符已移除](./v-on-native-modifier-removed.md)
@@ -78,53 +78,53 @@ Vue 3 中需要关注的一些新功能包括：
 
 ### 组件
 
-- [只能使用普通函数创建功能组件](/guide/migration/functional-components.html)
-- [`functional` 属性在单文件组件 (SFC) `<template>` 和 `functional` 组件选项被抛弃](/guide/migration/functional-components.html)
-- [异步组件现在需要 `defineAsyncComponent` 方法来创建](/guide/migration/async-components.html)
+- [只能使用普通函数创建函数式组件](/guide/migration/functional-components.html)
+- [`functional` attribute 在单文件组件 (SFC) 的 `<template>` 和 `functional` 组件选项中被废弃](/guide/migration/functional-components.html)
+- [异步组件现在需要使用 `defineAsyncComponent` 方法来创建](/guide/migration/async-components.html)
 - [组件事件现在需要在 `emits` 选项中声明](./emits-option.md)
 
 ### 渲染函数
 
-- [渲染函数 API 改变](/guide/migration/render-function-api.html)
-- [`$scopedSlots` property 已删除，所有插槽都通过 `$slots` 作为函数暴露](/guide/migration/slots-unification.html)
+- [渲染函数 API 更改](/guide/migration/render-function-api.html)
+- [`$scopedSlots` property 已移除，所有插槽都通过 `$slots` 作为函数暴露](/guide/migration/slots-unification.html)
 - [`$listeners` 被移除或整合到 `$attrs`](./listeners-removed)
-- [`$attrs` 现在包含 `class` and `style` attribute](./attrs-includes-class-style.md)
+- [`$attrs` 现在包含 `class` 和 `style` attribute](./attrs-includes-class-style.md)
 
 ### 自定义元素
 
-- [自定义元素检测现在已经在编译时执行](/guide/migration/custom-elements-interop.html)
-- [对特殊的 `is` prop 的使用只严格限制在被保留的 `<component>` 标记中](/guide/migration/custom-elements-interop.html#定制内置元素)
+- [自定义元素检测现在在模板编译时执行](/guide/migration/custom-elements-interop.html)
+- [特殊的 `is` prop 的使用被严格限制在被保留的 `<component>` 标签中](/guide/migration/custom-elements-interop.html#定制内置元素)
 
 ### 其他小改变
 
 - `destroyed` 生命周期选项被重命名为 `unmounted`
 - `beforeDestroy` 生命周期选项被重命名为 `beforeUnmount`
 - [`default` prop 工厂函数不再可以访问 `this` 上下文](/guide/migration/props-default-this.html)
-- [自定义指令 API 已更改为与组件生命周期一致且 `binding.expression` 已移除](/guide/migration/custom-directives.html)
+- [自定义指令的 API 已更改为与组件生命周期一致，且 `binding.expression` 已移除](/guide/migration/custom-directives.html)
 - [`data` 选项应始终被声明为一个函数](/guide/migration/data-option.html)
 - [来自 mixin 的 `data` 选项现在为浅合并](/guide/migration/data-option.html#mixin-合并行为变更)
 - [Attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
-- [一些过渡 class 被重命名](/guide/migration/transition.html)
+- [一些过渡 (transition) class 被重命名](/guide/migration/transition.html)
 - [`<TransitionGroup>` 不再默认渲染包裹元素](/guide/migration/transition-group.html)
-- [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则需要指定 `deep` 选项](/guide/migration/watch.html)
-- 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 的 `<template>` 现在被视为普通元素，并将生成原生的 `<template>` 元素，而不是渲染其内部内容。
+- [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则必须指定 `deep` 选项](/guide/migration/watch.html)
+- 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 的 `<template>` 现在被视为普通元素，并将渲染为原生的 `<template>` 元素，而不是渲染其内部内容。
 - [已挂载的应用不会取代它所挂载的元素](/guide/migration/mount-changes.html)
-- [生命周期 `hook:` 事件前缀改为 `vnode-`](/guide/migration/vnode-lifecycle-events.html)
+- [生命周期的 `hook:` 事件前缀改为 `vnode-`](/guide/migration/vnode-lifecycle-events.html)
 
-### 移除 API
+### 被移除的 API
 
-- [`keyCode` 支持作为 `v-on` 的修饰符](/guide/migration/keycode-modifiers.html)
+- [`keyCode` 作为 `v-on` 修饰符的支持](/guide/migration/keycode-modifiers.html)
 - [$on、$off 和 $once 实例方法](/guide/migration/events-api.html)
-- [过滤](/guide/migration/filters.html)
+- [过滤器 (filter)](/guide/migration/filters.html)
 - [内联模板 attribute](/guide/migration/inline-template-attribute.html)
 - [`$children` 实例 property](/guide/migration/children.html)
 - [`propsData` 选项](/guide/migration/props-data.html)
 - `$destroy` 实例方法。用户不应再手动管理单个 Vue 组件的生命周期。
-- 全局函数 `set` 和 `delete` 以及实例方法 `$set` 和 `$delete`。基于代理的变化检测不再需要它们了。
+- 全局函数 `set` 和 `delete` 以及实例方法 `$set` 和 `$delete`。基于代理的变化检测已经不再需要它们了。
 
-## 官方支持的库
+## 官方的支持库
 
-我们所有的官方库和工具现在都支持 Vue 3，但其中一些仍处于测试版或候选发布状态。你可以在下面找到各个库的详细信息。大多数库目前使用 npm 上的 `next` dist 标签发布。我们打算在所有官方库有了兼容的稳定版本后，就改用 `latest` 标签。
+我们所有的官方库和工具现在都支持 Vue 3，但其中一些仍处于测试版或候选发布状态。你可以在下面找到各个库的详细信息。大多数库目前使用 npm 上的 `next` dist 标签发布。我们打算在所有官方库有了稳定的兼容版本后，就改用 `latest` 标签。
 
 ### Vue CLI
 
@@ -139,7 +139,7 @@ Vue 3 中需要关注的一些新功能包括：
 
 <a href="https://www.npmjs.com/package/vue-router/v/next" target="_blank" noopener noreferrer><img src="https://img.shields.io/npm/v/vue-router/next.svg"></a>
 
-Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看[迁移指南](https://next.router.vuejs.org/guide/migration/)获取完整的细节。
+Vue Router 4.0 提供了 Vue 3 支持，并有许多非兼容的变更，详情见[迁移指南](https://next.router.vuejs.org/guide/migration/)。
 
 - [文档](https://next.router.vuejs.org/)
 - [Github](https://github.com/vuejs/vue-router-next)
@@ -149,14 +149,14 @@ Vue Router 4.0 提供了 Vue 3 支持，并有许多突破性的变化，查看[
 
 <a href="https://www.npmjs.com/package/vuex/v/next" target="_blank" noopener noreferrer><img src="https://img.shields.io/npm/v/vuex/next.svg"></a>
 
-Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的突破性变化是[插件的安装方式](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes)。
+Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的非兼容变更是[插件的安装方式](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes)。
 
 - [文档](https://next.vuex.vuejs.org/)
 - [Github](https://github.com/vuejs/vuex/tree/4.0)
 
-### Devtools Extension
+### Devtools 扩展
 
-我们正在开发一个新版本的 Devtools，它有一个新的 UI 和经过重构的内部结构，以支持多个 Vue 版本。新版本目前处于测试阶段，目前只支持 Vue 3。Vuex 和路由器的集成也在进行中。
+我们正在开发一个新版本的 Devtools，它有一个新的 UI 和经过重构的内部结构，以支持多个 Vue 版本。新版本目前处于测试阶段，目前只支持 Vue 3。Vuex 和 Router 的集成也在进行中。
 
 - Chrome：[从 Chrome web 商店中安装](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg?hl=en)
 
