@@ -229,7 +229,7 @@ watchEffect(() => {
   console.log(shallow.value.greet)
 })
 
-// 这不会触发effect，因为 ref 是浅层的
+// 这不会触发 effect，因为 ref 是浅层的
 shallow.value.greet = 'Hello, universe'
 
 // 记录 "Hello, universe"
