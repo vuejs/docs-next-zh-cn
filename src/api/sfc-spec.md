@@ -36,7 +36,7 @@ export default {
 
 - 每个 `*.vue` 文件最多可同时包含一个 `<template>` 块。
 
-- 其中的内容会被提取出来传递给 `@vue/compiler-dom`，预编译为 JavaScript 的渲染函数，并附属到导出的组件上作为其 `render` 选项。
+- 其中的内容会被提取出来并传递给 `@vue/compiler-dom`，预编译为 JavaScript 的渲染函数，并附属到导出的组件上作为其 `render` 选项。
 
 ### `<script>`
 
@@ -50,35 +50,35 @@ export default {
 
 - 每个 `*.vue` 文件最多可同时包含一个 `<script setup>` 块 (不包括常规的 `<script>`)
 
-- script 会被预处理并作为组件的 `setup()` 函数，也就是说它会在**每个组件实例**中执行。`<script setup>` 的顶层绑定会自动暴露给模板。更多详情请查看 [`<script setup>` 专项文件](/api/sfc-script-setup)。
+- script 会被预处理并作为组件的 `setup()` 函数使用，也就是说它会在**每个组件实例**中执行。`<script setup>` 的顶层绑定会自动暴露给模板。更多详情请查看 [`<script setup>` 文档](/api/sfc-script-setup)。
 
 ### `<style>`
 
-- 单个的 `*.vue` 文件可以包含多个 `<style>` 标签。
+- 一个 `*.vue` 文件可以包含多个 `<style>` 标签。
 
-- `<style>` 标签可以有 `scoped` 或 `module` attribute (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 用于封装当前组件的样式。多个不同的封装模式的 `<style>` 标签可以被混合到同一个组件当中。
+- `<style>` 标签可以通过 `scoped` 或 `module` attribute (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 封装当前组件的样式。多个不同封装模式的 `<style>` 标签可以在同一个组件中混用。
 
 ### 自定义块
 
-为了满足任何项目的特定需要，`*.vue` 文件中可以包含额外的自定义块，例如 `<docs>` 块。一些真实场景的自定义块案例包括：
+为了满足任何的项目特定需求，`*.vue` 文件中可以包含额外的自定义块，例如 `<docs>` 块。自定义块的一些真实场景的案例包括：
 
-- [Gridsome：`<page-query>`](https://gridsome.org/docs/querying-data/)
-- [vite-plugin-vue-gql：`<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
-- [vue-i18n：`<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n#i18n-custom-block)
+- [Gridsome: `<page-query>`](https://gridsome.org/docs/querying-data/)
+- [vite-plugin-vue-gql: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
+- [vue-i18n: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n#i18n-custom-block)
 
-对 Custom Block 的处理依赖于工具。如果你想要构建你自己的自定义块集成，更多详情请查看 [SFC 工具](/api/sfc-tooling.html#custom-blocks-integration)。
+对 Custom Block 的处理依赖于工具——如果你想要构建自己的自定义块集成，更多详情请查看 [SFC 工具](/api/sfc-tooling.html#custom-blocks-integration)。
 
 ## 自动 `name` 推断
 
 SFC 在下列情况会依据它的**文件名**来自动推断组件名称：
 
-- 开发环境格式化警告
+- 开发环境警告格式化
 - DevTools 检查
 - 递归的自引用。例如：名为 `FooBar` 的文件可以在模板中用 `<FooBar/>` 引用它自己。这种方式比明确注册或引入的组件的优先级要低。
 
 ## 预处理
 
-快可以使用 `lang` attribute 声明预处理语言。最常见的场景就是在 `<script>` 块中使用 TypeScript：
+块可以使用 `lang` attribute 声明预处理语言。最常见的场景就是在 `<script>` 块中使用 TypeScript：
 
 ```html
 <script lang="ts">
@@ -86,7 +86,7 @@ SFC 在下列情况会依据它的**文件名**来自动推断组件名称：
 </script>
 ```
 
-`lang` 可以用于任何块，例如可以在 `<style>` 里使用 [SASS](https://sass-lang.com/) 以及在 `<template>` 里使用 [Pug](https://pugjs.org/api/getting-started.html)：
+`lang` 可以用于任何块——例如可以在 `<style>` 中使用 [SASS](https://sass-lang.com/) 以及在 `<template>` 中使用 [Pug](https://pugjs.org/api/getting-started.html)：
 
 ```html
 <template lang="pug">
@@ -101,7 +101,7 @@ p {{ msg }}
 </style>
 ```
 
-注意，基于不同的工具链，预处理器的集成方式有所不同。检视对应的文档，例如：
+注意，基于不同的工具链，预处理器的集成方式有所不同。具体例子请检视对应的文档：
 
 - [Vite](https://vitejs.dev/guide/features.html#css-pre-processors)
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
@@ -123,7 +123,7 @@ p {{ msg }}
 - 你可以从 npm 依赖中引入资源：
 
 ```vue
-<!-- 从安装完成的 "todomvc-app-css" npm 包中引入文件 -->
+<!-- 从安装好的 "todomvc-app-css" npm 包中引入文件 -->
 <style src="todomvc-app-css/index.css">
 ```
 
@@ -136,4 +136,4 @@ p {{ msg }}
 
 ## 注释
 
-每个块中你应该使用被用到的语言的注释语法。对于顶层的注释，使用 HTML 注释语法：`<!-- comment contents here -->`。
+在每个块中，注释应该使用相应语言 (HTML, CSS, JavaScript, Pug, 等等) 的语法。对于顶层的注释而言，使用 HTML 注释语法：`<!-- comment contents here -->`。
