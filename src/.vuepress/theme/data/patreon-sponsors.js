@@ -3,6 +3,10 @@ export default {
     {
       "url": "http://www.dcloud.io/?hmsr=vuejsorg&hmpl=&hmcu=&hmkw=&hmci=",
       "img": "dcloud.gif"
+    },
+    {
+      "url": "https://authing.cn/welcome?from=vuejs",
+      "img": "authing.png"
     }
   ],
   "special_sponsors": [
