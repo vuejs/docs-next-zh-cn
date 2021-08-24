@@ -107,7 +107,7 @@ p {{ msg }}
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
 - [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors.html#using-pre-processors)
 
-## Src Imports
+## Src 引入
 
 如果你倾向于将 `*.vue` 组件拆分为多个文件，可以使用 `src` attribute 来引入外部的文件作为语言块：
 
@@ -117,7 +117,7 @@ p {{ msg }}
 <script src="./script.js"></script>
 ```
 
-注意 `src` imports 需要遵循和 webpack 模块所要求的同样的路径解析规则，也即：
+注意 `src` 引入所需遵循的路径解析规则与 webpack 模块一致，也即：
 
 - 相对路径需要以 `./` 开头。
 - 你可以从 npm 依赖中引入资源：
@@ -127,7 +127,7 @@ p {{ msg }}
 <style src="todomvc-app-css/index.css">
 ```
 
-`src` imports 在自定义块上也一样生效，例如：
+`src` 引入也能用于自定义块，例如：
 
 ```vue
 <unit-test src="./unit-test.js">
