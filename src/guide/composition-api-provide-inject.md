@@ -138,6 +138,11 @@ export default {
 
     provide('location', location)
     provide('geolocation', geolocation)
+    
+    return {
+      location,
+      geolocation
+    }
   }
 }
 </script>
