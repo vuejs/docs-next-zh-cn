@@ -173,8 +173,7 @@ watchEffect(
 
 `flush` 选项还接受 `sync`，这将强制效果始终同步触发。然而，这是低效的，应该很少需要。
 
-<!-- TODO: translation -->
-In Vue >= 3.2.0, `watchPostEffect` and `watchSyncEffect` aliases can also be used to make the code intention more obvious.
+从 Vue 3.2.0 开始，`watchPostEffect` 和 `watchSyncEffect` 别名也可以用来让代码意图更加明显。
 
 ### 侦听器调试
 
