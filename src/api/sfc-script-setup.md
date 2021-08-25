@@ -148,13 +148,13 @@ const emit = defineEmits(['change', 'delete'])
 
 - `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的**编译器宏**。他们不需要导入，且会在处理 `<script setup>` 的时候被编译处理掉。
 
-- `defineProps` 接收与 `props` 属性相同的值，`defineEmits` 也接收 `emits` 属性相同的值。
+- `defineProps` 接收与 `props` 选项相同的值，`defineEmits` 也接收 `emits` 选项相同的值。
 
 - `defineProps` 和 `defineEmits` 在选项传入后，会提供恰当的类型推断。
 
 - 传入到 `defineProps` 和 `defineEmits` 的选项会从 setup 中提升到模块的范围。因此，传入的选项不能引用在 setup 范围中声明的局部变量。这样做会引起编译错误。但是，它*可以*引用导入的绑定，因为它们也在模块范围内。
 
-如果使用了 Typescript，[使用纯类型声明来声明 prop 和 emits](#typescript-only-features) 也是可以的。
+如果使用了 Typescript，[使用纯类型声明来声明 prop 和 emits](#仅限 TypeScript 的功能) 也是可以的。
 
 ## `defineExpose`
 
