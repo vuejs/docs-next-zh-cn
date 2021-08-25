@@ -89,7 +89,7 @@ badges:
 
 为了保持原有的行为能正常工作，我们将强制把 `false` 转换为 `'false'`，在 3.x Vue 中，开发者需要将 `v-bind` 表达式解析为 `false` 或 `'false'`，以表示 `contenteditable` 和 `spellcheck`。
 
-在 2.x 中，枚举 attribute 的无效值被强制转换为 `'true'`。这通常是不符合预期的，且在大规模使用时不太可靠。在 3.x 中，应显式指定 `true` 或 `'true'`。
+在 2.x 中，枚举 attribute 的无效值将被强制转换为 `'true'`。这通常是不符合预期的，且在大规模使用时不太可靠。在 3.x 中，应显式指定 `true` 或 `'true'`。
 
 ### 将 `false` 强制转换为 `'false'` 而不是移除 attribute
 
@@ -111,7 +111,7 @@ badges:
       <td rowspan="3">2.x “枚举 attribute”<br><small>即 <code>contenteditable</code>, <code>draggable</code> 与 <code>spellcheck</code>。</small></td>
       <td><code>undefined</code>, <code>false</code></td>
       <td><code>undefined</code>, <code>null</code></td>
-      <td><i>removed</i></td>
+      <td><i>被移除</i></td>
     </tr>
     <tr>
       <td>
@@ -130,7 +130,7 @@ badges:
       <td rowspan="2">其他非布尔 attribute<br><small>如 <code>aria-checked</code>, <code>tabindex</code>, <code>alt</code>，等等。</small></td>
       <td><code>undefined</code>, <code>null</code>, <code>false</code></td>
       <td><code>undefined</code>, <code>null</code></td>
-      <td><i>removed</i></td>
+      <td><i>被移除</i></td>
     </tr>
     <tr>
       <td><code>'false'</code></td>
