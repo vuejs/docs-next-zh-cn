@@ -18,7 +18,7 @@
 
 这里有一个示例存储库，可以帮助你了解完整的配置：[https://github.com/sdras/vue-sample-svg-icons/](https://github.com/sdras/vue-sample-svg-icons/)
 
-![文档网站](/images/editable-svg-icons '文档演示')
+![文档网站](/images/editable-svg-icons.jpg '文档演示')
 
 我们将创建一个使用插槽的基础图标组件 (`IconBase.vue`)。
 
