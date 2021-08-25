@@ -109,7 +109,7 @@ badges:
   <tbody>
     <tr>
       <td rowspan="3">2.x “枚举 attribute”<br><small>即 <code>contenteditable</code>、<code>draggable</code> 与 <code>spellcheck</code>。</small></td>
-      <td><code>undefined</code>, <code>false</code></td>
+      <td><code>undefined</code></td>
       <td><code>undefined</code>, <code>null</code></td>
       <td><i>被移除</i></td>
     </tr>
@@ -123,7 +123,7 @@ badges:
     </tr>
     <tr>
       <td><code>null</code>, <code>'false'</code></td>
-      <td><code>false</code>, <code>'false'</code></td>
+      <td><code>null</code>, <code>false</code>, <code>'false'</code></td>
       <td><code>"false"</code></td>
     </tr>
     <tr>
