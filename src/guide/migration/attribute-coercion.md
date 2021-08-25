@@ -26,7 +26,7 @@ badges:
 
 - 对于“[布尔 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L33-L40)”和 [xlinks](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L44-L46)，如果它们是 `falsy` ([`undefined`，`null` 或 `false`](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L52-L54)) 的，Vue 会移除它们，否则会加上。(见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L66-L77)和[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L81-L85))。
 
-- 对于“[枚举 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L20)” (目前来说：`contenteditable`，`draggable` 和 `spellcheck`)，Vue 会尝试将它们[强制](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L24-L31)转换为字符串 (目前对 `contenteditable` 做了特殊处理，以修复 [vuejs/vue#9397](https://github.com/vuejs/vue/issues/9397))。
+- 对于“[枚举 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L20)” (目前来说包括 `contenteditable`、`draggable` 和 `spellcheck`)，Vue 会尝试将它们[强制](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L24-L31)转换为字符串 (目前对 `contenteditable` 做了特殊处理，以修复 [vuejs/vue#9397](https://github.com/vuejs/vue/issues/9397))。
 
 -  对于其他 attribute，我们将移除 `falsy` 的值 (`undefined`，`null`，或 `false`)，其他值按原样设置 (见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L92-L113))。
 
@@ -45,14 +45,14 @@ badges:
 
 
 从上表可以看出，当前实现将 `true` 强制转换为了 `'true'`，但如果 attribute 为 `false`，则将其移除。这也导致了不一致性，并要求用户在非常常见的用例中手动将布尔值强制转换为字符串，例如
- `aria-*` attribute，例如 `aria-selected`，`aria-hidden`，等等。
+ `aria-*` attribute，例如 `aria-selected`、`aria-hidden` 等等。
 
 ## 3.x 语法
 
 我们打算放弃“枚举型 attribute”的内部概念，并将它们视为普通的非布尔型 HTML attribute。
 
 - 这就解决了普通非布尔型 attribute 和“枚举型 attribute”之间的不一致性问题
-- 它还可以使用 `'true'` 和 `'false'` 以外的值，甚至可以使用如 `contenteditable` 等 attribute 的关键字
+- 这个改动还使得对于诸如 `contenteditable` 这样的 attribute，我们可以使用 `'true'` 和 `'false'` 以外的值，甚至是未来新增的关键字。
 
 对于非布尔型 attribute，如果其值为 `false`，Vue 将不再移除它们，而是将其强制转换为 `'false'`。
 
@@ -79,17 +79,17 @@ badges:
 
 ### 枚举 attribute
 
-缺席的枚举 attribute 和 `attr="false"` 可能会产生不同的 IDL attribute 值 (将反映实际状态)，描述如下：
+枚举 attribute 如果不存在，可能会和 `attr="false"` 会产生不同的 IDL attribute 值 (将反映实际状态)，描述如下：
 
-| 缺席的枚举 attr           | IDL attr & 值                     |
+| 不存在的枚举 attr           | IDL attr & 值                     |
 | ---------------------- | ------------------------------------ |
 | `contenteditable`      | `contentEditable` &rarr; `'inherit'` |
 | `draggable`            | `draggable` &rarr; `false`           |
 | `spellcheck`           | `spellcheck` &rarr; `true`           |
 
-为了保持原有的行为能正常工作，我们将强制把 `false` 转换为 `'false'`，在 3.x Vue 中，开发者需要将 `v-bind` 表达式解析为 `false` 或 `'false'`，以表示 `contenteditable` 和 `spellcheck`。
+对于“枚举 attribute”，由于我们不再把 `null` 转换为 `'false'`，在 3.x 中，对于 `contenteditable` 和 `spellcheck`，开发者需要将原来解析为 `null` 的 `v-bind` 表达式变更为 `false` 或 `'false'` 才能保持行为和 2.x 中保持一致。
 
-在 2.x 中，枚举 attribute 的无效值将被强制转换为 `'true'`。这通常是不符合预期的，且在大规模使用时不太可靠。在 3.x 中，应显式指定 `true` 或 `'true'`。
+在 2.x 中，枚举 attribute 的无效值将被强制转换为 `'true'`。这通常是不符合预期的，所以该行为不太可能被大规模依赖。在 3.x 中，应显式指定 `true` 或 `'true'`。
 
 ### 将 `false` 强制转换为 `'false'` 而不是移除 attribute
 
@@ -108,7 +108,7 @@ badges:
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3">2.x “枚举 attribute”<br><small>即 <code>contenteditable</code>, <code>draggable</code> 与 <code>spellcheck</code>。</small></td>
+      <td rowspan="3">2.x “枚举 attribute”<br><small>即 <code>contenteditable</code>、<code>draggable</code> 与 <code>spellcheck</code>。</small></td>
       <td><code>undefined</code>, <code>false</code></td>
       <td><code>undefined</code>, <code>null</code></td>
       <td><i>被移除</i></td>
@@ -127,7 +127,7 @@ badges:
       <td><code>"false"</code></td>
     </tr>
     <tr>
-      <td rowspan="2">其他非布尔 attribute<br><small>如 <code>aria-checked</code>, <code>tabindex</code>, <code>alt</code>，等等。</small></td>
+      <td rowspan="2">其他非布尔 attribute<br><small>如 <code>aria-checked</code>、<code>tabindex</code>、<code>alt</code> 等等。</small></td>
       <td><code>undefined</code>, <code>null</code>, <code>false</code></td>
       <td><code>undefined</code>, <code>null</code></td>
       <td><i>被移除</i></td>
