@@ -87,7 +87,7 @@ badges:
 | `draggable`            | `draggable` &rarr; `false`           |
 | `spellcheck`           | `spellcheck` &rarr; `true`           |
 
-对于“枚举 attribute”，由于我们不再把 `null` 转换为 `'false'`，在 3.x 中，对于 `contenteditable` 和 `spellcheck`，开发者需要将原来解析为 `null` 的 `v-bind` 表达式变更为 `false` 或 `'false'` 才能保持行为和 2.x 中保持一致。
+对于“枚举 attribute”，由于我们不再把 `null` 转换为 `'false'`，在 3.x 中，对于 `contenteditable` 和 `spellcheck`，开发者需要将原来解析为 `null` 的 `v-bind` 表达式变更为 `false` 或 `'false'` 才能保持和 2.x 中的行为一致。
 
 在 2.x 中，枚举 attribute 的无效值将被强制转换为 `'true'`。这通常是不符合预期的，所以该行为不太可能被大规模依赖。在 3.x 中，应显式指定 `true` 或 `'true'`。
 
