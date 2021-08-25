@@ -122,8 +122,8 @@ badges:
       <td><code>"true"</code></td>
     </tr>
     <tr>
-      <td><code>null</code>, <code>'false'</code></td>
       <td><code>null</code>, <code>false</code>, <code>'false'</code></td>
+      <td><code>false</code>, <code>'false'</code></td>
       <td><code>"false"</code></td>
     </tr>
     <tr>
