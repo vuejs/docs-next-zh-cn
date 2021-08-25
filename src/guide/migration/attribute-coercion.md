@@ -22,7 +22,7 @@ badges:
 
 在 2.x，我们有以下策略来强制 `v-bind` 的值：
 
-- 对于某些 attribute/元素对，Vue 始终使用相应的 IDL attribute (property)：[比如 `<input>`，`<select>`，`<progress>` 的 `value`，等等](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L11-L18)。
+- 对于某些 attribute/元素对，Vue 始终使用相应的 IDL attribute (property)：[比如 `<input>`，`<select>`，`<progress>` 中的 `value`，等等](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L11-L18)。
 
 - 对于“[布尔 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L33-L40)”和 [xlinks](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L44-L46)，如果它们是 `falsy` ([`undefined`，`null` 或 `false`](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L52-L54)) 的，Vue 会移除它们，否则会加上。(见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L66-L77)和[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L81-L85))。
 
@@ -73,7 +73,7 @@ badges:
 
 <small>*：已改变</small>
 
-布尔型 attribute 的强制保持不变。
+布尔型 attribute 的强制转换保持不变。
 
 ## 迁移策略
 
@@ -81,7 +81,7 @@ badges:
 
 缺席的枚举 attribute 和 `attr="false"` 可能会产生不同的 IDL attribute 值 (将反映实际状态)，描述如下：
 
-| 缺席的枚举attr           | IDL attr & 值                     |
+| 缺席的枚举 attr           | IDL attr & 值                     |
 | ---------------------- | ------------------------------------ |
 | `contenteditable`      | `contentEditable` &rarr; `'inherit'` |
 | `draggable`            | `draggable` &rarr; `false`           |
