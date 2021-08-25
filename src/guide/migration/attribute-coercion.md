@@ -26,11 +26,11 @@ badges:
 
 - 对于“[布尔 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L33-L40)”和 [xlinks](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L44-L46)，如果它们是 `falsy` ([`undefined`，`null` 或 `false`](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L52-L54)) 的，Vue 会移除它们，否则会加上。(见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L66-L77)和[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L81-L85))。
 
-- 对于“[枚举 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L20)” (目前来说，`contenteditable`，`draggable` 和 `spellcheck`)，Vue 会尝试将它们[强制](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L24-L31)转换为字符串 (目前对 `contenteditable` 做了特殊处理，修复 [vuejs/vue#9397](https://github.com/vuejs/vue/issues/9397))。
+- 对于“[枚举 attribute](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L20)” (目前来说：`contenteditable`，`draggable` 和 `spellcheck`)，Vue 会尝试将它们[强制](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/util/attrs.js#L24-L31)转换为字符串 (目前对 `contenteditable` 做了特殊处理，以修复 [vuejs/vue#9397](https://github.com/vuejs/vue/issues/9397))。
 
--  对于其他 attribute，我们移除了 `falsy` 值 (`undefined`，`null`，或 `false`)，并按原样设置其他值 (见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L92-L113))。
+-  对于其他 attribute，我们将移除 `falsy` 的值 (`undefined`，`null`，或 `false`)，其他值按原样设置 (见[这里](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L92-L113))。
 
-下表描述了 Vue 如何使用普通非布尔 attribute 强制“枚举 attribute”：
+下表描述了 Vue 如何强制转换“枚举 attribute”，以及与普通非布尔 attribute 的不同之处：
 
 | 绑定表达式           | `foo` <sup>正常</sup>   | `draggable` <sup>枚举</sup>       |
 | ------------------- | ----------------------- | --------------------------------- |
