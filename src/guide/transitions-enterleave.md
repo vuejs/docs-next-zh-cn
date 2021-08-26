@@ -2,7 +2,7 @@
 
 在插入、更新或从 DOM 中移除项时，Vue 提供了多种应用转换效果的方法。这包括以下工具：
 
-- 自动为 CSS 转换和动画应用 class；
+- 自动为 CSS 过渡和动画应用 class；
 - 集成第三方 CSS 动画库，例如 [animate.css](https://animate.style/) ；
 - 在过渡钩子期间使用 JavaScript 直接操作 DOM；
 - 集成第三方 JavaScript 动画库。
