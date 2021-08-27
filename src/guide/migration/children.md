@@ -11,7 +11,7 @@ badges:
 
 ## 2.x 语法
 
-在 2.x 中，开发者可以使用 `this.$children` 直接访问当前实例的子组件：
+在 2.x 中，开发者可以使用 `this.$children` 访问当前实例的直接子组件：
 
 ```vue
 <template>
@@ -37,7 +37,7 @@ export default {
 
 ## 3.x 更新
 
-在 3.x 中，`$children` property 已移除，不再支持。如果你需要访问子组件实例，我们建议使用 [$refs](/guide/component-template-refs.html#模板引用)。
+在 3.x 中，`$children` property 已被移除，且不再支持。如果你需要访问子组件实例，我们建议使用 [$refs](/guide/component-template-refs.html#模板引用)。
 
 ## 迁移策略
 
