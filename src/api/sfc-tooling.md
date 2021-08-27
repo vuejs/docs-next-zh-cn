@@ -1,95 +1,92 @@
-# SFC Tooling
+# SFC 工具
 
-<!-- TODO: translation -->
-## Online Playgrounds
+## 在线演练场
 
-You don't need to install anything on your machine to try out Vue SFCs - there are many online playgrounds that allow you to do so right in the browser:
+你不需要在你的机器上安装任何东西来尝试 Vue 单文件：这里有很多在线演练场允许你在浏览器中运行：
 
-- [Vue SFC Playground](https://sfc.vuejs.org) (official, deployed from latest commit)
+- [Vue SFC Playground](https://sfc.vuejs.org) (官方，基于最新的提交)
 - [VueUse Playground](https://play.vueuse.org)
 - [Vue on CodeSandbox](https://codesandbox.io/s/vue-3)
 - [Vue on Repl.it](https://replit.com/@templates/VueJS-with-Vite)
 - [Vue on Codepen](https://codepen.io/pen/editor/vue)
 - [Vue on StackBlitz](https://stackblitz.com/fork/vue)
 
-It is also recommended to use these online playgrounds to provide reproductions when reporting bugs.
+在报告问题时也建议通过这些在线演练场来提供复现。
 
-## Project Scaffolding
+## 项目脚手架
 
 ### Vite
 
-[Vite](https://vitejs.dev/) is a lightweight and fast build tool with first-class Vue SFC support. It is created by Evan You, who is also the author of Vue itself! To get started with Vite + Vue, simply run:
+[Vite](https://vitejs.dev/) 是一个轻量级的快速构建工具，它对 Vue 单文件提供最优支持。 它由尤雨溪创建，尤雨溪同时也是 Vue 本身的作者。如果要运行 Vite + Vue:
 
 ```sh
 npm init vite@latest
 ```
 
-Then select the Vue template and follow the instructions.
+然后选择 Vue 模板并按照说明操作。
 
-- To learn more about Vite, check out the [Vite docs](https://vitejs.dev/guide/).
-- To configure Vue-specific behavior in a Vite project, for example passing options to the Vue compiler, check out the docs for [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#readme).
+- 如果要了解更多 Vite 信息，请参阅 [Vite 文档](https://vitejs.dev/guide/)
+- 如果要在 Vite 项目中配置 Vue 的具体行为，比如向 Vue 的编译器传递选项，请查看文档[@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#readme).
 
-The [SFC Playground](https://sfc.vuejs.org/) also supports downloading the files as a Vite project.
+[单文件演练场](https://sfc.vuejs.org/) 也支持下载 Vite 项目的文件。
 
 ### Vue CLI
 
-[Vue CLI](https://cli.vuejs.org/) is the official webpack-based build tool for Vue projects. To get started with Vue CLI:
+[Vue CLI](https://cli.vuejs.org/) 是 Vue 官方基于 `webpack` 的构建工具。可以通过 Vue CLI 进行使用：
 
 ```sh
 npm install -g @vue/cli
 vue create hello-vue
 ```
 
-- To learn more about Vue CLI, check out [Vue CLI docs](https://cli.vuejs.org/guide/installation.html).
+- 如果要了解更多 `Vue CLI`，请查看文档[Vue CLI docs](https://cli.vuejs.org/guide/installation.html).
 
-### Vite or Vue CLI?
+### Vite 还是 Vue CLI？
 
-We recommend starting new projects with Vite as it offers significantly better development experience in terms of dev server startup and HMR update performance ([details](https://vitejs.dev/guide/why.html)). Only go with Vue CLI if you rely on specific webpack features (e.g. Module Federation).
+鉴于 Vite 在开发中服务的启动和 HMR 更新的性能方面提供了更为卓越的开发体验，因此我们推荐你使用 Vite 来开始新的项目。([详情](https://vitejs.dev/guide/why.html))。如果你依赖某个特定的 webpack 功能（如 Module Federation）那么建议你使用 Vue CLI。
 
-If you are a [Rollup](https://rollupjs.org/) user, you can safely adopt Vite as it uses Rollup for production builds and supports a Rollup-compatible plugin system. [Even Rollup's maintainer recommends Vite as THE web development wrapper for Rollup](https://twitter.com/lukastaegert/status/1412119729431584774).
+如果你是[Rollup](https://rollupjs.org/) 用户，你可以安全地使用 Vite，因为 Vite 使用了 Rollup 进行生产构建，支持并兼容 Rollup 插件系统。[甚至 Rollup 的维护者也推荐使用 Vite 来进行基于 Rollup 的 Web 开发](https://twitter.com/lukastaegert/status/1412119729431584774)。
 
-## IDE Support
+## IDE 支持
 
-The recommended IDE setup is [VSCode](https://code.visualstudio.com/) + the [Volar](https://github.com/johnsoncodehk/volar) extension. Volar provides syntax highlighting and advanced IntelliSense for template expressions, component props and even slots validation. We strongly recommend this setup if you want to get the best possible experience with Vue SFCs, especially if you are also using TypeScript.
+推荐的 IDE 配置是[VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) 拓展。Volar 为模板表达式、组件props，甚至是插槽验证提供了语法高亮和智能提示。我们强烈推荐这种设置，特别是如果你也在使用 TypeScript。
 
-[WebStorm](https://www.jetbrains.com/webstorm/) also provides decent support for Vue SFCs. However, do note as of now its support for `<script setup>` is still [in progress](https://youtrack.jetbrains.com/issue/WEB-49000).
+[WebStorm](https://www.jetbrains.com/webstorm/) 也对 Vue 单文件提供了不错的支持。请注意，到目前为止它对 `<script setup>` 的支持仍然是[进行中](https://youtrack.jetbrains.com/issue/WEB-49000)。
 
-Most other editors have community-created syntax highlighting support for Vue, but lack the same level of code IntelliSense. In the long run, we do hope we can extend the range of editor support by leveraging the [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) as Volar's core logic is implemented as a standard language server.
+大多数其他编辑器都有社区创建的 Vue 语法高亮功能，但缺乏同样水平的代码智能提示。从长远来看，我们确实希望通过 [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) 来扩大编辑器的支持范围，因为 Volar 的核心逻辑是用标准语言服务的方式实现的。
 
-## Testing Support
+## 测试支持
 
-- If using Vite, we recommend [Cypress](https://www.cypress.io/) as the test runner for both unit and e2e tests. Unit tests for Vue SFCs can be done with the [Cypress Component Test Runner](https://www.cypress.io/blog/2021/04/06/introducing-the-cypress-component-test-runner/).
+- 如果使用 Vite，我们推荐使用 [Cypress](https://www.cypress.io/) 进行单元测试和 e2e 测试。Vue 单文件的单元测试可以使用[Cypress Component Test Runner](https://www.cypress.io/blog/2021/04/06/introducing-the-cypress-component-test-runner/)来完成。
+- Vue CLI 提供 [Jest](https://jestjs.io/) 和 [Mocha](https://mochajs.org/) 集成。
+- 如果你要手动配置 Jest 来和 Vue 单文件一起使用，请查看 [vue-jest](https://github.com/vuejs/vue-jest)，这是官方为 Vue 单文件提供的 Jest 转换工具。
 
-- Vue CLI comes with [Jest](https://jestjs.io/) and [Mocha](https://mochajs.org/) integrations.
+## 自定义块 Custome blocks 集成
 
-- If you are manually configuring Jest to work with Vue SFCs, check out [vue-jest](https://github.com/vuejs/vue-jest) which is the official Jest transform for Vue SFCs.
+自定义块(Custom blocks) 会被编译进同一个 Vue 文件，产生不同请求查询。这取决于底层构建工具如何处理这些请求。
 
-## Custom Blocks Integration
+- 如果使用 Vite，应该使用一个自定义的 Vite 插件来把匹配的自定义块转为可执行的 JavaScript。[[例子](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)]
 
-Custom blocks are compiled into imports to the same Vue file with different request queries. It is up to the underlying build tool to handle these import requests.
+- 如果使用 Vue CLI 或者普通的 webpack 配置，应该配置一个 webpack loader 来转换匹配到的自定义块。[[例子](https://vue-loader.vuejs.org/guide/custom-blocks.html#custom-blocks)]
 
-- If using Vite, a custom Vite plugin should be used to transform matched custom blocks into executable JavaScript. [[Example](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)]
-
-- If using Vue CLI or plain webpack, a webpack loader should be configured to transform the matched blocks. [[Example](https://vue-loader.vuejs.org/guide/custom-blocks.html#custom-blocks)]
-
-## Lower-Level Tools
+## 底层工具
 
 ### `@vue/compiler-sfc`
 
-- [Docs](https://github.com/vuejs/vue-next/tree/master/packages/compiler-sfc)
+- [文档](https://github.com/vuejs/vue-next/tree/master/packages/compiler-sfc)
 
-This package is part of the Vue core monorepo and is always published with the same version as the main `vue` package. Typically, it will be listed as a peer dependency of `vue` in a project. To ensure correct behavior, its version should always be kept in-sync with `vue` - i.e. whenever you upgrade the version of `vue`, you should also upgrade `@vue/compiler-sfc` to match it.
+这个包是 Vue 核心仓库的一部分，始终和当前 `vue` 包保持相同的版本。通常情况下，它将被列为项目中 `vue` 的同级依赖。为了确保不出问题，应该始终和 `vue` 的版本保持同步：也就是说当你升级 `vue` 版本时候，应该同时升级 `@vue/compiler-sfc` 来保持一致。
 
-The package itself provides lower-level utilities for processing Vue SFCs and is only meant for tooling authors that need to support Vue SFCs in custom tools.
+这个包本身提供了处理 Vue 单文件的底层工具，只对库作者需要对单文件进行支持时候有意义。
 
 ### `@vitejs/plugin-vue`
 
-- [Docs](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+- [文档](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
 
-Official plugin that provides Vue SFC support in Vite.
+官方插件可以在 Vite 中提供对 Vue 单文件提供支持。
 
 ### `vue-loader`
 
-- [Docs](https://vue-loader.vuejs.org/)
+- [文档](https://vue-loader.vuejs.org/)
 
-The official loader that provides Vue SFC support in webpack. If you are using Vue CLI, also see [docs on modifying `vue-loader` options in Vue CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+在 webpack 中提供官方 loader 来支持 Vue 单文件。如果你正在使用 Vue CLI 可以参阅 [在 Vue CLI 中修改 `vue-loader` 选项](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)。
