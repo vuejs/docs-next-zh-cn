@@ -43,7 +43,7 @@ vue create hello-vue
 
 ### Vite 还是 Vue CLI？
 
-我们推荐使用 Vite 启动新项目，因为它在开发服务器启动和HMR更新的性能方面提供了更好的开发体验。([详情](https://vitejs.dev/guide/why.html))。如果你依赖特定的 webpack 功能（比如模块联邦）建议使用 Vue CLI。
+鉴于 Vite 在开发中服务的启动和 HMR 更新的性能方面提供了更为卓越的开发体验，因此我们推荐你使用 Vite 来开始新的项目。([详情](https://vitejs.dev/guide/why.html))。如果你依赖某个特定的 webpack 功能（如 Module Federation）那么建议你使用 Vue CLI。
 
 如果你是[Rollup](https://rollupjs.org/) 用户，你可以安全地使用 Vite，因为它使用 Rollup 进行生产构建，支持与 Rollup 兼容的插件系统。[甚至 Rollup 的维护者也推荐 Vite 作为 Rollup 作为 Web 开发工具](https://twitter.com/lukastaegert/status/1412119729431584774).
 
