@@ -45,7 +45,7 @@ vue create hello-vue
 
 鉴于 Vite 在开发中服务的启动和 HMR 更新的性能方面提供了更为卓越的开发体验，因此我们推荐你使用 Vite 来开始新的项目。([详情](https://vitejs.dev/guide/why.html))。如果你依赖某个特定的 webpack 功能（如 Module Federation）那么建议你使用 Vue CLI。
 
-如果你是[Rollup](https://rollupjs.org/) 用户，你可以安全地使用 Vite，因为它使用 Rollup 进行生产构建，支持与 Rollup 兼容的插件系统。[甚至 Rollup 的维护者也推荐 Vite 作为 Rollup 作为 Web 开发工具](https://twitter.com/lukastaegert/status/1412119729431584774).
+如果你是[Rollup](https://rollupjs.org/) 用户，你可以安全地使用 Vite，因为 Vite 使用了 Rollup 进行生产构建，支持并兼容 Rollup 插件系统。[甚至 Rollup 的维护者也推荐使用 Vite 来进行基于 Rollup 的 Web 开发](https://twitter.com/lukastaegert/status/1412119729431584774)。
 
 ## IDE 支持
 
@@ -53,7 +53,7 @@ vue create hello-vue
 
 [WebStorm](https://www.jetbrains.com/webstorm/) 也对 Vue 单文件提供了不错的支持。请注意，到目前为止它对 `<script setup>` 的支持仍然是[进行中](https://youtrack.jetbrains.com/issue/WEB-49000)。
 
-大多数其他编辑器都有社区创建的 Vue 语法高亮功能，但缺乏同样水平的代码智能提示。从长远来看，我们确实希望通过 [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) 来托大编辑器的支持范围，因为 Volar 的核心逻辑是作为标准语言服务器实现的。
+大多数其他编辑器都有社区创建的 Vue 语法高亮功能，但缺乏同样水平的代码智能提示。从长远来看，我们确实希望通过 [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) 来扩大编辑器的支持范围，因为 Volar 的核心逻辑是用标准语言服务的方式实现的。
 
 ## 测试支持
 
