@@ -246,9 +246,8 @@
 - **修饰符**：
 
   - `.camel` - 将 kebab-case attribute 名转换为 camelCase。
-  <!-- TODO: translation -->
-  - `.prop` - force a binding to be set as a DOM property. <Badge text="3.2+"/>
-  - `.attr` - force a binding to be set as a DOM attribute. <Badge text="3.2+"/>
+  - `.prop` - 将一个绑定强制设置为一个 DOM property。<Badge text="3.2+"/>
+  - `.attr` - 将一个绑定强制设置为一个 DOM attribute。<Badge text="3.2+"/>
 
 - **用法**：
 
@@ -300,8 +299,7 @@
   <svg><a :xlink:special="foo"></a></svg>
   ```
 
-  <!-- TODO: translation -->
-  When setting a binding on an element, Vue by default checks whether the element has the key defined as a property using an `in` operator check. If the property is defined, Vue will set the value as a DOM property instead of an attribute. This should work in most cases, but you can override this behavior by explicitly using `.prop` or `.attr` modifiers. This is sometimes necessary, especially when [working with custom elements](/guide/web-components.html#passing-dom-properties).
+  当在一个元素上设置一个绑定的时候，Vue 会默认通过 `in` 操作检测该元素是否有一个被定义为 property 的 key。如果该 property 被定义了，Vue 会将这个值设置为一个 DOM property 而不是 attribute。大多数情况下，这样工作是正常的，但你也可以通过 `.prop` 或 `.attr` 修饰符显性地覆写这个行为。有的时候这是必要的，尤其是[基于自定义元素的工作](/guide/web-components.html#传递-dom-property)。
 
   The `.prop` modifier also has a dedicated shorthand, `.`:
 
@@ -474,11 +472,11 @@
 
 ## v-memo <Badge text="3.2+" />
 
-- **预期** `Array`
+- **预期**：`Array`
 
-- **详细**
+- **用法**：
 
-  对模板的一个子树进行记忆。在元素和组件上均可以使用。该指令通过一个固定长度的依赖数组来进行记忆比较。如果数组中的每个值跟最后一次渲染时相比都没有发生变化，那么整个子树的更新都将被跳过。举例：
+  记住一个模板的子树。元素和组件上都可以使用。该指令接收一个固定长度的数组作为依赖值进行记忆比对。如果数组中的每个值都和上次渲染的时候相同，则整个该子树的更新会被跳过。例如：
 
   ```html
   <div v-memo="[valueA, valueB]">
@@ -492,7 +490,7 @@
 
   **结合 `v-for` 使用**
 
-  `v-memo` 仅仅是为了在某些性能非常关键的场景下提供一些微观的优化，它应该很少需要被用到。最常见的能够证明其价值的场景是渲染大型的 `v-for` 列表 (比如 `length > 1000`)：
+  `v-memo` 仅供性能敏感场景的针对性优化，会用到的场景应该很少。渲染 `v-for` 长列表 (长度大于 1000) 可能是它最有用的场景：
 
   ```html
   <div v-for="item in list" :key="item.id" v-memo="[item.id === selected]">
