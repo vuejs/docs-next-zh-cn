@@ -104,7 +104,7 @@ Vue 3 中一些需要关注的新功能包括：
 - [`data` 选项应始终被声明为一个函数](/guide/migration/data-option.html)
 - [来自 mixin 的 `data` 选项现在为浅合并](/guide/migration/data-option.html#mixin-合并行为变更)
 - [Attribute 强制策略已更改](/guide/migration/attribute-coercion.html)
-- [一些过渡 (transition) class 被重命名](/guide/migration/transition.html)
+- [一些过渡的 class 被重命名](/guide/migration/transition.html)
 - [`<TransitionGroup>` 不再默认渲染包裹元素](/guide/migration/transition-group.html)
 - [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则必须指定 `deep` 选项](/guide/migration/watch.html)
 - 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 的 `<template>` 现在被视为普通元素，并将渲染为原生的 `<template>` 元素，而不是渲染其内部内容。
