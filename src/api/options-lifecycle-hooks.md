@@ -1,7 +1,7 @@
 # 生命周期钩子
 
 :::tip 注意
-所有生命周期钩子的 `this` 上下文将自动绑定至实例中，因此你可以访问 data、computed 和 methods。这意味着**你不应该使用箭头函数来定义一个生命周期方法** (例如 `created: () => this.fetchTodos()`) 。因为箭头函数绑定了父级上下文，所以 `this` 不会指向预期的组件实例，并且`this.fetchTodos` 将会是 undefined。
+所有生命周期钩子的 `this` 上下文将自动绑定至实例中，因此你可以访问 data、computed 和 methods。这意味着**你不应该使用箭头函数来定义一个生命周期方法** (例如 `created: () => this.fetchTodos()`)。因为箭头函数绑定了父级上下文，所以 `this` 不会指向预期的组件实例，并且`this.fetchTodos` 将会是 undefined。
 :::
 
 ## beforeCreate
@@ -10,7 +10,7 @@
 
 - **详细：**
 
-  在实例初始化之后,进行数据侦听和事件/侦听器的配置之前同步调用。
+  在实例初始化之后、进行数据侦听和事件/侦听器的配置之前同步调用。
 
 -  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
@@ -20,7 +20,7 @@
 
 - **详细：**
 
-  在实例创建完成后被立即同步调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：data observation (数据观测)，computed property (计算属性)，methods，event/watcher (事件/侦听器) 的回调函数。然而，挂载阶段还没开始，且 `$el` property 目前尚不可用。
+  在实例创建完成后被立即同步调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：数据侦听、计算属性、方法、事件/侦听器的回调函数。然而，挂载阶段还没开始，且 `$el` property 目前尚不可用。
 
 -  **参考：**[生命周期图示](../guide/instance.html#生命周期图示)
 
@@ -159,7 +159,7 @@
 
   - 默认情况下，如果全局的 `config.errorHandler` 被定义，所有的错误仍会发送它，因此这些错误仍然会向单一的分析服务的地方进行汇报。
   
-  - 如果一个组件的 inheritance chain (继承链)或 parent chain (父链)中存在多个 `errorCaptured` 钩子，则它们将会被相同的错误逐个唤起。
+  - 如果一个组件的继承链或父级链中存在多个 `errorCaptured` 钩子，则它们将会被相同的错误逐个唤起。
 
   - 如果此 `errorCaptured` 钩子自身抛出了一个错误，则这个新错误和原本被捕获的错误都会发送给全局的 `config.errorHandler`。
 
