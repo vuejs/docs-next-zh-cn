@@ -54,7 +54,7 @@ Vue 3 中一些需要关注的新功能包括：
 - [触发组件选项](/guide/component-custom-events.html)
 - [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core)，用于创建自定义渲染器
 - [单文件组件组合式 API 语法糖 (`<script setup>`)](/api/sfc-script-setup.html)
-- [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](/api/sfc-style.html#state-driven-dynamic-css)
+- [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](/api/sfc-style.html#状态驱动的动态-css)
 - [SFC `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 - [Suspense](/guide/migration/suspense.html) <Badge text="实验性" type="warning" />
 
@@ -65,7 +65,7 @@ Vue 3 中一些需要关注的新功能包括：
 ### 全局 API
 
 - [全局 Vue API 已更改为使用应用程序实例](/guide/migration/global-api.html)
-- [全局和内部 API 已经被重构为可树摇的 (tree-shakable)](/guide/migration/global-api-treeshaking.html)
+- [全局和内部 API 已经被重构为支持 tree-shake](/guide/migration/global-api-treeshaking.html)
 
 ### 模板指令
 
