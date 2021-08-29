@@ -7,10 +7,10 @@ badges:
 
 ## 概览
 
-以下是对变化的高层次概述：
+以下是对变化的总体概述：
 
 - 新的 `defineAsyncComponent` 助手方法，用于显式地定义异步组件
-- `component` 选项重命名为 `loader`
+- `component` 选项被重命名为 `loader`
 - Loader 函数本身不再接收 `resolve` 和 `reject` 参数，且必须返回一个 Promise
 
 如需更深入的解释，请继续阅读！
@@ -37,7 +37,7 @@ const asyncModal = {
 
 ## 3.x 语法
 
-现在，在 Vue 3 中，由于函数式组件被定义为纯函数，因此异步组件的定义需要通过将其包裹在新的 `defineAsyncComponent` 助手方法中来显式地定义：
+现在，在 Vue 3 中，由于函数式组件被定义为纯函数，因此异步组件需要通过将其包裹在新的 `defineAsyncComponent` 助手方法中来显式地定义：
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -58,10 +58,10 @@ const asyncModalWithOptions = defineAsyncComponent({
 ```
 
 ::: tip 注意
-Vue Router 支持一个类似的机制来异步加载路由组件，也就是俗称的*懒加载*。尽管类似，这个功能和 Vue 支持的异步组件是不同的。当用 Vue Router 配置路由组件时，你**不**应该使用 `defineAsyncComponent`。你可以在 Vue Router 文档的[懒加载路由](https://next.router.vuejs.org/guide/advanced/lazy-loading.html)章节阅读更多相关内容。
+Vue Router 支持一个类似的机制来异步加载路由组件，也就是俗称的*懒加载*。尽管类似，但是这个功能和 Vue 所支持的异步组件是不同的。当用 Vue Router 配置路由组件时，你**不**应该使用 `defineAsyncComponent`。你可以在 Vue Router 文档的[懒加载路由](https://next.router.vuejs.org/guide/advanced/lazy-loading.html)章节阅读更多相关内容。
 :::
 
-对 2.x 所做的另一个更改是，`component` 选项现在被重命名为 `loader`，以便准确地传达不能直接提供组件定义的信息。
+对 2.x 所做的另一个更改是，`component` 选项现在被重命名为 `loader`，以明确组件定义不能直接被提供。
 
 ```js{4}
 import { defineAsyncComponent } from 'vue'
