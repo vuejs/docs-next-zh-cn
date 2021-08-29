@@ -2,7 +2,7 @@
 
 ## 介绍
 
-`*.vue` 文件是使用类 HTML 语法来描述 Vue 组件的一种自定义文件格式。每一个 `*.vue` 文件都由三种类型的顶层语法块所组成：`<template>`，`<script>`，与 `<style>`，以及可选的附加自定义块：
+`*.vue` 文件是使用类 HTML 语法来描述 Vue 组件的一种自定义文件格式。每一个 `*.vue` 文件都由三种类型的顶层语法块所组成：`<template>`、`<script>`、`<style>` 以及可选的附加自定义块：
 
 ```vue
 <template>
@@ -42,15 +42,15 @@ export default {
 
 - 每一个 `*.vue` 文件最多可同时包含一个 `<script>` 块 (不包括[`<script setup>`](/api/sfc-script-setup.html))。
 
-- script 会被当做 ES Module 来执行。
+- 该脚本会被当做 ES Module 来执行。
 
-- **默认导出**的内容应该是 Vue 组件选项对象，它要么是一个普通的对象，要么是 [defineComponent](/api/global-api.html#definecomponent) 的返回值。
+- 其**默认导出**的内容应该是 Vue 组件选项对象，它要么是一个普通的对象，要么是 [defineComponent](/api/global-api.html#definecomponent) 的返回值。
 
 ### `<script setup>`
 
 - 每个 `*.vue` 文件最多可同时包含一个 `<script setup>` 块 (不包括常规的 `<script>`)
 
-- script 会被预处理并作为组件的 `setup()` 函数使用，也就是说它会在**每个组件实例**中执行。`<script setup>` 的顶层绑定会自动暴露给模板。更多详情请查看 [`<script setup>` 文档](/api/sfc-script-setup)。
+- 该脚本会被预处理并作为组件的 `setup()` 函数使用，也就是说它会在**每个组件实例**中执行。`<script setup>` 的顶层绑定会自动暴露给模板。更多详情请查看 [`<script setup>` 文档](/api/sfc-script-setup)。
 
 ### `<style>`
 
@@ -117,7 +117,7 @@ p {{ msg }}
 <script src="./script.js"></script>
 ```
 
-注意 `src` 引入所需遵循的路径解析规则与 webpack 模块一致，也即：
+注意 `src` 引入所需遵循的路径解析规则与 webpack 模块一致，即：
 
 - 相对路径需要以 `./` 开头。
 - 你可以从 npm 依赖中引入资源：
@@ -136,4 +136,4 @@ p {{ msg }}
 
 ## 注释
 
-在每个块中，注释应该使用相应语言 (HTML, CSS, JavaScript, Pug, 等等) 的语法。对于顶层的注释而言，使用 HTML 注释语法：`<!-- comment contents here -->`。
+在每个块中，注释应该使用相应语言 (HTML, CSS, JavaScript, Pug, 等等) 的语法。对于顶层的注释而言，使用 HTML 注释语法：`<!-- 这里是注释内容 -->`。
