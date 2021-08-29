@@ -57,5 +57,5 @@ export default {
 
 ## 参考
 
-- [有些过渡的 class 名更改](/guide/migration/transition.html)
+- [一些过渡的 class 被重命名](/guide/migration/transition.html)
 - [`<TransitionGroup>` 不再默认渲染根元素](/guide/migration/transition-group.html)

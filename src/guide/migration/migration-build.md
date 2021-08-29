@@ -318,9 +318,9 @@ export default {
 | COMPONENT_ASYNC              | ✔    | 异步组件 API 改变 (现在需要 `defineAsyncComponent`) | [链接](/guide/migration/async-components.html) |
 | COMPONENT_FUNCTIONAL         | ✔    | 函数式组件 API 改变 (现在必须只是一个普通函数) | [链接](/guide/migration/functional-components.html) |
 | COMPONENT_V_MODEL            | ✔    | 组件的 v-model 修改 | [链接](/guide/migration/v-model.html) |
-| RENDER_FUNCTION              | ✔    | 渲染函数 API 改变 | [链接](/guide/migration/render-function-api.html) |
+| RENDER_FUNCTION              | ✔    | 渲染函数 API 更改 | [链接](/guide/migration/render-function-api.html) |
 | FILTERS                      | ✔    | 过滤器被移除 (该选项只会影响运行时的过滤器 API) | [链接](/guide/migration/filters.html) |
-| COMPILER_IS_ON_ELEMENT       | ✔    | `is` 现在只能严格用在 `<component>` 上 | [链接](/guide/migration/custom-elements-interop.html) |
+| COMPILER_IS_ON_ELEMENT       | ✔    | `is` 的使用现在被严格限制在 `<component>` 上 | [链接](/guide/migration/custom-elements-interop.html) |
 | COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` 被替换为带参数的 `v-model` | [链接](/guide/migration/v-model.html) |
 | COMPILER_V_BIND_PROP         | ✔    | `v-bind.prop` 修饰符被移除 | |
 | COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` 现在是顺序敏感的 | [链接](/guide/migration/v-bind.html) |
