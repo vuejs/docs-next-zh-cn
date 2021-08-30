@@ -35,7 +35,7 @@ Vue.directive('highlight', {
 })
 ```
 
-此处，在这个元素的初始设置中，通过给指令传递一个值来绑定样式，该值可以通过应用程序更新为不同的值。
+此处，在这个元素的初始设置中，通过给指令传递一个值来绑定样式，该值可以在应用中任意更改。
 
 ## 3.x 语法
 
@@ -44,7 +44,7 @@ Vue.directive('highlight', {
 - **created** - 新增！在元素的 attribute 或事件监听器被应用之前调用。
 - bind → **beforeMount**
 - inserted → **mounted**
-- **beforeUpdate**：新增！在元素本身被更新之前调用，很像组件的生命周期钩子。
+- **beforeUpdate**：新增！在元素本身被更新之前调用，与组件的生命周期钩子十分相似。
 - update → 移除！该钩子与 `updated` 有太多相似之处，因此它是多余的。请改用 `updated`。
 - componentUpdated → **updated**
 - **beforeUnmount**：新增！与组件的生命周期钩子类似，它将在元素被卸载之前调用。
