@@ -1,10 +1,10 @@
-# Security
+# 安全
 
-## Reporting Vulnerabilities
+## 漏洞报告
 
-When a vulnerability is reported, it immediately becomes our top concern, with a full-time contributor dropping everything to work on it. To report a vulnerability, please email [security@vuejs.org](mailto:security@vuejs.org).
+当一个漏洞被报告时，它立即成为我们最关心的问题，全职贡献者放下一切来处理它。要报告漏洞，请发送电子邮件至 [security@vuejs.org](mailto:security@vuejs.org)。
 
-While the discovery of new vulnerabilities is rare, we also recommend always using the latest versions of Vue and its official companion libraries to ensure your application remains as secure as possible.
+虽然很少发现新漏洞，但我们也建议始终使用最新版本的 Vue 及其官方配套库，以确保您的应用程序尽可能安全。
 
 ## Rule No.1: Never Use Non-trusted Templates
 
