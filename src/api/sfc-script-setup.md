@@ -7,13 +7,13 @@ sidebarDepth: 1
 `<script setup>` 是在单文件组件 (SFC) 中使用[组合式 API](/api/composition-api.html) 的编译时语法糖。相比于普通的 `<script>` 语法，它具有更多优势：
 
 - 更少的样板内容，更简洁的代码。
-- 能够使用纯 Typescript 声明 props 和发出事件。
+- 能够使用纯 Typescript 声明 props 和抛出事件。
 - 更好的运行时性能 (其模板会被编译成与其同一作用域的渲染函数，没有任何的中间代理)。
 - 更好的 IDE 类型推断性能 (减少语言服务器从代码中抽离类型的工作)。
 
 ## 基本语法
 
-要选择加入这个语法，需要将 `setup` attribute 添加到 `<script>` 代码块上：
+要使用这个语法，需要将 `setup` attribute 添加到 `<script>` 代码块上：
 
 ```vue
 <script setup>
@@ -73,7 +73,7 @@ const count = ref(0)
 
 ## 使用组件
 
-`<script setup>` 范围里的值也能被直接作为自定义组件的标签名称使用：
+`<script setup>` 范围里的值也能被直接作为自定义组件的标签名使用：
 
 ```vue
 <script setup>
@@ -85,7 +85,7 @@ import MyComponent from './MyComponent.vue'
 </template>
 ```
 
-将 `MyComponent` 看做被一个变量所引用。如果使用了 JSX，在这里的使用它的心智模型是一样的。其 kebab-case 格式的 `<my-component>` 同样能在模板中使用。不过，我们强烈建议使用 PascalCase 格式作为组件的标签名称，以便于更好的一致性，同时也有助于区分原生的自定义元素。
+将 `MyComponent` 看做被一个变量所引用。如果你使用过 JSX，在这里的使用它的心智模型是一样的。其 kebab-case 格式的 `<my-component>` 同样能在模板中使用。不过，我们强烈建议使用 PascalCase 格式以保持一致性。同时也有助于区分原生的自定义元素。
 
 ### 动态组件
 
@@ -133,7 +133,7 @@ import * as Form from './form-components'
 
 ## `defineProps` 和 `defineEmits`
 
-为了声明 `props` 和 `emits` 选项且具备完整的类型推断，可以使用 `defineProps` 和 `defineEmits` API，它们在 `<script setup>` 中都是自动可用的：
+在 `<script setup>` 中必须使用 `defineProps` 和 `defineEmits` API 来声明 `props` 和 `emits` ，它们具备完整的类型推断并且在 `<script setup>` 中是直接可用的：
 
 ```vue
 <script setup>
@@ -146,9 +146,9 @@ const emit = defineEmits(['change', 'delete'])
 </script>
 ```
 
-- `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的**编译器宏**。他们不需要导入，且会在处理 `<script setup>` 的时候被编译处理掉。
+- `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的**编译器宏**。他们不需要导入且会随着 `<script setup>` 处理过程一同被被编译掉。
 
-- `defineProps` 接收与 `props` 选项相同的值，`defineEmits` 也接收 `emits` 选项相同的值。
+- `defineProps` 接收与 [`props` 选项](/api/options-data.html#props)相同的值，`defineEmits` 也接收 [`emits` 选项](/api/options-data.html#emits)相同的值。
 
 - `defineProps` 和 `defineEmits` 在选项传入后，会提供恰当的类型推断。
 
@@ -180,7 +180,7 @@ defineExpose({
 
 ## `useSlots` 和 `useAttrs`
 
-在 `<script setup>` 使用 `slots` 和 `attrs` 的情况应该是很稀少的，因为可以在模板中通过 `$slots` 和 `$attrs` 来访问它们。在那些稀少的需要使用它们的场景中，可以分别用 `useSlots` 和 `useAttrs` 两个辅助函数来使用：
+在 `<script setup>` 使用 `slots` 和 `attrs` 的情况应该是很罕见的，因为可以在模板中通过 `$slots` 和 `$attrs` 来访问它们。在你的确需要使用它们的罕见场景中，可以分别用 `useSlots` 和 `useAttrs` 两个辅助函数：
 
 ```vue
 <script setup>
@@ -228,7 +228,7 @@ const post = await fetch(`/api/post/1`).then(r => r.json())
 </script>
 ```
 
-另外，await 的表达式会自动编译成在 `await` 之后保留当前组件实例上下文的格式
+另外，await 的表达式会自动编译成在 `await` 之后保留当前组件实例上下文的格式。
 
 :::warning 注意
 `async setup()` 必须与 `Suspense` 组合使用，`Suspense` 目前还是处于实验阶段的特性。我们打算在将来的某个发布版本中开发完成并提供文档 - 如果你现在感兴趣，可以参照 [tests](https://github.com/vuejs/vue-next/blob/master/packages/runtime-core/__tests__/components/Suspense.spec.ts) 看它是如何工作的。
