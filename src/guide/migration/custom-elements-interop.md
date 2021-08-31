@@ -8,7 +8,7 @@ badges:
 ## 概览
 
 - **非兼容**：检测并确定哪些标签应该被视为自定义元素的过程，现在会在模板编译期间执行，且应该通过编译器选项而不是运行时配置来配置。
-- **非兼容**：特殊的 `is` prop 的使用被严格限制在被保留的 `<component>` 标签中。
+- **非兼容**：特殊的 `is` prop 的使用被严格限制在保留的 `<component>` 标签中。
 - **新增**：为了支持 2.x 在原生元素上使用 `is` 的用例来处理原生 HTML 解析限制，我们用 `vue:` 前缀来解析一个 Vue 组件。
 
 ## 自主定制元素
@@ -69,7 +69,7 @@ Vue.config.ignoredElements = ['plastic-button']
 <button is="plastic-button">点击我!</button>
 ```
 
-在原生 attribute 于浏览器中普遍可用之前，Vue 对 `is` 这个特殊 prop 的使用就已经在模拟其行为。但是，在 2.x 中，它被解释为渲染一个名为 `plastic-button` 的 Vue 组件，这将阻碍上面所提到的自定义内置元素的原生使用。
+在原生 attribute 于浏览器中普遍可用之前，Vue 对 `is` 这个特殊 prop 的使用就已经在模拟其行为。但是，在 2.x 中，它将被解释为渲染一个名为 `plastic-button` 的 Vue 组件，这将阻碍上面所提到的自定义内置元素的原生用法。
 
 在 3.0 中，我们将 Vue 对 `is` prop 的特殊处理限制在了 `<component>` 标签中。
 
@@ -83,7 +83,7 @@ Vue.config.ignoredElements = ['plastic-button']
   - 2.x 的行为：渲染 `bar` 组件。
   - 3.x 的行为：渲染 `foo` 组件，并将 `is` prop 传递给它。
 
-- 在普通元素上使用时，它将作为 `is` prop 传递给 `createElement` 调用，并作为原生 attribute 渲染。这支持了自定义内置元素的使用。
+- 在普通元素上使用时，它将作为 `is` prop 传递给 `createElement` 调用，并作为原生 attribute 渲染。这支持了自定义内置元素的用法。
 
   ```html
   <button is="plastic-button">点击我！</button>
