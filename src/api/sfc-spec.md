@@ -56,7 +56,7 @@ export default {
 
 - 一个 `*.vue` 文件可以包含多个 `<style>` 标签。
 
-- `<style>` 标签可以通过 `scoped` 或 `module` 属性 (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 将样式封装到当前组件。多个不同封装模式的 `<style>` 标签可以在同一个组件中混用。
+- `<style>` 标签可以通过 `scoped` 或 `module` attribute (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 将样式封装到当前组件。多个不同封装模式的 `<style>` 标签可以在同一个组件中混用。
 
 ### 自定义块
 
@@ -78,7 +78,7 @@ SFC 在下列情况会依据它的**文件名**来自动推断组件名称：
 
 ## 预处理
 
-块可以使用 `lang` 属性声明预处理语言。最常见的场景就是在 `<script>` 块中使用 TypeScript：
+块可以使用 `lang` attribute 声明预处理语言。最常见的场景就是在 `<script>` 块中使用 TypeScript：
 
 ```html
 <script lang="ts">
@@ -109,7 +109,7 @@ p {{ msg }}
 
 ## Src 引入
 
-如果你倾向于将 `*.vue` 组件拆分为多个文件，可以使用 `src` 属性来引入外部的文件作为语言块：
+如果你倾向于将 `*.vue` 组件拆分为多个文件，可以使用 `src` attribute 来引入外部的文件作为语言块：
 
 ```vue
 <template src="./template.html"></template>
