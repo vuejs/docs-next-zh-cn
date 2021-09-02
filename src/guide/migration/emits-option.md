@@ -8,11 +8,11 @@ badges:
 
 ## 概述
 
-Vue 3 目前提供一个 `emits` 选项，和现有的 `props` 选项类似。这个选项可以用来定义组件可以向其父组件触发的事件。
+Vue 3 现在提供一个 `emits` 选项，和现有的 `props` 选项类似。这个选项可以用来定义一个组件可以向其父组件发出的事件。
 
 ## 2.x 的行为
 
-在 Vue 2 中，你可以定义一个组件可接收的 prop，但是你无法声明它可以触发哪些事件：
+在 Vue 2 中，你可以定义一个组件可接收的 prop，但是你无法声明它可以发出哪些事件：
 
 ```vue
 <template>
@@ -30,7 +30,7 @@ Vue 3 目前提供一个 `emits` 选项，和现有的 `props` 选项类似。�
 
 ## 3.x 的行为
 
-和 prop 类似，组件可触发的事件可以通过 `emits` 选项被定义：
+和 prop 类似，现在可以通过 `emits` 选项来定义组件可发出的事件：
 
 ```vue
 <template>
@@ -53,13 +53,13 @@ Vue 3 目前提供一个 `emits` 选项，和现有的 `props` 选项类似。�
 
 ## 迁移策略
 
-强烈建议使用 `emits` 记录每个组件所触发的所有事件。
+强烈建议使用 `emits` 记录每个组件所发出的所有事件。
 
-这尤为重要，因为我们[移除了 `v-on.native` 修饰符](./v-on-native-modifier-removed.md)。任何未声明 `emits` 的事件监听器都会被算入组件的 `$attrs` 并绑定在组件的根节点上。
+这尤为重要，因为我们[移除了 `.native` 修饰符](./v-on-native-modifier-removed.md)。任何未在 `emits` 中声明的事件监听器都会被算入组件的 `$attrs`，并将默认绑定到组件的根节点上。
 
 ### 示例
 
-对于向父组件重复触发原生事件的组件来说，这会导致两个事件被触发：
+对于向其父组件透传原生事件的组件来说，这会导致有两个事件被触发：
 
 ```vue
 <template>
@@ -78,15 +78,15 @@ export default {
 <my-button v-on:click="handleClick"></my-button>
 ```
 
-该事件会被触发*两次*:
+该事件现在会被触发*两次*:
 
 - 一次来自 `$emit()`。
 - 另一次来自应用在根元素上的原生事件监听器。
 
 现在你有两个选项：
 
-1. 合理声明 `click` 事件。如果你真的在 `<my-button>` 的事件处理器上加入了一些逻辑，这会很有用。
-2. 移除重复触发的事件，因为父组件可以很容易地监听原生事件而不需要添加 `.native`。适用于你只想重新触发这个事件。
+1. 正确地声明 `click` 事件。当你真的在 `<my-button>` 的事件处理器上加入了一些逻辑时，这会很有用。
+2. 移除透传的事件，因为现在父组件可以很容易地监听原生事件，而不需要添加 `.native`。适用于你只想透传这个事件。
 
 ## 参考
 
@@ -94,4 +94,4 @@ export default {
 - [迁移指南 - 移除 `.native` 修饰符](./v-on-native-modifier-removed.md)
 - [迁移指南 - 移除 `$listeners`](./listeners-removed.md)
 - [迁移指南 - `$attrs` 包含 `class` & `style`](./attrs-includes-class-style.md)
-- [迁移指南 - 渲染函数 API](./render-function-api.md)
+- [迁移指南 - 渲染函数 API 的改动](./render-function-api.md)
