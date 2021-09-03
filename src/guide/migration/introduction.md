@@ -53,8 +53,8 @@ Vue 3 中需要关注的一些新功能包括：
 - [片段](/guide/migration/fragments.html)
 - [触发组件选项](/guide/component-custom-events.html)
 - [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core) 创建自定义渲染器
-- [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md) <Badge text="实验性" type="warning" />
-- [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0043-sfc-style-variables.md) <Badge text="实验性" type="warning" />
+- [单文件组件组合式 API 语法糖 (`<script setup>`)](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md)
+- [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0043-sfc-style-variables.md)
 - [SFC `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 - [Suspense](/guide/migration/suspense.html) <Badge text="实验性" type="warning" />
 
