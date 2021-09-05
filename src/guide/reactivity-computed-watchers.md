@@ -30,34 +30,33 @@ plusOne.value = 1
 console.log(count.value) // 0
 ```
 
-<!-- TODO: translation -->
-### Computed Debugging <Badge text="3.2+" />
+### 调试 Computed <Badge text="3.2+" />
 
-`computed` accepts a second argument with `onTrack` and `onTrigger` options:
+`computed` 可接受一个带有 `onTrack` 和 `onTrigger` 选项的对象作为第二个参数：
 
-- `onTrack` will be called when a reactive property or ref is tracked as a dependency.
-- `onTrigger` will be called when the watcher callback is triggered by the mutation of a dependency.
+- `onTrack` 会在某个响应式 property 或 ref 作为依赖被追踪时调用。
+- `onTrigger` 会在侦听回调被某个依赖的修改触发时调用。 
 
-Both callbacks will receive a debugger event which contains information on the dependency in question. It is recommended to place a `debugger` statement in these callbacks to interactively inspect the dependency:
+所有回调都会收到一个 debugger 事件，其中包含了一些依赖相关的信息。推荐在这些回调内放置一个 `debugger` 语句以调试依赖。
 
 ```js
 const plusOne = computed(() => count.value + 1, {
   onTrack(e) {
-    // triggered when count.value is tracked as a dependency
+    // 当 count.value 作为依赖被追踪时触发
     debugger
   },
   onTrigger(e) {
-    // triggered when count.value is mutated
+    // 当 count.value 被修改时触发
     debugger
   }
 })
-// access plusOne, should trigger onTrack
+// 访问 plusOne，应该触发 onTrack
 console.log(plusOne.value)
-// mutate count.value, should trigger onTrigger
+// 修改 count.value，应该触发 onTrigger
 count.value++
 ```
 
-`onTrack` and `onTrigger` only work in development mode.
+`onTrack` 和 `onTrigger` 仅在开发模式下生效。
 
 ## `watchEffect`
 
