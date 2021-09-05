@@ -11,7 +11,7 @@ badges:
 
 ## 2.x 语法
 
-在 2.x 中，Vue 实例可用于触发由事件触发 API 通过指令式方式添加的处理函数 (`$on`，`$off` 和 `$once`)。这可以创建 *event bus*，用来创建在整个应用程序中可用的全局事件监听器：
+在 2.x 中，Vue 实例可用于触发由事件触发器 API 通过指令式方式添加的处理函数 (`$on`，`$off` 和 `$once`)。这可以用于创建一个*事件总线*，以创建在整个应用中可用的全局事件监听器：
 
 ```js
 // eventBus.js
@@ -46,7 +46,7 @@ import eventBus from './eventBus'
 export default {
   methods: {
     callGlobalCustomEvent() {
-      eventBus.$emit('custom-event') // 当 ChildComponent 被挂载，控制台中将显示一条消息
+      eventBus.$emit('custom-event') // 当 ChildComponent 已被挂载时，控制台中将显示一条消息
     }
   }
 }
@@ -75,9 +75,9 @@ createApp(App, {
 })
 ```
 
-### Event Bus
+### 事件总线
 
-Event bus 模式可以被替换为实现了事件触发器接口的外部库，例如 [mitt](https://github.com/developit/mitt) 或 [tiny-emitter](https://github.com/scottcorgan/tiny-emitter)。
+事件总线模式可以被替换为使用外部的、实现了事件触发器接口的库，例如 [mitt](https://github.com/developit/mitt) 或 [tiny-emitter](https://github.com/scottcorgan/tiny-emitter)。
 
 示例:
 
