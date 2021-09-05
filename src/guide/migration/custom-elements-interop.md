@@ -34,7 +34,7 @@ Vue.config.ignoredElements = ['plastic-button']
 
 **在 Vue 3.0 中，此检查在模板编译期间执行。**要指示编译器将 `<plastic-button>` 视为自定义元素：
 
-- 如果使用构建步骤：将 `isCustomElement` 传递给 Vue 模板编译器，如果使用了 `vue-loader`，则应通过 `vue-loader` 的 `compilerOptions` 选项传递：
+- 如果使用构建步骤：给 Vue 模板编译器传入 `isCustomElement` 选项。如果使用了 `vue-loader`，则应通过 `vue-loader` 的 `compilerOptions` 选项传递：
 
   ```js
   // webpack 中的配置
@@ -98,7 +98,7 @@ Vue.config.ignoredElements = ['plastic-button']
 
 [迁移构建开关：`COMPILER_IS_ON_ELEMENT`](migration-build.html#兼容性配置)
 
-## `vue:` 用于 DOM 内模板解析解决方案
+## 使用 `vue:` 前缀来解决 DOM 内模板解析问题
 
 > 提示：本节仅影响直接在页面的 HTML 中写入 Vue 模板的情况。
 > 在 DOM 模板中使用时，模板受原生 HTML 解析规则的约束。一些 HTML 元素，例如 `<ul>`、`<ol>`、`<table>` 和 `<select>` 对它们内部可以出现的元素有限制，以及一些像 `<li>`、`<tr>`、和 `<option>` 只能出现在特定的其他元素中。
