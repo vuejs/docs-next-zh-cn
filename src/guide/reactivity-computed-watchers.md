@@ -32,31 +32,31 @@ console.log(count.value) // 0
 
 ### 调试 Computed <Badge text="3.2+" />
 
-你可以给 `computed` 传入一个对象作为第二个参数, 该参数支持 `onTrack` 和 `onTrigger` 选项:
+`computed` 可接受一个带有 `onTrack` 和 `onTrigger` 选项的对象作为第二个参数：
 
-- 如果某个反应式属性或 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 作为依赖被追踪, 则 `onTrack` 会被调用.
-- 如果 computed 的某个依赖修改, 则 `onTrigger` 会被调用. 
+- `onTrack` 会在某个响应式 property 或 ref 作为依赖被追踪时调用。
+- `onTrigger` 会在侦听回调被某个依赖的修改触发时调用。 
 
-这两个回调都会收到一个 debugger 事件, 事件中包含了有关依赖的一些信息. 推荐的用法是, 在这两个回调内放置一个 `debugger` 语句, 用以调试依赖.
+所有回调都会收到一个 debugger 事件，其中包含了一些依赖相关的信息。推荐在这些回调内放置一个 `debugger` 语句以调试依赖。
 
 ```js
 const plusOne = computed(() => count.value + 1, {
   onTrack(e) {
-    // 当 count.value 作为依赖被追踪时, 该回调被触发
+    // 当 count.value 作为依赖被追踪时触发
     debugger
   },
   onTrigger(e) {
-    // 当 count.value 被修改时, 该回调被触发
+    // 当 count.value 被修改时触发
     debugger
   }
 })
-// 访问 plusOne, 应该触发 onTrack
+// 访问 plusOne，应该触发 onTrack
 console.log(plusOne.value)
-// 修改了 count.value, 应该触发 onTrigger
+// 修改 count.value，应该触发 onTrigger
 count.value++
 ```
 
-`onTrack` 和 `onTrigger` 仅在 development 模式下生效.
+`onTrack` 和 `onTrigger` 仅在开发模式下生效。
 
 ## `watchEffect`
 
