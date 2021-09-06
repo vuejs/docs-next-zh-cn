@@ -29,7 +29,7 @@ badges:
 
 ## 2.x 语法
 
-使用 `<dynamic-heading>` 组件，负责提供适当的标题 (即：`h1`、`h2`、`h3`、等等)，在 2.x 中，这可以通过单文件组件编写：
+使用 `<dynamic-heading>` 组件，负责提供适当的标题 (即：`h1`、`h2`、`h3` 等等)，在 2.x 中，这可以通过单文件组件编写：
 
 ```js
 // Vue 2 函数式组件示例
@@ -67,7 +67,7 @@ export default {
 
 现在，在 Vue 3 中，所有的函数式组件都是用普通函数创建的。换句话说，不需要定义 `{ functional: true }` 组件选项。
 
-它们将接收两个参数：`props` 和 `context`。`context` 参数是一个对象，包含组件的 `attrs`、`slots`，和 `emit` property。
+它们将接收两个参数：`props` 和 `context`。`context` 参数是一个对象，包含组件的 `attrs`、`slots` 和 `emit` property。
 
 此外，`h` 现在是全局导入的，而不是在 `render` 函数中隐式提供。
 
