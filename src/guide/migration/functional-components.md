@@ -45,7 +45,7 @@ export default {
 或者，对于喜欢在单文件组件中使用 `<template>` 的用户：
 
 ```vue
-<!-- Vue 2 结合 <template> 的函数式组件示例  -->
+<!-- Vue 2 结合 <template> 的函数式组件示例 -->
 <template functional>
   <component
     :is="`h${props.level}`"
