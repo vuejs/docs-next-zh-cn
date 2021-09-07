@@ -62,6 +62,7 @@ props: {
 
 ```html
 <!-- 包含该 prop 没有值的情况在内，都意味着 `true`。          -->
+<!-- 隐式转换需要在 props 中声明该 prop 的 type 为 Boolean，否则值为空字符串 。         -->
 <blog-post is-published></blog-post>
 
 <!-- 即便 `false` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue  -->
