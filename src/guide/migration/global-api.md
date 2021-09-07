@@ -5,7 +5,7 @@ badges:
 
 # 全局 API <MigrationBadges :badges="$frontmatter.badges" />
 
-Vue 2.x 有许多全局 API 和配置，这些 API 和配置可以全局改变 Vue 的行为。例如，要注册全局组件，可以使用 `Vue.component` 这样的 API：
+Vue 2.x 有许多全局 API 和配置，它们可以全局改变 Vue 的行为。例如，要注册全局组件，可以使用 `Vue.component` API，就像这样：
 
 ```js
 Vue.component('button-counter', {
@@ -16,7 +16,7 @@ Vue.component('button-counter', {
 })
 ```
 
-类似地，使用全局指令的声明方式如下：
+类似地，全局指令的声明方式如下：
 
 ```js
 Vue.directive('focus', {
@@ -24,27 +24,27 @@ Vue.directive('focus', {
 })
 ```
 
-虽然这种声明方式很方便，但它也会导致一些问题。从技术上讲，Vue 2 没有“app”的概念，我们定义的应用只是通过 `new Vue()` 创建的根 Vue 实例。从同一个 Vue 构造函数**创建的每个根实例共享相同的全局配置**，因此：
+虽然这种声明方式很方便，但它也会导致一些问题。从技术上讲，Vue 2 没有“app”的概念，我们定义的应用只是通过 `new Vue()` 创建的根 Vue 实例。从同一个 Vue 构造函数创建的每个根实例**共享相同的全局配置**，因此：
 
-- 在测试期间，全局配置很容易意外地污染其他测试用例。用户需要仔细存储原始全局配置，并在每次测试后恢复 (例如重置 `Vue.config.errorHandler`)。有些 API 像 `Vue.use` 以及 `Vue.mixin` 甚至连恢复效果的方法都没有，这使得涉及插件的测试特别棘手。实际上，vue-test-utils 必须实现一个特殊的 API `createLocalVue` 来处理此问题：
+- 在测试期间，全局配置很容易意外地污染其他测试用例。用户需要仔细地存储原始全局配置，并在每次测试后恢复 (例如重置 `Vue.config.errorHandler`)。有些 API 像 `Vue.use` 以及 `Vue.mixin` 甚至连恢复它们所产生的作用的方法都没有，这使得涉及插件的测试特别棘手。实际上，vue-test-utils 必须实现一个特殊的 API `createLocalVue` 来处理此问题：
 
   ```js
   import { createLocalVue, mount } from '@vue/test-utils'
 
-  // 建扩展的 `Vue` 构造函数
+  // 创建一个扩展的 `Vue` 构造函数
   const localVue = createLocalVue()
 
-  // 在 “local” Vue构造函数上 “全局” 安装插件
+  // 在 “local” Vue构造函数上 “全局地” 安装插件
   localVue.use(MyPlugin)
 
-  // 通过 `localVue` 来挂载选项
+  // 将 `localVue` 传入挂载选项
   mount(Component, { localVue })
   ```
 
-- 全局配置使得在同一页面上的多个“app”之间共享同一个 Vue 副本非常困难，但全局配置不同。
+- 全局配置使得在同一页面上的多个“应用”之间共享同一个(但是拥有不同的全局配置的) Vue 副本非常困难。
 
   ```js
-  // 这会影响两个根实例
+  // 这会影响到所有根实例
   Vue.mixin({
     /* ... */
   })
@@ -53,11 +53,11 @@ Vue.directive('focus', {
   const app2 = new Vue({ el: '#app-2' })
   ```
 
-为了避免这些问题，在 Vue 3 中我们引入...
+为了避免这些问题，在 Vue 3 中我们引入了...
 
 ## 一个新的全局 API：`createApp`
 
-调用 `createApp` 返回一个*应用实例*，这是 Vue 3 中的新概念：
+调用 `createApp` 返回一个*应用实例*，一个 Vue 3 中的新概念。
 
 ```js
 import { createApp } from 'vue'
@@ -65,7 +65,7 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-如果你使用的是 Vue 的 [CDN](/guide/installation.html#cdn) 构建版本，那么 `createApp` 是通过全局的 `Vue` 对象暴露的。
+如果你使用的是 Vue 的 [CDN](/guide/installation.html#cdn) 构建版本，那么 `createApp` 将通过全局的 `Vue` 对象暴露。
 
 ```js
 const { createApp } = Vue
@@ -73,33 +73,33 @@ const { createApp } = Vue
 const app = createApp({})
 ```
 
-应用实例暴露了 Vue 2 当前全局 API 的子集，经验法则是，_任何全局改变 Vue 行为的 API 现在都会移动到应用实例上_，以下是当前 Vue2 全局 API 及其相应实例 API 的表：
+应用实例暴露了 Vue 2 全局 API 的一个子集，经验法则是，*任何全局改变 Vue 行为的 API 现在都会移动到应用实例上*，以下是 Vue2 全局 API 及其相应的实例 API 列表：
 
 | 2.x 全局 API               | 3.x 实例 API (`app`)                                                                                         |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | Vue.config                 | app.config                                                                                                   |
-| Vue.config.productionTip   | _removed_ ([见下方](#config-productiontip-移除))                                                             |
+| Vue.config.productionTip   | *移除* ([见下方](#config-productiontip-移除))                                                             |
 | Vue.config.ignoredElements | app.config.compilerOptions.isCustomElement ([见下方](#config-ignoredelements-替换为-config-iscustomelement)) |
 | Vue.component              | app.component                                                                                                |
 | Vue.directive              | app.directive                                                                                                |
 | Vue.mixin                  | app.mixin                                                                                                    |
-| Vue.use                    | app.use ([见下方](#插件使用者须知))                                                                          |
+| Vue.use                    | app.use ([见下方](#插件开发者须知))                                                                          |
 | Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-替换为-config-globalproperties))                        |
-| Vue.extend                 | _removed_ ([see below](#vue-extend-removed))                                                                 |
+| Vue.extend                 | *移除* ([see below](#vue-extend-removed))                                                                 |
 
-所有其他不全局改变行为的全局 API 现在被命名为 exports，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
+所有其他不全局改变行为的全局 API 现在都是具名导出，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
 
 ### `config.productionTip` 移除
 
 在 Vue 3.x 中，“使用生产版本”提示仅在使用“dev + full build”(包含运行时编译器并有警告的构建版本) 时才会显示。
 
-对于 ES 模块构建版本，由于它们是与 bundler 一起使用的，而且在大多数情况下，CLI 或样板已经正确地配置了生产环境，所以本技巧将不再出现。
+对于 ES 模块构建版本，由于它们是与打包器一起使用的，而且在大多数情况下，CLI 或脚手架已经正确地配置了生产环境，所以本提示将不再出现。
 
 [迁移构建开关：`CONFIG_PRODUCTION_TIP`](migration-build.html#兼容性配置)
 
 ### `config.ignoredElements` 替换为 `config.isCustomElement`
 
-引入此配置选项的目的是支持原生自定义元素，因此重命名可以更好地传达它的功能，新选项还需要一个比旧的 string/RegExp 方法提供更多灵活性的函数：
+引入此配置选项的目的是为了支持原生自定义元素，因此重命名可以更好地传达它的意图。同时，新选项接受一个函数，相比旧的字符串或正则表达式来说能提供更高的灵活性：
 
 ```js
 // 之前
@@ -112,11 +112,11 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 
 :::tip 重要
 
-在 Vue 3 中，元素是否是组件的检查已转移到模板编译阶段，因此只有在使用运行时编译器时才考虑此配置选项。如果你使用的是 runtime-only 版本 `isCustomElement` 必须通过 `@vue/compiler-dom` 在构建步骤替换——比如，通过 [`compilerOptions` option in vue-loader](https://vue-loader.vuejs.org/options.html#compileroptions)。
+在 Vue 3 中，元素是否是组件的检查已转移到模板编译阶段，因此只有在使用运行时编译器时才此配置选项才会生效。如果你使用的是仅运行时构建版本，则 `isCustomElement` 必须在构建步骤中传递给 `@vue/compiler-dom` ——比如，通过 [vue-loader 中的 `compilerOptions` 选项](https://vue-loader.vuejs.org/options.html#compileroptions)。
 
-- 如果 `config.compilerOptions.isCustomElement` 当使用仅运行时构建版本时，将发出警告，指示用户在生成设置中传递该选项；
+- 当使用仅运行时构建版本时，如果配置了 `config.compilerOptions.isCustomElement` 选项，将发出警告以指示用户应该在构建步骤中传递该选项；
 - 这将是 Vue CLI 配置中新的顶层选项。
-  :::
+:::
 
 [迁移构建开关：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#兼容性配置)
 
@@ -124,7 +124,7 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 
 在 Vue 2 中， `Vue.prototype` 通常用于添加所有组件都能访问的 property。
 
-在 Vue 3 等同于[`config.globalProperties`](/api/application-config.html#globalproperties)。这些 property 将被复制到应用中作为实例化组件的一部分。
+在 Vue 3 中与之对应的是 [`config.globalProperties`](/api/application-config.html#globalproperties)。这些 property 将被复制到应用中，作为实例化组件的一部分。
 
 ```js
 // 之前 - Vue 2
@@ -147,6 +147,7 @@ app.config.globalProperties.$http = () => {}
 
 ```js
 // 之前 - Vue 2
+
 // 创建构造器
 const Profile = Vue.extend({
   template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
@@ -189,9 +190,9 @@ Vue.createApp(Profile).mount('#mount-point')
 
 [迁移构建开关：`GLOBAL_EXTEND`](migration-build.html#兼容性配置)
 
-### 插件使用者须知
+### 插件开发者须知
 
-插件开发者通常使用 `Vue.use`。例如，官方的 `vue-router` 插件是如何在浏览器环境中自行安装的：
+在 UMD 构建中，插件开发者使用 `Vue.use` 来自动安装插件是一个通用的做法。例如，官方的 `vue-router` 插件是这样在浏览器环境中自行安装的：
 
 ```js
 var inBrowser = typeof window !== 'undefined'
@@ -201,7 +202,7 @@ if (inBrowser && window.Vue) {
 }
 ```
 
-由于 `use` 全局 API 在 Vue 3 中不再使用，此方法将停止工作并停止调用 `Vue.use()` 现在将触发警告，于是，开发者必须在应用程序实例上显式指定使用此插件：
+由于 `use` 全局 API 在 Vue 3 中已无法使用，因此此方法将无法正常工作，并且调用 `Vue.use()` 现在将触发一个警告。取而代之的是，开发者必须在应用实例上显式指定使用此插件：
 
 ```js
 const app = createApp(MyApp)
@@ -210,7 +211,7 @@ app.use(VueRouter)
 
 ## 挂载 App 实例
 
-使用 `createApp(/* options */)` 初始化后，应用实例 `app` 可用 `app.mount(domTarget)` 挂载根组件实例：
+使用 `createApp(/* options */)` 初始化后，应用实例 `app` 可通过 `app.mount(domTarget)` 挂载根组件实例：
 
 ```js
 import { createApp } from 'vue'
@@ -220,7 +221,7 @@ const app = createApp(MyApp)
 app.mount('#app')
 ```
 
-经过所有这些更改，我们在指南开头的组件和指令将被改写为如下内容：
+经过所有的这些更改，我们在指南开头编写的组件和指令现在将被改写为如下内容：
 
 ```js
 const app = createApp(MyApp)
@@ -236,7 +237,9 @@ app.directive('focus', {
   mounted: el => el.focus()
 })
 
-// 现在，所有通过 `app.mount()` 挂载的应用实例及其组件树，将具有相同的 “button-counter” 组件和 “focus” 指令，而不会污染全局环境
+// 现在，所有通过 app.mount() 挂载的应用实例及其组件树，
+// 将具有相同的 “button-counter” 组件和 “focus” 指令，
+// 而不会污染全局环境
 app.mount('#app')
 ```
 
@@ -247,10 +250,10 @@ app.mount('#app')
 与在 2.x 根实例中使用 `provide` 选项类似，Vue 3 应用实例也提供了可被应用内任意组件注入的依赖项：
 
 ```js
-// 在入口
+// 在入口中
 app.provide('guide', 'Vue 3 Guide')
 
-// 在子组件
+// 在子组件中
 export default {
   inject: {
     book: {
@@ -261,7 +264,7 @@ export default {
 }
 ```
 
-使用 `provide` 在编写插件时非常有用，可以替代 `globalProperties`。
+在编写插件时使用 `provide` 将尤其有用，可以替代 `globalProperties`。
 
 ## 在应用之间共享配置
 
