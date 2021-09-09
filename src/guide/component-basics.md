@@ -316,7 +316,7 @@ app.component('custom-input', {
 })
 ```
 
-现在 `v-model` 就应该可以在这个组件上完美地工作起来了：
+现在 `v-model` 就可以在这个组件上完美地工作起来了：
 
 ```html
 <custom-input v-model="searchText"></custom-input>
