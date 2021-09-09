@@ -146,7 +146,7 @@ const emit = defineEmits(['change', 'delete'])
 </script>
 ```
 
-- `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的**编译器宏**。他们不需要导入且会随着 `<script setup>` 处理过程一同被被编译掉。
+- `defineProps` 和 `defineEmits` 都是只在 `<script setup>` 中才能使用的**编译器宏**。他们不需要导入且会随着 `<script setup>` 处理过程一同被编译掉。
 
 - `defineProps` 接收与 [`props` 选项](/api/options-data.html#props)相同的值，`defineEmits` 也接收 [`emits` 选项](/api/options-data.html#emits)相同的值。
 
