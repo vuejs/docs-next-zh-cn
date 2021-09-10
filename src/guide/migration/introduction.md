@@ -166,7 +166,7 @@ Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的非兼
 
 ### IDE 支持
 
-推荐使用 [VSCode](https://code.visualstudio.com/) 和我们官方拓展 [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)，它为 Vue 3 提供了全面的 IDE 支持
+推荐使用 [VSCode](https://code.visualstudio.com/) 和我们官方拓展 [Volar](https://github.com/johnsoncodehk/volar)，它为 Vue 3 提供了全面的 IDE 支持
 
 ### 其他项目
 

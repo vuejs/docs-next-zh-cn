@@ -16,7 +16,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-如果将对象分配为 ref 值，则通过 [reactive](./basic-reactivity.html#reactive) 方法使该对象具有高度的响应式。
+如果将对象分配为 ref 值，则通过 [reactive](./basic-reactivity.html#reactive) 函数使该对象具有高度的响应式。
 
 **类型声明：**
 

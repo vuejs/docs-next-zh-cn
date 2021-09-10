@@ -45,7 +45,7 @@ module.exports = {
       .rule('vue')
       .use('vue-loader')
       .tap(options => ({
-        ...options
+        ...options,
         compilerOptions: {
           // treat any tag that starts with ion- as custom elements
           isCustomElement: tag => tag.startsWith('ion-')
@@ -74,7 +74,7 @@ The primary benefit of custom elements is that they can be used with any framewo
 
 ### defineCustomElement
 
-Vue supports creating custom elements using exactly the same Vue component APIs via the [`defineCustomElment`](/api/global-api.html#definecustomelement) method. The method accepts the same argument as [`defineComponent`](/api/global-api.html#definecomponent), but instead returns a custom element constructor that extends `HTMLElement`:
+Vue supports creating custom elements using exactly the same Vue component APIs via the [`defineCustomElement`](/api/global-api.html#definecustomelement) method. The method accepts the same argument as [`defineComponent`](/api/global-api.html#definecomponent), but instead returns a custom element constructor that extends `HTMLElement`:
 
 ```html
 <my-vue-element></my-vue-element>
@@ -201,7 +201,7 @@ It is recommended to export the individual element constructors to give your use
 ```js
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
-import Bar from './MyBar.ce.bar'
+import Bar from './MyBar.ce.vue'
 
 const MyFoo = defineCustomElement(Foo)
 const MyBar = defineCustomElement(Bar)
@@ -210,8 +210,8 @@ const MyBar = defineCustomElement(Bar)
 export { MyFoo, MyBar }
 
 export function register() {
-  customElements.register('my-foo', MyFoo)
-  customElements.register('my-bar', MyBar)
+  customElements.define('my-foo', MyFoo)
+  customElements.define('my-bar', MyBar)
 }
 ```
 
