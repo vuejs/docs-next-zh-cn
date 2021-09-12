@@ -5,6 +5,8 @@
  * and open a browser tab of github.com/vuejs/docs,
  * with the compare between this hash and latest master branch.
  * save a little bit time between finding it manually.
+ *
+ * https://github.com/vuejs/docs-next-zh-cn/pull/728
  */
 const git = require('simple-git')();
 const open = require('open');
