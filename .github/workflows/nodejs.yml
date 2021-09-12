@@ -1,6 +1,6 @@
 name: Vue-docs CI
 
-on: 
+on:
   push:
     branches:
       - master
@@ -22,8 +22,8 @@ jobs:
       - name: 2. install dep
         run: |
           rm -rf node_modules
-          npm install
-          npm run build
+          yarn --frozen-lockfile
+          yarn build
         env:
           CI: true
 
