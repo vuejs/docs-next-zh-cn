@@ -155,11 +155,23 @@
 
    </details>
 
-4. 此时，应用可能会遭遇一些编译时错误/警告 (例如对过滤器的使用)。请先修复它们。如果所有的编译器警告都解决了，你也可以把编译器设置为 Vue 3 模式。
+<!-- TODO: translation -->
+4. If you are using TypeScript, you will also need to modify `vue`'s typing to expose the default export (which is no longer present in Vue 3) by adding a `*.d.ts` file with the following:
+
+   ```ts
+   declare module 'vue' {
+     import { CompatVue } from '@vue/runtime-dom'
+     const Vue: CompatVue
+     export default Vue
+     export * from '@vue/runtime-dom'
+   }
+   ```
+
+5. At this point, your application may encounter some compile-time errors / warnings (e.g. use of filters). Fix them first. If all compiler warnings are gone, you can also set the compiler to Vue 3 mode.
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/b05d9555f6e115dea7016d7e5a1a80e8f825be52)
 
-5. 在修复了这些错误之后，如果没有受制于上述的[限制](#已知的限制)，那么应用就应该可以运行了。
+6. 在修复了这些错误之后，如果没有受制于上述的[限制](#已知的限制)，那么应用就应该可以运行了。
 
    你可能会同时从命令行和浏览器控制台看到很多警告。这里提供一些一般化的小建议：
 
@@ -171,29 +183,29 @@
 
    - 如果你使用了 `vue-router`，请注意在升级至 `vue-router` v4 之前，`<transition>` 和 `<keep-alive>` 无法和 `<router-view>` 一起工作。
 
-6. 升级 [`<transition>` 类名](/guide/migration/transition.html)。这是唯一没有运行时警告的特性。你可以在整个项目范围内做一次 `.*-enter` 和 `.*-leave` CSS 类名的搜索。
+7. 升级 [`<transition>` 类名](/guide/migration/transition.html)。这是唯一没有运行时警告的特性。你可以在整个项目范围内做一次 `.*-enter` 和 `.*-leave` CSS 类名的搜索。
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/d300103ba622ae26ac26a82cd688e0f70b6c1d8f)
 
-7. 更新应用的入口以使用[新的全局挂载 API](https://v3.cn.vuejs.org/guide/migration/global-api.html#一个新的全局-api-createapp)。
+8. 更新应用的入口以使用[新的全局挂载 API](https://v3.cn.vuejs.org/guide/migration/global-api.html#一个新的全局-api-createapp)。
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/a6e0c9ac7b1f4131908a4b1e43641f608593f714)
 
-8. [将 `vuex` 升级至 v4](https://next.vuex.vuejs.org/zh/guide/migrating-to-4-0-from-3-x.html)。
+9. [将 `vuex` 升级至 v4](https://next.vuex.vuejs.org/zh/guide/migrating-to-4-0-from-3-x.html)。
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/5bfd4c61ee50f358cd5daebaa584f2c3f91e0205)
 
-9. [将 `vue-router` 升级至 v4](https://next.router.vuejs.org/zh/guide/migration/index.html)。如果你还使用了 `vuex-router-sync`，可以同时将其替换为一个 store getter。
+10. [将 `vue-router` 升级至 v4](https://next.router.vuejs.org/zh/guide/migration/index.html)。如果你还使用了 `vuex-router-sync`，可以同时将其替换为一个 store getter。
 
-   升级过后，同 `<router-view>` 一起使用 `<transition>` 和 `<keep-alive>` 就要求使用新的[基于作用域插槽的语法](https://next.router.vuejs.org/zh/guide/migration/index.html#router-view-、-keep-alive-和-transition)。
+    升级过后，同 `<router-view>` 一起使用 `<transition>` 和 `<keep-alive>` 就要求使用新的[基于作用域插槽的语法](https://next.router.vuejs.org/zh/guide/migration/index.html#router-view-、-keep-alive-和-transition)。
 
-   [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
+    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
 
-10. 逐个修复警告。注意有些特性在 Vue 2 和 Vue 3 之间存在行为冲突——例如渲染函数 API，或函数式组件 vs. 异步组件的改变。为了迁移到 Vue 3 API 而不影响到应用的其它部分，你可以通过 [`compatConfig` 选项](#基于单个组件的配置)对单个组件选择性启用 Vue 3 的行为。
+11. 逐个修复警告。注意有些特性在 Vue 2 和 Vue 3 之间存在行为冲突——例如渲染函数 API，或函数式组件 vs. 异步组件的改变。为了迁移到 Vue 3 API 而不影响到应用的其它部分，你可以通过 [`compatConfig` 选项](#基于单个组件的配置)对单个组件选择性启用 Vue 3 的行为。
 
     [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/d0c7d3ae789be71b8fd56ce79cb4cb1f921f893b)
 
-11. 当修复了所有警告以后，你就可以移除迁移构建版本并切换为 Vue 3。注意如果存在基于 Vue 2 行为的依赖，你可能无法做到这一点。
+12. 当修复了所有警告以后，你就可以移除迁移构建版本并切换为 Vue 3。注意如果存在基于 Vue 2 行为的依赖，你可能无法做到这一点。
 
     [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/9beb45490bc5f938c9e87b4ac1357cfb799565bd)
 

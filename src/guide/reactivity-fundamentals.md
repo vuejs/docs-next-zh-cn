@@ -74,7 +74,7 @@ console.log(count.value) // 1
 ```
 
 :::tip
-如果你不需要访问实际的对象实例，可将其用 `reactive` 包裹:
+如果你不想要访问实际的对象实例，可将其用 `reactive` 包裹:
 
 ```js
 nested: reactive({

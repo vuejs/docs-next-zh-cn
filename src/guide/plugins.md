@@ -6,7 +6,7 @@
 
 1. 添加全局方法或者 property。如：[vue-custom-element](https://github.com/karol-f/vue-custom-element)
 
-2. 添加全局资源：指令/过滤器/过渡等。如：[vue-touch](https://github.com/vuejs/vue-touch)）
+2. 添加全局资源：指令/过渡等。如：[vue-touch](https://github.com/vuejs/vue-touch)）
 
 3. 通过全局 mixin 来添加一些组件选项。(如[vue-router](https://github.com/vuejs/vue-router))
 

@@ -4,7 +4,7 @@
 
 ## 计算值
 
-有时我们需要依赖于其他状态的状态——在 Vue 中，这是用组件[计算属性](computed.html#计算属性和侦听器)处理的，以直接创建计算值，我们可以使用 `computed` 方法：它接受 getter 函数并为 getter 返回的值返回一个不可变的响应式 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 对象。
+有时我们需要依赖于其他状态的状态——在 Vue 中，这是用组件[计算属性](computed.html#计算属性和侦听器)处理的，以直接创建计算值，我们可以使用 `computed` 函数：它接受 getter 函数并为 getter 返回的值返回一个不可变的响应式 [ref](reactivity-fundamentals.html#创建独立的响应式值作为-refs) 对象。
 
 ```js
 const count = ref(1)
@@ -60,7 +60,7 @@ count.value++
 
 ## `watchEffect`
 
-为了根据响应式状态*自动应用*和*重新应用*副作用，我们可以使用 `watchEffect` 方法。它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。
+为了根据响应式状态*自动应用*和*重新应用*副作用，我们可以使用 `watchEffect` 函数。它立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。
 
 ```js
 const count = ref(0)
@@ -245,7 +245,7 @@ firstName.value = 'John' // logs: ["John", ""] ["", ""]
 lastName.value = 'Smith' // logs: ["John", "Smith"] ["John", ""]
 ```
 
-尽管如此，如果你在同一个方法里同时改变这些被侦听的来源，侦听器仍只会执行一次：
+尽管如此，如果你在同一个函数里同时改变这些被侦听的来源，侦听器仍只会执行一次：
 
 ```js{9-13}
 setup() {
