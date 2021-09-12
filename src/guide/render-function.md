@@ -68,7 +68,7 @@ app.component('anchored-heading', {
   render() {
     return h(
       'h' + this.level, // 标签名
-      {}, // props或attributes
+      {}, // prop 或 attribute
       this.$slots.default() // 包含其子节点的数组
     )
   },

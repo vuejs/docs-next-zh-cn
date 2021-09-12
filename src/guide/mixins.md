@@ -19,7 +19,7 @@ const myMixin = {
   }
 }
 
-// 定义一个使用此 mixin 对象的 app
+// 定义一个使用此 mixin 对象的应用
 const app = Vue.createApp({
   mixins: [myMixin]
 })
