@@ -67,9 +67,9 @@ const app = createApp({})
 app.component('anchored-heading', {
   render() {
     return h(
-      'h' + this.level, // tag name
-      {}, // props/attributes
-      this.$slots.default() // array of children
+      'h' + this.level, // 标签名
+      {}, // prop 或 attribute
+      this.$slots.default() // 包含其子节点的数组
     )
   },
   props: {
@@ -131,7 +131,7 @@ return h('h1', {}, this.blogTitle)
 
 ## `h()` 参数
 
-`h()` 函数是一个用于创建 vnode 的实用程序。也许可以更准确地将其命名为 `createVNode()`，但由于频繁使用和简洁，它被称为 `h()` 。它接受三个参数：
+`h()` 函数是一个用于创建 VNode 的实用程序。也许可以更准确地将其命名为 `createVNode()`，但由于频繁使用和简洁，它被称为 `h()` 。它接受三个参数：
 
 ```js
 // @returns {VNode}
@@ -145,14 +145,14 @@ h(
 
   // {Object} props
   // 与 attribute、prop 和事件相对应的对象。
-  // 我们会在模板中使用。
+  // 这会在模板中用到。
   //
   // 可选的。
   {},
 
   // {String | Array | Object} children
   // 子 VNodes, 使用 `h()` 构建,
-  // 或使用字符串获取 "文本 Vnode" 或者
+  // 或使用字符串获取 "文本 VNode" 或者
   // 有插槽的对象。
   //
   // 可选的。
@@ -274,7 +274,7 @@ render() {
 `render` 函数通常只需要对[全局注册](/guide/component-registration.html#global-registration)的组件使用 `resolveComponent`。而对于[局部注册](/guide/component-registration.html#local-registration)的却可以跳过，请看下面的例子：
 
 ```js
-// 我们可以简化为
+// 此写法可以简化
 components: {
   ButtonCounter
 },

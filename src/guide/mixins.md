@@ -7,7 +7,7 @@ Mixin 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用
 例子：
 
 ```js
-// define a mixin object
+// 定义一个 mixin 对象
 const myMixin = {
   created() {
     this.hello()
@@ -19,7 +19,7 @@ const myMixin = {
   }
 }
 
-// define an app that uses this mixin
+// 定义一个使用此 mixin 对象的应用
 const app = Vue.createApp({
   mixins: [myMixin]
 })
