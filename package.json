@@ -1,15 +1,18 @@
 {
   "devDependencies": {
     "@vuepress/plugin-pwa": "^1.5.4",
-    "sass": "^1.32.0",
+    "open": "^8.2.1",
     "patch-package": "^6.2.2",
+    "sass": "^1.32.0",
     "sass-loader": "^8.0.2",
+    "simple-git": "^2.45.1",
     "vuepress": "^1.5.4"
   },
   "scripts": {
     "dev": "yarn serve",
     "serve": "vuepress dev src",
     "build": "vuepress build src",
+    "sync": "node scripts/sync.js",
     "postinstall": "patch-package"
   },
   "dependencies": {
