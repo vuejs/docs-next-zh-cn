@@ -1,3 +1,11 @@
+/**
+ * usage: npm run sync
+ *
+ * find the latest synced commit hash from local git by `sync #hash` pattern,
+ * and open a browser tab of github.com/vuejs/docs,
+ * with the compare between this hash and latest master branch.
+ * save a little bit time between finding it manually.
+ */
 const git = require('simple-git')();
 const open = require('open');
 
