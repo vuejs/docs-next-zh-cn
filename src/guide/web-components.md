@@ -93,7 +93,7 @@ const MyVueElement = defineCustomElement({
 })
 
 // 注册自定义元素
-// 注册完成后，此页面上的所有的`<my-vue-element>`标签会被更新
+// 注册完成后，此页面上的所有的 `<my-vue-element>` 标签会被更新
 customElements.define('my-vue-element', MyVueElement)
 
 // 你可以编程来实例化这个元素：
