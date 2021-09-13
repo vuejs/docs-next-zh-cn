@@ -58,7 +58,7 @@ module.exports = {
 
 由于 DOM attribute 只能是字符串，因此我们得将复杂数据作为 DOM property 传递给自定义元素。在自定义元素上配置 prop 时，Vue 3 会自动使用 `in` 操作符检查是否存在 DOM-property，如果此键存在则会优先将值配置为一个 DOM property。也就是说大多数情况下，如果自定义元素遵守[推荐的最佳实践](https://developers.google.com/web/fundamentals/web-components/best-practices#aim-to-keep-primitive-data-attributes-and-properties-in-sync,-reflecting-from-property-to-attribute,-and-vice-versa.)，则无需考虑这一点。
 
-但是，在极少数情况下，数据必须作为 DOM property 传递，但自定义元素没有正确定义/反映 property （导致 `in` 检查失败）。此时，你可以使用 `.prop` 修饰符强制将一个 `v-bind` 绑定设置为一个 DOM property：
+但是，在极少数情况下，数据必须作为 DOM property 传递，但自定义元素没有正确定义/反映 property  (导致 `in` 检查失败)。此时，可以使用 `.prop` 修饰符强制将一个 `v-bind` 绑定设置为一个 DOM property：
 
 ```html
 <my-element :user.prop="{ name: 'jack' }"></my-element>
