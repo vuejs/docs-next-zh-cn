@@ -215,7 +215,7 @@ export function register() {
 
 如果你有许多组件，你还可以利用构建工具提供的功能，例如 Vite 的 [glob 导入](https://cn.vitejs.dev/guide/features.html#glob-import)或是 webpack 的 [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext)。
 
-## Web Components 对比 Vue 组件
+## 对比 Web Components 与 Vue 组件
 
 一些开发人员认为应该避免使用框架专有的组件模型，并且仅使用自定义元素以便应用程序“面向未来”。我们将在此处尝试解释为什么我们认为这种看法过于简单化了问题。
 
