@@ -168,7 +168,7 @@ document.body.appendChild(
 
 官方 SFC 工具支持以“自定义元素模式”（需要 `@vitejs/plugin-vue@^1.4.0` 或 `vue-loader@^16.5.0` ）导入 SFC。以自定义元素模式加载的 SFC 将其 `<style>` 标签作为 CSS 字符串内联，并在组件的 `styles` 选项中暴露出来，然后会被 `defineCustomElement` 获取并在实例化时注入隐式根。
 
-要选择使用此模式，只需使用 `.ce.vue` 作为文件拓展名即可：
+要选用此模式，只需使用 `.ce.vue` 作为文件拓展名即可：
 
 ```js
 import { defineCustomElement } from 'vue'
