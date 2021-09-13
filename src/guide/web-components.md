@@ -119,7 +119,7 @@ document.body.appendChild(
 
 - 所有使用 `props` 选项声明的 prop 都将在自定义元素上定义为 property。Vue 将在合适的时候自动处理 attribute / property 之间的映射。
 
-  - Attribute 总是映射到相应的 property。
+  - Attribute 总是映射为相应的 property。
 
   - 基础类型（ `string`，`boolean` 或 `number` ）的 property 会被映射为 attribute。
 
