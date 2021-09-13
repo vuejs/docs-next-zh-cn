@@ -160,7 +160,7 @@ document.body.appendChild(
 
 #### Provide / Inject
 
-[Provide / Inject API](/guide/component-provide-inject.html#provide-inject) 和[组合式 API 中的 Provide / Inject](/api/composition-api.html#provide-inject) 在 Vue 定义的组件之间可以正常工作。但是请注意这**仅适用于自定义元素之间**，即 Vue 定义的自定义元素将无法注入非自定义元素 Vue 组件提供的属性。
+[Provide / Inject API](/guide/component-provide-inject.html#provide-inject) 和[组合式 API 中的 Provide / Inject](/api/composition-api.html#provide-inject) 在 Vue 定义的自定义元素之间可以正常工作。但是请注意这**仅适用于自定义元素之间**，即 Vue 定义的自定义元素将无法注入非自定义元素的 Vue 组件提供的属性。
 
 ### 将 SFC 作为自定义元素
 
