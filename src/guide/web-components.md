@@ -10,7 +10,7 @@ Vue [在 Custom Elements Everywhere 测试中获得了 100% 的完美分数](htt
 
 ### 跳过解析为组件
 
-默认情况下，Vue 会优先尝试将一个非原生的 HTML 标签解析为一个注册的 Vue 组件，如果失败则会回滚以将其渲染为自定义元素。这种回滚会导致在开发模式下的 Vue 发出“failed to resolve component”警告。如果你希望 Vue 能将某些确切的元素作为自定义元素处理并跳过解析为组件步骤，请指定[`compilerOptions.isCustomElement` 选项](/api/application-config.html#compileroptions)。
+默认情况下，Vue 会优先尝试将一个非原生的 HTML 标签解析为一个注册的 Vue 组件，如果失败则会将其渲染为自定义元素。这种行为会导致在开发模式下的 Vue 发出“failed to resolve component”的警告。如果你希望 Vue 能将某些确切的元素作为自定义元素处理并跳过组件解析，请指定 [`compilerOptions.isCustomElement` 选项](/api/application-config.html#compileroptions)。
 
 如果你正在构建步骤中使用 Vue，则此选项需要通过构建配置传递，因为这是一个编译时选项。
 
