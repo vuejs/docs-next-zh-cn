@@ -121,7 +121,7 @@ document.body.appendChild(
 
   - Attribute 总是映射为相应的 property。
 
-  - 基础类型（ `string`，`boolean` 或 `number` ）的 property 会被映射为 attribute。
+  - 基础类型 (`string`、`boolean` 或 `number`) 的 property 会被映射为 attribute。
 
 - Vue 也会自动将申明为 `Boolean` 或 `Number` 类型的 attribute prop （恒为字符串）转换为所需的类型。例如给出以下 prop 声明：
 
