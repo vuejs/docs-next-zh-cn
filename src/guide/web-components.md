@@ -1,21 +1,20 @@
 # Vue 与 Web Components
 
-<!-- TODO: translation -->
-[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) is an umbrella term for a set of web native APIs that allows developers to create reusable custom elements.
+[Web Components](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components) 是一组 Web 原生 API 的总称，允许开发人员创建可重用的自定义组件。
 
-We consider Vue and Web Components to be primarily complementary technologies. Vue has excellent support for both consuming and creating custom elements. Whether you are integrating custom elements into an existing Vue application, or using Vue to build and distribute custom elements, you are in good company.
+我们认为 Vue 和 Web Components 大体上是互补的技术。Vue 能很好地解析和创建自定义元素。不论是在将自定义元素整合到已有的 Vue 应用中，还是使用 Vue 构建和分发自定义元素，你都能获得很好的支持。
 
-## 使用 Vue 构建自定义元素
+## 在 Vue 中使用自定义元素
 
-Vue [scores a perfect 100% in the Custom Elements Everywhere tests](https://custom-elements-everywhere.com/libraries/vue/results/results.html). Consuming custom elements inside a Vue application largely works the same as using native HTML elements, with a few things to keep in mind:
+Vue [在 Custom Elements Everywhere 测试中获得了 100% 的完美分数](https://custom-elements-everywhere.com/libraries/vue/results/results.html)。Vue 应用程序中解析出的自定义元素大体上和原生 HTML 元素相同，但需要牢记以下几点：
 
-### Skipping Component Resolution
+### 跳过解析为组件
 
-By default, Vue will attempt to resolve a non-native HTML tag as a registered Vue component before falling back to rendering it as a custom element. This will cause Vue to emit a "failed to resolve component" warning during development. To let Vue know that certain elements should be treated as custom elements and skip component resolution, we can specify the [`compilerOptions.isCustomElement` option](/api/application-config.html#compileroptions).
+默认情况下，Vue 会优先尝试将一个非原生的 HTML 标签解析为一个注册的 Vue 组件，如果失败则会将其渲染为自定义元素。这种行为会导致在开发模式下的 Vue 发出“failed to resolve component”的警告。如果你希望 Vue 能将某些确切的元素作为自定义元素处理并跳过组件解析，请指定 [`compilerOptions.isCustomElement` 选项](/api/application-config.html#compileroptions)。
 
-If you are using Vue with a build setup, the option should be passed via build configs since it is a compile-time option.
+如果你正在构建步骤中使用 Vue，则此选项需要通过构建配置传递，因为这是一个编译时选项。
 
-#### Example Vite Config
+#### Vite 配置示例
 
 ```js
 // vite.config.js
@@ -26,7 +25,7 @@ export default {
     vue({
       template: {
         compilerOptions: {
-          // treat all tags with a dash as custom elements
+          // 将所有包含短横线的标签作为自定义元素处理
           isCustomElement: tag => tag.includes('-')
         }
       }
@@ -35,7 +34,7 @@ export default {
 }
 ```
 
-#### Example Vue CLI Config
+#### Vue CLI 配置示例
 
 ```js
 // vue.config.js
@@ -47,7 +46,7 @@ module.exports = {
       .tap(options => ({
         ...options,
         compilerOptions: {
-          // treat any tag that starts with ion- as custom elements
+          // 将所有以 ion- 开头的标签作为自定义元素处理
           isCustomElement: tag => tag.startsWith('ion-')
         }
       }))
@@ -57,24 +56,24 @@ module.exports = {
 
 ### 传递 DOM Property
 
-Since DOM attributes can only be strings, we need to pass complex data to custom elements as DOM properties. When setting props on a custom element, Vue 3 automatically checks DOM-property presence using the `in` operator and will prefer setting the value as a DOM property if the key is present. This means that, in most cases, you won't need to think about this if the custom element follows the [recommended best practices](https://developers.google.com/web/fundamentals/web-components/best-practices#aim-to-keep-primitive-data-attributes-and-properties-in-sync,-reflecting-from-property-to-attribute,-and-vice-versa.).
+由于 DOM attribute 只能是字符串，因此我们得将复杂数据作为 DOM property 传递给自定义元素。在自定义元素上配置 prop 时，Vue 3 会自动使用 `in` 操作符检查是否存在 DOM-property，如果此键存在则会优先将值配置为一个 DOM property。也就是说大多数情况下，如果自定义元素遵守[推荐的最佳实践](https://developers.google.com/web/fundamentals/web-components/best-practices#aim-to-keep-primitive-data-attributes-and-properties-in-sync,-reflecting-from-property-to-attribute,-and-vice-versa.)，则无需考虑这一点。
 
-However, there could be rare cases where the data must be passed as a DOM property, but the custom element does not properly define/reflect the property (causing the `in` check to fail). In this case, you can force a `v-bind` binding to be set as a DOM property using the `.prop` modifier:
+但是，在极少数情况下，数据必须作为 DOM property 传递，但自定义元素没有正确定义/反映 property  (导致 `in` 检查失败)。此时，可以使用 `.prop` 修饰符强制将一个 `v-bind` 绑定设置为一个 DOM property：
 
 ```html
 <my-element :user.prop="{ name: 'jack' }"></my-element>
 
-<!-- shorthand equivalent -->
+<!-- 等效的简写 -->
 <my-element .user="{ name: 'jack' }"></my-element>
 ```
 
-## Building Custom Elements with Vue
+## 使用 Vue 构建自定义元素
 
-The primary benefit of custom elements is that they can be used with any framework, or even without a framework. This makes them ideal for distributing components where the end consumer may not be using the same frontend stack, or when you want to insulate the end application from the implementation details of the components it uses.
+自定义元素的一大好处就是它们可以与任何框架一起使用，甚至可以在没有框架的情况下使用。当你需要向可能使用不同前端技术栈的终端用户分发组件时，或者希望向最终应用程序隐藏其所用组件的实现细节时，使用自定义元素非常适合。
 
 ### defineCustomElement
 
-Vue supports creating custom elements using exactly the same Vue component APIs via the [`defineCustomElement`](/api/global-api.html#definecustomelement) method. The method accepts the same argument as [`defineComponent`](/api/global-api.html#definecomponent), but instead returns a custom element constructor that extends `HTMLElement`:
+Vue 支持使用 [`defineCustomElement`](/api/global-api.html#definecustomelement) 方法创建自定义元素，并且使用与 Vue 组件完全一致的 API。该方法接受与 [`defineComponent`](/api/global-api.html#definecomponent) 相同的参数，但是会返回一个扩展自 `HTMLElement` 的自定义元素构造函数：
 
 ```html
 <my-vue-element></my-vue-element>
@@ -84,22 +83,21 @@ Vue supports creating custom elements using exactly the same Vue component APIs 
 import { defineCustomElement } from 'vue'
 
 const MyVueElement = defineCustomElement({
-  // normal Vue component options here
+  // 在此提供正常的 Vue 组件选项
   props: {},
   emits: {},
   template: `...`,
 
-  // defineCustomElement only: CSS to be injected into shadow root
+  // defineCustomElement 独有特性: CSS 会被注入到隐式根(shadow root)中
   styles: [`/* inlined css */`]
 })
 
-// Register the custom element.
-// After registration, all `<my-vue-element>` tags
-// on the page will be upgraded.
+// 注册自定义元素
+// 注册完成后，此页面上的所有的 `<my-vue-element>` 标签会被更新
 customElements.define('my-vue-element', MyVueElement)
 
-// You can also programmatically instantiate the element:
-// (can only be done after registration)
+// 你也可以编程式地实例化这个元素：
+// (只能在注册后完成此操作)
 document.body.appendChild(
   new MyVueElement({
     // initial props (optional)
@@ -107,25 +105,25 @@ document.body.appendChild(
 )
 ```
 
-#### Lifecycle
+#### 生命周期
 
-- A Vue custom element will mount an internal Vue component instance inside its shadow root when the element's [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) is called for the first time.
+- 当元素的 [`connectedCallback`](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements#使用生命周期回调函数) 被首次调用时，Vue 自定义元素会在其隐式根部挂载一个内部的 Vue 组件实例。
 
-- When the element's `disconnectedCallback` is invoked, Vue will check whether the element is detached from the document after a microtask tick.
+- 当元素的 `disconnectedCallback` 被调用时，Vue 会在很短的时间后检查此元素是否已被移出页面。
 
-  - If the element is still in the document, it's a move and the component instance will be perserved;
+  - 如果元素仍在文档中，说明是移动，组件实例将被保留；
 
-  - If the element is detached from the document, it's a removal and the component instance will be unmounted.
+  - 如果元素已被移出文档，说明是移除，组件实例将被卸载。
 
 #### Props
 
-- All props declared using the `props` option will be defined on the custom element as properties. Vue will automatically handle the reflection between attributes / properties where appropriate.
+- 所有使用 `props` 选项声明的 prop 都将在自定义元素上定义为 property。Vue 将在合适的时候自动处理 attribute / property 之间的映射。
 
-  - Attributes are always reflected to corresponding properties.
+  - Attribute 总是映射为相应的 property。
 
-  - Properties with primitive values (`string`, `boolean` or `number`) are reflected as attributes.
+  - 基础类型 (`string`、`boolean` 或 `number`) 的 property 会被映射为 attribute。
 
-- Vue also automatically casts props declared with `Boolean` or `Number` types into the desired type when they are set as attributes (which are always strings). For example given the following props declaration:
+- Vue 也会自动将声明为 `Boolean` 或 `Number` 类型的 attribute prop (始终为字符串)转换为所需的类型。例如给出以下 prop 声明：
 
   ```js
   props: {
@@ -134,25 +132,25 @@ document.body.appendChild(
   }
   ```
 
-  And the custom element usage:
+  以及自定义元素用法：
 
   ```html
   <my-element selected index="1"></my-element>
   ```
 
-  In the component, `selected` will be cast to `true` (boolean) and `index` will be cast to `1` (number).
+  在组件中，`selected` 会被转换为 `true` (boolean)，`index` 会被转换为 `1` (number)。
 
-#### Events
+#### 事件
 
-Events emitted via `this.$emit` or setup `emit` are dispatched as native [CustomEvents](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#adding_custom_data_%E2%80%93_customevent) on the custom element. Additional event arguments (payload) will be exposed as an array on the CustomEvent object as its `details` property.
+在自定义元素中，通过 `this.$emit` 或在 setup 中的 `emit` 发出的事件会被调度为原生 [CustomEvents](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#adding_custom_data_%E2%80%93_customevent)。附加的事件参数 (payload) 会作为数组暴露在 CustomEvent 对象的 `details` property 上。
 
-#### Slots
+#### 插槽
 
-Inside the component, slots can be rendered using the `<slot/>` element as usual. However when consuming the resulting element, it only accepts [native slots syntax](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots):
+在组件内部，可以像往常一样使用 `<slot/>` 渲染插槽。但是在解析最终生成的元素时，它只接受[原生插槽语法](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_templates_and_slots)：
 
-- [Scoped slots](/guide/component-slots.html#scoped-slots) are not supported.
+- 不支持[作用域插槽](/guide/component-slots.html#scoped-slot#作用域插槽)。
 
-- When passing named slots, use the `slot` attribute instead of the `v-slot` directive:
+- 传递命名插槽时，请使用 `slot` attribute 而非 `v-slot` 指令：
 
   ```html
   <my-element>
@@ -162,41 +160,41 @@ Inside the component, slots can be rendered using the `<slot/>` element as usual
 
 #### Provide / Inject
 
-The [Provide / Inject API](/guide/component-provide-inject.html#provide-inject) and its [Composition API equivalent](/api/composition-api.html#provide-inject) also work between Vue-defined custom elements. However, note that this works **only between custom elements**. i.e. a Vue-defined custom element won't be able to inject properties provided by a non-custom-element Vue component.
+[Provide / Inject API](/guide/component-provide-inject.html#provide-inject) 和[组合式 API 中的 Provide / Inject](/api/composition-api.html#provide-inject) 在 Vue 定义的自定义元素之间可以正常工作。但是请注意这**仅适用于自定义元素之间**，即 Vue 定义的自定义元素将无法注入非自定义元素的 Vue 组件提供的属性。
 
-### SFC as Custom Element
+### 将 SFC 作为自定义元素
 
-`defineCustomElement` also works with Vue Single File Components (SFCs). However, with the default tooling setup, the `<style>` inside the SFCs will still be extracted and merged into a single CSS file during production build. When using an SFC as a custom element, it is often desirable to inject the `<style>` tags into the custom element's shadow root instead.
+`defineCustomElement` 也适用于 Vue 单文件组件 (SFC)。但是，在默认工具链配置下，生产构建时 SFC 内部的 `<style>` 会被提取并合并到单独的 CSS 文件中。当使用 SFC 作为自定义元素时，通常需要将 `<style>` 标签注入自定义元素的隐式根。
 
-The official SFC toolings support importing SFCs in "custom element mode" (requires `@vitejs/plugin-vue@^1.4.0` or `vue-loader@^16.5.0`). An SFC loaded in custom element mode inlines its `<style>` tags as strings of CSS and exposes them under the component's `styles` option. This will be picked up by `defineCustomElement` and injected into the element's shadow root when instantiated.
+官方 SFC 工具支持以“自定义元素模式”(需要 `@vitejs/plugin-vue@^1.4.0` 或 `vue-loader@^16.5.0` )导入 SFC。以自定义元素模式加载的 SFC 将其 `<style>` 标签作为 CSS 字符串内联，并在组件的 `styles` 选项中暴露出来，然后会被 `defineCustomElement` 获取并在实例化时注入隐式根。
 
-To opt-in to this mode, simply end your component file name with `.ce.vue`:
+要选用此模式，只需使用 `.ce.vue` 作为文件拓展名即可：
 
 ```js
 import { defineCustomElement } from 'vue'
 import Example from './Example.ce.vue'
 
-console.log(Example.styles) // ["/* inlined css */"]
+console.log(Example.styles) // ["/* 内联的 css */"]
 
-// convert into custom element constructor
+// 转换为自定义元素构造器
 const ExampleElement = defineCustomElement(Example)
 
-// register
+// 注册
 customElements.define('my-example', ExampleElement)
 ```
 
-If you wish to customize what files should be imported in custom element mode (for example treating _all_ SFCs as custom elements), you can pass the `customElement` option to the respective build plugins:
+如果你希望指定应在自定义元素模式下导入的文件(例如将 _所有_ SFC 视为自定义元素)，你可以将 `customElement` 选项传递给相应的构建插件：
 
 - [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#using-vue-sfcs-as-custom-elements)
 - [vue-loader](https://github.com/vuejs/vue-loader/tree/next#v16-only-options)
 
-### Tips for a Vue Custom Elements Library
+### Vue 自定义元素库的提示
 
-When building custom elements with Vue, the elements will rely on Vue's runtime. There is a ~16kb baseline size cost depending on how many features are being used. This means it is not ideal to use Vue if you are shipping a single custom element - you may want to use vanilla JavaScript, [petite-vue](https://github.com/vuejs/petite-vue), or frameworks that specialize in small runtime size. However, the base size is more than justifiable if you are shipping a collection of custom elements with complex logic, as Vue will allow each component to be authored with much less code. The more elements you are shipping together, the better the trade-off.
+如果使用 Vue 构建自定义元素，则此元素将依赖于 Vue 的运行时。这会导致一个 16kb 左右的基础大小开销 (具体取决于使用了多少特性)。这意味着如果你准备发布单个自定义元素，使用 Vue 可能不是最佳方案——你可能想要使用纯 JavaScript，[petite-vue](https://github.com/vuejs/petite-vue)，或是其他专注于轻量化运行时的框架。但是，如果你要发布具有复杂逻辑的自定义元素集合，那么这点基础大小就会显得合理了，因为 Vue 可以使用非常精简的代码耦合每个组件。你准备发布的元素越多，开销权衡就越好。
 
-If the custom elements will be used in an application that is also using Vue, you can choose to externalize Vue from the built bundle so that the elements will be using the same copy of Vue from the host application.
+如果自定义元素会在同样使用 Vue 的项目中使用，你可以选择从构建的包中外部化 Vue，这样元素就会使用与宿主应用程序相同的 Vue 副本。
 
-It is recommended to export the individual element constructors to give your users the flexibility to import them on-demand and register them with desired tag names. You can also export a convenience function to automatically register all elements. Here's an example entry point of a Vue custom element library:
+我们推荐你提供一个导出独立元素的构造函数，这样你的用户就可以灵活地按需导入它们并使用他们所需的标签名注册自定义元素。你还可以导出一个能自动注册所有元素的函数以便于使用。这是一个 Vue 自定义元素库示例的入口点：
 
 ```js
 import { defineCustomElement } from 'vue'
@@ -206,7 +204,7 @@ import Bar from './MyBar.ce.vue'
 const MyFoo = defineCustomElement(Foo)
 const MyBar = defineCustomElement(Bar)
 
-// export individual elements
+// 导出独立的元素
 export { MyFoo, MyBar }
 
 export function register() {
@@ -215,30 +213,30 @@ export function register() {
 }
 ```
 
-If you have many components, you can also leverage build tool features such as Vite's [glob import](https://vitejs.dev/guide/features.html#glob-import) or webpack's [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) to load all components from a directory.
+如果你有许多组件，你还可以利用构建工具提供的功能，例如 Vite 的 [glob 导入](https://cn.vitejs.dev/guide/features.html#glob-import)或是 webpack 的 [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext)。
 
-## Web Components vs. Vue Components
+## 对比 Web Components 与 Vue 组件
 
-Some developers believe that framework-proprietary component models should be avoided, and that exclusively using Custom Elements makes an application "future-proof". Here we will try to explain why we believe that this is an overly simplistic take on the problem.
+一些开发人员认为应该避免使用框架专有的组件模型，并且仅使用自定义元素以便应用程序“面向未来”。我们将在此处尝试解释为什么我们认为这种看法过于简单化了问题。
 
-There is indeed a certain level of feature overlap between Custom Elements and Vue Components: they both allow us to define reusable components with data passing, event emitting, and lifecycle management. However, Web Components APIs are relatively low-level and bare-bones. To build an actual application, we need quite a few additional capabilities which the platform does not cover:
+自定义元素和 Vue 组件之间确实存在一定程度的功能重叠：它们都允许我们定义具有数据传递、事件发出和生命周期管理功能的可重用组件。然而，Web Components API 是相对低级和简单的。为了构建一个实际可用的应用程序，我们需要很多平台没有涵盖的附加功能：
 
-- A declarative and efficient templating system;
+- 一个声明式的、高效的模板系统；
 
-- A reactive state management system that facilitates cross-component logic extraction and reuse;
+- 一个有助于跨组件逻辑提取和重用的响应式状态管理系统；
 
-- A performant way to render the components on the server and hydrate them on the client (SSR), which is important for SEO and [Web Vitals metrics such as LCP](https://web.dev/vitals/). Native custom elements SSR typically involves simulating the DOM in Node.js and then serializing the mutated DOM, while Vue SSR compiles into string concatenation whenever possible, which is much more efficient.
+- 一个能在服务器端渲染组件并在客户端集成的高效方法(SSR)，这对于 SEO 和 [Web 关键指标 (例如 LCP)](https://web.dev/vitals/) 来说很重要。原生自定义元素 SSR 通常涉及在 Node.js 中模拟 DOM，然后序列化被改变的 DOM，而 Vue SSR 会尽可能编译为字符串连接，后者的效率更高。
 
-Vue's component model is designed with these needs in mind as a coherent system.
+作为一个考虑周到的系统，Vue 的组件模型在设计时就考虑到了这些需求。
 
-With a competent engineering team, you could probably build the equivalent on top of native Custom Elements - but this also means you are taking on the long-term maintenance burden of an in-house framework, while losing out on the ecosystem and community benefits of a mature framework like Vue.
+如果你拥有一支称职的工程团队，或许可以基于原生自定义元素构建出近似效果的产品——但这也意味着你需要承担对内部框架的长期维护负担，同时失去了像 Vue 这样拥有生态系统和社区贡献的成熟的框架。
 
-There are also frameworks built using Custom Elements as the basis of their component model, but they all inevitably have to introduce their proprietary solutions to the problems listed above. Using these frameworks entails buying into their technical decisions on how to solve these problems - which, despite what may be advertised, doesn't automatically insulate you from potential future churns.
+也有使用自定义元素作为其组件模型基础构建的框架，但它们都不可避免地要针对上面列出的问题引入自己的专有解决方案。使用这些框架需要学习或是购买他们对这些问题的技术决策——尽管他们可能会打广告宣传——这依旧无法使你免除后顾之忧。
 
-There are also some areas where we find custom elements to be limiting:
+我们还找到了一些自定义元素无法胜任的应用场景：
 
-- Eager slot evaluation hinders component composition. Vue's [scoped slots](/guide/component-slots.html#scoped-slots) are a powerful mechanism for component composition, which can't be supported by custom elements due to native slots' eager nature. Eager slots also mean the receiving component cannot control when or whether to render a piece of slot content.
+- 激进的插槽定值会阻碍组件的整合。Vue 的[作用域插槽](/guide/component-slots.html#scoped-slots)提供了非常强大的组件整合机制，这是原生插槽所没有的，因为原生插槽的激进特性。激进特性插槽同样意味着接收组件无法控制何时或是否需要渲染一段插槽内容。
 
-- Shipping custom elements with shadow DOM scoped CSS today requires embedding the CSS inside JavaScript so that they can be injected into shadow roots at runtime. They also result in duplicated styles in markup in SSR scenarios. There are [platform features](https://github.com/whatwg/html/pull/4898/) being worked on in this area - but as of now they are not yet universally supported, and there are still production performance / SSR concerns to be addressed. In the meanwhile, Vue SFCs provide [CSS scoping mechanisms](/api/sfc-style.html) that support extracting the styles into plain CSS files.
+- 目前，发布带有隐式 DOM scoped CSS 的自定义元素需要将 CSS 嵌入到 JavaScript 中，以便它们可以在运行时注入到隐式根中。在 SSR 场景中，它们还会导致重复定义样式。该领域有一些[平台特性](https://github.com/whatwg/html/pull/4898/)正在开发中——但截至目前，它们尚未得到普遍支持，并且仍有生产环境性能/ SSR 问题需要解决。而与此同时，Vue SFC 已经提供了 [CSS 作用域机制](/api/sfc-style.html)，支持将样式提取到纯 CSS 文件中。
 
-Vue will always be staying up to date with the latest standards in the web platform, and we will happily leverage whatever the platform provides if it makes our job easier. However, our goal is to provide solutions that work well and work today. That means we have to incorporate new platform features with a critical mindset - and that involves filling the gaps where the standards fall short while that is still the case.
+Vue 将始终与 Web 平台中的最新标准保持同步，如果平台提供的任何内容能使我们的工作更轻松，我们将很乐意利用它。但是，我们的目标是提供运行良好且开箱即用的解决方案。这意味着我们必须以批判的心态整合新的平台功能——这会涉及到在遵循现有标准的前提下弥补标准的不足。
