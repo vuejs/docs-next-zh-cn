@@ -146,7 +146,7 @@ document.body.appendChild(
 
 #### 插槽
 
-在组件内部，可以像往常一样使用 `<slot/>` 原生渲染插槽。但是在解析最终生成的元素时，它只接受[原生插槽语法](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_templates_and_slots)：
+在组件内部，可以像往常一样使用 `<slot/>` 渲染插槽。但是在解析最终生成的元素时，它只接受[原生插槽语法](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_templates_and_slots)：
 
 - 不支持[作用域插槽](/guide/component-slots.html#scoped-slot#作用域插槽)。
 
