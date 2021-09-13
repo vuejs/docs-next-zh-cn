@@ -138,7 +138,7 @@ document.body.appendChild(
   <my-element selected index="1"></my-element>
   ```
 
-  在组件中, `selected` 会被转换为 `true` (boolean)，`index` 会被转换为 `1` (number)。
+  在组件中，`selected` 会被转换为 `true` (boolean)，`index` 会被转换为 `1` (number)。
 
 #### 事件
 
