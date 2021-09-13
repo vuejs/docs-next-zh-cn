@@ -71,7 +71,7 @@ module.exports = {
 
 自定义元素的一大好处就是它们可以与任何框架一起使用，甚至可以在没有框架的情况下使用。当你需要向可能使用不同前端技术栈的终端用户分发组件时，或者希望向最终应用程序隐藏其所用组件的实现细节时，使用自定义元素非常适合。
 
-### 定义自定义元素
+### defineCustomElement
 
 Vue 支持使用 [`defineCustomElement`](/api/global-api.html#definecustomelement) 方法创建自定义元素，并且使用与 Vue 组件完全一致的 API。该方法接受与 [`defineComponent`](/api/global-api.html#definecomponent) 相同的参数，但是会返回一个扩展自 `HTMLElement` 的自定义元素构造函数：
 
