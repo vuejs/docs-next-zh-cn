@@ -225,7 +225,7 @@ export function register() {
 
 - 一个有助于跨组件逻辑提取和重用的反应式状态管理系统；
 
-- 一个能在服务器端渲染组件并在客户端集成的高效方法(SSR)，这对于 SEO 和 [Web 关键指标(例如 LCP)](https://web.dev/vitals/) 来说很重要。原生自定义元素 SSR 通常涉及在 Node.js 中模拟 DOM，然后序列化被改变的 DOM，而 Vue SSR 会尽可能编译为字符串连接，后者的效率更高。
+- 一个能在服务器端渲染组件并在客户端集成的高效方法(SSR)，这对于 SEO 和 [Web 关键指标 (例如 LCP)](https://web.dev/vitals/) 来说很重要。原生自定义元素 SSR 通常涉及在 Node.js 中模拟 DOM，然后序列化被改变的 DOM，而 Vue SSR 会尽可能编译为字符串连接，后者的效率更高。
 
 作为一个考虑周到的系统，Vue 的组件模型在设计时就考虑到了这些需求。
 
