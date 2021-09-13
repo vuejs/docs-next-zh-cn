@@ -36,7 +36,7 @@ badges:
 
 ## 3.x 语法
 
-在 Vue 3 的虚拟 DOM 中，事件监听器现在只是以 `on` 为前缀的 attribute，这样就成为了 `$attrs` 对象的一部分，因此 `$listeners` 被移除了。
+在 Vue 3 的虚拟 DOM 中，事件监听器现在只是以 `on` 为前缀的 attribute，这样它就成为了 `$attrs` 对象的一部分，因此 `$listeners` 被移除了。
 
 ```vue
 <template>
