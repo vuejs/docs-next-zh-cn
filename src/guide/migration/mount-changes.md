@@ -12,7 +12,7 @@ badges:
 
 ## 2.x 语法
 
-在 Vue 2.x 中，我们传入一个 HTML 元素选择器到 `new Vue()` 或 `$mount`：
+在 Vue 2.x 中，我们为 `new Vue()` 或 `$mount` 传入一个 HTML 元素选择器：
 
 ```js
 new Vue({
@@ -52,7 +52,7 @@ app.$mount('#app')
 </body>
 ```
 
-在渲染结果中，被提到的 `div` 将会被应用内容所替换：
+在渲染结果中，上面提及的 `div` 将会被应用所渲染的内容替换：
 
 ```html
 <body>
