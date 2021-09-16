@@ -93,7 +93,7 @@ Vue 3 中一些需要关注的新功能包括：
 ### 自定义元素
 
 - [自定义元素检测现在在模板编译时执行](/guide/migration/custom-elements-interop.html)
-- [特殊的 `is` prop 的使用被严格限制在被保留的 `<component>` 标签中](/guide/migration/custom-elements-interop.html#定制内置元素)
+- [特殊的 `is` attribute 的使用被严格限制在被保留的 `<component>` 标签中](/guide/migration/custom-elements-interop.html#定制内置元素)
 
 ### 其他小改变
 
