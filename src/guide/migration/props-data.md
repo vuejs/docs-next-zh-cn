@@ -11,7 +11,7 @@ badges:
 
 ## 2.x 语法
 
-在 2.x，我们可以在创建 Vue 实例的时候传入 prop：
+在 2.x 中，我们可以在创建 Vue 实例的时候传入 prop：
 
 ```js
 const Comp = Vue.extend({
