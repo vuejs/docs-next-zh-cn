@@ -207,7 +207,7 @@
   <button @click.prevent="doThis"></button>
 
   <!-- 阻止默认行为，没有表达式 -->
-  <form @submit.prevent></form>
+  <form @click.prevent></form>
 
   <!-- 串联修饰符 -->
   <button @click.stop.prevent="doThis"></button>
