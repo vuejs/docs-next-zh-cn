@@ -265,6 +265,9 @@
   <!-- 绑定 attribute -->
   <img v-bind:src="imageSrc" />
 
+  <!-- 绑定 attribute -->
+  <img v-bind:href="hrefTar" />
+
   <!-- 动态 attribute 名 -->
   <button v-bind:[key]="value"></button>
 
