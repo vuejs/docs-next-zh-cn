@@ -95,7 +95,7 @@ export default {
 
 它提供了与 Vue 2 相同的事件触发器 API。
 
-在绝大多数情况下，不鼓励使用全局的 event bus 在组件之间进行通信。虽然在短期内往往是最简单的解决方案，但从长期来看，它维护起来总是令人头疼。根据具体情况来看，有多种 event bus 的替代方案：
+在绝大多数情况下，不鼓励使用全局的事件总线在组件之间进行通信。虽然在短期内往往是最简单的解决方案，但从长期来看，它维护起来总是令人头疼。根据具体情况来看，有多种事件总线的替代方案：
 
 * [Prop](/guide/component-basics.html#passing-data-to-child-components-with-props) 和[事件](/guide/component-basics.html#listening-to-child-components-events)应该是父子组件之间沟通的首选。兄弟节点可以通过它们的父节点通信。
 * [Provide 和 inject](/guide/component-provide-inject.html) 允许一个组件与它的插槽内容进行通信。这对于总是一起使用的紧密耦合的组件非常有用。
