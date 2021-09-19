@@ -15,7 +15,17 @@
 ## 概览
 
 <br>
+<!--
+Generated from
+[![观看视频 What's new in Vue 3 (英文)](/cn/whatsnew.jpg)](https://vimeo.com/440868720)
+to replace this iframe with an image link to avoid the assets from vimeo being blocked
 <iframe src="https://player.vimeo.com/video/440868720" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+-->
+<style>
+  #video-whatsnew { display: block; width: 640px; height: 360px; }
+  #video-whatsnew:hover { outline: 3px #3eaf7c solid; }
+</style>
+<a href="https://vimeo.com/440868720" id="video-whatsnew" target="_blank" rel="noopener noreferrer"><img src="/cn/whatsnew.jpg" alt="观看视频 What's new in Vue 3 (英文)" /></a>
 
 开始学习 Vue 3 [Vue Mastery](https://www.vuemastery.com/courses-path/vue3)。
 
