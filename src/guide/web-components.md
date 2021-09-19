@@ -8,7 +8,7 @@
 
 Vue [在 Custom Elements Everywhere 测试中获得了 100% 的完美分数](https://custom-elements-everywhere.com/libraries/vue/results/results.html)。Vue 应用程序中解析出的自定义元素大体上和原生 HTML 元素相同，但需要牢记以下几点：
 
-### 跳过解析为组件
+### 跳过组件的解析
 
 默认情况下，Vue 会优先尝试将一个非原生的 HTML 标签解析为一个注册的 Vue 组件，如果失败则会将其渲染为自定义元素。这种行为会导致在开发模式下的 Vue 发出“failed to resolve component”的警告。如果你希望 Vue 能将某些确切的元素作为自定义元素处理并跳过组件解析，请指定 [`compilerOptions.isCustomElement` 选项](/api/application-config.html#compileroptions)。
 
@@ -88,7 +88,7 @@ const MyVueElement = defineCustomElement({
   emits: {},
   template: `...`,
 
-  // defineCustomElement 独有特性: CSS 会被注入到隐式根(shadow root)中
+  // defineCustomElement 独有特性: CSS 会被注入到隐式根 (shadow root) 中
   styles: [`/* inlined css */`]
 })
 
