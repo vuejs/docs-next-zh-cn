@@ -30,7 +30,7 @@ export default {
 </custom1>
 ```
 
-## 语法块
+## 语言块
 
 ### `<template>`
 
@@ -56,7 +56,7 @@ export default {
 
 - 一个 `*.vue` 文件可以包含多个 `<style>` 标签。
 
-- `<style>` 标签可以通过 `scoped` 或 `module` attribute (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 将样式封装到当前组件。多个不同封装模式的 `<style>` 标签可以在同一个组件中混用。
+- `<style>` 标签可以通过 `scoped` 或 `module` attribute (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 将样式封装在当前组件内。多个不同封装模式的 `<style>` 标签可以在同一个组件中混用。
 
 ### 自定义块
 
@@ -86,7 +86,7 @@ SFC 在下列情况会依据它的**文件名**来自动推断组件名称：
 </script>
 ```
 
-`lang` 可以用于任何块 —— 例如可以在 `<style>` 中使用 [SASS](https://sass-lang.com/) 以及在 `<template>` 中使用 [Pug](https://pugjs.org/api/getting-started.html)：
+`lang` 可以用于任何块——例如可以在 `<style>` 中使用 [Sass](https://sass-lang.com/) 以及在 `<template>` 中使用 [Pug](https://pugjs.org/api/getting-started.html)：
 
 ```html
 <template lang="pug">
