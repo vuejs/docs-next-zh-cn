@@ -155,8 +155,7 @@
 
    </details>
 
-<!-- TODO: translation -->
-4. If you are using TypeScript, you will also need to modify `vue`'s typing to expose the default export (which is no longer present in Vue 3) by adding a `*.d.ts` file with the following:
+4. 如果使用了 TypeScript，你还需要修改 `vue` 的类型以通过添加一个 `*` 暴露其 (在 Vue 3 中已经不再展示的) 默认导出。
 
    ```ts
    declare module 'vue' {
@@ -167,7 +166,7 @@
    }
    ```
 
-5. At this point, your application may encounter some compile-time errors / warnings (e.g. use of filters). Fix them first. If all compiler warnings are gone, you can also set the compiler to Vue 3 mode.
+5. 在此，你的应用可能会遇到一些编译时的错误/警告 (例如对过滤器的使用)。请先修它们。等所有的编译警告都被不见了，你还是可以把编译器设置为 Vue 3 模式。
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/b05d9555f6e115dea7016d7e5a1a80e8f825be52)
 
