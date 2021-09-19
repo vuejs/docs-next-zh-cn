@@ -42,7 +42,7 @@ export default {
 
 - 每一个 `*.vue` 文件最多可同时包含一个 `<script>` 块 (不包括[`<script setup>`](/api/sfc-script-setup.html))。
 
-- 该脚本会被当做 ES Module 来执行。
+- 该脚本将作为 ES Module 来执行。
 
 - 其**默认导出**的内容应该是 Vue 组件选项对象，它要么是一个普通的对象，要么是 [defineComponent](/api/global-api.html#definecomponent) 的返回值。
 
@@ -56,11 +56,11 @@ export default {
 
 - 一个 `*.vue` 文件可以包含多个 `<style>` 标签。
 
-- `<style>` 标签可以通过 `scoped` 或 `module` attribute (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 封装当前组件的样式。多个不同封装模式的 `<style>` 标签可以在同一个组件中混用。
+- `<style>` 标签可以通过 `scoped` 或 `module` attribute (更多详情请查看 [SFC 样式特性](/api/sfc-style)) 将样式封装在当前组件内。多个不同封装模式的 `<style>` 标签可以在同一个组件中混用。
 
 ### 自定义块
 
-为了满足任何的项目特定需求，`*.vue` 文件中可以包含额外的自定义块，例如 `<docs>` 块。自定义块的一些真实场景的案例包括：
+为了满足任何项目特定的需求，`*.vue` 文件中还可以包含额外的自定义块，例如 `<docs>` 块。自定义块的一些真实场景的案例包括：
 
 - [Gridsome: `<page-query>`](https://gridsome.org/docs/querying-data/)
 - [vite-plugin-vue-gql: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
@@ -86,7 +86,7 @@ SFC 在下列情况会依据它的**文件名**来自动推断组件名称：
 </script>
 ```
 
-`lang` 可以用于任何块——例如可以在 `<style>` 中使用 [SASS](https://sass-lang.com/) 以及在 `<template>` 中使用 [Pug](https://pugjs.org/api/getting-started.html)：
+`lang` 可以用于任何块——例如可以在 `<style>` 中使用 [Sass](https://sass-lang.com/) 以及在 `<template>` 中使用 [Pug](https://pugjs.org/api/getting-started.html)：
 
 ```html
 <template lang="pug">
@@ -101,7 +101,7 @@ p {{ msg }}
 </style>
 ```
 
-注意，基于不同的工具链，预处理器的集成方式有所不同。具体例子请检视对应的文档：
+注意，基于不同的工具链，预处理器的集成方式有所不同。查看相关文档以获取示例：
 
 - [Vite](https://vitejs.dev/guide/features.html#css-pre-processors)
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
@@ -117,13 +117,13 @@ p {{ msg }}
 <script src="./script.js"></script>
 ```
 
-注意 `src` 引入所需遵循的路径解析规则与 webpack 模块一致，即：
+注意 `src` 引入所需遵循的路径解析规则与 webpack 模块请求一致，即：
 
 - 相对路径需要以 `./` 开头。
 - 你可以从 npm 依赖中引入资源：
 
 ```vue
-<!-- 从安装好的 "todomvc-app-css" npm 包中引入文件 -->
+<!-- 从已安装的 "todomvc-app-css" npm 包中引入文件 -->
 <style src="todomvc-app-css/index.css">
 ```
 
