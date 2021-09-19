@@ -114,7 +114,7 @@ stateAsRefs.foo.value++
 console.log(state.foo) // 3
 ```
 
-当从组合式函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应性的情况下对返回的对象进行分解/扩散：
+当从组合式函数返回响应式对象时，`toRefs` 非常有用，这样消费组件就可以在不丢失响应性的情况下对返回的对象进行解构/展开：
 
 ```js
 function useFeatureX() {
@@ -217,7 +217,7 @@ isReactive(foo.value) // false
 
 ## `triggerRef`
 
-手动执行与 [`shallowRef`](#shallowref) 关联的任何副作用。
+手动执行与 [`shallowRef`](#shallowref) 关联的任何作用 (effect)。
 
 ```js
 const shallow = shallowRef({
@@ -229,7 +229,7 @@ watchEffect(() => {
   console.log(shallow.value.greet)
 })
 
-// 这不会触发副作用，因为 ref 是浅层的
+// 这不会触发作用 (effect)，因为 ref 是浅层的
 shallow.value.greet = 'Hello, universe'
 
 // 记录 "Hello, universe"
