@@ -2,49 +2,49 @@
 
 ## 报告漏洞
 
-当一个漏洞被报告时，它将立即成为我们最关心的问题，全职贡献者将放下一切来处理它。要报告漏洞，请发送电子邮件至 [security@vuejs.org](mailto:security@vuejs.org)。
+如果有漏洞被报告，那么它将立刻成为我们最关心的问题，全职贡献者会放下一切来处理它。如需报告漏洞，请发送电子邮件至 [security@vuejs.org](mailto:security@vuejs.org)。
 
-虽然新的漏洞很少被发现，但我们也建议始终使用最新版本的 Vue 及其官方配套库，以确保您的应用尽可能地安全。
+虽然很少发现有新的漏洞，但我们也建议始终使用最新版本的 Vue 及其官方配套库，以确保你的应用尽可能地安全。
 
-## Rule No.1: Never Use Non-trusted Templates
+## 首要规则：永远不要使用不受信任的模板
 
-The most fundamental security rule when using Vue is **never use non-trusted content as your component template**. Doing so is equivalent to allowing arbitrary JavaScript execution in your application - and worse, could lead to server breaches if the code is executed during server-side rendering. An example of such usage:
+使用 Vue 时最基本的安全规则是**永远不要使用不受信任的内容作为组件模板**。这样做相当于允许在你的应用程序中执行任意 JavaScript。更糟糕的是，如果在服务器端渲染时执行了这些代码，可能会导致服务器漏洞被恶意利用。例如：
 
 ```js
 Vue.createApp({
-  template: `<div>` + userProvidedString + `</div>` // NEVER DO THIS
+  template: `<div>` + userProvidedString + `</div>` // 永远不要这么做
 }).mount('#app')
 ```
 
-Vue templates are compiled into JavaScript, and expressions inside templates will be executed as part of the rendering process. Although the expressions are evaluated against a specific rendering context, due to the complexity of potential global execution environments, it is impractical for a framework like Vue to completely shield you from potential malicious code execution without incurring unrealistic performance overhead. The most straightforward way to avoid this category of problems altogether is to make sure the contents of your Vue templates are always trusted and entirely controlled by you.
+Vue 模板会被编译成 JavaScript，模板内的表达式将作为渲染过程的一部分执行。尽管表达式会针对特定的渲染场景进行评估，但由于潜在全局执行环境的复杂性，要求 Vue 这样的框架完全屏蔽潜在的恶意代码执行而不产生不切实际的性能开销非常不切实际。完全避免此类问题的最直接方法是确保 Vue 模板的内容始终受你信任并完全由你控制。
 
-## What Vue Does to Protect You
+## Vue 如何保护你
 
-### HTML content
+### HTML 内容
 
-Whether using templates or render functions, content is automatically escaped. That means in this template:
+无论是使用模板还是渲染函数，内容都会自动转义。因此在这个模板中：
 
 ```html
 <h1>{{ userProvidedString }}</h1>
 ```
 
-if `userProvidedString` contained:
+如果 `userProvidedString` 包含：
 
 ```js
 '<script>alert("hi")</script>'
 ```
 
-then it would be escaped to the following HTML:
+那么它将被转义为以下 HTML：
 
 ```html
 &lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;
 ```
 
-thus preventing the script injection. This escaping is done using native browser APIs, like `textContent`, so a vulnerability can only exist if the browser itself is vulnerable.
+从而防止脚本注入。这种转义是使用原生浏览器 API (例如 `textContent`) 完成的，因此只有当浏览器本身易受攻击时才会存在漏洞。
 
-### Attribute bindings
+### attribute 绑定
 
-Similarly, dynamic attribute bindings are also automatically escaped. That means in this template:
+同样，动态 attribute 绑定也会自动转义。因此在这个模板中：
 
 ```html
 <h1 :title="userProvidedString">
@@ -52,37 +52,37 @@ Similarly, dynamic attribute bindings are also automatically escaped. That means
 </h1>
 ```
 
-if `userProvidedString` contained:
+如果 `userProvidedString` 包含：
 
 ```js
 '" onclick="alert(\'hi\')'
 ```
 
-then it would be escaped to the following HTML:
+那么它将被转义为以下 HTML：
 
 ```html
 &quot; onclick=&quot;alert('hi')
 ```
 
-thus preventing the close of the `title` attribute to inject new, arbitrary HTML. This escaping is done using native browser APIs, like `setAttribute`, so a vulnerability can only exist if the browser itself is vulnerable.
+从而防止 `title` attribute 被提前关闭以注入新的、任意的 HTML。这种转义是使用原生浏览器 API (例如 `setAttribute`) 完成的，因此只有当浏览器本身易受攻击时才会存在漏洞。
 
-## Potential Dangers
+## 潜在的安全隐患
 
-In any web application, allowing unsanitized, user-provided content to be executed as HTML, CSS, or JavaScript is potentially dangerous, so should be avoided wherever possible. There are times when some risk may be acceptable though.
+在任何 Web 应用程序中，允许以 HTML、CSS 或 JavaScript 形式执行未经处理的、用户提供的内容都有潜在的安全隐患，因此应尽可能避免。不过有些时候部分风险或许是可以接受的。
 
-For example, services like CodePen and JSFiddle allow user-provided content to be executed, but it's in a context where this is expected and sandboxed to some extent inside iframes. In the cases when an important feature inherently requires some level of vulnerability, it's up to your team to weigh the importance of the feature against the worst-case scenarios the vulnerability enables.
+例如，CodePen 和 JSFiddle 之类的服务允许执行用户提供的内容，但这是在预期的上下文中，并且使用了 iframe 包裹来进行一定程度的沙盒处理。如果某个重要功能本质上需要某种程度的漏洞，则由你的团队根据漏洞导致的最坏情况来权衡该功能的重要性。
 
-### Injecting HTML
+### 注入 HTML
 
-As you learned earlier, Vue automatically escapes HTML content, preventing you from accidentally injecting executable HTML into your application. However, in cases where you know the HTML is safe, you can explicitly render HTML content:
+正如你之前所看到的，Vue 会自动转义 HTML 内容，防止你意外地将可执行的 HTML 注入到你的应用程序中。但是，如果你确信某个 HTML 是安全的，你可以显式呈现 HTML 内容：
 
-- Using a template:
+- 使用模板：
 
   ```html
   <div v-html="userProvidedHtml"></div>
   ```
 
-- Using a render function:
+- 使用渲染函数：
 
   ```js
   h('div', {
@@ -90,19 +90,19 @@ As you learned earlier, Vue automatically escapes HTML content, preventing you f
   })
   ```
 
-- Using a render function with JSX:
+- 在 JSX 中使用渲染函数：
 
   ```jsx
   <div innerHTML={this.userProvidedHtml}></div>
   ```
 
 :::tip
-Note that user-provided HTML can never be considered 100% safe unless it's in a sandboxed iframe or in a part of the app where only the user who wrote that HTML can ever be exposed to it. Additionally, allowing users to write their own Vue templates brings similar dangers.
+请注意，永远不要 100% 信任用户提供的 HTML，除非它位于 iframe 沙盒中，或位于仅有编写该 HTML 的用户才能接触到它的部分中。此外，允许用户编写自己的 Vue 模板也会带来类似的危险。
 :::
 
-### Injecting URLs
+### 注入 URL
 
-In a URL like this:
+在这样的 URL 中：
 
 ```html
 <a :href="userProvidedUrl">
@@ -110,15 +110,15 @@ In a URL like this:
 </a>
 ```
 
-There's a potential security issue if the URL has not been "sanitized" to prevent JavaScript execution using `javascript:`. There are libraries such as [sanitize-url](https://www.npmjs.com/package/@braintree/sanitize-url) to help with this, but note:
+如果 URL 未经过“净化”处理来防止其通过 `javascript:` 执行 JavaScript，则会有潜在的安全隐患。有一些库例如 [sanitize-url](https://www.npmjs.com/package/@braintree/sanitize-url) 可以帮助解决这个问题，但请注意：
 
 :::tip
-If you're ever doing URL sanitization on the frontend, you already have a security issue. User-provided URLs should always be sanitized by your backend before even being saved to a database. Then the problem is avoided for _every_ client connecting to your API, including native mobile apps. Also note that even with sanitized URLs, Vue cannot help you guarantee that they lead to safe destinations.
+如果你只在前端进行 URL 净化，那么你已经遇到了安全问题。在保存用户提供的 URL 到数据库之前，你的后端必须对其进行净化。只有这么做，才能避免 *每个* 连接到你 API 的客户端 (包括原生移动应用程序) 出现此类问题。另请注意，即便使用了经过净化的 URL，Vue 也无法保证它们指向安全的目标。
 :::
 
-### Injecting Styles
+### 注入样式
 
-Looking at this example:
+考虑下列示例：
 
 ```html
 <a
@@ -129,15 +129,15 @@ Looking at this example:
 </a>
 ```
 
-let's assume that `sanitizedUrl` has been sanitized, so that it's definitely a real URL and not JavaScript. With the `userProvidedStyles`, malicious users could still provide CSS to "click jack", e.g. styling the link into a transparent box over the "Log in" button. Then if `https://user-controlled-website.com/` is built to resemble the login page of your application, they might have just captured a user's real login information.
+我们假设它已经被 `sanitizedUrl` 净化过了，因此它确实是一个真实的 URL 而非 JavaScript。然而，恶意用户仍然可以利用 `userProvidedStyles`，通过提供 CSS 来实现“点击劫持 (click jack)”，例如将链接样式设置为“登录”按钮上方的透明框。假设 `https://user-controlled-website.com/` 是用来为你的应用程序提供类似于登录界面功能的，那么他们可能刚刚捕获了用户的真实登录信息。
 
-You may be able to imagine how allowing user-provided content for a `<style>` element would create an even greater vulnerability, giving that user full control over how to style the entire page. That's why Vue prevents rendering of style tags inside templates, such as:
+你或许能想象到了允许用户为某个 `<style>` 元素提供内容会产生多大的安全漏洞，因为这意味着用户拥有了整个页面样式的完整控制权。这也是为什么 Vue 会阻止在模板中渲染样式标签，比如：
 
 ```html
 <style>{{ userProvidedStyles }}</style>
 ```
 
-To keep your users fully safe from click jacking, we recommend only allowing full control over CSS inside a sandboxed iframe. Alternatively, when providing user control through a style binding, we recommend using its [object syntax](class-and-style.html#object-syntax-2) and only allowing users to provide values for specific properties it's safe for them to control, like this:
+为了让你的用户完全免受点击劫持，我们建议只允许用户完全控制 iframe 沙盒内的 CSS。或者，如果需要通过样式绑定来允许用户控制样式，我们建议使用它的[对象语法](class-and-style.html#对象语法-2)，并且只允许用户为可以被安全控制的特定 property 提供值，如下所示：
 
 ```html
 <a
@@ -151,38 +151,37 @@ To keep your users fully safe from click jacking, we recommend only allowing ful
 </a>
 ```
 
-### Injecting JavaScript
+### 注入 JavaScript
 
-We strongly discourage ever rendering a `<script>` element with Vue, since templates and render functions should never have side effects. However, this isn't the only way to include strings that would be evaluated as JavaScript at runtime.
+我们强烈建议不要使用 Vue 渲染 `<script>` 元素，因为这么做的话模板和渲染函数不会有副作用。不过，如果你想在运行时引入会被作为 JavaScript 处理的字符串，还有别的办法。
 
-Every HTML element has attributes with values accepting strings of JavaScript, such as `onclick`, `onfocus`, and `onmouseenter`. Binding user-provided JavaScript to any of these event attributes is a potential security risk, so should be avoided.
+每个 HTML 元素都有能接受 JavaScript 字符串的 attribute，如 `onclick`，`onfocus` 和 `onmouseenter`。你应当避免将用户提供的 JavaScript 绑定到任一事件 attribute，因为这会是一个潜在的安全隐患。
 
 :::tip
-Note that user-provided JavaScript can never be considered 100% safe unless it's in a sandboxed iframe or in a part of the app where only the user who wrote that JavaScript can ever be exposed to it.
+请注意，永远不要 100% 信任用户提供的 JavaScript，除非它位于 iframe 沙盒中，或位于仅有编写该 HTML 的用户才能接触到它的部分中。
 :::
 
-Sometimes we receive vulnerability reports on how it's possible to do cross-site scripting (XSS) in Vue templates. In general, we do not consider such cases to be actual vulnerabilities, because there's no practical way to protect developers from the two scenarios that would allow XSS:
+有时我们会收到有关如何在 Vue 模板中执行跨站点脚本 (XSS) 的漏洞报告。一般来说，我们不认为这种情况是真正的漏洞，因为在下列两种允许 XSS 情况中，我们没有切实可行的方法来保护开发者免受其影响：
 
-1. The developer is explicitly asking Vue to render user-provided, unsanitized content as Vue templates. This is inherently unsafe and there's no way for Vue to know the origin.
+1. 开发者明确要求 Vue 将用户提供的、未经净化的内容作为 Vue 模板渲染。这根本就是不安全的，并且 Vue 无法知道这些内容的来源。
 
-2. The developer is mounting Vue to an entire HTML page which happens to contain server-rendered and user-provided content. This is fundamentally the same problem as \#1, but sometimes devs may do it without realizing. This can lead to possible vulnerabilities where the attacker provides HTML which is safe as plain HTML but unsafe as a Vue template. The best practice is to never mount Vue on nodes that may contain server-rendered and user-provided content.
+2. 开发者正在将 Vue 挂载到整个 HTML 页面，而该页面恰好同时包含服务器渲染的和用户提供的内容。这与 \#1 的问题基本相同，但有时开发者可能会没有意识到这一点。这可能会导致出现潜在漏洞，攻击者也许会提供作为纯 HTML 安全但作为 Vue 模板不安全的 HTML 内容。
 
-## Best Practices
+## 最佳实践
 
-The general rule is that if you allow unsanitized, user-provided content to be executed (as either HTML, JavaScript, or even CSS), you might be opening yourself up to attacks. This advice actually holds true whether using Vue, another framework, or even no framework.
+通常来说，如果你允许执行未经净化的、用户提供的内容 (作为 HTML、JavaScript 甚至 CSS)，你可能会面临攻击。无论是使用 Vue、其他框架，或是不使用框架，这些建议都是适用的。
 
-Beyond the recommendations made above for [Potential Dangers](#potential-dangers), we also recommend familiarizing yourself with these resources:
+除了上面提到的针对[潜在的安全隐患](#潜在的安全隐患)提出的建议之外，我们还建议你熟悉以下资源：
 
-- [HTML5 Security Cheat Sheet](https://html5sec.org/)
-- [OWASP's Cross Site Scripting (XSS) Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+- [HTML5 安全备忘录](https://html5sec.org/)
+- [OWASP 的跨站攻击脚本 (XSS) 防御备忘录](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
 
-Then use what you learn to also review the source code of your dependencies for potentially dangerous patterns, if any of them include 3rd-party components or otherwise influence what's rendered to the DOM.
+如果你使用了第三方组件或是会影响 DOM 渲染的第三方依赖，请使用你学到的知识检查它们的源代码以便找出潜在的危险。
 
-## Backend Coordination
+## 后端协调
 
-HTTP security vulnerabilities, such as cross-site request forgery (CSRF/XSRF) and cross-site script inclusion (XSSI), are primarily addressed on the backend, so aren't a concern of Vue's. However, it's still a good idea to communicate with your backend team to learn how to best interact with their API, e.g. by submitting CSRF tokens with form submissions.
+HTTP 安全漏洞主要由后端负责处理，例如跨站点请求伪造 (CSRF/XSRF) 和跨站点脚本包含 (XSSI)，因此这不是 Vue 应该考虑的问题。不过，我们非常建议你去和后端团队交流以了解如何最好地与他们的 API 交互，例如通过提交表单提交的 CSRF 令牌。
 
-## Server-Side Rendering (SSR)
+## 服务器端渲染 (SSR)
 
-There are some additional security concerns when using SSR, so make sure to follow the best practices outlined throughout [our SSR documentation](ssr/introduction.html) to avoid vulnerabilities.
-{"mode":"full","isActive":false}
+使用 SSR 时还有一些额外的安全问题，因此请确保遵循我们在 [SSR 文档](ssr/introduction.html)中概述的最佳实践以避免漏洞。
