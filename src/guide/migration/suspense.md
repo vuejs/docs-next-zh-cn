@@ -15,9 +15,9 @@ Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。
 
 在正确渲染组件之前进行一些异步请求是很常见的事。组件通常会在本地处理这种逻辑，绝大多数情况下这是非常完美的做法。
 
-该 `<suspense>` 组件提供了另一个方案，允许等待整个组件树处理完毕而不是单个组件。
+该 `<suspense>` 组件提供了另一个方案，允许将等待过程提升到组件树中处理，而不是在单个组件中。
 
-一个常见的用例是[用到了异步组件](/guide/component-dynamic-async.html#异步组件)：
+一个常见的[异步组件](/guide/component-dynamic-async.html#异步组件)用例：
 
 ```vue{2-4,6,17}
 <template>
@@ -42,11 +42,11 @@ export default {
 </script>
 ```
 
-这个 `<suspense>` 组件有两个插槽。它们都只接收一个子节点。`default` 插槽里的节点会尽可能展示出来。如果不能，则展示 `fallback` 插槽里的节点。
+`<suspense>` 组件有两个插槽。它们都只接收一个直接子节点。`default` 插槽里的节点会尽可能展示出来。如果不能，则展示 `fallback` 插槽里的节点。
 
-重要的是，异步组件不需要作为 `<suspense>` 的最近子节点。它可以在组件树任意深度的位置且不需要出现在和 `<suspense>` 自身相同的模板中。只有所有的后代组件都准备就绪，该内容才会被认为解析完毕。
+重要的是，异步组件不需要作为 `<suspense>` 的直接子节点。它可以出现在组件树任意深度的位置，且不需要出现在和 `<suspense>` 自身相同的模板中。只有所有的后代组件都准备就绪，该内容才会被认为解析完毕。
 
-另一个让后代组件触发 `fallback` 的方式是从 `setup` 函数返回一个 Promise。通常这是通过 `async` 实现的而不是显性地返回一个 Promise：
+另一个触发 `fallback` 的方式是让后代组件从 `setup` 函数中返回一个 Promise。通常这是通过 `async` 实现的，而不是显式地返回一个 Promise：
 
 ```js{2}
 export default {
@@ -67,13 +67,13 @@ export default {
 
 ## 子组件更新
 
-一旦 `<suspense>` 的 `default` 插槽里的内容被解析，则它只有在 `default` 根结点被替换的时候才会被再次触发。而树里的深层嵌套组件不足以让 `<suspense>` 回到等待状态。
+一旦 `<suspense>` 的 `default` 插槽里的内容被解析，则它只有在 `default` 根结点被替换的时候才能被再次触发。而树里的深层嵌套组件不足以让 `<suspense>` 回到等待状态。
 
-如果根结点发生了变化，它会触发 `pending` 事件。然而默认情况下它不会更新 DOM 以展示 `fallback` 内容。取而代之的是它会继续展示旧的 DOM 直到新组件准备就绪。这个行为可以通过 `timeout` prop 进行控制。这个值是一个毫秒数，告诉 `<suspense>` 组件多久之后展示 `fallback`。如果这个值是 `0` 则表示它在 `<suspense>` 进入等待状态时会立即显示。
+如果根结点发生了变化，它会触发 `pending` 事件。然而，默认情况下，它不会更新 DOM 以展示 `fallback` 内容。取而代之的是，它会继续展示旧的 DOM，直到新组件准备就绪。这个行为可以通过 `timeout` prop 进行控制。这个值是一个毫秒数，告诉 `<suspense>` 组件多久之后展示 `fallback`。如果这个值是 `0` 则表示它在 `<suspense>` 进入等待状态时会立即显示。
 
 ## 事件
 
-在 `pending` 事件之外，`<suspense>` 组件还拥有 `resolve` 和 `fallback` 事件。`resolve` 事件会在 `default` 插槽完成新内容的解析之后被触发。`fallback` 事件会在 `fallback` 插槽的内容展示的时候被触发。
+除了 `pending` 事件以外，`<suspense>` 组件还拥有 `resolve` 和 `fallback` 事件。`resolve` 事件会在 `default` 插槽完成新内容的解析之后被触发。`fallback` 事件会在 `fallback` 插槽的内容展示的时候被触发。
 
 这些事件可以用在诸如当新组件加载时在旧 DOM 上展示一个加载标识等场景。
 
@@ -81,9 +81,9 @@ export default {
 
 将 `<suspense>` 跟 [`<transition>`](/api/built-in-components.html#transition) 和 [`<keep-alive>`](/api/built-in-components.html#keep-alive) 组件相结合是常见的情形。这些组件的嵌套顺序对于它们的正确工作很重要。
 
-额外的，这些组件经常用于衔接 [Vue Router](https://next.router.vuejs.org/) 的 `<router-view>` 组件。
+额外的，这些组件经常用于衔接 [Vue Router](https://next.router.vuejs.org/zh/) 的 `<router-view>` 组件。
 
-以下示例展示了如何嵌套这些组件以让它们的表现符合预期。为了简化这个结合你可以移除不需要的组件：
+以下示例展示了如何嵌套这些组件以让它们的表现符合预期。若要简化这个组合你可以移除不需要的组件：
 
 ```html
 <router-view v-slot="{ Component }">
