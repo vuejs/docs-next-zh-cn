@@ -280,6 +280,8 @@
 
 - **用法：**
 
+  在组合式API中,你可以通过 `getCurrentInstance().proxy.$forceUpdate()`去使用。
+
   迫使组件实例重新渲染。注意它仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件。
 
 ## $nextTick
