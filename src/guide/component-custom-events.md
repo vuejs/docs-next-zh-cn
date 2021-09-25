@@ -89,10 +89,6 @@ app.component('my-component', {
 })
 ```
 
-```html
-<my-component v-model:title="bookTitle"></my-component>
-```
-
 ## 多个 `v-model` 绑定
 
 通过利用以特定 prop 和事件为目标的能力，正如我们之前在 [`v-model` 参数](#v-model-参数)中所学的那样，我们现在可以在单个组件实例上创建多个 v-model 绑定。
