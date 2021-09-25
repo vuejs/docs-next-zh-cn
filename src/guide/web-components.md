@@ -14,12 +14,11 @@ Vue [在 Custom Elements Everywhere 测试中获得了 100% 的完美分数](htt
 
 如果你正在构建步骤中使用 Vue，则此选项需要通过构建配置传递，因为这是一个编译时选项。
 
-<!-- TODO: translation -->
-#### Example In-Browser Config
+#### 浏览器内配置示例
 
 ```js
-// Only works if using in-browser compilation.
-// If using build tools, see config examples below.
+// 仅当使用浏览器内编译时有效
+// 如果你正在使用构建工具，请查看下方的配置示例
 app.config.compilerOptions.isCustomElement = tag => tag.includes('-')
 ```
 
