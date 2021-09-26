@@ -109,7 +109,7 @@ this.$emit('update:title', newValue)
 
 ### `v-model` 参数
 
-若需要更改 `model` 的名称，现在我们可以为 `v-model` 传递一个*参数*，作为组件内 `model` 选项的替代：
+若需要更改 `model` 的名称，现在我们可以为 `v-model` 传递一个*参数*，以作为组件内 `model` 选项的替代：
 
 ```html
 <ChildComponent v-model:title="pageTitle" />
