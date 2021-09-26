@@ -7,28 +7,28 @@ badges:
 
 ## 概览
 
-就变化内容而言，此部分属于高阶内容：
+以下是对变化的总体概述：
 
 - **非兼容**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
   - prop：`value` -> `modelValue`；
-  - event：`input` -> `update:modelValue`；
-- **非兼容**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 作为代替；
-- **新增**：现在可以在同一个组件上使用多个 `v-model` 进行双向绑定；
+  - 事件：`input` -> `update:modelValue`；
+- **非兼容**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 上的一个参数代替；
+- **新增**：现在可以在同一个组件上使用多个 `v-model` 绑定；
 - **新增**：现在可以自定义 `v-model` 修饰符。
 
 更多信息，请见下文。
 
 ## 介绍
 
-在 Vue 2.0 发布后，开发者使用 `v-model` 指令必须使用为 `value` 的 prop。如果开发者出于不同的目的需要使用其他的 prop，他们就不得不使用 `v-bind.sync`。此外，由于`v-model` 和 `value` 之间的这种硬编码关系的原因，产生了如何处理原生元素和自定义元素的问题。
+在 Vue 2.0 发布后，开发者使用 `v-model` 指令时必须使用名为 `value` 的 prop。如果开发者出于不同的目的需要使用其他的 prop，他们就不得不使用 `v-bind.sync`。此外，由于`v-model` 和 `value` 之间的这种硬编码关系的原因，产生了如何处理原生元素和自定义元素的问题。
 
-在 Vue 2.2 中，我们引入了 `model` 组件选项，允许组件自定义用于 `v-model` 的 prop 和事件。但是，这仍然只允许在组件上使用一个 `model`。
+在 Vue 2.2 中，我们引入了 `model` 组件选项，允许组件自定义用于 `v-model` 的 prop 和事件。但是，这仍然只允许在组件上使用一个 `v-model`。
 
-在 Vue 3 中，双向数据绑定的 API 已经标准化，减少了开发者在使用 `v-model` 指令时的混淆并且在使用 `v-model` 指令时可以更加灵活。
+在 Vue 3 中，双向数据绑定的 API 已经标准化，以减少开发者在使用 `v-model` 指令时的混淆，并且更加灵活。
 
 ## 2.x 语法
 
-在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 和 `input` 事件：
+在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 和触发 `input` 事件：
 
 ```html
 <ChildComponent v-model="pageTitle" />
@@ -38,7 +38,7 @@ badges:
 <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
 ```
 
-如果要将属性或事件名称更改为其他名称，则需要在 `ChildComponent` 组件中添加 `model` 选项：
+如果想要更改属性或事件名称，则需要在 `ChildComponent` 组件中添加 `model` 选项：
 
 ```html
 <!-- ParentComponent.vue -->
@@ -80,7 +80,7 @@ export default {
 this.$emit('update:title', newValue)
 ```
 
-如果需要的话，父级可以监听该事件并更新本地 data property。例如：
+如果需要的话，父级可以监听该事件并更新本地的 data property。例如：
 
 ```html
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
@@ -109,7 +109,7 @@ this.$emit('update:title', newValue)
 
 ### `v-model` 参数
 
-若需要更改 `model` 名称，作为组件内 `model` 选项的替代，现在我们可以将一个 *argument* 传递给 `v-model`：
+若需要更改 `model` 的名称，现在我们可以为 `v-model` 传递一个*参数*，作为组件内 `model` 选项的替代：
 
 ```html
 <ChildComponent v-model:title="pageTitle" />
@@ -190,6 +190,7 @@ this.$emit('update:title', newValue)
 ## 下一步
 
 更多新的 `v-model` 语法相关信息，请参考：
+
 - [在组件中使用 `v-model`](../component-basics.html#在组件上使用-v-model) 
 - [`v-model` 参数](../component-custom-events.html#v-model-参数)
 - [处理 `v-model` 修饰符](../component-custom-events.html#处理-v-model-修饰符)
