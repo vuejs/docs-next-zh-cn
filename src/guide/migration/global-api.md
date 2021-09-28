@@ -85,7 +85,7 @@ const app = createApp({})
 | Vue.mixin                  | app.mixin                                                                                                    |
 | Vue.use                    | app.use ([见下方](#插件开发者须知))                                                                          |
 | Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-替换为-config-globalproperties))                        |
-| Vue.extend                 | *移除* ([see below](#vue-extend-removed))                                                                 |
+| Vue.extend                 | *移除* ([见下方](#vue-extend-removed))                                                                 |
 
 所有其他不全局改变行为的全局 API 现在都是具名导出，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
 
