@@ -186,9 +186,10 @@ export default {
 
 ```vue
 <script setup>
-const theme = {
+import { reactive } from 'vue'
+const theme = reactive({
   color: 'red'
-}
+})
 </script>
 
 <template>
