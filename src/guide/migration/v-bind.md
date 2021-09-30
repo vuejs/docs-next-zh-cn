@@ -12,37 +12,37 @@ badges:
 
 ## 介绍
 
-在元素上动态绑定 attribute 时，常见的场景是在一个元素中同时使用 `v-bind="object"` 语法和单独的 attribute。然而，这就引出了关于合并的优先级的问题。
+在一个元素上动态绑定 attribute 时，同时使用 `v-bind="object"` 语法和独立 attribute 是常见的场景。然而，这就引出了关于合并的优先级的问题。
 
 ## 2.x 语法
 
-在 2.x，如果一个元素同时定义了 `v-bind="object"` 和一个相同的单独的 attribute，那么这个单独的 attribute 总是会覆盖 `object` 中的绑定。
+在 2.x 中，如果一个元素同时定义了 `v-bind="object"` 和一个相同的独立 attribute，那么这个独立 attribute 总是会覆盖 `object` 中的绑定。
 
 ```html
-<!-- template -->
+<!-- 模板 -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- 结果 -->
 <div id="red"></div>
 ```
 
 ## 3.x 语法
 
-在 3.x，如果一个元素同时定义了 `v-bind="object"` 和一个相同的单独的 attribute，那么声明绑定的顺序决定了它们如何合并。换句话说，相对于假设开发者总是希望单独的 attribute 覆盖 `object` 中定义的内容，现在开发者对自己所希望的合并行为有了更好的控制。
+在 3.x 中，如果一个元素同时定义了 `v-bind="object"` 和一个相同的独立 attribute，那么绑定的声明顺序将决定它们如何被合并。换句话说，相对于假设开发者总是希望独立 attribute 覆盖 `object` 中定义的内容，现在开发者能够对自己所希望的合并行为做更好的控制。
 
 ```html
-<!-- template -->
+<!-- 模板 -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- 结果 -->
 <div id="blue"></div>
 
-<!-- template -->
+<!-- 模板 -->
 <div v-bind="{ id: 'blue' }" id="red"></div>
-<!-- result -->
+<!-- 结果 -->
 <div id="red"></div>
 ```
 
 ## 迁移策略
 
-如果你依赖 `v-bind` 的覆盖功能，目前的建议是确保在单独的 attribute 之前定义 `v-bind` attribute。
+如果你依赖 `v-bind` 的覆盖功能，目前的建议是确保在独立 attribute 之前定义 `v-bind` attribute。
 
 [迁移构建开关：`COMPILER_V_BIND_OBJECT_ORDER`](migration-build.html#兼容性配置)
