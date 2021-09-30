@@ -62,21 +62,25 @@ setup(props) {
 
 ### Context
 
-传递给 `setup` 函数的第二个参数是 `context`。`context` 是一个普通的 JavaScript 对象，它暴露组件的三个 property：
+<!-- TODO: translation -->
+传递给 `setup` 函数的第二个参数是 `context`。The `context` is a normal JavaScript object that exposes other values that may be useful inside `setup`:
 
 ```js
 // MyBook.vue
 
 export default {
   setup(props, context) {
-    // Attribute (非响应式对象)
+    // Attribute (非响应式对象，等同于 $attrs)
     console.log(context.attrs)
 
-    // 插槽 (非响应式对象)
+    // 插槽 (非响应式对象，等同于 $slots)
     console.log(context.slots)
 
-    // 触发事件 (方法)
+    // 触发事件 (方法，等同于 $emit)
     console.log(context.emit)
+
+    // Expose public properties (Function)
+    console.log(context.expose)
   }
 }
 ```
@@ -86,13 +90,16 @@ export default {
 ```js
 // MyBook.vue
 export default {
-  setup(props, { attrs, slots, emit }) {
+  setup(props, { attrs, slots, emit, expose }) {
     ...
   }
 }
 ```
 
-`attrs` 和 `slots` 是有状态的对象，它们总是会随组件本身的更新而更新。这意味着你应该避免对它们进行解构，并始终以 `attrs.x` 或 `slots.x` 的方式引用 property。请注意，与 `props` 不同，`attrs` 和 `slots` 是**非**响应式的。如果你打算根据 `attrs` 或 `slots` 更改应用副作用，那么应该在 `onUpdated` 生命周期钩子中执行此操作。
+<!-- TODO: translation -->
+`attrs` and `slots` are stateful objects that are always updated when the component itself is updated. This means you should avoid destructuring them and always reference properties as `attrs.x` or `slots.x`. Also note that, unlike `props`, the properties of `attrs` and `slots` are **not** reactive. If you intend to apply side effects based on changes to `attrs` or `slots`, you should do so inside an `onBeforeUpdate` lifecycle hook.
+
+We'll explain the role of `expose` shortly.
 
 ## 访问组件的 property
 
@@ -155,11 +162,35 @@ export default {
   setup() {
     const readersNumber = ref(0)
     const book = reactive({ title: 'Vue 3 Guide' })
-    // 请注意这里我们需要显式调用 ref 的 value
+    // 请注意这里我们需要显式使用 ref 的 value
     return () => h('div', [readersNumber.value, book.title])
   }
 }
 ```
+
+<!-- TODO: translation -->
+
+Returning a render function prevents us from returning anything else. Internally that shouldn't be a problem, but it can be problematic if we want to expose methods of this component to the parent component via template refs.
+
+We can solve this problem by calling `expose`, passing it an object that defines the properties that should be available on the external component instance:
+
+```js
+import { h, ref } from 'vue'
+export default {
+  setup(props, { expose }) {
+    const count = ref(0)
+    const increment = () => ++count.value
+
+    expose({
+      increment
+    })
+
+    return () => h('div', count.value)
+  }
+}
+```
+
+The `increment` method would then be available in the parent component via a template ref.
 
 ## 使用 `this`
 

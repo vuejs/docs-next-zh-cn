@@ -1289,6 +1289,7 @@ computed: {
     - `inheritAttrs`
     - `props`
     - `emits`
+    - `expose`
 
 6. **组合式 API** (使用组合式 API 的入口点)
     - `setup`
