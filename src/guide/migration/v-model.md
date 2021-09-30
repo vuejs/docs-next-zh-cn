@@ -12,7 +12,7 @@ badges:
 - **非兼容**：用于自定义组件时，`v-model` prop 和事件默认名称已更改：
   - prop：`value` -> `modelValue`；
   - 事件：`input` -> `update:modelValue`；
-- **非兼容**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 上的一个参数代替；
+- **非兼容**：`v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可在 `v-model` 上加一个参数代替；
 - **新增**：现在可以在同一个组件上使用多个 `v-model` 绑定；
 - **新增**：现在可以自定义 `v-model` 修饰符。
 
@@ -28,7 +28,7 @@ badges:
 
 ## 2.x 语法
 
-在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 和触发 `input` 事件：
+在 2.x 中，在组件上使用 `v-model` 相当于绑定 `value` prop 并触发 `input` 事件：
 
 ```html
 <ChildComponent v-model="pageTitle" />
@@ -80,7 +80,7 @@ export default {
 this.$emit('update:title', newValue)
 ```
 
-如果需要的话，父级可以监听该事件并更新本地的 data property。例如：
+然后父组件可以在需要时监听该事件，并更新本地的 data property。例如：
 
 ```html
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
