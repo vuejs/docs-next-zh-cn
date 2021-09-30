@@ -38,7 +38,7 @@ badges:
 <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
 ```
 
-如果想要更改属性或事件名称，则需要在 `ChildComponent` 组件中添加 `model` 选项：
+如果想要更改 prop 或事件名称，则需要在 `ChildComponent` 组件中添加 `model` 选项：
 
 ```html
 <!-- ParentComponent.vue -->
