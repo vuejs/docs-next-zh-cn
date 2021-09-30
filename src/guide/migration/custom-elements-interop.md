@@ -32,7 +32,7 @@ Vue.config.ignoredElements = ['plastic-button']
 
 ### 3.x 语法
 
-**在 Vue 3.0 中，此检查在模板编译期间执行。**要指示编译器将 `<plastic-button>` 视为自定义元素：
+**在 Vue 3.0 中，此检查在模板编译期间执行**。要指示编译器将 `<plastic-button>` 视为自定义元素：
 
 - 如果使用构建步骤：给 Vue 模板编译器传入 `isCustomElement` 选项。如果使用了 `vue-loader`，则应通过 `vue-loader` 的 `compilerOptions` 选项传递：
 
