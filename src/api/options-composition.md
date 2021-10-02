@@ -294,7 +294,9 @@
 
   `props` 对象在开发过程中对于用户区代码是不可变的 (如果用户代码尝试对其进行更改，则会发出警告)。
 
-  第二个参数提供了一个上下文对象，该对象暴露了以前在 `this` 上暴露的 property 的选择列表：
+  <!-- TODO: translation -->
+  <!-- 第二个参数提供了一个上下文对象，该对象暴露了以前在 `this` 上暴露的 property 的选择列表： -->
+  The second argument provides a context object which exposes various objects and functions that might be useful in `setup`:
 
   ```js
   const MyComponent = {
@@ -302,9 +304,13 @@
       context.attrs
       context.slots
       context.emit
+      context.expose
     }
   }
   ```
+
+  <!-- TODO: translation -->
+  `attrs`, `slots`, and `emit` are equivalent to the instance properties [`$attrs`](/api/instance-properties.html#attrs), [`$slots`](/api/instance-properties.html#slots), and [`$emit`](/api/instance-methods.html#emit) respectively.
 
   `attrs` 和 `slots` 是内部组件实例上相应值的代理。这样可以确保它们即使在更新后也始终会显示最新值，以便我们可以对它们进行解构，而不必担心访问过时的引用：
 
@@ -318,7 +324,28 @@
     }
   }
   ```
-  
+
+  <!-- TODO: translation -->
+  `expose`, added in Vue 3.2, is a function that allows specific properties to be exposed via the public component instance. By default, the public instance retrieved using refs, `$parent`, or `$root` is equivalent to the internal instance used by the template. Calling `expose` will create a separate public instance with the properties specified:
+
+  ```js
+  const MyComponent = {
+    setup(props, { expose }) {
+      const count = ref(0)
+      const reset = () => count.value = 0
+      const increment = () => count.value++
+
+      // Only reset will be available externally, e.g. via $refs
+      expose({
+        reset
+      })
+
+      // Internally, the template has access to count and increment
+      return { count, increment }
+    }
+  }
+  ```
+
   有很多理由将 `props` 作为单独的第一个参数而不是将其包含在上下文中：
 
   - 组件使用 `props` 比其他 property 更常见，并且很多情况下组件仅使用 `props`。
