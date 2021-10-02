@@ -295,6 +295,7 @@
   `props` 对象在开发过程中对于用户区代码是不可变的 (如果用户代码尝试对其进行更改，则会发出警告)。
 
   <!-- TODO: translation -->
+  <!-- 第二个参数提供了一个上下文对象，该对象暴露了以前在 `this` 上暴露的 property 的选择列表： -->
   The second argument provides a context object which exposes various objects and functions that might be useful in `setup`:
 
   ```js

@@ -79,6 +79,7 @@ export default {
     // 触发事件 (方法，等同于 $emit)
     console.log(context.emit)
 
+    // TODO: translation
     // Expose public properties (Function)
     console.log(context.expose)
   }
@@ -97,6 +98,7 @@ export default {
 ```
 
 <!-- TODO: translation -->
+<!-- `attrs` 和 `slots` 是有状态的对象，它们总是会随组件本身的更新而更新。这意味着你应该避免对它们进行解构，并始终以 `attrs.x` 或 `slots.x` 的方式引用 property。请注意，与 `props` 不同，`attrs` 和 `slots` 是**非**响应式的。如果你打算根据 `attrs` 或 `slots` 更改应用副作用，那么应该在 `onUpdated` 生命周期钩子中执行此操作。 -->
 `attrs` and `slots` are stateful objects that are always updated when the component itself is updated. This means you should avoid destructuring them and always reference properties as `attrs.x` or `slots.x`. Also note that, unlike `props`, the properties of `attrs` and `slots` are **not** reactive. If you intend to apply side effects based on changes to `attrs` or `slots`, you should do so inside an `onBeforeUpdate` lifecycle hook.
 
 We'll explain the role of `expose` shortly.
