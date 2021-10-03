@@ -95,8 +95,7 @@
   }
   ```
 
-  <!-- TODO: translation -->
-  If you return a render function then you can't return any other properties. If you need to expose properties so that they can be accessed externally, e.g. via a `ref` in the parent, you can use `expose`:
+  如果返回了渲染函数，则不能再返回其他 property。如果需要将 property 暴露给外部访问，比如通过父组件的 `ref`，可以使用 `expose`：
 
   ```js
   // MyBook.vue
@@ -106,12 +105,12 @@
   export default {
     setup(props, { expose }) {
       const reset = () => {
-        // Some reset logic
+        // 某些重置逻辑
       }
 
-      // If you need to expose multiple properties they must all
-      // be included in the object passed to expose. expose can
-      // only be called once.
+      // 如果需要暴露多个 property，
+      // 则它们必须全部包含在传递给 expose 的对象中。
+      // expose 只能被调用一次。
       expose({
         reset
       })
