@@ -62,8 +62,7 @@ setup(props) {
 
 ### Context
 
-<!-- TODO: translation -->
-传递给 `setup` 函数的第二个参数是 `context`。The `context` is a normal JavaScript object that exposes other values that may be useful inside `setup`:
+传递给 `setup` 函数的第二个参数是 `context`。`context` 是一个普通 JavaScript 对象，暴露了其它可能在 `setup` 中有用的值：
 
 ```js
 // MyBook.vue
@@ -79,8 +78,7 @@ export default {
     // 触发事件 (方法，等同于 $emit)
     console.log(context.emit)
 
-    // TODO: translation
-    // Expose public properties (Function)
+    // 暴露公共 property (函数)
     console.log(context.expose)
   }
 }
@@ -97,11 +95,9 @@ export default {
 }
 ```
 
-<!-- TODO: translation -->
-<!-- `attrs` 和 `slots` 是有状态的对象，它们总是会随组件本身的更新而更新。这意味着你应该避免对它们进行解构，并始终以 `attrs.x` 或 `slots.x` 的方式引用 property。请注意，与 `props` 不同，`attrs` 和 `slots` 是**非**响应式的。如果你打算根据 `attrs` 或 `slots` 更改应用副作用，那么应该在 `onUpdated` 生命周期钩子中执行此操作。 -->
-`attrs` and `slots` are stateful objects that are always updated when the component itself is updated. This means you should avoid destructuring them and always reference properties as `attrs.x` or `slots.x`. Also note that, unlike `props`, the properties of `attrs` and `slots` are **not** reactive. If you intend to apply side effects based on changes to `attrs` or `slots`, you should do so inside an `onBeforeUpdate` lifecycle hook.
+`attrs` 和 `slots` 是有状态的对象，它们总是会随组件本身的更新而更新。这意味着你应该避免对它们进行解构，并始终以 `attrs.x` 或 `slots.x` 的方式引用 property。请注意，与 `props` 不同，`attrs` 和 `slots` 的 property 是**非**响应式的。如果你打算根据 `attrs` 或 `slots` 的更改应用副作用，那么应该在 `onBeforeUpdate` 生命周期钩子中执行此操作。
 
-We'll explain the role of `expose` shortly.
+我们将在稍后解释 `expose` 所扮演的角色。
 
 ## 访问组件的 property
 
@@ -170,11 +166,9 @@ export default {
 }
 ```
 
-<!-- TODO: translation -->
+返回一个渲染函数将阻止我们返回任何其它的东西。从内部来说这不应该成为一个问题，但当我们想要将这个组件的方法通过模板 ref 暴露给父组件时就不一样了。
 
-Returning a render function prevents us from returning anything else. Internally that shouldn't be a problem, but it can be problematic if we want to expose methods of this component to the parent component via template refs.
-
-We can solve this problem by calling `expose`, passing it an object that defines the properties that should be available on the external component instance:
+我们可以通过调用 `expose` 来解决这个问题，给它传递一个对象，其中定义的 property 将可以被外部组件实例访问：
 
 ```js
 import { h, ref } from 'vue'
@@ -192,7 +186,7 @@ export default {
 }
 ```
 
-The `increment` method would then be available in the parent component via a template ref.
+这个 `increment` 方法现在将可以通过父组件的模板 ref 访问。
 
 ## 使用 `this`
 
