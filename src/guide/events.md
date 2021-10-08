@@ -1,6 +1,6 @@
 # 事件处理
 
-<VideoLesson href="https://vueschool.io/lessons/user-events-in-vue-3?friend=vuejs" title="在 Vue School 免费课程中了解如何处理事件">在 Vue School 免费课程中了解如何处理事件</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/user-events-in-vue-3?friend=vuejs" title="通过 Vue School 上的免费课程学习如何处理事件">通过 Vue School 的免费课程学习如何处理事件</VideoLesson>
 
 ## 监听事件
 

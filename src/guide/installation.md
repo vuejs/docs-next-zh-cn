@@ -19,7 +19,7 @@ Vue.js 设计的初衷就包括可以被渐进式地采用。这意味着它可�
 
 > 目前处于测试阶段 - Vuex 和 Router 的集成仍在进行中。
 
-<VideoLesson href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3?friend=vuejs" title="在 Vue School 了解如何安装">在 Vue School 的免费课程中学习如何安装和使用 Vue Devtools</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3?friend=vuejs" title="在 Vue School 学习如何安装">通过 Vue School 的免费课程学习如何安装和使用 Vue Devtools</VideoLesson>
 
 在使用 Vue 时，我们推荐在你的浏览器上安装 [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools)，它允许你在一个更友好的界面中审查和调试 Vue 应用。
 

@@ -2,7 +2,7 @@
 
 > 本指南假定你已经阅读了 [组合式 API 简介](composition-api-introduction.html)和[响应性基础](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这篇文章。
 
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/lifecycle-hooks" title="Learn about how Lifecycle Hooks work with Vue Mastery">在 Vue Mastery 上观看关于生命周期钩子的免费视频</VideoLesson>
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/lifecycle-hooks" title="在 Vue Mastery 上学习生命周期钩子是如何工作的">在 Vue Mastery 上观看关于生命周期钩子的免费视频</VideoLesson>
 
 你可以通过在生命周期钩子前面加上 “on” 来访问组件的生命周期钩子。
 
