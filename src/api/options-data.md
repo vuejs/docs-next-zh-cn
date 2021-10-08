@@ -303,25 +303,24 @@
 
 -  **参考** [Attribute 继承](../guide/component-attrs.html#attribute-继承)
 
-<!-- TODO: translation -->
 ## expose <Badge text="3.2+" />
 
-- **Type:** `Array<string>`
+- **类型：** `Array<string>`
 
-- **Details:**
+- **详细：**
 
-  A list of properties to expose on the public component instance.
+  一个将暴露在公共组件实例上的 property 列表。
 
-  By default, the public instance accessed via [`$refs`](/api/instance-properties.html#refs), [`$parent`](/api/instance-properties.html#parent), or [`$root`](/api/instance-properties.html#root) is the same as the internal component instance that's used by the template. The `expose` option restricts the properties that can be accessed via the public instance.
+  默认情况下，通过 [`$refs`](/api/instance-properties.html#refs)、[`$parent`](/api/instance-properties.html#parent) 或 [`$root`](/api/instance-properties.html#root) 访问到的公共实例与模板使用的组件内部实例是一样的。`expose` 选项将限制公共实例可以访问的 property。
 
-  Properties defined by Vue itself, such as `$el` and `$parent`, will always be available on the public instance and don't need to be listed.
+  由 Vue 自身定义的 property，比如 `$el` 和 `$parent`，将始终可以被公共实例访问，并不需要列出。
 
-- **Usage:**
+- **用法：**
 
   ```js
   export default {
-    // increment will be exposed but count
-    // will only be accessible internally
+    // increment 将被暴露，
+    // 但 count 只能被内部访问
     expose: ['increment'],
 
     data() {
@@ -338,4 +337,4 @@
   }
   ```
 
-- **See also:** [defineExpose](/api/sfc-script-setup.html#defineexpose)
+- **参考：** [defineExpose](/api/sfc-script-setup.html#defineexpose)
