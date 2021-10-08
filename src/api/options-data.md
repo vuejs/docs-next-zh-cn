@@ -313,7 +313,7 @@
 
   默认情况下，通过 [`$refs`](/api/instance-properties.html#refs)、[`$parent`](/api/instance-properties.html#parent) 或 [`$root`](/api/instance-properties.html#root) 访问到的公共实例与模板使用的组件内部实例是一样的。`expose` 选项将限制公共实例可以访问的 property。
 
-  由 Vue 自身定义的 property，比如 `$el` 和 `$parent`，将始终可以被公共实例访问，不需要列入。
+  由 Vue 自身定义的 property，比如 `$el` 和 `$parent`，将始终可以被公共实例访问，并不需要列出。
 
 - **用法：**
 
