@@ -1,6 +1,6 @@
 # Teleport
 
-<VideoLesson href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" title="Learn how to use teleport with Vue School">通过 Vue School 的免费课程，学习如何使用 teleport。</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/vue-3-teleport?friend=vuejs" title="通过 Vue School 学习如何使用 teleport">通过 Vue School 的免费课程学习如何使用 teleport</VideoLesson>
 
 Vue 鼓励我们通过将 UI 和相关行为封装到组件中来构建 UI。我们可以将它们嵌套在另一个内部，以构建一个组成应用程序 UI 的树。
 

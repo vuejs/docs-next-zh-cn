@@ -4,7 +4,7 @@
 
 ## 绑定 HTML Class
 
-<VideoLesson href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3?friend=vuejs" title="Free Vue.js Dynamic Classes Lesson">Watch a free video lesson on Vue School</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3?friend=vuejs" title="免费 Vue.js 动态 Class 教程">在 Vue School 上观看免费视频教程</VideoLesson>
 
 ### 对象语法
 

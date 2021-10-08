@@ -6,7 +6,7 @@
 在阅读文档之前，你应该已经熟悉了这两个 [Vue 基础](introduction.md)和[创建组件](component-basics.md)。
 :::
 
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="Learn how Composition API works in depth with Vue Mastery">在 Vue Mastery 上观看关于组合式 API 的免费视频。</VideoLesson>
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/why-the-composition-api" title="在 Vue Mastery 上深入学习组合式 API 是如何工作的">在 Vue Mastery 上观看关于组合式 API 的免费视频</VideoLesson>
 
 通过创建 Vue 组件，我们可以将界面中重复的部分连同其功能一起提取为可重用的代码段。仅此一项就可以使我们的应用在可维护性和灵活性方面走得相当远。然而，我们的经验已经证明，光靠这一点可能并不够，尤其是当你的应用变得非常大的时候——想想几百个组件。处理这样的大型应用时，共享和重用代码变得尤为重要。
 
@@ -71,7 +71,7 @@ export default {
 
 ### `setup` 组件选项
 
-<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="Learn how setup works with Vue Mastery">观看 Vue Mastery 上的免费 setup 视频。</VideoLesson>
+<VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="在 Vue Mastery 上学习 setup 是如何工作的">在 Vue Mastery 上观看关于 setup 免费视频</VideoLesson>
 
 新的 `setup` 选项在组件创建**之前**执行，一旦 `props` 被解析，就将作为组合式 API 的入口。 
 

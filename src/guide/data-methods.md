@@ -1,6 +1,6 @@
 # Data Property 和方法
 
-<VideoLesson href="https://vueschool.io/lessons/methods-in-vue-3?friend=vuejs" title="Learn how to use methods on Vue School">Learn how to work with data and methods with a free Vue School lesson</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/methods-in-vue-3?friend=vuejs" title="在 Vue School 上学习如何使用方法">通过 Vue School 的免费课程学习如何使用 data 和方法</VideoLesson>
 
 ## Data Property
 

@@ -1,6 +1,6 @@
 # 条件渲染
 
-<VideoLesson href="https://vueschool.io/lessons/conditional-rendering-in-vue-3?friend=vuejs" title="Learn how conditional rendering works with Vue School">Learn how conditional rendering works with a free lesson on Vue School</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/conditional-rendering-in-vue-3?friend=vuejs" title="在 Vue School 上学习条件渲染是如何工作的">通过 Vue School 的免费课程学习条件渲染是如何工作的</VideoLesson>
 
 ## `v-if`
 
