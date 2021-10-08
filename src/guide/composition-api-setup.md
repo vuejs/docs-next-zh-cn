@@ -113,6 +113,7 @@ export default {
 - `data`
 - `computed`
 - `methods`
+- `refs` (模板 ref)
 
 ## 结合模板使用
 
