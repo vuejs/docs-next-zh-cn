@@ -797,7 +797,7 @@ components/
 
 ### 自闭合组件<sup data-p="b">强烈推荐</sup>
 
-**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中，有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
+**在[单文件组件](../guide/single-file-component.html)、字符串模板和 [JSX](../guide/render-function.html#jsx) 中，没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。**
 
 自闭合组件表示它们不仅没有内容，而且是**刻意**没有内容。其不同之处就好比书中的一页白纸，与贴有“本页有意留白”标签的白纸。而且没有了额外的闭合标签，你的代码也将更简洁。
 
