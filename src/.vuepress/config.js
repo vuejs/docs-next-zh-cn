@@ -561,7 +561,25 @@ module.exports = {
           `<div class="custom-block info"><p class="custom-block-title">${info}</p>`,
         after: '</div>'
       }
-    ]
+    ],
+    ['container', {
+      type: 'tip',
+      defaultTitle: {
+        '/': '提示'
+      }
+    }],
+    ['container', {
+      type: 'warning',
+      defaultTitle: {
+        '/': '注意'
+      }
+    }],
+    ['container', {
+      type: 'danger',
+      defaultTitle: {
+        '/': '警告'
+      }
+    }],
   ],
   markdown: {
     lineNumbers: true,
