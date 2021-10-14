@@ -16,8 +16,11 @@
   如果需要检测一个可选的 prop 是否未被传递，你可以将其默认值设置为一个 Symbol：
 
   ```js
+  import { defineComponent } from 'vue'
+  
   const isAbsent = Symbol()
-  export default {
+  
+  export default defineComponent({
     props: {
       foo: { default: isAbsent }
     },
@@ -26,7 +29,7 @@
         // foo 没有被传入。
       }
     }
-  }
+  })
   ```
 
 - **类型声明**：
@@ -61,9 +64,9 @@
   </template>
 
   <script>
-    import { ref, reactive } from 'vue'
+    import { ref, reactive, defineComponent } from 'vue'
 
-    export default {
+    export default defineComponent({
       setup() {
         const readersNumber = ref(0)
         const book = reactive({ title: 'Vue 3 Guide' })
@@ -74,7 +77,7 @@
           book
         }
       }
-    }
+    })
   </script>
   ```
 
@@ -83,16 +86,16 @@
   ```js
   // MyBook.vue
 
-  import { h, ref, reactive } from 'vue'
+  import { h, ref, reactive, defineComponent } from 'vue'
 
-  export default {
+  export default defineComponent({
     setup() {
       const readersNumber = ref(0)
       const book = reactive({ title: 'Vue 3 Guide' })
       // 请注意，我们需要在这里显式地使用 ref 值
       return () => h('div', [readersNumber.value, book.title])
     }
-  }
+  })
   ```
 
   如果返回了渲染函数，则不能再返回其他 property。如果需要将 property 暴露给外部访问，比如通过父组件的 `ref`，可以使用 `expose`：
@@ -100,9 +103,9 @@
   ```js
   // MyBook.vue
 
-  import { h } from 'vue'
+  import { h, defineComponent } from 'vue'
 
-  export default {
+  export default defineComponent({
     setup(props, { expose }) {
       const reset = () => {
         // 某些重置逻辑
@@ -117,7 +120,7 @@
 
       return () => h('div')
     }
-  }
+  })
   ```
 
 - **参考**：[组合式 API `setup`](../guide/composition-api-setup.html)
@@ -127,9 +130,9 @@
 可以通过直接导入 `onX` 函数来注册生命周期钩子：
 
 ```js
-import { onMounted, onUpdated, onUnmounted } from 'vue'
+import { onMounted, onUpdated, onUnmounted, defineComponent } from 'vue'
 
-const MyComponent = {
+const MyComponent = defineComponent({
   setup() {
     onMounted(() => {
       console.log('mounted!')
@@ -141,7 +144,7 @@ const MyComponent = {
       console.log('unmounted!')
     })
   }
-}
+})
 ```
 
 这些生命周期钩子注册函数只能在 [`setup()`](#setup) 期间同步使用，因为它们依赖于内部的全局状态来定位当前活动的实例 (此时正在调用其 `setup()` 的组件实例)。在没有当前活动实例的情况下，调用它们将会出错。
@@ -220,15 +223,15 @@ const MyComponent = {
 :::
 
 ```ts
-import { getCurrentInstance } from 'vue'
+import { getCurrentInstance, defineComponent } from 'vue'
 
-const MyComponent = {
+const MyComponent = defineComponent({
   setup() {
     const internalInstance = getCurrentInstance()
 
     internalInstance.appContext.config.globalProperties // 访问 globalProperties
   }
-}
+})
 ```
 
 `getCurrentInstance` **只能**在 [setup](#setup) 或[生命周期钩子](#生命周期钩子)中调用。
