@@ -59,6 +59,18 @@ import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 
   如果你传递组件本身到 `is` 而不是其名字，则不需要注册。
 
+- **key:**
+
+<!-- TODO: translation -->
+
+When using <component :is="vnode"> and passing vnode of the same type, you need to provide keys:
+
+```html
+<component :is="current" :key="selected" />
+```
+
+Otherwise, you are passing two compiled vnodes of the same type to the renderer. Because they are compiled as completely static, they will not be updated at all.
+
 -  **参考：**[动态组件](../guide/component-dynamic-async.html)
 
 ## transition
