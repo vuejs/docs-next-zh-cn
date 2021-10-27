@@ -34,7 +34,7 @@ export default {
 
 ### `<template>`
 
-- 每个 `*.vue` 文件最多可同时包含一个 `<template>` 块。
+- 每个 `*.vue` 文件最多可同时包含一个顶层 `<template>` 块。
 
 - 其中的内容会被提取出来并传递给 `@vue/compiler-dom`，预编译为 JavaScript 的渲染函数，并附属到导出的组件上作为其 `render` 选项。
 

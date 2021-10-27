@@ -8,56 +8,58 @@
 
 ```js
 // router.js
-import { createRouter, createMemoryHistory, createWebHistory } from 'vue-router'
+import { createRouter } from 'vue-router'
 import MyUser from './components/MyUser.vue'
-
-const isServer = typeof window === 'undefined'
-
-const createHistory = isServer ? createMemoryHistory : createWebHistory
 
 const routes = [{ path: '/user', component: MyUser }]
 
-export default function() {
+export default function (history) {
   return createRouter({
-    history: createHistory(),
+    history,
     routes
   })
 }
 ```
 
-然后更新 `app.js`、客户端入口和服务端入口：
+然后更新客户端入口和服务端入口：
 
 ```js
-// app.js
-import { createSSRApp } from 'vue'
+// entry-client.js
+import { createApp } from 'vue'
+import { createWebHistory } from 'vue-router'
+import createRouter from './router.js'
 import App from './App.vue'
-import createRouter from './router'
 
-export default function(args) {
-  const app = createSSRApp(App)
-  const router = createRouter()
+// ...
 
+const app = createApp(App)
+
+const router = createRouter(createWebHistory())
+
+app.use(router)
+
+// ...
+```
+
+```js
+// entry-server.js
+import { createSSRApp } from 'vue'
+// server router uses a different history from the client one
+import { createMemoryHistory } from 'vue-router'
+import createRouter from './router.js'
+import App from './App.vue'
+
+export default function () {
+  const app = createSSRApp(Vue)
+  const router = createRouter(createMemoryHistory())
+  
   app.use(router)
-
+  
   return {
     app,
     router
   }
 }
-```
-
-```js
-// entry-client.js
-const { app, router } = createApp({
-  /*...*/
-})
-```
-
-```js
-// entry-server.js
-const { app, router } = createApp({
-  /*...*/
-})
 ```
 
 ## 代码分离
@@ -81,11 +83,16 @@ const routes = [
 
 ```js
 // entry-client.js
-import createApp from './app'
+import { createApp } from 'vue'
+import { createWebHistory } from 'vue-router'
+import createRouter from './router.js'
+import App from './App.vue'
 
-const { app, router } = createApp({
-  /* ... */
-})
+const app = createApp(App)
+
+const router = createRouter(createWebHistory())
+
+app.use(router)
 
 router.isReady().then(() => {
   app.mount('#app')

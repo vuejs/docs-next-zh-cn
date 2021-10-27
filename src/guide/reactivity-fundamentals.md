@@ -1,5 +1,8 @@
 # 响应性基础
 
+<!-- TODO: translation -->
+> This section uses [single-file component](single-file-component.html) syntax for code examples
+
 ## 声明响应式状态
 
 要为 JavaScript 对象创建响应式状态，可以使用 `reactive` 方法：

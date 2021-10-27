@@ -2,13 +2,14 @@
 
 除了介绍过的代码结构和 webpack 配置，我们的 Express 服务端代码同样需要改动。
 
-- 我们需要通过一个构建好的包里的 `app.js` 创建一个应用。在 webpack manifest 里可以找到其路径：
+- 我们需要通过一个构建好的包里的 `entry-server.js` 创建一个应用。在 webpack manifest 里可以找到其路径：
 
   ```js
   // server.js
   const path = require('path')
   const manifest = require('./dist/server/ssr-manifest.json')
-
+  // TODO: translation
+  // the 'app.js' name is taken from the name of the entrypoint with an added `.js` postfix
   const appPath = path.join(__dirname, './dist', 'server', manifest['app.js'])
   const createApp = require(appPath).default
   ```
@@ -78,7 +79,7 @@ server.use(
 )
 
 server.get('*', async (req, res) => {
-  const { app } = await createApp()
+  const { app } = createApp()
 
   const appContent = await renderToString(app)
 
