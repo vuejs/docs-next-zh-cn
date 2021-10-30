@@ -4,11 +4,15 @@
 
 在编写只有客户端的代码的时候，我们会假设代码每次都会允许在一个干净的上下文中。然而 Node.js 服务器是长期运行的进程。当代码第一次被导入进程时，它会被执行一次然后保留在内存里。也就是说你创建了一个单例对象，它共享于每次发来的请求之间，并带有跨请求的状态污染风险。
 
-因此，我们需要**为每个请求创建一个新的 Vue 根实例**。为了做到这一点，我们需要编写一个工厂函数来重复地执行，并为每个请求创建干净的应用实例：
+因此，我们需要**为每个请求创建一个新的 Vue 根实例**。为了做到这一点，我们需要编写一个工厂函数来重复地执行，并为每个请求创建干净的应用实例，所以服务端代码现在变成了：
 
 ```js
-// app.js
+// server.js
 const { createSSRApp } = require('vue')
+const { renderToString } = require('@vue/server-renderer')
+const express = require('express')
+
+const server = express()
 
 function createApp() {
   return createSSRApp({
@@ -20,19 +24,6 @@ function createApp() {
     template: `<div>Current user is: {{ user }}</div>`
   })
 }
-
-module.exports = {
-  createApp,
-};
-```
-
-同时我们的服务端代码现在变成了：
-
-```js
-// server.js
-const { renderToString } = require('@vue/server-renderer')
-const server = require('express')()
-const { createApp } = require('src/app.js')
 
 server.get('*', async (req, res) => {
   const app = createApp()
@@ -53,7 +44,7 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-同理其它实例 (诸如路由器或 store) 也是一样的。取代从一个模块直接导出路由器或 store 并将它们导入应用的，是在 `createApp` 创建一个干净的实例并从这个 Vue 根实例注入它们。
+同理其它实例 (诸如路由器或 store) 也是一样的。取代从一个模块直接导出路由器或 store 并将它们导入应用的，是每次有新的请求发起时都在 `createApp` 创建一个干净的实例并从这个 Vue 根实例注入它们。
 
 ## 介绍构建步骤
 
@@ -80,42 +71,44 @@ src
 ├── components
 │   ├── MyUser.vue
 │   └── MyTable.vue
-├── App.vue
-├── app.js # 通用入口
+├── App.vue # 应用的根节点
 ├── entry-client.js # 只在浏览器中运行
 └── entry-server.js # 只在服务器运行
 ```
 
-### `app.js`
+### `App.vue`
 
-`app.js` 是应用的通用入口。在只有客户端的应用里，我们会在此创建 Vue 应用实例并直接挂载到 DOM。然而，对于 SSR 来说该职责被转移到了只在客户端里运行的入口文件。`app.js` 的职责则变为了创建一个应用实例并导出它：
+<!-- TODO: translation -->
+You may have noticed we now have a file called `App.vue` in the root of our `src` folder. That's where the root component of your application will be stored. We can now safely move the application code from `server.js` to the `App.vue` file:
+
+```vue
+<template>
+  <div>Current user is: {{ user }}</div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      user: 'John Doe'
+    }
+  }
+}
+</script>
+```
+
+### `entry-client.js`
+
+此客户端入口会使用 `App.vue` 创建应用并挂载到 DOM：
 
 ```js
 import { createSSRApp } from 'vue'
 import App from './App.vue'
 
-// 导出一个创建根组件的工厂函数
-export default function(args) {
-  const app = createSSRApp(App)
-
-  return {
-    app
-  }
-}
-```
-
-### `entry-client.js`
-
-此客户端入口会使用根组件创建应用并挂载到 DOM：
-
-```js
-import createApp from './app'
-
 // client-specific bootstrapping logic...
 
-const { app } = createApp({
-  // here we can pass additional arguments to app factory
-})
+const app = createSSRApp(App)
 
 // this assumes App.vue template root element has `id="app"`
 app.mount('#app')
@@ -126,12 +119,11 @@ app.mount('#app')
 服务端入口使用了一个默认导出，它是一个可以为每次渲染重复调用的函数。目前它除了返回应用实例并不会做其它事情——但稍后我们会在这里处理服务端路由匹配和数据预获取逻辑。
 
 ```js
-import createApp from './app'
+import { createSSRApp } from 'vue'
+import App from './App.vue'
 
-export default function() {
-  const { app } = createApp({
-    /*...*/
-  })
+export default function () {
+  const app = createSSRApp(Vue)
 
   return {
     app

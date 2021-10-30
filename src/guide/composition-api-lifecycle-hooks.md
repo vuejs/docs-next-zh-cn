@@ -1,5 +1,8 @@
 # 生命周期钩子
 
+<!-- TODO: translation -->
+> This section uses [single-file component](single-file-component.html) syntax for code examples
+
 > 本指南假定你已经阅读了 [组合式 API 简介](composition-api-introduction.html)和[响应性基础](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这篇文章。
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/lifecycle-hooks" title="在 Vue Mastery 上学习生命周期钩子是如何工作的">在 Vue Mastery 上观看关于生命周期钩子的免费视频</VideoLesson>

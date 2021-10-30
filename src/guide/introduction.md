@@ -220,12 +220,16 @@ Vue.createApp(ListRendering).mount('#list-rendering')
 在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `App` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
 
 ```js
-// 创建 Vue 应用
-const app = Vue.createApp(...)
-
-// 定义名为 todo-item 的新组件
-app.component('todo-item', {
+const TodoItem = {
   template: `<li>This is a todo</li>`
+}
+
+// 创建 Vue 应用
+const app = Vue.createApp({
+  components: {
+    TodoItem // 注册一个新组件
+  },
+  ... // 组件的其它 property
 })
 
 // 挂载 Vue 应用
