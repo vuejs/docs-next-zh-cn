@@ -4,7 +4,32 @@
 
 在编写只有客户端的代码的时候，我们会假设代码每次都会允许在一个干净的上下文中。然而 Node.js 服务器是长期运行的进程。当代码第一次被导入进程时，它会被执行一次然后保留在内存里。也就是说你创建了一个单例对象，它共享于每次发来的请求之间，并带有跨请求的状态污染风险。
 
-因此，我们需要**为每个请求创建一个新的 Vue 根实例**。为了做到这一点，我们需要编写一个工厂函数来重复地执行，并为每个请求创建干净的应用实例，所以服务端代码现在变成了：
+```js
+// 反面例子
+import app from './app.js'
+
+server.get('*', async (req, res) => {
+  // 应用现在是在所有用户之间共享的
+  const result = await renderToString(app)
+  // ...
+})
+```
+
+```js
+// 正面例子
+function createApp() {
+  return createSSRApp(/* ... */)
+}
+
+server.get('*', async (req, res) => {
+  // 每个用户拥有自己的应用
+  const app = createApp()
+  const result = await renderToString(app)
+  // ...
+})
+```
+
+因此，我们需要**为每个请求创建一个新的 Vue 根实例**。为了做到这一点，我们需要编写一个工厂函数来重复地执行，并为每个请求创建干净的应用实例：
 
 ```js
 // server.js

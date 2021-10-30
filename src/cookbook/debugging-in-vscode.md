@@ -6,10 +6,7 @@
 
 ## 先决条件
 
-请确保你安装了 VS Code 以及适合的浏览器，并且安装激活了最新版的相应的 Debugger 扩展：
-
-- [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
-- [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-firefox-debug)
+请确保你安装了 VS Code 以及适合的浏览器。
 
 请通过 [vue-cli](https://github.com/vuejs/vue-cli)，遵循它的 [Vue CLI 教程](https://cli.vuejs.org/)并创建一个项目。然后进入这个新创建的应用的目录，打开 VS Code。
 

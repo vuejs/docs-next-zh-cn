@@ -10,6 +10,8 @@
 - [Vue on Repl.it](https://replit.com/@templates/VueJS-with-Vite)
 - [Vue on Codepen](https://codepen.io/pen/editor/vue)
 - [Vue on StackBlitz](https://stackblitz.com/fork/vue)
+- [Vue on Components.studio](https://components.studio/create/vue3)
+- [Vue on WebComponents.dev](https://webcomponents.dev/create/cevue)
 
 在报告问题时也建议通过这些在线演练场来提供复现。
 
