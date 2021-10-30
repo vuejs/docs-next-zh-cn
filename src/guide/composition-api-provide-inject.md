@@ -1,7 +1,6 @@
 # Provide / Inject
 
-<!-- TODO: translation -->
-> This section uses [single-file component](single-file-component.html) syntax for code examples
+> 本章节的代码示例使用[单文件组件](single-file-component.html)语法
 
 > 本指南假定你已经阅读了 [Provide / Inject](component-provide-inject.html)、[组合式 API 介绍](composition-api-introduction.html)和[响应性基础](reactivity-fundamentals.html)。如果你不熟悉组合式 API，请先阅读这篇文章。
 

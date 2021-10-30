@@ -78,8 +78,7 @@ src
 
 ### `App.vue`
 
-<!-- TODO: translation -->
-You may have noticed we now have a file called `App.vue` in the root of our `src` folder. That's where the root component of your application will be stored. We can now safely move the application code from `server.js` to the `App.vue` file:
+你可能注意到了，我们的 `src` 文件夹根节点中现在有一个名为 `App.vue` 的文件。这就是存放应用根组件的地方。我们现在可以安全地将应用代码从 `server.js` 转移到 `App.vue` 文件中：
 
 ```vue
 <template>

@@ -8,8 +8,8 @@
   // server.js
   const path = require('path')
   const manifest = require('./dist/server/ssr-manifest.json')
-  // TODO: translation
-  // the 'app.js' name is taken from the name of the entrypoint with an added `.js` postfix
+
+  // 'app.js' 是以入口的名字加上 `.js` 后缀命名的
   const appPath = path.join(__dirname, './dist', 'server', manifest['app.js'])
   const createApp = require(appPath).default
   ```

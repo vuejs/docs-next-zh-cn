@@ -1,7 +1,6 @@
 # 响应性基础
 
-<!-- TODO: translation -->
-> This section uses [single-file component](single-file-component.html) syntax for code examples
+> 本章节的代码示例使用[单文件组件](single-file-component.html)语法
 
 ## 声明响应式状态
 
