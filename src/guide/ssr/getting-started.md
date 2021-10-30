@@ -4,7 +4,7 @@
 
 ## 安装
 
-为了创建一个服务端渲染的应用，我们需要安装 `@vue/server-renderer`：
+要创建一个服务端渲染应用，我们需要安装 `@vue/server-renderer`：
 
 ```bash
 npm install @vue/server-renderer
@@ -16,11 +16,11 @@ yarn add @vue/server-renderer
 
 - 推荐使用的 Node.js 版本是 12+。
 - `@vue/server-renderer` 和 `vue` 的版本号必须匹配。
-- `@vue/server-renderer` 依赖一些 Node.js 的原生模块，因此只能用在 Node.js 中。我们未来可以提供一个简单的可运行在其它 JavaScript 运行时中的构建版本。
+- `@vue/server-renderer` 依赖一些 Node.js 的原生模块，因此只能在 Node.js 中使用。我们未来可能会提供一个更简单的、可运行在其它 JavaScript 运行时中的构建版本。
 
 ## 渲染一个 Vue 应用
 
-和使用 `createApp` 创建的只有客户端的 Vue 应用不同，创建一个服务端渲染应用需要使用的是 `createSSRApp`：
+和使用 `createApp` 创建的、只能在客户端运行的 Vue 应用不同，创建一个服务端渲染应用需要使用 `createSSRApp`：
 
 ```js
 const { createSSRApp } = require('vue')
@@ -55,7 +55,7 @@ const appContent = await renderToString(app)
 
 ## 和服务器集成
 
-在这个示例中我们使用 [Express](https://expressjs.com/) 来运行一个应用：
+在这个示例中，我们将使用 [Express](https://expressjs.com/) 来运行一个应用：
 
 ```bash
 npm install express
@@ -96,4 +96,4 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-现在，当运行这段 Node.js 脚本的时候，我们可以在 `localhost:8080` 看到一个静态的 HTML 页面。然而，这段代码并不是 *hydrate* 的：Vue 还没有将这段发送自服务器的静态 HTML 转换为响应客户端数据变化的动态 DOM。这部分会被涵盖在[客户端 hydration](hydration.html) 章节中。
+现在，当运行这段 Node.js 脚本的时候，我们可以在 `localhost:8080` 看到一个静态的 HTML 页面。然而，这段代码并不是 *hydrate* 的：Vue 还没有将这段发送自服务器的静态 HTML 转换为能够响应客户端数据变化的动态 DOM。这部分会在[客户端 hydration](hydration.html) 章节中涵盖。
