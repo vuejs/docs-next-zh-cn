@@ -96,4 +96,4 @@ server.get('*', async (req, res) => {
 server.listen(8080)
 ```
 
-现在，当运行这段 Node.js 脚本的时候，我们可以在 `localhost:8080` 看到一个静态的 HTML 页面。然而，这段代码并不是 *hydrate* 的：Vue 还没有将这段发送自服务器的静态 HTML 转换为能够响应客户端数据变化的动态 DOM。这部分会在[客户端 hydration](hydration.html) 章节中涵盖。
+现在，当运行这段 Node.js 脚本的时候，我们可以在 `localhost:8080` 看到一个静态的 HTML 页面。然而，这段代码是未*激活*的：Vue 还没有将这段发送自服务器的静态 HTML 转换为能够响应客户端数据变化的动态 DOM。这部分会在[客户端激活](hydration.html) 章节中涵盖。
