@@ -1,6 +1,6 @@
 # 构建配置
 
-一个服务端渲染项目的 webpack 配置和一个只有客户端的项目类似。如果你不熟悉 webpack 配置，你可以在 [Vue CLI](https://cli.vuejs.org/zh/guide/webpack.html#webpack-相关) 或[手动配置 Vue Loader](https://vue-loader.vuejs.org/zh/guide/#手动设置) 的文档中找到更多信息。
+一个服务端渲染项目的 webpack 配置和一个仅针对客户端的项目类似。如果你不熟悉 webpack 配置，你可以在 [Vue CLI](https://cli.vuejs.org/zh/guide/webpack.html#webpack-相关) 或[手动配置 Vue Loader](https://vue-loader.vuejs.org/zh/guide/#手动设置) 的文档中找到更多信息。
 
 ## 和客户端构建版本的关键不同
 
