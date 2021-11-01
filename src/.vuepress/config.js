@@ -244,7 +244,7 @@ const sidebar = {
     }
   ],
   ssr: [
-    ['/guide/ssr/introduction', 'Introduction'],
+    ['/guide/ssr/introduction', '介绍'],
     '/guide/ssr/getting-started',
     '/guide/ssr/universal',
     '/guide/ssr/structure',
