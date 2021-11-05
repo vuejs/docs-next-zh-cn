@@ -1,6 +1,6 @@
 # 组件基础
 
-## 基本实例
+## 基本示例
 
 这里有一个 Vue 组件的示例：
 
@@ -413,7 +413,8 @@ app.component('alert-box', {
 - `<script type="text/x-template">`
 :::
 
-### Element Placement Restrictions
+### 元素位置受限
+
 有些 HTML 元素，诸如 `<ul>`、`<ol>`、`<table>` 和 `<select>`，对于哪些元素可以出现在其内部是有严格限制的。而有些元素，诸如 `<li>`、`<tr>` 和 `<option>`，只能出现在其它某些特定的元素内部。
 
 这会导致我们使用这些有约束条件的元素时遇到一些问题。例如：
@@ -423,6 +424,7 @@ app.component('alert-box', {
   <blog-post-row></blog-post-row>
 </table>
 ```
+
 这个自定义组件 `<blog-post-row>` 会被作为无效的内容提升到外部，并导致最终渲染结果出错。我们可以使用特殊的 [`is` attribute](/api/special-attributes.html#is) 作为一个变通的办法：
 
 ```html
@@ -435,12 +437,12 @@ app.component('alert-box', {
 当它用于原生 HTML 元素时，`is` 的值必须以 `vue:` 开头，才可以被解释为 Vue 组件。这是避免和原生[自定义元素](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)混淆。
 :::
 
-### Case Insensitivity
+### 大小写不敏感
 
 另外，HTML attribute 名不区分大小写，因此浏览器将所有大写字符解释为小写。这意味着当你在 DOM 模板中使用时，驼峰 prop 名称和 event 处理器参数需要使用它们的 kebab-cased (横线字符分隔) 等效值：
 
 ```js
-//  在JavaScript中的驼峰
+//  在 JavaScript 中是驼峰式
 
 app.component('blog-post', {
   props: ['postTitle'],
@@ -451,7 +453,7 @@ app.component('blog-post', {
 ```
 
 ```html
-<!-- 在HTML则是横线字符分割 -->
+<!-- 在 HTML 中则是横线字符分割 -->
 
 <blog-post post-title="hello!"></blog-post>
 ```
