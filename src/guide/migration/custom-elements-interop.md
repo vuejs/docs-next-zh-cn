@@ -52,11 +52,11 @@ Vue.config.ignoredElements = ['plastic-button']
   ]
   ```
 
-- 如果使用动态模板编译，请通过 `app.config.isCustomElement` 传递：
+- 如果使用动态模板编译，请通过 `app.config.compilerOptions.isCustomElement` 传递：
 
   ```js
   const app = Vue.createApp({})
-  app.config.isCustomElement = tag => tag === 'plastic-button'
+  app.config.compilerOptions.isCustomElement = tag => tag === 'plastic-button'
   ```
 
   需要注意的是，运行时配置只会影响运行时的模板编译——它不会影响预编译的模板。
@@ -125,6 +125,6 @@ Vue.config.ignoredElements = ['plastic-button']
 
 ## 迁移策略
 
-- 将 `config.ignoredElements` 替换为 `vue-loader` 的 `compilerOptions` (使用构建步骤) 或 `app.config.isCustomElement` (使用动态模板编译)
+- 将 `config.ignoredElements` 替换为 `vue-loader` 的 `compilerOptions` (使用构建步骤) 或 `app.config.compilerOptions.isCustomElement` (使用动态模板编译)
 
 - 将所有非针对 `<component>` 标签的 `is` 用法更改为 `<component is="...">` (对于 SFC 模板) 或为其添加 `vue:` 前缀 (对于 DOM 内模板)。
