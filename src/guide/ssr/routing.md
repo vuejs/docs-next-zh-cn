@@ -25,14 +25,14 @@ export default function (history) {
 
 ```js
 // entry-client.js
-import { createApp } from 'vue'
+import { createSSRApp } from 'vue'
 import { createWebHistory } from 'vue-router'
 import createRouter from './router.js'
 import App from './App.vue'
 
 // ...
 
-const app = createApp(App)
+const app = createSSRApp(App)
 
 const router = createRouter(createWebHistory())
 
@@ -50,7 +50,7 @@ import createRouter from './router.js'
 import App from './App.vue'
 
 export default function () {
-  const app = createSSRApp(Vue)
+  const app = createSSRApp(App)
   const router = createRouter(createMemoryHistory())
   
   app.use(router)
@@ -83,12 +83,12 @@ const routes = [
 
 ```js
 // entry-client.js
-import { createApp } from 'vue'
+import { createSSRApp } from 'vue'
 import { createWebHistory } from 'vue-router'
 import createRouter from './router.js'
 import App from './App.vue'
 
-const app = createApp(App)
+const app = createSSRApp(App)
 
 const router = createRouter(createWebHistory())
 
