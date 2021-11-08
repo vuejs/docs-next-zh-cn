@@ -10,7 +10,7 @@
 
 ## 组件生命周期钩子
 
-因为这里没有动态更新，唯一会在 SSR 过程中被调用的[生命周期钩子](/guide/instance.html#生命周期钩子)是 `beforeCreate` 和 `created`。这意味着诸如 `beforeMount` 或 `mounted` 的其它生命周期钩子中的任何代码将只会在客户端执行。
+因为这里没有动态更新，唯一会在 SSR 过程中被调用的[生命周期钩子](/guide/instance.html#生命周期钩子)是 `beforeCreate` 和 `created`。这意味着其它生命周期钩子 (如 `beforeMount` 或 `mounted`) 中的任何代码将只会在客户端执行。
 
 另一个值得注意的是你应该避免代码在 `beforeCreate` 或 `created` 中产生全局的副作用，例如通过 `setInterval` 设置定时器。在仅针对客户端的代码中，我们可以设置定时器，然后在 `beforeUnmount` 或 `unmounted` 时撤掉。然而，因为销毁相关的钩子在 SSR 过程中不会被调用，这些定时器就会永久地保留下来。为了避免这种情况，请把副作用代码移至 `beforeMount` 或 `mounted` 以代之。
 
