@@ -1,6 +1,6 @@
 # 服务器配置
 
-除了介绍过的代码结构和 webpack 配置，我们的 Express 服务端代码同样需要改动。
+除了介绍过的[代码结构](./structure.html)和 [webpack 配置](./build-config.html)，我们的 Express 服务端代码同样需要改动。
 
 - 我们需要通过一个构建好的包里的 `entry-server.js` 创建一个应用。在 webpack manifest 里可以找到其路径：
 
@@ -56,7 +56,7 @@
   })
   ```
 
-以下是 Express 服务器完整的代码：
+以下是 Express 服务器的完整代码：
 
 ```js
 const path = require('path')
