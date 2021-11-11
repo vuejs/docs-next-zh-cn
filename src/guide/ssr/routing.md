@@ -2,9 +2,9 @@
 
 ## 基于 `vue-router` 的路由
 
-你可能已经注意到我们的服务端代码使用了一个 `*` 处理函数来接收任意 URL。这允许我们传递被访问的 URL 到 Vue 应用，并同时为客户端和服务端复用相同的路由配置！
+你可能已经注意到我们的服务端代码使用了一个 `*` 处理函数来接收任意 URL。这允许我们将被访问的 URL 传递给 Vue 应用，并在客户端和服务端之间复用相同的路由配置！
 
-这里推荐使用官方的 [vue-router](https://github.com/vuejs/vue-router-next)。让我们先创建一个路由文件。注意和应用实例类似，每个请求都需要一个干净的路由实例，因此文件应该导出一个 `createRouter` 函数：
+这里推荐使用官方的 [vue-router](https://github.com/vuejs/vue-router-next)。让我们先创建一个路由文件。注意和应用实例类似，每个请求都需要有一个干净的路由实例，因此该文件应该导出一个 `createRouter` 函数：
 
 ```js
 // router.js
@@ -66,14 +66,14 @@ export default function () {
 
 代码分离、或懒加载部分应用，可以帮助缩减浏览器初始化渲染所需下载的资源的尺寸，并大幅优化大型应用的 TTI (time-to-interactive，可交互时间)。其关键是在初始化首屏的时候“按需加载”。
 
-Vue Router 提供了[懒加载支持](https://next.router.vuejs.org/zh/guide/advanced/lazy-loading.html)，允许 [webpack 在此进行代码分离](https://webpack.js.org/guides/code-splitting-async/)。你仅需要做的是：
+Vue Router 提供了[懒加载支持](https://next.router.vuejs.org/zh/guide/advanced/lazy-loading.html)，允许 [webpack 在此进行代码分离](https://webpack.js.org/guides/code-splitting-async/)。你仅需要：
 
 ```js
-// 修改这里……
+// 将此处修改……
 import MyUser from './components/MyUser.vue'
 const routes = [{ path: '/user', component: MyUser }]
 
-// 变成这里：
+// 成为：
 const routes = [
   { path: '/user', component: () => import('./components/MyUser.vue') }
 ]
