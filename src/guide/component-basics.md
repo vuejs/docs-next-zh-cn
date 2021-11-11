@@ -23,7 +23,7 @@ app.component('button-counter', {
 ```
 
 ::: info
-在这里演示的是一个简单的示例，但是在典型的 Vue 应用中，我们使用单个文件组件而不是字符串模板。你可以[在本节](single-file-component.html)找到有关它们的更多信息。
+在这里演示的是一个简单的示例，但是在典型的 Vue 应用中，我们使用单文件组件而不是字符串模板。你可以[在本节](single-file-component.html)找到有关它们的更多信息。
 :::
 
 组件是带有名称的可复用实例，在这个例子中是 `<button-counter>`。我们可以把这个组件作为一个根实例中的自定义元素来使用：
@@ -39,7 +39,7 @@ app.mount('#components-demo')
 ```
 <common-codepen-snippet title="Component basics" slug="abORVEJ" tab="js,result" :preview="false" />
 
-因为组件是可复用的组件实例，所以它们与根实例接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。
+因为组件是可复用的实例，所以它们与根实例接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。
 
 ## 组件的复用
 
@@ -98,7 +98,7 @@ app.mount('#blog-post-demo')
 
 当一个值被传递给一个 prop attribute 时，它就成为该组件实例中的一个 property。该 property 的值可以在模板中访问，就像任何其他组件 property 一样。
 
-一个组件默认可以拥有任意数量的 prop，无论任何值都可以传递给 prop。
+一个组件可以拥有任意数量的 prop，并且在默认情况下，无论任何值都可以传递给 prop。
 
 ```html
 <div id="blog-post-demo" class="demo">
@@ -149,13 +149,13 @@ app.mount('#blog-posts-demo')
 
 如上所示，你会发现我们可以使用 `v-bind` 来动态传递 prop。这在你一开始不清楚要渲染的具体内容，是非常有用的。
 
-到目前为止，关于 prop 你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把 [prop](component-props.html) 读完。
+到目前为止，关于 prop 你需要了解的大概就这些了，如果你阅读完本页内容并掌握了它的内容，我们会推荐你再回来把 [Props](component-props.html) 读完。
 
 ## 监听子组件事件
 
 我们在开发 `<blog-post>` 组件时，它的一些功能可能需要与父级组件进行沟通。例如我们可能会引入一个辅助功能来放大博文的字号，同时让页面的其它部分保持默认的字号。
 
-在其父组件中，我们可以通过添加一个 `postFontSize` 数据 property 来支持这个功能：
+在其父组件中，我们可以通过添加一个 `postFontSize` data property 来支持这个功能：
 
 ```js
 const App = {
@@ -222,7 +222,7 @@ app.component('blog-post', {
 </button>
 ```
 
-多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级组件能够接收事件并更新 `postFontSize` 值。
+多亏了 `@enlarge-text="postFontSize += 0.1"` 监听器，父级组件能够接收事件并更新 `postFontSize` 的值。
 
 <common-codepen-snippet title="Component basics: emitting events" slug="KKpGyrp" tab="result" :preview="false" />
 
@@ -344,7 +344,7 @@ app.component('custom-input', {
 })
 ```
 
-现在你只需要了解自定义组件事件，但一旦你读完本页并对其内容还觉得不错，我们建议你稍后再阅读有关[自定义事件](component-custom-events.md)
+现在你只需要了解自定义组件事件，但一旦你读完本页并对其内容还觉得不错，我们建议你稍后再阅读有关[自定义事件](component-custom-events.md)的完整指南。
 
 ## 通过插槽分发内容
 
@@ -403,7 +403,7 @@ app.component('alert-box', {
 
 ## 解析 DOM 模板时的注意事项
 
-如果想在 DOM 中直接书写 Vue 模板，Vue 不得不从 DOM 中获取字符串。这会因为浏览器的原生 HTML 解析行为而导致一些小问题。
+如果想在 DOM 中直接书写 Vue 模板，Vue 将不得不从 DOM 中获取字符串。这会因为浏览器的原生 HTML 解析行为而导致一些小问题。
 
 :::tip
 应该注意的是，下面讨论的限制仅适用于直接在 DOM 中编写模板的情况。它们不适用于以下来源的字符串模板：
