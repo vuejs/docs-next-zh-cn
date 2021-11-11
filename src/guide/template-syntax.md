@@ -166,7 +166,7 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 <!-- 缩写 -->
 <a @click="doSomething"> ... </a>
 
-<!-- 动态参数的缩写 (2.6.0+) -->
+<!-- 动态参数的缩写 -->
 <a @[event]="doSomething"> ... </a>
 ```
 
