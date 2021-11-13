@@ -1,5 +1,9 @@
 # 单文件组件
 
+<!-- TODO: translation -->
+
+<VideoLesson href="https://vueschool.io/lessons/vue-3-introduction-to-single-file-components?friend=vuejs" title="Free Vue.js Single File Components Lesson">Learn about single file components with a free video lesson on Vue School</VideoLesson>
+
 ## 介绍
 
 Vue 单文件组件（又名 `*.vue` 文件，缩写为 **SFC**）是一种特殊的文件格式，它允许将 Vue 组件的模板、逻辑 **与** 样式封装在单个文件中。下面是 SFC 示例：

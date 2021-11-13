@@ -270,10 +270,13 @@ vm.selected.number // => 123
 如果想自动将用户的输入值转为数值类型，可以给 `v-model` 添加 `number` 修饰符：
 
 ```html
-<input v-model.number="age" type="number" />
+<input v-model.number="age" type="text" />
 ```
 
-这通常很有用，因为即使在 `type="number"` 时，HTML 输入元素的值也总会返回字符串。如果这个值无法被 `parseFloat()` 解析，则会返回原始的值。
+<!-- 这通常很有用，因为即使在 `type="number"` 时，HTML 输入元素的值也总会返回字符串。如果这个值无法被 `parseFloat()` 解析，则会返回原始的值。 -->
+<!-- TODO: translation -->
+
+This is often useful when the input type is `text`. If the input type is `number`, Vue can automatically convert the raw string value to a number, and you don't need to add the `.number` modifier to `v-model`. If the value cannot be parsed with `parseFloat()`, then the original value is returned.
 
 ### `.trim`
 

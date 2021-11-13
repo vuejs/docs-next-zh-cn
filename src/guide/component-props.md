@@ -2,6 +2,10 @@
 
 > 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
+<!-- TODO: translation -->
+
+<VideoLesson href="https://vueschool.io/lessons/vue-3-reusable-components-with-props?friend=vuejs" title="Free Vue.js Component Props Lesson">Learn how component props work with a free lesson on Vue School</VideoLesson>
+
 ## Prop 类型
 
 到这里，我们只看到了以字符串数组形式列出的 prop：

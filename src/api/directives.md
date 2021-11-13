@@ -35,7 +35,7 @@
 - **示例**：
 
   ```html
-  <div v-html="html"></div>
+  <div v-html="'<h1>Hello World</h1>'"></div>
   ```
 
 - **参考**：[数据绑定语法 - 插值](/guide/template-syntax.html#原始-html)

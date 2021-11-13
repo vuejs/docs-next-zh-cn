@@ -1,5 +1,9 @@
 # 组件基础
 
+<!-- TODO: translation -->
+
+<VideoLesson href="https://vueschool.io/courses/vue-js-3-components-fundamentals?friend=vuejs" title="Free Vue.js Components Fundamentals Course">Learn component basics with a free video course on Vue School</VideoLesson>
+
 ## 基本示例
 
 这里有一个 Vue 组件的示例：

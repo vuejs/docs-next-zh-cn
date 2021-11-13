@@ -2,6 +2,10 @@
 
 > 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你对组件还不太了解，推荐你先阅读它。
 
+<!-- TODO: translation -->
+
+<VideoLesson href="https://vueschool.io/lessons/vue-3-component-slots?friend=vuejs" title="Free Vue.js Slots lesson">Learn slot basics with a free lesson on Vue School</VideoLesson>
+
 ## 插槽内容
 
 Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web Components 规范草案](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md)，将 `<slot>` 元素作为承载分发内容的出口。
