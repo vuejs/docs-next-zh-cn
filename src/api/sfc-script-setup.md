@@ -131,19 +131,17 @@ import * as Form from './form-components'
 </template>
 ```
 
-<!-- TODO: translation -->
+## 使用自定义指令
 
-## Using Custom Directives
+全局注册的自定义指令将以符合预期的方式工作，且本地注册的指令可以直接在模板中使用，就像上文所提及的组件一样。
 
-Globally registered custom directives just work as expected, and local ones can be used directly in the template, much like we explained above for components.
-
-But there's one restriction to be aware of: You must name local custom directives according to the following schema: `vNameOfDirective` in order for them to be directly usable in the template.
+但这里有一个需要注意的限制：必须以 `vNameOfDirective` 的形式来命名本地自定义指令，以使得它们可以直接在模板中使用。
 
 ```html
 <script setup>
 const vMyDirective = {
   beforeMount: (el) => {
-    // do something with the element
+    // 在元素上做些操作
   }
 }
 </script>
@@ -153,7 +151,7 @@ const vMyDirective = {
 ```
 ```html
 <script setup>
-  // imports also work, and can be renamed to fit the required naming schema
+  // 导入的指令同样能够工作，并且能够通过重命名来使其符合命名规范
   import { myDirective as vMyDirective } from './MyDirective.js'
 </script>
 ```

@@ -61,19 +61,17 @@ import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 
   如果你传递组件本身到 `is` 而不是其名字，则不需要注册。
 
-<!-- TODO: translation -->
+- **结合 VNode 的用法**
 
-- **Usage with VNodes:**
-
-  In advanced use cases, it can sometimes be useful to render an existing VNode via a template. Using a `<component>` makes this possible, but it should be seen as an escape hatch, used to avoid rewriting the entire template as a `render` function.
+  在高阶使用场景中，通过模板来渲染现有的 VNode 有时候会是很有用的。通过 `<component>` 可以实现这种场景，但它应该被视为一种回退策略，用来避免将整个模板改写为 `render` 函数。
 
   ```html
   <component :is="vnode" :key="aSuitableKey" />
   ```
 
-  A caveat of mixing VNodes and templates in this way is that you need to provide a suitable `key` attribute. The VNode will be considered static, so any updates will be ignored unless the `key` changes. The `key` can be on the VNode or the `<component>` tag, but either way it must change every time you want the VNode to re-render. This caveat doesn't apply if the nodes have different types, e.g. changing a `span` to a `div`.
+  以这种方式混用 VNode 与模板的注意事项是你需要提供一个合适的 `key` attribute。VNode 将被认为是静态的，所以除非 `key` 发生变化，任何更新都将被忽略。`key` 可以设置在 VNode 或者 `<component>` 标签上，但无论哪种方式，你都需要在想要 VNode 重新渲染时更改它。如果这些节点具有不同的类型，比如 `span` 更改为 `div`，那么这个注意事项将不适用。
 
--  **参考：**[动态组件](../guide/component-dynamic-async.html)
+- **参考：**[动态组件](../guide/component-dynamic-async.html)
 
 ## transition
 
