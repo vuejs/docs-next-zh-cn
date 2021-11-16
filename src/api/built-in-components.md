@@ -69,7 +69,7 @@ import { KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
   <component :is="vnode" :key="aSuitableKey" />
   ```
 
-  以这种方式混用 VNode 与模板的注意事项是你需要提供一个合适的 `key` attribute。VNode 将被认为是静态的，所以除非 `key` 发生变化，任何更新都将被忽略。`key` 可以设置在 VNode 或者 `<component>` 标签上，但无论哪种方式，你都需要在想要 VNode 重新渲染时更改它。如果这些节点具有不同的类型，比如将 `span` 更改为 `div`，那么这个注意事项将不适用。
+  以这种方式混用 VNode 与模板的注意事项是你需要提供一个合适的 `key` attribute。VNode 将被认为是静态的，所以除非 `key` 发生变化，任何更新都将被忽略。`key` 可以设置在 VNode 或者 `<component>` 标签上，但无论哪种方式，你都需要在想要 VNode 重新渲染时更改它。如果这些节点具有不同的类型，比如将 `span` 更改为 `div`，那么本注意事项将不适用。
 
 - **参考：**[动态组件](../guide/component-dynamic-async.html)
 
