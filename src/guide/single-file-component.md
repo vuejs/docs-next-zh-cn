@@ -1,8 +1,6 @@
 # 单文件组件
 
-<!-- TODO: translation -->
-
-<VideoLesson href="https://vueschool.io/lessons/vue-3-introduction-to-single-file-components?friend=vuejs" title="Free Vue.js Single File Components Lesson">Learn about single file components with a free video lesson on Vue School</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/vue-3-introduction-to-single-file-components?friend=vuejs" title="Free Vue.js Single File Components Lesson">通过 Vue School 上的免费视频课程学习单文件组件</VideoLesson>
 
 ## 介绍
 

@@ -1,8 +1,6 @@
 # 组件基础
 
-<!-- TODO: translation -->
-
-<VideoLesson href="https://vueschool.io/courses/vue-js-3-components-fundamentals?friend=vuejs" title="Free Vue.js Components Fundamentals Course">Learn component basics with a free video course on Vue School</VideoLesson>
+<VideoLesson href="https://vueschool.io/courses/vue-js-3-components-fundamentals?friend=vuejs" title="Free Vue.js Components Fundamentals Course">通过 Vue School 上的免费课程学习组件基础</VideoLesson>
 
 ## 基本示例
 

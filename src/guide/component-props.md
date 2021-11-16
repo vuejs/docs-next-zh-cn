@@ -2,9 +2,7 @@
 
 > 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 
-<!-- TODO: translation -->
-
-<VideoLesson href="https://vueschool.io/lessons/vue-3-reusable-components-with-props?friend=vuejs" title="Free Vue.js Component Props Lesson">Learn how component props work with a free lesson on Vue School</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/vue-3-reusable-components-with-props?friend=vuejs" title="Free Vue.js Component Props Lesson">通过 Vue School 上的免费课程学习组件 prop 是如何工作的</VideoLesson>
 
 ## Prop 类型
 
