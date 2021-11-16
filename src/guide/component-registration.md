@@ -1,8 +1,6 @@
 # 组件注册
 
-<!-- TODO: translation -->
-
-<VideoLesson href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components?friend=vuejs" title="Free Vue.js Component Registration lesson">Learn how component registration works with a free lesson on Vue School</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components?friend=vuejs" title="Free Vue.js Component Registration lesson">通过 Vue School 上的免费课程学习组件注册是如何工作的</VideoLesson>
 
 > 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
 

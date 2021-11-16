@@ -273,10 +273,7 @@ vm.selected.number // => 123
 <input v-model.number="age" type="text" />
 ```
 
-<!-- 这通常很有用，因为即使在 `type="number"` 时，HTML 输入元素的值也总会返回字符串。如果这个值无法被 `parseFloat()` 解析，则会返回原始的值。 -->
-<!-- TODO: translation -->
-
-This is often useful when the input type is `text`. If the input type is `number`, Vue can automatically convert the raw string value to a number, and you don't need to add the `.number` modifier to `v-model`. If the value cannot be parsed with `parseFloat()`, then the original value is returned.
+当输入类型为 `text` 时这通常很有用。如果输入类型是 `number`，Vue 能够自动将原始字符串转换为数字，无需为 `v-model` 添加 `.number` 修饰符。如果这个值无法被 `parseFloat()` 解析，则返回原始的值。
 
 ### `.trim`
 
