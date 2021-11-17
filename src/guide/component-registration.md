@@ -2,7 +2,7 @@
 
 <VideoLesson href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components?friend=vuejs" title="Free Vue.js Component Registration lesson">通过 Vue School 上的免费课程学习组件注册是如何工作的</VideoLesson>
 
-> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
+> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你对组件还不太了解，推荐你先阅读它。
 
 ## 组件名
 
@@ -29,7 +29,7 @@ app.component('my-component-name', {
 
 ### 组件名大小写
 
-在字符串模板或单个文件组件中定义组件时，定义组件名的方式有两种：
+在字符串模板或单文件组件中定义组件时，定义组件名的方式有两种：
 
 #### 使用 kebab-case
 
@@ -39,7 +39,7 @@ app.component('my-component-name', {
 })
 ```
 
-当使用 kebab-case (短横线分隔命名) 定义一个组件时，你也必须在引用这个自定义元素时使用 kebab-case，例如 `<my-component-name>`。
+当使用 kebab-case (短横线分隔命名) 定义一个组件时，你在引用这个自定义元素时也必须使用 kebab-case，例如 `<my-component-name>`。
 
 #### 使用 PascalCase
 
@@ -48,6 +48,7 @@ app.component('MyComponentName', {
   /* ... */
 })
 ```
+
 当使用 PascalCase (首字母大写命名) 定义一个组件时，你在引用这个自定义元素时两种命名法都可以使用。也就是说 `<my-component-name>` 和 `<MyComponentName>` 都是可接受的。注意，尽管如此，直接在 DOM (即非字符串的模板) 中使用时只有 kebab-case 是有效的。
 
 ## 全局注册
@@ -160,7 +161,7 @@ export default {
 
 如果你还在阅读，说明你使用了诸如 Babel 和 webpack 的模块系统。在这些情况下，我们推荐创建一个 `components` 目录，并将每个组件放置在其各自的文件中。
 
-然后你需要在局部注册之前导入每个你想使用的组件。例如，在一个假设的 `ComponentB.js` 或 `ComponentB.vue` 文件中：
+然后你需要在局部注册之前导入每个你想使用的组件。例如，假设在 `ComponentB.js` 或 `ComponentB.vue` 文件中：
 
 ```js
 import ComponentA from './ComponentA'
