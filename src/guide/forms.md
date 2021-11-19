@@ -7,7 +7,7 @@
 你可以用 v-model 指令在表单 `<input>`、`<textarea>` 及 `<select>` 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。尽管有些神奇，但 `v-model` 本质上不过是语法糖。它负责监听用户的输入事件来更新数据，并在某种极端场景下进行一些特殊处理。
 
 :::tip 提示
-`v-model` 会忽略所有表单元素的 `value`、`checked`、`selected` attribute 的初始值而总是将当前活动实例的数据作为数据来源。你应该通过 JavaScript 在组件的 `data` 选项中声明初始值。
+`v-model` 会忽略所有表单元素的 `value`、`checked`、`selected` attribute 的初始值。它将始终将当前活动实例的数据作为数据来源。你应该通过 JavaScript 在组件的 `data` 选项中声明初始值。
 :::
 
 `v-model` 在内部为不同的输入元素使用不同的 property 并抛出不同的事件：
@@ -19,7 +19,7 @@
 <span id="vmodel-ime-tip"></span>
 
 :::tip 提示
-对于需要使用[输入法](https://en.wikipedia.org/wiki/Input_method) (如中文、日文、韩文等) 的语言，你会发现 `v-model` 不会在输入法组织文字过程中得到更新。如果你也想响应这些更新，请使用 `input` 事件监听器和 `value` 绑定，而不是使用 `v-model`。
+对于需要使用[输入法](https://en.wikipedia.org/wiki/Input_method) (如中文、日文、韩文等) 的语言，你会发现 `v-model` 不会在输入法组织文字过程中得到更新。如果你也想响应这些更新，请使用 `input` 事件监听器和 `value` 绑定来替代 `v-model`。
 :::
 
 ### 文本 (Text)
@@ -42,7 +42,7 @@
 
 <common-codepen-snippet title="Handling forms: textarea" slug="xxGyXaG" :preview="false" />
 
-在文本区域插值不起作用，应该使用 `v-model` 来代替。
+插值在 textarea 中不起作用，请使用 `v-model` 来代替。
 
 ```html
 <!-- bad -->
@@ -218,9 +218,9 @@ Vue.createApp({
 ```
 
 ```js
-// when checked:
+// 当选中时：
 vm.toggle === 'yes'
-// when unchecked:
+// 当未选中时：
 vm.toggle === 'no'
 ```
 
@@ -249,7 +249,7 @@ vm.pick === vm.a
 ```
 
 ```js
-// 当被选中时
+// 当选中时
 typeof vm.selected // => 'object'
 vm.selected.number // => 123
 ```
@@ -258,7 +258,7 @@ vm.selected.number // => 123
 
 ### `.lazy`
 
-在默认情况下，`v-model` 在每次 `input` 事件触发后将输入框的值与数据进行同步 (除了[上述](#vmodel-ime-tip)输入法组织文字时)。你可以添加 `lazy` 修饰符，从而转为在 `change` 事件_之后_进行同步：
+在默认情况下，`v-model` 在每次 `input` 事件触发后将输入框的值与数据进行同步 (除了[上述](#vmodel-ime-tip)输入法组织文字时)。你可以添加 `lazy` 修饰符，从而转为在 `change` 事件之后进行同步：
 
 ```html
 <!-- 在“change”时而非“input”时更新 -->
