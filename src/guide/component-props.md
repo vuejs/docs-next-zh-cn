@@ -1,12 +1,12 @@
 # Props
 
-> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
+> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你对组件还不太了解，推荐你先阅读它。
 
 <VideoLesson href="https://vueschool.io/lessons/vue-3-reusable-components-with-props?friend=vuejs" title="Free Vue.js Component Props Lesson">通过 Vue School 上的免费课程学习组件 prop 是如何工作的</VideoLesson>
 
 ## Prop 类型
 
-到这里，我们只看到了以字符串数组形式列出的 prop：
+目前为止，我们只看到了以字符串数组形式列出的 prop：
 
 ```js
 props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
@@ -30,7 +30,7 @@ props: {
 
 ## 传递静态或动态的 Prop
 
-这样，你已经知道了可以像这样给 prop 传入一个静态的值：
+目前为止，你已经知道了可以像这样给 prop 传入一个静态的值：
 
 ```html
 <blog-post title="My journey with Vue"></blog-post>
@@ -46,13 +46,12 @@ props: {
 <blog-post :title="post.title + ' by ' + post.author.name"></blog-post>
 ```
 
-在上述两个示例中，我们传入的值都是字符串类型的，但实际上任何类型的值都可以传给一个 prop。
+在上述两个示例中，我们传入的值都是字符串类型的，但实际上*任何*类型的值都可以传给一个 prop。
 
 ### 传入一个数字
 
 ```html
-
-<!-- 即便 `42` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue     -->
+<!-- 即便 `42` 是静态的，我们仍需通过 `v-bind` 来告诉 Vue     -->
 <!-- 这是一个 JavaScript 表达式而不是一个字符串。             -->
 <blog-post :likes="42"></blog-post>
 
@@ -64,10 +63,11 @@ props: {
 
 ```html
 <!-- 包含该 prop 没有值的情况在内，都意味着 `true`。          -->
-<!-- 如果没有在 props 中把 is-published 的类型设置为 Boolean，则这里的值为空字符串，而不是“true” 。 -->
+<!-- 如果没有在 props 中把 is-published 的类型设置为 Boolean，
+则这里的值为空字符串，而不是“true”。 -->
 <blog-post is-published></blog-post>
 
-<!-- 即便 `false` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue  -->
+<!-- 即便 `false` 是静态的，我们仍需通过 `v-bind` 来告诉 Vue  -->
 <!-- 这是一个 JavaScript 表达式而不是一个字符串。             -->
 <blog-post :is-published="false"></blog-post>
 
@@ -78,7 +78,7 @@ props: {
 ### 传入一个数组
 
 ```html
-<!-- 即便数组是静态的，我们仍然需要 `v-bind` 来告诉 Vue        -->
+<!-- 即便数组是静态的，我们仍需通过 `v-bind` 来告诉 Vue        -->
 <!-- 这是一个 JavaScript 表达式而不是一个字符串。             -->
 <blog-post :comment-ids="[234, 266, 273]"></blog-post>
 
@@ -89,7 +89,7 @@ props: {
 ### 传入一个对象
 
 ```html
-<!-- 即便对象是静态的，我们仍然需要 `v-bind` 来告诉 Vue        -->
+<!-- 即便对象是静态的，我们仍需通过 `v-bind` 来告诉 Vue        -->
 <!-- 这是一个 JavaScript 表达式而不是一个字符串。             -->
 <blog-post
   :author="{
@@ -104,7 +104,7 @@ props: {
 
 ### 传入一个对象的所有 property
 
-如果你想要将一个对象的所有 property 都作为 prop 传入，你可以使用不带参数的 `v-bind` (取代 `v-bind`:`prop-name`)。例如，对于一个给定的对象 `post`：
+如果想要将一个对象的所有 property 都作为 prop 传入，可以使用不带参数的 `v-bind` (用 `v-bind` 代替 `:prop-name`)。例如，对于一个给定的对象 `post`：
 
 ```js
 post: {
@@ -133,7 +133,7 @@ post: {
 
 这里有两种常见的试图变更一个 prop 的情形：
 
-1. 这个 **prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用**。在这种情况下，最好定义一个本地的 data property 并将这个 prop 作为其初始值：
+1. **这个 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用**。在这种情况下，最好定义一个本地的 data property 并将这个 prop 作为其初始值：
 
 ```js
 props: ['initialCounter'],
@@ -156,19 +156,19 @@ computed: {
 ```
 
 :::tip 提示
-注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变变更这个对象或数组本身**将会**影响到父组件的状态。
+注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变这个对象或数组本身**将会**影响到父组件的状态。
 :::
 
 ## Prop 验证
 
-我们可以为组件的 prop 指定验证要求，例如你知道的这些类型。如果有一个需求没有被满足，则 Vue 会在浏览器控制台中警告你。这在开发一个会被别人用到的组件时尤其有帮助。
+我们可以为组件的 prop 指定验证要求，例如你知道的这些类型。如果有一个要求没有被满足，则 Vue 会在浏览器控制台中警告你。这在开发一个会被别人用到的组件时尤其有帮助。
 
-为了定制 prop 的验证方式，你可以为 `props` 中的值提供一个带有验证需求的对象，而不是一个字符串数组。例如：
+为了定制 prop 的验证方式，你可以为 `props` 中的值提供一个带有验证要求的对象，而不是一个字符串数组。例如：
 
 ```js
 app.component('my-component', {
   props: {
-    // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+    // 基础的类型检查 (`null` 和 `undefined` 值会通过任何类型验证)
     propA: Number,
     // 多个可能的类型
     propB: [String, Number],
@@ -185,7 +185,7 @@ app.component('my-component', {
     // 带有默认值的对象
     propE: {
       type: Object,
-      // 对象或数组默认值必须从一个工厂函数获取
+      // 对象或数组的默认值必须从一个工厂函数返回
       default() {
         return { message: 'hello' }
       }
@@ -193,14 +193,14 @@ app.component('my-component', {
     // 自定义验证函数
     propF: {
       validator(value) {
-        // 这个值必须匹配下列字符串中的一个
+        // 这个值必须与下列字符串中的其中一个相匹配
         return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // 具有默认值的函数
     propG: {
       type: Function,
-      // 与对象或数组默认值不同，这不是一个工厂函数 —— 这是一个用作默认值的函数
+      // 与对象或数组的默认值不同，这不是一个工厂函数——这是一个用作默认值的函数
       default() {
         return 'Default function'
       }
@@ -212,7 +212,7 @@ app.component('my-component', {
 当 prop 验证失败的时候，(开发环境构建版本的) Vue 将会产生一个控制台的警告。
 
 :::tip 提示
-注意那些 prop 会在一个组件实例创建**之前**进行验证，所以实例的 property (如 `data`、`computed` 等) 在 `default` 或 `validator` 函数中是不可用的。
+注意 prop 会在一个组件实例创建**之前**进行验证，所以实例的 property (如 `data`、`computed` 等) 在 `default` 或 `validator` 函数中是不可用的。
 :::
 
 ### 类型检查
@@ -246,7 +246,8 @@ app.component('blog-post', {
   }
 })
 ```
-用于验证 `author` prop 的值是否是通过 `new Person` 创建的。
+
+来验证 `author` prop 的值是否是通过 `new Person` 创建的。
 
 ## Prop 的大小写命名 (camelCase vs kebab-case)
 
@@ -256,14 +257,14 @@ HTML 中的 attribute 名是大小写不敏感的，所以浏览器会把所有�
 const app = Vue.createApp({})
 
 app.component('blog-post', {
-  // camelCase in JavaScript
+  // 在 JavaScript 中使用 camelCase
   props: ['postTitle'],
   template: '<h3>{{ postTitle }}</h3>'
 })
 ```
 
 ```html
-<!-- kebab-case in HTML -->
+<!-- 在 HTML 中使用 kebab-case -->
 <blog-post post-title="hello!"></blog-post>
 ```
 
