@@ -10,7 +10,7 @@ Vue.js 使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM
 
 ### 文本
 
-数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值：
+数据绑定最常见的形式就是使用“Mustache” (双大括号) 语法的文本插值：
 
 ```html
 <span>Message: {{ msg }}</span>
@@ -35,7 +35,7 @@ Mustache 标签将会被替代为对应组件实例中 `msg` property 的值。�
 
 <common-codepen-snippet title="Rendering v-html" slug="yLNEJJM" :preview="false" />
 
-这个 `span` 的内容将会被替换成为 property 值 `rawHtml`，直接作为 HTML——会忽略解析 property 值中的数据绑定。注意，你不能使用 `v-html` 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。反之，对于用户界面 (UI)，组件更适合作为可重用和可组合的基本单位。
+这个 `span` 的内容将会被替换成为 `rawHtml` property 的值，直接作为 HTML——会忽略解析 property 值中的数据绑定。注意，你不能使用 `v-html` 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。反之，对于用户界面 (UI)，组件更适合作为可重用和可组合的基本单位。
 
 :::tip 
 在你的站点上动态渲染任意的 HTML 是非常危险的，因为它很容易导致 [XSS 攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。请只对可信内容使用 HTML 插值，**绝不要**将用户提供的内容作为插值。
@@ -79,7 +79,7 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 <!--  这是语句，不是表达式：-->
 {{ var a = 1 }}
 
-<!-- 流控制也不会生效，请使用三元表达式 -->
+<!-- 流程控制也不会生效，请使用三元表达式 -->
 {{ if (ok) { return message } }}
 ```
 
@@ -166,7 +166,7 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 <!-- 缩写 -->
 <a @click="doSomething"> ... </a>
 
-<!-- 动态参数的缩写 (2.6.0+) -->
+<!-- 动态参数的缩写 -->
 <a @[event]="doSomething"> ... </a>
 ```
 
@@ -203,7 +203,7 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 
 #### JavaScript 表达式
 
-模板表达式都被放在沙盒中，只能访问一个[受限的列表](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。
+模板表达式都被放在沙盒中，只能访问一个[受限的全局变量列表](https://github.com/vuejs/vue-next/blob/master/packages/shared/src/globalsWhitelist.ts#L3)，如 `Math` 和 `Date`。你不应该在模板表达式中试图访问用户定义的全局变量。
 
 
 <small>**译者注**  
