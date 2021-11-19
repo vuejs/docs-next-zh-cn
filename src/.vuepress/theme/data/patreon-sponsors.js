@@ -1,12 +1,15 @@
 export default {
   "platinum_sponsors_china": [
     {
+      "name": "DCloud",
       "url": "http://www.dcloud.io/?hmsr=vuejsorg&hmpl=&hmcu=&hmkw=&hmci=",
-      "img": "dcloud.gif"
+      "img": "dcloud1.png",
+      "altImg": "dcloud2.png"
     },
     {
+      "name": "Authing",
       "url": "https://authing.cn/welcome?from=vuejs",
-      "img": "authing.png"
+      "img": "authing.svg"
     }
   ],
   "special_sponsors": [

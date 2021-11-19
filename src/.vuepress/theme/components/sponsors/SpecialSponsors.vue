@@ -43,6 +43,7 @@ export default {
     display: flex;
     place-content: center;
     place-items: flex-start;
+    align-items: center;
 
     @media (max-width: $MQNarrow) {
       flex-direction: column;
