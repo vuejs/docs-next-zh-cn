@@ -4,7 +4,7 @@
 
 ## Data Property
 
-组件的 `data` 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。它应该返回一个对象，然后 Vue 会通过响应性系统将其包裹起来，并以 `$data` 的形式存储在组件实例中。为方便起见，该对象的任何顶级 property 也直接通过组件实例暴露出来：
+组件的 `data` 选项是一个函数。Vue 会在创建新组件实例的过程中调用此函数。它应该返回一个对象，然后 Vue 会通过响应性系统将其包裹起来，并以 `$data` 的形式存储在组件实例中。为方便起见，该对象的任何顶级 property 也会直接通过组件实例暴露出来：
 
 ```js
 const app = Vue.createApp({
@@ -77,9 +77,9 @@ Vue 自动为 `methods` 绑定 `this`，以便于它始终指向组件实例。�
 </span>
 ```
 
-如果 `toTitleDate` 或 `formatDate` 访问任何响应式数据，则将其作为渲染依赖项进行跟踪，就像直接在模板中使用过一样。
+如果 `toTitleDate` 或 `formatDate` 访问了任何响应式数据，则将其作为渲染依赖项进行跟踪，就像直接在模板中使用过一样。
 
-从模板调用的方法不应该有任何副作用，比如更改数据或触发异步进程。如果你想这么做，应该换做[生命周期钩子](instance.html#生命周期钩子)。
+从模板调用的方法不应该有任何副作用，比如更改数据或触发异步进程。如果你想这么做，应该使用[生命周期钩子](instance.html#生命周期钩子)来替换。
 
 ### 防抖和节流
 
@@ -106,7 +106,7 @@ Vue 没有内置支持防抖和节流，但可以使用 [Lodash](https://lodash.
 ```js
 app.component('save-button', {
   created() {
-    // 用 Lodash 的防抖函数
+    // 使用 Lodash 实现防抖
     this.debouncedClick = _.debounce(this.click, 500)
   },
   unmounted() {
