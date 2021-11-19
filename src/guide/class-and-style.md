@@ -14,7 +14,7 @@
 <div :class="{ active: isActive }"></div>
 ```
 
-上面的语法表示 `active` 这个 class 存在与否将取决于数据 property `isActive` 的 [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)。
+上面的语法表示 `active` 这个 class 存在与否将取决于 data property `isActive` 的 [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)。
 
 你可以在对象中传入更多字段来动态切换多个 class。此外，`:class` 指令也可以与普通的 `class` attribute 共存。当有如下模板：
 
@@ -163,7 +163,7 @@ HTML 将被渲染为：
 <p class="foo bar active">Hi</p>
 ```
 
-如果你的组件有多个根元素，你需要定义哪些部分将接收这个类。可以使用 `$attrs` 组件属性执行此操作：
+如果你的组件有多个根元素，你需要定义哪些部分将接收这个 class。可以使用 `$attrs` 组件 property 执行此操作：
 
 ```html
 <div id="app">
@@ -182,7 +182,7 @@ app.component('my-component', {
 })
 ```
 
-你可以在[非 prop Attribute](component-attrs.html) 小节了解更多关于组件属性继承的信息。
+你可以在[非 Prop 的 Attribute](component-attrs.html) 小节了解更多关于组件属性继承的信息。
 
 ## 绑定内联样式
 
