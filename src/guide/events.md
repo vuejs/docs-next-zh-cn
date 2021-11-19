@@ -149,7 +149,7 @@ methods: {
 - `.passive`
 
 ```html
-<!-- 阻止单击事件继续传播 -->
+<!-- 阻止单击事件继续冒泡 -->
 <a @click.stop="doThis"></a>
 
 <!-- 提交事件不再重载页面 -->
@@ -183,9 +183,9 @@ methods: {
 Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)提供了 `.passive` 修饰符。
 
 ```html
-<!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发   -->
-<!-- 而不会等待 `onScroll` 完成                   -->
-<!-- 这其中包含 `event.preventDefault()` 的情况   -->
+<!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发，   -->
+<!-- 而不会等待 `onScroll` 完成，                    -->
+<!-- 以防止其中包含 `event.preventDefault()` 的情况  -->
 <div @scroll.passive="onScroll">...</div>
 ```
 
@@ -197,7 +197,7 @@ Vue 还对应 [`addEventListener` 中的 passive 选项](https://developer.mozil
 
 ## 按键修饰符
 
-在监听键盘事件时，我们经常需要检查详细的按键。Vue 允许为 `v-on` 或者 `@` 在监听键盘事件时添加按键修饰符：
+在监听键盘事件时，我们经常需要检查特定的按键。Vue 允许为 `v-on` 或者 `@` 在监听键盘事件时添加按键修饰符：
 
 ```html
 <!-- 只有在 `key` 是 `Enter` 时调用 `vm.submit()` -->
