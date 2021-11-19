@@ -2,7 +2,7 @@
 
 <VideoLesson href="https://vueschool.io/lessons/list-rendering-in-vue-3?friend=vuejs" title="通过 Vue School 的免费课程学习如何渲染列表">通过 Vue School 的免费课程学习如何渲染列表</VideoLesson>
 
-## 用 `v-for` 把一个数组对应为一组元素
+## 用 `v-for` 把一个数组映射为一组元素
 
 我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 items 是源数据数组，而 `item` 则是被迭代的数组元素的**别名**。
 
@@ -119,11 +119,11 @@ Vue.createApp({
 
 这个默认的模式是高效的，但是**只适用于不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出**。
 
-为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 `key` attribute：
+为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一的 `key` attribute：
 
 ```html
 <div v-for="item in items" :key="item.id">
-  <!-- content -->
+  <!-- 内容 -->
 </div>
 ```
 
@@ -186,7 +186,7 @@ computed: {
 }
 ```
 
-在计算属性不适用的情况下 (例如，在嵌套 `v-for` 循环中) 你可以使用一个方法：
+在计算属性不适用的情况下 (例如，在嵌套的 `v-for` 循环中) 你可以使用一个方法：
 
 ```html
 <ul v-for="numbers in sets">
@@ -243,7 +243,7 @@ methods: {
 当它们处于同一节点，`v-if` 的优先级比 `v-for` 更高，这意味着 `v-if` 将没有权限访问 `v-for` 里的变量：
 
 ```html
-<!-- This will throw an error because property "todo" is not defined on instance. -->
+<!-- 这将抛出一个错误，因为“todo” property 没有在实例上定义 -->
 
 <li v-for="todo in todos" v-if="!todo.isComplete">
   {{ todo.name }}
