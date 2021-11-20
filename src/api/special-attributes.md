@@ -69,7 +69,7 @@
 
   当 `is` attribute 被用在一个原生 HTML 元素上时，它会被作为一个[自定义的内置元素](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)进行转译，这是一个原生 web platform 的特性。
 
-  不过，如[解析 DOM 模板时的注意事项](/guide/component-basics.html#解析-dom-模板时的注意事项)里解释的，有的时候你可能需要 Vue 将一个原生元素替换为一个 Vue 组件。这是你可以把 `is` attribute 的值加上 `vue:` 前缀，这样 Vue 就会将这些元素换为 Vue 组件进行渲染：
+  不过，如[解析 DOM 模板时的注意事项](/guide/component-basics.html#解析-dom-模板时的注意事项)里解释的，有的时候你可能需要 Vue 将一个原生元素替换为一个 Vue 组件。这时你可以把 `is` attribute 的值加上 `vue:` 前缀，这样 Vue 就会将这些元素换为 Vue 组件进行渲染：
 
   ```html
   <table>
