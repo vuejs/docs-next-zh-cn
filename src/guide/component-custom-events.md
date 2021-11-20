@@ -1,10 +1,10 @@
 # 自定义事件
 
-> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你还对组件不太了解，推荐你先阅读它。
+> 该页面假设你已经阅读过了[组件基础](component-basics.md)。如果你对组件还不太了解，推荐你先阅读它。
 
 ## 事件名 
 
-与组件和 prop 一样，事件名提供了自动的大小写转换。如果用驼峰命名的子组件中触发一个事件，你将可以在父组件中添加一个 kebab-case (短横线分隔命名) 的监听器。
+与组件和 prop 一样，事件名提供了自动的大小写转换。如果在子组件中触发一个以 camelCase (驼峰式命名) 命名的事件，你将可以在父组件中添加一个 kebab-case (短横线分隔命名) 的监听器。
 
 ```js
 this.$emit('myEvent')
@@ -36,9 +36,9 @@ app.component('custom-form', {
 
 ### 验证抛出的事件
 
-与 prop 类型验证类似，如果使用对象语法而不是数组语法定义发出的事件，则可以验证它。
+与 prop 类型验证类似，如果使用对象语法而不是数组语法定义发出的事件，则可以对它进行验证。
 
-要添加验证，将为事件分配一个函数，该函数接收传递给 `$emit` 调用的参数，并返回一个布尔值以指示事件是否有效。
+要添加验证，请为事件分配一个函数，该函数接收传递给 `$emit` 调用的参数，并返回一个布尔值以指示事件是否有效。
 
 ```js
 app.component('custom-form', {
@@ -46,7 +46,7 @@ app.component('custom-form', {
     // 没有验证
     click: null,
 
-    // 验证submit 事件
+    // 验证 submit 事件
     submit: ({ email, password }) => {
       if (email && password) {
         return true
@@ -72,7 +72,7 @@ app.component('custom-form', {
 <my-component v-model:title="bookTitle"></my-component>
 ```
 
-在本例中，子组件将需要一个 `title` prop 并发出 `update:title` 要同步的事件：
+在本例中，子组件将需要一个 `title` prop 并发出 `update:title` 事件来执行同步：
 
 ```js
 app.component('my-component', {
@@ -91,7 +91,7 @@ app.component('my-component', {
 
 ## 多个 `v-model` 绑定
 
-通过利用以特定 prop 和事件为目标的能力，正如我们之前在 [`v-model` 参数](#v-model-参数)中所学的那样，我们现在可以在单个组件实例上创建多个 v-model 绑定。
+正如我们之前在 [`v-model` 参数](#v-model-参数)中所学的那样，通过利用以特定 prop 和事件为目标的能力，我们现在可以在单个组件实例上创建多个 v-model 绑定。
 
 每个 v-model 将同步到不同的 prop，而不需要在组件中添加额外的选项：
 
@@ -126,8 +126,6 @@ app.component('user-name', {
 <common-codepen-snippet title="Multiple v-models" slug="GRoPPrM" tab="html,result" />
 
 ## 处理 `v-model` 修饰符
-
-在 2.x 中，我们对组件 `v-model` 上的 `.trim` 等修饰符提供了硬编码支持。但是，如果组件可以支持自定义修饰符，则会更有用。在 3.x 中，添加到组件 `v-model` 的修饰符将通过 `modelModifiers` prop 提供给组件：
 
 当我们学习表单输入绑定时，我们看到 `v-model` 有[内置修饰符](/guide/forms.html#修饰符)——`.trim`、`.number` 和 `.lazy`。但是，在某些情况下，你可能还需要添加自己的自定义修饰符。
 
