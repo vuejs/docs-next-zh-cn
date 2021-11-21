@@ -72,7 +72,7 @@ app.component('custom-form', {
 <my-component v-model:title="bookTitle"></my-component>
 ```
 
-在本例中，子组件将需要一个 `title` prop 并发出 `update:title` 事件来执行同步：
+在本例中，子组件将需要一个 `title` prop 并发出 `update:title` 事件来进行同步：
 
 ```js
 app.component('my-component', {
