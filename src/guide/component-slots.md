@@ -103,7 +103,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 ## 备用内容
 
-有时为一个插槽设置具体的备用 (也就是默认的) 内容是很有用的，它只会在没有提供内容的时候被渲染。例如在一个 `<submit-button>` 组件中：
+有时为一个插槽指定备用 (也就是默认的) 内容是很有用的，它只会在没有提供内容的时候被渲染。例如在一个 `<submit-button>` 组件中：
 
 ```html
 <button type="submit">
@@ -111,7 +111,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </button>
 ```
 
-我们可能希望这个 `<button>` 内绝大多数情况下都渲染文本“Submit”。为了将“Submit”作为备用内容，我们可以将它放在 `<slot>` 标签内：
+我们可能希望这个 `<button>` 内绝大多数情况下都渲染“Submit”文本。为了将“Submit”作为备用内容，我们可以将它放在 `<slot>` 标签内：
 
 ```html
 <button type="submit">
@@ -167,7 +167,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </div>
 ```
 
-对于这样的情况，`<slot>` 元素有一个特殊的 attribute：`name`。这个 attribute 可以用来定义额外的插槽：
+对于这样的情况，`<slot>` 元素有一个特殊的 attribute：`name`。通过它可以为不同的插槽分配独立的 ID，也就能够以此来决定内容应该渲染到什么地方：
 
 ```html
 <div class="container">
@@ -229,7 +229,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 有时让插槽内容能够访问子组件中才有的数据是很有用的。当一个组件被用来渲染一个项目数组时，这是一个常见的情况，我们希望能够自定义每个项目的渲染方式。
 
-例如，我们有一个组件，包含 todo-items 的列表。
+例如，我们有一个组件，包含一个待办项目列表。
 
 ```js
 app.component('todo-list', {
@@ -248,7 +248,7 @@ app.component('todo-list', {
 })
 ```
 
-我们可能会想把 <span v-pre>`{{ item }}`</span> 替换为 `<slot>`，以便在父组件上自定义。
+我们可能会想把 <span v-pre>`{{ item }}`</span> 替换为 `<slot>`，以便在父组件上对其自定义。
 
 ```html
 <todo-list>
@@ -257,9 +257,9 @@ app.component('todo-list', {
 </todo-list>
 ```
 
-但是，这是行不通的，因为只有 `<todo-list>` 组件可以访问 `item`，我们将从其父组件提供插槽内容。
+但是，这是行不通的，因为只有在 `<todo-list>` 组件中可以访问 `item`，且插槽内容是在它的父组件上提供的。
 
-要使 `item` 可用于父级提供的插槽内容，我们可以添加一个 `<slot>` 元素并将其作为一个 attribute 绑定：
+要使 `item` 在父级提供的插槽内容上可用，我们可以添加一个 `<slot>` 元素并将其作为一个 attribute 绑定：
 
 ```html
 <ul>
@@ -269,7 +269,7 @@ app.component('todo-list', {
 </ul>
 ```
 
-可以根据自己的需要将很多的 attribute 绑定到 `slot` 上。
+可以根据自己的需要将任意数量的 attribute 绑定到 `slot` 上：
 
 ```html
 <ul>
@@ -279,7 +279,7 @@ app.component('todo-list', {
 </ul>
 ```
 
-绑定在 `<slot>` 元素上的 attribute 被称为**插槽 prop**。现在在父级作用域中，我们可以使用带值的 `v-slot` 来定义我们提供的插槽 prop 的名字：
+绑定在 `<slot>` 元素上的 attribute 被称为**插槽 prop**。现在，在父级作用域中，我们可以使用带值的 `v-slot` 来定义我们提供的插槽 prop 的名字：
 
 ```html
 <todo-list>
@@ -296,7 +296,7 @@ app.component('todo-list', {
 
 ### 独占默认插槽的缩写语法
 
-在上述情况下，当被提供的内容只有默认插槽时，组件的标签才可以被当作插槽的模板来使用。这样我们就可以把 `v-slot` 直接用在组件上：
+在上述情况下，当被提供的内容*只有*默认插槽时，组件的标签才可以被当作插槽的模板来使用。这样我们就可以把 `v-slot` 直接用在组件上：
 
 ```html
 <todo-list v-slot:default="slotProps">
@@ -323,12 +323,12 @@ app.component('todo-list', {
   <span class="green">{{ slotProps.item }}</span>
   
   <template v-slot:other="otherSlotProps">
-    slotProps is NOT available here
+    slotProps 在此处不可用
   </template>
 </todo-list>
 ```
 
-只要出现多个插槽，请始终为所有的插槽使用完整的基于 `<template>` 的语法：
+只要出现多个插槽，请始终为*所有的*插槽使用完整的基于 `<template>` 的语法：
 
 ```html
 <todo-list>
@@ -353,7 +353,7 @@ function (slotProps) {
 }
 ```
 
-这意味着 `v-slot` 的值实际上可以是任何能够作为函数定义中的参数的 JavaScript 表达式。你也可以使用 [ES2015](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) 解构来传入具体的插槽 prop，如下：
+这意味着 `v-slot` 的值实际上可以是任何能够作为函数定义中的参数的 JavaScript 表达式。因此你也可以使用 [ES2015 解构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) 来传入具体的插槽 prop，如下：
 
 ```html
 <todo-list v-slot="{ item }">
@@ -416,7 +416,7 @@ function (slotProps) {
 然而，和其它指令一样，该缩写只在其有参数的时候才可用。这意味着以下语法是无效的：
 
 ```html
-<!-- This will trigger a warning -->
+<!-- 这将触发一个警告 -->
 
 <todo-list #="{ item }">
   <i class="fas fa-check"></i>
@@ -424,7 +424,7 @@ function (slotProps) {
 </todo-list>
 ```
 
-如果你希望使用缩写的话，你必须始终以明确插槽名取而代之：
+如果希望使用缩写的话，你必须始终以明确的插槽名取而代之：
 
 ```html
 <todo-list #default="{ item }">
