@@ -38,23 +38,23 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 
 ```html
 <todo-button>
-  <!-- 添加一个Font Awesome 图标 -->
+  <!-- 添加一个 Font Awesome 图标 -->
   <i class="fas fa-plus"></i>
   Add todo
 </todo-button>
 ```
 
-或其他组件
+或其他组件：
 
 ```html
 <todo-button>
-    <!-- 添加一个图标的组件 -->
+  <!-- 添加一个图标的组件 -->
   <font-awesome-icon name="plus"></font-awesome-icon>
   Add todo
 </todo-button>
 ```
 
-如果 `<todo-button>` 的 template 中**没有**包含一个 `<slot>` 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃
+如果 `<todo-button>` 的 template 中**没有**包含一个 `<slot>` 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃。
 
 ```html
 <!-- todo-button 组件模板 -->
@@ -90,7 +90,10 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 ```html
 <todo-button action="delete">
   Clicking here will {{ action }} an item
-  <!-- `action` 未被定义，因为它的内容是传递*到* <todo-button>，而不是*在* <todo-button>里定义的。  -->
+  <!--
+  `action` 将会是 undefined，因为这个内容是
+  传递*到* <todo-button>，而不是*在* <todo-button>里定义的。
+  -->
 </todo-button>
 ```
 
