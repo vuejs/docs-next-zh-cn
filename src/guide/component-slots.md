@@ -92,7 +92,8 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
   Clicking here will {{ action }} an item
   <!--
   `action` 将会是 undefined，因为这个内容是
-  传递*到* <todo-button>，而不是*在* <todo-button>里定义的。
+  传递*到* <todo-button>，
+  而不是*在* <todo-button> 中定义的。
   -->
 </todo-button>
 ```
