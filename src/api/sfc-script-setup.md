@@ -243,6 +243,10 @@ export default {
 </script>
 ```
 
+:::warning
+该场景下不支持使用 `render` 函数。请使用一个普通的 `<script>` 结合 `setup` 选项以替代。
+:::
+
 ## 顶层 `await`
 
 `<script setup>` 中可以使用顶层 `await`。结果代码会被编译成 `async setup()`：
