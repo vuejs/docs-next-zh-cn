@@ -90,7 +90,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 ```html
 <todo-button action="delete">
   Clicking here will {{ action }} an item
-  <!-- `action` 未被定义，因为它的内容是传递到 <todo-button>，而不是在 <todo-button>里定义的。  -->
+  <!-- `action` 未被定义，因为它的内容是传递到 <todo-button>，而不是在 <todo-button> 里定义的。  -->
 </todo-button>
 ```
 

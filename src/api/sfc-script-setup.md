@@ -244,7 +244,7 @@ export default {
 ```
 
 :::warning
-该场景下不支持使用 `render` 函数。请使用一个普通的 `<script>` 结合 `setup` 选项以替代。
+该场景下不支持使用 `render` 函数。请使用一个普通的 `<script>` 结合 `setup` 选项来代替。
 :::
 
 ## 顶层 `await`
