@@ -1491,7 +1491,7 @@ computed: {
 
 为了给样式设置作用域，Vue 会为元素添加一个独一无二的 attribute，例如 `data-v-f3f3eg9`。然后选择器将被修改，使得在匹配到的元素中，只有带这个 attribute 的才会真正生效 (比如 `button[data-v-f3f3eg9]`)。
 
-问题在于，大量的[元素与 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=a%5Bhref%5D&body=background%3A+%23CFD&ne=1000) (比如 `button[data-v-f3f3eg9]`) 会比[类与 attribute 组合的选择器](http://stevesouders.com/efws/css-selectors/csscreate.php?n=1000&sel=.class%5Bhref%5D&body=background%3A+%23CFD&ne=1000)更慢，因此应该尽可能地选用类选择器。
+问题在于，大量的元素与 attribute 组合的选择器 (比如 `button[data-v-f3f3eg9]`) 会比类与 attribute 组合的选择器更慢，因此应该尽可能地选用类选择器。
 
 :::
 
