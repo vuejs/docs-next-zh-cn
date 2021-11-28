@@ -87,6 +87,6 @@ createApp({
 
 异步组件在默认情况下是*可挂起*的。这意味着如果它在父链中有一个 `<Suspense>`，它将被视为该 `<Suspense>` 的异步依赖。在这种情况下，加载状态将由 `<Suspense>` 控制，组件自身的加载、错误、延迟和超时选项都将被忽略。
 
-通过在其选项中指定 `suspensible:false`，异步组件可以退出 `Suspense` 控制，并始终控制自己的加载状态。
+通过在其选项中指定 `suspensible: false`，异步组件可以退出 `Suspense` 控制，并始终控制自己的加载状态。
 
 你可以在 [API 参考](../api/global-api.html#参数-4)查看更多可用的选项。
