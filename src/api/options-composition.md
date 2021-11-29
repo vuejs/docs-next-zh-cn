@@ -83,7 +83,7 @@
       - `from` property 是在可用的注入内容中搜索用的 key (字符串或 Symbol)
       - `default` property 是降级情况下使用的 value
 
-  > 提示：提示：`provide` 和 `inject` 绑定并不是响应式的。这是刻意为之的。然而，如果你传入了一个响应式的对象，那么其对象的 property 仍是响应式的。
+  > 提示：`provide` 和 `inject` 绑定并不是响应式的。这是刻意为之的。然而，如果你传入了一个响应式的对象，那么其对象的 property 仍是响应式的。
 
 - **示例：**
 
