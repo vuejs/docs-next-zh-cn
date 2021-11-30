@@ -120,7 +120,7 @@ Vue.createApp(Demo).mount('#demo')
 
 你可能注意到上面显示的动画使用了 `transforms` 之类的东西，并应用了诸如 `perspective` 之类的奇怪的 property——为什么它们是这样实现的，而不是仅仅使用 `margin` 和 `top` 等？
 
-通过对性能的关注，我们可以在 web 上创建极其流畅的动画。我们希望尽可能对元素动画进行硬件加速，并使用不触发重绘的 property。我们来介绍一下如何实现这个目标。
+通过关注性能表现，我们可以在 web 上创建极其流畅的动画。我们希望尽可能对元素动画进行硬件加速，并使用不触发重绘的 property。我们来介绍一下如何实现这个目标。
 
 ### Transform 和 Opacity
 
@@ -152,7 +152,7 @@ transform: translateZ(0);
 
 ## Easing
 
-Easing 是在动画中表达深度的一个重要方式。动画新手最常犯的一个错误是在起始动画节点使用 `ease-in`，在结束动画节点使用 `ease-out`。实际上你需要的是反过来的。
+easing 是在动画中表达深度的一个重要方式。动画新手最常犯的一个错误是在起始动画节点使用 `ease-in`，在结束动画节点使用 `ease-out`。实际上你需要的是反过来的。
 
 如果我们将这些状态应用于过渡，它应该像这样：
 
@@ -172,15 +172,15 @@ Easing 是在动画中表达深度的一个重要方式。动画新手最常犯�
 
 <common-codepen-snippet title="Transition Ease Example" slug="996a9665131e7902327d350ca8a655ac" tab="css,result" :editable="false" :preview="false" />
 
-Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认为哪个球是硬的，哪个球是软的？
+easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认为哪个球是硬的，哪个球是软的？
 
 <common-codepen-snippet title="Bouncing Ball Demo" slug="wvgqyyW" :height="500" :editable="false" />
 
-你可以通过调整你的 Easing 来获得很多独特的效果，使你的动画非常时尚。CSS 允许你通过调整 cubic bezier property 来修改 Easing，Lea Verou 开发的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
+你可以通过调整你的 easing 来获得很多独特的效果，使你的动画非常时尚。CSS 允许你通过调整 cubic bezier property 来修改 easing，Lea Verou 开发的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
 
 虽然使用 cubic-bezier ease 提供的两个控制句柄可以为简单的动画实现很好的效果，但是 JavaScript 允许多个控制句柄，以支持更多的变化。
 
-![Ease 对比](/images/css-vs-js-ease.svg)
+![ease 对比](/images/css-vs-js-ease.svg)
 
 以弹跳为例。在 CSS 中，我们必须声明向上和向下的每个关键帧。在 JavaScript 中，我们可以通过在 [GreenSock API (GSAP)](https://greensock.com/) 中声明 `bounce` 来描述 ease 中所有这些移动 (其他 JS 库有其他类型的 easing 默认值)。
 
