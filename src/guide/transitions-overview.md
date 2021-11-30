@@ -2,14 +2,14 @@
 
 Vue 提供了一些抽象概念，可以帮助处理过渡和动画，特别是在响应某些变化时。这些抽象的概念包括：
 
-- 在 CSS 和 JS 中，使用内置的 `<transition>` 组件来钩住组件进入和离开 DOM。
+- 组件进入和离开 DOM 的钩子，在 CSS 和 JS 中均可用，使用内置的 `<transition>` 组件。
 - 过渡模式，以便你在过渡期间编排顺序。
-- 在处理多个元素位置更新时，使用 `<transition-group>` 组件，通过 FLIP 技术来提高性能。
+- 处理多个元素就地更新的钩子，使用 `<transition-group>` 组件，通过 FLIP 技术来提高性能。
 - 使用 `watchers` 来处理应用中不同状态的过渡。
 
 我们将在本指南接下来的三个部分中介绍所有这些以及更多内容。然而，除了提供这些有用的 API 之外，值得一提的是，我们前面介绍的 class 和 style 声明也可以应用于动画和过渡，用于更简单的用例。
 
-在下一节中，我们将回顾一些 web 动画和过渡的基础知识，并提供一些资源链接以进行进一步的研究。如果你已经熟悉 web 动画，并且了解这些原理如何与 Vue 的某些指令配合使用，可以跳过这一节。对于希望在开始学习之前进一步了解网络动画基础知识的其他人，请继续阅读。
+在下一节中，我们将回顾一些 web 动画和过渡的基础知识，并提供一些资源链接以进行进一步的研究。如果你已经熟悉 web 动画，并且了解这些原理如何与 Vue 的某些指令配合使用，可以跳过这一节。对于希望在开始学习之前进一步了解 web 动画基础知识的其他人，请继续阅读。
 
 ## 基于 class 的动画和过渡
 
@@ -120,7 +120,7 @@ Vue.createApp(Demo).mount('#demo')
 
 你可能注意到上面显示的动画使用了 `transforms` 之类的东西，并应用了诸如 `perspective` 之类的奇怪的 property——为什么它们是这样实现的，而不是仅仅使用 `margin` 和 `top` 等？
 
-我们可以通过对性能的了解，在 web 上创建极其流畅的动画。我们希望尽可能对元素动画进行硬件加速，并使用不触发重绘的 property。我们来介绍一下如何实现这个目标。
+通过对性能的关注，我们可以在 web 上创建极其流畅的动画。我们希望尽可能对元素动画进行硬件加速，并使用不触发重绘的 property。我们来介绍一下如何实现这个目标。
 
 ### Transform 和 Opacity
 
@@ -146,7 +146,7 @@ transform: translateZ(0);
 
 ## Timing
 
-对于简单 UI 过渡，即从一个状态到另一个没有中间状态的状态，通常使用 0.1s 到 0.4s 之间的计时，大多数人发现 *0.25s* 是一个最佳选择。你能用这个定时做任何事情吗？并不是。如果你有一些元素需要移动更大的距离，或者有更多的步骤或状态变化，0.25s 并不会有很好的效果，你将不得不有更多的目的性，而且定时也需要更加独特。但这并不意味着你不能在应用中重复使用效果好的默认值。
+对于简单 UI 过渡，即从一个状态到另一个没有中间状态的状态，通常使用 0.1s 到 0.4s 之间的计时，大多数人发现 *0.25s* 是一个最佳选择。你能用这个定时做任何事情吗？并不能。如果你有一些元素需要移动更大的距离，或者有更多的步骤或状态变化，0.25s 的效果可能会不好，你将不得不更加用心，而且定时也需要更加独特。但这并不意味着你不能在应用中重复使用效果好的默认值。
 
 你也可能会发现，起始动画比结束动画的时间稍长一些，看起来会更好一些。用户通常是在动画开始时被引导的，而在动画结束时没有那么多耐心，因为他们想继续他们的动作。
 
@@ -176,13 +176,13 @@ Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认�
 
 <common-codepen-snippet title="Bouncing Ball Demo" slug="wvgqyyW" :height="500" :editable="false" />
 
-你可以通过调整你的 Easing 来获得很多独特的效果，使你的动画非常时尚。CSS 允许你通过调整 cubic bezier 属性来修改 Easing，Lea Verou 开发的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
+你可以通过调整你的 Easing 来获得很多独特的效果，使你的动画非常时尚。CSS 允许你通过调整 cubic bezier property 来修改 Easing，Lea Verou 开发的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
 
-虽然使用 cubic-bezier ease 提供的两个控制柄可以为简单的动画获得很好的效果，但是 JavaScript 允许多个控制柄，以此支持更多的变化。
+虽然使用 cubic-bezier ease 提供的两个控制句柄可以为简单的动画实现很好的效果，但是 JavaScript 允许多个控制句柄，以支持更多的变化。
 
-![Ease 比较](/images/css-vs-js-ease.svg)
+![Ease 对比](/images/css-vs-js-ease.svg)
 
-以弹跳为例。在 CSS 中，我们必须声明向上和向下的每个关键帧。在 JavaScript 中，我们可以通过在 [greensock API(GSAP)](https://greensock.com/) 中声明 `bounce` 来描述 ease 中所有这些移动 (其他 JS 库有其他类型的 easing 默认值)。
+以弹跳为例。在 CSS 中，我们必须声明向上和向下的每个关键帧。在 JavaScript 中，我们可以通过在 [GreenSock API (GSAP)](https://greensock.com/) 中声明 `bounce` 来描述 ease 中所有这些移动 (其他 JS 库有其他类型的 easing 默认值)。
 
 这里是 CSS 中用来实现 bounce 的代码 (来自 animate.css 的例子)：
 
@@ -230,7 +230,7 @@ Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认�
 gsap.from(element, { duration: 1, ease: 'bounce.out', y: -500 })
 ```
 
-我们将在之后章节的部分示例中使用 GreenSock。他们有一个很棒的 [ease visualizer](https://greensock.com/ease-visualizer)，帮助你建立精心制作的画架。
+我们将在之后章节的部分示例中使用 GreenSock。他们有一个很棒的 [ease 可视化工具](https://greensock.com/ease-visualizer)，帮助你建立精心制作的 ease。
 
 ## 进一步阅读
 
