@@ -7,7 +7,7 @@
 - 在过渡钩子期间使用 JavaScript 直接操作 DOM；
 - 集成第三方 JavaScript 动画库。
 
-在这里，我们只介绍进入、离开和列表的过渡，你也可以看下一节[列表过渡](transitions-list.html)和[管理过渡状态](transitions-state.html) 。
+在这里，我们只介绍进入、离开的过渡，你也可以从下一节中学习[列表过渡](transitions-list.html)和[管理过渡状态](transitions-state.html) 。
 
 ## 单元素/组件的过渡
 
@@ -64,9 +64,9 @@ Vue.createApp(Demo).mount('#demo')
 
 2. 如果过渡组件提供了 [JavaScript 钩子函数](#javascript-钩子) ，这些钩子函数将在恰当的时机被调用。
 
-3. 如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，和 Vue 的 `nextTick` 概念不同)
+3. 如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此处指浏览器逐帧动画机制，和 Vue 的 `nextTick` 概念不同)
 
-### 过渡class
+### 过渡 class
 
 在进入/离开的过渡中，会有 6 个 class 切换。
 
@@ -80,17 +80,17 @@ Vue.createApp(Demo).mount('#demo')
 
 5. `v-leave-active`：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
 
-6. `v-leave-to`：离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave-from` 被删除)，在过渡/动画完成之后移除。
+6. `v-leave-to`：离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave-from` 被移除)，在过渡/动画完成之后移除。
 
 ![Transition Diagram](/images/transitions.svg)
 
-对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 `<transition>`，则 `v-` 是这些class名的默认前缀。如果你使用了 `<transition name="my-transition">`，那么 `v-enter-from`会替换为 `my-transition-enter-from`。
+这里的每个 class 都将以过渡的名字添加前缀。如果你使用了一个没有名字的 `<transition>`，则 `v-` 是这些 class 名的默认前缀。举例来说，如果你使用了 `<transition name="my-transition">`，那么 `v-enter-from` 会替换为 `my-transition-enter-from`。
 
 `v-enter-active` 和 `v-leave-active` 可以控制进入/离开过渡的不同的缓和曲线，在下面章节会有个示例说明。
 
 ### CSS 过渡
 
-常用的过渡都是使用 CSS 过渡。
+CSS 过渡是最常用的过渡类型之一。举例：
 
 ```html
 <div id="demo">
@@ -117,8 +117,8 @@ Vue.createApp(Demo).mount('#demo')
 ```
 
 ```css
-/* 可以设置不同的进入和离开动画   */
-/* 设置持续时间和动画函数        */
+/* 可以为进入和离开动画            */
+/* 设置不同的持续时间和动画函数      */
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
 }
@@ -138,7 +138,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ### CSS 动画
 
-CSS 动画用法同 CSS 过渡，区别是在动画中 `v-enter-from` 类名在节点插入 DOM 后不会立即删除，而是在 `animationend` 事件触发时删除。
+CSS 动画用法同 CSS 过渡，区别是在动画中 `v-enter-from` 类在节点插入 DOM 后不会立即移除，而是在 `animationend` 事件触发时移除。
 
 下面是一个例子，为了简洁起见，省略了带前缀的 CSS 规则：
 
@@ -200,7 +200,7 @@ Vue.createApp(Demo).mount('#demo')
 - `leave-active-class`
 - `leave-to-class`
 
-他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如 [Animate.css](https://daneden.github.io/animate.css/). 结合使用十分有用。
+他们的优先级高于普通的类名，这对于 Vue 的过渡系统和其他第三方 CSS 动画库，如 [Animate.css](https://daneden.github.io/animate.css/) 的结合使用十分有用。
 
 示例:
 
@@ -240,23 +240,23 @@ Vue.createApp(Demo).mount('#demo')
 
 ### 同时使用过渡和动画
 
-Vue 为了知道过渡的完成，必须设置相应的事件监听器。它可以是 `transitionend` 或 `animationend`，这取决于给元素应用的 CSS 规则。如果你使用其中任何一种，Vue 能自动识别类型并设置监听。
+Vue 为了知道过渡何时完成，必须设置相应的事件监听器。它可以是 `transitionend` 或 `animationend`，这取决于给元素应用的 CSS 规则。如果你只使用了其中一种，Vue 能自动识别其正确类型。
 
-但是，在一些场景中，你需要给同一个元素同时设置两种过渡动效，比如 animation 很快的被触发并完成了，而 transition 效果还没结束。在这种情况中，你就需要使用 `type` attribute 并设置 `animation` 或 `transition` 来明确声明你需要 Vue 监听的类型。
+但是，在一些场景中，你需要给同一个元素同时设置两种过渡动效，比如有一个通过 Vue 触发的 CSS 动画，并且在悬停时结合一个 CSS 过渡。在这种情况中，你就需要使用 `type` attribute 并设置 `animation` 或 `transition` 来显式声明你需要 Vue 监听的类型。
 
 ### 显性的过渡持续时间
 
 <!-- TODO: 验证并提供示例 -->
 
-在很多情况下，Vue 可以自动得出过渡效果的完成时机。默认情况下，Vue 会等待其在过渡效果的根元素的第一个 `transitionend` 或 `animationend` 事件。然而也可以不这样设定——比如，我们可以拥有一个精心编排的一系列过渡效果，其中一些嵌套的内部元素相比于过渡效果的根元素有延迟的或更长的过渡效果。
+在大多数情况下，Vue 可以自动得出过渡效果的完成时机。默认情况下，Vue 会等待其在过渡效果的根元素的第一个 `transitionend` 或 `animationend` 事件。然而，有时候这也许不是预期的行为——比如，我们也许拥有一个精心编排的一系列过渡效果，其中一些嵌套的内部元素相比于过渡效果的根元素具有延迟的或更长的过渡效果。
 
-在这种情况下你可以用 `<transition>` 组件上的 `duration` prop 定制一个显性的过渡持续时间 (以毫秒计)：
+在这种情况下你可以用 `<transition>` 组件上的 `duration` prop 显式指定过渡持续时间 (以毫秒计)：
 
 ```html
 <transition :duration="1000">...</transition>
 ```
 
-你也可以定制进入和移出的持续时间：
+你也可以分别指定进入和离开的持续时间：
 
 ```html
 <transition :duration="{ enter: 500, leave: 800 }">...</transition>
@@ -264,7 +264,7 @@ Vue 为了知道过渡的完成，必须设置相应的事件监听器。它可�
 
 ### JavaScript 钩子
 
-可以在 attribute 中声明 JavaScript 钩子
+可以在 attribute 中声明 JavaScript 钩子：
 
 ```html
 <transition
@@ -286,7 +286,7 @@ Vue 为了知道过渡的完成，必须设置相应的事件监听器。它可�
 // ...
 methods: {
   // --------
-  // ENTERING
+  // 进入时
   // --------
 
   beforeEnter(el) {
@@ -330,7 +330,7 @@ methods: {
 
 这些钩子函数可以结合 CSS transitions/animations 使用，也可以单独使用。
 
-当只用 JavaScript 过渡的时候，在 **`enter` 和 `leave` 钩中必须使用 `done` 进行回调**。否则，它们将被同步调用，过渡会立即完成。添加 `:css="false"`，也会让 Vue 会跳过 CSS 的检测，除了性能略高之外，这可以避免过渡过程中 CSS 规则的影响。
+当只用 JavaScript 过渡的时候，在 **`enter` 和 `leave` 钩子中必须使用 `done` 进行回调**。否则，它们将被同步调用，过渡会立即完成。添加 `:css="false"` 也会让 Vue 会跳过 CSS 的检测，除了性能略高之外，这也可以避免过渡过程中受到 CSS 规则的意外影响。
 
 现在让我们来看一个例子。下面是一个使用 [GreenSock](https://greensock.com/) 的 JavaScript 过渡:
 
@@ -405,7 +405,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 初始渲染的过渡
 
-可以通过 `appear` attribute 设置节点在初始渲染的过渡
+可以通过 `appear` attribute 设置节点在初始渲染的过渡：
 
 ```html
 <transition appear>
@@ -413,9 +413,9 @@ Vue.createApp(Demo).mount('#demo')
 </transition>
 ```
 
-## 多个元素的过渡
+## 多个元素之间的过渡
 
-我们之后讨论[多个组件之间过渡](#多个组件之间过渡)，对于原生标签可以使用 `v-if`/`v-else-if`/`v-else`。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
+我们将在之后讨论[多个组件之间的过渡](#多个组件之间的过渡)，但是你也可以通过 `v-if`/`v-else` 来完成元素之间的过渡。最常见的多标签过渡是一个列表和描述这个列表为空消息的元素：
 
 ```html
 <transition>
@@ -473,19 +473,19 @@ computed: {
 
 <common-codepen-snippet title="Transition Modes Button Problem" slug="Rwrqzpr" :editable="false" />
 
-在“on”按钮和“off”按钮的过渡中，两个按钮都被重绘了，一个离开过渡的时候另一个开始进入过渡。这是 `<transition>` 的默认行为 —— 进入和离开同时发生。
+在“on”按钮和“off”按钮的过渡过程中，两个按钮都被绘制了——其中一个离开过渡的时候另一个开始进入过渡。这是 `<transition>` 的默认行为——进入和离开同时发生。
 
-有时这很有效，例如当过渡项绝对位于彼此的 top 时：
+有时这很有效，例如当过渡项使用绝对定位到顶端时：
 
 <common-codepen-snippet title="Transition Modes Button Problem- positioning" slug="abdQgLr" :editable="false" />
 
-同时生效的进入和离开的过渡不能满足所有要求，所以 Vue 提供了**过渡模式**
+有时候这并不是一个可行的选项，或者说我们正在处理更复杂的动作，需要协调进入和离开的状态，所以 Vue 提供了一个非常有用的工具，称之为**过渡模式**：
 
-- `in-out`: 新元素先进行过渡，完成之后当前元素过渡离开。
-- `out-in`: 当前元素先进行过渡，完成之后新元素过渡进入。
+- `in-out`: 新元素先进行进入过渡，完成之后当前元素过渡离开。
+- `out-in`: 当前元素先进行离开过渡，完成之后新元素过渡进入。
 
 ::: tip
-很快就会发现 `out-in` 是你大多数时候想要的状态 :)
+你很快就会发现 `out-in` 是你大多数时候想要的状态 :)
 :::
 
 现在让我们用 `out-in` 更新 on/off 按钮的转换：
@@ -500,13 +500,13 @@ computed: {
 
 通过添加一个 attribute，我们修复了原来的过渡，而不必添加任何特殊 style。
 
-我们可以用它来协调更具表现力的动作，例如折叠卡片，如下所示。实际上是两个元素在彼此之间转换，但是由于开始状态和结束状态的比例是相同的：水平为0，它看起来就像一个流体运动。这种轻描淡写对于真实的 UI 微交互非常有用：
+我们可以用它来协调更具表现力的动作，例如折叠卡片，如下所示。这实际上是两个元素在彼此之间转换，但是由于开始状态和结束状态的比例是相同的：水平为0，它看起来就像一个流体运动。这种轻描淡写对于真实的 UI 微交互非常有用：
 
 <common-codepen-snippet title="Transition Modes Flip Cards" slug="76e344bf057bd58b5936bba260b787a8" :editable="false" />
 
-## 多个组件之间过渡
+## 多个组件之间的过渡
 
-组件之间的过渡更简单 —— 我们甚至不需要 `key` 属性。相反，我们包裹了一个[动态组件](component-basics.html#动态组件) ：
+组件之间的过渡更简单——我们甚至不需要 `key` 属性。取而代之的是，我们包裹了一个[动态组件](component-basics.html#动态组件) ：
 
 ```html
 <div id="demo">
