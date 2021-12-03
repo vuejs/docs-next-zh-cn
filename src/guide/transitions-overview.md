@@ -176,7 +176,7 @@ Easing 也可以表达动画元素的质量。以下面的 Pen 为例，你认�
 
 <common-codepen-snippet title="Bouncing Ball Demo" slug="wvgqyyW" :height="500" :editable="false" />
 
-你可以通过调整你的 Easing 来获得很多独特的效果，使你的动画非常时尚。CSS 允许你通过调整 cubic bezier 属性来修改 Easing，Lea Verou 开发的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
+你可以通过调整你的 Easing 来获得很多独特的效果，使你的动画非常时尚。CSS 允许你通过调整 cubic-bezier property 来修改 Easing，Lea Verou 开发的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
 
 虽然使用 cubic-bezier ease 提供的两个控制柄可以为简单的动画获得很好的效果，但是 JavaScript 允许多个控制柄，以此支持更多的变化。
 
