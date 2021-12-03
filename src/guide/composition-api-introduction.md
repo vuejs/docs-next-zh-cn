@@ -319,7 +319,7 @@ import { ref, onMounted, watch, toRefs } from 'vue'
 
 // 在我们组件中
 setup (props) {
-  // 使用 `toRefs` 创建对 props 中的 `user` property 的响应式引用
+  // 使用 `toRefs` 创建对 `props` 中的 `user` property 的响应式引用
   const { user } = toRefs(props)
 
   const repositories = ref([])
