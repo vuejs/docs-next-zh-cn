@@ -1,10 +1,10 @@
 # Refs
 
-> 本节例子中代码使用的[单文件组件](../guide/single-file-component.html)语法
+> 本节例子中的示例代码使用[单文件组件](../guide/single-file-component.html)语法
 
 ## `ref`
 
-接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象具有指向内部值的单个 property `.value`。
+接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象具有单个指向内部值的 `.value` property。
 
 **示例：**
 
@@ -16,7 +16,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-如果将对象分配为 ref 值，则通过 [reactive](./basic-reactivity.html#reactive) 函数使该对象具有高度的响应式。
+如果将对象分配为 ref 值，则通过 [reactive](./basic-reactivity.html#reactive) 函数使该对象具有深层的响应式。
 
 **类型声明：**
 
@@ -28,7 +28,7 @@ interface Ref<T> {
 function ref<T>(value: T): Ref<T>
 ```
 
-有时我们可能需要为 ref 的内部值指定复杂类型。想要简洁地做到这一点，我们可以在调用 `ref` 覆盖默认推断时传递一个泛型参数：
+有时我们可能需要为 ref 的内部值指定复杂类型。想要简洁地做到这一点，我们可以在调用 `ref` 时传递一个泛型参数以覆盖默认推断：
 
 ```ts
 const foo = ref<string | number>('foo') // foo 的类型：Ref<string | number>
@@ -36,7 +36,7 @@ const foo = ref<string | number>('foo') // foo 的类型：Ref<string | number>
 foo.value = 123 // ok!
 ```
 
-如果泛型的类型未知，建议将 `ref` 转换为 `Ref<T>`：
+如果泛型的类型未知，则建议将 `ref` 转换为 `Ref<T>`：
 
 ```ts
 function useState<State extends string>(initial: State) {
