@@ -301,7 +301,7 @@
 
   当在一个元素上设置一个绑定的时候，Vue 会默认通过 `in` 操作检测该元素是否有一个被定义为 property 的 key。如果该 property 被定义了，Vue 会将这个值设置为一个 DOM property 而不是 attribute。大多数情况下，这样工作是正常的，但你也可以通过 `.prop` 或 `.attr` 修饰符显性地覆写这个行为。有的时候这是必要的，尤其是[基于自定义元素的工作](/guide/web-components.html#传递-dom-property)。
 
-  The `.prop` modifier also has a dedicated shorthand, `.`:
+  `.prop` 修饰符也有一个专用的缩写 `.`:
 
   ```html
   <div :someProperty.prop="someObject"></div>

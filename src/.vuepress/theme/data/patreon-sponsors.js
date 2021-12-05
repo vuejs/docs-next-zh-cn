@@ -10,6 +10,11 @@ export default {
       "name": "Authing",
       "url": "https://authing.cn/welcome?from=vuejs",
       "img": "authing.svg"
+    },
+    {
+      "name": "Qingfuwu",
+      "url": "https://qingfuwu.cn?utm_campaign=TR_eSJH7nqW&utm_content=&utm_medium=Web&utm_source=CH_53OxwryD&utm_term=",
+      "img": "qingfuwu.svg"
     }
   ],
   "special_sponsors": [
