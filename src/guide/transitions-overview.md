@@ -144,15 +144,15 @@ transform: translateZ(0);
 
 许多像 GreenSock 这样的 JS 库都会默认你需要硬件加速，并在默认情况下应用，所以你不需要手动设置它们。
 
-## Timing
+## 时长
 
 对于简单 UI 过渡，即从一个状态到另一个没有中间状态的状态，通常使用 0.1s 到 0.4s 之间的计时，大多数人发现 *0.25s* 是一个最佳选择。你能用这个定时做任何事情吗？并不能。如果你有一些元素需要移动更大的距离，或者有更多的步骤或状态变化，0.25s 的效果可能会不好，你将不得不更加用心，而且定时也需要更加独特。但这并不意味着你不能在应用中重复使用效果好的默认值。
 
 你也可能会发现，起始动画比结束动画的时间稍长一些，看起来会更好一些。用户通常是在动画开始时被引导的，而在动画结束时没有那么多耐心，因为他们想继续他们的动作。
 
-## Easing
+## 缓动效果
 
-easing 是在动画中表达深度的一个重要方式。动画新手最常犯的一个错误是在起始动画节点使用 `ease-in`，在结束动画节点使用 `ease-out`。实际上你需要的是反过来的。
+缓动效果是在动画中表达深度的一个重要方式。动画新手最常犯的一个错误是在起始动画节点使用 `ease-in`，在结束动画节点使用 `ease-out`。实际上你需要的是反过来的。
 
 如果我们将这些状态应用于过渡，它应该像这样：
 
@@ -176,13 +176,13 @@ easing 是在动画中表达深度的一个重要方式。动画新手最常犯�
 
 <common-codepen-snippet title="Bouncing Ball Demo" slug="wvgqyyW" :height="500" :editable="false" />
 
-你可以通过调整你的 easing 来获得很多独特的效果，使你的动画非常时尚。CSS 允许你通过调整 cubic-bezier property 来修改 easing，Lea Verou 开发的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
+你可以通过调整你的缓动函数来获得很多独特的效果，使动画非常炫酷。CSS 允许你通过调整 cubic-bezier property 来进行修改，Lea Verou 的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
 
-虽然使用 cubic-bezier ease 提供的两个控制句柄可以为简单的动画实现很好的效果，但是 JavaScript 允许多个控制句柄，以支持更多的变化。
+虽然使用 cubic-bezier 缓动函数提供的两个控制点可以为简单的动画实现很好的效果，但 JavaScript 允许使用多个控制点，因此也支持更多的变化。
 
-![ease 对比](/images/css-vs-js-ease.svg)
+![缓动效果对比](/images/css-vs-js-ease.svg)
 
-以弹跳为例。在 CSS 中，我们必须声明向上和向下的每个关键帧。在 JavaScript 中，我们可以通过在 [GreenSock API (GSAP)](https://greensock.com/) 中声明 `bounce` 来描述 ease 中所有这些移动 (其他 JS 库有其他类型的 easing 默认值)。
+以弹跳为例。在 CSS 中，我们必须声明向上和向下的每个关键帧。在 JavaScript 中，我们可以通过在 [GreenSock API (GSAP)](https://greensock.com/) 中声明 `bounce` 来描述缓动效果中的所有这些移动 (其他 JS 库有其他类型的缓动效果默认值)。
 
 这里是 CSS 中用来实现 bounce 的代码 (来自 animate.css 的例子)：
 
@@ -230,7 +230,7 @@ easing 是在动画中表达深度的一个重要方式。动画新手最常犯�
 gsap.from(element, { duration: 1, ease: 'bounce.out', y: -500 })
 ```
 
-我们将在之后章节的部分示例中使用 GreenSock。他们有一个很棒的 [ease 可视化工具](https://greensock.com/ease-visualizer)，帮助你建立精心制作的 ease。
+我们将在之后章节的部分示例中使用 GreenSock。他们有一个很棒的 [缓动效果可视化工具](https://greensock.com/ease-visualizer)，帮助你建立精心制作的缓动效果。
 
 ## 进一步阅读
 
