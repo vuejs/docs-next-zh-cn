@@ -4,7 +4,7 @@
 
 ## `ref`
 
-接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象具有单个指向内部值的 `.value` property。
+接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象仅有一个 `.value` property，指向该内部值。
 
 **示例：**
 
@@ -16,7 +16,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-如果将对象分配为 ref 值，则通过 [reactive](./basic-reactivity.html#reactive) 函数使该对象具有深层的响应式。
+如果将对象分配为 ref 值，则它将被 [reactive](./basic-reactivity.html#reactive) 函数处理为深层的响应式对象。
 
 **类型声明：**
 
@@ -28,7 +28,7 @@ interface Ref<T> {
 function ref<T>(value: T): Ref<T>
 ```
 
-有时我们可能需要为 ref 的内部值指定复杂类型。想要简洁地做到这一点，我们可以在调用 `ref` 时传递一个泛型参数以覆盖默认推断：
+有时我们可能需要为 ref 的内部值指定复杂类型。可以在调用 `ref` 时传递一个泛型参数以覆盖默认推断，从而简洁地做到这一点：
 
 ```ts
 const foo = ref<string | number>('foo') // foo 的类型：Ref<string | number>
