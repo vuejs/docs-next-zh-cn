@@ -117,8 +117,7 @@ Vue.createApp(Demo).mount('#demo')
 ```
 
 ```css
-/* 可以为进入和离开动画            */
-/* 设置不同的持续时间和动画函数      */
+/* 可以为进入和离开动画设置不同的持续时间和动画函数 */
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
 }
@@ -200,7 +199,7 @@ Vue.createApp(Demo).mount('#demo')
 - `leave-active-class`
 - `leave-to-class`
 
-他们的优先级高于普通的类名，这对于结合 Vue 的过渡系统和其他第三方 CSS 动画库，如 [Animate.css](https://daneden.github.io/animate.css/) 的用法十分有用。
+它们的优先级高于普通的类名，当你希望将其它第三方 CSS 动画库与 Vue 的过度系统相结合时十分有用，比如 [Animate.css](https://daneden.github.io/animate.css/)。
 
 示例:
 
@@ -498,7 +497,7 @@ computed: {
 
 <common-codepen-snippet title="Transition Modes Button Problem- solved" slug="ZEQmdvq" :editable="false" />
 
-通过添加一个 attribute，我们修复了原来的过渡，而不必添加任何特殊 style。
+通过添加一个 attribute，我们修复了原来的过渡，而不必添加任何特殊样式。
 
 我们可以用它来协调更具表现力的动作，例如折叠卡片，如下所示。这实际上是两个元素在彼此之间转换，但是由于开始状态和结束状态的比例是相同的：水平为0，它看起来就像一个流体运动。这种轻描淡写对于真实的 UI 微交互非常有用：
 
