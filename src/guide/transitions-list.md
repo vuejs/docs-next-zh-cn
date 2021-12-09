@@ -70,11 +70,11 @@ Vue.createApp(Demo).mount('#list-demo')
 
 <common-codepen-snippet title="Transition List" slug="e1cea580e91d6952eb0ae17bfb7c379d" tab="js,result" :editable="false" :preview="false" />
 
-这个例子有个问题，当添加和移除元素的时候，周围的元素会瞬间移动到他们的新布局的位置，而不是平滑的过渡，我们下面会解决这个问题。
+这个例子有一个问题，当添加和移除元素的时候，周围的元素会瞬间移动到它们的新布局的位置，而不是平滑的过渡，我们下面会解决这个问题。
 
 ## 列表的移动过渡
 
-`<transition-group>` 组件还有一个特殊之处。不仅可以进入和离开动画，还可以改变定位。要使用这个新功能只需了解新增的 **`v-move` 类**，它会在元素的改变定位的过程中应用。像之前的类名一样，可以通过 `name` attribute 来自定义前缀，也可以通过 `move-class` attribute 手动设置。
+`<transition-group>` 组件还有一个特殊之处。除了进入和离开，它还可以为定位的改变添加动画。只需了解新增的 **`v-move` 类**就可以使用这个新功能，它会应用在元素改变定位的过程中。像之前的类名一样，它的前缀可以通过 `name` attribute 来自定义，也可以通过 `move-class` attribute 手动设置。
 
 这个类主要用于指定过渡 timing 和 easing 曲线，如下所示：
 
@@ -116,7 +116,7 @@ Vue.createApp(Demo).mount('#flip-list-demo')
 
 <common-codepen-snippet title="Transition-group example" slug="049211673d3c185fde6b6eceb8baebec" tab="html,result" :editable="false" :preview="false" />
 
-这个看起来很神奇，其实 Vue 内部使用了一个叫 [FLIP](https://aerotwist.com/blog/flip-your-animations/) 的动画技术，它使用 transform 将元素从之前的位置平滑过渡新的位置。
+这个看起来很神奇，其实 Vue 内部使用了一个叫 [FLIP](https://aerotwist.com/blog/flip-your-animations/) 的动画技术，它使用 transform 将元素从之前的位置平滑过渡到新的位置。
 
 我们将之前实现的例子和这个技术结合，使我们列表的一切变动都会有动画过渡。
 
@@ -183,10 +183,10 @@ Vue.createApp(Demo).mount('#list-complete-demo')
 <common-codepen-snippet title="Transition-group example" slug="373b4429eb5769ae2e6d097fd954fd08" tab="js,result" :editable="false" :preview="false" />
 
 :::tip
-需要注意的是使用 FLIP 过渡的元素不能设置为 `display: inline`。作为替代方案，可以设置为 ` display: inline-block` 或者将元素放置于 flex 布局中。
+需要注意的是使用 FLIP 过渡的元素不能设置为 `display: inline`。作为替代方案，可以设置为 `display: inline-block` 或者将元素放置于 flex 布局中。
 :::
 
-FLIP 动画不仅可以实现单维度的过渡，多维网格种的元素也[同样可以过渡](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions)：
+FLIP 动画不仅可以实现单维度的过渡，多维网格中的元素也[同样可以过渡](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions)：
 
 TODO：示例
 
@@ -271,7 +271,7 @@ Vue.createApp(Demo).mount('#demo')
 
 ## 可复用的过渡
 
-过渡可以通过 Vue 的组件系统实现复用。要创建一个可复用过渡组件，你需要做的就是将 `<transition>` 或者 `<transition-group>` 作为根组件，然后将任何子组件放置在其中就可以了。
+过渡可以通过 Vue 的组件系统实现复用。要创建一个可复用的过渡组件，你需要做的就是将 `<transition>` 或者 `<transition-group>` 作为根组件，然后将任何子组件放置其中就可以了。
 
 TODO：使用 Vue3 重构
 
@@ -337,7 +337,7 @@ Vue.component('my-special-transition', {
 
 当你已经定义了 Vue 的过渡类约定，并希望可以快速切换它们的时候，这会非常有用。
 
-尽管所有过渡 attribute 都可以动态绑定，我们可用的不仅有 attribute。因为事件钩子是方法，它们可以访问任何上下文中的数据，这意味着根据组件的状态不同，你的 JavaScript 过渡可以有不同的表现。
+尽管所有过渡 attribute 都可以动态绑定，但我们可用的不只有 attribute。因为事件钩子是方法，它们可以访问任何上下文中的数据，这意味着根据组件状态的不同，你的 JavaScript 过渡可以有不同的表现。
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
@@ -421,4 +421,4 @@ app.mount('#dynamic-fade-demo')
 
 TODO：示例
 
-最后，创建动态过渡的最终方案是组件通过接受 prop 来动态修改之前的过渡。一句老话，唯一的限制是你的想象力。
+最后，创建动态过渡的最终方案是组件通过赋值 prop 来动态修改之前的过渡。一句老话，唯一的限制是你的想象力。
