@@ -76,7 +76,7 @@ Vue.createApp(Demo).mount('#list-demo')
 
 `<transition-group>` 组件还有一个特殊之处。除了进入和离开，它还可以为定位的改变添加动画。只需了解新增的 **`v-move` 类**就可以使用这个新功能，它会应用在元素改变定位的过程中。像之前的类名一样，它的前缀可以通过 `name` attribute 来自定义，也可以通过 `move-class` attribute 手动设置。
 
-这个类主要用于指定过渡 timing 和 easing 曲线，如下所示：
+这个类主要用于指定过渡过渡时长和缓动效果曲线，如下所示：
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
