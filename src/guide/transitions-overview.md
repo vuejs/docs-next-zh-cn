@@ -176,9 +176,9 @@ transform: translateZ(0);
 
 <common-codepen-snippet title="Bouncing Ball Demo" slug="wvgqyyW" :height="500" :editable="false" />
 
-你可以通过调整你的缓动函数来获得很多独特的效果，使动画非常炫酷。CSS 允许你通过调整 cubic-bezier property 来进行修改，Lea Verou 的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
+你可以通过调整你的缓动函数来获得很多独特的效果，使动画非常炫酷。CSS 允许你通过调整 cubic-bezier 函数的参数来修改缓动效果，Lea Verou 的[这个 playground](https://cubic-bezier.com/#.17,.67,.83,.67) 对探索这个问题非常有帮助。
 
-虽然使用 cubic-bezier 缓动函数提供的两个控制点可以为简单的动画实现很好的效果，但 JavaScript 允许使用多个控制点，因此也支持更多的变化。
+虽然可以通过三次贝塞尔曲线提供的两个控制点为简单动画实现很好的效果，但 JavaScript 允许使用多个控制点，因此也支持更多的变化。
 
 ![缓动效果对比](/images/css-vs-js-ease.svg)
 
