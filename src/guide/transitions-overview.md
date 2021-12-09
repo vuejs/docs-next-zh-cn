@@ -230,7 +230,7 @@ transform: translateZ(0);
 gsap.from(element, { duration: 1, ease: 'bounce.out', y: -500 })
 ```
 
-我们将在之后章节的部分示例中使用 GreenSock。他们有一个很棒的 [缓动效果可视化工具](https://greensock.com/ease-visualizer)，帮助你建立精心制作的缓动效果。
+我们将在之后章节的部分示例中使用 GreenSock。他们有一个很棒的[缓动效果可视化工具](https://greensock.com/ease-visualizer)，帮助你建立精心制作的缓动效果。
 
 ## 进一步阅读
 
