@@ -51,7 +51,7 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 
 ## 动态状态过渡
 
-就像 Vue 的过渡组件一样，用于支撑状态过渡的数据也可以实时更新，这对于原型设计十分有用！只需要对变量做一点点修改，即使是一个简单的 SVG 多边形也可实现很多难以想象的效果。
+就像 Vue 的过渡组件一样，用于支撑状态过渡的数据也可以实时更新，这对于原型设计十分有用！只需要对变量做一些修改，即使是一个简单的 SVG 多边形也可实现很多难以想象的效果。
 
 <common-codepen-snippet title="Updating SVG" slug="a8e00648d4df6baa1b19fb6c31c8d17e" :height="500" tab="js,result" :editable="false" />
 
