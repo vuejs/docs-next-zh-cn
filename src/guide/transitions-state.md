@@ -1,6 +1,6 @@
 # 状态过渡
 
-Vue 的过渡系统提供了非常多简单的方法设置进入、离开和列表的动效。那么对于数据元素本身的动效呢，比如：
+Vue 的过渡系统提供了非常多简单的方法来设置进入、离开和列表的动效，那么对于数据元素本身的动效呢？比如：
 
 - 数字和运算
 - 颜色的显示
@@ -11,7 +11,7 @@ Vue 的过渡系统提供了非常多简单的方法设置进入、离开和列�
 
 ## 状态动画与侦听器
 
-通过侦听器我们能监听到任何数值 property 的数值更新。可能听起来很抽象，所以让我们先来看看使用 [GreenSock](https://greensock.com/) 一个例子：
+通过侦听器我们能监听到任何数值 property 的更新。可能听起来很抽象，所以让我们先来看看一个使用 [GreenSock](https://greensock.com/) 的例子：
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -51,13 +51,13 @@ Vue.createApp(Demo).mount('#animated-number-demo')
 
 ## 动态状态过渡
 
-就像 Vue 的过渡组件一样，数据背后状态过渡会实时更新，这对于原型设计十分有用。当你修改一些变量，即使是一个简单的 SVG 多边形也可实现很多难以想象的效果。
+就像 Vue 的过渡组件一样，用于支撑状态过渡的数据也可以实时更新，这对于原型设计十分有用！只需要对变量做一些修改，即使是一个简单的 SVG 多边形也可实现很多难以想象的效果。
 
 <common-codepen-snippet title="Updating SVG" slug="a8e00648d4df6baa1b19fb6c31c8d17e" :height="500" tab="js,result" :editable="false" />
 
 ## 把过渡放到组件里
 
-管理太多的状态过渡会迅速增加组件实例的复杂度，幸好很多的动画可以提取到专用的子组件中。我们把之前的示例改写一下：
+管理太多的状态过渡会迅速增加组件实例的复杂度，幸好很多的动画可以提取到专用的子组件中。我们把之前的整数动画示例改写一下：
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
@@ -130,7 +130,7 @@ app.mount('#app')
 
 <common-codepen-snippet title="State Transition Components" slug="e9ef8ac7e32e0d0337e03d20949b4d17" tab="js,result" :editable="false" />
 
-我们能在组件中结合使用这一节讲到各种过渡策略和 Vue [内建的过渡系统](transitions-enterleave.html)。总之，对于完成各种过渡动效几乎没有阻碍。
+现在我们可以使这些子组件与多个状态相组合。这让人感到兴奋——我们能在组件中结合使用这一节讲到各种过渡策略和 Vue [内建的过渡系统](transitions-enterleave.html)。总之，对于完成各种过渡动效几乎没有阻碍。
 
 你可以看到我们如何使用它进行数据可视化、物理效果、角色动画和交互，一切都没有限制。
 
