@@ -116,6 +116,15 @@ $ yarn
 $ yarn dev
 ```
 
+或者 pnpm:
+
+```bash
+$ pnpm create vite <project-name> -- --template vue
+$ cd <project-name>
+$ pnpm install
+$ pnpm dev
+```
+
 ## 对不同构建版本的解释
 
 在 [npm 包的 dist/ 目录](https://cdn.jsdelivr.net/npm/vue@3.0.2/dist/)你将会找到很多不同的 Vue.js 构建版本。下面是一个概述，根据不同的使用情况，应该使用哪个 `dist` 文件：
