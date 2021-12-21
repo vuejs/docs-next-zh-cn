@@ -392,7 +392,7 @@ app.component('alert-box', {
 <component :is="currentTabComponent"></component>
 ```
 
-在上述示例中，`currentTabComponent` 可以包括
+在上述示例中，`currentTabComponent` 可以包括：
 
 - 注册组件时的名字，或
 - 一个任意组件对象
