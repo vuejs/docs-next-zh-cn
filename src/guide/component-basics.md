@@ -397,7 +397,7 @@ app.component('alert-box', {
 - 组件注册时的名字，或
 - 一个任意组件对象
 
-查看[sandbox](https://codepen.io/team/Vue/pen/oNXaoKy)调试完整代码，或在另一个[sandbox](https://codepen.io/team/Vue/pen/oNXapXM)中了解绑定任意的组件对象，而不是注册组件时的名字。
+查看[该沙盒](https://codepen.io/team/Vue/pen/oNXaoKy)以调试绑定了组件注册名的完整代码，或在[另一个沙盒](https://codepen.io/team/Vue/pen/oNXapXM)中查看绑定了组件选项对象的示例。
 
 你也可以使用 `is` attribute 来创建常规的 HTML 元素。
 
