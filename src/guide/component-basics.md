@@ -394,7 +394,7 @@ app.component('alert-box', {
 
 在上述示例中，`currentTabComponent` 可以包括：
 
-- 注册组件时的名字，或
+- 组件注册时的名字，或
 - 一个任意组件对象
 
 查看[sandbox](https://codepen.io/team/Vue/pen/oNXaoKy)调试完整代码，或在另一个[sandbox](https://codepen.io/team/Vue/pen/oNXapXM)中了解绑定任意的组件对象，而不是注册组件时的名字。
