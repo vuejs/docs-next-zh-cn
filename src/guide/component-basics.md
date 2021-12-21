@@ -392,12 +392,12 @@ app.component('alert-box', {
 <component :is="currentTabComponent"></component>
 ```
 
-在上述示例中，`currentTabComponent` 可以包括
+在上述示例中，`currentTabComponent` 可以包括：
 
 - 已注册组件的名字，或
-- 一个组件的选项对象
+- 一个组件选项对象
 
-你可以在[这里](https://codepen.io/team/Vue/pen/oNXaoKy)查阅并体验完整的代码，或在[这个版本](https://codepen.io/team/Vue/pen/oNXapXM)了解绑定组件选项对象，而不是已注册组件名的示例。
+查看[该沙盒](https://codepen.io/team/Vue/pen/oNXaoKy)以调试绑定了组件注册名的完整代码，或在[另一个沙盒](https://codepen.io/team/Vue/pen/oNXapXM)中查看绑定了组件选项对象的示例。
 
 你也可以使用 `is` attribute 来创建常规的 HTML 元素。
 
