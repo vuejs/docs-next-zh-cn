@@ -20,7 +20,7 @@
 
 - 对 IE11 的支持：[Vue 3 已经官方放弃对 IE11 的支持](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)。如果仍然需要支持 IE11 或更低版本，那你仍需继续使用 Vue 2。
 
-- 服务端渲染：该迁移构建版本可以被用于服务端渲染，但是迁移一个自定义的服务端渲染设置有更多工作要做。大致的思路是将 `vue-server-renderer` 替换为 [`@vue/server-renderer`](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer)。Vue 3 不再提供一个包渲染器，且我们推荐使用 [Vite](https://cn.vitejs.dev/guide/ssr.html) 以支持 Vue 3 服务端渲染。如果你正在使用 [Nuxt.js](https://zh.nuxtjs.org/)，那最好等待一下 Nuxt 3。
+- 服务端渲染：该迁移构建版本可以被用于服务端渲染，但是迁移一个自定义的服务端渲染配置还有很多工作要做。大致的思路是将 `vue-server-renderer` 替换为 [`@vue/server-renderer`](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer)。Vue 3 不再提供一个包渲染器，且我们推荐使用 [Vite](https://cn.vitejs.dev/guide/ssr.html) 以支持 Vue 3 服务端渲染。如果你正在使用 [Nuxt.js](https://zh.nuxtjs.org/)，可以尝试 [Nuxt Bridge，一个 Nuxt.js 2 到 3 的兼容层](https://v3.nuxtjs.org/getting-started/bridge/)。对于复杂、生产环境的项目来说，可能最好还是等待一下 [Nuxt 3 (目前处于 beta 阶段)](https://v3.nuxtjs.org/getting-started/introduction)。
 
 ### 预期
 
