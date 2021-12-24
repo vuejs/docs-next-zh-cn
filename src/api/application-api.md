@@ -126,8 +126,8 @@ const myDirective = app.directive('my-directive')
 - `instance`：使用指令的组件实例。
 - `value`：传递给指令的值。例如，在 `v-my-directive="1 + 1"` 中，该值为 `2`。
 - `oldValue`：先前的值，仅在 `beforeUpdate` 和 `updated` 中可用。无论值是否有更改都可用。
-- `arg`：传递给指令的参数 (如果有的话)。例如在 `v-my-directive:foo` 中，arg 为 `"foo"`。
-- `modifiers`：包含修饰符 (如果有的话) 的对象。例如在 `v-my-directive.foo.bar` 中，修饰符对象为 `{foo: true，bar: true}`。
+- `arg`：传递给指令的参数(如果有的话)。例如在 `v-my-directive:foo` 中，arg 为 `"foo"`。
+- `modifiers`：包含修饰符(如果有的话) 的对象。例如在 `v-my-directive.foo.bar` 中，修饰符对象为 `{foo: true，bar: true}`。
 - `dir`：一个对象，在注册指令时作为参数传递。例如，在以下指令中
 
 ```js
