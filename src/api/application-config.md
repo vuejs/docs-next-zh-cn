@@ -1,6 +1,6 @@
 # 应用配置
 
-每个 Vue 应用都会暴露一个 `config` 对象，该对象包含此应用的配置设置：
+每个 Vue 应用都会暴露一个包含其配置项的 `config` 对象：
 
 ```js
 const app = createApp({})
@@ -8,7 +8,7 @@ const app = createApp({})
 console.log(app.config)
 ```
 
-在挂载应用之前，你可以修改其 property，如下所示。
+在挂载应用之前，你可以修改下列 property。
 
 ## errorHandler
 
@@ -25,7 +25,7 @@ app.config.errorHandler = (err, vm, info) => {
 }
 ```
 
-指定一个处理函数，来处理组件渲染方法和侦听器执行期间抛出的未捕获错误。这个处理函数被调用时，可获取错误信息和应用实例。
+指定一个处理函数，来处理组件渲染函数和侦听器执行期间抛出的未捕获错误。这个处理函数被调用时，可获取错误信息和应用实例。
 
 > 错误追踪服务 [Sentry](https://sentry.io/for/vue/) 和 [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/) 使用此选项提供官方集成。
 
@@ -63,15 +63,15 @@ app.component('child-component', {
 })
 ```
 
-添加一个可以在应用的任何组件实例中访问的全局 property。组件的 property 在命名冲突具有优先权。
+添加一个可以在应用的任何组件实例中访问的全局 property。组件的 property 在命名冲突时具有优先权。
 
-这可以代替 Vue 2.x `Vue.prototype` 扩展：
+这可以代替 Vue 2.x 的 `Vue.prototype` 扩展：
 
 ```js
-// 之前(Vue 2.x)
+// 之前 (Vue 2.x)
 Vue.prototype.$http = () => {}
 
-// 之后(Vue 3.x)
+// 之后 (Vue 3.x)
 const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
@@ -125,7 +125,7 @@ app.mixin({
 配置运行时编译器的选项。设置在这个对象上的值将会被传入浏览器内的模板编译器，并影响配置过的应用内的每个组件。注意，你也可以使用 [`compilerOptions` 选项](/api/options-misc.html#compileroptions)在每个组件的基础上覆写这些选项。
 
 ::: tip 重要
-该配置选项只在完整的构建版本中生效 (例如可以在浏览器中编译模板的独立版 `vue.js`)。如果你使用的是附带额外构建设置的仅运行时版本，编译器选项必须传入 `@vue/compiler-dom` 构建工具的配置来替代
+该配置选项只在完整的构建版本中生效 (即可以在浏览器中编译模板的独立版 `vue.js`)。如果你使用的是附带额外构建设置的仅运行时版本，编译器选项必须通过构建工具的配置传入 `@vue/compiler-dom` 以替代。
 
 - 对 `vue-loader` 来说：[通过 `compilerOptions` loader 选项传入](https://vue-loader.vuejs.org/options.html#compileroptions)。也可以查阅 [`vue-cli` 中的配置方式](https://cli.vuejs.org/zh/guide/webpack.html#修改-loader-选项)。
 
@@ -141,13 +141,13 @@ app.mixin({
 - **用法**：
 
 ```js
-// 任何 'ion-' 开头的元素都会被识别为自定义元素
+// 任何以 'ion-' 开头的元素都会被识别为自定义元素
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 ```
 
-指定一个方法来识别 Vue 以外 (例如通过 Web Components API) 定义的自定义元素。如果组件匹配了这个条件，就不需要本地或全局注册，Vue 也不会抛出 `Unknown custom element` 的警告。
+指定一个方法来识别 Vue 以外 (例如通过 Web Components API) 定义的自定义元素。如果组件匹配了这个条件，它就不需要在本地或全局注册，Vue 也不会抛出 `Unknown custom element` 的警告。
 
-> 注意所有的原生 HTML 和 SVG 标记不需要被这个函数匹配——Vue 的解析器会自动检测它们。
+> 注意所有的原生 HTML 和 SVG 标记都不需要被这个函数匹配——Vue 的解析器会自动进行这项检查。
 
 ### compilerOptions.whitespace
 
@@ -167,7 +167,7 @@ app.config.compilerOptions.whitespace = 'preserve'
 2. 元素之间的包括折行在内的多个空格会被移除
 3. 文本结点之间可被压缩的空格都会被压缩成为一个空格
 
-设置 `'preserve'` 的值可以禁用 (2) 和 (3)。
+将值设置为 `'preserve'` 可以禁用 (2) 和 (3)。
 
 ### compilerOptions.delimiters
 
@@ -184,7 +184,7 @@ app.config.compilerOptions.delimiters = ['${', '}']
 
 设置用在模板内的文本插值的边界符。
 
-这个选项一般会用于避免和同样使用大括号语法的服务端框架发生冲突。
+这个选项一般会用于避免和同样使用双大括号语法的服务端框架发生冲突。
 
 ### compilerOptions.comments
 
