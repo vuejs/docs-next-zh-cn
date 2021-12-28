@@ -178,11 +178,11 @@ app.config.compilerOptions.whitespace = 'preserve'
 - **用法**：
 
 ```js
-// 将分隔符改变为 ES6 模板字符串风格
+// 将分隔符设置为 ES6 模板字符串风格
 app.config.compilerOptions.delimiters = ['${', '}']    
 ```
 
-设置用在模板内的文本插值的分隔符。
+用于配置模板内文本插值的分隔符。
 
 这个选项一般会用于避免和同样使用双大括号语法的服务端框架发生冲突。
 
