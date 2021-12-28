@@ -227,6 +227,7 @@ app.component('my-component', {
 - Date
 - Function
 - Symbol
+- BigInt
 
 此外，`type` 还可以是一个自定义的构造函数，并且通过 `instanceof` 来进行检查确认。例如，给定下列现成的构造函数：
 
