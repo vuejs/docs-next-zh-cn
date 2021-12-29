@@ -225,11 +225,11 @@ app.mount('#my-app')
 
 - **用法：**
 
-  设置一个可以被注入到应用范围内所有组件中的值。组件应该使用 `inject` 来接收提供的值。
+  设置一个可以被注入到应用范围内所有组件中的值。组件应该使用 `inject` 来接收 provide 的值。
 
   从 `provide`/`inject` 的角度来看，可以将应用程序视为根级别的祖先，而根组件是其唯一的子级。
 
-  该方法不应该与 [provide 组件选项](options-composition.html#provide-inject)或组合式 API 中的 [provide 方法](composition-api.html#provide-inject)混淆。虽然它们也是相同的 `provide`/`inject` 机制的一部分，但是它们是用来配置组件而非应用所提供的值。
+  该方法不应该与 [provide 组件选项](options-composition.html#provide-inject)或组合式 API 中的 [provide 方法](composition-api.html#provide-inject)混淆。虽然它们也是相同的 `provide`/`inject` 机制的一部分，但是它们是用来配置组件而非应用所 provide 的值。
 
   通过应用提供值在编写插件时尤其有用，因为插件一般不能使用组件来提供值。这是对 [globalProperties](application-config.html#globalproperties) 的替代选择。
 
