@@ -55,7 +55,7 @@ app.component('modal-button', {
 
 Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下渲染了 HTML，而不必求助于全局状态或将其拆分为两个组件。
 
-让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue “**Teleport** 这个 HTML 到 **body**标签”。
+让我们修改 `modal-button` 以使用 `<teleport>`，并告诉 Vue “将这个 HTML **传送**到‘**body**’标签下”。
 
 ```js
 app.component('modal-button', {
