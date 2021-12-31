@@ -25,7 +25,7 @@ app.config.errorHandler = (err, vm, info) => {
 }
 ```
 
-指定一个处理函数，来处理组件渲染函数和侦听器执行期间抛出的未捕获错误。这个处理函数被调用时，可获取错误信息和应用实例。
+指定一个处理函数，来处理组件渲染函数和侦听器执行期间抛出的未捕获错误。这个处理函数被调用时，可获取错误信息和相应的应用实例。
 
 > 错误追踪服务 [Sentry](https://sentry.io/for/vue/) 和 [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/) 使用此选项提供官方集成。
 
@@ -145,7 +145,7 @@ app.mixin({
 app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 ```
 
-指定一个方法来识别 Vue 以外 (例如通过 Web Components API) 定义的自定义元素。如果组件匹配了这个条件，它就不需要在本地或全局注册，Vue 也不会抛出 `Unknown custom element` 的警告。
+指定一个方法来识别 Vue 以外 (例如通过 Web Components API) 定义的自定义元素。如果一个组件匹配了这个条件，它就不需要在本地或全局注册，Vue 也不会抛出 `Unknown custom element` 的警告。
 
 > 注意所有的原生 HTML 和 SVG 标记都不需要被这个函数匹配——Vue 的解析器会自动进行这项检查。
 

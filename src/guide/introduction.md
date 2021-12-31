@@ -217,7 +217,7 @@ Vue.createApp(ListRendering).mount('#list-rendering')
 
 ![Component Tree](/images/components.png)
 
-在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `App` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
+在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `app` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
 
 ```js
 const TodoItem = {
@@ -248,10 +248,10 @@ app.mount(...)
 但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](component-basics.html#通过-prop-向子组件传递数据)：
 
 ```js
-app.component('todo-item', {
+const TodoItem = {
   props: ['todo'],
   template: `<li>{{ todo.text }}</li>`
-})
+}
 ```
 
 现在，我们可以使用 `v-bind` 指令将待办项传到循环输出的每个组件中：
@@ -275,6 +275,11 @@ app.component('todo-item', {
 ```
 
 ```js
+const TodoItem = {
+  props: ['todo'],
+  template: `<li>{{ todo.text }}</li>`
+}
+
 const TodoList = {
   data() {
     return {
@@ -284,22 +289,20 @@ const TodoList = {
         { id: 2, text: 'Whatever else humans are supposed to eat' }
       ]
     }
+  },
+  components: {
+    TodoItem
   }
 }
 
 const app = Vue.createApp(TodoList)
-
-app.component('todo-item', {
-  props: ['todo'],
-  template: `<li>{{ todo.text }}</li>`
-})
 
 app.mount('#todo-list-app')
 ```
 
 <common-codepen-snippet title="Intro-Components-1" slug="VwLxeEz" />
 
-尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 `<todo-item>` 组件，提供更为复杂的模板和逻辑，而不会影响到父应用。
+尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 `<todo-item>` 组件，提供一个更为复杂的模板和逻辑，而不会影响到父应用。
 
 在一个大型应用中，有必要将整个应用程序划分为多个组件，以使开发更易管理。在[后续教程](component-basics.html)中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
 
