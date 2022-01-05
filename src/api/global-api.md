@@ -192,9 +192,7 @@ createApp({
 })
 ```
 
-对于高阶用法，`defineAsyncComponent` 可以接受一个对象：
-
-`defineAsyncComponent` 方法还可以返回以下格式的对象：
+对于高阶用法，`defineAsyncComponent` 可以接受一个以下格式的对象：
 
 ```js
 import { defineAsyncComponent } from 'vue'
