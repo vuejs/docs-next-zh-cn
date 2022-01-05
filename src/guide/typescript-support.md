@@ -88,7 +88,7 @@ vue add typescript
 
 对于使用 TypeScript 开发 Vue 应用程序，我们强烈建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它为 TypeScript 提供了很好的开箱即用支持。如果你使用的是[单文件组件](./single-file-component.html) (SFCs)，那么可以使用很棒的 [Volar extension](https://github.com/johnsoncodehk/volar)，它在 SFCs 中提供了 TypeScript 推理和许多其他优秀的特性。
 
-[WebStorm](https://www.jetbrains.com/webstorm/) 还为 TypeScript 和 Vue 提供现成的支持。其它的 JetBrains IDE 对它们也有现成的或通过[该免费插件](https://plugins.jetbrains.com/plugin/9442-vue-js)的支持。
+[WebStorm](https://www.jetbrains.com/webstorm/) 同时为 TypeScript 和 Vue 提供内置的支持。其它的 JetBrains IDE 对它们也通过内置或[免费插件](https://plugins.jetbrains.com/plugin/9442-vue-js)的方式进行支持。
 
 ## 定义 Vue 组件
 
