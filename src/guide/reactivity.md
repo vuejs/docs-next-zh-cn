@@ -276,7 +276,7 @@ const wrapped = new Proxy(obj, handlers)
 console.log(obj === wrapped) // false
 ```
 
-其他依赖严等于比较的操作也会受到影响，例如 `.includes()` 或 `.indexOf()`。
+其他依赖严格等于比较的操作也会受到影响，例如 `.includes()` 或 `.indexOf()`。
 
 这里的最佳实践是永远不要持有对原始对象的引用，而只使用响应式版本。
 
