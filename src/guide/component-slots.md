@@ -25,7 +25,7 @@ Vue 实现了一套内容分发的 API，这套 API 的设计灵感源自 [Web C
 </button>
 ```
 
-当组件渲染的时候，`<slot></slot>` 将会被替换为“Add Todo”。
+当组件渲染的时候，`<slot></slot>` 将会被替换为“Add todo”。
 
 ```html
 <!-- 渲染 HTML -->
