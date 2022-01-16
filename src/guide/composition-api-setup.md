@@ -101,7 +101,7 @@ export default {
 
 ## 访问组件的 property
 
-执行 `setup` 时，组件实例尚未被创建。因此，你只能访问以下 property：
+执行 `setup` 时，你只能访问以下 property：
 
 - `props`
 - `attrs`
