@@ -26,7 +26,7 @@ Mustache 标签将会被替代为对应组件实例中 `msg` property 的值。�
 
 ### 原始 HTML
 
-双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，你需要使用[`v-html` 指令](../api/directives.html#v-html)：
+双大括号会将普通文本解释为 vm 实例属性，而非 HTML 代码。为了输出真正的 HTML，你需要使用[`v-html` 指令](../api/directives.html#v-html)：
 
 ```html
 <p>Using mustaches: {{ rawHtml }}</p>
