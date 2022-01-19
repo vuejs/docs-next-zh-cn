@@ -1,4 +1,6 @@
-# Vue.js 3.0 中文文档
+# Vue.js 3.0 中文文档 (旧版)
+
+**⚠️ 此仓库为旧版 3.0 文档的翻译，新版本翻译已迁移到[这里](https://github.com/vuejs-translations/docs-zh-cn)。**
 
 ![Vue-docs CI](https://github.com/vuejs/docs-next-zh-cn/workflows/Vue-docs%20CI/badge.svg)     
 
