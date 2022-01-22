@@ -15,7 +15,7 @@ Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。
 
 在正确渲染组件之前进行一些异步请求是很常见的事。组件通常会在本地处理这种逻辑，绝大多数情况下这是非常完美的做法。
 
-该 `<suspense>` 组件提供了另一个方案，允许将等待过程提升到组件树中处理，而不是在单个组件中。
+该 `<suspense>` 组件提供了另一个方案，允许将等待过程提升到组件树中处理，而不是在单个组件中。在子组件的async setup中请求数据，在父组件中使用<suspense>控制子组件的数据加载中和数据加载后的状态。
 
 一个常见的[异步组件](/guide/component-dynamic-async.html#异步组件)用例：
 
@@ -48,7 +48,9 @@ export default {
 
 另一个触发 `fallback` 的方式是让后代组件从 `setup` 函数中返回一个 Promise。通常这是通过 `async` 实现的，而不是显式地返回一个 Promise：
 
-```js{2}
+```js{4}
+// TodoList.vue
+
 export default {
   async setup() {
     // 在 `setup` 内部使用 `await` 需要非常小心
