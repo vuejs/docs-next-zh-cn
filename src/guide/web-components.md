@@ -72,7 +72,7 @@ module.exports = {
 <my-element :user.prop="{ name: 'jack' }"></my-element>
 
 <!-- 等效的简写 -->
-<my-element .user="{ name: 'jack' }"></my-element>
+<my-element :user="{ name: 'jack' }"></my-element>
 ```
 
 ## 使用 Vue 构建自定义元素
