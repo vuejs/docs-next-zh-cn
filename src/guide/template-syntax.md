@@ -130,6 +130,8 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 
 在这个示例中，当 `eventName` 的值为 `"focus"` 时，`v-on:[eventName]` 将等价于 `v-on:focus`
 
+> 注意，如果直接在一个 HTML 文件里撰写模板，这里eventName应该修改为eventname,因为浏览器会把 attribute 名全部强制转为小写，下方有注意事项的说明
+
 ### 修饰符
 
 修饰符 (modifier) 是以半角句号 `.` 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，`.prevent` 修饰符告诉 `v-on` 指令对于触发的事件调用 ` event.preventDefault()`：
