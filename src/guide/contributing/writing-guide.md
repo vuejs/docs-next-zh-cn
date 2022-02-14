@@ -107,7 +107,7 @@
 ### 软件
 
 - [Grammarly](https://www.grammarly.com/)：用于检查拼写和语法的桌面应用程序和浏览器扩展 (尽管语法检查不能捕获所有内容，偶尔会显示假阳性)。
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)：一个 VS Code 的扩展，帮助你在降价和代码示例中检查拼写。
+- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)：一个 VS Code 的扩展，帮助你在 markdown 和代码示例中检查拼写。
 
 ### 书籍
 
