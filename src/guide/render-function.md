@@ -428,7 +428,7 @@ render() {
       {},
       // 将 `slots` 以 { name: props => VNode | Array<VNode> } 的形式传递给子对象。
       {
-        default: (props) =>h('span', props.text)
+        default: (props) => h('span', props.text)
       }
     )
   ])
