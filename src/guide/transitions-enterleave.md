@@ -199,7 +199,7 @@ Vue.createApp(Demo).mount('#demo')
 - `leave-active-class`
 - `leave-to-class`
 
-它们的优先级高于普通的类名，当你希望将其它第三方 CSS 动画库与 Vue 的过度系统相结合时十分有用，比如 [Animate.css](https://daneden.github.io/animate.css/)。
+它们的优先级高于普通的类名，当你希望将其它第三方 CSS 动画库与 Vue 的过渡系统相结合时十分有用，比如 [Animate.css](https://daneden.github.io/animate.css/)。
 
 示例:
 
