@@ -110,7 +110,7 @@ data() {
 如果你想根据条件切换列表中的 class，可以使用三元表达式：
 
 ```html
-<div :class="[isActive ? activeClass : '', errorClass]"></div>
+<div :class="[isActive ? 'activeClass' : '', 'errorClass']"></div>
 ```
 
 这样写将始终添加 `errorClass`，但是只有在 `isActive` 为 truthy<sup>[[1]](#footnote-1)</sup> 时才添加 `activeClass`。
