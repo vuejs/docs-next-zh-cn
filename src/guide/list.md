@@ -8,7 +8,7 @@
 
 ```html
 <ul id="array-rendering">
-  <li v-for="item in items">
+  <li v-for="item in items" :key="item.message">
     {{ item.message }}
   </li>
 </ul>
