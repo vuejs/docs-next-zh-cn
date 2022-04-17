@@ -73,7 +73,7 @@ export default {
 
 <VideoLesson href="https://www.vuemastery.com/courses/vue-3-essentials/setup-and-reactive-references" title="在 Vue Mastery 上学习 setup 是如何工作的">在 Vue Mastery 上观看关于 setup 免费视频</VideoLesson>
 
-新的 `setup` 选项在组件创建**之前**执行，一旦 `props` 被解析，就将作为组合式 API 的入口。 
+新的 `setup` 选项在组件被创建**之前**执行，一旦 `props` 被解析完成，它就将被作为组合式 API 的入口。 
 
 :::warning
 在 `setup` 中你应该避免使用 `this`，因为它不会找到组件实例。`setup` 的调用发生在 `data` property、`computed` property 或 `methods` 被解析之前，所以它们无法在 `setup` 中被获取。
@@ -126,7 +126,7 @@ setup (props) {
 
   return {
     repositories,
-    getUserRepositories // 返回的函数与方法的行为相同
+    getUserRepositories // 返回的函数，它的行为与将其定义在 methods 选项中的行为相同
   }
 }
 ```
