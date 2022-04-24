@@ -120,7 +120,7 @@ Mustache 语法不能在 HTML attribute 中使用，然而，可以使用 [`v-bi
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 ```
-这里的 `attributeName` 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。例如，如果你的组件实例有一个 data property `attributeName`，其值为 `"href"`，那么这个绑定将等价于 `v-bind:href`。
+这里的 `attributeName` 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。例如，如果你的组件实例有一个 data property `attributename`，其值为 `"href"`，那么这个绑定将等价于 `v-bind:href`。
 
 同样地，你可以使用动态参数为一个动态的事件名绑定处理函数：
 
