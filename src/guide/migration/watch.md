@@ -12,7 +12,8 @@ badges:
 
 ## 3.x 语法
 
-当使用 [`watch` 选项](/api/options-data.html#watch)侦听数组时，只有在数组被替换时才会触发回调。换句话说，在数组被改变时侦听回调将不再被触发。要想在数组被改变时触发侦听回调，必须指定 `deep` 选项。
+当使用 [`watch` 选项](/api/options-data.html#watch)侦听ref数组时，只有在数组被替换时才会触发回调。换句话说，在数组被改变时侦听回调将不再被触发。要想在数组被改变时触发侦听回调，必须指定 `deep` 选项。
+当使用 [`watch` 选项](/api/options-data.html#watch)侦听reactive数据时，deep会强制设为true。
 
 ```js
 watch: {
