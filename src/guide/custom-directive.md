@@ -49,7 +49,7 @@ directives: {
 
 - `beforeMount`：当指令第一次绑定到元素并且在挂载父组件之前调用。
 
-- `mounted`：在绑定元素的父组件被挂载前调用。
+- `mounted`：在绑定元素的父组件被挂载后调用。
 
 - `beforeUpdate`：在更新包含组件的 VNode 之前调用。
 
