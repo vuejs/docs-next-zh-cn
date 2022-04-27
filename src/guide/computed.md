@@ -2,7 +2,7 @@
 
 ## 计算属性
 
-<VideoLesson href="https://vueschool.io/lessons/computed-properties-in-vue-3?friend=vuejs" title="在 Vue School 上学习计算属性是如何工作做的">通过 Vue School 的免费视频学习计算属性是如何工作的</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/computed-properties-in-vue-3?friend=vuejs" title="在 Vue School 上学习计算属性是如何工作的">通过 Vue School 的免费视频学习计算属性是如何工作的</VideoLesson>
 
 模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。例如，有一个嵌套数组对象：
 
