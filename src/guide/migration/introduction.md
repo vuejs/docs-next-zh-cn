@@ -35,7 +35,7 @@ to replace this iframe with an image link to avoid the assets from vimeo being b
 
 - 通过 CDN：`<script src="https://unpkg.com/vue@next"></script>`
 - [Codepen](https://codepen.io/yyx990803/pen/OJNoaZL) 上的浏览器内试验田
-- [CodeSandbox](https://v3.vue.new) 上的浏览器内沙盒
+- [CodeSandbox](https://vue.new/) 上的浏览器内沙盒
 - 通过脚手架 [Vite](https://github.com/vitejs/vite)：
 
   ```bash
