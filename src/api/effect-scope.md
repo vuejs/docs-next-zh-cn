@@ -50,7 +50,7 @@ function getCurrentScope(): EffectScope | undefined
 
 在当前活跃的 [effect 作用域](#effectscope)上注册一个处理回调。该回调会在相关的 effect 作用域结束之后被调用。
 
-该方法在复用组合式函数时可用作 `onUmounted` 的非组件耦合替代品，因为每个 Vue 组件的 `setup()` 函数也同样在 effect 作用域内被调用。
+该方法在复用组合式函数时可用作 `onUnmounted` 的非组件耦合替代品，因为每个 Vue 组件的 `setup()` 函数也同样在 effect 作用域内被调用。
 
 **类型**：
 
