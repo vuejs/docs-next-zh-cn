@@ -10,6 +10,11 @@ export default {
       "name": "Authing",
       "url": "https://authing.cn/welcome?from=vuejs",
       "img": "authing.svg"
+    },
+    {
+      "name": "Juejin",
+      "url": "https://juejin.cn/frontend?utm_source=vue&utm_campaign=sponsor",
+      "img": "xitu.png"
     }
   ],
   "special_sponsors": [
