@@ -7,7 +7,7 @@ sidebarDepth: 1
 `<script setup>` 是在单文件组件 (SFC) 中使用[组合式 API](/api/composition-api.html) 的编译时语法糖。相比于普通的 `<script>` 语法，它具有更多优势：
 
 - 更少的样板内容，更简洁的代码。
-- 能够使用纯 Typescript 声明 props 和抛出事件。
+- 能够使用纯 TypeScript 声明 props 和抛出事件。
 - 更好的运行时性能 (其模板会被编译成与其同一作用域的渲染函数，没有任何的中间代理)。
 - 更好的 IDE 类型推断性能 (减少语言服务器从代码中抽离类型的工作)。
 
@@ -179,7 +179,7 @@ const emit = defineEmits(['change', 'delete'])
 
 - 传入到 `defineProps` 和 `defineEmits` 的选项会从 setup 中提升到模块的范围。因此，传入的选项不能引用在 setup 范围中声明的局部变量。这样做会引起编译错误。但是，它*可以*引用导入的绑定，因为它们也在模块范围内。
 
-如果使用了 Typescript，[使用纯类型声明来声明 prop 和 emits](#仅限-typescript-的功能) 也是可以的。
+如果使用了 TypeScript，[使用纯类型声明来声明 prop 和 emits](#仅限-typescript-的功能) 也是可以的。
 
 ## `defineExpose`
 
@@ -289,7 +289,7 @@ const emit = defineEmits<{
 
   - 在生产模式下，编译器会生成数组格式的声明来减少打包体积 (这里的 props 会被编译成 `['foo', 'bar']`)。
 
-  - 生成的代码仍然是有着类型的 Typescript 代码，它会在后续的流程中被其它工具处理。
+  - 生成的代码仍然是有着类型的 TypeScript 代码，它会在后续的流程中被其它工具处理。
 
 - 截至目前，类型声明参数必须是以下内容之一，以确保正确的静态分析：
 
