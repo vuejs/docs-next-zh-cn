@@ -61,7 +61,7 @@ Vue 3 中一些需要关注的新功能包括：
 - [组合式 API](/guide/composition-api-introduction.html)
 - [Teleport](/guide/teleport.html)
 - [片段](/guide/migration/fragments.html)
-- [触发组件选项](/guide/component-custom-events.html)
+- [Emits 组件选项](/guide/component-custom-events.html)
 - [来自 `@vue/runtime-core` 的 `createRenderer` API](https://github.com/vuejs/vue-next/tree/master/packages/runtime-core)，用于创建自定义渲染器
 - [单文件组件组合式 API 语法糖 (`<script setup>`)](/api/sfc-script-setup.html)
 - [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](/api/sfc-style.html#状态驱动的动态-css)
