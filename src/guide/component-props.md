@@ -62,9 +62,7 @@ props: {
 ### 传入一个布尔值
 
 ```html
-<!-- 包含该 prop 没有值的情况在内，都意味着 `true`。          -->
-<!-- 如果没有在 props 中把 is-published 的类型设置为 Boolean，
-则这里的值为空字符串，而不是“true”。 -->
+<!--  如果在HTML元素中标记了对应的prop却未绑定其值，在指定该Prop为Boolean的情况下值为 布尔值 `true`。   -->
 <blog-post is-published></blog-post>
 
 <!-- 即便 `false` 是静态的，我们仍需通过 `v-bind` 来告诉 Vue  -->
