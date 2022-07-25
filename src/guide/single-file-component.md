@@ -64,7 +64,7 @@ SFC 中的 `<style>` 标签通常在开发过程中作为原生 `<style>` 标签
 - 使用熟悉的 HTML、CSS 与 JavaScript 语法编写模块化组件
 - 预编译模板
 - [组件作用域 CSS](/api/sfc-style)
-- [使用 Composition API 时更符合人体工程学的语法](/api/sfc-script-setup)
+- [使用 Composition API 时更符合工程学的语法](/api/sfc-script-setup)
 - 通过交叉分析模板与脚本进行更多编译时优化
 - [IDE 支持](/api/sfc-tooling.html#ide-support) 模板表达式的自动补全与类型检查
 - 开箱即用的热模块更换（HMR）支持
