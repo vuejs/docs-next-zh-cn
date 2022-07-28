@@ -291,7 +291,7 @@ const TodoList = {
     }
   },
   components: {
-    TodoItem
+    'todo-item' : TodoItem
   }
 }
 
