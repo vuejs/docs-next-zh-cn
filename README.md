@@ -2,6 +2,8 @@
 
 **⚠️ 此仓库为旧版 3.0 文档的翻译，新版本翻译已迁移到[这里](https://github.com/vuejs-translations/docs-zh-cn)。**
 
+**目前该仓库仅接受 typo 和 bugfix，不再接受其他方面的 PR，尽请谅解 🙏**
+
 ![Vue-docs CI](https://github.com/vuejs/docs-next-zh-cn/workflows/Vue-docs%20CI/badge.svg)     
 
 该站点基于 Vuepress 构建而成。网站内容在 src 文件夹内，格式为 Markdown。欢迎 issue 或 pull request。
@@ -22,19 +24,19 @@ $ npm run serve # or yarn serve
 
 ## 如何参与贡献
 
-有劳在翻译之前移步 [wiki](https://github.com/vuejs/docs-next-zh-cn/wiki) 了解相关注意事项。
+~~有劳在翻译之前移步 [wiki](https://github.com/vuejs/docs-next-zh-cn/wiki) 了解相关注意事项。~~
 
-目前网站处于维护状态，我们会[定期同步英文版的更新](https://github.com/vuejs/docs-next-zh-cn/pulls?q=is%3Apr+label%3A%E4%BB%8E%E8%8B%B1%E6%96%87%E7%89%88%E5%90%8C%E6%AD%A5+is%3Aclosed)，包括文档内容和前端代码等。欢迎大家：
+~~目前网站处于维护状态，我们会[定期同步英文版的更新](https://github.com/vuejs/docs-next-zh-cn/pulls?q=is%3Apr+label%3A%E4%BB%8E%E8%8B%B1%E6%96%87%E7%89%88%E5%90%8C%E6%AD%A5+is%3Aclosed)，包括文档内容和前端代码等。欢迎大家：~~
 
-- 同步英文站点最新的改动到这里
-- 修复错别字或错误的书写格式
-- 发 issue 讨论译法或书写格式
-- 发 issue 讨论部署或协作流程上的问题
+- ~~同步英文站点最新的改动到这里~~
+- ~~修复错别字或错误的书写格式~~
+- ~~发 issue 讨论译法或书写格式~~
+- ~~发 issue 讨论部署或协作流程上的问题~~
 
-同时我们的文档中可能会偶尔存在暂时未翻译的段落，这些段落通常都以 `<!-- TODO: translation -->` 开头作为标记。所以也欢迎大家在源码中搜索这些段落并贡献翻译。你也可以通过[这个链接](https://github.com/vuejs/docs-next-zh-cn/search?q=TODO%3A+translation)快速找到尚未翻译好的内容。
+~~同时我们的文档中可能会偶尔存在暂时未翻译的段落，这些段落通常都以 `<!-- TODO: translation -->` 开头作为标记。所以也欢迎大家在源码中搜索这些段落并贡献翻译。你也可以通过[这个链接](https://github.com/vuejs/docs-next-zh-cn/search?q=TODO%3A+translation)快速找到尚未翻译好的内容。~~
 
 ## 贡献
 
-目前网站还处于集中翻译和校对的状态，急需大家多多支持！
+~~目前网站还处于集中翻译和校对的状态，急需大家多多支持！~~
 
 最新的文档/翻译贡献情况可以参阅 GitHub 提供的 [contributors](https://github.com/vuejs/docs-next-zh-cn/graphs/contributors) 页面。
